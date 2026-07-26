@@ -2395,6 +2395,22 @@
             }, 250);
         }
 
+        // Colour-code each precise-cetasika line by which category it names — the mindData
+        // strings are full phrases (not tagged data), so this matches on the category name
+        // that already appears in the text itself; colour is a scan aid, not the sole signal.
+        function classifyCetasikaLine(text) {
+            if (text.includes('သဗ္ဗစိတ္တသာဓာရဏ')) return 'text-slate-200 bg-slate-800/40 border border-slate-500/30';
+            if (text.includes('အကုသိုလ်သာဓာရဏ')) return 'text-rose-200 bg-rose-950/40 border border-rose-500/30';
+            if (text.includes('သောဘဏသာဓာရဏ')) return 'text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
+            if (text.includes('ဝိရတီ')) return 'text-teal-200 bg-teal-950/40 border border-teal-500/30';
+            if (text.includes('အပ္ပမညာ')) return 'text-violet-200 bg-violet-950/40 border border-violet-500/30';
+            if (text.includes('ပညိန္ဒြေ')) return 'text-amber-200 bg-amber-950/40 border border-amber-500/30';
+            if (text.includes('ဈာန်အင်္ဂါ')) return 'text-orange-200 bg-orange-950/40 border border-orange-500/30';
+            if (text.includes('ပကိဏ္ဏက')) return 'text-sky-200 bg-sky-950/40 border border-sky-500/30';
+            if (/လောဘ|ဒေါသ|မောဟ|ဒိဋ္ဌိ|မာန|ဣဿာ|မစ္ဆရိယ|ကုက္ကုစ္စ|ထိန|မိဒ္ဓ|ဝိစိကိစ္ဆာ|ဥဒ္ဓစ္စ/.test(text)) return 'text-red-200 bg-red-950/40 border border-red-600/30';
+            return 'text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
+        }
+
         function updateLiveVithiCaption() {
             const s = liveVithiSteps[liveVithiIndex];
             if (!s) return;
@@ -2435,7 +2451,7 @@
                 if (precise) {
                     tagsContainer.innerHTML = `
                         <ul class="w-full space-y-1">
-                            ${precise.cetasikas.map(c => `<li class="text-[11px] text-emerald-200 bg-emerald-950/40 border border-emerald-500/30 rounded-md px-2 py-1 animate-fade-in">${c}</li>`).join('')}
+                            ${precise.cetasikas.map(c => `<li class="text-[11px] ${classifyCetasikaLine(c)} rounded-md px-2 py-1 animate-fade-in">${c}</li>`).join('')}
                         </ul>
                         ${precise.note ? `<p class="text-[10px] text-amber-300/80 italic mt-1 w-full">${precise.note}</p>` : ''}
                     `;
