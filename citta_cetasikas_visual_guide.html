@@ -147,6 +147,10 @@
             background: rgba(217, 119, 6, 0.45);
             z-index: 10;
         }
+        #live-vithi-track.is-playing .live-vithi-node {
+            pointer-events: none;
+            cursor: default;
+        }
         .single-line-track {
             display: flex !important;
             flex-wrap: nowrap !important;
@@ -951,35 +955,33 @@
 
             <!-- Live Vithi Animation (dedicated, continuous, decorative + informative) -->
             <div class="glass-card rounded-2xl p-5 max-w-6xl mx-auto border border-amber-500/30 glow-gold space-y-4">
-                <div class="flex items-center justify-between flex-wrap gap-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl border border-amber-500/30 flex-shrink-0"><i class="fa-solid fa-wave-square"></i></div>
-                        <div>
-                            <h3 class="font-bold text-amber-300 text-lg">ဝီထိ တိုက်ရိုက် သရုပ်ပြ (Live Animation)</h3>
-                            <p class="text-xs text-slate-400">ဘဝင်→ဝီထိ→ဘဝင် စိတ်ခဏပြေးလွှားနေပုံကို အချိန်နှင့်တပြေးညီ ကြည့်ရှုပါ</p>
-                        </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl border border-amber-500/30 flex-shrink-0"><i class="fa-solid fa-wave-square"></i></div>
+                    <div>
+                        <h3 class="font-bold text-amber-300 text-lg">ဝီထိ တိုက်ရိုက် သရုပ်ပြ (Live Animation)</h3>
+                        <p class="text-xs text-slate-400">ဘဝင်→ဝီထိ→ဘဝင် စိတ်ခဏပြေးလွှားနေပုံကို အချိန်နှင့်တပြေးညီ ကြည့်ရှုပါ</p>
                     </div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <div class="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-full px-2 py-1 text-xs">
-                            <span class="text-slate-400 text-[11px] mr-1">အရှိန်:</span>
-                            <button onclick="setLiveVithiSpeed(1000, '0.5x')" id="speed-0.5x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">0.5x</button>
-                            <button onclick="setLiveVithiSpeed(600, '1.0x')" id="speed-1.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-300 bg-amber-500/20 border border-amber-500/40 transition">1.0x</button>
-                            <button onclick="setLiveVithiSpeed(300, '2.0x')" id="speed-2.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">2.0x</button>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <button onclick="prevLiveVithiStep()" title="ရှေ့စိတ်ခဏ" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 flex items-center justify-center transition">
-                                <i class="fa-solid fa-backward-step"></i>
-                            </button>
-                            <button onclick="toggleLiveVithiPlay()" id="live-vithi-play-btn" class="flex items-center gap-1.5 text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 px-3.5 py-1.5 rounded-full transition">
-                                <i class="fa-solid fa-pause"></i> <span>ခဏရပ်</span>
-                            </button>
-                            <button onclick="nextLiveVithiStep()" title="နောက်စိတ်ခဏ" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 flex items-center justify-center transition">
-                                <i class="fa-solid fa-forward-step"></i>
-                            </button>
-                            <button onclick="resetLiveVithiAnimation()" title="စမှပြန်စရန်" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 flex items-center justify-center transition">
-                                <i class="fa-solid fa-rotate-left"></i>
-                            </button>
-                        </div>
+                </div>
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                    <div class="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-full px-2 py-1 text-xs">
+                        <span class="text-slate-400 text-[11px] mr-1">အရှိန်:</span>
+                        <button onclick="setLiveVithiSpeed(1000, '0.5x')" id="speed-0.5x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">0.5x</button>
+                        <button onclick="setLiveVithiSpeed(600, '1.0x')" id="speed-1.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-300 bg-amber-500/20 border border-amber-500/40 transition">1.0x</button>
+                        <button onclick="setLiveVithiSpeed(300, '2.0x')" id="speed-2.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">2.0x</button>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="prevLiveVithiStep()" title="ရှေ့စိတ်ခဏ" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 flex items-center justify-center transition">
+                            <i class="fa-solid fa-backward-step"></i>
+                        </button>
+                        <button onclick="toggleLiveVithiPlay()" id="live-vithi-play-btn" class="flex items-center gap-1.5 text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 px-3.5 py-1.5 rounded-full transition">
+                            <i class="fa-solid fa-pause"></i> <span>ခဏရပ်</span>
+                        </button>
+                        <button onclick="nextLiveVithiStep()" title="နောက်စိတ်ခဏ" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 flex items-center justify-center transition">
+                            <i class="fa-solid fa-forward-step"></i>
+                        </button>
+                        <button onclick="resetLiveVithiAnimation()" title="စမှပြန်စရန်" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 flex items-center justify-center transition">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -2166,20 +2168,32 @@
             const el = document.getElementById('live-vithi-track');
             if (!el) return;
             el.innerHTML = liveVithiSteps.map((s, i) => `
-                <div class="live-vithi-node cursor-pointer hover:scale-110 hover:border-amber-400 transition-all duration-150" 
-                     id="live-node-${i}" 
-                     title="${s.short} — နှိပ်၍ လေ့လာရန်" 
+                <div class="live-vithi-node cursor-pointer hover:scale-110 hover:border-amber-400 transition-all duration-150"
+                     id="live-node-${i}"
+                     title="${s.short} — နှိပ်၍ လေ့လာရန်"
                      onclick="jumpToLiveVithiStep(${i})">${s.short}</div>
             `).join('');
+            syncLiveVithiInteractivity();
             stepLiveVithiUI();
         }
 
+        // Node clicks only select a step once the animation is paused — while it's auto-playing,
+        // the track is locked (pointer-events: none via .is-playing) so accidental clicks on the
+        // continuously pulsing "current" node don't fight with the running timer.
+        function syncLiveVithiInteractivity() {
+            const track = document.getElementById('live-vithi-track');
+            if (!track) return;
+            track.classList.toggle('is-playing', liveVithiPlaying);
+            track.querySelectorAll('.live-vithi-node').forEach((node, i) => {
+                const s = liveVithiSteps[i];
+                if (!s) return;
+                node.title = liveVithiPlaying ? 'ခဏရပ်ပြီးမှ ရွေးနိုင်ပါသည်' : `${s.short} — နှိပ်၍ လေ့လာရန်`;
+            });
+        }
+
         function jumpToLiveVithiStep(idx) {
-            stopLiveVithiAnimation();
-            liveVithiPlaying = false;
+            if (liveVithiPlaying) return;
             liveVithiIndex = idx;
-            const btn = document.getElementById('live-vithi-play-btn');
-            if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
             stepLiveVithiUI();
         }
 
@@ -2289,18 +2303,6 @@
         function stopLiveVithiAnimation() {
             if (liveVithiTimer) { clearInterval(liveVithiTimer); liveVithiTimer = null; }
         }
-        function toggleLiveVithiPlay() {
-            liveVithiPlaying = !liveVithiPlaying;
-            const btn = document.getElementById('live-vithi-play-btn');
-            if (liveVithiPlaying) {
-                startLiveVithiAnimation();
-                if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>ခဏရပ်</span>';
-            } else {
-                stopLiveVithiAnimation();
-                if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
-            }
-        }
-
         function setLiveVithiSpeed(ms, label) {
             liveVithiSpeedMs = ms;
             document.querySelectorAll('.vithi-speed-btn').forEach(b => {
@@ -2321,6 +2323,7 @@
             const btn = document.getElementById('live-vithi-play-btn');
             if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
             liveVithiIndex = (liveVithiIndex + 1) % liveVithiSteps.length;
+            syncLiveVithiInteractivity();
             stepLiveVithiUI();
         }
 
@@ -2330,6 +2333,7 @@
             const btn = document.getElementById('live-vithi-play-btn');
             if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
             liveVithiIndex = (liveVithiIndex - 1 + liveVithiSteps.length) % liveVithiSteps.length;
+            syncLiveVithiInteractivity();
             stepLiveVithiUI();
         }
 
@@ -2342,11 +2346,12 @@
             const btn = document.getElementById('live-vithi-play-btn');
             if (liveVithiPlaying) {
                 startLiveVithiAnimation();
-                if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>ခဏရပ်ရန်</span>';
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>ခဏရပ်</span>';
             } else {
                 stopLiveVithiAnimation();
-                if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်ရန်</span>';
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
             }
+            syncLiveVithiInteractivity();
         }
 
         // Jumps from the Mind Simulator to the Vīthi tab's Live Animation, pre-loaded with the matching preset.
