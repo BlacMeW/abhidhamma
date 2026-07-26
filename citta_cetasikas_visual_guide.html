@@ -2106,6 +2106,12 @@
         // ===== Live Vīthi Animation — dedicated, continuous, selectable demo =====
         const liveVithiPresets = {
             panca_atimahanta: { label: 'ပဉ္စဒွါရ — အတိမဟန္တာ (၁၇ ခု)', build: () => buildPancaVithiSteps() },
+            sight_flower: { label: '👀 ပန်းလှလှ မြင်စဉ် (ရူပါရမ္မဏ)', build: () => buildPancaVithiSteps(), desc: 'လှပသော ပန်းတစ်ပွင့်ကို မျက်စိဖြင့် မြင်လိုက်သည့်အခါ စက္ခုဒွါရ၌ ၁၇ ခဏပြည့် ဖြစ်ပေါ်ပုံ။' },
+            sound_dhamma: { label: '👂 တရားသံ ကြားစဉ် (သဒ္ဒါရမ္မဏ)', build: () => buildPancaVithiSteps(), desc: 'သာယာသော တရားတော်သံကို နားဖြင့် ကြားရစဉ် သောတဒွါရ၌ စိတ်ဖြစ်ပေါ်ပုံ။' },
+            smell_perfume: { label: '👃 ရနံ့မွှေး ရစဉ် (ဂန္ဓာရမ္မဏ)', build: () => buildPancaVithiSteps(), desc: 'မွှေးကြိုင်သော ရနံ့ကို နှာခေါင်းဖြင့် ရရှိစဉ် ဃာနဒွါရ၌ ဖြစ်ပေါ်ပုံ။' },
+            taste_sweet: { label: '👅 ချိုမြိန်စာ စားစဉ် (ရသာရမ္မဏ)', build: () => buildPancaVithiSteps(), desc: 'ချိုမြိန်သော အစားအစာကို လျှာဖြင့် စားမိစဉ် ဇိဝှါဒွါရ၌ ဖြစ်ပေါ်ပုံ။' },
+            touch_warm: { label: '🖐️ အတွေ့ နွေးနွေး ရစဉ် (ဖောဋ္ဌဗ္ဗာရမ္မဏ)', build: () => buildPancaVithiSteps(), desc: 'နူးညံ့နွေးထွေးသော အရာနှင့် ကိုယ်ခန္ဓာ ထိတွေ့စဉ် ကာယဒွါရ၌ ဖြစ်ပေါ်ပုံ။' },
+            mind_thought: { label: '🧠 တွေးတော ကြံစည်စဉ် (ဓမ္မာရမ္မဏ)', build: () => buildManoVithiStepsKama('kusala'), desc: 'မျက်စိမှိတ်ထားစဉ် ကုသိုလ်ရေးရာများကို မနောဒွါရဖြင့် တွေးတော စေတနာပွားများစဉ်။' },
             panca_paritta: { label: 'ပဉ္စဒွါရ — ပရိတ္တာ (ဇောနမရောက်)', build: () => buildPancaVithiSteps().slice(0, 8) },
             mano_lobha: { label: 'မနောဒွါရ — လောဘ', build: () => buildManoVithiStepsKama('lobha') },
             mano_dosa: { label: 'မနောဒွါရ — ဒေါသ', build: () => buildManoVithiStepsKama('dosa') },
@@ -2197,6 +2203,7 @@
             const s = liveVithiSteps[liveVithiIndex];
             if (!s) return;
             const info = vithiFamilyInfo[s.family];
+            const presetInfo = liveVithiPresets[currentLivePreset];
             const label = document.getElementById('live-vithi-caption-label');
             const desc = document.getElementById('live-vithi-caption-desc');
             const cittaName = document.getElementById('live-vithi-citta-name');
@@ -2204,7 +2211,7 @@
             const causalText = document.getElementById('live-causal-logic-text');
 
             if (label) label.textContent = (s.titleOverride || info.label) + ` (ခဏအမှတ် #${mm(liveVithiIndex + 1)})`;
-            if (desc) desc.textContent = s.descOverride || info.desc;
+            if (desc) desc.textContent = (presetInfo && presetInfo.desc ? `[${presetInfo.label}] ${presetInfo.desc} — ` : '') + (s.descOverride || info.desc);
             if (cittaName) cittaName.textContent = info.label;
             if (causalText) causalText.textContent = liveCausalLogicNotes[s.family] || liveCausalLogicNotes.bhavanga;
 
