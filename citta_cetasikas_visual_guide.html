@@ -80,25 +80,50 @@
         #back-to-top {
             transition: opacity 0.2s ease, transform 0.2s ease;
         }
+        .vithi-intensity-btn {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+        .vithi-intensity-btn.active {
+            background: rgba(234, 179, 8, 0.2);
+            border-color: rgba(234, 179, 8, 0.6);
+            color: #fcd34d;
+        }
+        .vithi-step {
+            transition: opacity 0.2s ease, transform 0.15s ease;
+        }
+        .vithi-step.inactive {
+            opacity: 0.25;
+            filter: grayscale(0.6);
+        }
+        .vithi-step:not(.inactive):hover {
+            transform: translateY(-2px);
+        }
+        .vithi-arrow {
+            color: #475569;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-12">
 
     <!-- Header / Navbar -->
     <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-2xl shadow-lg shadow-amber-500/10">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 w-full lg:w-auto">
+                <div class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-2xl shadow-lg shadow-amber-500/10 flex-shrink-0">
                     <i class="fa-solid fa-dharmachakra animate-spin-slow"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br> (Citta & Cetasikas)</h1>
+                    <h1 class="text-xl md:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br class="lg:hidden"> (Citta & Cetasikas)</h1>
                     <p class="text-xs md:text-sm text-slate-400">အဘိဓမ္မာဒေသနာလာ နာမ်တရားများ အသေးစိတ် လေ့လာရန် Visual Guide</p>
                 </div>
             </div>
 
             <!-- Navigation Tabs -->
-            <nav class="flex md:flex-wrap gap-2 text-sm overflow-x-auto md:overflow-visible w-full md:w-auto pb-1 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0" style="scrollbar-width: thin;">
+            <div class="relative w-full lg:w-auto">
+                <nav id="main-nav" class="flex lg:flex-wrap gap-2 text-sm overflow-x-auto lg:overflow-visible w-full lg:w-auto pb-1 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0" style="scrollbar-width: thin;">
                 <button onclick="switchTab('def')" id="tab-def" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition">
                     <i class="fa-solid fa-lightbulb mr-1.5"></i> အဓိပ္ပာယ်
                 </button>
@@ -111,10 +136,16 @@
                 <button onclick="switchTab('cetasika')" id="tab-cetasika" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
                     <i class="fa-solid fa-cubes mr-1.5"></i> စေတသိက် (၅၂) ပါး
                 </button>
+                <button onclick="switchTab('vithi')" id="tab-vithi" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                    <i class="fa-solid fa-route mr-1.5"></i> ဝီထိစိတ် အစဉ်
+                </button>
                 <button onclick="switchTab('simulator')" id="tab-simulator" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
                     <i class="fa-solid fa-flask-vial mr-1.5"></i> စိတ်အမျိုးအစား စူစမ်းရန်
                 </button>
-            </nav>
+                </nav>
+                <div id="nav-fade-left" class="lg:hidden pointer-events-none absolute top-0 left-0 h-full w-6 bg-gradient-to-r from-slate-900 to-transparent opacity-0 transition-opacity"></div>
+                <div id="nav-fade-right" class="lg:hidden pointer-events-none absolute top-0 right-0 h-full w-8 bg-gradient-to-l from-slate-900 to-transparent transition-opacity"></div>
+            </div>
         </div>
     </header>
 
@@ -318,7 +349,7 @@
                 <details class="bg-slate-900/60 rounded-xl border border-slate-800 px-4 py-3">
                     <summary class="flex items-center justify-between font-semibold text-rose-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>အကုသိုလ်စိတ် (၁၂) ပါး — မကောင်းမှုဇာစ်မြစ်ရှိသော စိတ်</span>
-                        <span class="text-xs text-slate-500 font-mono">12</span>
+                        <span class="text-xs text-slate-500 font-mono">၁၂</span>
                     </summary>
                     <div class="mt-3 pl-5 space-y-3 text-xs text-slate-300 border-l border-slate-800">
                         <div>
@@ -339,7 +370,7 @@
                 <details class="bg-slate-900/60 rounded-xl border border-slate-800 px-4 py-3">
                     <summary class="flex items-center justify-between font-semibold text-slate-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>အဟေတုကစိတ် (၁၈) ပါး — ဟိတ်(မူရင်း) မပါသော စိတ်</span>
-                        <span class="text-xs text-slate-500 font-mono">18</span>
+                        <span class="text-xs text-slate-500 font-mono">၁၈</span>
                     </summary>
                     <div class="mt-3 pl-5 space-y-3 text-xs text-slate-300 border-l border-slate-800">
                         <div>
@@ -360,7 +391,7 @@
                 <details class="bg-slate-900/60 rounded-xl border border-slate-800 px-4 py-3">
                     <summary class="flex items-center justify-between font-semibold text-emerald-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ကာမာဝစရ သောဘဏစိတ် (၂၄) ပါး — ကြည်လင်သန့်ရှင်းသော စိတ်</span>
-                        <span class="text-xs text-slate-500 font-mono">24</span>
+                        <span class="text-xs text-slate-500 font-mono">၂၄</span>
                     </summary>
                     <div class="mt-3 pl-5 space-y-3 text-xs text-slate-300 border-l border-slate-800">
                         <div>
@@ -475,10 +506,82 @@
             </p>
         </section>
 
-        <!-- SECTION 5: SIMULATOR -->
-        <section id="sec-simulator" class="hidden space-y-8">
+        <!-- SECTION 5: VITHI (COGNITIVE PROCESS) -->
+        <section id="sec-vithi" class="hidden space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၅)</span>
+                <h2 class="text-2xl md:text-3xl font-bold">ဝီထိစိတ် အစဉ် (Citta-Vīthi — Cognitive Process)</h2>
+                <p class="text-slate-400 text-sm">စိတ်တစ်ခုတည်း တစ်ခါတည်း ဖြစ်ပေါ်နေခြင်း မဟုတ်ဘဲ၊ အာရုံတစ်ခုကို သိရှိရာ၌ စိတ်အမျိုးမျိုး အစဉ်လိုက် တစ်ချက်ပြီးတစ်ချက် ပြေးလွှားသွားပုံကို လေ့လာကြည့်ပါ။</p>
+            </div>
+
+            <!-- Vithi vs Vithimutta -->
+            <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-slate-700 grid sm:grid-cols-2 gap-4 text-xs text-slate-300">
+                <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-800">
+                    <h4 class="font-bold text-amber-300 text-sm mb-1"><i class="fa-solid fa-route mr-1.5"></i>ဝီထိစိတ် (Vīthi-citta)</h4>
+                    <p>ဒွါရ (၆) ပါးမှတစ်ဆင့် အာရုံအသစ်ကို သိမြင်ရာ၌ လုပ်ဆောင်ချက် အသီးသီးဖြင့် အစဉ်လိုက် ဖြစ်ပေါ်နေသော စိတ်များ — ဤစာမျက်နှာတွင် ဖော်ပြထားသော အစဉ်အတိုင်းဖြစ်သည်။</p>
+                </div>
+                <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-800">
+                    <h4 class="font-bold text-slate-300 text-sm mb-1"><i class="fa-solid fa-water mr-1.5"></i>ဝီထိမုတ္တစိတ် (Vīthimutta-citta)</h4>
+                    <p>ဝီထိအစဉ်တွင် မပါဝင်ဘဲ သီးခြား ဖြစ်ပေါ်သော ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ စိတ်များ — ဘဝတစ်ခု၏ အစနှင့် အဆုံးကို ဆောင်ရွက်ပေးသည်။</p>
+                </div>
+            </div>
+
+            <!-- Intensity Selector -->
+            <div class="max-w-4xl mx-auto space-y-3">
+                <p class="text-center text-xs text-slate-400">အာရုံ၏ ထင်ရှားပေါ်လွင်မှု အားနည်း/အားကြီးမှုပေါ် မူတည်၍ ဝီထိအစဉ် တိုချုံ့/ရှည်ချုံ့ သွားပုံကို ရွေးချယ်ကြည့်ပါ -</p>
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <button onclick="setVithiIntensity('atimahanta')" id="intensity-atimahanta" class="vithi-intensity-btn px-4 py-1.5 rounded-full text-xs font-bold transition">အတိမဟန္တာ (အလွန်ကြီးသောအာရုံ)</button>
+                    <button onclick="setVithiIntensity('mahanta')" id="intensity-mahanta" class="vithi-intensity-btn px-4 py-1.5 rounded-full text-xs font-bold transition">မဟန္တာ (ကြီးသောအာရုံ)</button>
+                    <button onclick="setVithiIntensity('paritta')" id="intensity-paritta" class="vithi-intensity-btn px-4 py-1.5 rounded-full text-xs font-bold transition">ပရိတ္တာ (သေးငယ်သောအာရုံ)</button>
+                    <button onclick="setVithiIntensity('atiparitta')" id="intensity-atiparitta" class="vithi-intensity-btn px-4 py-1.5 rounded-full text-xs font-bold transition">အတိပရိတ္တာ (အလွန်သေးငယ်သောအာရုံ)</button>
+                </div>
+                <p id="vithi-intensity-note" class="text-center text-xs text-amber-300/90 min-h-[1.5rem]"></p>
+            </div>
+
+            <!-- Pancadvara Vithi Timeline -->
+            <div class="glass-card rounded-2xl p-5 max-w-6xl mx-auto border border-slate-700 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center text-xl border border-sky-500/30 flex-shrink-0"><i class="fa-solid fa-eye"></i></div>
+                    <div>
+                        <h3 class="font-bold text-sky-300 text-lg">ပဉ္စဒွါရဝီထိ (Pañcadvāra-vīthi)</h3>
+                        <p class="text-xs text-slate-400">မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ် — ခန္ဓာဒွါရ (၅) ပါးမှတစ်ဆင့် ရုပ်အာရုံကို သိမြင်ရာတွင် ဖြစ်ပေါ်သော အစဉ် (အများဆုံး စိတ်ခဏ ၁၇ ခု)</p>
+                    </div>
+                </div>
+                <div id="panca-vithi-track" class="flex items-stretch gap-1 overflow-x-auto pb-3"></div>
+                <p class="text-[11px] text-slate-500">နှိပ်ကြည့်နိုင်သော အဆင့်တစ်ခုချင်းစီကို "ရှင်းလင်းစွာ ထင်ရှားနေသော" အဆင့်များထဲမှ ရွေးနှိပ်ပါ (မှိန်နေသော အဆင့်များသည် ရွေးထားသော အာရုံအားနည်းအဆင့်တွင် မရောက်တော့သော အဆင့်များ ဖြစ်သည်)။</p>
+            </div>
+
+            <!-- Javana / Kamma callout -->
+            <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-500/30 glow-gold flex items-start gap-3">
+                <div class="text-amber-400 text-2xl flex-shrink-0"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
+                    <span class="text-amber-300 font-bold">ဇောစိတ် (Javana)</span> — ဤအဆင့် (၇) ခုတွင်သာ ကုသိုလ် (သို့) အကုသိုလ် ကံ အသစ် ဖန်တီးခြင်း ဖြစ်ပေါ်သည်။ ကျန်အဆင့်များ (ဝိညာဉ်၊ သမ္ပဋိစ္ဆန်၊ သန္တီရဏ၊ ဝုဋ္ဌပ္ပန် စသည်) သည် ဝိပါက် (သို့) ကြိယာသက်သက်သာ ဖြစ်ကြသဖြင့် ကံသစ် မဖန်တီးနိုင်ပေ။ ဤအချက်ကြောင့် "စိတ်တစ်ခု ဖြစ်တိုင်း အကျိုးပေးမည်" ဟူသော အထင်မှားကို ပယ်ဖျောက်ရာ ရောက်သည်။
+                </p>
+            </div>
+
+            <!-- Manodvara Vithi Timeline -->
+            <div class="glass-card rounded-2xl p-5 max-w-6xl mx-auto border border-slate-700 space-y-4">
+                <div class="flex items-center gap-3 flex-wrap justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl border border-indigo-500/30 flex-shrink-0"><i class="fa-solid fa-brain"></i></div>
+                        <div>
+                            <h3 class="font-bold text-indigo-300 text-lg">မနောဒွါရဝီထိ (Manodvāra-vīthi)</h3>
+                            <p class="text-xs text-slate-400">စိတ်တံခါးမှတစ်ဆင့် အတွေး၊ အမှတ်တရ၊ ဓမ္မာရုံများကို တိုက်ရိုက် သိမြင်ရာတွင် ဖြစ်ပေါ်သော ရိုးရှင်းသော အစဉ်</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 text-xs">
+                        <button onclick="setManoTadarammana(true)" id="mano-tada-on" class="vithi-intensity-btn px-3 py-1 rounded-full font-bold transition">တဒါရမ္မဏပါ</button>
+                        <button onclick="setManoTadarammana(false)" id="mano-tada-off" class="vithi-intensity-btn px-3 py-1 rounded-full font-bold transition">တဒါရမ္မဏမပါ</button>
+                    </div>
+                </div>
+                <div id="mano-vithi-track" class="flex items-stretch gap-1 overflow-x-auto pb-3"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: SIMULATOR -->
+        <section id="sec-simulator" class="hidden space-y-8">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၆)</span>
                 <h2 class="text-2xl md:text-3xl font-bold">စိတ်အမျိုးအစား စူစမ်းလေ့လာစနစ် (Mind Simulator)</h2>
                 <p class="text-slate-400 text-sm">စိတ်အမျိုးအစားတစ်ခုကို ရွေးချယ်ပြီး ထိုစိတ်၌ ယှဉ်တွဲပါဝင်သော စေတသိက်များကို လေ့လာကြည့်ပါ။</p>
             </div>
@@ -498,9 +601,9 @@
             </div>
         </section>
 
-        <!-- SECTION 6: CONCLUSION -->
+        <!-- SECTION 7: CONCLUSION -->
         <section class="mt-16 glass-card rounded-2xl p-8 border border-amber-500/20 text-center space-y-4 relative overflow-hidden">
-            <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၆)</span>
+            <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၇)</span>
             <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-amber-400 pointer-events-none">
                 <i class="fa-solid fa-dharmachakra"></i>
             </div>
@@ -522,11 +625,11 @@
 
     <!-- Modal Dialog for Detailed View -->
     <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 space-y-4 relative animate-fade-in shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition">
+        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div id="modal-content">
+            <div id="modal-content" class="p-6 space-y-4 overflow-y-auto">
                 <!-- Dynamic Content -->
             </div>
         </div>
@@ -635,7 +738,7 @@
                         const ditthiTxt = ditthi ? 'ဒိဋ္ဌိဂတသမ္ပယုတ် (အယူမှားနှင့်ယှဉ်)' : 'ဒိဋ္ဌိဂတဝိပ္ပယုတ် (အယူမှားနှင့် မယှဉ်)';
                         push({
                             name: `${vedana}သဟဂတ် ${ditthiTxt} ${sankharaTxt} လောဘမူစိတ်`,
-                            shortName: `လောဘမူ-${cittaData.filter(c => c.sub === 'လောဘမူ (၈)').length + 1}`,
+                            shortName: `လောဘမူ-${mm(cittaData.filter(c => c.sub === 'လောဘမူ (၈)').length + 1)}`,
                             pali: 'Lobha-mūla citta', group: 'akusala', groupLabel: 'အကုသိုလ်', sub: 'လောဘမူ (၈)',
                             desc: `${vedana} ခံစားမှုနှင့်တကွ${ditthi ? '၊ အယူမှားပါဝင်လျက်' : ''} အာရုံကို တပ်မက်ကပ်ငြိသော စိတ်။`,
                             cetasikaNote: `သဗ္ဗစိတ္တသာဓာရဏ (၇) + ပကိဏ္ဏက အများစု + အကုသိုလ်သာဓာရဏ (၄) + လောဘ${ditthi ? ' + ဒိဋ္ဌိ' : ''}${sankhara === 'sasankharika' ? ' + ထိန + မိဒ္ဓ (အခြေအနေအလိုက်)' : ''}`,
@@ -651,7 +754,7 @@
                 const sankharaTxt = sankhara === 'asankharika' ? 'အသင်္ခါရိက (အလိုလို)' : 'သသင်္ခါရိက (လှုံ့ဆော်မှုဖြင့်)';
                 push({
                     name: `ဒေါမနဿသဟဂတ် ပဋိဃသမ္ပယုတ် ${sankharaTxt} ဒေါသမူစိတ်`,
-                    shortName: `ဒေါသမူ-${cittaData.filter(c => c.sub === 'ဒေါသမူ (၂)').length + 1}`,
+                    shortName: `ဒေါသမူ-${mm(cittaData.filter(c => c.sub === 'ဒေါသမူ (၂)').length + 1)}`,
                     pali: 'Dosa-mūla citta', group: 'akusala', groupLabel: 'အကုသိုလ်', sub: 'ဒေါသမူ (၂)',
                     desc: 'ဒေါမနဿ ခံစားမှုနှင့်တကွ ခက်ထန်ကြမ်းတမ်းစွာ ဖြစ်ပေါ်သော စိတ်။ ပီတိနှင့် လုံးဝ မယှဉ်ပေ။',
                     cetasikaNote: `သဗ္ဗစိတ္တသာဓာရဏ (၇) + ပကိဏ္ဏက (ပီတိမပါ) + အကုသိုလ်သာဓာရဏ (၄) + ဒေါသ${sankhara === 'sasankharika' ? ' + ထိန + မိဒ္ဓ (အခြေအနေအလိုက်)' : ''}`,
@@ -718,7 +821,7 @@
                             const sankharaTxt = sankhara === 'asankharika' ? 'အသင်္ခါရိက' : 'သသင်္ခါရိက';
                             push({
                                 name: `${vedana}သဟဂတ် ${nana} ${sankharaTxt} မဟာ${g.key}စိတ်`,
-                                shortName: `မဟာ${g.key}-${cittaData.filter(c => c.sub === `မဟာ${g.key} (၈)`).length + 1}`,
+                                shortName: `မဟာ${g.key}-${mm(cittaData.filter(c => c.sub === `မဟာ${g.key} (၈)`).length + 1)}`,
                                 pali: `Mahā-${paliMap[g.key]} citta`, group: 'sobhana54', groupLabel: g.groupLabel, sub: `မဟာ${g.key} (၈)`,
                                 desc: g.key === 'ကုသိုလ်' ? `ဒါန၊ သီလ၊ ဘာဝနာ ပြုလုပ်စဉ် ${vedana} ခံစားမှုနှင့် ${nana === 'ဉာဏသမ္ပယုတ်' ? 'ပညာ ယှဉ်တွဲလျက်' : 'ပညာ မယှဉ်ဘဲ'} ဖြစ်ပေါ်သော ကုသိုလ်စိတ်။`
                                     : g.key === 'ဝိပါက်' ? `မဟာကုသိုလ်၏ အကျိုးအနေဖြင့် ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ အဖြစ် ${vedana} ခံစားမှုနှင့်တကွ ဆောင်ရွက်သော ဝိပါက်စိတ်။`
@@ -795,6 +898,24 @@
             });
         })();
 
+        // Converts Arabic digits (in a number or string) to Myanmar digits for display.
+        function mm(n) {
+            const map = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
+            return String(n).replace(/[0-9]/g, d => map[d]);
+        }
+
+        // Shows/hides the left/right fade hints on the horizontally-scrollable mobile/tablet nav.
+        function updateNavFade() {
+            const nav = document.getElementById('main-nav');
+            const left = document.getElementById('nav-fade-left');
+            const right = document.getElementById('nav-fade-right');
+            if (!nav || !left || !right) return;
+            const maxScroll = nav.scrollWidth - nav.clientWidth;
+            left.style.opacity = nav.scrollLeft > 4 ? '1' : '0';
+            right.style.opacity = nav.scrollLeft < maxScroll - 4 ? '1' : '0';
+        }
+        window.addEventListener('resize', updateNavFade);
+
         // Tab Switching Logic
         function switchTab(tabId) {
             document.querySelectorAll('main > section[id^="sec-"]').forEach(sec => sec.classList.add('hidden'));
@@ -830,7 +951,7 @@
             });
 
             if (countLabel) {
-                countLabel.textContent = `${filtered.length} ခု တွေ့ရှိသည် (စုစုပေါင်း ၅၂ ခုအနက်)`;
+                countLabel.textContent = `${mm(filtered.length)} ခု တွေ့ရှိသည် (စုစုပေါင်း ၅၂ ခုအနက်)`;
             }
             if (emptyState) {
                 emptyState.classList.toggle('hidden', filtered.length !== 0);
@@ -861,7 +982,7 @@
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${badgeClass}">${item.sub}</span>
-                            <span class="text-xs text-slate-500 font-mono">#${item.id}</span>
+                            <span class="text-xs text-slate-500 font-mono">#${mm(item.id)}</span>
                         </div>
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-300 group-hover:scale-110 transition">
@@ -925,7 +1046,7 @@
                         <p class="text-slate-300 mt-1 leading-relaxed">${item.example}</p>
                     </div>` : ''}
                     <div class="pt-2 border-t border-slate-800 flex justify-between text-xs text-slate-400">
-                        <span>စေတသိက် အမှတ်: #${item.id}</span>
+                        <span>စေတသိက် အမှတ်: #${mm(item.id)}</span>
                         <span>အုပ်စု: ${item.cat === 'anya' ? 'အညာသမန်း' : item.cat === 'akusala' ? 'အကုသိုလ်' : 'သောဘဏ'}</span>
                     </div>
                 </div>
@@ -1036,7 +1157,7 @@
                         <p class="text-slate-300 mt-1 leading-relaxed">${item.example}</p>
                     </div>
                     <div class="pt-2 border-t border-slate-800 flex justify-between text-xs text-slate-400">
-                        <span>စိတ် အမှတ်: #${item.id} / ၈၉</span>
+                        <span>စိတ် အမှတ်: #${mm(item.id)} / ၈၉</span>
                     </div>
                 </div>
             `;
@@ -1046,7 +1167,7 @@
         function jumpToCittaGroup(cat) {
             closeModal();
             switchTab('citta89');
-            const targetId = cat === 'akusala' ? 'chips-lobha' : cat === 'sobhana' ? 'chips-mahakusala' : 'chips-lobha';
+            const targetId = cat === 'akusala' ? 'chips-lobha' : cat === 'sobhana' ? 'chips-mahakusala' : cat === 'ahetuka' ? 'chips-ahetuka-akusala' : 'chips-lobha';
             setTimeout(() => {
                 const el = document.getElementById(targetId);
                 if (!el) return;
@@ -1054,6 +1175,119 @@
                 if (details) details.open = true;
                 el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 150);
+        }
+
+        // ===== Vīthi (Cognitive Process) Data — Abhidhammatthasangaha Ch.4 Vīthi-saṅgaha =====
+        const vithiFamilyInfo = {
+            bhavanga: { color: 'bg-slate-700/30 border-slate-600 text-slate-300', label: 'ဘဝင်', desc: 'အာရုံသစ်ကို မသိသေးဘဲ၊ ယခင်ဘဝင်ရေစီး ဆက်လက်တည်ရှိနေသော/လှုပ်ရှားနေသော/ပြတ်တောက်သွားသော အခြေအနေများ — ဤသုံးခုစလုံးသည် ဝီထိစိတ်မဟုတ်သေးဘဲ ဝီထိမတိုင်မီ ပြင်ဆင်မှုသာ ဖြစ်သည်။' },
+            avajjana: { color: 'bg-indigo-500/15 border-indigo-500/40 text-indigo-300', label: 'အာဝဇ္ဇန်', desc: 'ဒွါရမှတစ်ဆင့် အာရုံသို့ စိတ်ကို ဦးစွာ လှည့်ပေးသော ကြိယာစိတ် (ဟိတ်မလိုက်သော အဟေတုကစိတ်)။' },
+            vinnana: { color: 'bg-sky-500/15 border-sky-500/40 text-sky-300', label: 'ဝိညာဉ်', desc: 'သက်ဆိုင်ရာ ဒွါရနှင့် ကိုက်ညီသော အာရုံကို ဦးဆုံး သိမြင်သော ဝိပါက်စိတ်။' },
+            sampaticchana: { color: 'bg-cyan-500/15 border-cyan-500/40 text-cyan-300', label: 'သမ္ပဋိစ္ဆန်', desc: 'သိမြင်ပြီးသော အာရုံကို လက်ခံစဉ်းစားမိသော ဝိပါက်စိတ်။' },
+            santirana: { color: 'bg-teal-500/15 border-teal-500/40 text-teal-300', label: 'သန္တီရဏ', desc: 'လက်ခံပြီးသော အာရုံကို စစ်ဆေးဆင်ခြင်နေသော ဝိပါက်စိတ်။' },
+            votthapana: { color: 'bg-violet-500/15 border-violet-500/40 text-violet-300', label: 'ဝုဋ္ဌပ္ပန်', desc: 'အာရုံကို ကောင်း/မကောင်း အပြီးသတ် ဆုံးဖြတ်ပေးသော ကြိယာစိတ် (မနောဒွါရာဝဇ္ဇန်းစိတ်ကပင် ဤတာဝန်ကို ယူသည်)။' },
+            javana: { color: 'bg-fuchsia-500/15 border-fuchsia-500/40 text-fuchsia-300', label: 'ဇောန', desc: 'ဆုံးဖြတ်ပြီးနောက် အာရုံကို အပြင်းအထန် တွန်းအားဖြင့် ခံစားနေသော အခိုက် — ကုသိုလ်/အကုသိုလ်/ကြိယာ ဖြစ်နိုင်ပြီး ဤအဆင့်၌သာ ကံအသစ် ဖန်တီးသည်။' },
+            tadarammana: { color: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300', label: 'တဒါရမ္မဏ', desc: 'ဇောစိတ်ပြီးနောက် အာရုံ၏ အကျိုးဆက်ကို ခေတ္တခဏမျှ ဆက်လက် မှတ်သားနေသော ဝိပါက်စိတ် (အာရုံ အလွန်ထင်ရှားသော အခါမျိုးတွင်သာ ဖြစ်တတ်သည်)။' }
+        };
+
+        function buildPancaVithiSteps() {
+            const steps = [
+                { key: 'atita_bhavanga', family: 'bhavanga', short: 'အတီတ ဘဝင်', icon: 'fa-water' },
+                { key: 'bhavanga_calana', family: 'bhavanga', short: 'ဘဝင် စလန', icon: 'fa-water' },
+                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဘဝင် ပစ္ဆေဒ', icon: 'fa-scissors' },
+                { key: 'pancadvaravajjana', family: 'avajjana', short: 'ပဉ္စဒွါရာဝဇ္ဇန်း', icon: 'fa-door-open', jumpCat: 'ahetuka' },
+                { key: 'vinnana', family: 'vinnana', short: 'ဝိညာဉ် (ဥပမာ- စက္ခု)', icon: 'fa-eye', jumpCat: 'ahetuka' },
+                { key: 'sampaticchana', family: 'sampaticchana', short: 'သမ္ပဋိစ္ဆန်', icon: 'fa-inbox', jumpCat: 'ahetuka' },
+                { key: 'santirana', family: 'santirana', short: 'သန္တီရဏ', icon: 'fa-magnifying-glass', jumpCat: 'ahetuka' },
+                { key: 'votthapana', family: 'votthapana', short: 'ဝုဋ္ဌပ္ပန်', icon: 'fa-gavel', jumpCat: 'ahetuka' }
+            ];
+            for (let i = 1; i <= 7; i++) steps.push({ key: 'javana', family: 'javana', short: `ဇောန-${mm(i)}`, icon: 'fa-fire', isJavana: true });
+            for (let i = 1; i <= 2; i++) steps.push({ key: 'tadarammana', family: 'tadarammana', short: `တဒါ-${mm(i)}`, icon: 'fa-anchor' });
+            return steps;
+        }
+        function buildManoVithiSteps() {
+            const steps = [
+                { key: 'bhavanga_calana', family: 'bhavanga', short: 'ဘဝင် စလန', icon: 'fa-water' },
+                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဘဝင် ပစ္ဆေဒ', icon: 'fa-scissors' },
+                { key: 'manodvaravajjana', family: 'avajjana', short: 'မနောဒွါရာဝဇ္ဇန်း', icon: 'fa-brain', jumpCat: 'ahetuka' }
+            ];
+            for (let i = 1; i <= 7; i++) steps.push({ key: 'javana', family: 'javana', short: `ဇောန-${mm(i)}`, icon: 'fa-fire', isJavana: true });
+            for (let i = 1; i <= 2; i++) steps.push({ key: 'tadarammana', family: 'tadarammana', short: `တဒါ-${mm(i)}`, icon: 'fa-anchor' });
+            return steps;
+        }
+        const pancaVithiSteps = buildPancaVithiSteps();
+        const manoVithiSteps = buildManoVithiSteps();
+
+        function renderVithiTrack(containerId, steps, activeCount) {
+            const el = document.getElementById(containerId);
+            if (!el) return;
+            el.innerHTML = steps.map((s, i) => {
+                const info = vithiFamilyInfo[s.family];
+                const active = (i + 1) <= activeCount;
+                return `
+                    ${i > 0 ? '<div class="vithi-arrow flex items-center text-xs">→</div>' : ''}
+                    <button onclick="openVithiStepModal('${containerId}', ${i})" class="vithi-step ${active ? '' : 'inactive'} flex-shrink-0 w-[76px] flex flex-col items-center justify-center gap-1 rounded-lg border px-1.5 py-2 text-center ${info.color}">
+                        <i class="fa-solid ${s.icon} text-sm"></i>
+                        <span class="text-[10px] font-semibold leading-tight">${s.short}</span>
+                    </button>
+                `;
+            }).join('');
+            el._steps = steps;
+        }
+
+        function openVithiStepModal(containerId, index) {
+            const steps = containerId === 'panca-vithi-track' ? pancaVithiSteps : manoVithiSteps;
+            const s = steps[index];
+            const info = vithiFamilyInfo[s.family];
+            lastFocusedElement = document.activeElement;
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-3">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700">
+                        <i class="fa-solid ${s.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label} — အဆင့် ${mm(index + 1)}</span>
+                        <h3 class="text-xl font-bold text-amber-400">${s.short}</h3>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                    <p class="text-slate-200 leading-relaxed">${info.desc}</p>
+                </div>
+                ${s.isJavana ? `
+                <button onclick="closeModal(); switchTab('simulator');" class="mt-2 w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-flask-vial"></i> ဇောစိတ် အမျိုးအစားများ (Simulator) ကြည့်ရန်
+                </button>` : s.jumpCat ? `
+                <button onclick="jumpToCittaGroup('${s.jumpCat}')" class="mt-2 w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sitemap"></i> ဆက်စပ်သော အဟေတုကစိတ် (၈၉ ပါးထဲမှ) ကြည့်ရန်
+                </button>` : ''}
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        let currentVithiIntensity = 'atimahanta';
+        const vithiIntensityNotes = {
+            atimahanta: 'အာရုံသည် အလွန်ထင်ရှားသဖြင့် အစဉ်တစ်ခုလုံး (စိတ်ခဏ ၁၇ ခု) ပြည့်စုံစွာ ပြေးလွှားပြီး တဒါရမ္မဏအထိ ရောက်ရှိသည်။',
+            mahanta: 'အာရုံသည် ခပ်ထင်ရှားထင်ရှား ဖြစ်သဖြင့် ဇောစိတ်အထိသာ ပြေးလွှားပြီး တဒါရမ္မဏသို့ မရောက်တော့ဘဲ ဘဝင်ပြန်ဝင်သည်။',
+            paritta: 'အာရုံသည် ရှေးရှုမှုနောက်ကျသဖြင့် ဝုဋ္ဌပ္ပန်အထိသာ ရောက်ပြီး ဇောစိတ် လုံးဝ မဖြစ်ပေါ်နိုင်တော့ပေ (ကံမဖန်တီးနိုင်)။',
+            atiparitta: 'အာရုံသည် အလွန်နောက်ကျသဖြင့် ဘဝင်သာ ခဏလှုပ်ရှားပြီး ပြတ်တောက်ခြင်းမျှပင် မဖြစ်နိုင်တော့ဘဲ ပြန်ငြိမ်သွားသည် — "မောဃဝါရ" ဟုခေါ်ပြီး အာရုံကို လုံးဝ မသိရှိနိုင်ပေ။'
+        };
+        const vithiIntensityActiveCount = { atimahanta: 17, mahanta: 15, paritta: 8, atiparitta: 2 };
+        function setVithiIntensity(level) {
+            currentVithiIntensity = level;
+            document.querySelectorAll('.vithi-intensity-btn[id^="intensity-"]').forEach(btn => btn.classList.remove('active'));
+            const btn = document.getElementById('intensity-' + level);
+            if (btn) btn.classList.add('active');
+            renderVithiTrack('panca-vithi-track', pancaVithiSteps, vithiIntensityActiveCount[level]);
+            document.getElementById('vithi-intensity-note').textContent = vithiIntensityNotes[level];
+        }
+
+        let manoHasTadarammana = true;
+        function setManoTadarammana(withTada) {
+            manoHasTadarammana = withTada;
+            document.getElementById('mano-tada-on').classList.toggle('active', withTada);
+            document.getElementById('mano-tada-off').classList.toggle('active', !withTada);
+            renderVithiTrack('mano-vithi-track', manoVithiSteps, withTada ? manoVithiSteps.length : manoVithiSteps.length - 2);
         }
 
         // Mind Simulator Data (Abhidhammatthasangaha, Ch.2 Sampayoga/Sangaha-naya အခြေခံ)
@@ -1222,6 +1456,11 @@
             renderCetasikaGrid('all');
             renderCittaGroups();
             updateSimulator('lobha');
+            setVithiIntensity('atimahanta');
+            setManoTadarammana(true);
+            const nav = document.getElementById('main-nav');
+            if (nav) nav.addEventListener('scroll', updateNavFade);
+            updateNavFade();
         });
     </script>
 </body>
