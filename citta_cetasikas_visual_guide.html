@@ -129,10 +129,10 @@
         header {
             padding-top: env(safe-area-inset-top);
         }
-        button, .tab-btn, .c-filter-btn, .citta-chip, [onclick] {
+        button, .c-filter-btn, .citta-chip, [onclick] {
             touch-action: manipulation;
         }
-        button:active, .tab-btn:active, .c-filter-btn:active, .vithi-intensity-btn:active {
+        button:active, .c-filter-btn:active, .vithi-intensity-btn:active {
             transform: scale(0.96);
         }
         .cetasika-card:active {
@@ -156,7 +156,6 @@
         }
         @media (min-width: 1024px) {
             #back-to-top {
-                bottom: calc(1.5rem + env(safe-area-inset-bottom));
                 right: calc(1.5rem + env(safe-area-inset-right));
             }
         }
@@ -171,73 +170,51 @@
 </head>
 <body class="min-h-screen flex flex-col pb-12">
 
-    <!-- Header / Navbar -->
+    <!-- Header / Branding (navigation lives in the unified bottom tab bar) -->
     <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 py-3 lg:py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3 w-full lg:w-auto">
-                <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl lg:text-2xl shadow-lg shadow-amber-500/10 flex-shrink-0">
-                    <i class="fa-solid fa-dharmachakra animate-spin-slow"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg lg:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br class="lg:hidden"> (Citta & Cetasikas)</h1>
-                    <p class="hidden sm:block text-xs lg:text-sm text-slate-400">အဘိဓမ္မာဒေသနာလာ နာမ်တရားများ အသေးစိတ် လေ့လာရန် Visual Guide</p>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 py-3 lg:py-4 flex items-center justify-center lg:justify-start gap-3">
+            <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl lg:text-2xl shadow-lg shadow-amber-500/10 flex-shrink-0">
+                <i class="fa-solid fa-dharmachakra animate-spin-slow"></i>
             </div>
-
-            <!-- Navigation Tabs (desktop only — mobile/tablet use the bottom tab bar) -->
-            <nav id="main-nav" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="hidden lg:flex flex-nowrap gap-1.5 text-sm">
-                <button onclick="switchTab('def')" id="tab-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition">
-                    <i class="fa-solid fa-lightbulb mr-1.5"></i> အဓိပ္ပာယ်
-                </button>
-                <button onclick="switchTab('sampayoga')" id="tab-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-diagram-project mr-1.5"></i> ယှဉ်ဖက်
-                </button>
-                <button onclick="switchTab('citta89')" id="tab-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-sitemap mr-1.5"></i> စိတ် (၈၉)
-                </button>
-                <button onclick="switchTab('cetasika')" id="tab-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-cubes mr-1.5"></i> စေတသိက်
-                </button>
-                <button onclick="switchTab('vithi')" id="tab-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-route mr-1.5"></i> ဝီထိအစဉ်
-                </button>
-                <button onclick="switchTab('simulator')" id="tab-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-flask-vial mr-1.5"></i> စမ်းသပ်ရန်
-                </button>
-            </nav>
+            <div>
+                <h1 class="text-lg lg:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br class="sm:hidden"> (Citta & Cetasikas)</h1>
+                <p class="hidden sm:block text-xs lg:text-sm text-slate-400">အဘိဓမ္မာဒေသနာလာ နာမ်တရားများ အသေးစိတ် လေ့လာရန် Visual Guide</p>
+            </div>
         </div>
     </header>
 
-    <!-- Bottom Tab Bar (mobile/tablet only) -->
-    <nav id="mobile-tab-bar" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 flex" style="padding-bottom: env(safe-area-inset-bottom);">
-        <button onclick="switchTab('def')" id="tabm-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn-mobile active flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
-            <i class="fa-solid fa-lightbulb text-base"></i>
-            <span class="text-[10px] font-semibold leading-tight">အဓိပ္ပာယ်</span>
+    <!-- Unified Bottom Tab Bar (all screen sizes) -->
+    <nav id="mobile-tab-bar" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="fixed bottom-0 inset-x-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800" style="padding-bottom: env(safe-area-inset-bottom);">
+        <div class="max-w-2xl mx-auto flex">
+        <button onclick="switchTab('def')" id="tabm-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn-mobile active flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
+            <i class="fa-solid fa-lightbulb text-base lg:text-lg"></i>
+            <span class="text-[10px] lg:text-xs font-semibold leading-tight">အဓိပ္ပာယ်</span>
         </button>
-        <button onclick="switchTab('sampayoga')" id="tabm-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
-            <i class="fa-solid fa-diagram-project text-base"></i>
-            <span class="text-[10px] font-semibold leading-tight">ယှဉ်ဖက်</span>
+        <button onclick="switchTab('sampayoga')" id="tabm-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
+            <i class="fa-solid fa-diagram-project text-base lg:text-lg"></i>
+            <span class="text-[10px] lg:text-xs font-semibold leading-tight">ယှဉ်ဖက်</span>
         </button>
-        <button onclick="switchTab('citta89')" id="tabm-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
-            <i class="fa-solid fa-sitemap text-base"></i>
-            <span class="text-[10px] font-semibold leading-tight">စိတ် (၈၉)</span>
+        <button onclick="switchTab('citta89')" id="tabm-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
+            <i class="fa-solid fa-sitemap text-base lg:text-lg"></i>
+            <span class="text-[10px] lg:text-xs font-semibold leading-tight">စိတ် (၈၉)</span>
         </button>
-        <button onclick="switchTab('cetasika')" id="tabm-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
-            <i class="fa-solid fa-cubes text-base"></i>
-            <span class="text-[10px] font-semibold leading-tight">စေတသိက်</span>
+        <button onclick="switchTab('cetasika')" id="tabm-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
+            <i class="fa-solid fa-cubes text-base lg:text-lg"></i>
+            <span class="text-[10px] lg:text-xs font-semibold leading-tight">စေတသိက်</span>
         </button>
-        <button onclick="switchTab('vithi')" id="tabm-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
-            <i class="fa-solid fa-route text-base"></i>
-            <span class="text-[10px] font-semibold leading-tight">ဝီထိ</span>
+        <button onclick="switchTab('vithi')" id="tabm-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
+            <i class="fa-solid fa-route text-base lg:text-lg"></i>
+            <span class="text-[10px] lg:text-xs font-semibold leading-tight">ဝီထိ</span>
         </button>
-        <button onclick="switchTab('simulator')" id="tabm-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
-            <i class="fa-solid fa-flask-vial text-base"></i>
-            <span class="text-[10px] font-semibold leading-tight">စမ်းကြည့်ရန်</span>
+        <button onclick="switchTab('simulator')" id="tabm-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
+            <i class="fa-solid fa-flask-vial text-base lg:text-lg"></i>
+            <span class="text-[10px] lg:text-xs font-semibold leading-tight">စမ်းကြည့်ရန်</span>
         </button>
+        </div>
     </nav>
 
     <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 mt-6 lg:mt-8 flex-1 w-full pb-20 lg:pb-0">
+    <main class="max-w-7xl mx-auto px-4 mt-6 lg:mt-8 flex-1 w-full pb-24">
 
         <!-- SECTION 1: DEFINITIONS -->
         <section id="sec-def" role="tabpanel" aria-labelledby="tab-def" class="space-y-8">
@@ -1005,14 +982,6 @@
         function switchTab(tabId) {
             document.querySelectorAll('main > section[id^="sec-"]').forEach(sec => sec.classList.add('hidden'));
             document.getElementById('sec-' + tabId).classList.remove('hidden');
-
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = "tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition";
-                btn.setAttribute('aria-selected', 'false');
-            });
-            const activeBtn = document.getElementById('tab-' + tabId);
-            activeBtn.className = "tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition";
-            activeBtn.setAttribute('aria-selected', 'true');
 
             document.querySelectorAll('.tab-btn-mobile').forEach(btn => {
                 btn.classList.remove('active', 'text-amber-400');
