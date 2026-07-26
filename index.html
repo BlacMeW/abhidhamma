@@ -315,10 +315,19 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderDashboard();
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Reg failed:', err));
-            }
         });
+    </script>
+    <script>
+        // Offline/PWA support (sw.js) is temporarily disabled — unregister any
+        // previously installed service worker and clear its caches so every page
+        // always loads fresh from the network. Re-enable by restoring the
+        // navigator.serviceWorker.register('./sw.js') call this replaced.
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+        }
+        if (window.caches) {
+            caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+        }
     </script>
 </body>
 </html>

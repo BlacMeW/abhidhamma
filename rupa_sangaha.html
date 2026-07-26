@@ -513,5 +513,16 @@
             }
         });
     </script>
+    <script>
+        // Offline/PWA support (sw.js) is temporarily disabled — unregister any
+        // previously installed service worker and clear its caches so this page
+        // always loads fresh from the network.
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+        }
+        if (window.caches) {
+            caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+        }
+    </script>
 </body>
 </html>
