@@ -1554,7 +1554,9 @@
             panca_paritta: { label: 'ပဉ္စဒွါရ — ပရိတ္တာ (ဇောနမရောက်)', build: () => buildPancaVithiSteps().slice(0, 8) },
             mano_lobha: { label: 'မနောဒွါရ — လောဘ', build: () => buildManoVithiStepsKama('lobha') },
             mano_dosa: { label: 'မနောဒွါရ — ဒေါသ', build: () => buildManoVithiStepsKama('dosa') },
+            mano_moha: { label: 'မနောဒွါရ — မောဟ', build: () => buildManoVithiStepsKama('moha') },
             mano_kusala: { label: 'မနောဒွါရ — ကုသိုလ်', build: () => buildManoVithiStepsKama('kusala') },
+            mano_kiriya: { label: 'မနောဒွါရ — ကြိယာ (ရဟန္တာ)', build: () => buildManoVithiStepsKama('kiriya') },
             mano_lokuttara: { label: 'မနောဒွါရ — လောကုတ္တရာ (မဂ်-ဖိုလ်)', build: () => buildManoVithiStepsLokuttara() }
         };
 
@@ -1636,10 +1638,22 @@
             }
         }
 
+        // Jumps from the Mind Simulator to the Vīthi tab's Live Animation, pre-loaded with the matching preset.
+        function jumpToVithiPreset(presetKey) {
+            switchTab('vithi');
+            liveVithiPlaying = true;
+            setLiveVithiPreset(presetKey);
+            startLiveVithiAnimation();
+            setTimeout(() => {
+                const el = document.getElementById('live-vithi-track');
+                if (el) el.closest('.glass-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 150);
+        }
+
         // Mind Simulator Data (Abhidhammatthasangaha, Ch.2 Sampayoga/Sangaha-naya အခြေခံ)
         const mindData = [
             {
-                id: 'lobha', cittaRef: 1, label: 'လောဘမူစိတ် (Lobha-mūla)', icon: 'fa-magnet', color: 'rose',
+                id: 'lobha', cittaRef: 1, vithiPreset: 'mano_lobha', label: 'လောဘမူစိတ် (Lobha-mūla)', icon: 'fa-magnet', color: 'rose',
                 title: "လောဘမူစိတ် — Greed-rooted Consciousness",
                 desc: "သာယာဖွယ် အာရုံနှင့် တွေ့ကြုံစဉ် တပ်မက်မှုအခြေခံ၍ ဖြစ်ပေါ်သော အကုသိုလ်စိတ် (၈) ပါးအနက် တစ်ပါး။",
                 cetasikas: [
@@ -1652,7 +1666,7 @@
                 note: "အများဆုံး ၂၂ ခုအထိ (သောမနဿ+ဒိဋ္ဌိ+သသင်္ခါရိက ဖြစ်ပါက) ယှဉ်တွဲနိုင်သည်။"
             },
             {
-                id: 'dosa', cittaRef: 9, label: 'ဒေါသမူစိတ် (Dosa-mūla)', icon: 'fa-fire', color: 'rose',
+                id: 'dosa', cittaRef: 9, vithiPreset: 'mano_dosa', label: 'ဒေါသမူစိတ် (Dosa-mūla)', icon: 'fa-fire', color: 'rose',
                 title: "ဒေါသမူစိတ် — Hatred-rooted Consciousness",
                 desc: "မလိုလားအပ်သော အာရုံနှင့် တွေ့သောအခါ ဒေါမနဿ ခံစားမှုနှင့်တကွ ခက်ထန်ကြမ်းတမ်းစွာ ဖြစ်ပေါ်သော အကုသိုလ်စိတ်။",
                 cetasikas: [
@@ -1665,7 +1679,7 @@
                 note: "ဒေါသစိတ်သည် ဒေါမနဿနှင့်သာ ယှဉ်၍ဖြစ်ပြီး၊ ပီတိနှင့် လုံးဝ မယှဉ်ပေ။"
             },
             {
-                id: 'moha', cittaRef: 11, label: 'မောဟမူစိတ် (Moha-mūla)', icon: 'fa-cloud', color: 'rose',
+                id: 'moha', cittaRef: 11, vithiPreset: 'mano_moha', label: 'မောဟမူစိတ် (Moha-mūla)', icon: 'fa-cloud', color: 'rose',
                 title: "မောဟမူစိတ် — Delusion-rooted Consciousness",
                 desc: "လောဘနှင့်လည်းကောင်း၊ ဒေါသနှင့်လည်းကောင်း တိုက်ရိုက် မဆက်စပ်ဘဲ၊ ဥပေက္ခာခံစားမှုနှင့်တကွ တွေဝေခြင်း/သံသယခြင်း အခြေခံသော အကုသိုလ်စိတ် (၂) ပါး။",
                 cetasikas: [
@@ -1677,7 +1691,7 @@
                 note: "ဝိစိကိစ္ဆာသမ္ပယုတ် စိတ်တွင် အဓိမောက္ခ (ဆုံးဖြတ်ခြင်း) လုံးဝ မပါဝင်နိုင်ပေ — သံသယနှင့် ဆုံးဖြတ်ချက်သည် ဆန့်ကျင်ဘက် သဘောရှိသောကြောင့်ဖြစ်သည်။"
             },
             {
-                id: 'panca', cittaRef: 13, label: 'ပဉ္စဝိညာဉ် (Dvi-pañca-viññāṇa)', icon: 'fa-eye', color: 'slate',
+                id: 'panca', cittaRef: 13, vithiPreset: 'panca_atimahanta', label: 'ပဉ္စဝိညာဉ် (Dvi-pañca-viññāṇa)', icon: 'fa-eye', color: 'slate',
                 title: "ပဉ္စဝိညာဉ်စိတ် — Five Sense-door Resultant Consciousness",
                 desc: "စက္ခုဝိညာဉ်၊ သောတဝိညာဉ် စသော အဟေတုက ဝိပါက်စိတ်များ — အရိုးရှင်းဆုံးသော စိတ်အမျိုးအစား။",
                 cetasikas: [
@@ -1686,7 +1700,7 @@
                 note: "စိတ် (၈၉) ပါးအနက် အနည်းဆုံးဆုံး ယှဉ်တွဲသော စေတသိက်အရေအတွက် (၇ ခု) ဖြင့် ဖြစ်ပေါ်သော စိတ်များဖြစ်သည် — ဟိတ်မူလလည်း မရှိ၊ ပကိဏ္ဏကလည်း လုံးဝ မပါ။"
             },
             {
-                id: 'kusala', cittaRef: 31, label: 'မဟာကုသိုလ်စိတ် (Mahā-kusala)', icon: 'fa-hand-holding-heart', color: 'emerald',
+                id: 'kusala', cittaRef: 31, vithiPreset: 'mano_kusala', label: 'မဟာကုသိုလ်စိတ် (Mahā-kusala)', icon: 'fa-hand-holding-heart', color: 'emerald',
                 title: "မဟာကုသိုလ်စိတ် — Wholesome Consciousness",
                 desc: "ဒါန၊ သီလ၊ ဘာဝနာ ပြုလုပ်စဉ် ဖြစ်ပေါ်သော ကြည်လင်သန့်ရှင်းသည့် ကာမာဝစရ ကုသိုလ်စိတ် (၈) ပါးအနက် တစ်ပါး။",
                 cetasikas: [
@@ -1710,6 +1724,16 @@
                 note: "ဝိပါက်စိတ်ဖြစ်သောကြောင့် ဝိရတီ (၃) ပါးနှင့် အပ္ပမညာ (၂) ပါး လုံးဝ မပါဝင်ပေ — ၎င်းတို့သည် ကမ္မဇဝန် (ဆောင်ရွက်လက်ရှိ) စိတ်များ၌သာ ပေါ်နိုင်သောကြောင့်ဖြစ်သည်။"
             },
             {
+                id: 'kiriya', cittaRef: 47, vithiPreset: 'mano_kiriya', label: 'မဟာကြိယာစိတ် (Mahā-kiriya)', icon: 'fa-hand-fist', color: 'sky',
+                title: "မဟာကြိယာစိတ် — Functional Consciousness",
+                desc: "ဒါန၊ သီလကဲ့သို့ ကောင်းမှုနှင့် အဆင်းသဏ္ဌာန် တူသော်လည်း၊ ရဟန္တာပုဂ္ဂိုလ်တို့၌သာ ဖြစ်တတ်သော ကာမာဝစရ ကြိယာစိတ် (၈) ပါးအနက် တစ်ပါး။",
+                cetasikas: [
+                    "အညသမာန (၁၃) + သောဘဏသာဓာရဏ (၁၉)",
+                    "ဝိရတီ/အပ္ပမညာ (အခြေအနေအလိုက်) + ပညိန္ဒြေ (ဉာဏသမ္ပယုတ် ဖြစ်မှသာ)"
+                ],
+                note: "ရဟန္တာသည် ကိလေသာအားလုံး အကြွင်းမဲ့ ပယ်ဖြတ်ပြီးသူ ဖြစ်၍၊ ကောင်းမှုပြုလေရာတိုင်း ကံအသစ် လုံးဝ မဖန်တီးတော့ဘဲ ဤကြိယာစိတ်ဖြင့်သာ ပြုလုပ်ကြသည် — 'ပြုလုပ်ခြင်း' ရှိသော်လည်း 'အနာဂတ်ဝိပါက်' လုံးဝ မရှိတော့ပေ။"
+            },
+            {
                 id: 'jhana', cittaRef: 55, label: 'ရူပါဝစရ ဈာန်စိတ် (Jhāna)', icon: 'fa-mountain-sun', color: 'sky',
                 title: "ရူပါဝစရ ဈာန်စိတ် — Fine-material Jhāna Consciousness",
                 desc: "သမထဘာဝနာအားဖြင့် ဈာန်ရရှိသူတို့၌ ဖြစ်ပေါ်သော အထူးပြု စိတ်။",
@@ -1720,7 +1744,7 @@
                 note: "ဈာန်အဆင့် မြင့်လာသည်နှင့်အမျှ ဈာန်အင်္ဂါများ (ဝိတက်→ဝိစာရ→ပီတိ) တစ်ခုချင်း ကျဆင်း/ချုပ်ငြိမ်းသွားပြီး ပဉ္စမဈာန်တွင် ဥပေက္ခာနှင့် ဧကဂ္ဂတာသာ ကျန်ရှိတော့သည်။"
             },
             {
-                id: 'lokuttara', cittaRef: 82, label: 'လောကုတ္တရာ မဂ်စိတ် (Magga)', icon: 'fa-dharmachakra', color: 'amber',
+                id: 'lokuttara', cittaRef: 82, vithiPreset: 'mano_lokuttara', label: 'လောကုတ္တရာ မဂ်စိတ် (Magga)', icon: 'fa-dharmachakra', color: 'amber',
                 title: "လောကုတ္တရာ မဂ်စိတ် — Supramundane Path Consciousness",
                 desc: "နိဗ္ဗာန်ကို အာရုံပြု၍ ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်သော ဉာဏ်အထွဋ်အခေါင် စိတ်။",
                 cetasikas: [
@@ -1778,10 +1802,16 @@
                     <i class="fa-solid fa-lightbulb mt-0.5"></i>
                     <span>${item.note}</span>
                 </div>
-                ${item.cittaRef ? `
-                <button onclick="openCittaModal(${item.cittaRef})" class="w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-sitemap"></i> ဤစိတ်အမျိုးအစား (နမူနာတစ်ခု) ကို အသေးစိတ်ကြည့်ရန်
-                </button>` : ''}
+                <div class="grid ${item.cittaRef && item.vithiPreset ? 'sm:grid-cols-2' : ''} gap-2">
+                    ${item.cittaRef ? `
+                    <button onclick="openCittaModal(${item.cittaRef})" class="w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-sitemap"></i> ဤစိတ်အမျိုးအစား (နမူနာတစ်ခု) ကို အသေးစိတ်ကြည့်ရန်
+                    </button>` : ''}
+                    ${item.vithiPreset ? `
+                    <button onclick="jumpToVithiPreset('${item.vithiPreset}')" class="w-full text-xs font-semibold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-wave-square"></i> ဤစိတ်၏ ဝီထိအစဉ် (Live Animation) ကြည့်ရန်
+                    </button>` : ''}
+                </div>
             `;
         }
 
