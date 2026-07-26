@@ -2066,7 +2066,7 @@
                 { key: 'upacara', family: 'upacara', short: 'ဥပ', icon: 'fa-hand-holding-heart' },
                 { key: 'anuloma', family: 'anuloma', short: 'အနု', icon: 'fa-hand-holding-heart' },
                 { key: 'anuloma2', family: 'anuloma', short: 'အနု', icon: 'fa-hand-holding-heart' },
-                { key: 'appana', family: 'appana', short: 'ဈာန်', icon: 'fa-fire-flame-curved', isAppana: true },
+                { key: 'appana', family: 'appana', short: 'ဈာန်', icon: 'fa-fire-flame-curved', isAppana: true, cittaId: 55 },
                 { key: 'bhavanga_after', family: 'bhavanga', short: 'ဘ', icon: 'fa-water',
                   descOverride: 'ဈာန်ဇောန ချက်ချင်းပြီးနောက် တဒါရမ္မဏ လုံးဝ မပါဘဲ ဘဝင်စိတ်အစဉ်သို့ ချက်ချင်း ပြန်ဝင်ခြင်း။' }
             ];
@@ -2422,12 +2422,29 @@
             if (progressPercent) progressPercent.textContent = `${mm(pct)}%`;
             if (progressBar) progressBar.style.width = `${pct}%`;
 
-            // Update Live Synchronized Cetasika Tags
+            // Update Live Synchronized Cetasika Tags — use the Mind Simulator's exact
+            // per-citta cetasika composition when this step maps to a known citta (every
+            // dvi-pañca-viññāṇa shares one composition regardless of which sense-door/cittaId,
+            // so 'vinnana' always resolves; javana/appana/magga resolve via their cittaId).
+            // Falls back to the generic family-level bucket list otherwise (e.g. bhavanga,
+            // where the exact citta-type — ahetuka vs sahetuka — isn't specified by this preset).
             if (tagsContainer) {
-                const tags = liveStepCetasikas[s.family] || liveStepCetasikas.bhavanga;
-                tagsContainer.innerHTML = tags.map(t => `
-                    <span class="text-[10px] font-medium bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-md animate-fade-in">${t}</span>
-                `).join('');
+                const precise = s.family === 'vinnana'
+                    ? mindData.find(m => m.id === 'panca')
+                    : (s.cittaId ? mindData.find(m => m.cittaRef === s.cittaId) : null);
+                if (precise) {
+                    tagsContainer.innerHTML = `
+                        <ul class="w-full space-y-1">
+                            ${precise.cetasikas.map(c => `<li class="text-[11px] text-emerald-200 bg-emerald-950/40 border border-emerald-500/30 rounded-md px-2 py-1 animate-fade-in">${c}</li>`).join('')}
+                        </ul>
+                        ${precise.note ? `<p class="text-[10px] text-amber-300/80 italic mt-1 w-full">${precise.note}</p>` : ''}
+                    `;
+                } else {
+                    const tags = liveStepCetasikas[s.family] || liveStepCetasikas.bhavanga;
+                    tagsContainer.innerHTML = tags.map(t => `
+                        <span class="text-[10px] font-medium bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-md animate-fade-in">${t}</span>
+                    `).join('');
+                }
             }
 
             // Pulse micro-subphase
