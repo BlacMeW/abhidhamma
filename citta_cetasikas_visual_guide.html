@@ -110,6 +110,35 @@
             color: #475569;
             flex-shrink: 0;
         }
+        .live-vithi-node {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            opacity: 0.35;
+            transform: scale(0.85);
+            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            background: rgba(30, 41, 59, 0.6);
+            color: #94a3b8;
+        }
+        .live-vithi-node.passed {
+            opacity: 0.6;
+            transform: scale(0.92);
+        }
+        .live-vithi-node.current {
+            opacity: 1;
+            transform: scale(1.25);
+            box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.25), 0 0 22px rgba(251, 191, 36, 0.55);
+            border-color: #fbbf24;
+            color: #fef3c7;
+            background: rgba(217, 119, 6, 0.35);
+        }
 
         /* ===== Mobile / touch usability ===== */
         * {
@@ -596,6 +625,31 @@
                 </div>
             </div>
 
+            <!-- Live Vithi Animation (dedicated, continuous, decorative + informative) -->
+            <div class="glass-card rounded-2xl p-5 max-w-6xl mx-auto border border-amber-500/30 glow-gold space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl border border-amber-500/30 flex-shrink-0"><i class="fa-solid fa-wave-square"></i></div>
+                        <div>
+                            <h3 class="font-bold text-amber-300 text-lg">ဝီထိ တိုက်ရိုက် သရုပ်ပြ (Live Animation)</h3>
+                            <p class="text-xs text-slate-400">ဘဝင်→ဝီထိ→ဘဝင် အဆက်မပြတ် ပြေးလွှားနေပုံကို ကြည့်ရှုပါ — စမ်းသပ်ချင်သော အစဉ်ကို ရွေးနှိပ်ပါ</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleLiveVithiPlay()" id="live-vithi-play-btn" class="flex-shrink-0 flex items-center gap-2 text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-full transition">
+                        <i class="fa-solid fa-pause"></i> <span>ခဏရပ်ရန်</span>
+                    </button>
+                </div>
+
+                <div id="live-vithi-preset-group" class="flex flex-wrap items-center gap-1.5"></div>
+
+                <div id="live-vithi-track" class="flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap py-2"></div>
+
+                <div class="bg-slate-900/70 rounded-xl border border-slate-800 p-4 text-center min-h-[4.5rem] flex flex-col items-center justify-center">
+                    <span id="live-vithi-caption-label" class="font-bold text-sm text-amber-300"></span>
+                    <span id="live-vithi-caption-desc" class="text-xs text-slate-400 mt-1 max-w-xl"></span>
+                </div>
+            </div>
+
             <!-- Intensity Selector -->
             <div class="max-w-4xl mx-auto space-y-3">
                 <p class="text-center text-xs text-slate-400">အာရုံ၏ ထင်ရှားပေါ်လွင်မှု အားနည်း/အားကြီးမှုပေါ် မူတည်၍ ဝီထိအစဉ် တိုချုံ့/ရှည်ချုံ့ သွားပုံကို ရွေးချယ်ကြည့်ပါ -</p>
@@ -635,20 +689,33 @@
 
             <!-- Manodvara Vithi Timeline -->
             <div class="glass-card rounded-2xl p-5 max-w-6xl mx-auto border border-slate-700 space-y-4">
-                <div class="flex items-center gap-3 flex-wrap justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl border border-indigo-500/30 flex-shrink-0"><i class="fa-solid fa-brain"></i></div>
-                        <div>
-                            <h3 class="font-bold text-indigo-300 text-lg">မနောဒွါရဝီထိ (Manodvāra-vīthi)</h3>
-                            <p class="text-xs text-slate-400">စိတ်တံခါးမှတစ်ဆင့် အတွေး၊ အမှတ်တရ၊ ဓမ္မာရုံများကို တိုက်ရိုက် သိမြင်ရာတွင် ဖြစ်ပေါ်သော ရိုးရှင်းသော အစဉ်</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-2 text-xs">
-                        <button onclick="setManoTadarammana(true)" id="mano-tada-on" class="vithi-intensity-btn px-3 py-1 rounded-full font-bold transition">တဒါရမ္မဏပါ</button>
-                        <button onclick="setManoTadarammana(false)" id="mano-tada-off" class="vithi-intensity-btn px-3 py-1 rounded-full font-bold transition">တဒါရမ္မဏမပါ</button>
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl border border-indigo-500/30 flex-shrink-0"><i class="fa-solid fa-brain"></i></div>
+                    <div>
+                        <h3 class="font-bold text-indigo-300 text-lg">မနောဒွါရဝီထိ (Manodvāra-vīthi)</h3>
+                        <p class="text-xs text-slate-400">စိတ်တံခါးမှတစ်ဆင့် အတွေး၊ အမှတ်တရ၊ ဓမ္မာရုံများကို တိုက်ရိုက် သိမြင်ရာတွင် ဖြစ်ပေါ်သော ရိုးရှင်းသော အစဉ်</p>
                     </div>
                 </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs text-slate-400">ဇောနအကြောင်းအရာ ရွေးချယ်ကြည့်ပါ — ဒေါသ၊ ကုသိုလ်၊ လောကုတ္တရာ (မဂ်-ဖိုလ်) အစရှိသဖြင့် ဝီထိတစ်ခုစီ၏ အကြောင်းအရာ ကွဲပြားပုံကို နှိုင်းယှဉ်ကြည့်နိုင်သည် -</p>
+                    <div class="flex flex-wrap items-center gap-1.5">
+                        <button onclick="setManoJavanaType('lobha')" id="jtype-lobha" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">လောဘ</button>
+                        <button onclick="setManoJavanaType('dosa')" id="jtype-dosa" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">ဒေါသ</button>
+                        <button onclick="setManoJavanaType('moha')" id="jtype-moha" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">မောဟ</button>
+                        <button onclick="setManoJavanaType('kusala')" id="jtype-kusala" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">ကုသိုလ်</button>
+                        <button onclick="setManoJavanaType('kiriya')" id="jtype-kiriya" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">ကြိယာ (ရဟန္တာ)</button>
+                        <button onclick="setManoJavanaType('lokuttara')" id="jtype-lokuttara" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">လောကုတ္တရာ (မဂ်-ဖိုလ်)</button>
+                    </div>
+                </div>
+
+                <div id="mano-tada-toggle" class="flex gap-2 text-xs">
+                    <button onclick="setManoTadarammana(true)" id="mano-tada-on" class="vithi-intensity-btn px-3 py-1 rounded-full font-bold transition">တဒါရမ္မဏပါ</button>
+                    <button onclick="setManoTadarammana(false)" id="mano-tada-off" class="vithi-intensity-btn px-3 py-1 rounded-full font-bold transition">တဒါရမ္မဏမပါ</button>
+                </div>
+
                 <div id="mano-vithi-track" class="scroll-x-touch flex items-stretch gap-1 overflow-x-auto pb-3"></div>
+                <p id="mano-vithi-note" class="text-xs text-amber-300/90"></p>
             </div>
         </section>
 
@@ -995,6 +1062,13 @@
                 activeBtnMobile.setAttribute('aria-selected', 'true');
             }
 
+            // Only run the live vīthi animation timer while its tab is actually visible.
+            if (tabId === 'vithi') {
+                if (typeof liveVithiPlaying !== 'undefined' && liveVithiPlaying) startLiveVithiAnimation();
+            } else if (typeof stopLiveVithiAnimation === 'function') {
+                stopLiveVithiAnimation();
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1264,6 +1338,8 @@
         }
 
         // ===== Vīthi (Cognitive Process) Data — Abhidhammatthasangaha Ch.4 Vīthi-saṅgaha =====
+        // Step labels use the traditional abbreviated notation taught in Myanmar Abhidhamma
+        // dhamma-school charts (ဘ/န/ဒ/ပံ/ဝိ/သံ/သန်/ဝု/မ/ဇ/တ...) rather than full spelled-out names.
         const vithiFamilyInfo = {
             bhavanga: { color: 'bg-slate-700/30 border-slate-600 text-slate-300', label: 'ဘဝင်', desc: 'အာရုံသစ်ကို မသိသေးဘဲ၊ ယခင်ဘဝင်ရေစီး ဆက်လက်တည်ရှိနေသော/လှုပ်ရှားနေသော/ပြတ်တောက်သွားသော အခြေအနေများ — ဤသုံးခုစလုံးသည် ဝီထိစိတ်မဟုတ်သေးဘဲ ဝီထိမတိုင်မီ ပြင်ဆင်မှုသာ ဖြစ်သည်။' },
             avajjana: { color: 'bg-indigo-500/15 border-indigo-500/40 text-indigo-300', label: 'အာဝဇ္ဇန်', desc: 'ဒွါရမှတစ်ဆင့် အာရုံသို့ စိတ်ကို ဦးစွာ လှည့်ပေးသော ကြိယာစိတ် (ဟိတ်မလိုက်သော အဟေတုကစိတ်)။' },
@@ -1272,36 +1348,76 @@
             santirana: { color: 'bg-teal-500/15 border-teal-500/40 text-teal-300', label: 'သန္တီရဏ', desc: 'လက်ခံပြီးသော အာရုံကို စစ်ဆေးဆင်ခြင်နေသော ဝိပါက်စိတ်။' },
             votthapana: { color: 'bg-violet-500/15 border-violet-500/40 text-violet-300', label: 'ဝုဋ္ဌပ္ပန်', desc: 'အာရုံကို ကောင်း/မကောင်း အပြီးသတ် ဆုံးဖြတ်ပေးသော ကြိယာစိတ် (မနောဒွါရာဝဇ္ဇန်းစိတ်ကပင် ဤတာဝန်ကို ယူသည်)။' },
             javana: { color: 'bg-fuchsia-500/15 border-fuchsia-500/40 text-fuchsia-300', label: 'ဇောန', desc: 'ဆုံးဖြတ်ပြီးနောက် အာရုံကို အပြင်းအထန် တွန်းအားဖြင့် ခံစားနေသော အခိုက် — ကုသိုလ်/အကုသိုလ်/ကြိယာ ဖြစ်နိုင်ပြီး ဤအဆင့်၌သာ ကံအသစ် ဖန်တီးသည်။' },
-            tadarammana: { color: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300', label: 'တဒါရမ္မဏ', desc: 'ဇောစိတ်ပြီးနောက် အာရုံ၏ အကျိုးဆက်ကို ခေတ္တခဏမျှ ဆက်လက် မှတ်သားနေသော ဝိပါက်စိတ် (အာရုံ အလွန်ထင်ရှားသော အခါမျိုးတွင်သာ ဖြစ်တတ်သည်)။' }
+            tadarammana: { color: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300', label: 'တဒါရမ္မဏ', desc: 'ဇောစိတ်ပြီးနောက် အာရုံ၏ အကျိုးဆက်ကို ခေတ္တခဏမျှ ဆက်လက် မှတ်သားနေသော ဝိပါက်စိတ် (အာရုံ အလွန်ထင်ရှားသော အခါမျိုးတွင်သာ ဖြစ်တတ်သည်)။' },
+            parikamma: { color: 'bg-amber-500/10 border-amber-500/30 text-amber-200', label: 'ပရိကမ်', desc: 'အပ္ပနာ (ဈာန်) သို့မဟုတ် မဂ်ဖိုလ်မတိုင်မီ ပြင်ဆင်ပေးသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ် (ဉာဏကြီးသူတို့၌ ချန်ခြင်တတ်သည်)။' },
+            upacara: { color: 'bg-amber-500/15 border-amber-500/35 text-amber-200', label: 'ဥပစာရ', desc: 'အပ္ပနာ/မဂ်ဖိုလ်နှင့် နီးကပ်စွာ ချဉ်းကပ်လာသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ်။' },
+            anuloma: { color: 'bg-amber-500/20 border-amber-500/40 text-amber-100', label: 'အနုလောမ', desc: 'ရှေ့က ကာမာဝစရစိတ်များနှင့် နောက်က ဖြစ်ပေါ်မည့် အပ္ပနာ/လောကုတ္တရာစိတ်ကို လိုက်လျောညီထွေ ဖြစ်စေသော အဆင့်။' },
+            gotrabhu: { color: 'bg-amber-500/25 border-amber-500/50 text-amber-100', label: 'ဂေါတြဘူ', desc: 'ပုထုဇဉ်အနွယ် (ကာမဇာတ်) ကို လွန်မြောက်၍ အရိယာအနွယ်သို့ ကူးပြောင်းပေးသော အဆင့် — မဂ်စိတ်၏ တစ်ခဏတည်း အရင်ဆုံး အဆင့်။' },
+            magga: { color: 'bg-orange-500/20 border-orange-500/50 text-orange-200', label: 'မဂ်', desc: 'ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်သော ဥတ္ပာဒ်ခဏ — ဤဝီထိတွင် တစ်ကြိမ်တည်းသာ ဖြစ်ပေါ်ပြီး (ပုံမှန် ဇောန ၇ ကြိမ်ကဲ့သို့ ထပ်ခါထပ်ခါ မဖြစ်ပေါ်ပေ) ချက်ချင်းဆိုသလို ဖိုလ်စိတ်အဖြစ် အကျိုးပေးသည်။' },
+            phala: { color: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-200', label: 'ဖိုလ်', desc: 'မဂ်စိတ်၏ ချက်ချင်းအကျိုးဆက်အနေဖြင့် နိဗ္ဗာန်ကို ဆက်လက် အာရုံပြု ခံစားနေသော ဝိပါက်စိတ် — ဤဝီထိ၌ (၂) ကြိမ် ထပ်ခါတလဲလဲ ဖြစ်ပေါ်သည် (ဖလသမာပတ်ဝင်စားချိန်တွင်မူ များစွာ ထပ်ကာ ထပ်ကာ ဖြစ်ပေါ်နိုင်သည်)။' }
+        };
+
+        // Root-specific overrides for ordinary (kāma) javana — color/description/linked citta example per root
+        const javanaRootInfo = {
+            lobha: { label: 'လောဘမူ ဇောန', color: 'bg-rose-500/15 border-rose-500/40 text-rose-300', desc: 'တပ်မက်မှု (လောဘ) ကို အခြေခံသော အကုသိုလ်ဇောနစိတ် — အာရုံကို ကပ်ငြိတွယ်တာစွာ ခံစားနေသည်။', cittaId: 1 },
+            dosa: { label: 'ဒေါသမူ ဇောန', color: 'bg-red-600/15 border-red-600/40 text-red-300', desc: 'ခက်ထန်မှု (ဒေါသ) ကို အခြေခံသော အကုသိုလ်ဇောနစိတ် — ဒေါမနဿ ခံစားမှုနှင့်သာ ယှဉ်ပြီး ပီတိနှင့် လုံးဝ မယှဉ်ပေ။', cittaId: 9 },
+            moha: { label: 'မောဟမူ ဇောန', color: 'bg-stone-500/15 border-stone-500/40 text-stone-300', desc: 'သံသယ (သို့) စိတ်ပျံ့လွင့်မှုကို အခြေခံသော အကုသိုလ်ဇောနစိတ်။', cittaId: 11 },
+            kusala: { label: 'ကုသိုလ် ဇောန', color: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300', desc: 'ဒါန၊ သီလ၊ ဘာဝနာကဲ့သို့ ကောင်းမှုပြုလုပ်စဉ် ဖြစ်ပေါ်သော ကုသိုလ်ဇောနစိတ်။', cittaId: 31 },
+            kiriya: { label: 'ကြိယာ ဇောန', color: 'bg-sky-500/15 border-sky-500/40 text-sky-300', desc: 'ရဟန္တာပုဂ္ဂိုလ်တို့၌သာ ဖြစ်တတ်သော၊ ကုသိုလ်/အကုသိုလ် နှစ်မျိုးလုံး မဟုတ်တော့သည့် ကြိယာဇောနစိတ်။', cittaId: 47 }
         };
 
         function buildPancaVithiSteps() {
             const steps = [
-                { key: 'atita_bhavanga', family: 'bhavanga', short: 'အတီတ ဘဝင်', icon: 'fa-water' },
-                { key: 'bhavanga_calana', family: 'bhavanga', short: 'ဘဝင် စလန', icon: 'fa-water' },
-                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဘဝင် ပစ္ဆေဒ', icon: 'fa-scissors' },
-                { key: 'pancadvaravajjana', family: 'avajjana', short: 'ပဉ္စဒွါရာဝဇ္ဇန်း', icon: 'fa-door-open', jumpCat: 'ahetuka' },
-                { key: 'vinnana', family: 'vinnana', short: 'ဝိညာဉ် (ဥပမာ- စက္ခု)', icon: 'fa-eye', jumpCat: 'ahetuka' },
-                { key: 'sampaticchana', family: 'sampaticchana', short: 'သမ္ပဋိစ္ဆန်', icon: 'fa-inbox', jumpCat: 'ahetuka' },
-                { key: 'santirana', family: 'santirana', short: 'သန္တီရဏ', icon: 'fa-magnifying-glass', jumpCat: 'ahetuka' },
-                { key: 'votthapana', family: 'votthapana', short: 'ဝုဋ္ဌပ္ပန်', icon: 'fa-gavel', jumpCat: 'ahetuka' }
+                { key: 'atita_bhavanga', family: 'bhavanga', short: 'ဘ', icon: 'fa-water' },
+                { key: 'bhavanga_calana', family: 'bhavanga', short: 'န', icon: 'fa-water' },
+                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဒ', icon: 'fa-scissors' },
+                { key: 'pancadvaravajjana', family: 'avajjana', short: 'ပံ', icon: 'fa-door-open', jumpCat: 'ahetuka' },
+                { key: 'vinnana', family: 'vinnana', short: 'ဝိ', icon: 'fa-eye', jumpCat: 'ahetuka' },
+                { key: 'sampaticchana', family: 'sampaticchana', short: 'သံ', icon: 'fa-inbox', jumpCat: 'ahetuka' },
+                { key: 'santirana', family: 'santirana', short: 'သန်', icon: 'fa-magnifying-glass', jumpCat: 'ahetuka' },
+                { key: 'votthapana', family: 'votthapana', short: 'ဝု', icon: 'fa-gavel', jumpCat: 'ahetuka' }
             ];
-            for (let i = 1; i <= 7; i++) steps.push({ key: 'javana', family: 'javana', short: `ဇောန-${mm(i)}`, icon: 'fa-fire', isJavana: true });
-            for (let i = 1; i <= 2; i++) steps.push({ key: 'tadarammana', family: 'tadarammana', short: `တဒါ-${mm(i)}`, icon: 'fa-anchor' });
+            for (let i = 1; i <= 7; i++) steps.push({ key: 'javana', family: 'javana', short: 'ဇ', icon: 'fa-fire', isJavana: true });
+            for (let i = 1; i <= 2; i++) steps.push({ key: 'tadarammana', family: 'tadarammana', short: 'တ', icon: 'fa-anchor' });
             return steps;
         }
-        function buildManoVithiSteps() {
+
+        // Ordinary (kāma) manodvāra-vīthi for a given javana root: lobha/dosa/moha/kusala/kiriya
+        function buildManoVithiStepsKama(rootKey) {
+            const root = javanaRootInfo[rootKey];
             const steps = [
-                { key: 'bhavanga_calana', family: 'bhavanga', short: 'ဘဝင် စလန', icon: 'fa-water' },
-                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဘဝင် ပစ္ဆေဒ', icon: 'fa-scissors' },
-                { key: 'manodvaravajjana', family: 'avajjana', short: 'မနောဒွါရာဝဇ္ဇန်း', icon: 'fa-brain', jumpCat: 'ahetuka' }
+                { key: 'bhavanga_calana', family: 'bhavanga', short: 'န', icon: 'fa-water' },
+                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဒ', icon: 'fa-scissors' },
+                { key: 'manodvaravajjana', family: 'avajjana', short: 'မ', icon: 'fa-brain', jumpCat: 'ahetuka' }
             ];
-            for (let i = 1; i <= 7; i++) steps.push({ key: 'javana', family: 'javana', short: `ဇောန-${mm(i)}`, icon: 'fa-fire', isJavana: true });
-            for (let i = 1; i <= 2; i++) steps.push({ key: 'tadarammana', family: 'tadarammana', short: `တဒါ-${mm(i)}`, icon: 'fa-anchor' });
+            for (let i = 1; i <= 7; i++) steps.push({
+                key: 'javana', family: 'javana', short: 'ဇ', icon: 'fa-fire', isJavana: true,
+                color: root.color, titleOverride: root.label, descOverride: root.desc, cittaId: root.cittaId
+            });
+            for (let i = 1; i <= 2; i++) steps.push({ key: 'tadarammana', family: 'tadarammana', short: 'တ', icon: 'fa-anchor' });
             return steps;
         }
+
+        // Lokuttara (magga-phala / appanā) manodvāra-vīthi — structurally different: magga arises
+        // only ONCE (never repeats like ordinary javana), immediately followed by phala ×2, no tadārammaṇa.
+        function buildManoVithiStepsLokuttara() {
+            return [
+                { key: 'bhavanga_calana', family: 'bhavanga', short: 'န', icon: 'fa-water' },
+                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဒ', icon: 'fa-scissors' },
+                { key: 'manodvaravajjana', family: 'avajjana', short: 'မ', icon: 'fa-brain', jumpCat: 'ahetuka' },
+                { key: 'parikamma', family: 'parikamma', short: 'ပရိ', icon: 'fa-hand-holding-heart' },
+                { key: 'upacara', family: 'upacara', short: 'ဥပ', icon: 'fa-hand-holding-heart' },
+                { key: 'anuloma', family: 'anuloma', short: 'အနု', icon: 'fa-hand-holding-heart' },
+                { key: 'gotrabhu', family: 'gotrabhu', short: 'ဂေါ', icon: 'fa-arrows-turn-right' },
+                { key: 'magga', family: 'magga', short: 'မဂ်', icon: 'fa-dharmachakra', isMagga: true, cittaId: 82 },
+                { key: 'phala', family: 'phala', short: 'ဖိုလ်', icon: 'fa-dove', cittaId: 83 },
+                { key: 'phala', family: 'phala', short: 'ဖိုလ်', icon: 'fa-dove', cittaId: 83 }
+            ];
+        }
+
         const pancaVithiSteps = buildPancaVithiSteps();
-        const manoVithiSteps = buildManoVithiSteps();
+        let manoVithiSteps = buildManoVithiStepsKama('lobha');
+        let currentManoJavanaType = 'lobha';
 
         function renderVithiTrack(containerId, steps, activeCount) {
             const el = document.getElementById(containerId);
@@ -1311,7 +1427,7 @@
                 const active = (i + 1) <= activeCount;
                 return `
                     ${i > 0 ? '<div class="vithi-arrow flex items-center text-xs">→</div>' : ''}
-                    <button onclick="openVithiStepModal('${containerId}', ${i})" class="vithi-step ${active ? '' : 'inactive'} flex-shrink-0 w-[76px] flex flex-col items-center justify-center gap-1 rounded-lg border px-1.5 py-2 text-center ${info.color}">
+                    <button onclick="openVithiStepModal('${containerId}', ${i})" class="vithi-step ${active ? '' : 'inactive'} flex-shrink-0 w-[76px] flex flex-col items-center justify-center gap-1 rounded-lg border px-1.5 py-2 text-center ${s.color || info.color}">
                         <i class="fa-solid ${s.icon} text-sm"></i>
                         <span class="text-[10px] font-semibold leading-tight">${s.short}</span>
                     </button>
@@ -1348,6 +1464,8 @@
             const steps = containerId === 'panca-vithi-track' ? pancaVithiSteps : manoVithiSteps;
             const s = steps[index];
             const info = vithiFamilyInfo[s.family];
+            const title = s.titleOverride || info.label;
+            const desc = s.descOverride || info.desc;
             lastFocusedElement = document.activeElement;
             const modal = document.getElementById('modal');
             const content = document.getElementById('modal-content');
@@ -1357,14 +1475,17 @@
                         <i class="fa-solid ${s.icon}"></i>
                     </div>
                     <div>
-                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label} — အဆင့် ${mm(index + 1)}</span>
-                        <h3 class="text-xl font-bold text-amber-400">${s.short}</h3>
+                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label} (${s.short}) — အဆင့် ${mm(index + 1)}</span>
+                        <h3 class="text-xl font-bold text-amber-400">${title}</h3>
                     </div>
                 </div>
                 <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
-                    <p class="text-slate-200 leading-relaxed">${info.desc}</p>
+                    <p class="text-slate-200 leading-relaxed">${desc}</p>
                 </div>
-                ${s.isJavana ? `
+                ${s.cittaId ? `
+                <button onclick="closeModal(); openCittaModal(${s.cittaId});" class="mt-2 w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sitemap"></i> သက်ဆိုင်ရာ စိတ်အသေးစိတ် (၈၉ ပါးထဲမှ) ကြည့်ရန်
+                </button>` : s.isJavana ? `
                 <button onclick="closeModal(); switchTab('simulator');" class="mt-2 w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
                     <i class="fa-solid fa-flask-vial"></i> ဇောစိတ် အမျိုးအစားများ (Simulator) ကြည့်ရန်
                 </button>` : s.jumpCat ? `
@@ -1392,12 +1513,127 @@
             document.getElementById('vithi-intensity-note').textContent = vithiIntensityNotes[level];
         }
 
+        const manoJavanaTypeNotes = {
+            lobha: 'ကာမာဝစရ အကုသိုလ်ဇောန (၇ ကြိမ်) ဖြစ်ပေါ်ပုံ — တပ်မက်မှုအခြေခံသော လောဘမူစိတ်။',
+            dosa: 'ကာမာဝစရ အကုသိုလ်ဇောန (၇ ကြိမ်) ဖြစ်ပေါ်ပုံ — ခက်ထန်မှုအခြေခံသော ဒေါသမူစိတ်။',
+            moha: 'ကာမာဝစရ အကုသိုလ်ဇောန (၇ ကြိမ်) ဖြစ်ပေါ်ပုံ — သံသယ/ပျံ့လွင့်မှုအခြေခံသော မောဟမူစိတ်။',
+            kusala: 'ကာမာဝစရ ကုသိုလ်ဇောန (၇ ကြိမ်) ဖြစ်ပေါ်ပုံ — ဒါန၊ သီလ၊ ဘာဝနာ ပြုစဉ်။',
+            kiriya: 'ကာမာဝစရ ကြိယာဇောန (၇ ကြိမ်) ဖြစ်ပေါ်ပုံ — ရဟန္တာပုဂ္ဂိုလ်တို့၌သာ။',
+            lokuttara: 'လောကုတ္တရာ (အပ္ပနာ) ဝီထိ — ပုံမှန်ဇောန ၇ ကြိမ်နှင့် လုံးဝ ကွဲပြားသည်! ပရိကမ်/ဥပစာရ/အနုလောမ/ဂေါတြဘူ (၄ ကြိမ်) ပြင်ဆင်ပြီးနောက်၊ မဂ်စိတ် "တစ်ကြိမ်တည်း" ဖြစ်ပေါ်၍ ဖိုလ်စိတ် (၂) ကြိမ် ချက်ချင်းဆက်လက် ဖြစ်ပေါ်သည် — တဒါရမ္မဏ လုံးဝ မပါ။ (ဖလသမာပတ်ဝင်စားချိန်တွင်မူ ဖိုလ်စိတ်သာ များစွာ ထပ်ဖြစ်နိုင်သည်)'
+        };
+        function setManoJavanaType(type) {
+            currentManoJavanaType = type;
+            document.querySelectorAll('.vithi-intensity-btn[id^="jtype-"]').forEach(btn => btn.classList.remove('active'));
+            const btn = document.getElementById('jtype-' + type);
+            if (btn) btn.classList.add('active');
+
+            manoVithiSteps = type === 'lokuttara' ? buildManoVithiStepsLokuttara() : buildManoVithiStepsKama(type);
+
+            const tadaToggle = document.getElementById('mano-tada-toggle');
+            if (tadaToggle) tadaToggle.classList.toggle('hidden', type === 'lokuttara');
+
+            if (type === 'lokuttara') {
+                renderVithiTrack('mano-vithi-track', manoVithiSteps, manoVithiSteps.length);
+            } else {
+                renderVithiTrack('mano-vithi-track', manoVithiSteps, manoHasTadarammana ? manoVithiSteps.length : manoVithiSteps.length - 2);
+            }
+            document.getElementById('mano-vithi-note').textContent = manoJavanaTypeNotes[type];
+        }
+
         let manoHasTadarammana = true;
         function setManoTadarammana(withTada) {
             manoHasTadarammana = withTada;
             document.getElementById('mano-tada-on').classList.toggle('active', withTada);
             document.getElementById('mano-tada-off').classList.toggle('active', !withTada);
             renderVithiTrack('mano-vithi-track', manoVithiSteps, withTada ? manoVithiSteps.length : manoVithiSteps.length - 2);
+        }
+
+        // ===== Live Vīthi Animation — dedicated, continuous, selectable demo =====
+        const liveVithiPresets = {
+            panca_atimahanta: { label: 'ပဉ္စဒွါရ — အတိမဟန္တာ (၁၇ ခု)', build: () => buildPancaVithiSteps() },
+            panca_paritta: { label: 'ပဉ္စဒွါရ — ပရိတ္တာ (ဇောနမရောက်)', build: () => buildPancaVithiSteps().slice(0, 8) },
+            mano_lobha: { label: 'မနောဒွါရ — လောဘ', build: () => buildManoVithiStepsKama('lobha') },
+            mano_dosa: { label: 'မနောဒွါရ — ဒေါသ', build: () => buildManoVithiStepsKama('dosa') },
+            mano_kusala: { label: 'မနောဒွါရ — ကုသိုလ်', build: () => buildManoVithiStepsKama('kusala') },
+            mano_lokuttara: { label: 'မနောဒွါရ — လောကုတ္တရာ (မဂ်-ဖိုလ်)', build: () => buildManoVithiStepsLokuttara() }
+        };
+
+        let liveVithiSteps = [];
+        let liveVithiIndex = 0;
+        let liveVithiTimer = null;
+        let liveVithiPlaying = true;
+        let currentLivePreset = 'panca_atimahanta';
+
+        function renderLiveVithiPresetButtons() {
+            const group = document.getElementById('live-vithi-preset-group');
+            if (!group) return;
+            group.innerHTML = Object.keys(liveVithiPresets).map(key => `
+                <button onclick="setLiveVithiPreset('${key}')" id="livepreset-${key}" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">${liveVithiPresets[key].label}</button>
+            `).join('');
+        }
+
+        function setLiveVithiPreset(key) {
+            currentLivePreset = key;
+            document.querySelectorAll('.vithi-intensity-btn[id^="livepreset-"]').forEach(btn => btn.classList.remove('active'));
+            const btn = document.getElementById('livepreset-' + key);
+            if (btn) btn.classList.add('active');
+            liveVithiSteps = liveVithiPresets[key].build();
+            liveVithiIndex = 0;
+            renderLiveVithiTrack();
+            updateLiveVithiCaption();
+        }
+
+        function renderLiveVithiTrack() {
+            const el = document.getElementById('live-vithi-track');
+            if (!el) return;
+            el.innerHTML = liveVithiSteps.map((s, i) => `<div class="live-vithi-node" id="live-node-${i}" title="${s.short}">${s.short}</div>`).join('');
+        }
+
+        function updateLiveVithiCaption() {
+            const s = liveVithiSteps[liveVithiIndex];
+            if (!s) return;
+            const info = vithiFamilyInfo[s.family];
+            const label = document.getElementById('live-vithi-caption-label');
+            const desc = document.getElementById('live-vithi-caption-desc');
+            if (label) label.textContent = s.titleOverride || info.label;
+            if (desc) desc.textContent = s.descOverride || info.desc;
+        }
+
+        function stepLiveVithi() {
+            if (!liveVithiSteps.length) return;
+            document.querySelectorAll('#live-vithi-track .live-vithi-node').forEach((node, i) => {
+                node.classList.remove('current');
+                node.classList.toggle('passed', i < liveVithiIndex);
+            });
+            const current = document.getElementById('live-node-' + liveVithiIndex);
+            if (current) {
+                current.classList.add('current');
+                current.classList.remove('passed');
+            }
+            updateLiveVithiCaption();
+            liveVithiIndex++;
+            if (liveVithiIndex >= liveVithiSteps.length) {
+                liveVithiIndex = 0;
+            }
+        }
+
+        function startLiveVithiAnimation() {
+            stopLiveVithiAnimation();
+            liveVithiTimer = setInterval(stepLiveVithi, 650);
+        }
+        function stopLiveVithiAnimation() {
+            if (liveVithiTimer) { clearInterval(liveVithiTimer); liveVithiTimer = null; }
+        }
+        function toggleLiveVithiPlay() {
+            liveVithiPlaying = !liveVithiPlaying;
+            const btn = document.getElementById('live-vithi-play-btn');
+            if (liveVithiPlaying) {
+                startLiveVithiAnimation();
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>ခဏရပ်ရန်</span>';
+            } else {
+                stopLiveVithiAnimation();
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်ရန်</span>';
+            }
         }
 
         // Mind Simulator Data (Abhidhammatthasangaha, Ch.2 Sampayoga/Sangaha-naya အခြေခံ)
@@ -1567,7 +1803,9 @@
             renderCittaGroups();
             updateSimulator('lobha');
             setVithiIntensity('atimahanta');
-            setManoTadarammana(true);
+            setManoJavanaType('lobha');
+            renderLiveVithiPresetButtons();
+            setLiveVithiPreset('panca_atimahanta');
         });
     </script>
 </body>
