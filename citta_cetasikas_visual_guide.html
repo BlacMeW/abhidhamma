@@ -2145,7 +2145,7 @@
             const group = document.getElementById('live-vithi-preset-group');
             if (!group) return;
             group.innerHTML = Object.keys(liveVithiPresets).map(key => `
-                <button type="button" onclick="setLiveVithiPreset('${key}')" ontouchstart="setLiveVithiPreset('${key}')" id="livepreset-${key}" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition select-none">${liveVithiPresets[key].label}</button>
+                <button onclick="setLiveVithiPreset('${key}')" id="livepreset-${key}" class="vithi-intensity-btn px-3 py-1 rounded-full text-xs font-bold transition">${liveVithiPresets[key].label}</button>
             `).join('');
         }
 
@@ -2166,11 +2166,10 @@
             const el = document.getElementById('live-vithi-track');
             if (!el) return;
             el.innerHTML = liveVithiSteps.map((s, i) => `
-                <button type="button" class="live-vithi-node cursor-pointer hover:scale-110 hover:border-amber-400 transition-all duration-150 active:scale-95 select-none" 
+                <div class="live-vithi-node cursor-pointer hover:scale-110 hover:border-amber-400 transition-all duration-150" 
                      id="live-node-${i}" 
                      title="${s.short} — နှိပ်၍ လေ့လာရန်" 
-                     onclick="jumpToLiveVithiStep(${i})"
-                     ontouchstart="jumpToLiveVithiStep(${i})">${s.short}</button>
+                     onclick="jumpToLiveVithiStep(${i})">${s.short}</div>
             `).join('');
             stepLiveVithiUI();
         }
