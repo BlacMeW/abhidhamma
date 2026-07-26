@@ -2256,17 +2256,9 @@
             stepLiveVithiUI();
             liveVithiIndex++;
 
-            // Auto Transition logic: Pañcadvāra -> Manodvāra
+            // Natural Auto-Loop within the user's selected preset
             if (liveVithiIndex >= liveVithiSteps.length) {
                 liveVithiIndex = 0;
-                if (currentLivePreset === 'panca_atimahanta') {
-                    // Smooth Auto Transition to Manodvara Lobha preset
-                    setTimeout(() => {
-                        if (liveVithiPlaying && currentLivePreset === 'panca_atimahanta') {
-                            setLiveVithiPreset('mano_lobha');
-                        }
-                    }, 400);
-                }
             }
         }
 
