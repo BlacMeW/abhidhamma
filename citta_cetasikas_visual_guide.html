@@ -2183,6 +2183,12 @@
             stepLiveVithiUI();
         }
 
+        function stepLiveVithi() {
+            if (!liveVithiSteps.length) return;
+            liveVithiIndex = (liveVithiIndex + 1) % liveVithiSteps.length;
+            stepLiveVithiUI();
+        }
+
         const liveCausalLogicNotes = {
             bhavanga: "အတိတ်ဘဝက ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ် ၏ အရှိန်ကြောင့် အာရုံသစ် မပေါ်သေးဘဲ ဘဝင်စိတ်အစဉ် အဖြစ် ဆက်လက် တည်ရှိနေခြင်း။",
             avajjana: "ဒွါရ (မျက်စိ/နား/မနောဒွါရ) သို့ အာရုံသစ် ရိုက်ခတ်လာသောကြောင့် ဘဝင်ပြတ်၍ စိတ်ကို အာရုံသစ်ဆီသို့ ရှေးရှု လှည့်ပေးလိုက်ခြင်း။",
@@ -2274,16 +2280,7 @@
             updateLiveVithiCaption();
         }
 
-        function stepLiveVithi() {
-            if (!liveVithiSteps.length) return;
-            stepLiveVithiUI();
-            liveVithiIndex++;
 
-            // Natural Auto-Loop within the user's selected preset
-            if (liveVithiIndex >= liveVithiSteps.length) {
-                liveVithiIndex = 0;
-            }
-        }
 
         function startLiveVithiAnimation() {
             stopLiveVithiAnimation();
