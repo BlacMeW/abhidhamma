@@ -2219,6 +2219,14 @@
         function getStepNature(s) {
             return s.nature || stepNatureByFamily[s.family] || 'neutral';
         }
+        const stepNatureLabel = {
+            neutral: 'ဘဝင် (Neutral)', kiriya: 'ကြိယာ (Kiriya)', vipaka: 'ဝိပါက် (Vipāka)',
+            javana: 'ဇောန (မသတ်မှတ်ရသေး)', kusala: 'ကုသိုလ် (Kusala)', akusala: 'အကုသိုလ် (Akusala)'
+        };
+        function getStepTooltip(s) {
+            const natureText = `${s.short} — ${stepNatureLabel[getStepNature(s)]}`;
+            return liveVithiPlaying ? natureText : `${natureText} — နှိပ်၍ လေ့လာရန်`;
+        }
 
         function renderLiveVithiTrack() {
             const el = document.getElementById('live-vithi-track');
@@ -2227,7 +2235,7 @@
                 <div class="live-vithi-node cursor-pointer hover:scale-110 transition-all duration-150"
                      id="live-node-${i}"
                      data-nature="${getStepNature(s)}"
-                     title="${s.short} — နှိပ်၍ လေ့လာရန်"
+                     title="${getStepTooltip(s)}"
                      onclick="jumpToLiveVithiStep(${i})">${s.short}</div>
             `).join('');
             syncLiveVithiInteractivity();
@@ -2244,7 +2252,7 @@
             track.querySelectorAll('.live-vithi-node').forEach((node, i) => {
                 const s = liveVithiSteps[i];
                 if (!s) return;
-                node.title = liveVithiPlaying ? 'ခဏရပ်ပြီးမှ ရွေးနိုင်ပါသည်' : `${s.short} — နှိပ်၍ လေ့လာရန်`;
+                node.title = getStepTooltip(s);
             });
         }
 
