@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abhidhamma-guide-v1';
+const CACHE_NAME = 'abhidhamma-guide-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -39,10 +39,18 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Network-first: always try to fetch the latest version and refresh the cache with it,
+// only falling back to whatever's cached when the network request genuinely fails (offline).
+// The previous cache-first strategy served stale HTML forever once a page was cached once,
+// since nothing ever re-checked the network unless the cache had no entry at all.
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request).catch(() => caches.match('./index.html'));
-    })
+    fetch(event.request)
+      .then((response) => {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request).then((cached) => cached || caches.match('./index.html')))
   );
 });
