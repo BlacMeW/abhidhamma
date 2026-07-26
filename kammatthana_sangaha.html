@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ကမ္မဋ္ဌာနသင်္ဂဟ — သမထ ကမ္မဋ္ဌာန်း (၄၀) နှင့် ဝိပဿနာ ဖော်ပြချက်ကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <title>ကမ္မဋ္ဌာနသင်္ဂဟ — ကမ္မဋ္ဌာန်း (၄၀) ပါး (Kammaṭṭhāna-saṅgaha)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        html { scroll-behavior: smooth; }
+        * { -webkit-tap-highlight-color: transparent; }
+        button { touch-action: manipulation; }
+        button:active { transform: scale(0.97); }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(8px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in { animation: fade-in 0.2s ease-out; }
+        .km-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+        .km-card:hover { transform: translateY(-2px); }
+        :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+        summary { cursor: pointer; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        details[open] > summary .tree-chevron { transform: rotate(90deg); }
+        .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16">
+
+    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-teal-500/20 border border-teal-500/50 flex items-center justify-center text-teal-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-teal-300">ကမ္မဋ္ဌာနသင်္ဂဟ <span class="text-slate-500 font-normal text-sm">(Kammaṭṭhāna-saṅgaha)</span></h1>
+                    <p class="text-[11px] text-slate-400">သမထ ကမ္မဋ္ဌာန်း (၄၀) + ဝိပဿနာ</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
+                </a>
+                <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Citta & Cetasika Guide သို့</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
+
+        <!-- Intro -->
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <span class="text-teal-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၉ ပိုင်းမြောက် (နောက်ဆုံးအပိုင်း)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">သီအိုရီမှ လက်တွေ့ ဘာဝနာအလေ့အကျင့်သို့</h2>
+            <p class="text-slate-400 text-sm">ယခုအထိ လေ့လာခဲ့သော စိတ်/စေတသိက်/ရုပ်/ပစ္စယ/သစ္စာ အားလုံးသည် သီအိုရီအသိပညာသာ ဖြစ်သည်။ ကမ္မဋ္ဌာနသင်္ဂဟကမူ ထိုအသိပညာကို "သမထ" (စိတ်တည်ငြိမ်မှု ဖွံ့ဖြိုးရန်) နှင့် "ဝိပဿနာ" (ပညာဉာဏ် ဖွံ့ဖြိုးရန်) ဟူသော ဘာဝနာအလေ့အကျင့် (၂) မျိုးအဖြစ် လက်တွေ့ အသုံးချပုံကို ရှင်းပြသည်။</p>
+        </div>
+
+        <!-- 40 Kammatthana verification bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm border border-slate-700">
+            <button onclick="jumpToGroup('kasina')" class="px-2.5 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ကသိုဏ်း (၁၀)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('asubha')" class="px-2.5 py-1.5 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">အသုဘ (၁၀)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('anussati')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">အနုဿတိ (၁၀)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('brahmavihara')" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">ဗြဟ္မဝိဟာရ (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('aruppa')" class="px-2.5 py-1.5 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/25 hover:border-indigo-400 transition">အာရုပ္ပ (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('misc')" class="px-2.5 py-1.5 rounded-lg bg-lime-500/15 text-lime-300 border border-lime-500/30 hover:bg-lime-500/25 hover:border-lime-400 transition">အခြား (၂)</button>
+            <span class="text-slate-600">=</span>
+            <button onclick="jumpToGroup('kasina')" class="px-2.5 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">ကမ္မဋ္ဌာန်း (၄၀) ပါး</button>
+        </div>
+
+        <!-- Kammatthana groups -->
+        <div id="km-groups" class="space-y-4"></div>
+
+        <!-- Carita matching -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
+            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>စရိတ် (၆) မျိုးနှင့် ကမ္မဋ္ဌာန်း ကိုက်ညီမှု</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-300 border-l border-slate-800">
+                <p>ပုဂ္ဂိုလ်တစ်ဦးစီ၏ သဘာဝ အလိုက် သင့်လျော်သော ကမ္မဋ္ဌာန်း ရွေးချယ်နိုင်ရန် စရိတ် (၆) မျိုး ခွဲခြားထားသည် —</p>
+                <div id="carita-list" class="space-y-2"></div>
+                <p class="text-[11px] text-slate-500 pt-1">* ကသိုဏ်း (အရောင်လွတ် ၆) + အာရုပ္ပ (၄) = (၁၀) ပါးမှာမူ စရိတ်မရွေး လူတိုင်းအတွက် သင့်လျော်သည်။</p>
+            </div>
+        </details>
+
+        <!-- Jhana attainment level -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
+            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ကမ္မဋ္ဌာန်းအလိုက် ရရှိနိုင်သော အထွဋ်အမြတ်</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-300 border-l border-slate-800">
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-700">
+                    <span class="text-slate-200 font-bold block">ဥပစာရသမာဓိသာ (ဈာန်အထိ မရောက်)</span>
+                    <span class="text-slate-400">အနုဿတိ (၈ — ကာယဂတာသတိ/အာနာပါနဿတိ မှလွဲ)၊ အာဟာရေပဋိကူလသညာ၊ စတုဓာတုဝဝတ္ထာန်</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-rose-500/30">
+                    <span class="text-rose-300 font-bold block">ပဌမဈာန်အထိ (ဝိတက် လိုအပ်သောကြောင့်)</span>
+                    <span class="text-slate-400">အသုဘ (၁၀)၊ ကာယဂတာသတိ</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-emerald-500/30">
+                    <span class="text-emerald-300 font-bold block">ဈာန် (၃) သို့မဟုတ် (၄) အထိ</span>
+                    <span class="text-slate-400">မေတ္တာ/ကရုဏာ/မုဒိတာ (ဥပေက္ခာဗြဟ္မဝိဟာရမှလွဲ)</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-sky-500/30">
+                    <span class="text-sky-300 font-bold block">ဈာန် (၅) ထပ်လုံး အထိ</span>
+                    <span class="text-slate-400">ကသိုဏ်း (၁၀)၊ အာနာပါနဿတိ၊ ဥပေက္ခာဗြဟ္မဝိဟာရ (ပဉ္စမဈာန်တွင်သာ)</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-indigo-500/30">
+                    <span class="text-indigo-300 font-bold block">အရူပဈာန် (၄) ပါးလုံး အထိ</span>
+                    <span class="text-slate-400">အာရုပ္ပ (၄) — ရူပါဝစရ ပဉ္စမဈာန်ကို အခြေခံ၍သာ တက်လှမ်းနိုင်သည်</span>
+                </div>
+            </div>
+        </details>
+
+        <!-- Vipassana -->
+        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
+            <h3 class="font-bold text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-eye"></i> ဝိပဿနာ — သမထထက် တစ်ဆင့်ထပ်</h3>
+            <p class="text-xs text-slate-300">သမထသည် စိတ်ကို "တည်ငြိမ်" စေရုံသာ ရှိပြီး၊ ကိလေသာကို ယာယီသာ ဖိထားနိုင်သည် (ဝိက္ခမ္ဘနပဟာန်)။ ဝိပဿနာကမူ ခန္ဓာငါးပါး၏ <span class="text-amber-300 font-semibold">အနိစ္စ/ဒုက္ခ/အနတ္တ</span> လက္ခဏာသုံးပါးကို တိုက်ရိုက် ထိုးထွင်း သိမြင်ခြင်းဖြင့် ကိလေသာကို အမြစ်ဖြတ် ပယ်ဖျောက်နိုင်သည် (သမုစ္ဆေဒပဟာန်)။</p>
+            <div id="lakkhana-chips" class="flex flex-wrap gap-1.5 justify-center"></div>
+        </div>
+
+        <!-- 7 Visuddhi -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20" open>
+            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ဝိသုဒ္ဓိ (၇) ပါး — စင်ကြယ်မှု အဆင့်ဆင့်</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-1.5 text-xs text-slate-300 border-l border-slate-800" id="visuddhi-list"></div>
+        </details>
+
+        <!-- Cross-links -->
+        <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <a href="citta_cetasikas_visual_guide.html#simulator" class="block glass-card rounded-2xl p-5 border border-rose-500/30 hover:border-rose-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-brain text-rose-400 text-xl"></i>
+                <h4 class="font-bold text-rose-300 text-sm">ဈာန်ဂုဏ်/ဈာန်စိတ်ကို Mind Simulator ဖြင့် ပြန်လေ့လာရန်</h4>
+                <p class="text-[11px] text-slate-400">Citta & Cetasika Guide ၏ Mind Simulator tab သို့ →</p>
+            </a>
+            <a href="paticcasamuppada.html" class="block glass-card rounded-2xl p-5 border border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-circle-notch text-emerald-400 text-xl"></i>
+                <h4 class="font-bold text-emerald-300 text-sm">ဝိပဿနာဖြင့် အဝိဇ္ဇာ/တဏှာ ဖြတ်တောက်ခြင်း၏ အနှစ်ချုပ်</h4>
+                <p class="text-[11px] text-slate-400">ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda) သို့ →</p>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <section class="glass-card rounded-2xl p-6 border border-teal-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-teal-400 text-2xl"></i>
+            <p class="text-xs text-slate-300 leading-relaxed">ကမ္မဋ္ဌာနသင်္ဂဟကို ဤ Guide ၏ နောက်ဆုံး အခန်းအဖြစ် ထားရှိခြင်းမှာ — အဘိဓမ္မာ ပညာရပ်၏ နောက်ဆုံး ရည်ရွယ်ချက်သည် သီအိုရီအသိ တစ်ခုတည်း မဟုတ်ဘဲ၊ လက်တွေ့ ဘာဝနာအားထုတ်မှုမှတစ်ဆင့် ဒုက္ခမှ လွတ်မြောက်ရန် ဖြစ်ကြောင်း ညွှန်ပြရန် ဖြစ်သည်။ ဤ Guide တစ်ခုလုံးကို ဖတ်ရှုလေ့လာခဲ့ပြီးသူသည် စိတ်၊ စေတသိက်၊ ရုပ်၊ ပစ္စယ၊ သစ္စာ — အားလုံးကို ပေါင်းစပ် နားလည်ပြီး ဖြစ်ပါသည်။
+            </p>
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+                <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
+            </a>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Kammatthana-sangaha (40 Samatha subjects + Vipassana) — Abhidhammattha Sangaha Ch.9 =====
+        const kmData = [
+            // Kasina (10) — sky
+            { id: 1, key: 'pathavikasina', pali: 'Pathavī-kasiṇa', name: 'ပထဝီကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'မြေဖုန်း စက်ဝိုင်းကို အာရုံပြု ငေးကြည့်ခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'မြေဖုန်းအရောင်ဖြင့် ပြုလုပ်ထားသော စက်ဝိုင်းပြားကို အာရုံစူးစိုက် ငေးကြည့်ခြင်း။' },
+            { id: 2, key: 'apokasina', pali: 'Āpo-kasiṇa', name: 'အာပေါကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'ရေခွက် စက်ဝိုင်းကို အာရုံပြု ငေးကြည့်ခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'ရေဖြင့် ပြည့်နေသော အင်တုံအတွင်း ငေးကြည့်ခြင်း။' },
+            { id: 3, key: 'tejokasina', pali: 'Tejo-kasiṇa', name: 'တေဇောကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'မီးလျှံကို အာရုံပြု ငေးကြည့်ခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'ထွန်းထားသော ဆီမီးအိမ်ကို ငေးကြည့်ခြင်း။' },
+            { id: 4, key: 'vayokasina', pali: 'Vāyo-kasiṇa', name: 'ဝါယောကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'လေတိုက်၍ လှုပ်ရှားနေသော အရာ (ဥပမာ - ဝါးရွက်) ကို အာရုံပြုခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'လေတိုက်ချိန် ကိုယ်ထိ ခံစားရသော ခံစားမှု (သို့) လှုပ်နေသော အရွက်ကို ကြည့်ခြင်း။' },
+            { id: 5, key: 'nilakasina', pali: 'Nīla-kasiṇa', name: 'နီလကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'အစိမ်းရောင် စက်ဝိုင်းကို အာရုံပြု ငေးကြည့်ခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'အစိမ်းရောင် ပန်းရွက်များဖြင့် ပြုလုပ်ထားသော စက်ဝိုင်းကို ငေးကြည့်ခြင်း။' },
+            { id: 6, key: 'pitakasina', pali: 'Pīta-kasiṇa', name: 'ပီတကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'အဝါရောင် စက်ဝိုင်းကို အာရုံပြု ငေးကြည့်ခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'အဝါရောင် ပန်းများဖြင့် ပြုလုပ်ထားသော စက်ဝိုင်းကို ငေးကြည့်ခြင်း။' },
+            { id: 7, key: 'lohitakasina', pali: 'Lohita-kasiṇa', name: 'လောဟိတကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'အနီရောင် စက်ဝိုင်းကို အာရုံပြု ငေးကြည့်ခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'အနီရောင် ပန်းများဖြင့် ပြုလုပ်ထားသော စက်ဝိုင်းကို ငေးကြည့်ခြင်း။' },
+            { id: 8, key: 'odatakasina', pali: 'Odāta-kasiṇa', name: 'ဩဒါတကသိုဏ်း', group: 'kasina', icon: 'fa-circle', desc: 'အဖြူရောင် စက်ဝိုင်းကို အာရုံပြု ငေးကြည့်ခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'အဖြူရောင် ပန်းများ (သို့) အဖြူရောင် ပြားကို ငေးကြည့်ခြင်း။' },
+            { id: 9, key: 'akasakasina', pali: 'Ākāsa-kasiṇa', name: 'အာကာသကသိုဏ်း', group: 'kasina', icon: 'fa-circle-notch', desc: 'နံရံ၌ ဖောက်ထားသော အပေါက်မှ မိုးကောင်းကင်ကို အာရုံပြုခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'နံရံအပေါက်ငယ်မှ မြင်ရသော ကောင်းကင်နေရာလွတ်ကို ငေးကြည့်ခြင်း။' },
+            { id: 10, key: 'alokakasina', pali: 'Āloka-kasiṇa', name: 'အာလောကကသိုဏ်း', group: 'kasina', icon: 'fa-sun', desc: 'နေရောင်/လရောင် အလင်းရောင်ကို အာရုံပြုခြင်းဖြင့် ဈာန်ရရှိစေသော ကမ္မဋ္ဌာန်း။', example: 'နံရံ၌ကျရောက်နေသော နေရောင်အလင်းစက်ဝိုင်းကို ငေးကြည့်ခြင်း။' },
+
+            // Asubha (10) — rose
+            { id: 11, key: 'uddhumataka', pali: 'Uddhumātaka', name: 'ဥဒ္ဓုမာတက', group: 'asubha', icon: 'fa-skull', desc: 'ရောင်ရမ်းပွန်းလာသော အလောင်း — ကာမတပ်မက်မှုကို ချေဖျက်ရန် အသုံးပြုသော ကမ္မဋ္ဌာန်း (၁၀) ပါးအနက် ပထမ။', example: 'သေဆုံးပြီး ရက်အနည်းငယ်ကြာသော ရောင်ရမ်းနေသည့် အလောင်း။' },
+            { id: 12, key: 'vinilaka', pali: 'Vinīlaka', name: 'ဝိနီလက', group: 'asubha', icon: 'fa-skull', desc: 'အစိမ်းရောင်/အနက်ရောင် ပြောင်းလဲနေသော အလောင်း။', example: 'အနေရာအချို့ ညိုမည်း၍ အနေရာအချို့ အနီရောင် ဖြစ်နေသော အလောင်း။' },
+            { id: 13, key: 'vipubbaka', pali: 'Vipubbaka', name: 'ဝိပုဗ္ဗက', group: 'asubha', icon: 'fa-skull', desc: 'ပြည်ယို ထွက်နေသော အလောင်း။', example: 'ဒဏ်ရာများမှ ပြည်များ စီးထွက်နေသော အလောင်း။' },
+            { id: 14, key: 'vicchiddaka', pali: 'Vicchiddaka', name: 'ဝိစ္ဆိဒ္ဒက', group: 'asubha', icon: 'fa-skull', desc: 'အပိုင်းပိုင်း ပြတ်တောက်နေသော အလောင်း။', example: 'ခန္ဓာကိုယ် တစ်ဝက်စီ ပြတ်နေသော အလောင်း။' },
+            { id: 15, key: 'vikkhayitaka', pali: 'Vikkhāyitaka', name: 'ဝိက္ခာယိတက', group: 'asubha', icon: 'fa-skull', desc: 'တိရစ္ဆာန်များ ကိုက်စား ခဲ့သော အလောင်း။', example: 'ခွေးများ ကိုက်ဖဲ့သွားသော အလောင်း။' },
+            { id: 16, key: 'vikkhittaka', pali: 'Vikkhittaka', name: 'ဝိက္ခိတ္တက', group: 'asubha', icon: 'fa-skull', desc: 'ခန္ဓာအစိတ်အပိုင်းများ ကွဲပြား နေရာအနှံ့ ရောက်နေသော အလောင်း။', example: 'လက်တစ်နေရာ၊ ခြေတစ်နေရာ ကွဲကွာနေသော အလောင်း။' },
+            { id: 17, key: 'hatavikkhittaka', pali: 'Hatavikkhittaka', name: 'ဟတဝိက္ခိတ္တက', group: 'asubha', icon: 'fa-skull', desc: 'ခုတ်ဖြတ်၍ ပစ်ချထားသော အလောင်း။', example: 'လက်နက်ဖြင့် ခုတ်ထစ်ခံရပြီး ကွဲပြားနေသော အလောင်း။' },
+            { id: 18, key: 'lohitaka', pali: 'Lohitaka', name: 'လောဟိတက', group: 'asubha', icon: 'fa-skull', desc: 'သွေးများ ယိုစီးနေသော အလောင်း။', example: 'ဒဏ်ရာများမှ သွေးများ စီးထွက်နေသော အလောင်း။' },
+            { id: 19, key: 'puluvaka', pali: 'Puḷuvaka', name: 'ပုဠုဝက', group: 'asubha', icon: 'fa-skull', desc: 'ပိုးများ စုပ်စား နေသော အလောင်း — အသုဘ (၁၀) ပါးအနက် နောက်ဆုံးမှ ဒုတိယ။', example: 'ပိုးကောင်များ ဖုံးလွှမ်းနေသော ပုပ်သိုးလုနီးပါး အလောင်း။' },
+            { id: 20, key: 'atthika', pali: 'Aṭṭhika', name: 'အဋ္ဌိက', group: 'asubha', icon: 'fa-bone', desc: 'အရိုးဆုံး ကျန်နေသော အလောင်း — အသုဘ (၁၀) ပါးအနက် နောက်ဆုံး။', example: 'အသားအရေ လုံးဝ ပုပ်သိုးကုန်ပြီး အရိုးသာ ကျန်နေသော အလောင်း။' },
+
+            // Anussati (10) — amber
+            { id: 21, key: 'buddhanussati', pali: 'Buddhānussati', name: 'ဗုဒ္ဓါနုဿတိ', group: 'anussati', icon: 'fa-om', desc: 'ဘုရားရှင်၏ ဂုဏ်တော်များကို အဖန်ဖန် အောက်မေ့ ဆင်ခြင်ခြင်း — သဒ္ဓါစရိတ် ပုဂ္ဂိုလ်များအတွက် သင့်လျော်သည်။', example: '"အရဟံ၊ သမ္မာသမ္ဗုဒ္ဓေါ..." ဂုဏ်တော် (၉) ပါးကို အဖန်ဖန် ရွတ်ဆို ဆင်ခြင်ခြင်း။' },
+            { id: 22, key: 'dhammanussati', pali: 'Dhammānussati', name: 'ဓမ္မာနုဿတိ', group: 'anussati', icon: 'fa-scroll', desc: 'တရားတော်၏ ဂုဏ်တော်များကို အဖန်ဖန် အောက်မေ့ ဆင်ခြင်ခြင်း။', example: '"သွာက္ခာတော ဘဂဝတာ ဓမ္မော..." ဂုဏ်တော် (၆) ပါးကို ဆင်ခြင်ခြင်း။' },
+            { id: 23, key: 'sanghanussati', pali: 'Saṅghānussati', name: 'သံဃာနုဿတိ', group: 'anussati', icon: 'fa-people-group', desc: 'သံဃာတော်၏ ဂုဏ်တော်များကို အဖန်ဖန် အောက်မေ့ ဆင်ခြင်ခြင်း။', example: '"သုပ္ပဋိပန္နော ဘဂဝတော သာဝကသံဃော..." ဂုဏ်တော် (၉) ပါးကို ဆင်ခြင်ခြင်း။' },
+            { id: 24, key: 'silanussati', pali: 'Sīlānussati', name: 'သီလာနုဿတိ', group: 'anussati', icon: 'fa-shield', desc: 'မိမိ၏ သီလ စင်ကြယ်မှုကို အဖန်ဖန် အောက်မေ့ ဆင်ခြင်ခြင်း။', example: '"ငါ့သီလသည် မပျက်စီး၊ အပြစ်ကင်းစင်" ဟု ဆင်ခြင်ခြင်း။' },
+            { id: 25, key: 'caganussati', pali: 'Cāgānussati', name: 'စာဂါနုဿတိ', group: 'anussati', icon: 'fa-hand-holding-heart', desc: 'မိမိ ပြုခဲ့သော ဒါနကုသိုလ်များကို အဖန်ဖန် အောက်မေ့ ဆင်ခြင်ခြင်း။', example: '"ငါသည် ကြေးကြေးကြပ်ကြပ် မဟုတ်ဘဲ ရက်ရောစွာ ပေးကမ်းတတ်သူ" ဟု ဆင်ခြင်ခြင်း။' },
+            { id: 26, key: 'devatanussati', pali: 'Devatānussati', name: 'ဒေဝတာနုဿတိ', group: 'anussati', icon: 'fa-star', desc: 'နတ်ဗြဟ္မာတို့၏ သဒ္ဓါ/သီလ/သုတ/စာဂ/ပညာ ဂုဏ်ရည်များကို မိမိ၌ရှိမရှိ ရည်ညွှန်း၍ ဆင်ခြင်ခြင်း။', example: '"နတ်ဗြဟ္မာတို့ ရရှိသော ဂုဏ်ရည်များ ငါ့၌လည်း ရှိသည်" ဟု ဆင်ခြင်ခြင်း။' },
+            { id: 27, key: 'maranannussati', pali: 'Maraṇānussati', name: 'မရဏာနုဿတိ', group: 'anussati', icon: 'fa-hourglass-end', desc: 'သေခြင်းတရား မလွှဲမရှောင်သာ ရောက်ရှိလာမည်ကို အဖန်ဖန် ဆင်ခြင်ခြင်း — ဗုဒ္ဓိစရိတ် ပုဂ္ဂိုလ်များအတွက် အထူး သင့်လျော်သည်။', example: '"ငါသည် သေရမည့် သဘောရှိသည်၊ သေခြင်းကို မလွှဲမရှောင်သာ ရောက်ရမည်" ဟု ဆင်ခြင်ခြင်း။' },
+            { id: 28, key: 'kayagatasati', pali: 'Kāyagatāsati', name: 'ကာယဂတာသတိ', group: 'anussati', icon: 'fa-person', desc: 'ခန္ဓာကိုယ်ရှိ ဆံ/မွေး/လက်သည်း/သွား/အရေစသည့် အစိတ်အပိုင်း (၃၂) ကို "အစင်းစင်း၊ အသုဘ" ဟု ဆင်ခြင်ခြင်း — ပဌမဈာန်အထိ ရရှိနိုင်သည်။', example: 'ခန္ဓာကိုယ်ကို အစိတ်အပိုင်းအလိုက် ခွဲခြမ်း၍ တစ်ခုချင်းစီ၏ မလှပ သဘောကို ဆင်ခြင်ခြင်း။' },
+            { id: 29, key: 'anapanassati', pali: 'Ānāpānassati', name: 'အာနာပါနဿတိ', group: 'anussati', icon: 'fa-wind', desc: 'အသက်ရှူသွင်း/ထုတ်ကို သတိထား ကပ်၍ ရှုမှတ်ခြင်း — ဈာန် (၅) ထပ်လုံး အထိ ရရှိနိုင်ပြီး ဗုဒ္ဓါရရှိခဲ့သော ကမ္မဋ္ဌာန်းလည်း ဖြစ်သည်။', example: 'နှာခေါင်းဝ၌ လေဝင်/လေထွက် ထိတွေ့မှုကို စိတ်ချမှတ်ကြည့်ခြင်း (အာနာပါနဿတိဘာဝနာ)။' },
+            { id: 30, key: 'upasamanussati', pali: 'Upasamānussati', name: 'ဥပသမာနုဿတိ', group: 'anussati', icon: 'fa-peace',  desc: 'နိဗ္ဗာန်၏ ချမ်းသာ ငြိမ်းအေးမှု ဂုဏ်ကို အဖန်ဖန် ဆင်ခြင်ခြင်း — ဗုဒ္ဓိစရိတ် ပုဂ္ဂိုလ်များအတွက် သင့်လျော်သည်။', example: '"ကိလေသာ ဒုက္ခ အားလုံး ငြိမ်းအေးရာ နိဗ္ဗာန်သည် အလွန် ချမ်းသာသည်" ဟု ဆင်ခြင်ခြင်း။' },
+
+            // Brahmavihara (4) — emerald
+            { id: 31, key: 'metta', pali: 'Mettā', name: 'မေတ္တာ', group: 'brahmavihara', icon: 'fa-heart', desc: 'သတ္တဝါအားလုံး ချမ်းသာကြပါစေ ဟု လိုလားသော စေတသိက် (အဒေါသ) ကို ပွားများခြင်း — ဒေါသစရိတ် ပုဂ္ဂိုလ်များအတွက် အထူး သင့်လျော်သည်။', example: '"သတ္တဝါအားလုံး ကျန်းမာချမ်းသာကြပါစေ" ဟု နှလုံးမှ လိုလားခြင်း။' },
+            { id: 32, key: 'karuna', pali: 'Karuṇā', name: 'ကရုဏာ', group: 'brahmavihara', icon: 'fa-hand-holding-heart', desc: 'ဆင်းရဲဒုက္ခ ရောက်နေသူများကို သနားကြင်နာ ကူညီလိုသော စိတ်ကို ပွားများခြင်း။', example: 'ဒုက္ခရောက်နေသော သတ္တဝါများကို မြင်ရသောအခါ သနားကြင်နာ ကူညီလိုစိတ် ဖြစ်ပေါ်ခြင်း။' },
+            { id: 33, key: 'mudita', pali: 'Muditā', name: 'မုဒိတာ', group: 'brahmavihara', icon: 'fa-face-smile', desc: 'သူတစ်ပါး၏ အောင်မြင်မှု/ချမ်းသာမှုကို အားရ ဝမ်းမြောက်သော စိတ်ကို ပွားများခြင်း — မနာလိုမှုကို ဆန့်ကျင်ဘက် ဖြစ်စေသည်။', example: 'သူတစ်ပါး၏ ကံကောင်းမှုကို ကြားသောအခါ စိတ်မှ ဝမ်းသာ ခံစားခြင်း။' },
+            { id: 34, key: 'upekkha_bv', pali: 'Upekkhā', name: 'ဥပေက္ခာ (ဗြဟ္မဝိဟာရ)', group: 'brahmavihara', icon: 'fa-scale-balanced', desc: 'သတ္တဝါအားလုံး မိမိကံအလိုက် ဖြစ်ကြောင်း လျစ်လျူ မျှတစွာ ရှုမြင်သော စိတ်ကို ပွားများခြင်း — ဗြဟ္မဝိဟာရ (၄) ပါးအနက် အနက်ရှိုင်းဆုံး၊ ပဉ္စမဈာန်တွင်သာ ရရှိနိုင်သည်။', example: '"သတ္တဝါတိုင်းသည် မိမိကံကို အမွေခံရသူများသာ ဖြစ်သည်" ဟု မျှတစွာ ရှုမြင်ခြင်း။' },
+
+            // Aruppa (4) — indigo
+            { id: 35, key: 'akasanancayatana_km', pali: 'Ākāsānañcāyatana', name: 'အာကာသာနဉ္စာယတန', group: 'aruppa', icon: 'fa-expand', desc: 'ကသိုဏ်းရုပ်ကို ဖယ်ရှား၍ ကျန်ကောင်းကင်နေရာလွတ် "အနန္တ" ကို အာရုံပြု ရှုမှတ်ခြင်းဖြင့် ရရှိသော ပဌမ အရူပဈာန်။', example: 'ကသိုဏ်းနိမိတ်ကို ဖယ်ရှားပြီး ကျန်နေရာလွတ်ကို "အကန့်အသတ်မရှိ" ဟု ရှုမှတ်ခြင်း။' },
+            { id: 36, key: 'vinnanancayatana_km', pali: 'Viññāṇañcāyatana', name: 'ဝိညာဏဉ္စာယတန', group: 'aruppa', icon: 'fa-brain', desc: 'ပဌမ အရူပဈာန်ဝိညာဉ်ကို "အနန္တ" ဟု အာရုံပြု ရှုမှတ်ခြင်းဖြင့် ရရှိသော ဒုတိယ အရူပဈာန်။', example: 'ရှေးဈာန်ဝိညာဉ်ကို အာရုံပြု ရှုမှတ်ခြင်း။' },
+            { id: 37, key: 'akincannayatana_km', pali: 'Ākiñcaññāyatana', name: 'အာကိဉ္စညာယတန', group: 'aruppa', icon: 'fa-circle-notch', desc: 'ပဌမ အရူပဈာန်ဝိညာဉ် "မရှိတော့ခြင်း" ကို အာရုံပြု ရှုမှတ်ခြင်းဖြင့် ရရှိသော တတိယ အရူပဈာန်။', example: '"တစ်စုံတစ်ခုမျှ မရှိတော့" ဟူသော သဘောကို အာရုံပြု ရှုမှတ်ခြင်း။' },
+            { id: 38, key: 'nevasannanasannayatana_km', pali: 'Nevasaññānāsaññāyatana', name: 'နေဝသညာနာသညာယတန', group: 'aruppa', icon: 'fa-yin-yang', desc: 'တတိယ အရူပဈာန်ကို အလွန်သိမ်မွေ့စွာ အာရုံပြု ရှုမှတ်ခြင်းဖြင့် ရရှိသော စတုတ္ထ အရူပဈာန် — ရရှိနိုင်သမျှ အနက်ရှိုင်းဆုံး သမာဓိ။', example: 'သညာ ရှိသည်လည်းမဟုတ်၊ မရှိသည်လည်း မဟုတ်လောက်အောင် သိမ်မွေ့သော အဆင့်။' },
+
+            // Misc (2) — lime
+            { id: 39, key: 'aharepatikulasanna', pali: 'Āhāre-paṭikūlasaññā', name: 'အာဟာရေပဋိကူလသညာ', group: 'misc', icon: 'fa-bowl-rice', desc: 'အစားအစာ၏ ရှာဖွေခြင်း၊ စားသုံးခြင်း၊ ခြေဣရိယာ ဖြစ်ပေါ်ခြင်း အဆင့်ဆင့်ကို "စက်ဆုပ်ဖွယ်" ဟု ဆင်ခြင်ခြင်း — ဥပစာရသမာဓိသာ ရရှိနိုင်သည်။', example: 'အာဟာရ တပ်မက်မှုကို လျှော့ချရန် အစားအစာ၏ မလှပ ဇစ်မြစ်ကို ဆင်ခြင်ခြင်း။' },
+            { id: 40, key: 'catudhatuvavatthana', pali: 'Catudhātuvavatthāna', name: 'စတုဓာတုဝဝတ္ထာန်', group: 'misc', icon: 'fa-atom', desc: 'ခန္ဓာကိုယ်ကို ပထဝီ/အာပေါ/တေဇော/ဝါယော ဓာတ်ကြီး (၄) ပါးအဖြစ်သာ ခွဲခြမ်း ဆင်ခြင်ခြင်း — ဥပစာရသမာဓိသာ ရရှိနိုင်သော်လည်း ဝိပဿနာဉာဏ်၏ အခြေခံ ဖြစ်သည်။', example: '"ခန္ဓာကိုယ်တွင် ခက်မာမှု (ပထဝီ)၊ စီးဆင်းမှု (အာပေါ)၊ ပူနွေးမှု (တေဇော)၊ ရွေ့လျားမှု (ဝါယော) ဓာတ်များသာ ရှိသည်" ဟု ဆင်ခြင်ခြင်း — <a href="rupa_sangaha.html" class="text-lime-300 underline decoration-dotted hover:text-lime-200">ရူပသင်္ဂဟ</a> တွင် ဤ (၄) ပါးကို အသေးစိတ် ဖော်ပြထားသည်။' }
+        ];
+
+        const groupInfo = {
+            kasina:       { label: 'ကသိုဏ်း', sub: 'Kasiṇa — အာရုံစူးစိုက် ငေးကြည့်ခြင်း (၁၀)', color: 'text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/10' },
+            asubha:       { label: 'အသုဘ', sub: 'Asubha — အလောင်း အခြေအနေ (၁၀)', color: 'text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/10' },
+            anussati:     { label: 'အနုဿတိ', sub: 'Anussati — အဖန်ဖန် အောက်မေ့ခြင်း (၁၀)', color: 'text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
+            brahmavihara: { label: 'ဗြဟ္မဝိဟာရ', sub: 'Brahmavihāra — မြင့်မြတ်သော နေထိုင်မှု (၄)', color: 'text-emerald-300', border: 'border-emerald-500', bg: 'bg-emerald-500/10' },
+            aruppa:       { label: 'အာရုပ္ပ', sub: 'Āruppa — အရူပဈာန် အာရုံ (၄)', color: 'text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' },
+            misc:         { label: 'အခြား', sub: 'ဥပစာရသမာဓိသာ ရရှိသော ကမ္မဋ္ဌာန်း (၂)', color: 'text-lime-300', border: 'border-lime-500', bg: 'bg-lime-500/10' }
+        };
+
+        const caritaData = [
+            { name: 'ရာဂစရိတ်', desc: 'အလှတန်ဆာကို တွယ်တာတတ်သူ', suit: 'အသုဘ (၁၀) + ကာယဂတာသတိ', cls: 'border-rose-500/30' },
+            { name: 'ဒေါသစရိတ်', desc: 'စိတ်တိုလွယ် အမျက်ထွက်လွယ်သူ', suit: 'ဗြဟ္မဝိဟာရ (၄) + အရောင်ကသိုဏ်း (၄)', cls: 'border-amber-500/30' },
+            { name: 'မောဟစရိတ်/ဝိတက္ကစရိတ်', desc: 'ဉာဏ်နုံချာသူ/အတွေးများသူ', suit: 'အာနာပါနဿတိ', cls: 'border-sky-500/30' },
+            { name: 'သဒ္ဓါစရိတ်', desc: 'ယုံကြည်လွယ်သူ', suit: 'ပဌမ အနုဿတိ (၆) — ဗုဒ္ဓါနုဿတိ အစရှိသည်', cls: 'border-emerald-500/30' },
+            { name: 'ဗုဒ္ဓိစရိတ်', desc: 'ဉာဏ်ကောင်းသူ', suit: 'မရဏာနုဿတိ၊ ဥပသမာနုဿတိ၊ အာဟာရေပဋိကူလသညာ၊ စတုဓာတုဝဝတ္ထာန်', cls: 'border-violet-500/30' }
+        ];
+
+        const lakkhanaData = [
+            { name: 'အနိစ္စ', sub: 'Anicca', desc: 'မမြဲခြင်း — ခဏချင်း ပြောင်းလဲပျက်စီးနေခြင်း' },
+            { name: 'ဒုက္ခ', sub: 'Dukkha', desc: 'ဆင်းရဲခြင်း — အမြဲတမ်း ဖိစီးနှိပ်စက်ခံနေရခြင်း' },
+            { name: 'အနတ္တ', sub: 'Anatta', desc: 'အလိုမကျခြင်း — ထိန်းချုပ်နိုင်သော "ငါ" မရှိခြင်း' }
+        ];
+
+        const visuddhiData = [
+            { name: 'သီလဝိသုဒ္ဓိ', desc: 'သီလ စင်ကြယ်မှု' },
+            { name: 'စိတ္တဝိသုဒ္ဓိ', desc: 'သမထဘာဝနာဖြင့် စိတ် တည်ငြိမ် စင်ကြယ်မှု' },
+            { name: 'ဒိဋ္ဌိဝိသုဒ္ဓိ', desc: 'နာမ်ရုပ် ခွဲခြား သိမြင်သော ပညာ စင်ကြယ်မှု' },
+            { name: 'ကင်္ခါဝိတရဏဝိသုဒ္ဓိ', desc: 'နိဒါန်း/အကြောင်းအကျိုး သိမြင်၍ သံသယ ကင်းစင်မှု' },
+            { name: 'မဂ္ဂါမဂ္ဂဉာဏဒဿနဝိသုဒ္ဓိ', desc: 'လမ်းမှန်/လမ်းမမှန် ခွဲခြား သိမြင်မှု' },
+            { name: 'ပဋိပဒါဉာဏဒဿနဝိသုဒ္ဓိ', desc: 'ဝိပဿနာဉာဏ် အဆင့်ဆင့် တိုးတက် ဖြစ်ပေါ်မှု' },
+            { name: 'ဉာဏဒဿနဝိသုဒ္ဓိ', desc: 'မဂ်ဉာဏ် (၄) ပါး — အပြီးဆုံး စင်ကြယ်မှု' }
+        ];
+
+        function mm(n) {
+            const map = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
+            return String(n).replace(/[0-9]/g, d => map[d]);
+        }
+
+        function renderKmGroups() {
+            const container = document.getElementById('km-groups');
+            const order = ['kasina', 'asubha', 'anussati', 'brahmavihara', 'aruppa', 'misc'];
+            container.innerHTML = order.map(gk => {
+                const info = groupInfo[gk];
+                const items = kmData.filter(k => k.group === gk);
+                return `
+                    <details id="group-${gk}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} scroll-mt-24">
+                        <summary class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>
+                                <p class="text-xs text-slate-400">${info.sub}</p>
+                            </div>
+                        </summary>
+                        <div class="flex flex-wrap gap-1.5 mt-3">
+                            ${items.map(k => `
+                                <button onclick="openKmModal('${k.key}')" class="km-card text-xs font-semibold px-3 py-1.5 rounded-full border transition ${info.bg} ${info.border}/30 ${info.color} hover:brightness-125">
+                                    <i class="fa-solid ${k.icon} mr-1 text-[10px]"></i>${mm(k.id)}. ${k.name}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </details>
+                `;
+            }).join('');
+        }
+
+        function renderCarita() {
+            document.getElementById('carita-list').innerHTML = caritaData.map(c => `
+                <div class="bg-slate-950/60 rounded-lg p-3 border ${c.cls}">
+                    <span class="text-slate-200 font-bold block text-sm">${c.name} <span class="text-slate-500 font-normal text-[11px]">— ${c.desc}</span></span>
+                    <span class="text-slate-400 text-[11px]">သင့်လျော်သော ကမ္မဋ္ဌာန်း: ${c.suit}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderLakkhana() {
+            document.getElementById('lakkhana-chips').innerHTML = lakkhanaData.map(l => `
+                <div class="px-4 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-center">
+                    <span class="text-amber-300 font-bold block">${l.name}</span>
+                    <span class="text-slate-500 text-[10px] font-mono">${l.sub}</span>
+                    <span class="text-slate-400 text-[11px] block mt-1">${l.desc}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderVisuddhi() {
+            document.getElementById('visuddhi-list').innerHTML = visuddhiData.map((v, i) => `
+                <div class="flex items-start gap-2 py-1">
+                    <span class="text-violet-400 font-bold text-xs mt-0.5">${mm(i+1)}.</span>
+                    <div>
+                        <span class="text-slate-200 font-semibold">${v.name}</span>
+                        <span class="text-slate-400"> — ${v.desc}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function jumpToGroup(groupKey) {
+            const el = document.getElementById('group-' + groupKey);
+            if (!el) return;
+            el.open = true;
+            if (el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function openKmModal(key) {
+            const k = kmData.find(x => x.key === key);
+            if (!k) return;
+            const info = groupInfo[k.group];
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${info.color}">
+                        <i class="fa-solid ${k.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(k.id)}/၄၀</span>
+                        <h3 class="text-xl font-bold ${info.color}">${k.name}</h3>
+                        <p class="text-[11px] text-slate-500 font-mono mt-1">${k.pali}</p>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-200 mt-1 leading-relaxed">${k.desc}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800">
+                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <p class="text-slate-300 mt-1 leading-relaxed">${k.example}</p>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderKmGroups();
+            renderCarita();
+            renderLakkhana();
+            renderVisuddhi();
+            const openKey = new URLSearchParams(location.search).get('open');
+            if (openKey && kmData.some(k => k.key === openKey)) {
+                setTimeout(() => openKmModal(openKey), 80);
+            }
+        });
+    </script>
+</body>
+</html>

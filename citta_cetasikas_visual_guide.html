@@ -201,14 +201,19 @@
 
     <!-- Header / Branding (navigation lives in the unified bottom tab bar) -->
     <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 py-3 lg:py-4 flex items-center justify-center lg:justify-start gap-3">
-            <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl lg:text-2xl shadow-lg shadow-amber-500/10 flex-shrink-0">
-                <i class="fa-solid fa-dharmachakra animate-spin-slow"></i>
+        <div class="max-w-7xl mx-auto px-4 py-3 lg:py-4 flex items-center justify-center lg:justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl lg:text-2xl shadow-lg shadow-amber-500/10 flex-shrink-0">
+                    <i class="fa-solid fa-dharmachakra animate-spin-slow"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg lg:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br class="sm:hidden"> (Citta & Cetasikas)</h1>
+                    <p class="hidden sm:block text-xs lg:text-sm text-slate-400">အဘိဓမ္မာဒေသနာလာ နာမ်တရားများ အသေးစိတ် လေ့လာရန် Visual Guide</p>
+                </div>
             </div>
-            <div>
-                <h1 class="text-lg lg:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br class="sm:hidden"> (Citta & Cetasikas)</h1>
-                <p class="hidden sm:block text-xs lg:text-sm text-slate-400">အဘိဓမ္မာဒေသနာလာ နာမ်တရားများ အသေးစိတ် လေ့လာရန် Visual Guide</p>
-            </div>
+            <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5 flex-shrink-0">
+                <i class="fa-solid fa-list-check"></i> <span>မာတိကာ (၉ အခန်းလုံး)</span>
+            </a>
         </div>
     </header>
 
@@ -409,7 +414,7 @@
             <a href="paccaya_sangaha.html" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
                 <i class="fa-solid fa-link text-violet-400 text-xl"></i>
                 <h4 class="font-bold text-violet-300 text-sm">ဤ ယှဉ်ဖက်လက္ခဏာ (၄) ပါးကို ပဋ္ဌာန်းနည်းအရ ပိုမို တိကျစွာ ဆက်လေ့လာရန် — ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha)</h4>
-                <p class="text-[11px] text-slate-400">"ဖြစ်အတူ၊ ချုပ်အတူ" ကို ပဋ္ဌာန်းနည်းအရ ခွဲခြမ်းစိတ်ဖြာလိုက်ပါက condition (၆) ခု ဖြစ်ကြောင်း တွေ့ရသည် →</p>
+                <p class="text-[11px] text-slate-400">"ဖြစ်အတူ၊ ချုပ်အတူ" ကို ပဋ္ဌာန်းနည်းအရ ခွဲခြမ်းစိတ်ဖြာလိုက်ပါက အခြေအနေ (၆) ခု ဖြစ်ကြောင်း တွေ့ရသည် →</p>
             </a>
         </section>
 
@@ -706,7 +711,10 @@
                             </button>
                         </div>
                         <p class="text-[11px] text-slate-500">* "ငါ" ဟူသော အနှစ်သာရ တစ်ခုတည်း တစ်ဘဝမှ တစ်ဘဝ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ ကံ၏ တွန်းအားဖြင့် စိတ်တစ်ခုစီ အလိုလို ဆက်ရိုက်ဖြစ်ပေါ်နေခြင်းသာ ဖြစ်ကြောင်း ဤ ၃ ကိစ္စက ပြသည်။</p>
-                        <a href="paccaya_sangaha.html?open=anantara" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-violet-300 hover:text-violet-200 pt-1"><i class="fa-solid fa-link"></i> ဝီထိစိတ် ဆက်တိုက်ဖြစ်ပေါ်မှု — Anantara-paccaya (Paccaya-saṅgaha) တွင် ထပ်ဆင့်ကြည့်ရန်</a>
+                        <div class="flex flex-wrap gap-x-4 gap-y-1 pt-1">
+                            <a href="paccaya_sangaha.html?open=anantara" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-violet-300 hover:text-violet-200"><i class="fa-solid fa-link"></i> ဝီထိစိတ် ဆက်တိုက်ဖြစ်ပေါ်မှု — Anantara-paccaya (Paccaya-saṅgaha) တွင် ထပ်ဆင့်ကြည့်ရန်</a>
+                            <a href="vithimutta_sangaha.html" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-indigo-300 hover:text-indigo-200"><i class="fa-solid fa-link"></i> ဘူမိ (၃၁)/ကံစတုက္က/သေခါနီး လုပ်ငန်းစဉ် — ဝီထိမုတ္တသင်္ဂဟ တွင် ထပ်ဆင့်ကြည့်ရန်</a>
+                        </div>
                     </div>
                 </details>
 
@@ -765,6 +773,90 @@
                         </div>
                     </div>
                     <i class="fa-solid fa-arrow-right text-violet-400 flex-shrink-0"></i>
+                </a>
+
+                <!-- Link out to Rupa-sangaha (28 types of matter) -->
+                <a href="rupa_sangaha.html" class="block bg-gradient-to-r from-sky-500/15 to-slate-900/40 hover:from-sky-500/25 rounded-xl border border-sky-500/40 hover:border-sky-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-cube"></i></div>
+                        <div>
+                            <span class="font-semibold text-sky-300 text-sm block">ရူပသင်္ဂဟ (Rūpa-saṅgaha) — ရုပ် (၂၈) ပါး</span>
+                            <span class="text-slate-400 text-[11px]">ဝတ္ထုသင်္ဂဟတွင် လေ့လာခဲ့သော ရုပ်များ၏ မူလ — ရုပ်ကျမ်းလာ အသေးစိတ် guide ကို သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-sky-400 flex-shrink-0"></i>
+                </a>
+
+                <!-- Link out to Paticcasamuppada (12 nidana) -->
+                <a href="paticcasamuppada.html" class="block bg-gradient-to-r from-emerald-500/15 to-slate-900/40 hover:from-emerald-500/25 rounded-xl border border-emerald-500/40 hover:border-emerald-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-circle-notch"></i></div>
+                        <div>
+                            <span class="font-semibold text-emerald-300 text-sm block">ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda) — နိဒါန်း (၁၂) ပါး</span>
+                            <span class="text-slate-400 text-[11px]">ပစ္စယသင်္ဂဟနှင့် တွဲဖက်နေသော "ဘဝတစ်ခုမှ တစ်ခုသို့ ဒုက္ခ ဆက်တိုက် ဖြစ်ပေါ်ရပုံ" — သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-emerald-400 flex-shrink-0"></i>
+                </a>
+
+                <!-- Link out to Bodhipakkhiya-dhamma (37 factors of enlightenment) -->
+                <a href="bodhipakkhiya_dhamma.html" class="block bg-gradient-to-r from-amber-500/15 to-slate-900/40 hover:from-amber-500/25 rounded-xl border border-amber-500/40 hover:border-amber-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-seedling"></i></div>
+                        <div>
+                            <span class="font-semibold text-amber-300 text-sm block">ဗောဓိပက္ခိယဓမ္မာ (Bodhipakkhiya-dhammā) — (၃၇) ပါး</span>
+                            <span class="text-slate-400 text-[11px]">မဂ်ဉာဏ်ဆီသို့ ဦးတည်စေသော သတိပဋ္ဌာန်/သမ္မပ္ပဓာန်/ဣဒ္ဓိပါဒ်/ဣန္ဒြေ/ဗလ/ဗောဇ္ဈင်/မဂ္ဂင် — သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-amber-400 flex-shrink-0"></i>
+                </a>
+
+                <!-- Link out to Kilesa-sangaha (asava/ogha/yoga/gantha/upadana/nivarana/anusaya/samyojana) -->
+                <a href="kilesa_sangaha.html" class="block bg-gradient-to-r from-rose-500/15 to-slate-900/40 hover:from-rose-500/25 rounded-xl border border-rose-500/40 hover:border-rose-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-link-slash"></i></div>
+                        <div>
+                            <span class="font-semibold text-rose-300 text-sm block">အကုသိုလသင်္ဂဟ (Kilesa-saṅgaha) — ကိလေသာ ခွဲခြားမှု (၄၃) ပါး</span>
+                            <span class="text-slate-400 text-[11px]">အာသဝ/ဩဃ/ယောဂ/ဂန္ထ/ဥပါဒါန်/နီဝရဏ/အနုသယ/သံယောဇဉ် — သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-rose-400 flex-shrink-0"></i>
+                </a>
+
+                <!-- Link out to Sabba-sangaha (ayatana/dhatu/sacca) -->
+                <a href="sabba_sangaha.html" class="block bg-gradient-to-r from-cyan-500/15 to-slate-900/40 hover:from-cyan-500/25 rounded-xl border border-cyan-500/40 hover:border-cyan-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-atom"></i></div>
+                        <div>
+                            <span class="font-semibold text-cyan-300 text-sm block">သဗ္ဗသင်္ဂဟ (Sabba-saṅgaha) — အာယတန/ဓာတု/သစ္စာ</span>
+                            <span class="text-slate-400 text-[11px]">ခန္ဓာ၊ အာယတန (၁၂)၊ ဓာတု (၁၈)၊ သစ္စာ (၄) ဖြင့် အားလုံးခြုံငုံ ခွဲခြားမှု — သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-cyan-400 flex-shrink-0"></i>
+                </a>
+
+                <!-- Link out to Vithimutta-sangaha (31 bhumi + kamma-catukka + near-death) -->
+                <a href="vithimutta_sangaha.html" class="block bg-gradient-to-r from-indigo-500/15 to-slate-900/40 hover:from-indigo-500/25 rounded-xl border border-indigo-500/40 hover:border-indigo-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-globe"></i></div>
+                        <div>
+                            <span class="font-semibold text-indigo-300 text-sm block">ဝီထိမုတ္တသင်္ဂဟ (Vīthimutta-saṅgaha) — ဘူမိ (၃၁) ဘုံ</span>
+                            <span class="text-slate-400 text-[11px]">ဘူမိ (၃၁)၊ ယောနိ (၄)၊ ကံစတုက္က၊ သေခါနီး လုပ်ငန်းစဉ် — သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-indigo-400 flex-shrink-0"></i>
+                </a>
+
+                <!-- Link out to Kammatthana-sangaha (40 samatha + vipassana) -->
+                <a href="kammatthana_sangaha.html" class="block bg-gradient-to-r from-teal-500/15 to-slate-900/40 hover:from-teal-500/25 rounded-xl border border-teal-500/40 hover:border-teal-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-spa"></i></div>
+                        <div>
+                            <span class="font-semibold text-teal-300 text-sm block">ကမ္မဋ္ဌာနသင်္ဂဟ (Kammaṭṭhāna-saṅgaha) — ကမ္မဋ္ဌာန်း (၄၀) ပါး</span>
+                            <span class="text-slate-400 text-[11px]">သမထ ကမ္မဋ္ဌာန်း (၄၀) + ဝိပဿနာ — သီအိုရီမှ လက်တွေ့ ဘာဝနာသို့ — သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-teal-400 flex-shrink-0"></i>
                 </a>
             </div>
         </section>

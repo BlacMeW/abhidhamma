@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ အကုသိုလသင်္ဂဟ — အာသဝ/၀ဃ/ယောဂ/ဂန္ထ/ဥပါဒါန်/နီဝရဏ/အနုသယ/သံယောဇဉ် ခွဲခြားမှုများကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <title>အကုသိုလသင်္ဂဟ — ကိလေသာ ခွဲခြားမှု (၄၃) ပါး (Kilesa-saṅgaha)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        html { scroll-behavior: smooth; }
+        * { -webkit-tap-highlight-color: transparent; }
+        button { touch-action: manipulation; }
+        button:active { transform: scale(0.97); }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(8px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in { animation: fade-in 0.2s ease-out; }
+        .kilesa-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+        .kilesa-card:hover { transform: translateY(-2px); }
+        :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+        summary { cursor: pointer; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        details[open] > summary .tree-chevron { transform: rotate(90deg); }
+        .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16">
+
+    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-rose-500/20 border border-rose-500/50 flex items-center justify-center text-rose-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-link-slash"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-rose-300">အကုသိုလသင်္ဂဟ <span class="text-slate-500 font-normal text-sm">(Kilesa-saṅgaha)</span></h1>
+                    <p class="text-[11px] text-slate-400">ကိလေသာ ခွဲခြားမှု အမျိုးအစား (၈) မျိုး</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
+                </a>
+                <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Citta & Cetasika Guide သို့</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
+
+        <!-- Intro -->
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <span class="text-rose-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — အကုသိုလအပိုင်း)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">တစ်ခုတည်းသော ကိလေသာအချို့ကို နည်းလမ်း (၈) မျိုးဖြင့် ပြန်ခွဲခြားခြင်း</h2>
+            <p class="text-slate-400 text-sm">အကုသိုလ်စေတသိက် (၁၄) ပါးအနက် လောဘ၊ ဒိဋ္ဌိ၊ ဒေါသ၊ မောဟ အစရှိသည့် ကိလေသာအချို့ကို ကျမ်းဂန်တွင် "အာသဝ"၊ "ဩဃ"၊ "ယောဂ" စသည်ဖြင့် ရှုထောင့် (၈) မျိုးမှ ထပ်ခါထပ်ခါ ပြန်လည် ခွဲခြားသတ်မှတ်ထားသည် — တစ်ခုစီသည် "မည်ကဲ့သို့ အန္တရာယ် ပြုသနည်း" ဆိုသည်ကို မတူညီသော ပုံရိပ်ဖြင့် ဖော်ညွှန်းကြသည်။</p>
+        </div>
+
+        <!-- Total verification bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm border border-slate-700">
+            <button onclick="jumpToGroup('asava')" class="px-2.5 py-1.5 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">အာသဝ (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('ogha')" class="px-2.5 py-1.5 rounded-lg bg-orange-500/15 text-orange-300 border border-orange-500/30 hover:bg-orange-500/25 hover:border-orange-400 transition">ဩဃ (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('yoga')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ယောဂ (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('gantha')" class="px-2.5 py-1.5 rounded-lg bg-lime-500/15 text-lime-300 border border-lime-500/30 hover:bg-lime-500/25 hover:border-lime-400 transition">ဂန္ထ (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('upadana')" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">ဥပါဒါန် (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('nivarana')" class="px-2.5 py-1.5 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition">နီဝရဏ (၆)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('anusaya')" class="px-2.5 py-1.5 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/25 hover:border-indigo-400 transition">အနုသယ (၇)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('samyojana')" class="px-2.5 py-1.5 rounded-lg bg-violet-500/15 text-violet-300 border border-violet-500/30 hover:bg-violet-500/25 hover:border-violet-400 transition">သံယောဇဉ် (၁၀)</button>
+            <span class="text-slate-600">=</span>
+            <button onclick="jumpToGroup('asava')" class="px-2.5 py-1.5 rounded-lg bg-slate-500/20 text-slate-200 border border-slate-500/40 font-bold hover:bg-slate-500/30 hover:border-slate-400 transition">(၄၃) ပါး</button>
+        </div>
+        <p class="text-center text-[11px] text-slate-500 -mt-4">* ဤ (၄၃) ပါးသည် ကိလေသာအမည်သစ် (၄၃) မျိုး မဟုတ်ဘဲ၊ လောဘ/ဒိဋ္ဌိ/ဒေါသ/မောဟ/ဝိစိကိစ္ဆာ/ဥဒ္ဓစ္စ/ထိနမိဒ္ဓ စသော ရှိပြီးသား ကိလေသာအနည်းငယ်ကိုသာ ရှုထောင့် (၈) မျိုးဖြင့် ထပ်ခါထပ်ခါ ပြန်လည် ဖွဲ့စည်းထားခြင်း ဖြစ်သည်။</p>
+
+        <!-- 8 groups -->
+        <div id="kilesa-groups" class="space-y-6"></div>
+
+        <!-- Cross-links -->
+        <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <a href="citta_cetasikas_visual_guide.html#cetasika" class="block glass-card rounded-2xl p-5 border border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-layer-group text-emerald-400 text-xl"></i>
+                <h4 class="font-bold text-emerald-300 text-sm">ဤကိလေသာများ၏ မူရင်း စေတသိက်များကို အသေးစိတ် ကြည့်ရန်</h4>
+                <p class="text-[11px] text-slate-400">Citta & Cetasika Guide ၏ စေတသိက် (၅၂) ပါး tab သို့ →</p>
+            </a>
+            <a href="paticcasamuppada.html" class="block glass-card rounded-2xl p-5 border border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-circle-notch text-violet-400 text-xl"></i>
+                <h4 class="font-bold text-violet-300 text-sm">တဏှာ/ဥပါဒါန်သည် ပဋိစ္စသမုပ္ပါဒ် စက်ဝန်း၏ အစိတ်အပိုင်းများ ဖြစ်ပုံ</h4>
+                <p class="text-[11px] text-slate-400">ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda) သို့ →</p>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <section class="glass-card rounded-2xl p-6 border border-rose-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-rose-400 text-2xl"></i>
+            <p class="text-xs text-slate-300 leading-relaxed">ဤခွဲခြားမှု (၈) မျိုးကို လေ့လာခြင်းဖြင့် ကိလေသာတို့သည် "စီးဆင်း၍ နစ်မြုပ်စေတတ်ခြင်း (အာသဝ/ဩဃ)"၊ "ယှက်နွယ်တွယ်တာစေတတ်ခြင်း (ယောဂ/ဂန္ထ)"၊ "ခိုင်မြဲစွာ ဆုပ်ကိုင်စေတတ်ခြင်း (ဥပါဒါန်)"၊ "ဖုံးအုပ်ကာဆီးတတ်ခြင်း (နီဝရဏ)"၊ "ဩဿန်ကျစွာ ကိန်းအောင်းနေတတ်ခြင်း (အနုသယ)"၊ "ချည်နှောင်ထားတတ်ခြင်း (သံယောဇဉ်)" ဟူသော ဆောင်ရွက်ပုံ (၈) မျိုးဖြင့် ဒုက္ခ ဖြစ်စေကြောင်း သိမြင်နိုင်သည်။
+            </p>
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+                <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
+            </a>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Kilesa-sangaha (Akusala-sangaha section of Samuccaya-sangaha) — Abhidhammattha Sangaha Ch.7 =====
+        const kilesaData = [
+            // Asava (4) — rose — "intoxicating outflows"
+            { id: 1, key: 'kamasava', pali: 'Kāmāsava', name: 'ကာမာသဝ', group: 'asava', icon: 'fa-fire',
+              desc: 'ကာမဂုဏ်အာရုံများကို တပ်မက်မှု — စိတ်ကို "ယိုစိမ့်" စေတတ်သော အာသဝ။',
+              example: 'အနှစ်ပေါင်းများစွာ ကာမဂုဏ်ကို လိုက်စားနေမိသော အလေ့အထ။' },
+            { id: 2, key: 'bhavasava', pali: 'Bhavāsava', name: 'ဘဝါသဝ', group: 'asava', icon: 'fa-infinity',
+              desc: 'ဘဝသစ် ဆက်လက် တည်ရှိလိုမှု (ဈာန်ဂုဏ်၊ ရုပ်/အရူပဘဝ) ကို တပ်မက်မှု။',
+              example: 'ဗြဟ္မာဘဝကဲ့သို့ ထာဝရ တည်ရှိနေလိုသော တပ်မက်မှု။' },
+            { id: 3, key: 'ditthasava', pali: 'Diṭṭhāsava', name: 'ဒိဋ္ဌါသဝ', group: 'asava', icon: 'fa-eye-slash',
+              desc: 'အယူမှား (မိစ္ဆာဒိဋ္ဌိ) ကို စွဲမြဲစွာ ကိုင်ထားမှု။',
+              example: '"ကံနှင့် ကံ၏အကျိုး မရှိ" ဟူသော အယူမှားကို စွဲမြဲစွာ ယုံကြည်ခြင်း။' },
+            { id: 4, key: 'avijjasava', pali: 'Avijjāsava', name: 'အဝိဇ္ဇာသဝ', group: 'asava', icon: 'fa-cloud',
+              desc: 'သစ္စာလေးပါးကို မသိခြင်း — အာသဝ (၄) ပါးအနက် အခြေခံဆုံး။',
+              example: 'ဒုက္ခ၏ အစစ်အမှန် သဘောကို လုံးဝ နားမလည်ခြင်း။' },
+
+            // Ogha (4) — orange — "floods that sweep beings away"
+            { id: 5, key: 'kamogha', pali: 'Kāmogha', name: 'ကာမောဃ', group: 'ogha', icon: 'fa-water',
+              desc: 'ကာမတပ်မက်မှုသည် သတ္တဝါများကို သံသရာရေထဲ "မျှော" စေတတ်သော ဩဃ (ရေလွှမ်းမိုးမှု)။',
+              example: 'ကာမဂုဏ် အလိုက် ဆွဲငင်ခံရသဖြင့် သံသရာမှ မလွတ်မြောက်နိုင်ခြင်း။' },
+            { id: 6, key: 'bhavogha', pali: 'Bhavogha', name: 'ဘဝေါဃ', group: 'ogha', icon: 'fa-water',
+              desc: 'ဘဝတွင် ဆက်လက် တည်ရှိလိုမှုသည် သတ္တဝါများကို "မျှော" စေတတ်သော ဩဃ။',
+              example: 'ဘဝသစ် ဆက်လက် တောင့်တနေမှုက သံသရာစက်ဝန်းကို ဆက်လည်စေခြင်း။' },
+            { id: 7, key: 'ditthogha', pali: 'Diṭṭhogha', name: 'ဒိဋ္ဌောဃ', group: 'ogha', icon: 'fa-water',
+              desc: 'အယူမှားသည် သတ္တဝါများကို လမ်းမှားဘက်သို့ "မျှော" စေတတ်သော ဩဃ။',
+              example: 'အယူမှားကို လိုက်နာကျင့်သုံးသဖြင့် အကျိုးရှိသော လမ်းကို လွဲချော်ခြင်း။' },
+            { id: 8, key: 'avijjogha', pali: 'Avijjogha', name: 'အဝိဇ္ဇောဃ', group: 'ogha', icon: 'fa-water',
+              desc: 'အသိဉာဏ် ကင်းမဲ့ခြင်းသည် သတ္တဝါများကို မှောင်ရေတွင်း၌ "မျှော" စေတတ်သော ဩဃ။',
+              example: 'အမှန်တရားကို လုံးဝ မမြင်နိုင်သဖြင့် ရေအတွင်းကဲ့သို့ ခေါင်းငုံနစ်မြုပ်နေခြင်း။' },
+
+            // Yoga (4) — amber — "yokes that bind to the round"
+            { id: 9, key: 'kamayoga', pali: 'Kāmayoga', name: 'ကာမယောဂ', group: 'yoga', icon: 'fa-link',
+              desc: 'ကာမတပ်မက်မှုသည် သတ္တဝါများကို ကာမဘဝနှင့် ချည်နှောင်ထားသော ယောက်ကန်။',
+              example: 'နွားကို ယောက်ကန်ဖြင့် လှည်းနှင့် ချည်နှောင်ထားသကဲ့သို့၊ ကာမတပ်မက်မှုက ကာမဘုံနှင့် ချည်နှောင်ထားခြင်း။' },
+            { id: 10, key: 'bhavayoga', pali: 'Bhavayoga', name: 'ဘဝယောဂ', group: 'yoga', icon: 'fa-link',
+              desc: 'ဘဝ ဆက်လက် တည်ရှိလိုမှုသည် သတ္တဝါများကို သံသရာနှင့် ချည်နှောင်ထားသော ယောက်ကန်။',
+              example: 'ဗြဟ္မာဘဝကို တောင့်တမှုက ထိုဘဝနှင့် ချည်နှောင်ထားခြင်း။' },
+            { id: 11, key: 'ditthiyoga', pali: 'Diṭṭhiyoga', name: 'ဒိဋ္ဌိယောဂ', group: 'yoga', icon: 'fa-link',
+              desc: 'အယူမှားသည် သတ္တဝါများကို မှားယွင်းသော အမြင်နှင့် ချည်နှောင်ထားသော ယောက်ကန်။',
+              example: 'အယူမှားကို စွဲမြဲစွာ ကိုင်စွဲနေသဖြင့် အမှန်တရားကို လက်လွှတ်ရဲခြင်း မရှိခြင်း။' },
+            { id: 12, key: 'avijjayoga', pali: 'Avijjāyoga', name: 'အဝိဇ္ဇာယောဂ', group: 'yoga', icon: 'fa-link',
+              desc: 'အသိဉာဏ် ကင်းမဲ့ခြင်းသည် သတ္တဝါများကို မသိမှုနှင့် ချည်နှောင်ထားသော ယောက်ကန်။',
+              example: 'သစ္စာလေးပါးကို မသိသဖြင့် ဆက်လက် ပတ်လမ်းလွဲနေခြင်း။' },
+
+            // Gantha (4) — lime — "knots that tie mind to body/existence"
+            { id: 13, key: 'abhijjhakayagantha', pali: 'Abhijjhā-kāyagantha', name: 'အဘိဇ္ဈာကာယဂန္ထ', group: 'gantha', icon: 'fa-knot',
+              desc: 'လောဘသည် နာမ်ကိုယ်ကို ရုပ်ကိုယ်နှင့် ဆက်စပ်နေစေသော အနှောင်အဖွဲ့။',
+              example: 'သူတစ်ပါး ပိုင်ဆိုင်မှုကို အလွန် လိုချင်တပ်မက်ခြင်း။' },
+            { id: 14, key: 'byapadakayagantha', pali: 'Byāpāda-kāyagantha', name: 'ဗျာပါဒကာယဂန္ထ', group: 'gantha', icon: 'fa-knot',
+              desc: 'ဒေါသသည် နာမ်ကိုယ်ကို ရုပ်ကိုယ်နှင့် ဆက်စပ်နေစေသော အနှောင်အဖွဲ့။',
+              example: 'သူတစ်ပါးအား မုန်းတီး ဖျက်ဆီးလိုသော စိတ်။' },
+            { id: 15, key: 'silabbataparamasakayagantha', pali: 'Sīlabbataparāmāsa-kāyagantha', name: 'သီလဗ္ဗတပရာမာသကာယဂန္ထ', group: 'gantha', icon: 'fa-knot',
+              desc: 'အကျိုးမရှိသော အလေ့အကျင့်/ထုံးတမ်းများကို "ဤသည်ကသာ စင်ကြယ်ရာလမ်း" ဟု စွဲလမ်းမှု။',
+              example: 'တိရစ္ဆာန်ကဲ့သို့ ကျင့်ကြံခြင်းက ကောင်းရာသို့ ရောက်စေမည်ဟု အယူမှားစွာ စွဲလမ်းခြင်း။' },
+            { id: 16, key: 'idamsaccabhinivesakayagantha', pali: 'Idaṃsaccābhinivesa-kāyagantha', name: 'ဣဒံသစ္စာဘိနိဝေသကာယဂန္ထ', group: 'gantha', icon: 'fa-knot',
+              desc: '"ငါ့အမြင်သာ မှန်၊ ကျန်သူများ အမှား" ဟု ခိုင်မြဲစွာ စွဲလမ်းမှု။',
+              example: 'မိမိ၏ အယူအဆကိုသာ တစ်ခုတည်း မှန်ကန်သည်ဟု တင်းကျပ်စွာ ခံယူထားခြင်း။' },
+
+            // Upadana (4) — emerald — "clinging" (also nidana #9 in Paticcasamuppada)
+            { id: 17, key: 'kamupadana', pali: 'Kāmupādāna', name: 'ကာမုပါဒါန်', group: 'upadana', icon: 'fa-hand-fist',
+              desc: 'ကာမဂုဏ်အာရုံများကို ခိုင်မြဲစွာ ဆုပ်ကိုင် တွယ်တာမှု — တဏှာ ပြင်းထန်လာသည့် အဆင့်။',
+              example: '"ငါ့ဥစ္စာ ဖြစ်ရမည်" ဟု ခိုင်မြဲစွာ ဆုပ်ကိုင် လိုချင်မှု။' },
+            { id: 18, key: 'ditthupadana', pali: 'Diṭṭhupādāna', name: 'ဒိဋ္ဌုပါဒါန်', group: 'upadana', icon: 'fa-hand-fist',
+              desc: 'အယူမှား (သက္ကာယဒိဋ္ဌိ/သီလဗ္ဗတပရာမာသ/ဣဒံသစ္စာဘိနိဝေသ မှလွဲ၍ ကျန်အယူမှားများ) ကို ခိုင်မြဲစွာ ဆုပ်ကိုင်မှု။',
+              example: 'ကမ္ဘာသည် ထာဝရ တည်တံ့သည် (သို့) ပျက်စီးသွားမည် ဟူသော အလွန်အမင်း အယူများကို စွဲစွဲမြဲမြဲ ကိုင်ထားခြင်း။' },
+            { id: 19, key: 'silabbatupadana', pali: 'Sīlabbatupādāna', name: 'သီလဗ္ဗတုပါဒါန်', group: 'upadana', icon: 'fa-hand-fist',
+              desc: 'အကျိုးမရှိသော ဘာသာရေး အလေ့အကျင့်များကို ခိုင်မြဲစွာ ဆုပ်ကိုင်မှု (ဂန္ထထက် ပို၍ ပြင်းထန်သော အဆင့်)။',
+              example: 'တိရစ္ဆာန်ကဲ့သို့ ကျင့်ကြံခြင်းသာ လွတ်မြောက်ရာလမ်း ဟု ခိုင်ခိုင်မြဲမြဲ ယုံကြည် ကျင့်သုံးနေခြင်း။' },
+            { id: 20, key: 'attavadupadana', pali: 'Attavādupādāna', name: 'အတ္တဝါဒုပါဒါန်', group: 'upadana', icon: 'fa-hand-fist',
+              desc: '"ငါ" ဟူသော အနှစ်သာရ ခိုင်မြဲစွာ ရှိသည် ဟူသော သက္ကာယဒိဋ္ဌိကို ခိုင်မြဲစွာ ဆုပ်ကိုင်မှု။',
+              example: 'ခန္ဓာငါးပါးအနက် တစ်ပါးပါးကို "ငါ" (သို့) "ငါ့ဝိညာဉ်" ဟု ခိုင်မြဲစွာ ယူဆထားခြင်း။' },
+
+            // Nivarana (6) — cyan — "hindrances that block wholesome states"
+            { id: 21, key: 'kamacchanda', pali: 'Kāmacchanda', name: 'ကာမစ္ဆန္ဒ', group: 'nivarana', icon: 'fa-eye-low-vision',
+              desc: 'ကာမဂုဏ်အာရုံကို လိုလားမှုသည် သမာဓိ ဖြစ်ပေါ်ခြင်းကို ဟန့်တားသော နီဝရဏ။',
+              example: 'ဘာဝနာအားထုတ်နေစဉ် ကာမဂုဏ်ဆိုင်ရာ အတွေးများ ဝင်ရောက် နှောင့်ယှက်ခြင်း။' },
+            { id: 22, key: 'byapada', pali: 'Byāpāda', name: 'ဗျာပါဒ', group: 'nivarana', icon: 'fa-eye-low-vision',
+              desc: 'ဒေါသ/အမျက်ဒေါသသည် သမာဓိ ဖြစ်ပေါ်ခြင်းကို ဟန့်တားသော နီဝရဏ။',
+              example: 'ဘာဝနာအားထုတ်နေစဉ် စိတ်ဆိုးမှု၊ ခံစားရသည့် မကျေနပ်မှု ပေါ်လာခြင်း။' },
+            { id: 23, key: 'thinamiddha', pali: 'Thīnamiddha', name: 'ထိနမိဒ္ဓ', group: 'nivarana', icon: 'fa-eye-low-vision',
+              desc: 'စိတ်ညောင်းညာမှု (ထိန) နှင့် စေတသိက်ညောင်းညာမှု (မိဒ္ဓ) — အိပ်ငိုက်ချင် ပျင်းရိမှု။',
+              example: 'ဘာဝနာအားထုတ်နေစဉ် အိပ်ငိုက်လာခြင်း၊ စိတ်ဓာတ် ညောင်းညာလာခြင်း။' },
+            { id: 24, key: 'uddhaccakukkucca', pali: 'Uddhaccakukkucca', name: 'ဥဒ္ဓစ္စကုက္ကုစ္စ', group: 'nivarana', icon: 'fa-eye-low-vision',
+              desc: 'စိတ်ပျံ့လွင့်မှု (ဥဒ္ဓစ္စ) နှင့် ကျူးလွန်ခဲ့သော အမှားအတွက် နောင်တရမှု (ကုက္ကုစ္စ)။',
+              example: 'ဘာဝနာအားထုတ်နေစဉ် အတိတ်က ပြုမိသော အမှားများကို ပြန်တွေးမိ စိတ်မငြိမ်ဖြစ်ခြင်း။' },
+            { id: 25, key: 'vicikiccha_niv', pali: 'Vicikicchā', name: 'ဝိစိကိစ္ဆာ', group: 'nivarana', icon: 'fa-eye-low-vision',
+              desc: 'ရတနာသုံးပါး၊ ကံနှင့် ကံ၏အကျိုး၌ ယုံမှားသံသယ ဖြစ်ခြင်း။',
+              example: '"ဘာဝနာအားထုတ်ခြင်းက တကယ် အကျိုးရှိမည်လား" ဟု ယုံမှားခြင်း။' },
+            { id: 26, key: 'avijja_niv', pali: 'Avijjā', name: 'အဝိဇ္ဇာ', group: 'nivarana', icon: 'fa-eye-low-vision',
+              desc: 'သစ္စာလေးပါးကို မသိခြင်းသည် အမှန်တရား သိမြင်ခြင်းကို ဟန့်တားသော နီဝရဏ။',
+              example: 'ဒုက္ခ၏ အစစ်အမှန် သဘောကို လုံးဝ နားမလည်ခြင်း။' },
+
+            // Anusaya (7) — indigo — "latent tendencies dormant in the mind-stream"
+            { id: 27, key: 'kamaraganusaya', pali: 'Kāmarāgānusaya', name: 'ကာမရာဂါနုသယ', group: 'anusaya', icon: 'fa-seedling',
+              desc: 'ကာမတပ်မက်မှု၏ ကိန်းအောင်းလျက် ရှိနေသော နောက်ခံ သဘောတရား — အခွင့်ကောင်း ရလျှင် ချက်ချင်း ပေါ်လွင်လာနိုင်သည်။',
+              example: 'ရေရှည် ကာမဂုဏ်ကို မတွေ့ကြုံသေးသော်လည်း၊ ရုတ်တရက် တွေ့လျှင် လောဘ ချက်ချင်း ပေါ်လာနိုင်ခြင်း။' },
+            { id: 28, key: 'bhavaraganusaya', pali: 'Bhavarāgānusaya', name: 'ဘဝရာဂါနုသယ', group: 'anusaya', icon: 'fa-seedling',
+              desc: 'ဘဝတွင် ဆက်လက် တည်ရှိလိုမှု၏ ကိန်းအောင်းလျက် ရှိနေသော နောက်ခံ သဘောတရား။',
+              example: 'ယခု အသက်ရှင်နေချိန်တွင် သိသိသာသာ မပေါ်သော်လည်း၊ သေခါနီးတွင် ပေါ်လွင်လာနိုင်ခြင်း။' },
+            { id: 29, key: 'patighanusaya', pali: 'Paṭighānusaya', name: 'ပဋိဃာနုသယ', group: 'anusaya', icon: 'fa-seedling',
+              desc: 'ဒေါသ၏ ကိန်းအောင်းလျက် ရှိနေသော နောက်ခံ သဘောတရား။',
+              example: 'ပုံမှန်အခါ စိတ်ငြိမ်နေသော်လည်း၊ လှုံ့ဆော်မှု ရလျှင် ချက်ချင်း ဒေါသ ပေါ်လွင်လာနိုင်ခြင်း။' },
+            { id: 30, key: 'mananusaya', pali: 'Mānānusaya', name: 'မာနာနုသယ', group: 'anusaya', icon: 'fa-seedling',
+              desc: '"ငါ" ဟု ဂုဏ်ယူ ထောင်လွှားမှု၏ ကိန်းအောင်းလျက် ရှိနေသော နောက်ခံ သဘောတရား။',
+              example: 'ယှဉ်ပြိုင်ရသော အခြေအနေတွင် "ငါက ပိုကောင်း/ညံ့" ဟူသော နှိုင်းယှဉ်စိတ် ချက်ချင်း ပေါ်လာခြင်း။' },
+            { id: 31, key: 'ditthanusaya', pali: 'Diṭṭhānusaya', name: 'ဒိဋ္ဌာနုသယ', group: 'anusaya', icon: 'fa-seedling',
+              desc: 'အယူမှား၏ ကိန်းအောင်းလျက် ရှိနေသော နောက်ခံ သဘောတရား။',
+              example: 'သင်ကြားခံရလျှင် အယူမှား ချက်ချင်း ပြန်ပေါ်လာနိုင်ခြင်း။' },
+            { id: 32, key: 'vicikicchanusaya', pali: 'Vicikicchānusaya', name: 'ဝိစိကိစ္ဆာနုသယ', group: 'anusaya', icon: 'fa-seedling',
+              desc: 'ယုံမှားသံသယ၏ ကိန်းအောင်းလျက် ရှိနေသော နောက်ခံ သဘောတရား။',
+              example: 'ယုံကြည်မှု ရှိသည်ဟု ထင်ရသော်လည်း၊ စမ်းသပ်ခံရလျှင် သံသယ ပြန်ပေါ်လာနိုင်ခြင်း။' },
+            { id: 33, key: 'avijjanusaya', pali: 'Avijjānusaya', name: 'အဝိဇ္ဇာနုသယ', group: 'anusaya', icon: 'fa-seedling',
+              desc: 'အသိဉာဏ် ကင်းမဲ့ခြင်း၏ ကိန်းအောင်းလျက် ရှိနေသော နောက်ခံ သဘောတရား — အနုသယ (၇) ပါးအနက် အခြေခံဆုံး။',
+              example: 'ဤအနုသယ (၇) ပါးလုံးကို မဂ်ဉာဏ်အဆင့်အလိုက် တစ်ခုစီ အပြီးအပိုင် ပယ်ဖျက်နိုင်မှသာ ရဟန္တာ ဖြစ်နိုင်သည်။' },
+
+            // Samyojana (10, Abhidhamma method) — violet — "fetters that bind to samsara"
+            { id: 34, key: 'kamaraga_sam', pali: 'Kāmarāga', name: 'ကာမရာဂ (သံယောဇဉ်)', group: 'samyojana', icon: 'fa-chain',
+              desc: 'ကာမဘုံနှင့် ချည်နှောင်ထားသော သံယောဇဉ် — အနာဂါမီအဆင့်တွင် အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'ကာမဂုဏ်ကို လုံးဝ တပ်မက်ခြင်း မရှိတော့သည့် အနာဂါမီပုဂ္ဂိုလ်။' },
+            { id: 35, key: 'ruparaga_sam', pali: 'Rūparāga', name: 'ရူပရာဂ', group: 'samyojana', icon: 'fa-chain',
+              desc: 'ရူပဈာန်/ရူပဘဝကို တပ်မက်မှု — ရဟန္တာအဆင့်တွင်သာ အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'ရူပဈာန်ဂုဏ်ကို တောင့်တနေသေးသော အနာဂါမီပုဂ္ဂိုလ်။' },
+            { id: 36, key: 'aruparaga_sam', pali: 'Arūparāga', name: 'အရူပရာဂ', group: 'samyojana', icon: 'fa-chain',
+              desc: 'အရူပဈာန်/အရူပဘဝကို တပ်မက်မှု — ရဟန္တာအဆင့်တွင်သာ အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'အရူပဈာန်ဂုဏ်ကို တောင့်တနေသေးသော အနာဂါမီပုဂ္ဂိုလ်။' },
+            { id: 37, key: 'patigha_sam', pali: 'Paṭigha', name: 'ပဋိဃ', group: 'samyojana', icon: 'fa-chain',
+              desc: 'ဒေါသ (မကျေမနပ် စိတ်ထိခိုက်မှု) — အနာဂါမီအဆင့်တွင် အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'မကျေနပ်မှု အနည်းငယ်မျှပင် လုံးဝ မဖြစ်တော့သော အနာဂါမီပုဂ္ဂိုလ်။' },
+            { id: 38, key: 'mana_sam', pali: 'Māna', name: 'မာန', group: 'samyojana', icon: 'fa-chain',
+              desc: 'ငါ့ကိုယ်ကို နှိုင်းယှဉ် ဂုဏ်ယူမှု — ရဟန္တာအဆင့်တွင်သာ အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'သိမ်မွေ့သော နှိုင်းယှဉ်စိတ် ကျန်ရှိနေသေးသော အနာဂါမီပုဂ္ဂိုလ်။' },
+            { id: 39, key: 'ditthi_sam', pali: 'Diṭṭhi', name: 'ဒိဋ္ဌိ', group: 'samyojana', icon: 'fa-chain',
+              desc: 'အယူမှား (သက္ကာယဒိဋ္ဌိအပါအဝင်) — သောတာပန်အဆင့်တွင် အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: '"ခန္ဓာသည် ငါ ဖြစ်သည်" ဟူသော အယူမှား ပြတ်တောက်သွားသော သောတာပန်ပုဂ္ဂိုလ်။' },
+            { id: 40, key: 'silabbataparamasa_sam', pali: 'Sīlabbataparāmāsa', name: 'သီလဗ္ဗတပရာမာသ', group: 'samyojana', icon: 'fa-chain',
+              desc: 'အကျိုးမရှိသော အလေ့အကျင့်ကို စွဲလမ်းမှု — သောတာပန်အဆင့်တွင် အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'တိရစ္ဆာန်ကျင့်စဉ်များကို လွတ်မြောက်ရာလမ်းဟု လုံးဝ မထင်မှားတော့သော သောတာပန်ပုဂ္ဂိုလ်။' },
+            { id: 41, key: 'vicikiccha_sam', pali: 'Vicikicchā', name: 'ဝိစိကိစ္ဆာ (သံယောဇဉ်)', group: 'samyojana', icon: 'fa-chain',
+              desc: 'ရတနာသုံးပါးအပေါ် ယုံမှားသံသယ — သောတာပန်အဆင့်တွင် အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'ရတနာသုံးပါးအပေါ် တည်ကြည်စွာ ယုံကြည်ပြီး၊ သံသယ လုံးဝ ကင်းစင်သွားသော သောတာပန်ပုဂ္ဂိုလ်။' },
+            { id: 42, key: 'uddhacca_sam', pali: 'Uddhacca', name: 'ဥဒ္ဓစ္စ', group: 'samyojana', icon: 'fa-chain',
+              desc: 'စိတ်ပျံ့လွင့်မှု — ရဟန္တာအဆင့်တွင်သာ အပြီးအပိုင် ပြတ်တောက်သည် (အနုသင်္ခာရဟန္တာအထိ ကျန်ရှိနိုင်)။',
+              example: 'အလွန်သိမ်မွေ့သော စိတ်လှုပ်ရှားမှု ကျန်ရှိနေသေးသော အရိယာပုဂ္ဂိုလ်။' },
+            { id: 43, key: 'avijja_sam', pali: 'Avijjā', name: 'အဝိဇ္ဇာ (သံယောဇဉ်)', group: 'samyojana', icon: 'fa-chain',
+              desc: 'အသိဉာဏ် ကင်းမဲ့ခြင်း — ရဟန္တာအဆင့်တွင်သာ အပြီးအပိုင် ပြတ်တောက်သည်။',
+              example: 'သစ္စာလေးပါးကို အပြည့်အဝ ထိုးထွင်း သိမြင်ပြီးဖြစ်သော ရဟန္တာပုဂ္ဂိုလ်။' }
+        ];
+
+        const groupInfo = {
+            asava:     { label: 'အာသဝ', sub: 'Āsava — ယိုစီးနစ်မြုပ်စေမှု', color: 'text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/10' },
+            ogha:      { label: 'ဩဃ', sub: 'Ogha — ရေလွှမ်းမိုးမှု', color: 'text-orange-300', border: 'border-orange-500', bg: 'bg-orange-500/10' },
+            yoga:      { label: 'ယောဂ', sub: 'Yoga — ယောက်ကန်ချည်နှောင်မှု', color: 'text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
+            gantha:    { label: 'ဂန္ထ', sub: 'Gantha — နာမ်/ရုပ် အနှောင်အဖွဲ့', color: 'text-lime-300', border: 'border-lime-500', bg: 'bg-lime-500/10' },
+            upadana:   { label: 'ဥပါဒါန်', sub: 'Upādāna — ခိုင်မြဲစွာ ဆုပ်ကိုင်မှု', color: 'text-emerald-300', border: 'border-emerald-500', bg: 'bg-emerald-500/10' },
+            nivarana:  { label: 'နီဝရဏ', sub: 'Nīvaraṇa — ကုသိုလ်ကို ဟန့်တားမှု', color: 'text-cyan-300', border: 'border-cyan-500', bg: 'bg-cyan-500/10' },
+            anusaya:   { label: 'အနုသယ', sub: 'Anusaya — ကိန်းအောင်းနေသော နောက်ခံ', color: 'text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' },
+            samyojana: { label: 'သံယောဇဉ်', sub: 'Saṃyojana — သံသရာနှင့် ချည်နှောင်မှု', color: 'text-violet-300', border: 'border-violet-500', bg: 'bg-violet-500/10' }
+        };
+
+        function mm(n) {
+            const map = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
+            return String(n).replace(/[0-9]/g, d => map[d]);
+        }
+
+        function renderGroups() {
+            const container = document.getElementById('kilesa-groups');
+            const order = ['asava', 'ogha', 'yoga', 'gantha', 'upadana', 'nivarana', 'anusaya', 'samyojana'];
+            container.innerHTML = order.map(gk => {
+                const info = groupInfo[gk];
+                const items = kilesaData.filter(k => k.group === gk);
+                return `
+                    <details id="group-${gk}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} scroll-mt-24" open>
+                        <summary class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>
+                                <p class="text-xs text-slate-400">${info.sub}</p>
+                            </div>
+                        </summary>
+                        <div class="flex flex-wrap gap-1.5 mt-3">
+                            ${items.map(k => `
+                                <button onclick="openKilesaModal('${k.key}')" class="kilesa-card text-xs font-semibold px-3 py-1.5 rounded-full border transition ${info.bg} ${info.border}/30 ${info.color} hover:brightness-125">
+                                    <i class="fa-solid ${k.icon} mr-1 text-[10px]"></i>${k.name}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </details>
+                `;
+            }).join('');
+        }
+
+        function jumpToGroup(groupKey) {
+            const el = document.getElementById('group-' + groupKey);
+            if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function openKilesaModal(key) {
+            const k = kilesaData.find(x => x.key === key);
+            if (!k) return;
+            const info = groupInfo[k.group];
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${info.color}">
+                        <i class="fa-solid ${k.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label}</span>
+                        <h3 class="text-xl font-bold ${info.color}">${k.name}</h3>
+                        <p class="text-[11px] text-slate-500 font-mono mt-1">${k.pali}</p>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-200 mt-1 leading-relaxed">${k.desc}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800">
+                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <p class="text-slate-300 mt-1 leading-relaxed">${k.example}</p>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGroups();
+            const openKey = new URLSearchParams(location.search).get('open');
+            if (openKey && kilesaData.some(k => k.key === openKey)) {
+                setTimeout(() => openKilesaModal(openKey), 80);
+            }
+        });
+    </script>
+</body>
+</html>

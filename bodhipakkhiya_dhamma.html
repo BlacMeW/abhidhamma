@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဗောဓိပက္ခိယဓမ္မာ — အသိတရားဘက်သို့ ယိုစီးစေသော တရား (၃၇) ပါးကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <title>ဗောဓိပက္ခိယဓမ္မာ — (၃၇) ပါး (Bodhipakkhiya-dhammā)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        html { scroll-behavior: smooth; }
+        * { -webkit-tap-highlight-color: transparent; }
+        button { touch-action: manipulation; }
+        button:active { transform: scale(0.97); }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(8px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in { animation: fade-in 0.2s ease-out; }
+        .bp-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+        .bp-card:hover { transform: translateY(-2px); }
+        :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16">
+
+    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-amber-300">ဗောဓိပက္ခိယဓမ္မာ <span class="text-slate-500 font-normal text-sm">(Bodhipakkhiya-dhammā)</span></h1>
+                    <p class="text-[11px] text-slate-400">အသိတရားဘက်သို့ ယိုစီးစေသော တရား (၃၇) ပါး</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
+                </a>
+                <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Citta & Cetasika Guide သို့</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
+
+        <!-- Intro -->
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — ဗောဓိပက္ခိယအပိုင်း)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">"ဗောဓိ" (ဉာဏ်အလင်း) ဘက်သို့ ဦးတည်စေသော တရား (၃၇) ပါး</h2>
+            <p class="text-slate-400 text-sm">ဗောဓိပက္ခိယဓမ္မာသည် မဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိရန် တိုက်ရိုက် ကူညီပံ့ပိုးပေးသော တရား (၃၇) ပါး ဖြစ်သည်။ အုပ်စု (၇) စု ခွဲထားသော်လည်း၊ အခြေခံ စေတသိက် (၁၄) ပါးသာ ထပ်ခါထပ်ခါ ပြန်လည် ပေါင်းစပ် အသုံးပြုထားခြင်း ဖြစ်ကြောင်း — အောက်ပါ အတည်ပြုကတ်ဇယားတွင် တွေ့နိုင်သည်။</p>
+        </div>
+
+        <!-- Total verification bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2.5 text-xs md:text-sm border border-slate-700">
+            <button onclick="jumpToGroup('satipatthana')" class="px-2.5 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">သတိပဋ္ဌာန် (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('sammappadhana')" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">သမ္မပ္ပဓာန် (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('iddhipada')" class="px-2.5 py-1.5 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition">ဣဒ္ဓိပါဒ် (၄)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('indriya')" class="px-2.5 py-1.5 rounded-lg bg-violet-500/15 text-violet-300 border border-violet-500/30 hover:bg-violet-500/25 hover:border-violet-400 transition">ဣန္ဒြေ (၅)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('bala')" class="px-2.5 py-1.5 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ဗလ (၅)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('bojjhanga')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ဗောဇ္ဈင် (၇)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('magganga')" class="px-2.5 py-1.5 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/25 hover:border-indigo-400 transition">မဂ္ဂင် (၈)</button>
+            <span class="text-slate-600">=</span>
+            <button onclick="jumpToGroup('satipatthana')" class="px-2.5 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">(၃၇) ပါး</button>
+        </div>
+
+        <!-- 7 groups -->
+        <div id="bp-groups" class="space-y-6"></div>
+
+        <!-- Underlying 14 unique dhamma cross-check -->
+        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
+            <h3 class="font-bold text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-star"></i> (၃၇) ပါးအောက်က အခြေခံ စေတသိက် (၁၄) ပါးသာ</h3>
+            <p class="text-xs text-slate-300">ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါးသည် နာမည်အသစ် (၃၇) မျိုး မဟုတ်ဘဲ၊ အောက်ပါ စေတသိက် (၁၄) ပါးသာ အုပ်စု (၇) စု အတွင်း ထပ်ခါထပ်ခါ ပေါင်းစပ် ပါဝင်နေခြင်း ဖြစ်သည် — ဥပမာ "ဝီရိယ" တစ်ပါးတည်းက (၉) နေရာတွင် ထပ်ခါထပ်ခါ ပါဝင်နေသည်:</p>
+            <div id="unique-dhamma-chips" class="flex flex-wrap gap-1.5"></div>
+            <p class="text-[11px] text-slate-500 pt-1">* ဤအချက်ကပင် ဗောဓိပက္ခိယဓမ္မာသည် "အသစ်ရှာစရာ မလိုဘဲ၊ ရှိပြီးသား စေတသိက်များကို မှန်ကန်သော အချိုးအစားဖြင့် ဖွံ့ဖြိုးအားထုတ်ရုံမျှသာ" ဖြစ်ကြောင်း ညွှန်ပြသည်။</p>
+        </div>
+
+        <!-- Cross-links -->
+        <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <a href="citta_cetasikas_visual_guide.html#cetasika" class="block glass-card rounded-2xl p-5 border border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-layer-group text-emerald-400 text-xl"></i>
+                <h4 class="font-bold text-emerald-300 text-sm">အခြေခံ စေတသိက် (၁၄) ပါးအားလုံးကို အသေးစိတ် ကြည့်ရန်</h4>
+                <p class="text-[11px] text-slate-400">Citta & Cetasika Guide ၏ စေတသိက် (၅၂) ပါး tab သို့ →</p>
+            </a>
+            <a href="paccaya_sangaha.html?open=magga" class="block glass-card rounded-2xl p-5 border border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-route text-violet-400 text-xl"></i>
+                <h4 class="font-bold text-violet-300 text-sm">မဂ္ဂင် (၈) ပါးသည် ပဋ္ဌာန်း၏ မဂ္ဂပစ္စည်းနှင့် ဆက်စပ်ပုံ</h4>
+                <p class="text-[11px] text-slate-400">ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha) သို့ →</p>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <section class="glass-card rounded-2xl p-6 border border-amber-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-amber-400 text-2xl"></i>
+            <p class="text-xs text-slate-300 leading-relaxed">ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါးသည် ဘာဝနာအားထုတ်သူများအတွက် လက်တွေ့ လမ်းညွှန်ချက် ဖြစ်ပြီး၊ သတိ၊ ဝီရိယ၊ ပညာ တို့ကို ဗဟိုပြု၍ မဂ်ဖိုလ်ဆီသို့ တစ်ဆင့်ချင်း ရောက်ရှိစေသော အင်္ဂါရပ်များ ပေါင်းစည်းမှု ဖြစ်သည်။
+            </p>
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+                <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
+            </a>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Bodhipakkhiya-dhamma (37 Factors of Enlightenment) — Abhidhammattha Sangaha Ch.7 =====
+        const bpData = [
+            // Satipatthana (4) — sky — all = sati applied to 4 domains
+            { id: 1, key: 'kayanupassana', pali: 'Kāyānupassanā-satipaṭṭhāna', name: 'ကာယာနုပဿနာ', group: 'satipatthana', dhamma: 'sati', icon: 'fa-person',
+              desc: 'ကိုယ်ခန္ဓာ (အသက်ရှူသွင်း/ထုတ်၊ ရုပ်၏ ဣရိယာပုတ်) ကို အနိစ္စ/ဒုက္ခ/အနတ္တ အဖြစ် သတိထား ကပ်၍ ရှုမှတ်ခြင်း — သတိစေတသိက်ကို ကိုယ်ခန္ဓာအပေါ် အသုံးချခြင်း။',
+              example: 'အသက်ရှူဝင်/ထွက်ကို စိတ်ချမှတ်ကြည့်ခြင်း (အာနာပါနဿတိ)။' },
+            { id: 2, key: 'vedananupassana', pali: 'Vedanānupassanā-satipaṭṭhāna', name: 'ဝေဒနာနုပဿနာ', group: 'satipatthana', dhamma: 'sati', icon: 'fa-heart-pulse',
+              desc: 'ခံစားမှု (သုခ/ဒုက္ခ/ဥပေက္ခာ) ကို အနိစ္စ/ဒုက္ခ/အနတ္တ အဖြစ် သတိထား ကပ်၍ ရှုမှတ်ခြင်း။',
+              example: 'ခန္ဓာကိုယ် နာကျင်ချိန်၌ "နာကျင်မှု ဖြစ်ပေါ်နေသည်" ဟု ခံစားချက်ကိုသာ ကပ်၍ ရှုမှတ်ခြင်း (ဒေါသ မထည့်ဘဲ)။' },
+            { id: 3, key: 'cittanupassana', pali: 'Cittānupassanā-satipaṭṭhāna', name: 'စိတ္တာနုပဿနာ', group: 'satipatthana', dhamma: 'sati', icon: 'fa-brain',
+              desc: 'စိတ်၏ အခြေအနေ (ရာဂနှင့်ယှဉ်/မယှဉ်၊ ဒေါသနှင့်ယှဉ်/မယှဉ် စသည်) ကို သတိထား ကပ်၍ ရှုမှတ်ခြင်း။',
+              example: '"ယခု စိတ်ထဲ လောဘ ဖြစ်နေသည်" ဟု စိတ်၏ အခြေအနေကို ရိပ်စား မိစွာ သတိထားနိုင်ခြင်း။' },
+            { id: 4, key: 'dhammanupassana', pali: 'Dhammānupassanā-satipaṭṭhāna', name: 'ဓမ္မာနုပဿနာ', group: 'satipatthana', dhamma: 'sati', icon: 'fa-scroll',
+              desc: 'နီဝရဏ၊ ခန္ဓာ၊ အာယတန၊ ဗောဇ္ဈင်၊ သစ္စာ စသော တရားအစုအမျိုးမျိုးကို သတိထား ကပ်၍ ရှုမှတ်ခြင်း။',
+              example: 'ခန္ဓာငါးပါး ဖြစ်ပျက်ပုံကို "ဤသည် ရုပ်၊ ဤသည် ဝေဒနာ..." ဟု တရားအမျိုးအစားအလိုက် ခွဲခြား ရှုမှတ်ခြင်း။' },
+
+            // Sammappadhana (4) — emerald — all = viriya applied 4 ways
+            { id: 5, key: 'samvarappadhana', pali: 'Saṃvarappadhāna', name: 'သံဝရပ္ပဓာန်', group: 'sammappadhana', dhamma: 'viriya', icon: 'fa-shield',
+              desc: 'မဖြစ်ပေါ်သေးသော အကုသိုလ်ကို မဖြစ်ပေါ်စေရန် တားဆီး ကာကွယ်သော အားထုတ်မှု — ဣန္ဒြေသံဝရ (ဣန္ဒြေထိန်းသိမ်းခြင်း) အားထုတ်မှု ဖြစ်သည်။',
+              example: 'မျက်စိဖြင့် နှစ်သက်ဖွယ်ကို မြင်ရသောအခါ၊ လောဘ မဖြစ်ပေါ်အောင် သတိဖြင့် ထိန်းချုပ်ခြင်း။' },
+            { id: 6, key: 'pahanappadhana', pali: 'Pahānappadhāna', name: 'ပဟာနပ္ပဓာန်', group: 'sammappadhana', dhamma: 'viriya', icon: 'fa-trash',
+              desc: 'ဖြစ်ပေါ်ပြီးသား အကုသိုလ်ကို ပယ်ဖျက်ရန် အားထုတ်မှု။',
+              example: 'ဒေါသ ဖြစ်ပေါ်လာသည်နှင့်တစ်ပြိုင်နက် ချက်ချင်း သတိဖြင့် ရိပ်စား၍ ပယ်ဖျောက်ရန် ကြိုးပမ်းခြင်း။' },
+            { id: 7, key: 'bhavanappadhana', pali: 'Bhāvanāppadhāna', name: 'ဘာဝနာပ္ပဓာန်', group: 'sammappadhana', dhamma: 'viriya', icon: 'fa-spa',
+              desc: 'မဖြစ်ပေါ်သေးသော ကုသိုလ်ကို ဖြစ်ပေါ်စေရန် ပွားများ အားထုတ်မှု။',
+              example: 'ယခင်က တစ်ခါမျှ မလေ့ကျင့်ဖူးသေးသော ဘာဝနာအမျိုးအစားကို အသစ် စတင် လေ့ကျင့်ခြင်း။' },
+            { id: 8, key: 'anurakkhanappadhana', pali: 'Anurakkhaṇappadhāna', name: 'အနုရက္ခဏပ္ပဓာန်', group: 'sammappadhana', dhamma: 'viriya', icon: 'fa-hands-holding-circle',
+              desc: 'ဖြစ်ပေါ်ပြီးသား ကုသိုလ်ကို ဆက်လက် တိုးတက်စေရန် ထိန်းသိမ်း အားထုတ်မှု။',
+              example: 'ရရှိပြီးသား သမာဓိအခြေအနေကို မပျောက်စေရန် ဆက်လက် ပြုစုပျိုးထောင်ခြင်း။' },
+
+            // Iddhipada (4) — cyan — 4 different dhammas
+            { id: 9, key: 'chandiddhipada', pali: 'Chandiddhipāda', name: 'ဆန္ဒိဒ္ဓိပါဒ်', group: 'iddhipada', dhamma: 'chanda', icon: 'fa-hand-sparkles',
+              desc: 'ပြုလုပ်လိုသော ဆန္ဒ (လိုလားမှု) ကို အောင်မြင်မှု၏ အခြေခံ အုတ်မြစ်အဖြစ် အသုံးချခြင်း။',
+              example: 'တရားထိုင်လိုသော စိတ်ဆန္ဒ ပြင်းထန်စွာ ရှိခြင်းက ဘာဝနာ တိုးတက်ရန် အခြေခံ ဖြစ်သည်။' },
+            { id: 10, key: 'viriyiddhipada', pali: 'Viriyiddhipāda', name: 'ဝီရိယိဒ္ဓိပါဒ်', group: 'iddhipada', dhamma: 'viriya', icon: 'fa-fire-flame-curved',
+              desc: 'ကြိုးစားအားထုတ်မှု (ဝီရိယ) ကို အောင်မြင်မှု၏ အခြေခံ အုတ်မြစ်အဖြစ် အသုံးချခြင်း။',
+              example: 'အနှောင့်အယှက်များ ကြားမှပင် စိုက်ကြံ့ ကြိုးစားနေခြင်း။' },
+            { id: 11, key: 'cittiddhipada', pali: 'Cittiddhipāda', name: 'စိတ္တိဒ္ဓိပါဒ်', group: 'iddhipada', dhamma: 'citta', icon: 'fa-brain',
+              desc: 'စိတ်ကို တစ်စိတ်တည်း စူးစိုက်ထားနိုင်မှု ကိုယ်တိုင်ကို အောင်မြင်မှု၏ အခြေခံ အုတ်မြစ်အဖြစ် အသုံးချခြင်း။',
+              example: 'အာရုံတစ်ခုတည်းအပေါ် စိတ်ကို အပြည့်အဝ စွဲမြဲစွာ ထားနိုင်ခြင်း။' },
+            { id: 12, key: 'vimamsiddhipada', pali: 'Vīmaṃsiddhipāda', name: 'ဝီမံသိဒ္ဓိပါဒ်', group: 'iddhipada', dhamma: 'panna', icon: 'fa-magnifying-glass',
+              desc: 'စူးစမ်းဆင်ခြင် သုံးသပ်တတ်သော ပညာကို အောင်မြင်မှု၏ အခြေခံ အုတ်မြစ်အဖြစ် အသုံးချခြင်း။',
+              example: 'ဘယ်နည်းလမ်းက ပိုအဆင်ပြေသည်ကို ပညာဖြင့် ဆင်ခြင် ရွေးချယ်ခြင်း။' },
+
+            // Indriya (5) — violet
+            { id: 13, key: 'saddhindriya', pali: 'Saddhindriya', name: 'သဒ္ဓိန္ဒြေ', group: 'indriya', dhamma: 'saddha', icon: 'fa-hands-praying',
+              desc: 'ယုံကြည်မှု (သဒ္ဓါ) သည် ယုံကြည်မှု လုံးဝ ကင်းမဲ့ခြင်းကို လွှမ်းမိုး အုပ်ချုပ်ခြင်း။',
+              example: 'ရတနာသုံးပါးကို တည်ကြည်စွာ ယုံကြည်ခြင်းက ဘာဝနာ ဆက်လက် အားထုတ်ရန် တွန်းအား ဖြစ်လာသည်။' },
+            { id: 14, key: 'viriyindriya', pali: 'Viriyindriya', name: 'ဝီရိယိန္ဒြေ', group: 'indriya', dhamma: 'viriya', icon: 'fa-bolt',
+              desc: 'ကြိုးစားအားထုတ်မှု (ဝီရိယ) သည် ပျင်းရိမှုကို လွှမ်းမိုး အုပ်ချုပ်ခြင်း။',
+              example: 'ပင်ပန်းသော်လည်း အားထုတ်မှုကို မရပ်ဘဲ ဆက်လက် ကြိုးပမ်းနိုင်ခြင်း။' },
+            { id: 15, key: 'satindriya', pali: 'Satindriya', name: 'သတိန္ဒြေ', group: 'indriya', dhamma: 'sati', icon: 'fa-eye',
+              desc: 'သတိသည် ပေါ့ဆမှု (မှေ့ာမေ့ခြင်း) ကို လွှမ်းမိုး အုပ်ချုပ်ခြင်း။',
+              example: 'ပစ္စုပ္ပန် အာရုံကို မပျောက်စေဘဲ အမြဲ သတိနှင့် ကပ်၍ ရှိနေနိုင်ခြင်း။' },
+            { id: 16, key: 'samadhindriya', pali: 'Samādhindriya', name: 'သမာဓိန္ဒြေ', group: 'indriya', dhamma: 'samadhi', icon: 'fa-crosshairs',
+              desc: 'စိတ်တည်ငြိမ်မှု (သမာဓိ) သည် စိတ်ပျံ့လွင့်မှု (ဥဒ္ဓစ္စ) ကို လွှမ်းမိုး အုပ်ချုပ်ခြင်း။',
+              example: 'အာရုံမှ စိတ်မလွှင့်စေဘဲ တည်ငြိမ်စွာ ထိန်းထားနိုင်ခြင်း။' },
+            { id: 17, key: 'pannindriya_bp', pali: 'Paññindriya', name: 'ပညိန္ဒြေ', group: 'indriya', dhamma: 'panna', icon: 'fa-lightbulb',
+              desc: 'ပညာသည် အသိဉာဏ် ကင်းမဲ့ခြင်း (အဝိဇ္ဇာ) ကို လွှမ်းမိုး အုပ်ချုပ်ခြင်း။',
+              example: 'ခန္ဓာငါးပါး၏ အနိစ္စ/ဒုက္ခ/အနတ္တ သဘောကို ပညာဖြင့် ထိုးထွင်း သိမြင်နိုင်ခြင်း။' },
+
+            // Bala (5) — rose — same 5 dhammas as indriya, but "unshakeable" framing
+            { id: 18, key: 'saddhabala', pali: 'Saddhābala', name: 'သဒ္ဓါဗလ', group: 'bala', dhamma: 'saddha', icon: 'fa-shield-heart',
+              desc: 'ယုံကြည်မှုသည် မယုံကြည်မှုတို့၏ တုန်လှုပ်ခြင်း မခံစေနိုင်အောင် ခိုင်မြဲသော အားအင် ဖြစ်လာခြင်း (ဣန္ဒြေထက် တစ်ဆင့် ပိုမို ခိုင်မာ)။',
+              example: 'အယူမှား ဆွဲဆောင်မှုများ ကြားမှပင် သဒ္ဓါတရား မတုန်လှုပ်တော့ခြင်း။' },
+            { id: 19, key: 'viriyabala', pali: 'Viriyabala', name: 'ဝီရိယဗလ', group: 'bala', dhamma: 'viriya', icon: 'fa-dumbbell',
+              desc: 'ကြိုးစားအားထုတ်မှုသည် ပျင်းရိမှု၏ တွန်းလှန်ခြင်း မခံစေနိုင်အောင် ခိုင်မြဲလာခြင်း။',
+              example: 'မည်မျှ ပင်ပန်းစေကာမူ အားထုတ်မှု လုံးဝ မတုန်လှုပ်တော့ခြင်း။' },
+            { id: 20, key: 'satibala', pali: 'Satibala', name: 'သတိဗလ', group: 'bala', dhamma: 'sati', icon: 'fa-anchor',
+              desc: 'သတိသည် ပေါ့ဆမှု၏ တွန်းလှန်ခြင်း မခံစေနိုင်အောင် ခိုင်မြဲလာခြင်း။',
+              example: 'မည်သည့် အခြေအနေမျှ သတိ လုံးဝ မပျောက်တော့ခြင်း။' },
+            { id: 21, key: 'samadhibala', pali: 'Samādhibala', name: 'သမာဓိဗလ', group: 'bala', dhamma: 'samadhi', icon: 'fa-mountain',
+              desc: 'စိတ်တည်ငြိမ်မှုသည် စိတ်ပျံ့လွင့်မှု၏ တွန်းလှန်ခြင်း မခံစေနိုင်အောင် ခိုင်မြဲလာခြင်း။',
+              example: 'ပြင်ပ အသံဆူညံမှုများ ကြားမှပင် စိတ်တည်ငြိမ်မှု မပျက်စီးတော့ခြင်း။' },
+            { id: 22, key: 'pannabala', pali: 'Paññābala', name: 'ပညာဗလ', group: 'bala', dhamma: 'panna', icon: 'fa-brain',
+              desc: 'ပညာသည် အသိဉာဏ် ကင်းမဲ့ခြင်း၏ တွန်းလှန်ခြင်း မခံစေနိုင်အောင် ခိုင်မြဲလာခြင်း။',
+              example: 'အလွဲအမှား ဆွဲဆောင်ချက်များကို ပညာဖြင့် ချက်ချင်း ခွဲခြား သိမြင်နိုင်ခြင်း။' },
+
+            // Bojjhanga (7) — amber
+            { id: 23, key: 'satisambojjhanga', pali: 'Satisambojjhaṅga', name: 'သတိသမ္ဗောဇ္ဈင်', group: 'bojjhanga', dhamma: 'sati', icon: 'fa-eye',
+              desc: 'ဗောဇ္ဈင် (၇) ပါးအနက် ပထမဆုံး — ကျန် (၆) ပါးလုံးကို ထိန်းညှိပေးသော သတိတရား။',
+              example: 'ဘာဝနာအခြေအနေကို အချိန်တိုင်း သတိထား ကြည့်ရှုနေနိုင်ခြင်း။' },
+            { id: 24, key: 'dhammavicayasambojjhanga', pali: 'Dhammavicayasambojjhaṅga', name: 'ဓမ္မဝိစယသမ္ဗောဇ္ဈင်', group: 'bojjhanga', dhamma: 'panna', icon: 'fa-magnifying-glass-chart',
+              desc: 'တရားများကို ပညာဖြင့် စိစစ် ခွဲခြမ်းသိမြင်ခြင်း။',
+              example: 'ဖြစ်ပေါ်နေသော ခံစားမှု၏ အနိစ္စသဘောကို ပညာဖြင့် ထိုးထွင်း စိစစ်ခြင်း။' },
+            { id: 25, key: 'viriyasambojjhanga', pali: 'Viriyasambojjhaṅga', name: 'ဝီရိယသမ္ဗောဇ္ဈင်', group: 'bojjhanga', dhamma: 'viriya', icon: 'fa-fire',
+              desc: 'ဘာဝနာ တိုးတက်ရန် ကြိုးစားအားထုတ်မှု။',
+              example: 'ပျင်းရိစိတ် ဖြစ်ပေါ်လာသောအခါ ပြန်လည် အားစိုက် ကြိုးစားခြင်း။' },
+            { id: 26, key: 'pitisambojjhanga', pali: 'Pītisambojjhaṅga', name: 'ပီတိသမ္ဗောဇ္ဈင်', group: 'bojjhanga', dhamma: 'piti', icon: 'fa-face-smile-beam',
+              desc: 'ဘာဝနာ တိုးတက်လာသည်နှင့်အမျှ ဖြစ်ပေါ်လာသော နှစ်သက် ရွှင်လန်းမှု။',
+              example: 'တရားထိုင်ရင်း ကိုယ်တစ်ခုလုံး ချမ်းမြေ့ ရွှင်လန်းသည့် ခံစားမှု ဖြစ်ပေါ်လာခြင်း။' },
+            { id: 27, key: 'passaddhisambojjhanga', pali: 'Passaddhisambojjhaṅga', name: 'ပဿဒ္ဓိသမ္ဗောဇ္ဈင်', group: 'bojjhanga', dhamma: 'passaddhi', icon: 'fa-water',
+              desc: 'စိတ်နှင့် စေတသိက်တို့ ငြိမ်းအေးသက်သာမှု။',
+              example: 'ပီတိ ရှင်းသွားပြီးနောက် စိတ် ပို၍ တည်ငြိမ် အေးချမ်းလာခြင်း။' },
+            { id: 28, key: 'samadhisambojjhanga', pali: 'Samādhisambojjhaṅga', name: 'သမာဓိသမ္ဗောဇ္ဈင်', group: 'bojjhanga', dhamma: 'samadhi', icon: 'fa-crosshairs',
+              desc: 'အာရုံတစ်ခုတည်းအပေါ် စိတ် တည်ငြိမ်စွာ စူးစိုက်နိုင်မှု။',
+              example: 'ပဿဒ္ဓိ ဖြစ်ပေါ်ပြီးနောက် စိတ် ပို၍ နက်နက်ရှိုင်းရှိုင်း တည်ငြိမ်လာခြင်း။' },
+            { id: 29, key: 'upekkhasambojjhanga', pali: 'Upekkhāsambojjhaṅga', name: 'ဥပေက္ခာသမ္ဗောဇ္ဈင်', group: 'bojjhanga', dhamma: 'upekkha', icon: 'fa-scale-balanced',
+              desc: 'ကျန် (၆) ပါးလုံး မျှတစွာ အလုပ်လုပ်နေအောင် လျစ်လျူမြင် ထိန်ညှိပေးမှု (တတြမဇ္ဈတ္တတာ)။',
+              example: 'ဝီရိယနှင့် သမာဓိ မျှတစွာ ညီမျှနေအောင် ထိန်းညှိပေးနိုင်ခြင်း — အားလွန်လျှင် ပီတိဘက်သို့၊ အားနည်းလျှင် ပျင်းရိဘက်သို့ မသွားစေခြင်း။' },
+
+            // Magganga (8) — indigo
+            { id: 30, key: 'sammaditthi', pali: 'Sammādiṭṭhi', name: 'သမ္မာဒိဋ္ဌိ', group: 'magganga', dhamma: 'panna', icon: 'fa-eye',
+              desc: 'သစ္စာလေးပါးကို မှန်ကန်စွာ သိမြင်သော ပညာ — မဂ်ဂင် (၈) ပါးအနက် ဦးဆောင်။',
+              example: 'ဒုက္ခ၊ ဒုက္ခ၏ အကြောင်း၊ ဒုက္ခ ချုပ်ငြိမ်းရာ၊ ချုပ်ငြိမ်းရာသို့ ဦးတည်သည့် လမ်းစဉ် — ဤ (၄) ချက်ကို မှန်ကန်စွာ သိမြင်ခြင်း။' },
+            { id: 31, key: 'sammasankappa', pali: 'Sammāsaṅkappa', name: 'သမ္မာသင်္ကပ္ပ', group: 'magganga', dhamma: 'vitakka', icon: 'fa-compass',
+              desc: 'မှန်ကန်သော အကြံအစည် — နေက္ခမ္မသင်္ကပ္ပ (တဏှာမှ ကင်းဝေးလိုမှု)၊ အဗျာပါဒသင်္ကပ္ပ (မုန်းတီးမှု ကင်းသော အကြံ)၊ အဝိဟိංသာသင်္ကပ္ပ (နှိပ်စက်မှု ကင်းသော အကြံ)။',
+              example: 'သူတစ်ပါးအပေါ် ကြင်နာစိတ်ဖြင့် စဉ်းစားခြင်း၊ တပ်မက်မှု ကင်းသော ဘဝကို ရည်ရွယ် အကြံပြုခြင်း။' },
+            { id: 32, key: 'sammavaca', pali: 'Sammāvācā', name: 'သမ္မာဝါစာ', group: 'magganga', dhamma: 'virati', icon: 'fa-comment',
+              desc: 'မှန်ကန်သော စကားပြောဆိုမှု — မုသား၊ ကုန်းချော၊ ကြမ်းတမ်း၊ အချည်းနှီး စကားများမှ ကြဉ်ရှောင်ခြင်း (ဝိရတီစေတသိက်)။',
+              example: 'အမှန်တရားကိုသာ ပြောဆိုခြင်း၊ ကွဲပြားအောင် မကုန်းချော ပြောဆိုခြင်း။' },
+            { id: 33, key: 'sammakammanta', pali: 'Sammākammanta', name: 'သမ္မာကမ္မန္တ', group: 'magganga', dhamma: 'virati', icon: 'fa-hand',
+              desc: 'မှန်ကန်သော ကိုယ်ကျင့်တရား — အသက်သတ်ခြင်း၊ ခိုးဝှက်ခြင်း၊ ကာမေသုမိစ္ဆာစာရ ကျင့်ခြင်းမှ ကြဉ်ရှောင်ခြင်း (ဝိရတီစေတသိက်)။',
+              example: 'အသက်ရှင်သတ္တဝါများကို မညှဉ်းပန်းခြင်း၊ သူတစ်ပါး ပိုင်ဆိုင်မှုကို မခိုးယူခြင်း။' },
+            { id: 34, key: 'sammaajiva', pali: 'Sammāājīva', name: 'သမ္မာအာဇီဝ', group: 'magganga', dhamma: 'virati', icon: 'fa-briefcase',
+              desc: 'မှန်ကန်သော အသက်မွေးမှု — မှားယွင်းသော စကား၊ ကိုယ်အမူအရာဖြင့် အသက်မွေးခြင်းမှ ကြဉ်ရှောင်ခြင်း (ဝိရတီစေတသိက်)။',
+              example: 'သူတစ်ပါးကို အန္တရာယ်ပြုသော လက်နက်၊ အဆိပ်၊ အသားရောင်းဝယ်မှု စသည်တို့မှ ကြဉ်ရှောင်၍ အသက်မွေးခြင်း။' },
+            { id: 35, key: 'sammavayama', pali: 'Sammāvāyāma', name: 'သမ္မာဝါယာမ', group: 'magganga', dhamma: 'viriya', icon: 'fa-person-running',
+              desc: 'မှန်ကန်သော အားထုတ်မှု — သမ္မပ္ပဓာန် (၄) ပါးနှင့် အနက်တူ။',
+              example: 'အထက်တွင် ဖော်ပြခဲ့သော သံဝရ/ပဟာန/ဘာဝနာ/အနုရက္ခဏ ပ္ပဓာန် (၄) မျိုး။' },
+            { id: 36, key: 'sammasati', pali: 'Sammāsati', name: 'သမ္မာသတိ', group: 'magganga', dhamma: 'sati', icon: 'fa-anchor',
+              desc: 'မှန်ကန်သော သတိ — သတိပဋ္ဌာန် (၄) ပါးနှင့် အနက်တူ။',
+              example: 'အထက်တွင် ဖော်ပြခဲ့သော ကာယာ/ဝေဒနာ/စိတ္တ/ဓမ္မာနုပဿနာ (၄) မျိုး။' },
+            { id: 37, key: 'sammasamadhi', pali: 'Sammāsamādhi', name: 'သမ္မာသမာဓိ', group: 'magganga', dhamma: 'samadhi', icon: 'fa-crosshairs',
+              desc: 'မှန်ကန်သော စိတ်တည်ငြိမ်မှု — ဈာန် (၄) ပါး (သို့) (၅) ပါးအထိ တိုးတက်နိုင်သော ဧကဂ္ဂတာသဘော။',
+              example: 'အာရုံတစ်ခုတည်းအပေါ် ပျံ့လွင့်မှု ကင်းစင်စွာ တည်ငြိမ် စူးစိုက်နိုင်ခြင်း — ဈာန်အထိ ဖွံ့ဖြိုးနိုင်သည်။' }
+        ];
+
+        const groupInfo = {
+            satipatthana:   { label: 'သတိပဋ္ဌာန်', sub: 'Satipaṭṭhāna — ကပ်ငြိမ်းစွာ ရှုမှတ်ခြင်း (၄)', color: 'text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/10' },
+            sammappadhana:  { label: 'သမ္မပ္ပဓာန်',   sub: 'Sammappadhāna — မှန်ကန်သော အားထုတ်မှု (၄)', color: 'text-emerald-300', border: 'border-emerald-500', bg: 'bg-emerald-500/10' },
+            iddhipada:      { label: 'ဣဒ္ဓိပါဒ်',     sub: 'Iddhipāda — အောင်မြင်မှု၏ အခြေခံ (၄)', color: 'text-cyan-300', border: 'border-cyan-500', bg: 'bg-cyan-500/10' },
+            indriya:        { label: 'ဣန္ဒြေ',         sub: 'Indriya — အုပ်ချုပ်မှု (၅)', color: 'text-violet-300', border: 'border-violet-500', bg: 'bg-violet-500/10' },
+            bala:           { label: 'ဗလ',             sub: 'Bala — မတုန်လှုပ်နိုင်သော အားအင် (၅)', color: 'text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/10' },
+            bojjhanga:      { label: 'ဗောဇ္ဈင်',       sub: 'Bojjhaṅga — ဉာဏ်အလင်း အင်္ဂါ (၇)', color: 'text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
+            magganga:       { label: 'မဂ္ဂင်',         sub: 'Maggaṅga — လမ်းစဉ် အင်္ဂါ (၈)', color: 'text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' }
+        };
+
+        const dhammaInfo = {
+            sati: { label: 'သတိ', count: 8 },
+            viriya: { label: 'ဝီရိယ', count: 9 },
+            panna: { label: 'ပညာ', count: 5 },
+            samadhi: { label: 'သမာဓိ (ဧကဂ္ဂတာ)', count: 4 },
+            saddha: { label: 'သဒ္ဓါ', count: 2 },
+            chanda: { label: 'ဆန္ဒ', count: 1 },
+            citta: { label: 'စိတ်', count: 1 },
+            piti: { label: 'ပီတိ', count: 1 },
+            passaddhi: { label: 'ပဿဒ္ဓိ', count: 1 },
+            upekkha: { label: 'ဥပေက္ခာ (တတြမဇ္ဈတ္တတာ)', count: 1 },
+            vitakka: { label: 'ဝိတက်', count: 1 },
+            virati: { label: 'ဝိရတီ (၃ မျိုး)', count: 3 }
+        };
+
+        function mm(n) {
+            const map = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
+            return String(n).replace(/[0-9]/g, d => map[d]);
+        }
+
+        function renderGroups() {
+            const container = document.getElementById('bp-groups');
+            const order = ['satipatthana', 'sammappadhana', 'iddhipada', 'indriya', 'bala', 'bojjhanga', 'magganga'];
+            container.innerHTML = order.map(gk => {
+                const info = groupInfo[gk];
+                const items = bpData.filter(b => b.group === gk);
+                return `
+                    <div id="group-${gk}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-3 scroll-mt-24">
+                        <div>
+                            <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>
+                            <p class="text-xs text-slate-400">${info.sub}</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${items.map(b => `
+                                <button onclick="openBpModal('${b.key}')" class="bp-card text-xs font-semibold px-3 py-1.5 rounded-full border transition ${info.bg} ${info.border}/30 ${info.color} hover:brightness-125">
+                                    <i class="fa-solid ${b.icon} mr-1 text-[10px]"></i>${mm(b.id)}. ${b.name}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderUniqueDhammaChips() {
+            const el = document.getElementById('unique-dhamma-chips');
+            el.innerHTML = Object.keys(dhammaInfo).map(k => {
+                const d = dhammaInfo[k];
+                return `<span class="px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-200 text-xs font-semibold">${d.label} × ${mm(d.count)}</span>`;
+            }).join('');
+        }
+
+        function jumpToGroup(groupKey) {
+            const el = document.getElementById('group-' + groupKey);
+            if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function openBpModal(key) {
+            const b = bpData.find(x => x.key === key);
+            if (!b) return;
+            const info = groupInfo[b.group];
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${info.color}">
+                        <i class="fa-solid ${b.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(b.id)}/၃၇</span>
+                        <h3 class="text-xl font-bold ${info.color}">${b.name}</h3>
+                        <p class="text-[11px] text-slate-500 font-mono mt-1">${b.pali}</p>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-200 mt-1 leading-relaxed">${b.desc}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800">
+                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <p class="text-slate-300 mt-1 leading-relaxed">${b.example}</p>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGroups();
+            renderUniqueDhammaChips();
+            const openKey = new URLSearchParams(location.search).get('open');
+            if (openKey && bpData.some(b => b.key === openKey)) {
+                setTimeout(() => openBpModal(openKey), 80);
+            }
+        });
+    </script>
+</body>
+</html>

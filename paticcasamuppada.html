@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ပဋိစ္စသမုပ္ပါဒ် — နိဒါန်း (၁၂) ပါးကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <title>ပဋိစ္စသမုပ္ပါဒ် — နိဒါန်း (၁၂) ပါး (Paṭiccasamuppāda)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        html { scroll-behavior: smooth; }
+        * { -webkit-tap-highlight-color: transparent; }
+        button { touch-action: manipulation; }
+        button:active { transform: scale(0.97); }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(8px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in { animation: fade-in 0.2s ease-out; }
+        .nidana-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+        .nidana-card:hover { transform: translateY(-2px); }
+        :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+        summary { cursor: pointer; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        details[open] > summary .tree-chevron { transform: rotate(90deg); }
+        .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16">
+
+    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-circle-notch"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-emerald-300">ပဋိစ္စသမုပ္ပါဒ် <span class="text-slate-500 font-normal text-sm">(Paṭiccasamuppāda)</span></h1>
+                    <p class="text-[11px] text-slate-400">နိဒါန်း (၁၂) ပါး — သံသရာစက်ဝန်း</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
+                </a>
+                <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Citta & Cetasika Guide သို့</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
+
+        <!-- Intro -->
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <span class="text-emerald-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၈ ပိုင်းမြောက် (ဒုတိယပိုင်း)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">"ငါ" မပါဘဲ ဒုက္ခ ဖြစ်ပေါ်ပုံ — အကြောင်းနှင့်အကျိုး စက်ဝန်း</h2>
+            <p class="text-slate-400 text-sm"><a href="paccaya_sangaha.html" class="text-violet-300 underline decoration-dotted hover:text-violet-200">ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း)</a> က "အခြေအနေ (၂၄) မျိုးဖြင့် တစ်ခုက တစ်ခုကို ဘယ်လို ထောက်ပံ့သလဲ" ဟူသော နည်းလမ်းအသေးစိတ်ကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ပဋိစ္စသမုပ္ပါဒ်ကမူ "ဘဝတစ်ခုမှ တစ်ခုသို့ ဒုက္ခ ဆက်တိုက် ဖြစ်ပေါ်ရခြင်း အကြောင်းအစဉ်" ကို နိဒါန်း (၁၂) ပါးဖြင့် အစဉ်လိုက် ဖော်ပြသည် — ဤ (၂) ခုသည် "ပစ္စယနည်း" (Paṭṭhāna-naya) နှင့် "ပဋိစ္စသမုပ္ပါဒနည်း" ဟု ခေါ်သော အကြောင်းရင်းသဘောတရား တစ်ခုတည်း၏ ရှင်းပြချက် နည်းလမ်း (၂) မျိုးသာ ဖြစ်သည်။</p>
+        </div>
+
+        <!-- Total verification bar (3 kala) -->
+        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
+            <button onclick="scrollToKala('atita')" class="px-3 py-1.5 rounded-lg bg-slate-500/15 text-slate-300 border border-slate-500/30 hover:bg-slate-500/25 hover:border-slate-400 transition">အတိတ် (၂)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="scrollToKala('paccuppanna')" class="px-3 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ပစ္စုပ္ပန် (၈)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="scrollToKala('anagata')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">အနာဂတ် (၂)</button>
+            <span class="text-slate-600">=</span>
+            <button onclick="scrollToKala('atita')" class="px-3 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">နိဒါန်း (၁၂) ပါး</button>
+        </div>
+
+        <!-- 12 Nidana chain -->
+        <div id="nidana-chain" class="space-y-6"></div>
+
+        <!-- 4 Sangaha / 20 Akara -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
+            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>စတုသင်္ဂဟ — အခြေအနေ (၂၀) ပါးအလိုက် အုပ်စု (၄) ခု</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-3 text-xs text-slate-300 border-l border-slate-800">
+                <p>နိဒါန်း (၁၂) ပါးအနက် "အကြောင်းအမျိုးအစား" (၅) ပါးနှင့် "အကျိုးအမျိုးအစား" (၅) ပါး ဟူသော ပုံစံတူ (၂) မျိုးသည် — တစ်ခါက အတိတ်မှ ပစ္စုပ္ပန်ကို၊ နောက်တစ်ခါက ပစ္စုပ္ပန်မှ အနာဂတ်ကို ထောက်ပံ့ရာတွင် ထပ်ခါထပ်ခါ ပါဝင်နေသည် — ဤကြောင့် ၅×၄ = အခြေအနေ (၂၀) ပါး ရရှိသည်:</p>
+                <div class="grid sm:grid-cols-2 gap-2">
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-600">
+                        <span class="text-slate-300 font-bold block mb-1">၁။ အတိတ်အကြောင်း (၅)</span>
+                        <span class="text-slate-400">အဝိဇ္ဇာ၊ သင်္ခါရ၊ တဏှာ၊ ဥပါဒါန်၊ ဘဝ — ရှေးဘဝက ဤ (၅) ပါးက ယခုဘဝကို ထောက်ပံ့သည်</span>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-sky-500/30">
+                        <span class="text-sky-300 font-bold block mb-1">၂။ ပစ္စုပ္ပန်အကျိုး (၅)</span>
+                        <span class="text-slate-400">ဝိညာဉ်၊ နာမ်ရုပ်၊ သဠာယတန၊ ဖဿ၊ ဝေဒနာ — ယခုဘဝတွင် ခံစားနေရသော အကျိုးများ</span>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-600">
+                        <span class="text-slate-300 font-bold block mb-1">၃။ ပစ္စုပ္ပန်အကြောင်း (၅)</span>
+                        <span class="text-slate-400">တဏှာ၊ ဥပါဒါန်၊ ဘဝ၊ (ထပ်၍) အဝိဇ္ဇာ၊ သင်္ခါရ — ယခုဘဝတွင် ဤ (၅) ပါးတူညီစွာ ထပ်ဖြစ်နေပြီး၊ နောင်ဘဝကို ထောက်ပံ့သည်</span>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-amber-500/30">
+                        <span class="text-amber-300 font-bold block mb-1">၄။ အနာဂတ်အကျိုး (၅)</span>
+                        <span class="text-slate-400">ဝိညာဉ်၊ နာမ်ရုပ်၊ သဠာယတန၊ ဖဿ၊ ဝေဒနာ — နောင်ဘဝတွင် ထပ်မံ ခံစားရမည့် အကျိုးများ (ဇာတိ/ဇရာမရဏ ဟူသော အမည်ဖြင့်သာ ခေါ်ဝေါ်ခြားနားသည်)</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-500 pt-1">* အဝိဇ္ဇာ/သင်္ခါရသည် နိဒါန်း (၁၂) ပါး၏ အစီအစဉ်အရ "အတိတ်" ဟု ခေါ်ဝေါ်ရသော်လည်း၊ ယခုဘဝတွင်လည်း အလားတူ အဝိဇ္ဇာ/သင်္ခါရ ထပ်ဖြစ်နေဆဲ ဖြစ်၍ "ပစ္စုပ္ပန်အကြောင်း" အုပ်စုထဲတွင်လည်း ထပ်ဖော်ပြရခြင်း ဖြစ်သည်။ ဤအချက်ကပင် "စက်ဝန်း" ဟုခေါ်ရသည့် အကြောင်းရင်း ဖြစ်သည်။</p>
+            </div>
+        </details>
+
+        <!-- 3 Sandhi -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
+            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>သန္ဓိ (၃) ချက် — ဘဝချင်း ဆက်စပ်ရာ အနှစ်ချုပ် အချက်များ</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-300 border-l border-slate-800">
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-rose-500/30">
+                    <span class="text-rose-300 font-bold block mb-1">ပထမသန္ဓိ — သင်္ခါရ ⟶ ဝိညာဉ်</span>
+                    <span class="text-slate-400">အတိတ်ဘဝက အကြောင်း (ကံ) သည် ယခုဘဝ ပဋိသန္ဓေဝိညာဉ် အဖြစ် အကျိုးပေးသည့် ချိတ်ဆက်မှု — "အတိတ်" မှ "ပစ္စုပ္ပန်" သို့ ကူးပြောင်းရာ ဆက်စပ်ချက်။</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-cyan-500/30">
+                    <span class="text-cyan-300 font-bold block mb-1">ဒုတိယသန္ဓိ — ဝေဒနာ ⟶ တဏှာ</span>
+                    <span class="text-slate-400">ခံစားမှု (အကျိုး) မှ တပ်မက်မှု (အကြောင်း) ဖြစ်ပေါ်ရာ ချိတ်ဆက်မှု — ပစ္စုပ္ပန်ဘဝ တွင်းကျ "အကျိုး" မှ "အကြောင်း" သို့ ကူးပြောင်းရာ ဆက်စပ်ချက်။ <span class="text-amber-300 font-semibold">ဝိပဿနာဖြင့် ဤနေရာကို ဖြတ်တောက်နိုင်လျှင် စက်ဝန်း ရပ်တန့်နိုင်သည်</span> — အလေ့အကျင့်ပြုရန် အလွယ်ဆုံး အချက်ဟု ဆိုကြသည်။</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-lg p-3 border border-emerald-500/30">
+                    <span class="text-emerald-300 font-bold block mb-1">တတိယသန္ဓိ — ဘဝ ⟶ ဇာတိ</span>
+                    <span class="text-slate-400">ယခုဘဝက အကြောင်း (ကံ) သည် နောင်ဘဝ မွေးဖွားခြင်း အဖြစ် အကျိုးပေးသည့် ချိတ်ဆက်မှု — "ပစ္စုပ္ပန်" မှ "အနာဂတ်" သို့ ကူးပြောင်းရာ ဆက်စပ်ချက်။</span>
+                </div>
+            </div>
+        </details>
+
+        <!-- 2 Mula -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-500/30" style="box-shadow: 0 0 20px rgba(234,179,8,0.1);">
+            <summary class="flex items-center justify-between font-bold text-amber-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>မူလ (၂) ပါး — စက်ဝန်းကို ဖြတ်တောက်ရန် ဦးတည်ရာ</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-300 border-l border-slate-800">
+                <p>နိဒါန်း (၁၂) ပါးလုံး၏ မူလအမြစ်မှာ <span class="text-amber-300 font-semibold">အဝိဇ္ဇာ</span> (အကြောင်းအစဉ် ပထမပိုင်း၏ ဦးဆောင်) နှင့် <span class="text-amber-300 font-semibold">တဏှာ</span> (အကြောင်းအစဉ် ဒုတိယပိုင်း၏ ဦးဆောင်) ဟူသော (၂) ပါးသာ ဖြစ်သည်။</p>
+                <p>ဝိပဿနာဉာဏ်ဖြင့် သစ္စာလေးပါးကို ထိုးထွင်းသိမြင်၍ အဝိဇ္ဇာ ကွယ်ပျောက်သွားပါက၊ တဏှာလည်း ဆက်လက် မဖြစ်ပေါ်နိုင်တော့ဘဲ၊ ကျန်နိဒါန်း (၁၀) ပါးလုံးလည်း အစဉ်လိုက် ရပ်တန့်သွားပြီး — ဤသည်ပင် <span class="text-emerald-300 font-semibold">နိဗ္ဗာန်</span> ရောက်ရှိခြင်း (ဒုက္ခ ချုပ်ငြိမ်းခြင်း) ဖြစ်သည်။ ဤသို့ အဝိဇ္ဇာ/တဏှာကို ဖြတ်တောက်ရန် တိုက်ရိုက် ကူညီပံ့ပိုးပေးသော တရားများကို <a href="bodhipakkhiya_dhamma.html" class="text-amber-300 underline decoration-dotted hover:text-amber-200">ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါး</a> တွင် အသေးစိတ် ဖော်ပြထားသည်။</p>
+                <p class="text-[11px] text-slate-500 pt-1">* "အဝိဇ္ဇာယ တွေဝေါ အသေသနိရောဓာ သင်္ခါရနိရောဓော" (အဝိဇ္ဇာ လုံးဝ ချုပ်ငြိမ်းသဖြင့် သင်္ခါရ ချုပ်ငြိမ်း) ဟူ၍ အစပြု ပြန်လှန်ပုံစံ (ပဋိလောမ) ဖြင့်လည်း ကျမ်းတော်တွင် ဖော်ပြထားသည်။</p>
+            </div>
+        </details>
+
+        <!-- 3 Vatta -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
+            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ဝဋ် (၃) ပါး — ကိလေသာ/ကံ/ဝိပါက် စက်ဝန်း</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-300 border-l border-slate-800">
+                <p>နိဒါန်း (၁၂) ပါးကို အလုပ်လုပ်ပုံ သဘောအလိုက် ပြန်ခွဲခြားလိုက်ပါက "ဝဋ် (၃) ပါး" အဖြစ် တွေ့ရသည် — ဤ (၃) ပါးသည် အချင်းချင်း တစ်ခုက တစ်ခုကို အဆက်မပြတ် ဖြစ်ပေါ်စေနေသဖြင့် "ဝဋ်" (စက်ဝန်း) ဟု ခေါ်ဆိုခြင်း ဖြစ်သည်:</p>
+                <div class="grid sm:grid-cols-3 gap-2">
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-rose-500/30 text-center">
+                        <span class="text-rose-300 font-bold block mb-1">ကိလေသာဝဋ် (၃)</span>
+                        <span class="text-slate-400 text-[11px]">အဝိဇ္ဇာ၊ တဏှာ၊ ဥပါဒါန်<br>— ညစ်ညမ်းမှု စက်ဝန်း</span>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-amber-500/30 text-center">
+                        <span class="text-amber-300 font-bold block mb-1">ကမ္မဝဋ် (၂)</span>
+                        <span class="text-slate-400 text-[11px]">သင်္ခါရ၊ ဘဝ (ကမ္မဘဝပိုင်း)<br>— ကံပြုမူမှု စက်ဝန်း</span>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-sky-500/30 text-center">
+                        <span class="text-sky-300 font-bold block mb-1">ဝိပါကဝဋ် (၇)</span>
+                        <span class="text-slate-400 text-[11px]">ဝိညာဉ်၊ နာမ်ရုပ်၊ သဠာယတန၊ ဖဿ၊ ဝေဒနာ၊ ဇာတိ၊ ဇရာမရဏ<br>— အကျိုးဆက် ခံစားရမှု စက်ဝန်း</span>
+                    </div>
+                </div>
+                <p class="text-slate-300 pt-1">ကိလေသာဝဋ်က ကမ္မဝဋ်ကို ဖြစ်စေသည် → ကမ္မဝဋ်က ဝိပါကဝဋ်ကို ဖြစ်စေသည် → ဝိပါကဝဋ်ထဲက ဝေဒနာသည် တဏှာ (ကိလေသာဝဋ်) ကို ပြန်ဖြစ်စေသည် — ဤသို့ အဆက်မပြတ် လည်ပတ်နေခြင်းသည် သံသရာ၏ အနှစ်ချုပ် ဖြစ်သည်။</p>
+                <p class="text-[11px] text-slate-500 pt-1">* စုစုပေါင်း ၃+၂+၇ = ၁၂ ပါး ပြည့်စုံသည်။</p>
+            </div>
+        </details>
+
+        <!-- Cross-link to Paccaya -->
+        <a href="paccaya_sangaha.html" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+            <i class="fa-solid fa-link text-violet-400 text-xl"></i>
+            <h4 class="font-bold text-violet-300 text-sm">နိဒါန်း (၁၂) ပါး တစ်ခုနှင့်တစ်ခု ဘယ်အခြေအနေဖြင့် ထောက်ပံ့ကြသလဲ — ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha)</h4>
+            <p class="text-[11px] text-slate-400">ဥပမာ — ဝေဒနာမှ တဏှာသို့ ဆက်စပ်မှုသည် ဥပနိဿယပစ္စည်းနှင့်၊ ဘဝမှ ဇာတိသို့ ဆက်စပ်မှုသည် ကမ္မပစ္စည်းနှင့် တွဲဖက် နားလည်နိုင်သည် →</p>
+        </a>
+
+        <!-- Footer -->
+        <section class="glass-card rounded-2xl p-6 border border-emerald-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-emerald-400 text-2xl"></i>
+            <p class="text-xs text-slate-300 leading-relaxed">ပဋိစ္စသမုပ္ပါဒ်သည် "ငါ" ဟူသော အနှစ်သာရ တစ်ခုတည်း ဘဝတစ်ခုမှ တစ်ခုသို့ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ အကြောင်းတရားများ အဆက်မပြတ် ဖြစ်ပျက်နေခြင်းသာ ဖြစ်ကြောင်း ဖော်ပြသည် — ဤသည်ပင် အနတ္တလက္ခဏာ၏ နက်နဲဆုံး ရှင်းပြချက် တစ်ခု ဖြစ်သည်။
+            </p>
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+                <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
+            </a>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Paticcasamuppada (12 Nidana) — Abhidhammattha Sangaha Ch.8, Paticcasamuppada-naya =====
+        const nidanaData = [
+            { id: 1, key: 'avijja', pali: 'Avijjā', name: 'အဝိဇ္ဇာ', kala: 'atita', icon: 'fa-eye-slash',
+              desc: 'သစ္စာလေးပါး (ဒုက္ခ၊ သမုဒယ၊ နိရောဓ၊ မဂ်) ကို အမှန်အတိုင်း မသိခြင်း — မှောင်ဖုံးလွှမ်းနေသကဲ့သို့ အသိဉာဏ် ကင်းမဲ့ခြင်း သဘော။',
+              example: 'ခန္ဓာငါးပါးသည် အမြဲတည်တံ့သည်၊ ချမ်းသာမှုသာ ရှိသည်ဟု အမှန်တရားကို လုံးဝ နားမလည်ဘဲ အထင်မှား နေထိုင်ခြင်း — ဤအထင်မှားမှုကပင် နောက်ဆက်တွဲ ပြုမူမှုများအားလုံး၏ မူလ ဖြစ်လာသည်။' },
+            { id: 2, key: 'sankhara', pali: 'Saṅkhārā', name: 'သင်္ခါရ', kala: 'atita', icon: 'fa-hammer',
+              desc: 'အဝိဇ္ဇာကြောင့် ပြုလုပ်မိသော ကံဖြစ်စေသည့် စေတနာများ — ကုသိုလ်ဘက် (ပုညာဘိသင်္ခါရ)၊ အကုသိုလ်ဘက် (အပုညာဘိသင်္ခါရ)၊ အရူပဈာန် (အာနေဉ္ဇာဘိသင်္ခါရ) ဟူ၍ (၃) မျိုး ရှိသည်။',
+              example: 'ဒါနပေးလှူခြင်း (ပုညာဘိသင်္ခါရ)၊ သူတစ်ပါးကို နှောင့်ယှက်ခြင်း (အပုညာဘိသင်္ခါရ)၊ အရူပဈာန် ဝင်စားခြင်း (အာနေဉ္ဇာဘိသင်္ခါရ) — ဤအားလုံးသည် နောင်ဘဝတွင် အကျိုးပေးမည့် ကံဖြစ်စေသော ပြုမူမှုများ ဖြစ်ကြသည်။' },
+            { id: 3, key: 'vinnana', pali: 'Viññāṇa', name: 'ဝိညာဉ်', kala: 'paccuppanna', icon: 'fa-brain',
+              desc: 'အတိတ်ကံ (သင်္ခါရ) ၏ အကျိုးဖြစ် ဝိပါက်ဝိညာဉ် — ပဋိသန္ဓေယူချိန် ဦးဆုံး ဝိညာဉ်မှစ၍ ဘဝတစ်ခုလုံးတွင် ဆက်တိုက် ဖြစ်ပေါ်နေသော ဝိပါက်စိတ်များအားလုံး။',
+              example: 'ပဋိသန္ဓေဝိညာဉ်သည် အတိတ်ဘဝက ကံတစ်ခု၏ တိုက်ရိုက် အကျိုးဆက် ဖြစ်ပြီး၊ ဘဝသစ်တစ်ခု၏ ပထမဆုံး စိတ်ခဏ ဖြစ်သည် — <a href="citta_cetasikas_visual_guide.html#citta89" class="text-sky-300 underline decoration-dotted hover:text-sky-200">စိတ် (၈၉) tab</a> တွင် ဆက်လက် လေ့လာနိုင်သည်။' },
+            { id: 4, key: 'namarupa', pali: 'Nāma-rūpa', name: 'နာမ်ရုပ်', kala: 'paccuppanna', icon: 'fa-yin-yang',
+              desc: 'ပဋိသန္ဓေဝိညာဉ်နှင့် တစ်ပြိုင်နက် ဖြစ်ပေါ်လာသော နာမ်တရား (ယှဉ်ဖက်စေတသိက်) နှင့် ရုပ်တရား (ကမ္မဇရုပ်)။',
+              example: 'ပဋိသန္ဓေဝိညာဉ် ဖြစ်ပေါ်ချိန်၌ပင် ယှဉ်ဖက်စေတသိက်များ (နာမ်) နှင့် <a href="rupa_sangaha.html?open=hadayavatthu" class="text-sky-300 underline decoration-dotted hover:text-sky-200">ဟဒယဝတ္ထု</a> ကဲ့သို့ ကမ္မဇရုပ် (ရုပ်) တို့ တစ်ပြိုင်နက် ဖြစ်ပေါ်လာခြင်း။' },
+            { id: 5, key: 'salayatana', pali: 'Saḷāyatana', name: 'သဠာယတန', kala: 'paccuppanna', icon: 'fa-eye',
+              desc: 'အာယတန (၆) ပါး — စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ မန (ဇောနစိတ်၏ မှီရာ ဟဒယဝတ္ထုအထိ) — နာမ်ရုပ်မှ တဖြည်းဖြည်း ဖွံ့ဖြိုးလာသော အာရုံခံစနစ်များ။',
+              example: 'ကိုယ်ဝန်ရှိစဉ် ခန္ဓာကိုယ်တွင်း မျက်စိ၊ နား စသော ဣန္ဒြေအင်္ဂါများ တဖြည်းဖြည်း ပြည့်စုံ ဖွံ့ဖြိုးလာခြင်း။' },
+            { id: 6, key: 'phassa', pali: 'Phassa', name: 'ဖဿ', kala: 'paccuppanna', icon: 'fa-hand-pointer',
+              desc: 'အာယတနများ ပြည့်စုံပြီးနောက်၊ အာရုံ၊ ဣန္ဒြေ၊ ဝိညာဉ် (၃) ပါး တွေ့ဆုံမှုကြောင့် ဖြစ်ပေါ်လာသော "ထိတွေ့မှု" စေတသိက်။',
+              example: 'မျက်စိ + အဆင်း + စက္ခုဝိညာဉ် (၃) ခု တွေ့ဆုံသောအခါ "မြင်ခြင်း ထိတွေ့မှု" ဖြစ်ပေါ်လာခြင်း — <a href="citta_cetasikas_visual_guide.html#cetasika" class="text-sky-300 underline decoration-dotted hover:text-sky-200">စေတသိက် tab</a> ရှိ "ဖဿ" ကို ကြည့်ပါ။' },
+            { id: 7, key: 'vedana', pali: 'Vedanā', name: 'ဝေဒနာ', kala: 'paccuppanna', icon: 'fa-heart-pulse',
+              desc: 'ဖဿ ဖြစ်ပေါ်ပြီးနောက် ဆက်တိုက် ဖြစ်ပေါ်လာသော ခံစားမှု — သုခ၊ ဒုက္ခ၊ သောမနဿ၊ ဒေါမနဿ၊ ဥပေက္ခာ။',
+              example: 'နှစ်သက်ဖွယ် အဆင်းကို မြင်ရသောအခါ ဖြစ်ပေါ်လာသော ချမ်းသာသည့် ခံစားမှု (သောမနဿဝေဒနာ) — <a href="citta_cetasikas_visual_guide.html#citta89:vedana-sangaha" class="text-sky-300 underline decoration-dotted hover:text-sky-200">ဝေဒနာသင်္ဂဟ</a> တွင် ဆက်လက် လေ့လာနိုင်သည်။' },
+            { id: 8, key: 'tanha', pali: 'Taṇhā', name: 'တဏှာ', kala: 'paccuppanna', icon: 'fa-fire',
+              desc: 'ဝေဒနာကို အခြေခံ၍ ဖြစ်ပေါ်လာသော တပ်မက်မှု (လောဘစေတသိက်) — ကာမတဏှာ (ကာမာရုံကို လိုလားခြင်း)၊ ဘဝတဏှာ (ထာဝရ တည်ရှိလိုမှု)၊ ဝိဘဝတဏှာ (ပြတ်စဲသွားလိုမှု) ဟူ၍ (၃) မျိုး။',
+              example: 'ချမ်းသာသော ခံစားမှုကို ခံစားရပြီးနောက် ထိုအရာကို ထပ်မံ ရလိုစိတ် ပြင်းထန်စွာ ဖြစ်ပေါ်လာခြင်း။' },
+            { id: 9, key: 'upadana', pali: 'Upādāna', name: 'ဥပါဒါန်', kala: 'paccuppanna', icon: 'fa-hand-fist',
+              desc: 'တဏှာ ပြင်းထန်လာသောအခါ ခိုင်မြဲစွာ ဆုပ်ကိုင်ထားမှု — ကာမုပါဒါန်၊ ဒိဋ္ဌုပါဒါန်၊ သီလဗ္ဗတုပါဒါန်၊ အတ္တဝါဒုပါဒါန် ဟူ၍ (၄) မျိုး။',
+              example: '"ငါ့အရာဖြစ်ရမည်" ဟု ခိုင်မြဲစွာ ဆုပ်ကိုင် တွယ်တာနေခြင်း (ကာမုပါဒါန်)၊ သို့မဟုတ် အလွဲအမှား အယူအဆကို စွဲမြဲစွာ ကိုင်ထားခြင်း (ဒိဋ္ဌုပါဒါန်) — <a href="kilesa_sangaha.html?open=kamupadana" class="text-emerald-300 underline decoration-dotted hover:text-emerald-200">အကုသိုလသင်္ဂဟ</a> တွင် ဥပါဒါန် (၄) မျိုးလုံးကို အသေးစိတ် လေ့လာနိုင်သည်။' },
+            { id: 10, key: 'bhava', pali: 'Bhava', name: 'ဘဝ', kala: 'paccuppanna', icon: 'fa-seedling',
+              desc: 'ဥပါဒါန် အားကောင်းလာသောအခါ ဖြစ်ပေါ်လာသော ကံဖြစ်စေသည့် ပြုမူမှု (ကမ္မဘဝ) နှင့် ၎င်း၏ အကျိုးဖြစ် ဘဝသစ် (ဥပပတ္တိဘဝ)။',
+              example: 'ဆုပ်ကိုင်ထားသော ဆန္ဒကို ရရှိရန် ကြိုးပမ်းမှု (ကမ္မဘဝ) — ဤကြိုးပမ်းမှုကပင် နောင်ဘဝသစ် ဖြစ်ပေါ်ရန် တွန်းအား ဖြစ်လာသည်။' },
+            { id: 11, key: 'jati', pali: 'Jāti', name: 'ဇာတိ', kala: 'anagata', icon: 'fa-baby',
+              desc: 'ကမ္မဘဝ၏ အကျိုးဆက်အဖြစ် ဘဝသစ်တစ်ခု၌ ခန္ဓာငါးပါး ဦးဆုံး ပေါ်ထွန်းလာခြင်း (မွေးဖွားခြင်း)။',
+              example: 'ယခုဘဝ၏ ကံအရ၊ နောင်ဘဝ၌ လူ/နတ်/တိရစ္ဆာန် စသည့် ဘုံတစ်ခုခုတွင် ပဋိသန္ဓေယူ၍ မွေးဖွားလာခြင်း — ဘုံ (၃၁) ဘုံအားလုံးကို <a href="vithimutta_sangaha.html" class="text-indigo-300 underline decoration-dotted hover:text-indigo-200">ဝီထိမုတ္တသင်္ဂဟ</a> တွင် အသေးစိတ် ကြည့်နိုင်သည်။' },
+            { id: 12, key: 'jaramarana', pali: 'Jarāmaraṇa', name: 'ဇရာမရဏ', kala: 'anagata', icon: 'fa-hourglass-end',
+              desc: 'မွေးဖွားလာပြီးနောက် မလွှဲမရှောင်သာ ကြုံတွေ့ရသော အိုမင်းခြင်း (ဇရာ) နှင့် သေဆုံးခြင်း (မရဏ) — ၎င်းနှင့်အတူ ပူဆွေးမှု၊ ငိုကြွေးမှု၊ ဆင်းရဲမှု၊ ကြေကွဲမှု၊ စိတ်ညစ်မှု တို့လည်း အတူပါ ဖြစ်ပေါ်တတ်သည်။',
+              example: 'အသက်ကြီးလာသည်နှင့်အမျှ ခန္ဓာကိုယ် ချည့်နဲ့ ဟောင်းနွမ်းလာခြင်း၊ နောက်ဆုံးတွင် စုတိစိတ်ဖြင့် ဘဝတစ်ခု အဆုံးသတ်ခြင်း — ထို့နောက် ချက်ချင်းဆက်တိုက် ပဋိသန္ဓေ (ဝိညာဉ်) ပြန်လည် ဖြစ်ပေါ်၍ စက်ဝန်း ဆက်လည်နေသည်။ သေခါနီး ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ် ပေါ်ပေါက်ပုံကို <a href="vithimutta_sangaha.html" class="text-indigo-300 underline decoration-dotted hover:text-indigo-200">ဝီထိမုတ္တသင်္ဂဟ</a> တွင် အသေးစိတ် ဖော်ပြထားသည်။' }
+        ];
+
+        const kalaInfo = {
+            atita: { label: 'အတိတ်', color: 'text-slate-300', border: 'border-slate-500', bg: 'bg-slate-500/15' },
+            paccuppanna: { label: 'ပစ္စုပ္ပန်', color: 'text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/15' },
+            anagata: { label: 'အနာဂတ်', color: 'text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/15' }
+        };
+
+        function mm(n) {
+            const map = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
+            return String(n).replace(/[0-9]/g, d => map[d]);
+        }
+
+        function renderChain() {
+            const container = document.getElementById('nidana-chain');
+            const order = ['atita', 'paccuppanna', 'anagata'];
+            container.innerHTML = order.map(kalaKey => {
+                const info = kalaInfo[kalaKey];
+                const items = nidanaData.filter(n => n.kala === kalaKey);
+                return `
+                    <div id="kala-${kalaKey}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-3 scroll-mt-24">
+                        <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>
+                        <div class="flex flex-wrap gap-2 items-center">
+                            ${items.map((n, i) => `
+                                <button onclick="openNidanaModal('${n.key}')" class="nidana-card flex flex-col items-center gap-1 text-xs font-semibold px-3 py-2 rounded-xl border transition ${info.bg} ${info.border}/40 ${info.color} hover:brightness-125">
+                                    <i class="fa-solid ${n.icon}"></i>
+                                    <span>${mm(n.id)}. ${n.name}</span>
+                                </button>
+                                ${i < items.length - 1 ? '<i class="fa-solid fa-arrow-right text-slate-600 text-xs"></i>' : ''}
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function scrollToKala(kalaKey) {
+            const el = document.getElementById('kala-' + kalaKey);
+            if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function openNidanaModal(key) {
+            const n = nidanaData.find(x => x.key === key);
+            if (!n) return;
+            const info = kalaInfo[n.kala];
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${info.color}">
+                        <i class="fa-solid ${n.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label} — နိဒါန်းအမှတ် ${mm(n.id)}/၁၂</span>
+                        <h3 class="text-xl font-bold ${info.color}">${n.name}</h3>
+                        <p class="text-[11px] text-slate-500 font-mono mt-1">${n.pali}</p>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-200 mt-1 leading-relaxed">${n.desc}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800">
+                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <p class="text-slate-300 mt-1 leading-relaxed">${n.example}</p>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChain();
+            const openKey = new URLSearchParams(location.search).get('open');
+            if (openKey && nidanaData.some(n => n.key === openKey)) {
+                setTimeout(() => openNidanaModal(openKey), 80);
+            }
+        });
+    </script>
+</body>
+</html>

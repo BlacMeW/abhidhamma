@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ သဗ္ဗသင်္ဂဟ — အာယတန (၁၂)၊ ဓာတု (၁၈)၊ သစ္စာ (၄) ကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <title>သဗ္ဗသင်္ဂဟ — အားလုံးခြုံငုံမှု (Sabba-saṅgaha)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        html { scroll-behavior: smooth; }
+        * { -webkit-tap-highlight-color: transparent; }
+        button { touch-action: manipulation; }
+        button:active { transform: scale(0.97); }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(8px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in { animation: fade-in 0.2s ease-out; }
+        .sb-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+        .sb-card:hover { transform: translateY(-2px); }
+        :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+        summary { cursor: pointer; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        details[open] > summary .tree-chevron { transform: rotate(90deg); }
+        .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16">
+
+    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-atom"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-cyan-300">သဗ္ဗသင်္ဂဟ <span class="text-slate-500 font-normal text-sm">(Sabba-saṅgaha)</span></h1>
+                    <p class="text-[11px] text-slate-400">ခန္ဓာ/အာယတန/ဓာတု/သစ္စာ — အားလုံးခြုံငုံ ခွဲခြားမှု</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
+                </a>
+                <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Citta & Cetasika Guide သို့</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
+
+        <!-- Intro -->
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <span class="text-cyan-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — သဗ္ဗအပိုင်း)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">လောကီ/လောကုတ္တရာ တရားအားလုံးကို ခွဲခြားနည်း (၄) မျိုး</h2>
+            <p class="text-slate-400 text-sm">သဗ္ဗသင်္ဂဟသည် ဥပါဒါနက္ခန္ဓာ (Citta & Cetasika Guide ၏ Khandha card တွင် ဖော်ပြခဲ့) အပြင်၊ အာယတန (၁၂)၊ ဓာတု (၁၈)၊ သစ္စာ (၄) ဟူသော နည်းလမ်း (၃) မျိုးဖြင့်ထပ်၍ တရားအားလုံးကို ခြုံငုံ ခွဲခြားထားသည် — နည်းလမ်း အသီးသီးသည် ထပ်တူ တရားစုများကိုပင် ရှုထောင့်ခြားနားစွာ ပြန်လည် ဖွဲ့စည်းထားခြင်း ဖြစ်သည်။</p>
+        </div>
+
+        <!-- Khandha link-out -->
+        <a href="citta_cetasikas_visual_guide.html#citta89" class="block glass-card rounded-2xl p-4 max-w-3xl mx-auto border border-indigo-500/30 hover:border-indigo-400 transition flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="text-left">
+                    <span class="font-semibold text-indigo-300 text-sm block">ခန္ဓာ (၅) ပါး — ရုပ်/ဝေဒနာ/သညာ/သင်္ခါရ/ဝိညာဏ</span>
+                    <span class="text-slate-400 text-[11px]">Citta & Cetasika Guide ၏ Khandha card တွင် အသေးစိတ် ဖော်ပြထားပြီး ဖြစ်သည်</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-indigo-400 flex-shrink-0"></i>
+        </a>
+
+        <!-- Ayatana verification bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
+            <button onclick="jumpToGroup('ayatana-internal')" class="px-3 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">အဇ္ဈတ္တိကာယတန (၆)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('ayatana-external')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ဗာဟိရာယတန (၆)</button>
+            <span class="text-slate-600">=</span>
+            <button onclick="jumpToGroup('ayatana-internal')" class="px-3 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">အာယတန (၁၂) ပါး</button>
+        </div>
+
+        <!-- Ayatana groups -->
+        <div id="ayatana-groups" class="space-y-4"></div>
+
+        <!-- Dhatu verification bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2.5 text-xs md:text-sm border border-slate-700">
+            <button onclick="jumpToGroup('dhatu-pasada')" class="px-2.5 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ပသာဒဓာတု (၅)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('dhatu-visaya')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ဝိသယဓာတု (၅)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('dhatu-vinnana')" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">ဝိညာဏဓာတု (၅)</button>
+            <span class="text-slate-600">+</span>
+            <button onclick="jumpToGroup('dhatu-mano')" class="px-2.5 py-1.5 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">မနောဓာတု အစရှိသည် (၃)</button>
+            <span class="text-slate-600">=</span>
+            <button onclick="jumpToGroup('dhatu-pasada')" class="px-2.5 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">ဓာတု (၁၈) ပါး</button>
+        </div>
+
+        <!-- Dhatu groups -->
+        <div id="dhatu-groups" class="space-y-4"></div>
+
+        <!-- Sacca verification bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
+            <span class="px-3 py-1.5 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30">ဒုက္ခ</span>
+            <span class="text-slate-600">+</span>
+            <span class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30">သမုဒယ</span>
+            <span class="text-slate-600">+</span>
+            <span class="px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">နိရောဓ</span>
+            <span class="text-slate-600">+</span>
+            <span class="px-3 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30">မဂ်</span>
+            <span class="text-slate-600">=</span>
+            <span class="px-3 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold">အရိယသစ္စာ (၄) ပါး</span>
+        </div>
+
+        <!-- Sacca group -->
+        <div id="sacca-group" class="space-y-4"></div>
+
+        <!-- Missaka-sangaha compact explainer -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
+            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>မိဿကသင်္ဂဟ — ရှိပြီးသား တရားစုများ ရောနှော ပေါင်းစပ်ပုံ</span>
+            </summary>
+            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-300 border-l border-slate-800">
+                <p>မိဿကသင်္ဂဟသည် နာမည်အသစ် တရားများ မိတ်ဆက်ခြင်း မဟုတ်ဘဲ၊ ဤ Guide တွင် အခြားနေရာများ၌ လေ့လာခဲ့ပြီးသား တရားစုများကို ရှုထောင့် (၅) မျိုးမှ ပြန်လည် ပေါင်းစပ် ခွဲခြားပြခြင်း ဖြစ်သည်:</p>
+                <div class="grid sm:grid-cols-2 gap-2">
+                    <a href="citta_cetasikas_visual_guide.html#citta89:hetu-sangaha" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-3 border border-slate-700 transition">
+                        <span class="text-slate-200 font-bold block">ဟေတု (၆)</span>
+                        <span class="text-slate-400">လောဘ/ဒေါသ/မောဟ/အလောဘ/အဒေါသ/အမောဟ — ဟေတုသင်္ဂဟတွင် အသေးစိတ် ရှိပြီးသား</span>
+                    </a>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-sky-500/30">
+                        <span class="text-sky-300 font-bold block">ဈာနင်္ဂ (၇)</span>
+                        <span class="text-slate-400">ဝိတက်/ဝိစာရ/ပီတိ/သုခ/ဒေါမနဿ/ဥပေက္ခာ/ဧကဂ္ဂတာ — စိတ်အမျိုးမျိုးတွင် အနည်းငယ်စီ ကွဲပြားစွာ ပါဝင်သော ဂုဏ်သတ္တိများ</span>
+                    </div>
+                    <a href="bodhipakkhiya_dhamma.html?open=sammasamadhi" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-3 border border-indigo-500/30 transition">
+                        <span class="text-indigo-300 font-bold block">မဂ္ဂင် (၁၂)</span>
+                        <span class="text-slate-400">ကုသိုလ်ဘက် မဂ္ဂင် (၈) + အကုသိုလ်ဘက် မိစ္ဆာမဂ္ဂင် (၄) — ဗောဓိပက္ခိယဓမ္မာတွင် ကုသိုလ် (၈) ပါး အသေးစိတ် ရှိပြီးသား</span>
+                    </a>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-emerald-500/30">
+                        <span class="text-emerald-300 font-bold block">ဣန္ဒြေ (၂၂)</span>
+                        <span class="text-slate-400">ဣန္ဒြေအားလုံးကို "မိမိ နယ်ပယ်အတွင်း အထွဋ်အမြတ် အုပ်ချုပ်သူ" ဟူသော ရှုထောင့်တစ်ခုတည်းဖြင့် ပေါင်းထား — ဟေတုသင်္ဂဟ၏ ဣန္ဒြေပစ္စည်း explainer တွင် အနည်းငယ် ဖော်ပြထား</span>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-lg p-3 border border-amber-500/30 sm:col-span-2">
+                        <span class="text-amber-300 font-bold block">ဗလ (၉)</span>
+                        <span class="text-slate-400">သဒ္ဓါ/ဝီရိယ/သတိ/သမာဓိ/ပညာ (ကုသိုလ်ဘက် ၅) + ဟိရီ/ဩတ္တပ္ပ (၂) + အဟိရိက/အနောတ္တပ္ပ (အကုသိုလ်ဘက် ၂) — "ဆန့်ကျင်ဘက်၏ တွန်းလှန်ခြင်း မခံစေနိုင်လောက်အောင် ခိုင်မြဲသော အားအင်" ဟူသော ဂုဏ်သတ္တိကို ကုသိုလ်/အကုသိုလ် နှစ်ဘက်စလုံးတွင် ရှာဖွေ ဖော်ပြခြင်း ဖြစ်သည်။</span>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-500 pt-1">* ဤနေရာတွင် ဣန္ဒြေ (၂၂) နှင့် ဗလ (၉) အားလုံးကို တစ်ပါးချင်းစီ ပြန်မဖော်ပြတော့ပါ — အထက်ပါ cross-link များမှတစ်ဆင့် သက်ဆိုင်ရာ မူရင်း အချက်အလက်များကို ရယူနိုင်ပါသည်။</p>
+            </div>
+        </details>
+
+        <!-- Footer -->
+        <section class="glass-card rounded-2xl p-6 border border-cyan-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-cyan-400 text-2xl"></i>
+            <p class="text-xs text-slate-300 leading-relaxed">ခန္ဓာ၊ အာယတန၊ ဓာတု၊ သစ္စာ — ဤနည်းလမ်း (၄) မျိုးလုံးသည် "ခန္ဓာငါးပါး/သတ္တဝါ" ဟု ခေါ်ဝေါ်နေသော အရာများ အားလုံးကို ကွက်တိကျကျ ခွဲခြမ်းစိတ်ဖြာနိုင်ကြောင်း၊ ၎င်းတို့တွင် ခိုင်မြဲသော "ငါ"/"အတ္တ" မတွေ့ရကြောင်း ထပ်ခါထပ်ခါ သက်သေပြနေခြင်း ဖြစ်သည်။
+            </p>
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+                <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
+            </a>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Sabba-sangaha (Ayatana 12 + Dhatu 18 + Sacca 4) — Abhidhammattha Sangaha Ch.7 =====
+        const sbData = [
+            // Ayatana internal (6) — sky
+            { id: 1, key: 'cakkhayatana', pali: 'Cakkhāyatana', name: 'စက္ခာယတန', group: 'ayatana-internal', icon: 'fa-eye',
+              desc: 'မျက်စိ၏ ပသာဒရုပ် — အဆင်းကို ခံစားနိုင်စွမ်းရှိသော အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "စက္ခုပသာဒ" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 2, key: 'sotayatana', pali: 'Sotāyatana', name: 'သောတာယတန', group: 'ayatana-internal', icon: 'fa-ear-listen',
+              desc: 'နား၏ ပသာဒရုပ် — အသံကို ခံစားနိုင်စွမ်းရှိသော အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "သောတပသာဒ" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 3, key: 'ghanayatana', pali: 'Ghānāyatana', name: 'ဃာနာယတန', group: 'ayatana-internal', icon: 'fa-nose',
+              desc: 'နှာခေါင်း၏ ပသာဒရုပ် — အနံ့ကို ခံစားနိုင်စွမ်းရှိသော အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "ဃာနပသာဒ" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 4, key: 'jivhayatana', pali: 'Jivhāyatana', name: 'ဇိဝှာယတန', group: 'ayatana-internal', icon: 'fa-tongue',
+              desc: 'လျှာ၏ ပသာဒရုပ် — အရသာကို ခံစားနိုင်စွမ်းရှိသော အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "ဇိဝှါပသာဒ" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 5, key: 'kayayatana', pali: 'Kāyāyatana', name: 'ကာယာယတန', group: 'ayatana-internal', icon: 'fa-hand',
+              desc: 'ကိုယ်ခန္ဓာ၏ ပသာဒရုပ် — အတွေ့ကို ခံစားနိုင်စွမ်းရှိသော အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "ကာယပသာဒ" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 6, key: 'manayatana', pali: 'Manāyatana', name: 'မနာယတန', group: 'ayatana-internal', icon: 'fa-brain',
+              desc: 'စိတ် (၈၉/၁၂၁ ပါးလုံး) — "မန" ဟု ခေါ်ဝေါ်သော အာယတန။',
+              example: 'ဤတစ်ခုတည်းသည် ဤ Guide ၏ "စိတ် (၈၉) ပါး" tab တွင် လေ့လာခဲ့ပြီးသား ဇစ်မြစ်တစ်ခုလုံးကို ကိုယ်စားပြုသည်။' },
+
+            // Ayatana external (6) — amber
+            { id: 7, key: 'rupayatana', pali: 'Rūpāyatana', name: 'ရူပါယတန', group: 'ayatana-external', icon: 'fa-palette',
+              desc: 'အဆင်းအာရုံ — စက္ခာယတန၏ ဆိုင်ရာ အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "ဝဏ္ဏရုပ်" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 8, key: 'saddayatana', pali: 'Saddāyatana', name: 'သဒ္ဒါယတန', group: 'ayatana-external', icon: 'fa-volume-high',
+              desc: 'အသံအာရုံ — သောတာယတန၏ ဆိုင်ရာ အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "သဒ္ဒရုပ်" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 9, key: 'gandhayatana', pali: 'Gandhāyatana', name: 'ဂန္ဓာယတန', group: 'ayatana-external', icon: 'fa-wind',
+              desc: 'အနံ့အာရုံ — ဃာနာယတန၏ ဆိုင်ရာ အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "ဂန္ဓရုပ်" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 10, key: 'rasayatana', pali: 'Rasāyatana', name: 'ရသာယတန', group: 'ayatana-external', icon: 'fa-utensils',
+              desc: 'အရသာအာရုံ — ဇိဝှာယတန၏ ဆိုင်ရာ အာယတန။',
+              example: 'ရူပသင်္ဂဟတွင် "ရသရုပ်" ဟု ခေါ်ဝေါ်ခဲ့သော ရုပ်တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 11, key: 'photthabbayatana', pali: 'Phoṭṭhabbāyatana', name: 'ဖောဋ္ဌဗ္ဗာယတန', group: 'ayatana-external', icon: 'fa-hand-back-fist',
+              desc: 'အတွေ့အာရုံ — ကာယာယတန၏ ဆိုင်ရာ အာယတန — ပထဝီ/တေဇော/ဝါယော မဟာဘုတ် (၃) ပါးနှင့် တူညီသည်။',
+              example: 'ရူပသင်္ဂဟတွင် ဖော်ပြခဲ့သကဲ့သို့ သီးခြား ရုပ်သစ် မဟုတ်ဘဲ မဟာဘုတ် (၃) ပါးကိုပင် တိုက်ရိုက် ရည်ညွှန်းသည်။' },
+            { id: 12, key: 'dhammayatana', pali: 'Dhammāyatana', name: 'ဓမ္မာယတန', group: 'ayatana-external', icon: 'fa-scroll',
+              desc: 'စေတသိက် (၅၂)၊ ရုပ်သိမ်မွေ့ (၁၆)၊ နိဗ္ဗာန် — မနာယတန (စိတ်) ကသာ သိနိုင်သော အာရုံအားလုံး ခြုံငုံ။',
+              example: 'ဓမ္မာရမ္မဏ (Ārammaṇa-saṅgaha တွင် ဖော်ပြခဲ့သော) နှင့် အနက်တူသည်။' },
+
+            // Dhatu: pasada (5) — sky
+            { id: 13, key: 'cakkhudhatu', pali: 'Cakkhu-dhātu', name: 'စက္ခုဓာတု', group: 'dhatu-pasada', icon: 'fa-eye',
+              desc: 'စက္ခာယတနနှင့် အနက်တူ — "ဓာတု" ရှုထောင့်မှ ခေါ်ဝေါ်ခြင်း (မိမိသဘောကို မိမိ ဆောင်ထားသော အရာ ဟူသော အနက်)။',
+              example: 'အာယတန/ဓာတု နှစ်မျိုးစလုံးသည် ရုပ်တစ်ပါးတည်းကိုပင် ကွဲပြားသော ရှုထောင့်ဖြင့် ခေါ်ဝေါ်ခြင်း ဖြစ်သည်။' },
+            { id: 14, key: 'sotadhatu', pali: 'Sota-dhātu', name: 'သောတဓာတု', group: 'dhatu-pasada', icon: 'fa-ear-listen',
+              desc: 'သောတာယတနနှင့် အနက်တူ။',
+              example: 'နား၏ ပသာဒရုပ် တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 15, key: 'ghanadhatu', pali: 'Ghāna-dhātu', name: 'ဃာနဓာတု', group: 'dhatu-pasada', icon: 'fa-nose',
+              desc: 'ဃာနာယတနနှင့် အနက်တူ။',
+              example: 'နှာခေါင်း၏ ပသာဒရုပ် တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 16, key: 'jivhadhatu', pali: 'Jivhā-dhātu', name: 'ဇိဝှါဓာတု', group: 'dhatu-pasada', icon: 'fa-tongue',
+              desc: 'ဇိဝှာယတနနှင့် အနက်တူ။',
+              example: 'လျှာ၏ ပသာဒရုပ် တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 17, key: 'kayadhatu', pali: 'Kāya-dhātu', name: 'ကာယဓာတု', group: 'dhatu-pasada', icon: 'fa-hand',
+              desc: 'ကာယာယတနနှင့် အနက်တူ။',
+              example: 'ကိုယ်ခန္ဓာ၏ ပသာဒရုပ် တစ်ပါးတည်း ဖြစ်သည်။' },
+
+            // Dhatu: visaya (5) — amber
+            { id: 18, key: 'rupadhatu', pali: 'Rūpa-dhātu', name: 'ရူပဓာတု', group: 'dhatu-visaya', icon: 'fa-palette',
+              desc: 'ရူပါယတနနှင့် အနက်တူ။',
+              example: 'အဆင်းအာရုံ တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 19, key: 'saddadhatu', pali: 'Sadda-dhātu', name: 'သဒ္ဒဓာတု', group: 'dhatu-visaya', icon: 'fa-volume-high',
+              desc: 'သဒ္ဒါယတနနှင့် အနက်တူ။',
+              example: 'အသံအာရုံ တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 20, key: 'gandhadhatu', pali: 'Gandha-dhātu', name: 'ဂန္ဓဓာတု', group: 'dhatu-visaya', icon: 'fa-wind',
+              desc: 'ဂန္ဓာယတနနှင့် အနက်တူ။',
+              example: 'အနံ့အာရုံ တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 21, key: 'rasadhatu', pali: 'Rasa-dhātu', name: 'ရသဓာတု', group: 'dhatu-visaya', icon: 'fa-utensils',
+              desc: 'ရသာယတနနှင့် အနက်တူ။',
+              example: 'အရသာအာရုံ တစ်ပါးတည်း ဖြစ်သည်။' },
+            { id: 22, key: 'photthabbadhatu', pali: 'Phoṭṭhabba-dhātu', name: 'ဖောဋ္ဌဗ္ဗဓာတု', group: 'dhatu-visaya', icon: 'fa-hand-back-fist',
+              desc: 'ဖောဋ္ဌဗ္ဗာယတနနှင့် အနက်တူ။',
+              example: 'အတွေ့အာရုံ (မဟာဘုတ် ၃ ပါး) တစ်ပါးတည်း ဖြစ်သည်။' },
+
+            // Dhatu: vinnana (5) — emerald
+            { id: 23, key: 'cakkhuvinnanadhatu', pali: 'Cakkhuviññāṇa-dhātu', name: 'စက္ခုဝိညာဏဓာတု', group: 'dhatu-vinnana', icon: 'fa-eye',
+              desc: 'မြင်ခြင်း ဆောင်ရွက်သော ဝိညာဉ်စိတ် (၂) ပါး — ကုသိုလ်ဝိပါက်/အကုသိုလ်ဝိပါက်။',
+              example: 'ဒွိပဉ္စဝိညာဉ် (၁၀) ပါးအနက် စက္ခုဝိညာဉ် (၂) ပါးတည်း ဖြစ်သည်။' },
+            { id: 24, key: 'sotavinnanadhatu', pali: 'Sotaviññāṇa-dhātu', name: 'သောတဝိညာဏဓာတု', group: 'dhatu-vinnana', icon: 'fa-ear-listen',
+              desc: 'ကြားခြင်း ဆောင်ရွက်သော ဝိညာဉ်စိတ် (၂) ပါး။',
+              example: 'ဒွိပဉ္စဝိညာဉ် (၁၀) ပါးအနက် သောတဝိညာဉ် (၂) ပါးတည်း ဖြစ်သည်။' },
+            { id: 25, key: 'ghanavinnanadhatu', pali: 'Ghānaviññāṇa-dhātu', name: 'ဃာနဝိညာဏဓာတု', group: 'dhatu-vinnana', icon: 'fa-nose',
+              desc: 'နံခြင်း ဆောင်ရွက်သော ဝိညာဉ်စိတ် (၂) ပါး။',
+              example: 'ဒွိပဉ္စဝိညာဉ် (၁၀) ပါးအနက် ဃာနဝိညာဉ် (၂) ပါးတည်း ဖြစ်သည်။' },
+            { id: 26, key: 'jivhavinnanadhatu', pali: 'Jivhāviññāṇa-dhātu', name: 'ဇိဝှါဝိညာဏဓာတု', group: 'dhatu-vinnana', icon: 'fa-tongue',
+              desc: 'မြည်းစမ်းခြင်း ဆောင်ရွက်သော ဝိညာဉ်စိတ် (၂) ပါး။',
+              example: 'ဒွိပဉ္စဝိညာဉ် (၁၀) ပါးအနက် ဇိဝှါဝိညာဉ် (၂) ပါးတည်း ဖြစ်သည်။' },
+            { id: 27, key: 'kayavinnanadhatu', pali: 'Kāyaviññāṇa-dhātu', name: 'ကာယဝိညာဏဓာတု', group: 'dhatu-vinnana', icon: 'fa-hand',
+              desc: 'တွေ့ထိခြင်း ဆောင်ရွက်သော ဝိညာဉ်စိတ် (၂) ပါး။',
+              example: 'ဒွိပဉ္စဝိညာဉ် (၁၀) ပါးအနက် ကာယဝိညာဉ် (၂) ပါးတည်း ဖြစ်သည်။' },
+
+            // Dhatu: mano-group (3) — rose
+            { id: 28, key: 'manodhatu', pali: 'Mano-dhātu', name: 'မနောဓာတု', group: 'dhatu-mano', icon: 'fa-brain',
+              desc: 'ပဉ္စဒွါရာဝဇ္ဇန်း (၁) + သမ္ပဋိစ္ဆန် (၂) — စုစုပေါင်း (၃) ပါး။',
+              example: 'ဝီထိစိတ်တွင် ဒွိပဉ္စဝိညာဉ်နှင့် နီးစပ်စွာ ဆက်စပ်နေသော စိတ် (၃) ပါး တစ်စုတည်း ဖြစ်သည်။' },
+            { id: 29, key: 'manovinnanadhatu', pali: 'Manoviññāṇa-dhātu', name: 'မနောဝိညာဏဓာတု', group: 'dhatu-mano', icon: 'fa-brain',
+              desc: 'စိတ် (၈၉) ပါးအနက် မနောဓာတု (၃) ပါးနှင့် ဒွိပဉ္စဝိညာဉ် (၁၀) ပါးမှလွဲ၍ ကျန် (၇၆) ပါးလုံး။',
+              example: 'ဇောနစိတ်၊ သန္တီရဏ၊ ဝုဋ္ဌပ္ပန်၊ တဒါရမ္မဏ အစရှိသည့် ဝီထိစိတ်အများစု ပါဝင်သည်။' },
+            { id: 30, key: 'dhammadhatu', pali: 'Dhamma-dhātu', name: 'ဓမ္မဓာတု', group: 'dhatu-mano', icon: 'fa-scroll',
+              desc: 'ဓမ္မာယတနနှင့် အနက်တူ — စေတသိက် (၅၂)၊ ရုပ်သိမ်မွေ့ (၁၆)၊ နိဗ္ဗာန်။',
+              example: 'စိတ်မှလွဲ၍ ကျန်နာမ်ရုပ်တရားများ (မနောဝိညာဏဓာတုမှလွဲ၍) အားလုံး ပါဝင်သည်။' },
+
+            // Sacca (4) — mixed colors
+            { id: 31, key: 'dukkhasacca', pali: 'Dukkha-sacca', name: 'ဒုက္ခသစ္စာ', group: 'sacca', icon: 'fa-triangle-exclamation',
+              desc: 'ဆင်းရဲမှု အမှန်တရား — ဥပါဒါနက္ခန္ဓာ (၅) ပါးတိုင်းသည် ဒုက္ခ ဖြစ်သည်။',
+              example: 'ပဋိစ္စသမုပ္ပါဒ် နိဒါန်း (၁၂) ပါးတွင် ဇာတိ၊ ဇရာမရဏ အပါအဝင် ခန္ဓာ (၅) ပါးလုံးသည် ဒုက္ခသစ္စာ ဖြစ်သည်။' },
+            { id: 32, key: 'samudayasacca', pali: 'Samudaya-sacca', name: 'သမုဒယသစ္စာ', group: 'sacca', icon: 'fa-fire',
+              desc: 'ဒုက္ခ၏ အကြောင်း အမှန်တရား — တဏှာ။',
+              example: 'ပဋိစ္စသမုပ္ပါဒ်တွင် "တဏှာ" နိဒါန်းသည် ဤသမုဒယသစ္စာကို တိုက်ရိုက် ကိုယ်စားပြုသည်။' },
+            { id: 33, key: 'nirodhasacca', pali: 'Nirodha-sacca', name: 'နိရောဓသစ္စာ', group: 'sacca', icon: 'fa-om',
+              desc: 'ဒုက္ခ ချုပ်ငြိမ်းရာ အမှန်တရား — နိဗ္ဗာန်။',
+              example: 'အဝိဇ္ဇာ/တဏှာ လုံးဝ ချုပ်ငြိမ်းသည့်အခါ ဤနိရောဓသစ္စာသို့ ရောက်ရှိသည်။' },
+            { id: 34, key: 'maggasacca', pali: 'Magga-sacca', name: 'မဂ္ဂသစ္စာ', group: 'sacca', icon: 'fa-route',
+              desc: 'နိရောဓသို့ ဦးတည်စေသော လမ်းစဉ် အမှန်တရား — အရိယမဂ္ဂင် (၈) ပါး။',
+              example: 'ဗောဓိပက္ခိယဓမ္မာ၏ မဂ္ဂင် (၈) ပါးသည် ဤမဂ္ဂသစ္စာကို တိုက်ရိုက် ကိုယ်စားပြုသည်။' }
+        ];
+
+        const groupInfo = {
+            'ayatana-internal': { label: 'အဇ္ဈတ္တိကာယတန', sub: 'အတွင်းပိုင်း အာယတန (၆)', color: 'text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/10' },
+            'ayatana-external': { label: 'ဗာဟိရာယတန', sub: 'အပြင်ပိုင်း အာယတန (၆)', color: 'text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
+            'dhatu-pasada':     { label: 'ပသာဒဓာတု', sub: 'ဣန္ဒြေ ဓာတု (၅)', color: 'text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/10' },
+            'dhatu-visaya':     { label: 'ဝိသယဓာတု', sub: 'အာရုံ ဓာတု (၅)', color: 'text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
+            'dhatu-vinnana':    { label: 'ဝိညာဏဓာတု', sub: 'ဒွိပဉ္စဝိညာဉ် ဓာတု (၅)', color: 'text-emerald-300', border: 'border-emerald-500', bg: 'bg-emerald-500/10' },
+            'dhatu-mano':       { label: 'မနောဓာတု အစရှိသည်', sub: 'ကျန်စိတ်/နာမ်ရုပ် ဓာတု (၃)', color: 'text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/10' },
+            'sacca':            { label: 'အရိယသစ္စာ', sub: 'သစ္စာလေးပါး (၄)', color: 'text-violet-300', border: 'border-violet-500', bg: 'bg-violet-500/10' }
+        };
+
+        function mm(n) {
+            const map = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
+            return String(n).replace(/[0-9]/g, d => map[d]);
+        }
+
+        function renderSection(containerId, groupKeys) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = groupKeys.map(gk => {
+                const info = groupInfo[gk];
+                const items = sbData.filter(s => s.group === gk);
+                return `
+                    <div id="group-${gk}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-3 scroll-mt-24">
+                        <div>
+                            <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>
+                            <p class="text-xs text-slate-400">${info.sub}</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${items.map(s => `
+                                <button onclick="openSbModal('${s.key}')" class="sb-card text-xs font-semibold px-3 py-1.5 rounded-full border transition ${info.bg} ${info.border}/30 ${info.color} hover:brightness-125">
+                                    <i class="fa-solid ${s.icon} mr-1 text-[10px]"></i>${s.name}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function jumpToGroup(groupKey) {
+            const el = document.getElementById('group-' + groupKey);
+            if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function openSbModal(key) {
+            const s = sbData.find(x => x.key === key);
+            if (!s) return;
+            const info = groupInfo[s.group];
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${info.color}">
+                        <i class="fa-solid ${s.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label}</span>
+                        <h3 class="text-xl font-bold ${info.color}">${s.name}</h3>
+                        <p class="text-[11px] text-slate-500 font-mono mt-1">${s.pali}</p>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-200 mt-1 leading-relaxed">${s.desc}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800">
+                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <p class="text-slate-300 mt-1 leading-relaxed">${s.example}</p>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSection('ayatana-groups', ['ayatana-internal', 'ayatana-external']);
+            renderSection('dhatu-groups', ['dhatu-pasada', 'dhatu-visaya', 'dhatu-vinnana', 'dhatu-mano']);
+            renderSection('sacca-group', ['sacca']);
+            const openKey = new URLSearchParams(location.search).get('open');
+            if (openKey && sbData.some(s => s.key === openKey)) {
+                setTimeout(() => openSbModal(openKey), 80);
+            }
+        });
+    </script>
+</body>
+</html>
