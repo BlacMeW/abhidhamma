@@ -2158,6 +2158,9 @@
             liveVithiIndex = 0;
             renderLiveVithiTrack();
             updateLiveVithiCaption();
+            if (!liveVithiPlaying) {
+                stopLiveVithiAnimation();
+            }
         }
 
         function renderLiveVithiTrack() {
