@@ -2219,23 +2219,31 @@
             phala: "မဂ်စိတ်၏ ချက်ချင်း အကျိုးဆက်အဖြစ် နိဗ္ဗာန်၏ အေးငြိမ်းမှုကို ဆက်လက် ခံစားရန် ဖိုလ်စိတ် ဖြစ်ပေါ်လာခြင်း။"
         };
 
-        let subphaseIndex = 0;
         let subphaseTimer = null;
+        // Every citta genuinely begins at uppāda, so each call starts the indicator there —
+        // independent of navigation direction/history — then animates uppāda→ṭhiti→bhaṅga once
+        // for that citta before settling, instead of a global counter that just kept incrementing
+        // across steps regardless of which citta was actually being shown.
         function triggerSubphasePulse() {
             const elU = document.getElementById('subphase-uppada');
             const elT = document.getElementById('subphase-thiti');
             const elB = document.getElementById('subphase-bhanga');
             if (!elU || !elT || !elB) return;
 
-            elU.classList.add('opacity-40');
-            elT.classList.add('opacity-40');
-            elB.classList.add('opacity-40');
+            if (subphaseTimer) { clearTimeout(subphaseTimer); subphaseTimer = null; }
+            const phases = [elU, elT, elB];
+            const highlight = (activeIdx) => {
+                phases.forEach((el, i) => el.classList.toggle('opacity-40', i !== activeIdx));
+            };
 
-            if (subphaseIndex === 0) elU.classList.remove('opacity-40');
-            else if (subphaseIndex === 1) elT.classList.remove('opacity-40');
-            else if (subphaseIndex === 2) elB.classList.remove('opacity-40');
-
-            subphaseIndex = (subphaseIndex + 1) % 3;
+            highlight(0);
+            subphaseTimer = setTimeout(() => {
+                highlight(1);
+                subphaseTimer = setTimeout(() => {
+                    highlight(2);
+                    subphaseTimer = null;
+                }, 250);
+            }, 250);
         }
 
         function updateLiveVithiCaption() {
