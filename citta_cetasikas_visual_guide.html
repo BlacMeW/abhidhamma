@@ -124,6 +124,9 @@
         .live-vithi-node[data-nature="kiriya"]  { --nature-rgb: 168, 85, 247; }
         .live-vithi-node[data-nature="javana"]  { --nature-rgb: 217, 70, 239; }
         .live-vithi-node[data-nature="neutral"] { --nature-rgb: 148, 163, 184; }
+        .live-vithi-node[data-nature="cuti"] { --nature-rgb: 185, 28, 28; }
+        .live-vithi-node[data-nature="patisandhi"] { --nature-rgb: 45, 212, 191; }
+        .live-vithi-node[data-nature="appana"] { --nature-rgb: 234, 179, 8; }
         .live-vithi-node {
             width: 2.25rem;
             height: 2.25rem;
@@ -997,6 +1000,7 @@
                         <button onclick="resetLiveVithiAnimation()" title="စမှပြန်စရန်" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 flex items-center justify-center transition">
                             <i class="fa-solid fa-rotate-left"></i>
                         </button>
+                        <span class="hidden sm:inline text-[10px] text-slate-500 ml-1" title="Keyboard: Left/Right arrow to step, Space to play/pause">⌨️ ← → Space</span>
                     </div>
                 </div>
 
@@ -1021,6 +1025,9 @@
                     <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background:rgb(217,70,239)"></span>ဇောန (မသတ်မှတ်ရသေး)</span>
                     <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background:rgb(16,185,129)"></span>ကုသိုလ် (Kusala)</span>
                     <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background:rgb(244,63,94)"></span>အကုသိုလ် (Akusala)</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background:rgb(234,179,8)"></span>အပ္ပနာ (ဈာန်)</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background:rgb(185,28,28)"></span>စုတိ (ဘဝကုန်ဆုံး)</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background:rgb(45,212,191)"></span>ပဋိသန္ဓေ (ဘဝသစ်)</span>
                 </div>
 
                 <!-- Single-Line Track across all screens -->
@@ -1949,7 +1956,10 @@
             anuloma: { color: 'bg-amber-500/20 border-amber-500/40 text-amber-100', label: 'အနုလောမ', desc: 'ရှေ့က ကာမာဝစရစိတ်များနှင့် နောက်က ဖြစ်ပေါ်မည့် အပ္ပနာ/လောကုတ္တရာစိတ်ကို လိုက်လျောညီထွေ ဖြစ်စေသော အဆင့်။' },
             gotrabhu: { color: 'bg-amber-500/25 border-amber-500/50 text-amber-100', label: 'ဂေါတြဘူ', desc: 'ပုထုဇဉ်အနွယ် (ကာမဇာတ်) ကို လွန်မြောက်၍ အရိယာအနွယ်သို့ ကူးပြောင်းပေးသော အဆင့် — မဂ်စိတ်၏ တစ်ခဏတည်း အရင်ဆုံး အဆင့်။' },
             magga: { color: 'bg-orange-500/20 border-orange-500/50 text-orange-200', label: 'မဂ်', desc: 'ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်သော ဥတ္ပာဒ်ခဏ — ဤဝီထိတွင် တစ်ကြိမ်တည်းသာ ဖြစ်ပေါ်ပြီး (ပုံမှန် ဇောန ၇ ကြိမ်ကဲ့သို့ ထပ်ခါထပ်ခါ မဖြစ်ပေါ်ပေ) ချက်ချင်းဆိုသလို ဖိုလ်စိတ်အဖြစ် အကျိုးပေးသည်။' },
-            phala: { color: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-200', label: 'ဖိုလ်', desc: 'မဂ်စိတ်၏ ချက်ချင်းအကျိုးဆက်အနေဖြင့် နိဗ္ဗာန်ကို ဆက်လက် အာရုံပြု ခံစားနေသော ဝိပါက်စိတ် — ဤဝီထိ၌ (၂) ကြိမ် ထပ်ခါတလဲလဲ ဖြစ်ပေါ်သည် (ဖလသမာပတ်ဝင်စားချိန်တွင်မူ များစွာ ထပ်ကာ ထပ်ကာ ဖြစ်ပေါ်နိုင်သည်)။' }
+            phala: { color: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-200', label: 'ဖိုလ်', desc: 'မဂ်စိတ်၏ ချက်ချင်းအကျိုးဆက်အနေဖြင့် နိဗ္ဗာန်ကို ဆက်လက် အာရုံပြု ခံစားနေသော ဝိပါက်စိတ် — ဤဝီထိ၌ (၂) ကြိမ် ထပ်ခါတလဲလဲ ဖြစ်ပေါ်သည် (ဖလသမာပတ်ဝင်စားချိန်တွင်မူ များစွာ ထပ်ကာ ထပ်ကာ ဖြစ်ပေါ်နိုင်သည်)။' },
+            cuti: { color: 'bg-red-900/30 border-red-700/50 text-red-200', label: 'စုတိ', desc: 'ယခုဘဝ၏ နောက်ဆုံး ဘဝင်စိတ် — ဘဝတစ်ခု ကုန်ဆုံးကြောင်း အမှတ်အသားပြု ချုပ်ငြိမ်းသွားသော ဝိပါက်စိတ် (ဘဝင်နှင့် သဘောတူသော်လည်း ဘဝ၏ နောက်ဆုံးအကြိမ် ဖြစ်ခြင်းသာ ကွဲပြားသည်)။' },
+            patisandhi: { color: 'bg-teal-600/20 border-teal-500/50 text-teal-200', label: 'ပဋိသန္ဓေ', desc: 'ဘဝသစ်၏ ပထမဆုံး စိတ်ခဏ — ယခင်ဘဝ ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ်ထဲမှ တစ်ခုကိုပင် အာရုံပြု၍ ဘဝသစ်သို့ ချိတ်ဆက်ပေးသော ဝိပါက်စိတ်။' },
+            appana: { color: 'bg-amber-600/20 border-amber-500/50 text-amber-100', label: 'အပ္ပနာဇောန (ဈာန်)', desc: 'ကမ္မဋ္ဌာန်း အာရုံကို အခိုင်အမာ တွယ်ငြိတွားလျက် ဈာန်သို့ တစ်ကြိမ်တည်း ရောက်ရှိသွားသော မဟဂ္ဂတဇောနစိတ် — ပုံမှန် ကာမာဝစရဇောန (၇) ကြိမ်နှင့် မတူဘဲ တစ်ကြိမ်သာ ဖြစ်ပေါ်သည်။' }
         };
 
         // Root-specific overrides for ordinary (kāma) javana — color/description/linked citta example per root
@@ -2008,6 +2018,69 @@
                 { key: 'phala', family: 'phala', short: 'ဖိုလ်', icon: 'fa-dove', cittaId: 83 },
                 { key: 'phala', family: 'phala', short: 'ဖိုလ်', icon: 'fa-dove', cittaId: 83 }
             ];
+        }
+
+        // Maraṇāsanna-vīthi (death-proximate process) -> cuti -> paṭisandhi (rebirth-linking).
+        // Javana runs only 5 times here (not the usual 7) since it's weakened so close to death;
+        // the object is one of kamma / kamma-nimitta / gati-nimitta, carried over into paṭisandhi.
+        function buildMaranasannaVithiSteps(rootKey) {
+            const root = javanaRootInfo[rootKey];
+            const isKusala = root.nature === 'kusala';
+            const steps = [
+                { key: 'bhavanga_calana', family: 'bhavanga', short: 'န', icon: 'fa-water' },
+                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဒ', icon: 'fa-scissors' },
+                { key: 'manodvaravajjana', family: 'avajjana', short: 'မ', icon: 'fa-brain', jumpCat: 'ahetuka' }
+            ];
+            for (let i = 1; i <= 5; i++) steps.push({
+                key: 'javana', family: 'javana', short: 'ဇ', icon: 'fa-fire', isJavana: true,
+                color: root.color, titleOverride: root.label + ' (သေခါနီး၊ အားနည်း)',
+                descOverride: root.desc + ' — သေခါနီးဖြစ်၍ အားနည်းသဖြင့် ပုံမှန် (၇) ကြိမ်အစား (၅) ကြိမ်သာ ဖြစ်ပေါ်သည်။ ကံ၊ ကမ္မနိမိတ် (သို့) ဂတိနိမိတ် တစ်ခုခုကို အာရုံပြုသည်။',
+                cittaId: root.cittaId, nature: root.nature
+            });
+            steps.push({ key: 'cuti', family: 'cuti', short: 'စု', icon: 'fa-house-fire', isCuti: true });
+            steps.push({
+                key: 'patisandhi', family: 'patisandhi', short: 'ပဋိ', icon: 'fa-seedling', isPatisandhi: true,
+                descOverride: isKusala
+                    ? 'ကုသိုလ်ဇောန အားကောင်းခဲ့သဖြင့် သုဂတိ (လူ့ဘဝ/နတ်ပြည်) ၌ ပဋိသန္ဓေ နေစသော ပထမဆုံး ဝိပါက်စိတ်။'
+                    : 'အကုသိုလ်ဇောန အားကောင်းခဲ့သဖြင့် ဒုဂ္ဂတိ (အပါယ်လေးပါး) ၌ ပဋိသန္ဓေ နေစသော ပထမဆုံး ဝိပါက်စိတ်။'
+            });
+            steps.push({
+                key: 'bhavanga_new', family: 'bhavanga', short: 'ဘ', icon: 'fa-water',
+                descOverride: isKusala
+                    ? 'ဘဝသစ် (သုဂတိ) ၏ ပထမဆုံး ဘဝင်စိတ်အစဉ် စတင်ခြင်း။'
+                    : 'ဘဝသစ် (ဒုဂ္ဂတိ) ၏ ပထမဆုံး ဘဝင်စိတ်အစဉ် စတင်ခြင်း။'
+            });
+            return steps;
+        }
+
+        // Ordinary jhāna-samāpatti (mundane absorption) — the 4th preparatory moment here is
+        // called anuloma (not gotrabhu, which is reserved for the lokuttara/magga transition);
+        // the jhāna-javana (appanā) itself arises only once, then falls straight back to
+        // bhavanga with no tadārammaṇa (jhāna citta is mahaggata, never kāmāvacara).
+        function buildJhanaSamapattiVithiSteps() {
+            return [
+                { key: 'bhavanga_calana', family: 'bhavanga', short: 'န', icon: 'fa-water' },
+                { key: 'bhavangupaccheda', family: 'bhavanga', short: 'ဒ', icon: 'fa-scissors' },
+                { key: 'manodvaravajjana', family: 'avajjana', short: 'မ', icon: 'fa-brain', jumpCat: 'ahetuka' },
+                { key: 'parikamma', family: 'parikamma', short: 'ပရိ', icon: 'fa-hand-holding-heart' },
+                { key: 'upacara', family: 'upacara', short: 'ဥပ', icon: 'fa-hand-holding-heart' },
+                { key: 'anuloma', family: 'anuloma', short: 'အနု', icon: 'fa-hand-holding-heart' },
+                { key: 'anuloma2', family: 'anuloma', short: 'အနု', icon: 'fa-hand-holding-heart' },
+                { key: 'appana', family: 'appana', short: 'ဈာန်', icon: 'fa-fire-flame-curved', isAppana: true },
+                { key: 'bhavanga_after', family: 'bhavanga', short: 'ဘ', icon: 'fa-water',
+                  descOverride: 'ဈာန်ဇောန ချက်ချင်းပြီးနောက် တဒါရမ္မဏ လုံးဝ မပါဘဲ ဘဝင်စိတ်အစဉ်သို့ ချက်ချင်း ပြန်ဝင်ခြင်း။' }
+            ];
+        }
+
+        // Dreamless deep sleep — no vīthi arises at all, pure uninterrupted bhavanga stream.
+        // The contrast baseline for every other preset above.
+        function buildBhavangaOnlySteps() {
+            const steps = [];
+            for (let i = 1; i <= 8; i++) steps.push({
+                key: 'bhavanga_stream', family: 'bhavanga', short: 'ဘ', icon: 'fa-water',
+                descOverride: 'ဘာမျှ အာရုံသစ် မရောက်သေးဘဲ ယခင်ဘဝ၏ ဘဝင်ရေစီးအတိုင်း အဆက်မပြတ် ဖြစ်ပေါ်နေဆဲ — ဝီထိစိတ် လုံးဝ မဖြစ်ပေါ်သေးပေ။'
+            });
+            return steps;
         }
 
         const pancaVithiSteps = buildPancaVithiSteps();
@@ -2168,7 +2241,11 @@
             mano_moha: { label: 'မနောဒွါရ — မောဟ', build: () => buildManoVithiStepsKama('moha') },
             mano_kusala: { label: 'မနောဒွါရ — ကုသိုလ်', build: () => buildManoVithiStepsKama('kusala') },
             mano_kiriya: { label: 'မနောဒွါရ — ကြိယာ (ရဟန္တာ)', build: () => buildManoVithiStepsKama('kiriya') },
-            mano_lokuttara: { label: 'မနောဒွါရ — လောကုတ္တရာ (မဂ်-ဖိုလ်)', build: () => buildManoVithiStepsLokuttara() }
+            mano_lokuttara: { label: 'မနောဒွါရ — လောကုတ္တရာ (မဂ်-ဖိုလ်)', build: () => buildManoVithiStepsLokuttara() },
+            maranasanna_kusala: { label: '🕊️ သေခါနီး — ကုသိုလ်ဇောန (သုဂတိ)', build: () => buildMaranasannaVithiSteps('kusala'), desc: 'သေခါနီးအချိန် ကုသိုလ်အာရုံ (ဒါန/သီလ အစရှိသည့် ကံ/ကမ္မနိမိတ်) ကို ဇောနအားနည်းစွာ (၅ ကြိမ်) ခံစားပြီး စုတိ→ပဋိသန္ဓေဖြင့် သုဂတိသို့ ဆက်သွားပုံ။' },
+            maranasanna_akusala: { label: '👹 သေခါနီး — အကုသိုလ်ဇောန (ဒုဂ္ဂတိ)', build: () => buildMaranasannaVithiSteps('lobha'), desc: 'သေခါနီးအချိန် တွယ်တာမှု/ကြောက်ရွံ့မှု ကမ္မနိမိတ်/ဂတိနိမိတ်ကို ဇောနအားနည်းစွာ (၅ ကြိမ်) ခံစားပြီး စုတိ→ပဋိသန္ဓေဖြင့် ဒုဂ္ဂတိသို့ ဆက်သွားပုံ။' },
+            jhana_samapatti: { label: '🧘‍♂️ ဈာန်သမာပတ် ဝင်စားစဉ်', build: () => buildJhanaSamapattiVithiSteps(), desc: 'ကသိုဏ်းကဲ့သို့ ကမ္မဋ္ဌာန်း အာရုံကို အခိုင်အမာ တွယ်ငြိတွားပြီး ပထမဈာန် (သို့ အထက်ဈာန်) သို့ ဝင်စားသွားပုံ — ဇောနစိတ် တစ်ကြိမ်သာ ဖြစ်ပေါ်ပြီး တဒါရမ္မဏ လုံးဝ မပါ။' },
+            dreamless_sleep: { label: '😴 အိပ်ပျော်နေချိန် (ဘဝင်ချည်း)', build: () => buildBhavangaOnlySteps(), desc: 'ဘာမျှ အာရုံမရောက်သေးသည့် dreamless deep sleep ကဲ့သို့ အချိန်တွင် ဝီထိစိတ် လုံးဝ မဖြစ်ပေါ်ဘဲ ဘဝင်စိတ်အစဉ်သာ အဆက်မပြတ် ဖြစ်ပေါ်နေသည် — အထက်ပါ ဥပမာအားလုံး၏ contrast baseline။' }
         };
 
         const liveStepCetasikas = {
@@ -2181,7 +2258,10 @@
             javana: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "ပကိဏ္ဏက (၆)", "အကုသိုလ် (၁၄) သို့ သောဘဏ (၂၅)"],
             tadarammana: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "ပကိဏ္ဏက (၆)", "သောဘဏသာဓာရဏ (၁၉)"],
             magga: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "မဂ္ဂင် (၈)", "ဗောဇ္ဈင် (၇)", "သောဘဏ (၂၅)"],
-            phala: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "သောဘဏသာဓာရဏ (၁၉)", "အပ္ပမညာ (၂)"]
+            phala: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "သောဘဏသာဓာရဏ (၁၉)", "အပ္ပမညာ (၂)"],
+            cuti: ["ဖဿ", "ဝေဒနာ", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ"],
+            patisandhi: ["ဖဿ", "ဝေဒနာ", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ", "ဝိတက်", "ဝိစာရ", "အဓိမောက္ခ"],
+            appana: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "ပကိဏ္ဏက (၆)", "ဈာနင်္ဂ (ဝိတက်/ဝိစာရ/ပီတိ/သုခ/ဧကဂ္ဂတာ)"]
         };
 
         let liveVithiSteps = [];
@@ -2218,7 +2298,7 @@
             bhavanga: 'neutral', avajjana: 'kiriya', vinnana: 'vipaka', sampaticchana: 'vipaka',
             santirana: 'vipaka', votthapana: 'kiriya', javana: 'javana', tadarammana: 'vipaka',
             parikamma: 'kusala', upacara: 'kusala', anuloma: 'kusala', gotrabhu: 'kusala',
-            magga: 'kusala', phala: 'vipaka'
+            magga: 'kusala', phala: 'vipaka', cuti: 'cuti', patisandhi: 'patisandhi', appana: 'appana'
         };
         function getStepNature(s) {
             return s.nature || stepNatureByFamily[s.family] || 'neutral';
@@ -2282,7 +2362,10 @@
             javana: "ဝုဋ္ဌပ္ပန်၏ ဆုံးဖြတ်ချက်အတိုင်း အာရုံကို ကုသိုလ်/အကုသိုလ် စေတနာဖြင့် အပြင်းအထန် တွန်းအားယူ၍ (၇) ကြိမ် ဆက်တိုက် ခံစားကာ ကံအသစ် ဖန်တီးလိုက်ခြင်း။",
             tadarammana: "ဇောနစိတ် ပြီးဆုံးသော်လည်း အာရုံ ထင်ရှားလွန်းသဖြင့် အကျိုးဆက်ကို (၂) ကြိမ် ဆက်လက် မှတ်သားလိုက်ခြင်း။",
             magga: "ဂေါတြဘူအဆင့်လွန်၍ နိဗ္ဗာန်ကို တိုက်ရိုက် အာရုံပြုကာ ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်ရန် မဂ်ဉာဏ်စိတ် ဖြစ်ပေါ်လာခြင်း။",
-            phala: "မဂ်စိတ်၏ ချက်ချင်း အကျိုးဆက်အဖြစ် နိဗ္ဗာန်၏ အေးငြိမ်းမှုကို ဆက်လက် ခံစားရန် ဖိုလ်စိတ် ဖြစ်ပေါ်လာခြင်း။"
+            phala: "မဂ်စိတ်၏ ချက်ချင်း အကျိုးဆက်အဖြစ် နိဗ္ဗာန်၏ အေးငြိမ်းမှုကို ဆက်လက် ခံစားရန် ဖိုလ်စိတ် ဖြစ်ပေါ်လာခြင်း။",
+            cuti: "ဤဘဝအတွက် ပြုခဲ့သမျှ ကံများ ကုန်ဆုံးလုနီးပြီဖြစ်၍ နောက်ဆုံး ဘဝင်စိတ်အဖြစ် ချုပ်ငြိမ်းရခြင်း — ဤစိတ် ချုပ်ပြီးနောက် ရုပ်နာမ်အစဉ် လုံးဝ ရပ်တန့်မည် မဟုတ်ဘဲ ချက်ချင်း ပဋိသန္ဓေ ဆက်ခံပေးလိမ့်မည်။",
+            patisandhi: "သေခါနီး ဇောနစိတ်က ယူခဲ့သော ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ် တစ်ခုခု၏ အားကို အခြေခံ၍ ဘဝသစ်တွင် ပထမဆုံး ချိတ်ဆက်မိလိုက်ခြင်း — ဤစိတ်ချဉ်းနှင့်တကွ ဘဝသစ်တစ်ခု စတင်လာခြင်း ဖြစ်သည်။",
+            appana: "ရှေ့က ကာမာဝစရ ဇောနငယ်များ (ပရိကမ်/ဥပစာရ/အနုလောမ) ပြင်ဆင်ပေးပြီးနောက် စိတ်သည် ကမ္မဋ္ဌာန်း အာရုံအပေါ် အခိုင်အမာ တည်ငြိမ်စွာ ကျရောက်နိုင်သွားသဖြင့် ဈာန်စိတ် ပေါ်ပေါက်လာခြင်း ဖြစ်သည်။"
         };
 
         let subphaseTimer = null;
@@ -2432,6 +2515,20 @@
             }
             syncLiveVithiInteractivity();
         }
+
+        // Keyboard shortcuts for the Live Vithi track — only while its tab is visible, no modal
+        // is open, and focus isn't in a text input (so this never hijacks typing elsewhere).
+        document.addEventListener('keydown', (e) => {
+            const vithiSection = document.getElementById('sec-vithi');
+            if (!vithiSection || vithiSection.classList.contains('hidden')) return;
+            const modalEl = document.getElementById('modal');
+            if (modalEl && !modalEl.classList.contains('hidden')) return;
+            const tag = (document.activeElement && document.activeElement.tagName) || '';
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(tag)) return;
+            if (e.key === 'ArrowRight') { e.preventDefault(); nextLiveVithiStep(); }
+            else if (e.key === 'ArrowLeft') { e.preventDefault(); prevLiveVithiStep(); }
+            else if (e.key === ' ') { e.preventDefault(); toggleLiveVithiPlay(); }
+        });
 
         // Jumps from the Mind Simulator to the Vīthi tab's Live Animation, pre-loaded with the matching preset.
         function jumpToVithiPreset(presetKey) {
