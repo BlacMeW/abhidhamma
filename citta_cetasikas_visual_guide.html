@@ -21,7 +21,7 @@
 
     <style>
         body {
-            font-family: 'Padauk', 'Pyidaungsu', sans-serif;
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', 'Myanmar Sangam MN', system-ui, sans-serif;
             background-color: #0f172a;
             color: #f8fafc;
         }
@@ -118,8 +118,13 @@
         body {
             padding-left: env(safe-area-inset-left);
             padding-right: env(safe-area-inset-right);
-            padding-bottom: calc(3rem + env(safe-area-inset-bottom));
             overscroll-behavior-y: none;
+        }
+        .tab-btn-mobile.active {
+            color: #fbbf24;
+        }
+        .tab-btn-mobile:active {
+            transform: scale(0.94);
         }
         header {
             padding-top: env(safe-area-inset-top);
@@ -137,10 +142,6 @@
             outline: 2px solid #fbbf24;
             outline-offset: 2px;
         }
-        .scroll-x-smooth {
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior-x: contain;
-        }
         .scroll-x-touch {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior-x: contain;
@@ -150,8 +151,14 @@
             scroll-snap-align: start;
         }
         #back-to-top {
-            bottom: calc(1.5rem + env(safe-area-inset-bottom));
-            right: calc(1.5rem + env(safe-area-inset-right));
+            bottom: calc(4.75rem + env(safe-area-inset-bottom));
+            right: calc(1rem + env(safe-area-inset-right));
+        }
+        @media (min-width: 1024px) {
+            #back-to-top {
+                bottom: calc(1.5rem + env(safe-area-inset-bottom));
+                right: calc(1.5rem + env(safe-area-inset-right));
+            }
         }
         @media (max-width: 767px) {
             .citta-chip {
@@ -166,47 +173,71 @@
 
     <!-- Header / Navbar -->
     <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
+        <div class="max-w-7xl mx-auto px-4 py-3 lg:py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 w-full lg:w-auto">
-                <div class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-2xl shadow-lg shadow-amber-500/10 flex-shrink-0">
+                <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl lg:text-2xl shadow-lg shadow-amber-500/10 flex-shrink-0">
                     <i class="fa-solid fa-dharmachakra animate-spin-slow"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br class="lg:hidden"> (Citta & Cetasikas)</h1>
-                    <p class="text-xs md:text-sm text-slate-400">အဘိဓမ္မာဒေသနာလာ နာမ်တရားများ အသေးစိတ် လေ့လာရန် Visual Guide</p>
+                    <h1 class="text-lg lg:text-2xl font-bold text-amber-400">စိတ်နှင့် စေတသိက်များ <br class="lg:hidden"> (Citta & Cetasikas)</h1>
+                    <p class="hidden sm:block text-xs lg:text-sm text-slate-400">အဘိဓမ္မာဒေသနာလာ နာမ်တရားများ အသေးစိတ် လေ့လာရန် Visual Guide</p>
                 </div>
             </div>
 
-            <!-- Navigation Tabs -->
-            <div class="relative w-full lg:w-auto">
-                <nav id="main-nav" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="scroll-x-smooth flex lg:flex-wrap gap-2 text-sm overflow-x-auto lg:overflow-visible w-full lg:w-auto pb-1 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0" style="scrollbar-width: thin;">
-                <button onclick="switchTab('def')" id="tab-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition">
+            <!-- Navigation Tabs (desktop only — mobile/tablet use the bottom tab bar) -->
+            <nav id="main-nav" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="hidden lg:flex flex-nowrap gap-1.5 text-sm">
+                <button onclick="switchTab('def')" id="tab-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition">
                     <i class="fa-solid fa-lightbulb mr-1.5"></i> အဓိပ္ပာယ်
                 </button>
-                <button onclick="switchTab('sampayoga')" id="tab-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-diagram-project mr-1.5"></i> ယှဉ်ဖက် (၄) ပါး
+                <button onclick="switchTab('sampayoga')" id="tab-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                    <i class="fa-solid fa-diagram-project mr-1.5"></i> ယှဉ်ဖက်
                 </button>
-                <button onclick="switchTab('citta89')" id="tab-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-sitemap mr-1.5"></i> စိတ် (၈၉/၁၂၁) ပါး
+                <button onclick="switchTab('citta89')" id="tab-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                    <i class="fa-solid fa-sitemap mr-1.5"></i> စိတ် (၈၉)
                 </button>
-                <button onclick="switchTab('cetasika')" id="tab-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-cubes mr-1.5"></i> စေတသိက် (၅၂) ပါး
+                <button onclick="switchTab('cetasika')" id="tab-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                    <i class="fa-solid fa-cubes mr-1.5"></i> စေတသိက်
                 </button>
-                <button onclick="switchTab('vithi')" id="tab-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-route mr-1.5"></i> ဝီထိစိတ် အစဉ်
+                <button onclick="switchTab('vithi')" id="tab-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                    <i class="fa-solid fa-route mr-1.5"></i> ဝီထိအစဉ်
                 </button>
-                <button onclick="switchTab('simulator')" id="tab-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
-                    <i class="fa-solid fa-flask-vial mr-1.5"></i> စိတ်အမျိုးအစား စူစမ်းရန်
+                <button onclick="switchTab('simulator')" id="tab-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn whitespace-nowrap flex-shrink-0 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                    <i class="fa-solid fa-flask-vial mr-1.5"></i> စမ်းသပ်ရန်
                 </button>
-                </nav>
-                <div id="nav-fade-left" class="lg:hidden pointer-events-none absolute top-0 left-0 h-full w-6 bg-gradient-to-r from-slate-900 to-transparent opacity-0 transition-opacity"></div>
-                <div id="nav-fade-right" class="lg:hidden pointer-events-none absolute top-0 right-0 h-full w-8 bg-gradient-to-l from-slate-900 to-transparent transition-opacity"></div>
-            </div>
+            </nav>
         </div>
     </header>
 
+    <!-- Bottom Tab Bar (mobile/tablet only) -->
+    <nav id="mobile-tab-bar" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 flex" style="padding-bottom: env(safe-area-inset-bottom);">
+        <button onclick="switchTab('def')" id="tabm-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn-mobile active flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
+            <i class="fa-solid fa-lightbulb text-base"></i>
+            <span class="text-[10px] font-semibold leading-tight">အဓိပ္ပာယ်</span>
+        </button>
+        <button onclick="switchTab('sampayoga')" id="tabm-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
+            <i class="fa-solid fa-diagram-project text-base"></i>
+            <span class="text-[10px] font-semibold leading-tight">ယှဉ်ဖက်</span>
+        </button>
+        <button onclick="switchTab('citta89')" id="tabm-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
+            <i class="fa-solid fa-sitemap text-base"></i>
+            <span class="text-[10px] font-semibold leading-tight">စိတ် (၈၉)</span>
+        </button>
+        <button onclick="switchTab('cetasika')" id="tabm-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
+            <i class="fa-solid fa-cubes text-base"></i>
+            <span class="text-[10px] font-semibold leading-tight">စေတသိက်</span>
+        </button>
+        <button onclick="switchTab('vithi')" id="tabm-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
+            <i class="fa-solid fa-route text-base"></i>
+            <span class="text-[10px] font-semibold leading-tight">ဝီထိ</span>
+        </button>
+        <button onclick="switchTab('simulator')" id="tabm-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-slate-400">
+            <i class="fa-solid fa-flask-vial text-base"></i>
+            <span class="text-[10px] font-semibold leading-tight">စမ်းကြည့်ရန်</span>
+        </button>
+    </nav>
+
     <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 mt-8 flex-1 w-full">
+    <main class="max-w-7xl mx-auto px-4 mt-6 lg:mt-8 flex-1 w-full pb-20 lg:pb-0">
 
         <!-- SECTION 1: DEFINITIONS -->
         <section id="sec-def" role="tabpanel" aria-labelledby="tab-def" class="space-y-8">
@@ -970,19 +1001,7 @@
             return String(n).replace(/[0-9]/g, d => map[d]);
         }
 
-        // Shows/hides the left/right fade hints on the horizontally-scrollable mobile/tablet nav.
-        function updateNavFade() {
-            const nav = document.getElementById('main-nav');
-            const left = document.getElementById('nav-fade-left');
-            const right = document.getElementById('nav-fade-right');
-            if (!nav || !left || !right) return;
-            const maxScroll = nav.scrollWidth - nav.clientWidth;
-            left.style.opacity = nav.scrollLeft > 4 ? '1' : '0';
-            right.style.opacity = nav.scrollLeft < maxScroll - 4 ? '1' : '0';
-        }
-        window.addEventListener('resize', updateNavFade);
-
-        // Tab Switching Logic
+        // Tab Switching Logic (syncs both the desktop header nav and the mobile bottom tab bar)
         function switchTab(tabId) {
             document.querySelectorAll('main > section[id^="sec-"]').forEach(sec => sec.classList.add('hidden'));
             document.getElementById('sec-' + tabId).classList.remove('hidden');
@@ -991,11 +1010,21 @@
                 btn.className = "tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition";
                 btn.setAttribute('aria-selected', 'false');
             });
-
             const activeBtn = document.getElementById('tab-' + tabId);
             activeBtn.className = "tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition";
             activeBtn.setAttribute('aria-selected', 'true');
-            if (activeBtn.scrollIntoView) activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+            document.querySelectorAll('.tab-btn-mobile').forEach(btn => {
+                btn.classList.remove('active', 'text-amber-400');
+                btn.classList.add('text-slate-400');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            const activeBtnMobile = document.getElementById('tabm-' + tabId);
+            if (activeBtnMobile) {
+                activeBtnMobile.classList.remove('text-slate-400');
+                activeBtnMobile.classList.add('active');
+                activeBtnMobile.setAttribute('aria-selected', 'true');
+            }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1570,9 +1599,6 @@
             updateSimulator('lobha');
             setVithiIntensity('atimahanta');
             setManoTadarammana(true);
-            const nav = document.getElementById('main-nav');
-            if (nav) nav.addEventListener('scroll', updateNavFade);
-            updateNavFade();
         });
     </script>
 </body>
