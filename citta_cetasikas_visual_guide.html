@@ -2,7 +2,13 @@
 <html lang="my">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Citta & Cetasikas">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ စိတ်နှင့် စေတသိက် (၈၉ ပါး / ၅၂ ပါး) တို့ကို ဥပမာများ၊ ဝီထိအစဉ်နှင့်တကွ interactive ဖြင့် လေ့လာနိုင်သော Visual Guide">
     <title>အဘိဓမ္မာဒေသနာလာ စိတ်နှင့် စေတသိက်များ (Citta & Cetasikas Visual Guide)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -104,6 +110,56 @@
             color: #475569;
             flex-shrink: 0;
         }
+
+        /* ===== Mobile / touch usability ===== */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            padding-bottom: calc(3rem + env(safe-area-inset-bottom));
+            overscroll-behavior-y: none;
+        }
+        header {
+            padding-top: env(safe-area-inset-top);
+        }
+        button, .tab-btn, .c-filter-btn, .citta-chip, [onclick] {
+            touch-action: manipulation;
+        }
+        button:active, .tab-btn:active, .c-filter-btn:active, .vithi-intensity-btn:active {
+            transform: scale(0.96);
+        }
+        .cetasika-card:active {
+            transform: scale(0.98);
+        }
+        :focus-visible {
+            outline: 2px solid #fbbf24;
+            outline-offset: 2px;
+        }
+        .scroll-x-smooth {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+        }
+        .scroll-x-touch {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x proximity;
+        }
+        .scroll-x-touch > * {
+            scroll-snap-align: start;
+        }
+        #back-to-top {
+            bottom: calc(1.5rem + env(safe-area-inset-bottom));
+            right: calc(1.5rem + env(safe-area-inset-right));
+        }
+        @media (max-width: 767px) {
+            .citta-chip {
+                min-height: 34px;
+                padding-top: 0.4rem;
+                padding-bottom: 0.4rem;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-12">
@@ -123,23 +179,23 @@
 
             <!-- Navigation Tabs -->
             <div class="relative w-full lg:w-auto">
-                <nav id="main-nav" class="flex lg:flex-wrap gap-2 text-sm overflow-x-auto lg:overflow-visible w-full lg:w-auto pb-1 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0" style="scrollbar-width: thin;">
-                <button onclick="switchTab('def')" id="tab-def" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition">
+                <nav id="main-nav" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="scroll-x-smooth flex lg:flex-wrap gap-2 text-sm overflow-x-auto lg:overflow-visible w-full lg:w-auto pb-1 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0" style="scrollbar-width: thin;">
+                <button onclick="switchTab('def')" id="tab-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition">
                     <i class="fa-solid fa-lightbulb mr-1.5"></i> အဓိပ္ပာယ်
                 </button>
-                <button onclick="switchTab('sampayoga')" id="tab-sampayoga" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                <button onclick="switchTab('sampayoga')" id="tab-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
                     <i class="fa-solid fa-diagram-project mr-1.5"></i> ယှဉ်ဖက် (၄) ပါး
                 </button>
-                <button onclick="switchTab('citta89')" id="tab-citta89" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                <button onclick="switchTab('citta89')" id="tab-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
                     <i class="fa-solid fa-sitemap mr-1.5"></i> စိတ် (၈၉/၁၂၁) ပါး
                 </button>
-                <button onclick="switchTab('cetasika')" id="tab-cetasika" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                <button onclick="switchTab('cetasika')" id="tab-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
                     <i class="fa-solid fa-cubes mr-1.5"></i> စေတသိက် (၅၂) ပါး
                 </button>
-                <button onclick="switchTab('vithi')" id="tab-vithi" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                <button onclick="switchTab('vithi')" id="tab-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
                     <i class="fa-solid fa-route mr-1.5"></i> ဝီထိစိတ် အစဉ်
                 </button>
-                <button onclick="switchTab('simulator')" id="tab-simulator" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
+                <button onclick="switchTab('simulator')" id="tab-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">
                     <i class="fa-solid fa-flask-vial mr-1.5"></i> စိတ်အမျိုးအစား စူစမ်းရန်
                 </button>
                 </nav>
@@ -153,7 +209,7 @@
     <main class="max-w-7xl mx-auto px-4 mt-8 flex-1 w-full">
 
         <!-- SECTION 1: DEFINITIONS -->
-        <section id="sec-def" class="space-y-8">
+        <section id="sec-def" role="tabpanel" aria-labelledby="tab-def" class="space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၁)</span>
                 <h2 class="text-2xl md:text-3xl font-bold">စိတ်နှင့် စေတသိက် အခြေခံ အယူအဆ</h2>
@@ -231,7 +287,7 @@
         </section>
 
         <!-- SECTION 2: SAMPAYOGA -->
-        <section id="sec-sampayoga" class="hidden space-y-8">
+        <section id="sec-sampayoga" role="tabpanel" aria-labelledby="tab-sampayoga" class="hidden space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၂)</span>
                 <h2 class="text-2xl md:text-3xl font-bold">စိတ်နှင့် စေတသိက်တို့၏ ယှဉ်ဖက်လက္ခဏာ (၄) ပါး</h2>
@@ -315,11 +371,14 @@
         </section>
 
         <!-- SECTION 2.5: 89/121 CITTAS -->
-        <section id="sec-citta89" class="hidden space-y-8">
+        <section id="sec-citta89" role="tabpanel" aria-labelledby="tab-citta89" class="hidden space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၃)</span>
-                <h2 class="text-2xl md:text-3xl font-bold">စိတ် (၈၉) ပါး / ဈာန်စိတ် ခွဲခြားပါက (၁၂၁) ပါး</h2>
+                <h2 class="text-2xl md:text-3xl font-bold">စိတ် (၈၉) ပါး / <br class="sm:hidden">ဈာန်စိတ် ခွဲခြားပါက (၁၂၁) ပါး</h2>
                 <p class="text-slate-400 text-sm">"ဘူမိစတုက္က" (ဘုံလေးမျိုး) အလိုက် စိတ်တို့ကို စုစည်းခွဲခြားထားပုံ။ ခေါင်းစဉ်တစ်ခုစီကို နှိပ်၍ အသေးစိတ် ဖြန့်ကြည့်နိုင်သည်။</p>
+                <button onclick="toggleAllCittaGroups()" id="toggle-all-citta" class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 px-3 py-1.5 rounded-full transition">
+                    <i class="fa-solid fa-chevron-down text-[10px]"></i> အားလုံး ဖြန့်ကြည့်ရန်
+                </button>
             </div>
 
             <!-- Total verification bar -->
@@ -466,7 +525,7 @@
         </section>
 
         <!-- SECTION 4: 52 CETASIKAS DETAILED -->
-        <section id="sec-cetasika" class="hidden space-y-8">
+        <section id="sec-cetasika" role="tabpanel" aria-labelledby="tab-cetasika" class="hidden space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၄)</span>
                 <h2 class="text-2xl md:text-3xl font-bold">စေတသိက် (၅၂) ပါး အသေးစိတ် အမျိုးအစားခွဲခြားပုံ</h2>
@@ -477,7 +536,10 @@
             <div class="max-w-2xl mx-auto space-y-4">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
-                    <input id="cetasika-search" type="text" oninput="renderCetasikaGrid(currentCategory)" placeholder="အမည် (ဥပမာ- ဝေဒနာ) သို့ ပါဠိစာလုံးဖြင့် ရှာဖွေပါ..." class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-500 placeholder:text-slate-600">
+                    <input id="cetasika-search" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" oninput="renderCetasikaGrid(currentCategory)" placeholder="အမည် (ဥပမာ- ဝေဒနာ) သို့ ပါဠိစာလုံးဖြင့် ရှာဖွေပါ..." class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-10 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-500 placeholder:text-slate-600">
+                    <button id="cetasika-search-clear" onclick="clearCetasikaSearch()" aria-label="ရှာဖွေမှု ရှင်းရန်" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-300 flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-2">
                     <button onclick="filterCetasika('all', event)" class="c-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950">
@@ -507,10 +569,10 @@
         </section>
 
         <!-- SECTION 5: VITHI (COGNITIVE PROCESS) -->
-        <section id="sec-vithi" class="hidden space-y-8">
+        <section id="sec-vithi" role="tabpanel" aria-labelledby="tab-vithi" class="hidden space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၅)</span>
-                <h2 class="text-2xl md:text-3xl font-bold">ဝီထိစိတ် အစဉ် (Citta-Vīthi — Cognitive Process)</h2>
+                <h2 class="text-2xl md:text-3xl font-bold">ဝီထိစိတ် အစဉ် <br class="sm:hidden"> (Citta-Vīthi — Cognitive Process)</h2>
                 <p class="text-slate-400 text-sm">စိတ်တစ်ခုတည်း တစ်ခါတည်း ဖြစ်ပေါ်နေခြင်း မဟုတ်ဘဲ၊ အာရုံတစ်ခုကို သိရှိရာ၌ စိတ်အမျိုးမျိုး အစဉ်လိုက် တစ်ချက်ပြီးတစ်ချက် ပြေးလွှားသွားပုံကို လေ့လာကြည့်ပါ။</p>
             </div>
 
@@ -547,7 +609,11 @@
                         <p class="text-xs text-slate-400">မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ် — ခန္ဓာဒွါရ (၅) ပါးမှတစ်ဆင့် ရုပ်အာရုံကို သိမြင်ရာတွင် ဖြစ်ပေါ်သော အစဉ် (အများဆုံး စိတ်ခဏ ၁၇ ခု)</p>
                     </div>
                 </div>
-                <div id="panca-vithi-track" class="flex items-stretch gap-1 overflow-x-auto pb-3"></div>
+                <div id="panca-vithi-track" class="scroll-x-touch flex items-stretch gap-1 overflow-x-auto pb-3"></div>
+                <div class="flex items-center justify-between lg:hidden">
+                    <span id="panca-vithi-position" class="text-[11px] font-mono text-slate-500"></span>
+                    <span class="text-[11px] text-slate-600"><i class="fa-solid fa-arrows-left-right mr-1"></i>ဘေးသို့ ပွတ်ဆွဲကြည့်ပါ</span>
+                </div>
                 <p class="text-[11px] text-slate-500">နှိပ်ကြည့်နိုင်သော အဆင့်တစ်ခုချင်းစီကို "ရှင်းလင်းစွာ ထင်ရှားနေသော" အဆင့်များထဲမှ ရွေးနှိပ်ပါ (မှိန်နေသော အဆင့်များသည် ရွေးထားသော အာရုံအားနည်းအဆင့်တွင် မရောက်တော့သော အဆင့်များ ဖြစ်သည်)။</p>
             </div>
 
@@ -574,15 +640,15 @@
                         <button onclick="setManoTadarammana(false)" id="mano-tada-off" class="vithi-intensity-btn px-3 py-1 rounded-full font-bold transition">တဒါရမ္မဏမပါ</button>
                     </div>
                 </div>
-                <div id="mano-vithi-track" class="flex items-stretch gap-1 overflow-x-auto pb-3"></div>
+                <div id="mano-vithi-track" class="scroll-x-touch flex items-stretch gap-1 overflow-x-auto pb-3"></div>
             </div>
         </section>
 
         <!-- SECTION 6: SIMULATOR -->
-        <section id="sec-simulator" class="hidden space-y-8">
+        <section id="sec-simulator" role="tabpanel" aria-labelledby="tab-simulator" class="hidden space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အပိုင်း (၆)</span>
-                <h2 class="text-2xl md:text-3xl font-bold">စိတ်အမျိုးအစား စူစမ်းလေ့လာစနစ် (Mind Simulator)</h2>
+                <h2 class="text-2xl md:text-3xl font-bold">စိတ်အမျိုးအစား စူစမ်းလေ့လာစနစ် <br class="sm:hidden"> (Mind Simulator)</h2>
                 <p class="text-slate-400 text-sm">စိတ်အမျိုးအစားတစ်ခုကို ရွေးချယ်ပြီး ထိုစိတ်၌ ယှဉ်တွဲပါဝင်သော စေတသိက်များကို လေ့လာကြည့်ပါ။</p>
             </div>
 
@@ -923,10 +989,13 @@
 
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.className = "tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition";
+                btn.setAttribute('aria-selected', 'false');
             });
 
             const activeBtn = document.getElementById('tab-' + tabId);
             activeBtn.className = "tab-btn whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-lg bg-amber-500 text-slate-950 font-bold transition";
+            activeBtn.setAttribute('aria-selected', 'true');
+            if (activeBtn.scrollIntoView) activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -940,6 +1009,8 @@
             const countLabel = document.getElementById('cetasika-count');
             const searchInput = document.getElementById('cetasika-search');
             const query = (searchInput && searchInput.value || '').trim().toLowerCase();
+            const clearBtn = document.getElementById('cetasika-search-clear');
+            if (clearBtn) clearBtn.classList.toggle('hidden', !query);
             grid.innerHTML = '';
 
             const filtered = cetasikaData.filter(item => {
@@ -969,7 +1040,7 @@
                 }
 
                 const card = document.createElement('div');
-                card.className = `glass-card rounded-xl p-4 border border-slate-800 ${hoverBorder} cursor-pointer transition duration-200 flex flex-col justify-between group focus:outline-none focus:ring-2 focus:ring-amber-400`;
+                card.className = `cetasika-card glass-card rounded-xl p-4 border border-slate-800 ${hoverBorder} cursor-pointer transition duration-200 flex flex-col justify-between group focus:outline-none focus:ring-2 focus:ring-amber-400`;
                 card.setAttribute('tabindex', '0');
                 card.setAttribute('role', 'button');
                 card.setAttribute('aria-label', `${item.name} (${item.pali}) အသေးစိတ်ကြည့်ရန်`);
@@ -1011,6 +1082,13 @@
             const target = (evt && evt.currentTarget) || document.querySelector(`.c-filter-btn[onclick*="'${cat}'"]`);
             if (target) target.className = "c-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950";
             renderCetasikaGrid(cat);
+        }
+
+        function clearCetasikaSearch() {
+            const input = document.getElementById('cetasika-search');
+            input.value = '';
+            input.focus();
+            renderCetasikaGrid(currentCategory);
         }
 
         // Modal Handler
@@ -1102,7 +1180,7 @@
             const el = document.getElementById(containerId);
             if (!el) return;
             el.innerHTML = list.map(item => `
-                <button onclick="openCittaModal(${item.id})" class="text-[11px] font-semibold px-2.5 py-1 rounded-full border transition ${cittaColorMap[item.color]}">
+                <button onclick="openCittaModal(${item.id})" class="citta-chip text-[11px] font-semibold px-3 py-1.5 rounded-full border transition ${cittaColorMap[item.color]}">
                     ${item.shortName}
                 </button>
             `).join('');
@@ -1121,6 +1199,16 @@
             renderCittaChips('chips-rupa', cittaData.filter(c => c.group === 'rupa'));
             renderCittaChips('chips-arupa', cittaData.filter(c => c.group === 'arupa'));
             renderCittaChips('chips-lokuttara', cittaData.filter(c => c.group === 'lokuttara'));
+        }
+
+        function toggleAllCittaGroups() {
+            const detailsList = document.querySelectorAll('#sec-citta89 details');
+            const shouldOpen = ![...detailsList].every(d => d.open);
+            detailsList.forEach(d => { d.open = shouldOpen; });
+            const btn = document.getElementById('toggle-all-citta');
+            btn.innerHTML = shouldOpen
+                ? '<i class="fa-solid fa-chevron-up text-[10px]"></i> အားလုံး ခေါက်ရန်'
+                : '<i class="fa-solid fa-chevron-down text-[10px]"></i> အားလုံး ဖြန့်ကြည့်ရန်';
         }
 
         function openCittaModal(id) {
@@ -1232,6 +1320,30 @@
                 `;
             }).join('');
             el._steps = steps;
+            if (containerId === 'panca-vithi-track') {
+                updateVithiPosition();
+                if (!el._scrollBound) {
+                    el.addEventListener('scroll', updateVithiPosition);
+                    el._scrollBound = true;
+                }
+            }
+        }
+
+        function updateVithiPosition() {
+            const el = document.getElementById('panca-vithi-track');
+            const label = document.getElementById('panca-vithi-position');
+            if (!el || !label || !el._steps || !el._steps.length) return;
+            const buttons = el.querySelectorAll('button');
+            if (!buttons.length) return;
+            const center = el.scrollLeft + el.clientWidth / 2;
+            let closestIdx = 0;
+            let closestDist = Infinity;
+            buttons.forEach((btn, i) => {
+                const btnCenter = btn.offsetLeft + btn.offsetWidth / 2;
+                const dist = Math.abs(btnCenter - center);
+                if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+            });
+            label.textContent = `အဆင့် ${mm(closestIdx + 1)} / ${mm(el._steps.length)}`;
         }
 
         function openVithiStepModal(containerId, index) {
