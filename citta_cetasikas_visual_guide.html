@@ -914,7 +914,7 @@
                         အားလုံး (၅၂)
                     </button>
                     <button onclick="filterCetasika('anya', event)" class="c-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-amber-300 hover:bg-slate-700">
-                        အညာသမန်း (၁၃) ပါး
+                        အညသမာန (၁၃) ပါး
                     </button>
                     <button onclick="filterCetasika('akusala', event)" class="c-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-rose-400 hover:bg-slate-700">
                         အကုသိုလ် (၁၄) ပါး
@@ -1079,7 +1079,7 @@
             <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-500/30 glow-gold flex items-start gap-3">
                 <div class="text-amber-400 text-2xl flex-shrink-0"><i class="fa-solid fa-triangle-exclamation"></i></div>
                 <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
-                    <span class="text-amber-300 font-bold">ဇောစိတ် (Javana)</span> — ဤအဆင့် (၇) ခုတွင်သာ ကုသိုလ် (သို့) အကုသိုလ် ကံ အသစ် ဖန်တီးခြင်း ဖြစ်ပေါ်သည်။ ကျန်အဆင့်များ (ဝိညာဉ်၊ သမ္ပဋိစ္ဆန်၊ သန္တီရဏ၊ ဝုဋ္ဌပ္ပန် စသည်) သည် ဝိပါက် (သို့) ကြိယာသက်သက်သာ ဖြစ်ကြသဖြင့် ကံသစ် မဖန်တီးနိုင်ပေ။ ဤအချက်ကြောင့် "စိတ်တစ်ခု ဖြစ်တိုင်း အကျိုးပေးမည်" ဟူသော အထင်မှားကို ပယ်ဖျောက်ရာ ရောက်သည်။
+                    <span class="text-amber-300 font-bold">ဇောနစိတ် (Javana)</span> — ဤအဆင့် (၇) ခုတွင်သာ ကုသိုလ် (သို့) အကုသိုလ် ကံ အသစ် ဖန်တီးခြင်း ဖြစ်ပေါ်သည်။ ကျန်အဆင့်များ (ဝိညာဉ်၊ သမ္ပဋိစ္ဆန်၊ သန္တီရဏ၊ ဝုဋ္ဌပ္ပန် စသည်) သည် ဝိပါက် (သို့) ကြိယာသက်သက်သာ ဖြစ်ကြသဖြင့် ကံသစ် မဖန်တီးနိုင်ပေ။ ဤအချက်ကြောင့် "စိတ်တစ်ခု ဖြစ်တိုင်း အကျိုးပေးမည်" ဟူသော အထင်မှားကို ပယ်ဖျောက်ရာ ရောက်သည်။
                 </p>
             </div>
 
@@ -1217,7 +1217,7 @@
     <script>
         // Cetasikas Data Structure
         const cetasikaData = [
-            // အညာသမန်း (၁၃)
+            // အညသမာန (၁၃)
             { id: 1, name: "ဖဿ", pali: "Phassa", cat: "anya", sub: "သဗ္ဗစိတ္တသာဓာရဏ (၇)", desc: "အာရုံနှင့် စိတ်တို့ ထိတွေ့ပေးခြင်း သဘော။", example: "မျက်စိဖြင့် ပန်းတစ်ပွင့်ကို မြင်လိုက်သည့်အခါ \"မျက်စိ + ပုံရုပ် + မျက်စိဝိညာဉ်\" သုံးခု ထိတွေ့ဆုံစည်းမိသည့် ပထမဆုံး အခိုက်အတန့်။", icon: "fa-hand-pointer", color: "amber" },
             { id: 2, name: "ဝေဒနာ", pali: "Vedanā", cat: "anya", sub: "သဗ္ဗစိတ္တသာဓာရဏ (၇)", desc: "အာရုံ၏ အရသာကို ခံစားခြင်း သဘော (သုခ/ဒုက္ခ/ဥပေက္ခာ)။", example: "ချိုမြိန်သော အစားအစာကို စားမိသောအခါ ခံစားရသော \"အရသာ ချိုမြိန်ပျော်ရွှင်မှု\" ခံစားချက်။", icon: "fa-heart-pulse", color: "amber" },
             { id: 3, name: "သညာ", pali: "Saññā", cat: "anya", sub: "သဗ္ဗစိတ္တသာဓာရဏ (၇)", desc: "အာရုံကို မှတ်သားခြင်း သဘော။", example: "မိတ်ဆွေတစ်ဦး၏ မျက်နှာကို တစ်ကြိမ်တွေ့ဖူးပြီးနောက် နောက်တစ်ကြိမ် ပြန်တွေ့သောအခါ ချက်ချင်း မှတ်မိနိုင်ခြင်း။", icon: "fa-bookmark", color: "amber" },
@@ -1658,7 +1658,7 @@
                     </div>` : ''}
                     <div class="pt-2 border-t border-slate-800 flex justify-between text-xs text-slate-400">
                         <span>စေတသိက် အမှတ်: #${mm(item.id)}</span>
-                        <span>အုပ်စု: ${item.cat === 'anya' ? 'အညာသမန်း' : item.cat === 'akusala' ? 'အကုသိုလ်' : 'သောဘဏ'}</span>
+                        <span>အုပ်စု: ${item.cat === 'anya' ? 'အညသမာန' : item.cat === 'akusala' ? 'အကုသိုလ်' : 'သောဘဏ'}</span>
                     </div>
                 </div>
                 <button onclick="jumpToCittaGroup('${item.cat}')" class="mt-2 w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
@@ -1921,7 +1921,7 @@
             santirana: { color: 'bg-teal-500/15 border-teal-500/40 text-teal-300', label: 'သန္တီရဏ', desc: 'လက်ခံပြီးသော အာရုံကို စစ်ဆေးဆင်ခြင်နေသော ဝိပါက်စိတ်။' },
             votthapana: { color: 'bg-violet-500/15 border-violet-500/40 text-violet-300', label: 'ဝုဋ္ဌပ္ပန်', desc: 'အာရုံကို ကောင်း/မကောင်း အပြီးသတ် ဆုံးဖြတ်ပေးသော ကြိယာစိတ် (မနောဒွါရာဝဇ္ဇန်းစိတ်ကပင် ဤတာဝန်ကို ယူသည်)။' },
             javana: { color: 'bg-fuchsia-500/15 border-fuchsia-500/40 text-fuchsia-300', label: 'ဇောန', desc: 'ဆုံးဖြတ်ပြီးနောက် အာရုံကို အပြင်းအထန် တွန်းအားဖြင့် ခံစားနေသော အခိုက် — ကုသိုလ်/အကုသိုလ်/ကြိယာ ဖြစ်နိုင်ပြီး ဤအဆင့်၌သာ ကံအသစ် ဖန်တီးသည်။' },
-            tadarammana: { color: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300', label: 'တဒါရမ္မဏ', desc: 'ဇောစိတ်ပြီးနောက် အာရုံ၏ အကျိုးဆက်ကို ခေတ္တခဏမျှ ဆက်လက် မှတ်သားနေသော ဝိပါက်စိတ် (အာရုံ အလွန်ထင်ရှားသော အခါမျိုးတွင်သာ ဖြစ်တတ်သည်)။' },
+            tadarammana: { color: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300', label: 'တဒါရမ္မဏ', desc: 'ဇောနစိတ်ပြီးနောက် အာရုံ၏ အကျိုးဆက်ကို ခေတ္တခဏမျှ ဆက်လက် မှတ်သားနေသော ဝိပါက်စိတ် (အာရုံ အလွန်ထင်ရှားသော အခါမျိုးတွင်သာ ဖြစ်တတ်သည်)။' },
             parikamma: { color: 'bg-amber-500/10 border-amber-500/30 text-amber-200', label: 'ပရိကမ်', desc: 'အပ္ပနာ (ဈာန်) သို့မဟုတ် မဂ်ဖိုလ်မတိုင်မီ ပြင်ဆင်ပေးသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ် (ဉာဏကြီးသူတို့၌ ချန်ခြင်တတ်သည်)။' },
             upacara: { color: 'bg-amber-500/15 border-amber-500/35 text-amber-200', label: 'ဥပစာရ', desc: 'အပ္ပနာ/မဂ်ဖိုလ်နှင့် နီးကပ်စွာ ချဉ်းကပ်လာသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ်။' },
             anuloma: { color: 'bg-amber-500/20 border-amber-500/40 text-amber-100', label: 'အနုလောမ', desc: 'ရှေ့က ကာမာဝစရစိတ်များနှင့် နောက်က ဖြစ်ပေါ်မည့် အပ္ပနာ/လောကုတ္တရာစိတ်ကို လိုက်လျောညီထွေ ဖြစ်စေသော အဆင့်။' },
@@ -2060,7 +2060,7 @@
                     <i class="fa-solid fa-sitemap"></i> သက်ဆိုင်ရာ စိတ်အသေးစိတ် (၈၉ ပါးထဲမှ) ကြည့်ရန်
                 </button>` : s.isJavana ? `
                 <button onclick="closeModal(); switchTab('simulator');" class="mt-2 w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-flask-vial"></i> ဇောစိတ် အမျိုးအစားများ (Simulator) ကြည့်ရန်
+                    <i class="fa-solid fa-flask-vial"></i> ဇောနစိတ် အမျိုးအစားများ (Simulator) ကြည့်ရန်
                 </button>` : s.jumpCat ? `
                 <button onclick="jumpToCittaGroup('${s.jumpCat}')" class="mt-2 w-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
                     <i class="fa-solid fa-sitemap"></i> ဆက်စပ်သော အဟေတုကစိတ် (၈၉ ပါးထဲမှ) ကြည့်ရန်
@@ -2072,8 +2072,8 @@
         let currentVithiIntensity = 'atimahanta';
         const vithiIntensityNotes = {
             atimahanta: 'အာရုံသည် အလွန်ထင်ရှားသဖြင့် အစဉ်တစ်ခုလုံး (စိတ်ခဏ ၁၇ ခု) ပြည့်စုံစွာ ပြေးလွှားပြီး တဒါရမ္မဏအထိ ရောက်ရှိသည်။',
-            mahanta: 'အာရုံသည် ခပ်ထင်ရှားထင်ရှား ဖြစ်သဖြင့် ဇောစိတ်အထိသာ ပြေးလွှားပြီး တဒါရမ္မဏသို့ မရောက်တော့ဘဲ ဘဝင်ပြန်ဝင်သည်။',
-            paritta: 'အာရုံသည် ရှေးရှုမှုနောက်ကျသဖြင့် ဝုဋ္ဌပ္ပန်အထိသာ ရောက်ပြီး ဇောစိတ် လုံးဝ မဖြစ်ပေါ်နိုင်တော့ပေ (ကံမဖန်တီးနိုင်)။',
+            mahanta: 'အာရုံသည် ခပ်ထင်ရှားထင်ရှား ဖြစ်သဖြင့် ဇောနစိတ်အထိသာ ပြေးလွှားပြီး တဒါရမ္မဏသို့ မရောက်တော့ဘဲ ဘဝင်ပြန်ဝင်သည်။',
+            paritta: 'အာရုံသည် ရှေးရှုမှုနောက်ကျသဖြင့် ဝုဋ္ဌပ္ပန်အထိသာ ရောက်ပြီး ဇောနစိတ် လုံးဝ မဖြစ်ပေါ်နိုင်တော့ပေ (ကံမဖန်တီးနိုင်)။',
             atiparitta: 'အာရုံသည် အလွန်နောက်ကျသဖြင့် ဘဝင်သာ ခဏလှုပ်ရှားပြီး ပြတ်တောက်ခြင်းမျှပင် မဖြစ်နိုင်တော့ဘဲ ပြန်ငြိမ်သွားသည် — "မောဃဝါရ" ဟုခေါ်ပြီး အာရုံကို လုံးဝ မသိရှိနိုင်ပေ။'
         };
         const vithiIntensityActiveCount = { atimahanta: 17, mahanta: 15, paritta: 8, atiparitta: 2 };
@@ -2467,7 +2467,7 @@
                     "သောဘဏသာဓာရဏ (၁၉) ပါးလုံး",
                     "ပညိန္ဒြေ (ဉာဏသမ္ပယုတ် ဖြစ်မှသာ)"
                 ],
-                note: "ဝိပါက်စိတ်ဖြစ်သောကြောင့် ဝိရတီ (၃) ပါးနှင့် အပ္ပမညာ (၂) ပါး လုံးဝ မပါဝင်ပေ — ၎င်းတို့သည် ကမ္မဇဝန် (ဆောင်ရွက်လက်ရှိ) စိတ်များ၌သာ ပေါ်နိုင်သောကြောင့်ဖြစ်သည်။"
+                note: "ဝိပါက်စိတ်ဖြစ်သောကြောင့် ဝိရတီ (၃) ပါးနှင့် အပ္ပမညာ (၂) ပါး လုံးဝ မပါဝင်ပေ — ၎င်းတို့သည် ကမ္မဇောန် (ဆောင်ရွက်လက်ရှိ) စိတ်များ၌သာ ပေါ်နိုင်သောကြောင့်ဖြစ်သည်။"
             },
             {
                 id: 'kiriya', cittaRef: 47, vithiPreset: 'mano_kiriya', label: 'မဟာကြိယာစိတ် (Mahā-kiriya)', icon: 'fa-hand-fist', color: 'sky',
