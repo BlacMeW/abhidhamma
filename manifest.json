@@ -1,0 +1,16 @@
+{
+  "name": "အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide",
+  "short_name": "အဘိဓမ္မာ Guide",
+  "description": "အဘိဓမ္မတ္ထသင်္ဂဟ ၉ ပရိစ္ဆေဒ စိတ္တ၊ စေတသိက၊ ရူပ သင်္ဂဟ အပြန်အလှန် လေ့လာရန် Visual Guide",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/dharmachakra.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
