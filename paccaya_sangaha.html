@@ -96,6 +96,28 @@
             <div class="flex flex-wrap gap-1.5" id="always-together-chips"></div>
         </div>
 
+        <!-- Paccaya Triplet Explanation (အကြောင်း / အကျိုး / ကျင်လွတ် သရုပ်) -->
+        <section class="glass-card rounded-2xl p-6 border border-violet-500/30 space-y-4 max-w-4xl mx-auto">
+            <div class="text-center space-y-1">
+                <span class="text-violet-400 font-semibold text-xs uppercase tracking-wide">ပဋ္ဌာန်းကျမ်းလာ သရုပ် (၃) ပါး ခွဲခြားမှု</span>
+                <h3 class="text-xl font-bold text-slate-100">ပစ္စယ ၊ ပစ္စယုပ္ပန္န ၊ ပစ္စနိက သရုပ်ခွဲ</h3>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                <div class="glass-card p-4 rounded-xl border border-sky-500/30 bg-sky-950/20 space-y-1">
+                    <div class="font-bold text-sky-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-right-to-bracket"></i> ၁။ ပစ္စယတရား (အကြောင်း)</div>
+                    <p class="text-slate-300 text-[11px] leading-relaxed">ကျေးဇူးပြုတတ်သော/ထောက်ပံ့တတ်သော တရား (ဥပမာ- ဟေတု ၆ ပါး၊ အာရုံ ၆ ပါး၊ ဖဿ၊ စေတနာ စသည်)</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-1">
+                    <div class="font-bold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-right-from-bracket"></i> ၂။ ပစ္စယုပ္ပန္နတရား (အကျိုး)</div>
+                    <p class="text-slate-300 text-[11px] leading-relaxed">အကြောင်းတရား၏ ထောက်ပံ့မှုကြောင့် ဖြစ်ပေါ်လာရသော အကျိုးတရားများ (စိတ်၊ စေတသိက်၊ စိတ္တဇရုပ်၊ ကမ္မဇရုပ်)</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl border border-rose-500/30 bg-rose-950/20 space-y-1">
+                    <div class="font-bold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-ban"></i> ၃။ ပစ္စနိကတရား (ကျင်လွတ်)</div>
+                    <p class="text-slate-300 text-[11px] leading-relaxed">ထိုပစ္စည်း၏ ကျေးဇူးပြုမှုအပြင်ဘက် ကျန်ရှိနေသော/ဆန့်ကျင်ဘက် တရားများ</p>
+                </div>
+            </div>
+        </section>
+
         <!-- 4 clusters -->
         <div id="paccaya-clusters" class="space-y-6"></div>
 
@@ -299,8 +321,18 @@
                         <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
                         <p class="text-slate-200 mt-1 leading-relaxed">${p.desc}</p>
                     </div>
+                    <div class="grid sm:grid-cols-2 gap-2 pt-2 text-xs">
+                        <div class="p-2.5 rounded-lg bg-sky-950/40 border border-sky-500/20">
+                            <span class="font-bold text-sky-300 block">ပစ္စယတရား (အကြောင်း)</span>
+                            <span class="text-slate-300 text-[11px]">${p.paccayaText || 'သဟဇာတ နာမ်/ရုပ် တရားများ'}</span>
+                        </div>
+                        <div class="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20">
+                            <span class="font-bold text-emerald-300 block">ပစ္စယုပ္ပန္နတရား (အကျိုး)</span>
+                            <span class="text-slate-300 text-[11px]">${p.paccayuppannaText || 'ယှဉ်ဖက် နာမ်/ရုပ် တရားများ'}</span>
+                        </div>
+                    </div>
                     <div class="pt-3 border-t border-slate-800">
-                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ သရုပ်ပြ</span>
                         <p class="text-slate-300 mt-1 leading-relaxed">${p.example}</p>
                     </div>
                 </div>
