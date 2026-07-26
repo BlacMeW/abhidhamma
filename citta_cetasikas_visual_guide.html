@@ -727,10 +727,18 @@
                 <p class="text-slate-400 text-sm">စိတ်အမျိုးအစားတစ်ခုကို ရွေးချယ်ပြီး ထိုစိတ်၌ ယှဉ်တွဲပါဝင်သော စေတသိက်များကို လေ့လာကြည့်ပါ။</p>
             </div>
 
-            <div class="glass-card rounded-2xl p-6 max-w-4xl mx-auto space-y-6 border border-slate-700">
+            <div class="glass-card rounded-2xl p-6 max-w-5xl mx-auto space-y-6 border border-slate-700">
                 <div class="space-y-3">
-                    <label class="block text-sm font-bold text-amber-400">စိတ်အမျိုးအစား ရွေးချယ်ပါ -</label>
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <label class="block text-sm font-bold text-amber-400">စိတ်အမျိုးအစား ရွေးချယ်ပါ -</label>
+                        <button onclick="toggleCompareMode()" id="compare-toggle-btn" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 px-3 py-1.5 rounded-full transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-code-compare"></i> <span>နှိုင်းယှဉ်ကြည့်ရန်</span>
+                        </button>
+                    </div>
                     <div id="mind-select-group" class="grid sm:grid-cols-2 gap-2">
+                        <!-- Dynamically populated by JS -->
+                    </div>
+                    <div id="compare-select-group" class="hidden grid sm:grid-cols-2 gap-3">
                         <!-- Dynamically populated by JS -->
                     </div>
                 </div>
@@ -738,6 +746,9 @@
                 <!-- Simulator Results Display -->
                 <div id="sim-result" class="space-y-4 pt-4 border-t border-slate-800">
                     <!-- Dynamic details populated here -->
+                </div>
+                <div id="compare-result" class="hidden grid md:grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+                    <!-- Dynamic compare cards populated here -->
                 </div>
             </div>
         </section>
@@ -1822,6 +1833,24 @@
             }
         ];
 
+        // Re-uses Section 1's "pure water (citta) + dye (cetasikas)" metaphor for each mind type.
+        const mindColorHex = { rose: '#fb7185', emerald: '#34d399', sky: '#38bdf8', amber: '#fbbf24', slate: '#94a3b8' };
+        function renderMindWaterVisual(item) {
+            const hex = mindColorHex[item.color] || '#94a3b8';
+            const shortLabel = item.label.split(' (')[0];
+            return `
+                <div class="flex items-center gap-3 bg-slate-900/60 rounded-xl border border-slate-800 p-3">
+                    <div class="relative w-12 h-12 flex-shrink-0 rounded-full border-2 border-slate-600 overflow-hidden">
+                        <div class="absolute inset-0" style="background: radial-gradient(circle at 35% 30%, ${hex}dd, ${hex}55 75%);"></div>
+                        <i class="fa-solid fa-droplet absolute inset-0 flex items-center justify-center text-white/90 text-sm"></i>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">
+                        <span class="text-amber-300 font-semibold">ရေသန့် (စိတ်)</span> + <span style="color:${hex}" class="font-semibold">${shortLabel} ဆေးဆိုးရောင် (စေတသိက်များ)</span> = ဤအရောင်ဆောင်နေသော စိတ်
+                    </p>
+                </div>
+            `;
+        }
+
         let currentMind = 'lobha';
         function renderMindSelector() {
             const group = document.getElementById('mind-select-group');
@@ -1850,6 +1879,7 @@
             const container = document.getElementById('sim-result');
 
             container.innerHTML = `
+                ${renderMindWaterVisual(item)}
                 <div>
                     <h4 class="font-bold text-lg text-amber-400">${item.title}</h4>
                     <p class="text-xs text-slate-300 mt-1">${item.desc}</p>
@@ -1880,6 +1910,83 @@
                     </button>` : ''}
                 </div>
             `;
+        }
+
+        // ===== Mind Simulator — Compare Mode =====
+        let compareMode = false;
+        let compareA = 'lobha';
+        let compareB = 'dosa';
+
+        function toggleCompareMode() {
+            compareMode = !compareMode;
+            document.getElementById('mind-select-group').classList.toggle('hidden', compareMode);
+            document.getElementById('sim-result').classList.toggle('hidden', compareMode);
+            document.getElementById('compare-select-group').classList.toggle('hidden', !compareMode);
+            document.getElementById('compare-result').classList.toggle('hidden', !compareMode);
+            const btn = document.getElementById('compare-toggle-btn');
+            btn.innerHTML = compareMode
+                ? '<i class="fa-solid fa-xmark"></i> <span>တစ်ခုတည်း ပြန်ကြည့်ရန်</span>'
+                : '<i class="fa-solid fa-code-compare"></i> <span>နှိုင်းယှဉ်ကြည့်ရန်</span>';
+            if (compareMode) renderCompareMode();
+        }
+
+        function renderCompareSelectors() {
+            const group = document.getElementById('compare-select-group');
+            const optionHtml = (selected) => mindData.map(m => `<option value="${m.id}" ${m.id === selected ? 'selected' : ''}>${m.label}</option>`).join('');
+            group.innerHTML = `
+                <div>
+                    <label class="text-xs font-bold text-slate-400 uppercase block mb-1">A</label>
+                    <select onchange="setCompare('A', this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-500">${optionHtml(compareA)}</select>
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-slate-400 uppercase block mb-1">B</label>
+                    <select onchange="setCompare('B', this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-500">${optionHtml(compareB)}</select>
+                </div>
+            `;
+        }
+
+        function setCompare(side, id) {
+            if (side === 'A') compareA = id; else compareB = id;
+            renderCompareMode();
+        }
+
+        function renderCompareCard(id) {
+            const item = mindData.find(m => m.id === id);
+            return `
+                <div class="glass-card rounded-xl border border-slate-700 p-4 space-y-3">
+                    ${renderMindWaterVisual(item)}
+                    <div>
+                        <h4 class="font-bold text-base text-amber-400">${item.title}</h4>
+                        <p class="text-[11px] text-slate-300 mt-1">${item.desc}</p>
+                    </div>
+                    <ul class="space-y-1.5">
+                        ${item.cetasikas.map(c => `
+                            <li class="flex items-start gap-2 text-[11px] bg-slate-900 p-2 rounded-lg border border-slate-800 text-slate-200">
+                                <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                                <span>${linkify(c)}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div class="flex items-start gap-2 text-[11px] bg-amber-500/10 border border-amber-500/30 text-amber-200 p-2.5 rounded-lg">
+                        <i class="fa-solid fa-lightbulb mt-0.5"></i><span>${item.note}</span>
+                    </div>
+                    <div class="grid ${item.cittaRef && item.vithiPreset ? 'grid-cols-2' : ''} gap-1.5">
+                        ${item.cittaRef ? `
+                        <button onclick="openCittaModal(${item.cittaRef})" class="w-full text-[11px] font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 py-2 rounded-lg transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-sitemap"></i> စိတ်အသေးစိတ်
+                        </button>` : ''}
+                        ${item.vithiPreset ? `
+                        <button onclick="jumpToVithiPreset('${item.vithiPreset}')" class="w-full text-[11px] font-semibold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 py-2 rounded-lg transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-wave-square"></i> ဝီထိ
+                        </button>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCompareMode() {
+            renderCompareSelectors();
+            document.getElementById('compare-result').innerHTML = renderCompareCard(compareA) + renderCompareCard(compareB);
         }
 
         // Back to top visibility
