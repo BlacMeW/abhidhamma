@@ -2399,20 +2399,36 @@
         // strings are full phrases (not tagged data), so this matches on the category name
         // that already appears in the text itself; colour is a scan aid, not the sole signal.
         function classifyCetasikaLine(text) {
+            // Ambiguous "could be either" phrasing (e.g. the generic/unspecified javana step,
+            // which doesn't commit to a root) must NOT default to a wholesome-looking colour —
+            // check this before the akusala/sobhana checks below, which would otherwise only
+            // ever match one side of an "X သို့ Y" (X or Y) phrase and colour it as if it were
+            // only that one side. Anchored on the "or" word itself (သို့) rather than just
+            // co-occurrence of both substrings — "အကုသိုလ်" itself literally contains
+            // "ကုသိုလ်" as a substring, so a plain .includes('ကုသိုလ်') would wrongly fire on
+            // every akusala-only line too (e.g. "အကုသိုလ်သာဓာရဏ (၄)...").
+            if (text.includes('သို့') && text.includes('အကုသိုလ်') && text.includes('သောဘဏ')) {
+                return 'text-slate-300 bg-slate-700/40 border border-slate-500/40';
+            }
             if (text.includes('သဗ္ဗစိတ္တသာဓာရဏ')) return 'text-slate-200 bg-slate-800/40 border border-slate-500/30';
             if (text.includes('အကုသိုလ်သာဓာရဏ')) return 'text-rose-200 bg-rose-950/40 border border-rose-500/30';
             if (text.includes('သောဘဏသာဓာရဏ')) return 'text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
             if (text.includes('ဝိရတီ')) return 'text-teal-200 bg-teal-950/40 border border-teal-500/30';
             if (text.includes('အပ္ပမညာ')) return 'text-violet-200 bg-violet-950/40 border border-violet-500/30';
             if (text.includes('ပညိန္ဒြေ')) return 'text-amber-200 bg-amber-950/40 border border-amber-500/30';
-            if (text.includes('ဈာန်အင်္ဂါ')) return 'text-orange-200 bg-orange-950/40 border border-orange-500/30';
+            if (/ဈာန်အင်္ဂါ|ဈာနင်္ဂ/.test(text)) return 'text-orange-200 bg-orange-950/40 border border-orange-500/30';
             if (text.includes('ပကိဏ္ဏက')) return 'text-sky-200 bg-sky-950/40 border border-sky-500/30';
             if (/လောဘ|ဒေါသ|မောဟ|ဒိဋ္ဌိ|မာန|ဣဿာ|မစ္ဆရိယ|ကုက္ကုစ္စ|ထိန|မိဒ္ဓ|ဝိစိကိစ္ဆာ|ဥဒ္ဓစ္စ/.test(text)) return 'text-red-200 bg-red-950/40 border border-red-600/30';
+            // Reached only when the earlier "akusala/sobhana mixed" check didn't match, so
+            // any mention of သောဘဏ / မဂ္ဂင် / ဗောဇ္ဈင် here is unambiguously wholesome-only.
+            if (text.includes('သောဘဏ') || /မဂ္ဂင်|ဗောဇ္ဈင်/.test(text)) return 'text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
             // The generic fallback chips (liveStepCetasikas) are bare individual cetasika
             // names rather than category-header phrases, so match those directly too.
             if (/^(ဖဿ|ဝေဒနာ|သညာ|စေတနာ|ဧကဂ္ဂတာ|ဇီဝိတိန္ဒြေ|မနသိကာရ)/.test(text)) return 'text-slate-200 bg-slate-800/40 border border-slate-500/30';
             if (/^(ဝိတက်|ဝိစာရ|အဓိမောက္ခ|ဝီရိယ|ပီတိ|ဆန္ဒ)/.test(text)) return 'text-sky-200 bg-sky-950/40 border border-sky-500/30';
-            return 'text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
+            // Neutral default — never defaults to a colour that implies a specific kamma-nature
+            // (kusala/akusala) for text this function doesn't actually recognise.
+            return 'text-slate-300 bg-slate-700/40 border border-slate-500/40';
         }
 
         function updateLiveVithiCaption() {
