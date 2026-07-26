@@ -26,8 +26,8 @@
             color: #f8fafc;
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(6px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .glow-gold {
@@ -904,7 +904,7 @@
             <div class="max-w-2xl mx-auto space-y-4">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
-                    <input id="cetasika-search" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" oninput="renderCetasikaGrid(currentCategory)" placeholder="အမည် (ဥပမာ- ဝေဒနာ) သို့ ပါဠိစာလုံးဖြင့် ရှာဖွေပါ..." class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-10 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-500 placeholder:text-slate-600">
+                    <input id="cetasika-search" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" oninput="debouncedCetasikaSearch()" placeholder="အမည် (ဥပမာ- ဝေဒနာ) သို့ ပါဠိစာလုံးဖြင့် ရှာဖွေပါ..." class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-10 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-500 placeholder:text-slate-600">
                     <button id="cetasika-search-clear" onclick="clearCetasikaSearch()" aria-label="ရှာဖွေမှု ရှင်းရန်" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-300 flex items-center justify-center text-xs">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -968,9 +968,9 @@
                 <div class="flex items-center justify-between flex-wrap gap-3">
                     <div class="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-full px-2 py-1 text-xs">
                         <span class="text-slate-400 text-[11px] mr-1">အရှိန်:</span>
-                        <button onclick="setLiveVithiSpeed(1000, '0.5x')" id="speed-0.5x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">0.5x</button>
-                        <button onclick="setLiveVithiSpeed(600, '1.0x')" id="speed-1.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-300 bg-amber-500/20 border border-amber-500/40 transition">1.0x</button>
-                        <button onclick="setLiveVithiSpeed(300, '2.0x')" id="speed-2.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">2.0x</button>
+                        <button onclick="setLiveVithiSpeed(1000, '0.5x')" id="speed-0.5x" aria-pressed="false" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">0.5x</button>
+                        <button onclick="setLiveVithiSpeed(600, '1.0x')" id="speed-1.0x" aria-pressed="true" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-300 bg-amber-500/20 border border-amber-500/40 transition">1.0x</button>
+                        <button onclick="setLiveVithiSpeed(300, '2.0x')" id="speed-2.0x" aria-pressed="false" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">2.0x</button>
                     </div>
                     <div class="flex items-center gap-1">
                         <button onclick="prevLiveVithiStep()" title="ရှေ့စိတ်ခဏ" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 flex items-center justify-center transition">
@@ -1523,6 +1523,11 @@
 
         // Render Cetasika Grid
         let currentCategory = 'all';
+        let cetasikaSearchDebounce = null;
+        function debouncedCetasikaSearch() {
+            clearTimeout(cetasikaSearchDebounce);
+            cetasikaSearchDebounce = setTimeout(() => renderCetasikaGrid(currentCategory), 150);
+        }
         function renderCetasikaGrid(filter = 'all') {
             currentCategory = filter;
             const grid = document.getElementById('cetasika-grid');
@@ -1614,6 +1619,13 @@
 
         // Modal Handler
         let lastFocusedElement = null;
+        // Shared show step for every modal opener: reveal it, reset any leftover scroll
+        // position from a previous (possibly longer) item, and lock background scroll.
+        function showModal() {
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal-content').scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
         function openModal(item) {
             lastFocusedElement = document.activeElement;
             const modal = document.getElementById('modal');
@@ -1654,7 +1666,7 @@
                 </button>
             `;
 
-            modal.classList.remove('hidden');
+            showModal();
         }
 
         function openModalByName(name) {
@@ -1664,6 +1676,7 @@
 
         function closeModal() {
             document.getElementById('modal').classList.add('hidden');
+            document.body.style.overflow = '';
             if (lastFocusedElement) lastFocusedElement.focus();
         }
 
@@ -1753,7 +1766,7 @@
                     `).join('')}
                 </div>
             `;
-            modal.classList.remove('hidden');
+            showModal();
         }
 
         const cittaColorMap = {
@@ -1840,7 +1853,7 @@
                     `).join('')}
                 </div>
             `;
-            modal.classList.remove('hidden');
+            showModal();
         }
 
         function openCittaModal(id) {
@@ -1881,7 +1894,7 @@
                     </div>
                 </div>
             `;
-            modal.classList.remove('hidden');
+            showModal();
         }
 
         function jumpToCittaGroup(cat) {
@@ -2053,7 +2066,7 @@
                     <i class="fa-solid fa-sitemap"></i> ဆက်စပ်သော အဟေတုကစိတ် (၈၉ ပါးထဲမှ) ကြည့်ရန်
                 </button>` : ''}
             `;
-            modal.classList.remove('hidden');
+            showModal();
         }
 
         let currentVithiIntensity = 'atimahanta';
@@ -2064,11 +2077,20 @@
             atiparitta: 'အာရုံသည် အလွန်နောက်ကျသဖြင့် ဘဝင်သာ ခဏလှုပ်ရှားပြီး ပြတ်တောက်ခြင်းမျှပင် မဖြစ်နိုင်တော့ဘဲ ပြန်ငြိမ်သွားသည် — "မောဃဝါရ" ဟုခေါ်ပြီး အာရုံကို လုံးဝ မသိရှိနိုင်ပေ။'
         };
         const vithiIntensityActiveCount = { atimahanta: 17, mahanta: 15, paritta: 8, atiparitta: 2 };
+        // Selection state in these toggle-button groups is otherwise conveyed only by a
+        // background-color class, which a screen reader can't perceive — aria-pressed makes
+        // the current choice announced too.
+        function setActiveToggle(groupSelector, activeBtn) {
+            document.querySelectorAll(groupSelector).forEach(btn => {
+                const isActive = btn === activeBtn;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+        }
+
         function setVithiIntensity(level) {
             currentVithiIntensity = level;
-            document.querySelectorAll('.vithi-intensity-btn[id^="intensity-"]').forEach(btn => btn.classList.remove('active'));
-            const btn = document.getElementById('intensity-' + level);
-            if (btn) btn.classList.add('active');
+            setActiveToggle('.vithi-intensity-btn[id^="intensity-"]', document.getElementById('intensity-' + level));
             renderVithiTrack('panca-vithi-track', pancaVithiSteps, vithiIntensityActiveCount[level]);
             document.getElementById('vithi-intensity-note').textContent = vithiIntensityNotes[level];
         }
@@ -2083,9 +2105,7 @@
         };
         function setManoJavanaType(type) {
             currentManoJavanaType = type;
-            document.querySelectorAll('.vithi-intensity-btn[id^="jtype-"]').forEach(btn => btn.classList.remove('active'));
-            const btn = document.getElementById('jtype-' + type);
-            if (btn) btn.classList.add('active');
+            setActiveToggle('.vithi-intensity-btn[id^="jtype-"]', document.getElementById('jtype-' + type));
 
             manoVithiSteps = type === 'lokuttara' ? buildManoVithiStepsLokuttara() : buildManoVithiStepsKama(type);
 
@@ -2103,8 +2123,7 @@
         let manoHasTadarammana = true;
         function setManoTadarammana(withTada) {
             manoHasTadarammana = withTada;
-            document.getElementById('mano-tada-on').classList.toggle('active', withTada);
-            document.getElementById('mano-tada-off').classList.toggle('active', !withTada);
+            setActiveToggle('#mano-tada-on, #mano-tada-off', document.getElementById(withTada ? 'mano-tada-on' : 'mano-tada-off'));
             renderVithiTrack('mano-vithi-track', manoVithiSteps, withTada ? manoVithiSteps.length : manoVithiSteps.length - 2);
         }
 
@@ -2156,9 +2175,7 @@
 
         function setLiveVithiPreset(key) {
             currentLivePreset = key;
-            document.querySelectorAll('.vithi-intensity-btn[id^="livepreset-"]').forEach(btn => btn.classList.remove('active'));
-            const btn = document.getElementById('livepreset-' + key);
-            if (btn) btn.classList.add('active');
+            setActiveToggle('.vithi-intensity-btn[id^="livepreset-"]', document.getElementById('livepreset-' + key));
             liveVithiSteps = liveVithiPresets[key].build();
             liveVithiIndex = 0;
             renderLiveVithiTrack();
@@ -2319,11 +2336,13 @@
             document.querySelectorAll('.vithi-speed-btn').forEach(b => {
                 b.classList.remove('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-300');
                 b.classList.add('text-slate-400');
+                b.setAttribute('aria-pressed', 'false');
             });
             const activeBtn = document.getElementById('speed-' + label);
             if (activeBtn) {
                 activeBtn.classList.remove('text-slate-400');
                 activeBtn.classList.add('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-300');
+                activeBtn.setAttribute('aria-pressed', 'true');
             }
             if (liveVithiPlaying) startLiveVithiAnimation();
         }
