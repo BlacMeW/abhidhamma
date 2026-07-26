@@ -110,35 +110,54 @@
             color: #475569;
             flex-shrink: 0;
         }
+        @keyframes live-pulse {
+            0% { transform: scale(1.15); box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7), 0 0 15px rgba(251, 191, 36, 0.6); }
+            50% { transform: scale(1.3); box-shadow: 0 0 0 8px rgba(251, 191, 36, 0), 0 0 28px rgba(251, 191, 36, 0.9); }
+            100% { transform: scale(1.15); box-shadow: 0 0 0 0 rgba(251, 191, 36, 0), 0 0 15px rgba(251, 191, 36, 0.6); }
+        }
         .live-vithi-node {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2.25rem;
+            height: 2.25rem;
             border-radius: 9999px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             flex-shrink: 0;
-            opacity: 0.35;
+            opacity: 0.3;
             transform: scale(0.85);
-            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+            transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
             border: 1.5px solid rgba(255, 255, 255, 0.15);
             background: rgba(30, 41, 59, 0.6);
             color: #94a3b8;
         }
         .live-vithi-node.passed {
-            opacity: 0.6;
-            transform: scale(0.92);
+            opacity: 0.75;
+            transform: scale(0.95);
+            border-color: rgba(56, 189, 248, 0.5);
+            background: rgba(14, 165, 233, 0.2);
+            color: #7dd3fc;
         }
         .live-vithi-node.current {
             opacity: 1;
-            transform: scale(1.25);
-            box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.25), 0 0 22px rgba(251, 191, 36, 0.55);
+            animation: live-pulse 1.2s infinite ease-in-out;
             border-color: #fbbf24;
             color: #fef3c7;
-            background: rgba(217, 119, 6, 0.35);
+            background: rgba(217, 119, 6, 0.45);
+            z-index: 10;
         }
+        .single-line-track {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        .single-line-track::-webkit-scrollbar { height: 4px; }
+        .single-line-track::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
 
         /* ===== Mobile / touch usability ===== */
         * {
@@ -937,21 +956,66 @@
                         <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl border border-amber-500/30 flex-shrink-0"><i class="fa-solid fa-wave-square"></i></div>
                         <div>
                             <h3 class="font-bold text-amber-300 text-lg">ဝီထိ တိုက်ရိုက် သရုပ်ပြ (Live Animation)</h3>
-                            <p class="text-xs text-slate-400">ဘဝင်→ဝီထိ→ဘဝင် အဆက်မပြတ် ပြေးလွှားနေပုံကို ကြည့်ရှုပါ — စမ်းသပ်ချင်သော အစဉ်ကို ရွေးနှိပ်ပါ</p>
+                            <p class="text-xs text-slate-400">ဘဝင်→ဝီထိ→ဘဝင် စိတ်ခဏပြေးလွှားနေပုံကို အချိန်နှင့်တပြေးညီ ကြည့်ရှုပါ</p>
                         </div>
                     </div>
-                    <button onclick="toggleLiveVithiPlay()" id="live-vithi-play-btn" class="flex-shrink-0 flex items-center gap-2 text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-full transition">
-                        <i class="fa-solid fa-pause"></i> <span>ခဏရပ်ရန်</span>
-                    </button>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <div class="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-full px-2 py-1 text-xs">
+                            <span class="text-slate-400 text-[11px] mr-1">အရှိန်:</span>
+                            <button onclick="setLiveVithiSpeed(1000, '0.5x')" id="speed-0.5x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">0.5x</button>
+                            <button onclick="setLiveVithiSpeed(600, '1.0x')" id="speed-1.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-300 bg-amber-500/20 border border-amber-500/40 transition">1.0x</button>
+                            <button onclick="setLiveVithiSpeed(300, '2.0x')" id="speed-2.0x" class="vithi-speed-btn px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-400 hover:text-amber-300 transition">2.0x</button>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button onclick="prevLiveVithiStep()" title="ရှေ့စိတ်ခဏ" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 flex items-center justify-center transition">
+                                <i class="fa-solid fa-backward-step"></i>
+                            </button>
+                            <button onclick="toggleLiveVithiPlay()" id="live-vithi-play-btn" class="flex items-center gap-1.5 text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 px-3.5 py-1.5 rounded-full transition">
+                                <i class="fa-solid fa-pause"></i> <span>ခဏရပ်</span>
+                            </button>
+                            <button onclick="nextLiveVithiStep()" title="နောက်စိတ်ခဏ" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 flex items-center justify-center transition">
+                                <i class="fa-solid fa-forward-step"></i>
+                            </button>
+                            <button onclick="resetLiveVithiAnimation()" title="စမှပြန်စရန်" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 flex items-center justify-center transition">
+                                <i class="fa-solid fa-rotate-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Progress Bar -->
+                <div class="space-y-1">
+                    <div class="flex items-center justify-between text-[11px] text-slate-400">
+                        <span id="live-vithi-progress-text" class="font-mono text-amber-300">စိတ်ခဏ: ၁ / ၁၇</span>
+                        <span id="live-vithi-progress-percent" class="font-mono text-slate-400">၆%</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                        <div id="live-vithi-progress-bar" class="h-full bg-gradient-to-r from-amber-500 to-emerald-400 transition-all duration-200" style="width: 6%;"></div>
+                    </div>
                 </div>
 
                 <div id="live-vithi-preset-group" class="flex flex-wrap items-center gap-1.5"></div>
 
-                <div id="live-vithi-track" class="flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap py-2"></div>
+                <!-- Single-Line Track across all screens -->
+                <div id="live-vithi-track-container" class="w-full overflow-x-auto bg-slate-950/60 rounded-xl p-3 border border-slate-800 scrollbar-thin">
+                    <div id="live-vithi-track" class="single-line-track items-center gap-2 min-w-max"></div>
+                </div>
 
-                <div class="bg-slate-900/70 rounded-xl border border-slate-800 p-4 text-center min-h-[4.5rem] flex flex-col items-center justify-center">
-                    <span id="live-vithi-caption-label" class="font-bold text-sm text-amber-300"></span>
-                    <span id="live-vithi-caption-desc" class="text-xs text-slate-400 mt-1 max-w-xl"></span>
+                <!-- Synchronized Live Caption & Cetasika Tags Card -->
+                <div class="bg-slate-900/80 rounded-xl border border-slate-800 p-4 space-y-2">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <span id="live-vithi-caption-label" class="font-bold text-sm text-amber-300"></span>
+                        <span id="live-vithi-citta-name" class="text-xs text-sky-300 font-semibold bg-sky-950/50 border border-sky-500/30 px-2.5 py-0.5 rounded-full"></span>
+                    </div>
+                    <p id="live-vithi-caption-desc" class="text-xs text-slate-300 leading-relaxed"></p>
+                    
+                    <!-- Live Synchronized Cetasika Tags -->
+                    <div class="pt-2 border-t border-slate-800/80 space-y-1.5">
+                        <span class="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider block">
+                            <i class="fa-solid fa-cubes mr-1"></i>ယှဉ်ဖက် စေတသိက်များ (Live Synchronized Cetasikas):
+                        </span>
+                        <div id="live-vithi-cetasika-tags" class="flex flex-wrap gap-1"></div>
+                    </div>
                 </div>
             </div>
 
@@ -2029,11 +2093,25 @@
             mano_lokuttara: { label: 'မနောဒွါရ — လောကုတ္တရာ (မဂ်-ဖိုလ်)', build: () => buildManoVithiStepsLokuttara() }
         };
 
+        const liveStepCetasikas = {
+            bhavanga: ["ဖဿ", "ဝေဒနာ", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ"],
+            avajjana: ["ဖဿ", "ဝေဒနာ", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ", "ဝိတက်", "ဝိစာရ", "အဓိမောက္ခ"],
+            vinnana: ["ဖဿ", "ဝေဒနာ (ဥပေက္ခာ/ဒုက္ခ/သုခ)", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ"],
+            sampaticchana: ["ဖဿ", "ဝေဒနာ", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ", "ဝိတက်", "ဝိစာရ", "အဓိမောက္ခ"],
+            santirana: ["ဖဿ", "ဝေဒနာ (ဥပေက္ခာ/သောမနဿ)", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ", "ဝိတက်", "ဝိစာရ", "အဓိမောက္ခ", "ပီတိ"],
+            votthapana: ["ဖဿ", "ဝေဒနာ", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ", "ဝိတက်", "ဝိစာရ", "အဓိမောက္ခ", "ဝီရိယ"],
+            javana: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "ပကိဏ္ဏက (၆)", "အကုသိုလ် (၁၄) သို့ သောဘဏ (၂၅)"],
+            tadarammana: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "ပကိဏ္ဏက (၆)", "သောဘဏသာဓာရဏ (၁၉)"],
+            magga: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "မဂ္ဂင် (၈)", "ဗောဇ္ဈင် (၇)", "သောဘဏ (၂၅)"],
+            phala: ["သဗ္ဗစိတ္တသာဓာရဏ (၇)", "သောဘဏသာဓာရဏ (၁၉)", "အပ္ပမညာ (၂)"]
+        };
+
         let liveVithiSteps = [];
         let liveVithiIndex = 0;
         let liveVithiTimer = null;
         let liveVithiPlaying = true;
         let currentLivePreset = 'panca_atimahanta';
+        let liveVithiSpeedMs = 600;
 
         function renderLiveVithiPresetButtons() {
             const group = document.getElementById('live-vithi-preset-group');
@@ -2058,6 +2136,7 @@
             const el = document.getElementById('live-vithi-track');
             if (!el) return;
             el.innerHTML = liveVithiSteps.map((s, i) => `<div class="live-vithi-node" id="live-node-${i}" title="${s.short}">${s.short}</div>`).join('');
+            stepLiveVithiUI();
         }
 
         function updateLiveVithiCaption() {
@@ -2066,12 +2145,36 @@
             const info = vithiFamilyInfo[s.family];
             const label = document.getElementById('live-vithi-caption-label');
             const desc = document.getElementById('live-vithi-caption-desc');
-            if (label) label.textContent = s.titleOverride || info.label;
+            const cittaName = document.getElementById('live-vithi-citta-name');
+            const tagsContainer = document.getElementById('live-vithi-cetasika-tags');
+
+            if (label) label.textContent = (s.titleOverride || info.label) + ` (ခဏအမှတ် #${mm(liveVithiIndex + 1)})`;
             if (desc) desc.textContent = s.descOverride || info.desc;
+            if (cittaName) cittaName.textContent = info.label;
+
+            // Update Progress Bar
+            const total = liveVithiSteps.length;
+            const pct = Math.round(((liveVithiIndex + 1) / total) * 100);
+            const progressText = document.getElementById('live-vithi-progress-text');
+            const progressPercent = document.getElementById('live-vithi-progress-percent');
+            const progressBar = document.getElementById('live-vithi-progress-bar');
+
+            if (progressText) progressText.textContent = `စိတ်ခဏ: ${mm(liveVithiIndex + 1)} / ${mm(total)}`;
+            if (progressPercent) progressPercent.textContent = `${mm(pct)}%`;
+            if (progressBar) progressBar.style.width = `${pct}%`;
+
+            // Update Live Synchronized Cetasika Tags
+            if (tagsContainer) {
+                const tags = liveStepCetasikas[s.family] || liveStepCetasikas.bhavanga;
+                tagsContainer.innerHTML = tags.map(t => `
+                    <span class="text-[10px] font-medium bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-md animate-fade-in">${t}</span>
+                `).join('');
+            }
         }
 
-        function stepLiveVithi() {
+        function stepLiveVithiUI() {
             if (!liveVithiSteps.length) return;
+            const trackContainer = document.getElementById('live-vithi-track-container');
             document.querySelectorAll('#live-vithi-track .live-vithi-node').forEach((node, i) => {
                 node.classList.remove('current');
                 node.classList.toggle('passed', i < liveVithiIndex);
@@ -2080,8 +2183,18 @@
             if (current) {
                 current.classList.add('current');
                 current.classList.remove('passed');
+                // Auto scroll node into center of track container
+                if (trackContainer && current.offsetLeft) {
+                    const scrollTarget = current.offsetLeft - (trackContainer.clientWidth / 2) + (current.clientWidth / 2);
+                    trackContainer.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+                }
             }
             updateLiveVithiCaption();
+        }
+
+        function stepLiveVithi() {
+            if (!liveVithiSteps.length) return;
+            stepLiveVithiUI();
             liveVithiIndex++;
             if (liveVithiIndex >= liveVithiSteps.length) {
                 liveVithiIndex = 0;
@@ -2090,10 +2203,58 @@
 
         function startLiveVithiAnimation() {
             stopLiveVithiAnimation();
-            liveVithiTimer = setInterval(stepLiveVithi, 650);
+            liveVithiTimer = setInterval(stepLiveVithi, liveVithiSpeedMs);
         }
         function stopLiveVithiAnimation() {
             if (liveVithiTimer) { clearInterval(liveVithiTimer); liveVithiTimer = null; }
+        }
+        function toggleLiveVithiPlay() {
+            liveVithiPlaying = !liveVithiPlaying;
+            const btn = document.getElementById('live-vithi-play-btn');
+            if (liveVithiPlaying) {
+                startLiveVithiAnimation();
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>ခဏရပ်</span>';
+            } else {
+                stopLiveVithiAnimation();
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
+            }
+        }
+
+        function setLiveVithiSpeed(ms, label) {
+            liveVithiSpeedMs = ms;
+            document.querySelectorAll('.vithi-speed-btn').forEach(b => {
+                b.classList.remove('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-300');
+                b.classList.add('text-slate-400');
+            });
+            const activeBtn = document.getElementById('speed-' + label);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-400');
+                activeBtn.classList.add('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-300');
+            }
+            if (liveVithiPlaying) startLiveVithiAnimation();
+        }
+
+        function nextLiveVithiStep() {
+            stopLiveVithiAnimation();
+            liveVithiPlaying = false;
+            const btn = document.getElementById('live-vithi-play-btn');
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
+            liveVithiIndex = (liveVithiIndex + 1) % liveVithiSteps.length;
+            stepLiveVithiUI();
+        }
+
+        function prevLiveVithiStep() {
+            stopLiveVithiAnimation();
+            liveVithiPlaying = false;
+            const btn = document.getElementById('live-vithi-play-btn');
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
+            liveVithiIndex = (liveVithiIndex - 1 + liveVithiSteps.length) % liveVithiSteps.length;
+            stepLiveVithiUI();
+        }
+
+        function resetLiveVithiAnimation() {
+            liveVithiIndex = 0;
+            stepLiveVithiUI();
         }
         function toggleLiveVithiPlay() {
             liveVithiPlaying = !liveVithiPlaying;
