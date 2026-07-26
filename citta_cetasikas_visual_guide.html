@@ -1001,14 +1001,36 @@
                     <div id="live-vithi-track" class="single-line-track items-center gap-2 min-w-max"></div>
                 </div>
 
+                <!-- Uppāda - Ṭhiti - Bhaṅga Subphase Indicator Bar -->
+                <div class="glass-card rounded-xl p-2.5 bg-slate-950/50 border border-slate-800 flex items-center justify-between gap-2 text-xs">
+                    <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-spinner animate-spin text-amber-400"></i>
+                        <span>စိတ်ခဏ မိုက်ခရိုဖြစ်စဉ် (Micro-subphases):</span>
+                    </span>
+                    <div class="flex items-center gap-3 font-mono text-[11px]">
+                        <span id="subphase-uppada" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 transition">၁။ ဥပ္ပါဒ် (ဖြစ်)</span>
+                        <span id="subphase-thiti" class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 transition opacity-40">၂။ ဌီ (တည်)</span>
+                        <span id="subphase-bhanga" class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 transition opacity-40">၃။ ဘင် (ပျက်)</span>
+                    </div>
+                </div>
+
                 <!-- Synchronized Live Caption & Cetasika Tags Card -->
-                <div class="bg-slate-900/80 rounded-xl border border-slate-800 p-4 space-y-2">
+                <div class="bg-slate-900/80 rounded-xl border border-slate-800 p-4 space-y-2.5">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                         <span id="live-vithi-caption-label" class="font-bold text-sm text-amber-300"></span>
                         <span id="live-vithi-citta-name" class="text-xs text-sky-300 font-semibold bg-sky-950/50 border border-sky-500/30 px-2.5 py-0.5 rounded-full"></span>
                     </div>
                     <p id="live-vithi-caption-desc" class="text-xs text-slate-300 leading-relaxed"></p>
                     
+                    <!-- Causal Logic Explainer (Why this Citta?) -->
+                    <div id="live-causal-logic-box" class="p-2.5 rounded-lg bg-amber-950/30 border border-amber-500/20 text-xs text-amber-200 flex items-start gap-2">
+                        <i class="fa-solid fa-circle-nodes text-amber-400 mt-0.5 flex-shrink-0"></i>
+                        <div>
+                            <span class="font-bold block text-amber-300 mb-0.5">ဖြစ်ပေါ်ရခြင်း အကြောင်းရင်း (Causal Logic):</span>
+                            <span id="live-causal-logic-text" class="text-[11px] text-slate-300"></span>
+                        </div>
+                    </div>
+
                     <!-- Live Synchronized Cetasika Tags -->
                     <div class="pt-2 border-t border-slate-800/80 space-y-1.5">
                         <span class="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider block">
@@ -2139,6 +2161,38 @@
             stepLiveVithiUI();
         }
 
+        const liveCausalLogicNotes = {
+            bhavanga: "အတိတ်ဘဝက ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ် ၏ အရှိန်ကြောင့် အာရုံသစ် မပေါ်သေးဘဲ ဘဝင်စိတ်အစဉ် အဖြစ် ဆက်လက် တည်ရှိနေခြင်း။",
+            avajjana: "ဒွါရ (မျက်စိ/နား/မနောဒွါရ) သို့ အာရုံသစ် ရိုက်ခတ်လာသောကြောင့် ဘဝင်ပြတ်၍ စိတ်ကို အာရုံသစ်ဆီသို့ ရှေးရှု လှည့်ပေးလိုက်ခြင်း။",
+            vinnana: "အာဝဇ္ဇန်းက အာရုံဆီ လှည့်ပေးလိုက်သောကြောင့် သက်ဆိုင်ရာ ဒွါရ၌ ပထမဆုံးအကြိမ် မြင်သိ/ကြားသိမှု (ဝိပါက်စိတ်) ဖြစ်ပေါ်လာခြင်း။",
+            sampaticchana: "ဝိညာဉ်စိတ်က မြင်သိပြီးသော အာရုံကို လက်ခံစဉ်းစားရန် သမ္ပဋိစ္ဆန်စိတ် ဖြစ်ပေါ်လာခြင်း။",
+            santirana: "လက်ခံပြီးသော အာရုံ၏ အရသာ ကောင်းမကောင်းကို စစ်ဆေးဆင်ခြင်ရန် သန္တီရဏစိတ် ဖြစ်ပေါ်လာခြင်း။",
+            votthapana: "စစ်ဆေးပြီးသော အာရုံပေါ်၌ 'ကောင်းသည်/မကောင်းပါ' ဟု အပြီးသတ် ဆုံးဖြတ်ချက် ချပေးလိုက်ခြင်း (ဤဆုံးဖြတ်ချက်က ဇောနစိတ်ကို ဦးဆောင်သည်)။",
+            javana: "ဝုဋ္ဌပ္ပန်၏ ဆုံးဖြတ်ချက်အတိုင်း အာရုံကို ကုသိုလ်/အကုသိုလ် စေတနာဖြင့် အပြင်းအထန် တွန်းအားယူ၍ (၇) ကြိမ် ဆက်တိုက် ခံစားကာ ကံအသစ် ဖန်တီးလိုက်ခြင်း။",
+            tadarammana: "ဇောနစိတ် ပြီးဆုံးသော်လည်း အာရုံ ထင်ရှားလွန်းသဖြင့် အကျိုးဆက်ကို (၂) ကြိမ် ဆက်လက် မှတ်သားလိုက်ခြင်း။",
+            magga: "ဂေါတြဘူအဆင့်လွန်၍ နိဗ္ဗာန်ကို တိုက်ရိုက် အာရုံပြုကာ ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်ရန် မဂ်ဉာဏ်စိတ် ဖြစ်ပေါ်လာခြင်း။",
+            phala: "မဂ်စိတ်၏ ချက်ချင်း အကျိုးဆက်အဖြစ် နိဗ္ဗာန်၏ အေးငြိမ်းမှုကို ဆက်လက် ခံစားရန် ဖိုလ်စိတ် ဖြစ်ပေါ်လာခြင်း။"
+        };
+
+        let subphaseIndex = 0;
+        let subphaseTimer = null;
+        function triggerSubphasePulse() {
+            const elU = document.getElementById('subphase-uppada');
+            const elT = document.getElementById('subphase-thiti');
+            const elB = document.getElementById('subphase-bhanga');
+            if (!elU || !elT || !elB) return;
+
+            elU.classList.add('opacity-40');
+            elT.classList.add('opacity-40');
+            elB.classList.add('opacity-40');
+
+            if (subphaseIndex === 0) elU.classList.remove('opacity-40');
+            else if (subphaseIndex === 1) elT.classList.remove('opacity-40');
+            else if (subphaseIndex === 2) elB.classList.remove('opacity-40');
+
+            subphaseIndex = (subphaseIndex + 1) % 3;
+        }
+
         function updateLiveVithiCaption() {
             const s = liveVithiSteps[liveVithiIndex];
             if (!s) return;
@@ -2147,10 +2201,12 @@
             const desc = document.getElementById('live-vithi-caption-desc');
             const cittaName = document.getElementById('live-vithi-citta-name');
             const tagsContainer = document.getElementById('live-vithi-cetasika-tags');
+            const causalText = document.getElementById('live-causal-logic-text');
 
             if (label) label.textContent = (s.titleOverride || info.label) + ` (ခဏအမှတ် #${mm(liveVithiIndex + 1)})`;
             if (desc) desc.textContent = s.descOverride || info.desc;
             if (cittaName) cittaName.textContent = info.label;
+            if (causalText) causalText.textContent = liveCausalLogicNotes[s.family] || liveCausalLogicNotes.bhavanga;
 
             // Update Progress Bar
             const total = liveVithiSteps.length;
@@ -2170,6 +2226,9 @@
                     <span class="text-[10px] font-medium bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-md animate-fade-in">${t}</span>
                 `).join('');
             }
+
+            // Pulse micro-subphase
+            triggerSubphasePulse();
         }
 
         function stepLiveVithiUI() {
@@ -2196,8 +2255,18 @@
             if (!liveVithiSteps.length) return;
             stepLiveVithiUI();
             liveVithiIndex++;
+
+            // Auto Transition logic: Pañcadvāra -> Manodvāra
             if (liveVithiIndex >= liveVithiSteps.length) {
                 liveVithiIndex = 0;
+                if (currentLivePreset === 'panca_atimahanta') {
+                    // Smooth Auto Transition to Manodvara Lobha preset
+                    setTimeout(() => {
+                        if (liveVithiPlaying && currentLivePreset === 'panca_atimahanta') {
+                            setLiveVithiPreset('mano_lobha');
+                        }
+                    }, 400);
+                }
             }
         }
 
