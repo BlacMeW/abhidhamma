@@ -2163,7 +2163,21 @@
         function renderLiveVithiTrack() {
             const el = document.getElementById('live-vithi-track');
             if (!el) return;
-            el.innerHTML = liveVithiSteps.map((s, i) => `<div class="live-vithi-node" id="live-node-${i}" title="${s.short}">${s.short}</div>`).join('');
+            el.innerHTML = liveVithiSteps.map((s, i) => `
+                <div class="live-vithi-node cursor-pointer hover:scale-110 hover:border-amber-400 transition-all duration-150" 
+                     id="live-node-${i}" 
+                     title="${s.short} — နှိပ်၍ လေ့လာရန်" 
+                     onclick="jumpToLiveVithiStep(${i})">${s.short}</div>
+            `).join('');
+            stepLiveVithiUI();
+        }
+
+        function jumpToLiveVithiStep(idx) {
+            stopLiveVithiAnimation();
+            liveVithiPlaying = false;
+            const btn = document.getElementById('live-vithi-play-btn');
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>ဆက်ကြည့်</span>';
+            liveVithiIndex = idx;
             stepLiveVithiUI();
         }
 
