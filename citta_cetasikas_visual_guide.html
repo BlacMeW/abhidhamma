@@ -1229,14 +1229,81 @@
 
         // Wrap every cetasika name occurring inside a plain-text string with a clickable span.
         // Single-pass alternation regex avoids re-matching already-replaced spans.
+        // Named cetasika sub-groups referenced in prose (citta descriptions, simulator notes, etc.)
+        // — derived directly from cetasikaData.sub so membership always stays accurate/in-sync.
+        const cetasikaGroupAliases = {
+            'သဗ္ဗစိတ္တသာဓာရဏ (၇)': { label: 'သဗ္ဗစိတ္တသာဓာရဏ (၇)', filter: c => c.sub === 'သဗ္ဗစိတ္တသာဓာရဏ (၇)' },
+            'ပကိဏ္ဏက (၆)': { label: 'ပကိဏ္ဏက (၆)', filter: c => c.sub === 'ပကိဏ္ဏက (၆)' },
+            'အညသမာန (၁၃)': { label: 'အညသမာန (၁၃) — သဗ္ဗစိတ္တသာဓာရဏ (၇) + ပကိဏ္ဏက (၆)', filter: c => c.sub === 'သဗ္ဗစိတ္တသာဓာရဏ (၇)' || c.sub === 'ပကိဏ္ဏက (၆)' },
+            'မောစတုက (၄)': { label: 'မောစတုက (၄)', filter: c => c.sub === 'မောစတုက (၄)' },
+            'အကုသိုလ်သာဓာရဏ (၄)': { label: 'အကုသိုလ်သာဓာရဏ (၄) — မောစတုက', filter: c => c.sub === 'မောစတုက (၄)' },
+            'လောတိက (၃)': { label: 'လောတိက (၃)', filter: c => c.sub === 'လောတိက (၃)' },
+            'ဒေါစတုက (၄)': { label: 'ဒေါစတုက (၄)', filter: c => c.sub === 'ဒေါစတုက (၄)' },
+            'သောဘဏသာဓာရဏ (၁၉)': { label: 'သောဘဏသာဓာရဏ (၁၉)', filter: c => c.sub === 'သောဘဏသာဓာရဏ (၁၉)' },
+            'ဝိရတီ (၃)': { label: 'ဝိရတီ (၃)', filter: c => c.sub === 'ဝိရတီ (၃)' },
+            'အပ္ပမညာ (၂)': { label: 'အပ္ပမညာ (၂)', filter: c => c.sub === 'အပ္ပမညာ (၂)' }
+        };
+
+        // Bare/short-form group words that appear without their "(N)" count suffix in some
+        // prose (e.g. "ဝိရတီ (အခြေအနေအလိုက်)") — resolved to the same group as the full form.
+        const bareGroupAliases = {
+            'ဝိရတီ': 'ဝိရတီ (၃)',
+            'အပ္ပမညာ': 'အပ္ပမညာ (၂)',
+            'ပညိန္ဒြေ': null // singleton group — links straight to the cetasika itself, not a group modal
+        };
+
         let cetasikaNameRegex = null;
         function linkify(text) {
             if (!text) return text;
             if (!cetasikaNameRegex) {
-                const names = [...cetasikaData].sort((a, b) => b.name.length - a.name.length).map(c => c.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-                cetasikaNameRegex = new RegExp(names.join('|'), 'g');
+                const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const names = cetasikaData.map(c => c.name);
+                const groups = Object.keys(cetasikaGroupAliases);
+                const bares = Object.keys(bareGroupAliases);
+                const all = [...groups, ...names, ...bares]
+                    .sort((a, b) => b.length - a.length)
+                    .map(esc);
+                cetasikaNameRegex = new RegExp(all.join('|'), 'g');
             }
-            return text.replace(cetasikaNameRegex, (m) => `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-slate-500 hover:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openModalByName('${m}')">${m}</span>`);
+            return text.replace(cetasikaNameRegex, (m) => {
+                if (cetasikaGroupAliases[m]) {
+                    return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-amber-500 hover:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openCetasikaGroupModal('${m.replace(/'/g, "\\'")}')">${m}</span>`;
+                }
+                if (bareGroupAliases.hasOwnProperty(m)) {
+                    const groupKey = bareGroupAliases[m];
+                    if (groupKey === null) {
+                        return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-slate-500 hover:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openModalByName('ပညိန္ဒြေ (ပညာ)')">${m}</span>`;
+                    }
+                    return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-amber-500 hover:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openCetasikaGroupModal('${groupKey.replace(/'/g, "\\'")}')">${m}</span>`;
+                }
+                return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-slate-500 hover:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openModalByName('${m.replace(/'/g, "\\'")}')">${m}</span>`;
+            });
+        }
+
+        function openCetasikaGroupModal(aliasKey) {
+            const groupInfo = cetasikaGroupAliases[aliasKey];
+            if (!groupInfo) return;
+            const members = cetasikaData.filter(groupInfo.filter);
+            lastFocusedElement = document.activeElement;
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-2xl border border-slate-700 text-amber-400">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-amber-400">${groupInfo.label}</h3>
+                    <p class="text-xs text-slate-400">စုစုပေါင်း ${mm(members.length)} ပါး — တစ်ခုချင်းစီကို နှိပ်ကြည့်ပါ</p>
+                </div>
+                <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    ${members.map(m => `
+                        <button onclick="openModalByName('${m.name.replace(/'/g, "\\'")}')" class="text-xs font-semibold px-2.5 py-2 rounded-lg border bg-slate-900/60 border-slate-700 text-slate-200 hover:border-amber-400 hover:text-amber-300 transition text-left">
+                            ${m.name}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+            modal.classList.remove('hidden');
         }
 
         const cittaColorMap = {
