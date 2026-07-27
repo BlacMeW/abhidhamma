@@ -58,6 +58,11 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
+                <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+
                 <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
                 </a>
@@ -95,204 +100,95 @@
         const sangahaGroups = [
             {
                 id: 'vedana',
-                title: '၁။ ဝေဒနာသင်္ဂဟ (ခံစားမှု)',
-                desc: 'အာရုံ၏ အရသာကို ခံစားခြင်းသဘော (၃) မျိုး နှင့် (၅) မျိုး',
-                color: 'pink',
-                icon: 'fa-heart',
-                content: \`
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-bold text-pink-700 dark:text-pink-300 mb-2 border-b border-pink-200 dark:border-pink-800 pb-1 text-sm">ဝေဒနာ ၃ ပါး (လက္ခဏာအားဖြင့်)</h4>
-                            <div class="grid grid-cols-3 gap-2">
-                                <div class="bg-slate-100/50 dark:bg-slate-800/50 p-2 rounded-lg text-center border border-slate-200 dark:border-slate-700">
-                                    <div class="text-green-500 mb-1"><i class="fa-solid fa-face-smile"></i></div>
-                                    <div class="font-semibold text-sm">သုခ</div>
-                                    <div class="text-[10px] text-slate-500">ချမ်းသာခြင်း</div>
-                                </div>
-                                <div class="bg-slate-100/50 dark:bg-slate-800/50 p-2 rounded-lg text-center border border-slate-200 dark:border-slate-700">
-                                    <div class="text-rose-500 mb-1"><i class="fa-solid fa-face-frown"></i></div>
-                                    <div class="font-semibold text-sm">ဒုက္ခ</div>
-                                    <div class="text-[10px] text-slate-500">ဆင်းရဲခြင်း</div>
-                                </div>
-                                <div class="bg-slate-100/50 dark:bg-slate-800/50 p-2 rounded-lg text-center border border-slate-200 dark:border-slate-700">
-                                    <div class="text-slate-500 mb-1"><i class="fa-solid fa-face-meh"></i></div>
-                                    <div class="font-semibold text-sm">ဥပေက္ခာ</div>
-                                    <div class="text-[10px] text-slate-500">လစ်လျူရှုခြင်း</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-pink-700 dark:text-pink-300 mb-2 border-b border-pink-200 dark:border-pink-800 pb-1 text-sm">ဝေဒနာ ၅ ပါး (ဣန္ဒြေအားဖြင့်)</h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-1 rounded border border-green-200 dark:border-green-800">၁။ သုခ (ကိုယ်ချမ်းသာ) - ၁ ပါး</span>
-                                <span class="bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 px-2 py-1 rounded border border-rose-200 dark:border-rose-800">၂။ ဒုက္ခ (ကိုယ်ဆင်းရဲ) - ၁ ပါး</span>
-                                <span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded border border-emerald-200 dark:border-emerald-800">၃။ သောမနဿ (စိတ်ချမ်းသာ) - ၆၂ ပါး</span>
-                                <span class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-2 py-1 rounded border border-red-200 dark:border-red-800">၄။ ဒေါမနဿ (စိတ်ဆင်းရဲ) - ၂ ပါး</span>
-                                <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-1 rounded border border-slate-200 dark:border-slate-700">၅။ ဥပေက္ခာ (အလယ်အလတ်) - ၅၅ ပါး</span>
-                            </div>
-                        </div>
-                    </div>
-                \`
+                title: 'ဝေဒနာသင်္ဂဟ (ခံစားမှု ၅ ပါး)',
+                icon: 'fa-heart-pulse',
+                color: 'rose',
+                desc: 'စိတ်တို့၏ ခံစားမှုသဘောတရား (ဝေဒနာ) ၅ မျိုးကို ခွဲခြားပြခြင်း။',
+                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li><b>သုခ (၁) ပါး:</b> သုခသဟဂုတ် ကိုယ်အသိစိတ် (၁) ပါး။</li>
+                    <li><b>ဒုက္ခ (၁) ပါး:</b> ဒုက္ခသဟဂုတ် ကိုယ်အသိစိတ် (၁) ပါး။</li>
+                    <li><b>သောမနဿ (၆၂) ပါး:</b> လောဘမူ(၄)၊ သောမနဿသန္တီရဏ(၁)၊ ဟသိတုပ္ပါဒ်(၁)၊ မဟာကုသိုလ်(၄)၊ မဟာဝိပါက်(၄)၊ မဟာကြိယာ(၄) နှင့် ပထမဈာန်မှ စတုတ္ထဈာန်အထိ (၄၄) ပါး။ စုစုပေါင်း ၆၂ ပါး။</li>
+                    <li><b>ဒေါမနဿ (၂) ပါး:</b> ဒေါသမူစိတ် (၂) ပါး။</li>
+                    <li><b>ဥပေက္ခာ (၅၅) ပါး:</b> ကျန်သော လောဘမူ(၄)၊ မောဟမူ(၂)၊ အဟေတုက(၁၄)၊ ကာမာဝစရသောဘဏ(၁၂)၊ ပဉ္စမဈာန်(၂၃) ပါး။</li>
+                </ul>`,
+                filterLink: 'citta_cetasikas_visual_guide.html#citta89:vedana-sangaha'
             },
             {
                 id: 'hetu',
-                title: '၂။ ဟေတုသင်္ဂဟ (အမြစ်)',
-                desc: 'တရားတို့ကို ခိုင်မြဲစေသော အကြောင်းအရင်း (၆) ပါး',
-                color: 'rose',
+                title: 'ဟေတုသင်္ဂဟ (အကြောင်းရင်း ၆ ပါး)',
                 icon: 'fa-seedling',
-                content: \`
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-bold text-rose-700 dark:text-rose-300 mb-2 border-b border-rose-200 dark:border-rose-800 pb-1 text-sm"><a href="kilesa_sangaha.html" class="underline decoration-dotted hover:text-rose-600">အကုသိုလ်ဟေတု</a> (၃) ပါး</h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 px-2.5 py-1.5 rounded-lg border border-rose-200 dark:border-rose-800/50"><i class="fa-solid fa-magnet mr-1"></i> လောဘ (လိုချင်တပ်မက်မှု)</span>
-                                <span class="bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 px-2.5 py-1.5 rounded-lg border border-rose-200 dark:border-rose-800/50"><i class="fa-solid fa-fire mr-1"></i> ဒေါသ (ကြမ်းတမ်းမှု)</span>
-                                <span class="bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 px-2.5 py-1.5 rounded-lg border border-rose-200 dark:border-rose-800/50"><i class="fa-solid fa-cloud mr-1"></i> မောဟ (တွေဝေမိုက်မဲမှု)</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-emerald-700 dark:text-emerald-300 mb-2 border-b border-emerald-200 dark:border-emerald-800 pb-1 text-sm">ကုသိုလ်/အဗျာကတ ဟေတု (၃) ပါး</h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 px-2.5 py-1.5 rounded-lg border border-emerald-200 dark:border-emerald-800/50"><i class="fa-solid fa-hand-holding-heart mr-1"></i> အလောဘ (စွန့်လွှတ်မှု)</span>
-                                <span class="bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 px-2.5 py-1.5 rounded-lg border border-emerald-200 dark:border-emerald-800/50"><i class="fa-solid fa-dove mr-1"></i> အဒေါသ (မေတ္တာ)</span>
-                                <span class="bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 px-2.5 py-1.5 rounded-lg border border-emerald-200 dark:border-emerald-800/50"><i class="fa-solid fa-lightbulb mr-1"></i> အမောဟ (ပညာ)</span>
-                            </div>
-                        </div>
-                        <p class="text-[11px] text-slate-500 italic mt-2">* ဟေတုမပါသော စိတ် (အဟေတုကစိတ်) ၁၈ ပါး ရှိသည်။</p>
-                    </div>
-                \`
+                color: 'emerald',
+                desc: 'စိတ်တို့၏ အခြေခံအကြောင်းရင်း (ဟေတု) အရေအတွက်ကို ခွဲခြားပြခြင်း။',
+                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li><b>အဟေတုက (၁၈) ပါး:</b> ဟိတ်မပါသောစိတ် (၁၈) ပါး။</li>
+                    <li><b>ဧကဟေတုက (၂) ပါး:</b> မောဟဟိတ် တစ်ခုတည်းသာပါသော မောဟမူစိတ် (၂) ပါး။</li>
+                    <li><b>ဒွိဟေတုက (၂၂) ပါး:</b> ဟိတ် ၂ ခုစီပါသော လောဘမူ(၈)၊ ဒေါသမူ(၂)၊ ဉာဏဝိပ္ပယုတ် ကာမာဝစရသောဘဏ(၁၂) ပါး။</li>
+                    <li><b>တိဟေတုက (၄၇) ပါး:</b> ဟိတ် ၃ ခုစီပါသော ဉာဏသမ္ပယုတ် ကာမာဝစရသောဘဏ(၁၂) ပါး နှင့် မဟဂ္ဂုတ်(၂၇)၊ လောကုတ္တရာ(၈) ပါး။</li>
+                </ul>`,
+                filterLink: 'citta_cetasikas_visual_guide.html#citta89:hetu-sangaha'
             },
             {
                 id: 'kicca',
-                title: '၃။ ကိစ္စသင်္ဂဟ (လုပ်ငန်းဆောင်တာ)',
-                desc: 'စိတ်တို့၏ အမှုကိစ္စ (၁၄) မျိုး နှင့် တည်ရာဌာန (၁၀) ပါး',
-                color: 'blue',
+                title: 'ကိစ္စသင်္ဂဟ (လုပ်ငန်းတာဝန် ၁၄ မျိုး)',
                 icon: 'fa-briefcase',
-                content: \`
-                    <div class="flex flex-wrap gap-1.5 text-xs">
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၁။ ပဋိသန္ဓေ (ဘဝသစ်စတင်ခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၂။ ဘဝင် (ဘဝကို ထိန်းသိမ်းခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၃။ အာဝဇ္ဇန်း (အာရုံသို့ လှည့်ခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၄။ ဒဿန (မြင်ခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၅။ သဝန (ကြားခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၆။ ဃာယန (နံခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၇။ သာယန (အရသာသိခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၈။ ဖုသန (ထိတွေ့ခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၉။ သမ္ပဋိစ္ဆန်း (လက်ခံခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၁၀။ သန္တီရဏ (စုံစမ်းခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၁၁။ ဝုဋ္ဌော (ဆုံးဖြတ်ခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50 font-bold text-blue-700 dark:text-blue-300">၁၂။ <a href="vithi_sangaha.html" class="underline decoration-dotted hover:text-blue-600">ဇော</a> (အာရုံကို လျင်မြန်စွာ စားသုံးခြင်း/ကံပြုခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၁၃။ တဒါရုံ (အာရုံ၏ အရသာကို ဆက်လက်ခံစားခြင်း)</span>
-                        <span class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-800/50">၁၄။ စုတိ (ဘဝဆုံးခြင်း)</span>
-                    </div>
-                \`
+                color: 'sky',
+                desc: 'စိတ်တို့ ဆောင်ရွက်သော အမှုကိစ္စ (၁၄) မျိုးကို ခွဲခြားပြခြင်း။',
+                content: `<div class="space-y-3">
+                    <p class="text-sm">ကိစ္စ ၁၄ မျိုးကို တာဝန်ယူသော စိတ် ၆၈ ပါး (ဒွိပဉ္စဝိညာဉ် ၁၀ ကို ၁ ခုစီ ခွဲ၍ ရေတွက်သည်)။</p>
+                    <ul class="list-disc pl-5 space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                        <li><b>ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ ကိစ္စ (၁၉):</b> ဥပေက္ခာသန္တီရဏ (၂)၊ မဟာဝိပါက် (၈)၊ မဟဂ္ဂုတ်ဝိပါက် (၉)</li>
+                        <li><b>အာဝဇ္ဇန်း ကိစ္စ (၂):</b> ပဉ္စဒွါရာဝဇ္ဇန်း (၁)၊ မနောဒွါရာဝဇ္ဇန်း (၁)</li>
+                        <li><b>ဒဿန (မြင်)၊ သဝန (ကြား)၊ ဃာယန (နံ)၊ သာယန (စား)၊ ဖုသန (ထိ) (၁၀):</b> ဒွိပဉ္စဝိညာဉ် ၁၀ ပါး</li>
+                        <li><b>သမ္ပဋိစ္ဆန်း ကိစ္စ (၂):</b> သမ္ပဋိစ္ဆန်းစိတ် ၂ ပါး</li>
+                        <li><b>သန္တီရဏ ကိစ္စ (၃):</b> သန္တီရဏစိတ် ၃ ပါး</li>
+                        <li><b>ဝုဋ္ဌော ကိစ္စ (၁):</b> မနောဒွါရာဝဇ္ဇန်း (၁) ပါး (ပဉ္စဒွါရဝီထိ၌ ဝုဋ္ဌောအမည်ရသည်)</li>
+                        <li><b>ဇော ကိစ္စ (၅၅):</b> အကုသိုလ်(၁၂)၊ ကုသိုလ်(၂၁)၊ ကြိယာ(၁၈)၊ ဖိုလ်(၄) ပါး</li>
+                        <li><b>တဒါရုံ ကိစ္စ (၁၁):</b> သန္တီရဏ(၃)၊ မဟာဝိပါက်(၈) ပါး</li>
+                    </ul>
+                </div>`,
+                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
             },
             {
                 id: 'dvara',
-                title: '၄။ ဒွါရသင်္ဂဟ (တံခါး)',
-                desc: 'စိတ်တို့ အာရုံဆီသို့ ထွက်ရာ တံခါး (၆) ပေါက်',
-                color: 'teal',
+                title: 'ဒွါရသင်္ဂဟ (တံခါး ၆ ပေါက်)',
                 icon: 'fa-door-open',
-                content: \`
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-1">
-                            <i class="fa-solid fa-eye text-teal-600 dark:text-teal-400"></i>
-                            <span class="font-semibold text-center">စက္ခုဒွါရ</span>
-                            <span class="text-[10px] text-slate-500">မျက်စိတံခါး</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-1">
-                            <i class="fa-solid fa-ear-listen text-teal-600 dark:text-teal-400"></i>
-                            <span class="font-semibold text-center">သောတဒွါရ</span>
-                            <span class="text-[10px] text-slate-500">နားတံခါး</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-1">
-                            <i class="fa-solid fa-smog text-teal-600 dark:text-teal-400"></i>
-                            <span class="font-semibold text-center">ဃာနဒွါရ</span>
-                            <span class="text-[10px] text-slate-500">နှာခေါင်းတံခါး</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-1">
-                            <i class="fa-solid fa-lips text-teal-600 dark:text-teal-400"></i>
-                            <span class="font-semibold text-center">ဇိဝှါဒွါရ</span>
-                            <span class="text-[10px] text-slate-500">လျှာတံခါး</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-1">
-                            <i class="fa-solid fa-hand text-teal-600 dark:text-teal-400"></i>
-                            <span class="font-semibold text-center">ကာယဒွါရ</span>
-                            <span class="text-[10px] text-slate-500">ကိုယ်တံခါး</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 flex flex-col items-center gap-1">
-                            <i class="fa-solid fa-brain text-teal-600 dark:text-teal-400"></i>
-                            <span class="font-semibold text-center">မနောဒွါရ</span>
-                            <span class="text-[10px] text-slate-500">စိတ်တံခါး (ဘဝင်)</span>
-                        </div>
-                    </div>
-                    <p class="text-[11px] text-slate-500 mt-2">* တံခါးမရှိသော (ဒွါရဝိမုတ်) စိတ်များလည်း ရှိသည်။ (ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ ၈ မျိုး)</p>
-                \`
+                color: 'amber',
+                desc: 'အာရုံကို လက်ခံယူရာ တံခါးပေါက် (၆) ခုကို မှီ၍ဖြစ်သော စိတ်များ။',
+                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li><b>ဧကဒွါရိက (၃၆) ပါး:</b> တံခါး (၁) ခုတည်း၌သာဖြစ်သော စိတ် ၃၆ ပါး - ဒွိပဉ္စဝိညာဉ်(၁၀)၊ အပ္ပနာဇော(၂၆) ပါး။</li>
+                    <li><b>ပဉ္စဒွါရိက (၃) ပါး:</b> တံခါး (၅) ခု၌ဖြစ်သော စိတ် ၃ ပါး - မနောဓာတ်(၃) ပါး။</li>
+                    <li><b>ဆဒွါရိက (၃၁) ပါး:</b> တံခါး (၆) ခုလုံး၌ဖြစ်သော စိတ် ၃၁ ပါး - သောမနဿသန္တီရဏ(၁)၊ မနောဒွါရာဝဇ္ဇန်း(၁)၊ ကာမာဝစရဇော(၂၉) ပါး။</li>
+                    <li><b>ဆဒွါရိက-ဒွါရဝိမုတ် (၁၀) ပါး:</b> တံခါး (၆) ခု၌လည်းဖြစ်၊ တံခါးလွတ် (ဘဝင်/စုတိ) လည်းဖြစ်သော ဥပေက္ခာသန္တီရဏ(၂)၊ မဟာဝိပါက်(၈) ပါး။</li>
+                    <li><b>ဒွါရဝိမုတ် (၉) ပါး:</b> တံခါးလုံးဝလွတ်သော (ဘဝင်/စုတိ/ပဋိသန္ဓေ သက်သက်သာဖြစ်သော) မဟဂ္ဂုတ်ဝိပါက်(၉) ပါး။</li>
+                </ul>`,
+                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
             },
             {
                 id: 'arammana',
-                title: '၅။ အာရမ္မဏသင်္ဂဟ (အာရုံ)',
-                desc: 'စိတ်နှင့် စေတသိက်တို့ တွယ်တာစရာ / သိစရာ အာရုံ (၆) မျိုး',
+                title: 'အာရမ္မဏသင်္ဂဟ (အာရုံ ၆ မျိုး)',
+                icon: 'fa-eye',
                 color: 'indigo',
-                icon: 'fa-bullseye',
-                content: \`
-                    <div class="grid grid-cols-2 gap-2 text-xs">
-                        <div class="flex items-center gap-2 p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800">
-                            <i class="fa-solid fa-image text-indigo-500"></i>
-                            <div><span class="font-semibold">ရူပါရုံ</span> <span class="text-slate-500">(အဆင်း)</span></div>
-                        </div>
-                        <div class="flex items-center gap-2 p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800">
-                            <i class="fa-solid fa-music text-indigo-500"></i>
-                            <div><span class="font-semibold">သဒ္ဒါရုံ</span> <span class="text-slate-500">(အသံ)</span></div>
-                        </div>
-                        <div class="flex items-center gap-2 p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800">
-                            <i class="fa-solid fa-wind text-indigo-500"></i>
-                            <div><span class="font-semibold">ဂန္ဓာရုံ</span> <span class="text-slate-500">(အနံ့)</span></div>
-                        </div>
-                        <div class="flex items-center gap-2 p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800">
-                            <i class="fa-solid fa-utensils text-indigo-500"></i>
-                            <div><span class="font-semibold">ရသာရုံ</span> <span class="text-slate-500">(အရသာ)</span></div>
-                        </div>
-                        <div class="flex items-center gap-2 p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800">
-                            <i class="fa-solid fa-hand-sparkles text-indigo-500"></i>
-                            <div><span class="font-semibold">ဖောဋ္ဌဗ္ဗာရုံ</span> <span class="text-slate-500">(အတွေ့အထိ)</span></div>
-                        </div>
-                        <div class="flex items-center gap-2 p-2 border border-indigo-200 dark:border-indigo-800/50 rounded bg-indigo-50 dark:bg-indigo-900/20 text-indigo-800 dark:text-indigo-200">
-                            <i class="fa-solid fa-layer-group"></i>
-                            <div><span class="font-semibold">ဓမ္မာရုံ</span> <span class="text-slate-500">(ကျန်တရားများလုံး)</span></div>
-                        </div>
-                    </div>
-                \`
+                desc: 'စိတ်တို့ သိယူသော အာရုံ ၆ မျိုးအလိုက် ခွဲခြားခြင်း။',
+                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li><b>ပဉ္စာရုံ (၂၅) ပါး:</b> အာရုံ ၅ မျိုး (ရူပ,သဒ္ဒ,ဂန္ဓ,ရသ,ဖောဋ္ဌဗ္ဗ) ကို သိသောစိတ် ၂၅ ပါး - ဒွိပဉ္စဝိညာဉ်(၁၀)၊ မနောဓာတ်(၃)၊ သန္တီရဏ(၃)၊ မဟာဝိပါက်(၈)၊ ဟသိတုပ္ပါဒ်(၁) ပါး။ (မှတ်ချက်- အချို့က အသေးစိတ်ထပ်ခွဲသည်)</li>
+                    <li><b>ဓမ္မာရုံသက်သက် (၂၁) ပါး:</b> မဟဂ္ဂုတ်(၂၇) မှ အဘိညာဉ် ၂ ပါး ဖယ်၊ လောကုတ္တရာ(၈) - ဓမ္မာရုံသက်သက်ကိုသာ အာရုံပြုသောစိတ်များ။</li>
+                    <li><b>အာရုံ ၆ ပါးလုံး (၃၁) ပါး:</b> အကုသိုလ်(၁၂)၊ မဟာကုသိုလ်(၈)၊ မဟာကြိယာ(၈)၊ မနောဒွါရာဝဇ္ဇန်း(၁)၊ အဘိညာဉ်(၂) ပါး။</li>
+                </ul>
+                <p class="mt-2 text-xs opacity-75">မှတ်ချက် - ပရိတ္တ၊ မဟဂ္ဂုတ် စသော အာရုံအသေးစိတ် ခွဲခြားမှုများလည်း ရှိသေးသည်။</p>`,
+                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
             },
             {
                 id: 'vatthu',
-                title: '၆။ ဝတ္ထုသင်္ဂဟ (မှီရာ)',
-                desc: 'စိတ်တို့ မှီရာ ရုပ်တရား (၆) မျိုး',
-                color: 'orange',
+                title: 'ဝတ္ထုသင်္ဂဟ (မှီရာရုပ် ၆ မျိုး)',
                 icon: 'fa-building',
-                content: \`
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 text-center">
-                            <span class="font-semibold">စက္ခုဝတ္ထု</span><br><span class="text-[10px] text-slate-500">မျက်စိအကြည်ရုပ်</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 text-center">
-                            <span class="font-semibold">သောတဝတ္ထု</span><br><span class="text-[10px] text-slate-500">နားအကြည်ရုပ်</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 text-center">
-                            <span class="font-semibold">ဃာနဝတ္ထု</span><br><span class="text-[10px] text-slate-500">နှာခေါင်းအကြည်ရုပ်</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 text-center">
-                            <span class="font-semibold">ဇိဝှါဝတ္ထု</span><br><span class="text-[10px] text-slate-500">လျှာအကြည်ရုပ်</span>
-                        </div>
-                        <div class="p-2 border border-slate-200 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-800 text-center">
-                            <span class="font-semibold">ကာယဝတ္ထု</span><br><span class="text-[10px] text-slate-500">ကိုယ်အကြည်ရုပ်</span>
-                        </div>
-                        <div class="p-2 border border-orange-200 dark:border-orange-800/50 rounded bg-orange-50 dark:bg-orange-900/20 text-center text-orange-800 dark:text-orange-200">
-                            <span class="font-semibold">ဟဒယဝတ္ထု</span><br><span class="text-[10px]">နှလုံးအိမ်ရုပ် (မနောအတွက်)</span>
-                        </div>
-                    </div>
-                    <p class="text-[11px] text-slate-500 mt-2">* အရူပဘုံတွင် ဝတ္ထုရုပ်များ လုံးဝမရှိပါ။ (ဝတ္ထုမပါသော စိတ်များ - ၄၆ ပါး)</p>
-                \`
+                color: 'violet',
+                desc: 'စိတ်တို့ ဖြစ်ပေါ်ရာ မှီရာရုပ် (ဝတ္ထု) ၆ မျိုးကို ခွဲခြားပြခြင်း။',
+                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li><b>ဝတ္ထုနိဿိတ - အမြဲမှီ (၄၃) ပါး:</b> ပဉ္စဝိညာဉ်(၁၀)၊ မနောဓာတ်(၃)၊ ဒေါသ(၂)၊ ဟသိတုပ္ပါဒ်(၁)၊ မဟာဝိပါက်(၈)၊ ရူပါဝစရ(၁၅)၊ သောတာပတ္တိမဂ်(၁)၊ သကဒါဂါမိမဂ်(၁)၊ အနာဂါမိမဂ်(၁)၊ အရဟတ္တမဂ်(၁) ပါး။</li>
+                    <li><b>ဝတ္ထုနိဿိတ/အနိဿိတ - မှီတစ်ခါ မမှီတစ်လှည့် (၄၂) ပါး:</b> အကုသိုလ် (ဒေါသမပါ ၁၀)၊ မဟာကုသိုလ်(၈)၊ မဟာကြိယာ(၈)၊ မနောဒွါရာဝဇ္ဇန်း(၁)၊ သန္တီရဏ(၃)၊ အရူပါဝစရ ကုသိုလ်/ကြိယာ (၈)၊ ဖိုလ် (၄) ပါး။ (ပဉ္စဝေါကာရဘုံ၌ ဝတ္ထုကိုမှီ၍ စတုဝေါကာရဘုံ၌ ဝတ္ထုမပါဘဲ ဖြစ်သည်)</li>
+                    <li><b>ဝတ္ထုအနိဿိတ - လုံးဝမမှီ (၄) ပါး:</b> အရူပဝိပါက် ၄ ပါး (ဝတ္ထုရုပ် လုံးဝမရှိသော အရူပဘုံ၌သာ ဖြစ်သောကြောင့်)။</li>
+                </ul>`,
+                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
             }
         ];
 
@@ -327,6 +223,26 @@
                 </div>
             \`;
             container.innerHTML += html;
+        });
+    </script>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
         });
     </script>
 </body>
