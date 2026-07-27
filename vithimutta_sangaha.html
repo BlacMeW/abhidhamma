@@ -100,7 +100,7 @@
         </div>
 
         <!-- 31 Bhumi verification bar -->
-        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
+        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
             <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ကာမဘူမိ (၁၁)</button>
             <span class="text-slate-600">+</span>
             <button onclick="jumpToGroup('rupabhumi')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ရူပဘူမိ (၁၆)</button>
@@ -120,7 +120,7 @@
                 <span class="text-xs font-normal bg-sky-500/20 px-2 py-1 rounded">Click to expand</span>
             </summary>
             
-            <div class="mt-6 pt-4 border-t border-slate-700/50">
+            <div class="mt-6 pt-4 border-t border-slate-300 dark:border-slate-700/50">
                 <p class="text-center text-xs text-slate-600 dark:text-slate-400 mb-6">ဘုံတစ်ခုစီကို နှိပ်၍ အသေးစိတ်ဖတ်ရှုနိုင်ပါသည်။</p>
                 <div id="interactive-map-container" class="flex flex-col items-center gap-1 md:gap-2 w-full overflow-x-auto pb-4">
                     <!-- Rendered by JS -->
@@ -152,11 +152,11 @@
             <p class="text-xs text-slate-700 dark:text-slate-300">သေခါနီးအချိန် နောက်ဆုံး ဇောနဝီထိ (၅ ကြိမ် ၆ ကြိမ်မျှသာ ဖြစ်တတ်သော "ပရိတ္တဇောန") ၏ အာရုံအဖြစ် အောက်ပါ (၃) မျိုးအနက် တစ်မျိုးမျိုး ပေါ်လာတတ်ပြီး၊ ထိုအာရုံသည်ပင် နောင်ဘဝ ပဋိသန္ဓေစိတ်၏ အာရုံ ဖြစ်လာသည် —</p>
             <div id="near-death-chips" class="grid sm:grid-cols-3 gap-2"></div>
             <div class="flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-400 pt-2">
-                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-700">စုတိစိတ်</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">စုတိစိတ်</span>
                 <i class="fa-solid fa-arrow-right text-amber-700 dark:text-amber-400"></i>
                 <span class="px-3 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ကြားမဲ့ခြားနား လုံးဝ မရှိ</span>
                 <i class="fa-solid fa-arrow-right text-amber-700 dark:text-amber-400"></i>
-                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-700">ပဋိသန္ဓေစိတ် (ဘဝသစ်)</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">ပဋိသန္ဓေစိတ် (ဘဝသစ်)</span>
             </div>
             <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">* ဤ "ကြားမဲ့ခြားနား လုံးဝ မရှိခြင်း" ကို ပဋိစ္စသမုပ္ပါဒ်တွင် <a href="paticcasamuppada.html?open=jaramarana" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-700 dark:text-violet-200">ဇရာမရဏ → ဝိညာဉ် ပထမသန္ဓိ</a> အဖြစ် ဖော်ပြခဲ့သည်။</p>
         </div>
@@ -336,7 +336,7 @@
             mapStructure.forEach((level) => {
                 html += `
                     <div class="flex items-center gap-2 mb-2 w-full justify-center">
-                        <div class="hidden md:block w-32 text-right text-[10px] uppercase text-slate-500 dark:text-slate-500 font-bold pr-4 border-r border-slate-700/50">\${level.title}</div>
+                        <div class="hidden md:block w-32 text-right text-[10px] uppercase text-slate-500 dark:text-slate-500 font-bold pr-4 border-r border-slate-300 dark:border-slate-700/50">\${level.title}</div>
                         <div class="flex flex-wrap items-center justify-center gap-1.5 md:gap-2 flex-1 max-w-2xl">
                 `;
                 
@@ -398,11 +398,11 @@
         function renderKammaTetrads() {
             const colorClass = { sky: 'border-sky-400 dark:border-sky-500/30 bg-sky-100 dark:bg-sky-500/10 text-sky-700 dark:text-sky-300', emerald: 'border-emerald-400 dark:border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300', amber: 'border-amber-400 dark:border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300', violet: 'border-violet-400 dark:border-violet-500/30 bg-violet-500/10 text-violet-700 dark:text-violet-300' };
             document.getElementById('kamma-tetrads').innerHTML = kammaTetrads.map(t => `
-                <div class="bg-slate-950/60 rounded-lg p-3 border ${colorClass[t.color]}">
+                <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border ${colorClass[t.color]}">
                     <h4 class="font-bold text-sm mb-2">${t.title}</h4>
                     <div class="grid sm:grid-cols-2 gap-2">
                         ${t.items.map(it => `
-                            <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-2.5 border border-slate-800">
+                            <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800">
                                 <span class="text-slate-800 dark:text-slate-200 font-semibold text-xs block">${it.name}</span>
                                 <span class="text-slate-600 dark:text-slate-400 text-[11px]">${it.desc}</span>
                             </div>
@@ -414,7 +414,7 @@
 
         function renderNearDeathChips() {
             document.getElementById('near-death-chips').innerHTML = nearDeathData.map(n => `
-                <div class="bg-slate-950/60 rounded-lg p-3 border ${n.cls} text-center">
+                <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border ${n.cls} text-center">
                     <i class="fa-solid ${n.icon} ${n.cls.split(' ')[1]} text-lg mb-1"></i>
                     <span class="${n.cls.split(' ')[1]} font-bold block text-sm">${n.name}</span>
                     <span class="text-slate-600 dark:text-slate-400 text-[11px]">${n.desc}</span>
@@ -472,7 +472,7 @@
                         <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${desc}</p>
                     </div>
                     ${example ? `
-                    <div class="pt-3 border-t border-slate-800">
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${example}</p>
                     </div>` : ''}

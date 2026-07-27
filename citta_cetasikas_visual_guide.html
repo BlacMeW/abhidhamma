@@ -286,29 +286,29 @@
     </header>
 
     <!-- Unified Bottom Tab Bar (all screen sizes) -->
-    <nav id="mobile-tab-bar" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="fixed bottom-0 inset-x-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800" style="padding-bottom: env(safe-area-inset-bottom);">
+    <nav id="mobile-tab-bar" role="tablist" aria-label="အပိုင်းရွေးချယ်ရန်" class="fixed bottom-0 inset-x-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800" style="padding-bottom: env(safe-area-inset-bottom);">
         <div class="max-w-2xl mx-auto flex">
-        <button onclick="switchTab('def')" id="tabm-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn-mobile active flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:text-amber-300">
+        <button onclick="switchTab('def')" id="tabm-def" role="tab" aria-selected="true" aria-controls="sec-def" class="tab-btn-mobile active flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
             <i class="fa-solid fa-lightbulb text-base lg:text-lg"></i>
             <span class="text-[10px] lg:text-xs font-semibold leading-tight">အဓိပ္ပာယ်</span>
         </button>
-        <button onclick="switchTab('sampayoga')" id="tabm-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:text-amber-300">
+        <button onclick="switchTab('sampayoga')" id="tabm-sampayoga" role="tab" aria-selected="false" aria-controls="sec-sampayoga" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
             <i class="fa-solid fa-diagram-project text-base lg:text-lg"></i>
             <span class="text-[10px] lg:text-xs font-semibold leading-tight">ယှဉ်ဖက်</span>
         </button>
-        <button onclick="switchTab('citta89')" id="tabm-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:text-amber-300">
+        <button onclick="switchTab('citta89')" id="tabm-citta89" role="tab" aria-selected="false" aria-controls="sec-citta89" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
             <i class="fa-solid fa-sitemap text-base lg:text-lg"></i>
             <span class="text-[10px] lg:text-xs font-semibold leading-tight">စိတ် (၈၉)</span>
         </button>
-        <button onclick="switchTab('cetasika')" id="tabm-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:text-amber-300">
+        <button onclick="switchTab('cetasika')" id="tabm-cetasika" role="tab" aria-selected="false" aria-controls="sec-cetasika" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
             <i class="fa-solid fa-cubes text-base lg:text-lg"></i>
             <span class="text-[10px] lg:text-xs font-semibold leading-tight">စေတသိက်</span>
         </button>
-        <button onclick="switchTab('vithi')" id="tabm-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:text-amber-300">
+        <button onclick="switchTab('vithi')" id="tabm-vithi" role="tab" aria-selected="false" aria-controls="sec-vithi" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
             <i class="fa-solid fa-route text-base lg:text-lg"></i>
             <span class="text-[10px] lg:text-xs font-semibold leading-tight">ဝီထိ</span>
         </button>
-        <button onclick="switchTab('simulator')" id="tabm-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:text-amber-300">
+        <button onclick="switchTab('simulator')" id="tabm-simulator" role="tab" aria-selected="false" aria-controls="sec-simulator" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
             <i class="fa-solid fa-flask-vial text-base lg:text-lg"></i>
             <span class="text-[10px] lg:text-xs font-semibold leading-tight">စမ်းကြည့်ရန်</span>
         </button>
@@ -341,14 +341,14 @@
                         </div>
                     </div>
 
-                    <div class="mt-6 space-y-4 border-t border-slate-700/50 pt-4">
+                    <div class="mt-6 space-y-4 border-t border-slate-300 dark:border-slate-700/50 pt-4">
                         <div>
                             <h4 class="text-xs uppercase text-slate-600 dark:text-slate-400 font-semibold tracking-wider">ပင်မအဓိပ္ပာယ်</h4>
                             <p class="text-slate-800 dark:text-slate-200 text-sm mt-1">အာရုံ (ဆင်း၊ အသံ၊ အနံ့၊ အရသာ၊ အတွေ့၊ ဓမ္မာရုံ) တို့ကို မလွဲမသွေ သွားရောက်သိရှိသော တရားဖြစ်သည်။</p>
                         </div>
                         <div>
                             <h4 class="text-xs uppercase text-slate-600 dark:text-slate-400 font-semibold tracking-wider">ဥပမာ visual</h4>
-                            <div class="mt-2 bg-white/80 dark:bg-slate-900/80 p-4 rounded-xl flex items-center gap-4 border border-slate-800">
+                            <div class="mt-2 bg-white/80 dark:bg-slate-900/80 p-4 rounded-xl flex items-center gap-4 border border-slate-200 dark:border-slate-800">
                                 <div class="w-16 h-16 rounded-full bg-amber-400/20 border-2 border-amber-400 flex items-center justify-center text-amber-700 dark:text-amber-300 text-2xl">
                                     <i class="fa-solid fa-glass-water"></i>
                                 </div>
@@ -374,14 +374,14 @@
                         </div>
                     </div>
 
-                    <div class="mt-6 space-y-4 border-t border-slate-700/50 pt-4">
+                    <div class="mt-6 space-y-4 border-t border-slate-300 dark:border-slate-700/50 pt-4">
                         <div>
                             <h4 class="text-xs uppercase text-slate-600 dark:text-slate-400 font-semibold tracking-wider">ပင်မအဓိပ္ပာယ်</h4>
                             <p class="text-slate-800 dark:text-slate-200 text-sm mt-1">စိတ်နှင့်အတူ ယှဉ်တွဲ၍ စိတ်၏ အရည်အသွေး (ကောင်းမှု၊ မကောင်းမှု၊ ခံစားမှု) ကို ဖန်တီးပေးသော တရားဖြစ်သည်။</p>
                         </div>
                         <div>
                             <h4 class="text-xs uppercase text-slate-600 dark:text-slate-400 font-semibold tracking-wider">ဥပမာ visual</h4>
-                            <div class="mt-2 bg-white/80 dark:bg-slate-900/80 p-4 rounded-xl flex items-center gap-4 border border-slate-800">
+                            <div class="mt-2 bg-white/80 dark:bg-slate-900/80 p-4 rounded-xl flex items-center gap-4 border border-slate-200 dark:border-slate-800">
                                 <div class="w-16 h-16 rounded-full bg-cyan-400/20 border-2 border-cyan-400 flex items-center justify-center text-cyan-700 dark:text-cyan-300 text-2xl">
                                     <i class="fa-solid fa-eye-dropper"></i>
                                 </div>
@@ -498,7 +498,7 @@
             </div>
 
             <!-- Total verification bar (each badge jumps to its group below) -->
-            <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
+            <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
                 <button onclick="scrollToCittaGroup('group-kamavacara')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ကာမာဝစရ (၅၄)</button>
                 <span class="text-slate-600">+</span>
                 <button onclick="scrollToCittaGroup('group-rupavacara')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ရူပါဝစရ (၁၅)</button>
@@ -526,7 +526,7 @@
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>အကုသိုလ်စိတ် (၁၂) ပါး — မကောင်းမှုဇာစ်မြစ်ရှိသော စိတ်</span>
                         <span class="text-xs text-slate-500 dark:text-slate-500 font-mono">၁၂</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <div>
                             <p><span class="text-rose-700 dark:text-rose-400 font-bold">လောဘမူ (၈)</span> — တပ်မက်မှုအခြေခံ။ ဒိဋ္ဌိပါ/မပါ၊ ချမ်းသာ/လျစ်လျူ (ဥပေက္ခာ) ခံစားမှုနှင့်၊ အလိုလို/အားပေးမှုဖြင့် ဖြစ်မှု (သသင်္ခါရိက/အသင်္ခါရိက) — ပေါင်း ၈ မျိုး ကွဲသည်။ <span class="text-slate-500">(တစ်ပါးစီ နှိပ်ကြည့်ပါ)</span></p>
                             <div id="chips-lobha" class="flex flex-wrap gap-1.5 mt-2"></div>
@@ -547,7 +547,7 @@
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>အဟေတုကစိတ် (၁၈) ပါး — ဟိတ်(မူရင်း) မပါသော စိတ်</span>
                         <span class="text-xs text-slate-500 dark:text-slate-500 font-mono">၁၈</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <div>
                             <p><span class="text-slate-800 dark:text-slate-200 font-bold">အကုသိုလ်ဝိပါက် (၇)</span> — အကုသိုလ်ကံ၏ အကျိုးဆက်ဖြစ်သော စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယဝိညာဉ်၊ သမ္ပဋိစ္ဆန်၊ သန္တီရဏ (ဥပေက္ခာသာ)။</p>
                             <div id="chips-ahetuka-akusala" class="flex flex-wrap gap-1.5 mt-2"></div>
@@ -568,7 +568,7 @@
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ကာမာဝစရ သောဘဏစိတ် (၂၄) ပါး — ကြည်လင်သန့်ရှင်းသော စိတ်</span>
                         <span class="text-xs text-slate-500 dark:text-slate-500 font-mono">၂၄</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <div>
                             <p><span class="text-emerald-700 dark:text-emerald-400 font-bold">မဟာကုသိုလ် (၈)</span> — ဒါန၊ သီလ စသည် ပြုစဉ် ဖြစ်ပေါ်သော ကုသိုလ်စိတ်။</p>
                             <div id="chips-mahakusala" class="flex flex-wrap gap-1.5 mt-2"></div>
@@ -626,11 +626,11 @@
                     </div>
                 </div>
                 <div class="grid sm:grid-cols-2 gap-3 text-xs text-slate-700 dark:text-slate-300 pl-2">
-                    <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-3 border border-slate-800">
+                    <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-3 border border-slate-200 dark:border-slate-800">
                         <span class="text-amber-700 dark:text-amber-400 font-bold block mb-1">မဂ်စိတ် (၄)</span>
                         သောတာပတ္တိမဂ်၊ သကဒါဂါမိမဂ်၊ အနာဂါမိမဂ်၊ အရဟတ္တမဂ် — ကိလေသာကို ပယ်ဖြတ်သော ဥတ္ပာဒ်ချက်
                     </div>
-                    <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-3 border border-slate-800">
+                    <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-3 border border-slate-200 dark:border-slate-800">
                         <span class="text-amber-700 dark:text-amber-400 font-bold block mb-1">ဖိုလ်စိတ် (၄)</span>
                         သောတာပတ္တိဖိုလ်၊ သကဒါဂါမိဖိုလ်၊ အနာဂါမိဖိုလ်၊ အရဟတ္တဖိုလ် — မဂ်စိတ်၏ အကျိုးဆက်
                     </div>
@@ -654,7 +654,7 @@
                     <summary class="flex items-center justify-between font-semibold text-violet-700 dark:text-violet-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ဟေတုသင်္ဂဟ — ဟိတ်မူလ အလိုက် ခွဲခြားမှု</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <p>ဟေတု (၆) ပါး — အကုသိုလ်ဟေတု (၃) + သောဘဏဟေတု (၃) — တစ်ခုစီကို နှိပ်ကြည့်နိုင်သည်:</p>
                         <div class="flex flex-wrap gap-1.5">
                             <button onclick="openModalByName('လောဘ')" class="text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-rose-500/10 border-rose-400 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 hover:bg-rose-500/25 transition">လောဘ</button>
@@ -688,7 +688,7 @@
                     <summary class="flex items-center justify-between font-semibold text-violet-700 dark:text-violet-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ဝေဒနာသင်္ဂဟ — ခံစားမှု (၅) မျိုးအလိုက် ခွဲခြားမှု</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
                             <button onclick="openCittaFieldGroupModal('vedanaType', 'somanassa', 'သောမနဿ (Somanassa)', 'စိတ်ဖြင့် ချမ်းသာစွာ ခံစားခြင်း')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-amber-400 dark:border-amber-500/30 transition">
                                 <span class="block font-bold text-amber-700 dark:text-amber-300">၃၀ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">သောမနဿ</span>
@@ -718,7 +718,7 @@
                     <summary class="flex items-center justify-between font-semibold text-violet-700 dark:text-violet-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ဝတ္ထုသင်္ဂဟ — မှီရာရုပ် (၆) ပါးအလိုက် ခွဲခြားမှု</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
                             <button onclick="openCittaFieldGroupModal('vatthuType', 'cakkhu', 'စက္ခုဝတ္ထု', 'မျက်စိအလုံးအတွင်းရှိ ပသာဒရုပ်')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-slate-200 dark:border-slate-700 transition"><span class="block font-bold text-slate-800 dark:text-slate-200">၂ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">စက္ခုဝတ္ထု</span></button>
                             <button onclick="openCittaFieldGroupModal('vatthuType', 'sota', 'သောတဝတ္ထု', 'နားအတွင်းရှိ ပသာဒရုပ်')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-slate-200 dark:border-slate-700 transition"><span class="block font-bold text-slate-800 dark:text-slate-200">၂ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">သောတဝတ္ထု</span></button>
@@ -740,7 +740,7 @@
                     <summary class="flex items-center justify-between font-semibold text-violet-700 dark:text-violet-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ဒွါရသင်္ဂဟ — ဒွါရ (၆) ပါးအလိုက် ခွဲခြားမှု</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <p>မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ် (ခန္ဓာဒွါရ ၅) + စိတ်တံခါး (မနောဒွါရ) = ဒွါရ (၆) ပါး —</p>
                         <div class="grid sm:grid-cols-3 gap-2">
                             <button onclick="openCittaFieldGroupModal('dvaraType', 'eka', 'ဧကဒွါရိက (Ekadvārika)', 'ဒွါရ တစ်ခုတည်းကိုသာ မှီ၍ ဖြစ်ပေါ်သော ဒွိပဉ္စဝိညာဉ် (၁၀) ပါး')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-3 text-center border border-sky-400 dark:border-sky-500/30 transition">
@@ -761,13 +761,13 @@
                     <summary class="flex items-center justify-between font-semibold text-violet-700 dark:text-violet-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ကိစ္စသင်္ဂဟ — လုပ်ဆောင်ချက် (၁၄) မျိုး</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <p>စိတ်တစ်ခုစီသည် ကိစ္စ (တာဝန်) တစ်ခု (သို့) အများနှင့် ဆောင်ရွက်တတ်သည်။ (၁၄) မျိုးအနက် (၈) မျိုးကို "ဝီထိစိတ် အစဉ်" tab တွင် အသေးစိတ် ဖော်ပြထားပြီးဖြစ်သည် —</p>
-                        <button onclick="closeModal(); switchTab('vithi');" class="w-full text-left bg-slate-950/60 hover:bg-slate-950 rounded-lg p-3 border border-sky-400 dark:border-sky-500/30 transition">
+                        <button onclick="closeModal(); switchTab('vithi');" class="w-full text-left bg-slate-100 dark:bg-slate-950/60 hover:bg-slate-200 dark:hover:bg-slate-950 rounded-lg p-3 border border-sky-400 dark:border-sky-500/30 transition">
                             <span class="font-bold text-sky-700 dark:text-sky-300 block mb-1"><i class="fa-solid fa-route mr-1"></i>ဝီထိစိတ် ကိစ္စ (၈) — ဝီထိ tab တွင် ကြည့်ရန်</span>
                             <span class="text-slate-600 dark:text-slate-400">အာဝဇ္ဇန်၊ ဒဿန/သဝန/ဃာယန/သာယန/ဖုသန (ဝိညာဉ်)၊ သမ္ပဋိစ္ဆန်၊ သန္တီရဏ၊ ဝုဋ္ဌပ္ပန်၊ ဇောန၊ တဒါရမ္မဏ</span>
                         </button>
-                        <div class="bg-slate-950/60 rounded-lg p-3 border border-amber-500/30">
+                        <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border border-amber-500/30">
                             <span class="font-bold text-amber-700 dark:text-amber-300 block mb-1"><i class="fa-solid fa-water mr-1"></i>ဝီထိမုတ္တ ကိစ္စ (၃) — ဤစာမျက်နှာ၌ အသစ် ထည့်သွင်းထား</span>
                             <ul class="space-y-1.5 mt-1.5">
                                 <li><span class="text-slate-800 dark:text-slate-200 font-semibold">ပဋိသန္ဓေ (Paṭisandhi)</span> — ဘဝသစ် တစ်ခု၏ ပထမဆုံး စိတ်ခဏ၊ ရှေးဘဝ စုတိပြီးလျှင် ကြားကာလ လုံးဝ မရှိဘဲ ချက်ချင်း ဆက်စပ်ဖြစ်ပေါ်သည်။</li>
@@ -791,14 +791,14 @@
                     <summary class="flex items-center justify-between font-semibold text-violet-700 dark:text-violet-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>အာရမ္မဏသင်္ဂဟ — အာရုံ (၆) မျိုးအလိုက် ခွဲခြားမှု</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
+                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
                         <div class="grid sm:grid-cols-2 gap-2">
-                            <div class="bg-slate-950/60 rounded-lg p-2.5 border border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ရူပါရမ္မဏ</span> — အဆင်း (မျက်စိဝိညာဉ်သာ ယူသည်)</div>
-                            <div class="bg-slate-950/60 rounded-lg p-2.5 border border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">သဒ္ဒါရမ္မဏ</span> — အသံ (သောတဝိညာဉ်သာ ယူသည်)</div>
-                            <div class="bg-slate-950/60 rounded-lg p-2.5 border border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ဂန္ဓါရမ္မဏ</span> — အနံ့ (ဃာနဝိညာဉ်သာ ယူသည်)</div>
-                            <div class="bg-slate-950/60 rounded-lg p-2.5 border border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ရသာရမ္မဏ</span> — အရသာ (ဇိဝှါဝိညာဉ်သာ ယူသည်)</div>
-                            <div class="bg-slate-950/60 rounded-lg p-2.5 border border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ဖောဋ္ဌဗ္ဗါရမ္မဏ</span> — အတွေ့ (ကာယဝိညာဉ်သာ ယူသည်)</div>
-                            <div class="bg-slate-950/60 rounded-lg p-2.5 border border-amber-500/30"><span class="text-amber-700 dark:text-amber-300 font-bold">ဓမ္မာရမ္မဏ</span> — စိတ်၊ စေတသိက်၊ ရုပ်အချို့၊ ပညတ်၊ နိဗ္ဗာန် — မနောဒွါရစိတ်များသာ ယူနိုင်သည်</div>
+                            <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ရူပါရမ္မဏ</span> — အဆင်း (မျက်စိဝိညာဉ်သာ ယူသည်)</div>
+                            <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">သဒ္ဒါရမ္မဏ</span> — အသံ (သောတဝိညာဉ်သာ ယူသည်)</div>
+                            <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ဂန္ဓါရမ္မဏ</span> — အနံ့ (ဃာနဝိညာဉ်သာ ယူသည်)</div>
+                            <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ရသာရမ္မဏ</span> — အရသာ (ဇိဝှါဝိညာဉ်သာ ယူသည်)</div>
+                            <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800"><span class="text-sky-700 dark:text-sky-300 font-bold">ဖောဋ္ဌဗ္ဗါရမ္မဏ</span> — အတွေ့ (ကာယဝိညာဉ်သာ ယူသည်)</div>
+                            <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-2.5 border border-amber-500/30"><span class="text-amber-700 dark:text-amber-300 font-bold">ဓမ္မာရမ္မဏ</span> — စိတ်၊ စေတသိက်၊ ရုပ်အချို့၊ ပညတ်၊ နိဗ္ဗာန် — မနောဒွါရစိတ်များသာ ယူနိုင်သည်</div>
                         </div>
                         <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">ပထမ (၅) မျိုး (ပဉ္စာရမ္မဏ) ကို ဆိုင်ရာ ဒွိပဉ္စဝိညာဉ်စိတ်များက သာ ယူနိုင်ပြီး၊ ဇောန/မနောဒွါရစိတ်များကမူ ဤ (၆) မျိုးအနက် မည်သည့်တစ်ခုကိုမဆို ယူနိုင်ကြသည်။ သီးခြားချက် — <span class="text-amber-700 dark:text-amber-300 font-semibold">လောကုတ္တရာစိတ် (၈) ပါးသည် "နိဗ္ဗာန်" ကိုသာ အာရုံပြုနိုင်ပြီး အခြား မည်သည့်အာရုံမျှ လုံးဝ မယူနိုင်ပေ။</span></p>
                         <a href="paccaya_sangaha.html?open=arammana" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-violet-700 dark:text-violet-300 hover:text-violet-800 dark:text-violet-200 pt-1"><i class="fa-solid fa-link"></i> အာရုံ "ပစ်မှတ်" သဘော — Ārammaṇa-paccaya (Paccaya-saṅgaha) တွင် ထပ်ဆင့်ကြည့်ရန်</a>
@@ -810,20 +810,20 @@
                     <summary class="flex items-center justify-between font-semibold text-violet-700 dark:text-violet-300 text-sm">
                         <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ပုဂ္ဂိုလ်-စိတ် ဆက်စပ်မှု — ဘယ်ပုဂ္ဂိုလ်မှာ ဘယ်စိတ် ဖြစ်နိုင်သလဲ</span>
                     </summary>
-                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
-                        <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-700">
+                    <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800">
+                        <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border border-slate-200 dark:border-slate-700">
                             <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1">ပုထုဇဉ် (Puthujjana)</span>
                             <span class="text-slate-600 dark:text-slate-400">အကုသိုလ် (၁၂) ပါးလုံး + အဟေတုက (၁၈) + ကာမာဝစရသောဘဏ (၂၄) + ဈာန်ရရှိပါက ရူပ/အရူပ (၂၇) ဖြစ်နိုင်သည်။ <span class="text-rose-700 dark:text-rose-300 font-semibold">လောကုတ္တရာစိတ် (၈) ပါးလုံး လုံးဝ မဖြစ်နိုင်ပေ။</span></span>
                         </div>
-                        <div class="bg-slate-950/60 rounded-lg p-3 border border-sky-500/30">
+                        <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border border-sky-500/30">
                             <span class="font-bold text-sky-700 dark:text-sky-300 block mb-1">သောတာပန် / သကဒါဂါမီ (Sotāpanna / Sakadāgāmī)</span>
                             <span class="text-slate-600 dark:text-slate-400">ဒိဋ္ဌိဂတသမ္ပယုတ် လောဘစိတ် (၄) ပါးနှင့် ဝိစိကိစ္ဆာသမ္ပယုတ် မောဟစိတ် (၁) ပါး — ဤ (၅) ပါး ထာဝရ ချုပ်ငြိမ်းသွားပြီး နောင်တစ်ခါမျှ ပြန်မဖြစ်နိုင်တော့ပေ (ကျန်အကုသိုလ် ၇ ပါး ဆက်ဖြစ်နိုင်သည်)။ သက်ဆိုင်ရာ မဂ်/ဖိုလ် စိတ်ကို ရရှိထားပြီးဖြစ်သည်။</span>
                         </div>
-                        <div class="bg-slate-950/60 rounded-lg p-3 border border-indigo-500/30">
+                        <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border border-indigo-500/30">
                             <span class="font-bold text-indigo-700 dark:text-indigo-300 block mb-1">အနာဂါမီ (Anāgāmī)</span>
                             <span class="text-slate-600 dark:text-slate-400">ဒေါသမူစိတ် (၂) ပါးပါ ထပ်မံ ထာဝရ ချုပ်ငြိမ်းသွားသည် (ကာမရာဂ၊ ပဋိဃ အကြွင်းမဲ့ ပယ်ဖြတ်ပြီးသောကြောင့်) — ကျန်အကုသိုလ် (၅) ပါးသာ ဖြစ်နိုင်တော့သည်။</span>
                         </div>
-                        <div class="bg-slate-950/60 rounded-lg p-3 border border-amber-500/40">
+                        <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border border-amber-500/40">
                             <span class="font-bold text-amber-700 dark:text-amber-300 block mb-1">ရဟန္တာ (Arahant)</span>
                             <span class="text-slate-600 dark:text-slate-400">အကုသိုလ်စိတ် (၁၂) ပါးလုံး <span class="text-amber-700 dark:text-amber-300 font-semibold">လုံးဝ မဖြစ်နိုင်တော့ပေ</span> (ကိလေသာ အကြွင်းမဲ့ ချုပ်ငြိမ်းပြီးသောကြောင့်)။ ကာမာဝစရ/ရူပ/အရူပ "ကုသိုလ်" စိတ်များလည်း ကံသစ် မဖန်တီးနိုင်တော့သဖြင့် ၎င်းတို့နှင့် အတူတူပင်ဖြစ်သော "ကြိယာ" စိတ် (၁၇) ပါးဖြင့်သာ အစားထိုး ပြုလုပ်သည်။ အရဟတ္တမဂ်+ဖိုလ်ဖြင့် လောကုတ္တရာစိတ် (၈) ပါးလုံး ပြည့်စုံစွာ ရရှိပြီးဖြစ်သည်။</span>
                         </div>
@@ -832,7 +832,7 @@
                 </details>
 
                 <!-- Link out to the dedicated Paccaya-sangaha (24 conditions) page -->
-                <a href="paccaya_sangaha.html" class="block bg-gradient-to-r from-violet-500/15 to-slate-900/40 hover:from-violet-500/25 rounded-xl border border-violet-500/40 hover:border-violet-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="paccaya_sangaha.html" class="block bg-gradient-to-r from-violet-500/15 dark:to-slate-900/40 hover:from-violet-500/25 rounded-xl border border-violet-500/40 hover:border-violet-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-link"></i></div>
                         <div>
@@ -844,7 +844,7 @@
                 </a>
 
                 <!-- Link out to Rupa-sangaha (28 types of matter) -->
-                <a href="rupa_sangaha.html" class="block bg-gradient-to-r from-sky-500/15 to-slate-900/40 hover:from-sky-500/25 rounded-xl border border-sky-500/40 hover:border-sky-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="rupa_sangaha.html" class="block bg-gradient-to-r from-sky-500/15 dark:to-slate-900/40 hover:from-sky-500/25 rounded-xl border border-sky-500/40 hover:border-sky-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-cube"></i></div>
                         <div>
@@ -856,7 +856,7 @@
                 </a>
 
                 <!-- Link out to Paticcasamuppada (12 nidana) -->
-                <a href="paticcasamuppada.html" class="block bg-gradient-to-r from-emerald-500/15 to-slate-900/40 hover:from-emerald-500/25 rounded-xl border border-emerald-500/40 hover:border-emerald-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="paticcasamuppada.html" class="block bg-gradient-to-r from-emerald-500/15 dark:to-slate-900/40 hover:from-emerald-500/25 rounded-xl border border-emerald-500/40 hover:border-emerald-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-circle-notch"></i></div>
                         <div>
@@ -868,7 +868,7 @@
                 </a>
 
                 <!-- Link out to Bodhipakkhiya-dhamma (37 factors of enlightenment) -->
-                <a href="bodhipakkhiya_dhamma.html" class="block bg-gradient-to-r from-amber-500/15 to-slate-900/40 hover:from-amber-500/25 rounded-xl border border-amber-500/40 hover:border-amber-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="bodhipakkhiya_dhamma.html" class="block bg-gradient-to-r from-amber-500/15 dark:to-slate-900/40 hover:from-amber-500/25 rounded-xl border border-amber-500/40 hover:border-amber-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-seedling"></i></div>
                         <div>
@@ -880,7 +880,7 @@
                 </a>
 
                 <!-- Link out to Kilesa-sangaha (asava/ogha/yoga/gantha/upadana/nivarana/anusaya/samyojana) -->
-                <a href="kilesa_sangaha.html" class="block bg-gradient-to-r from-rose-500/15 to-slate-900/40 hover:from-rose-500/25 rounded-xl border border-rose-500/40 hover:border-rose-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="kilesa_sangaha.html" class="block bg-gradient-to-r from-rose-500/15 dark:to-slate-900/40 hover:from-rose-500/25 rounded-xl border border-rose-500/40 hover:border-rose-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-link-slash"></i></div>
                         <div>
@@ -892,7 +892,7 @@
                 </a>
 
                 <!-- Link out to Sabba-sangaha (ayatana/dhatu/sacca) -->
-                <a href="sabba_sangaha.html" class="block bg-gradient-to-r from-cyan-500/15 to-slate-900/40 hover:from-cyan-500/25 rounded-xl border border-cyan-500/40 hover:border-cyan-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="sabba_sangaha.html" class="block bg-gradient-to-r from-cyan-500/15 dark:to-slate-900/40 hover:from-cyan-500/25 rounded-xl border border-cyan-500/40 hover:border-cyan-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-atom"></i></div>
                         <div>
@@ -904,7 +904,7 @@
                 </a>
 
                 <!-- Link out to Vithimutta-sangaha (31 bhumi + kamma-catukka + near-death) -->
-                <a href="vithimutta_sangaha.html" class="block bg-gradient-to-r from-indigo-500/15 to-slate-900/40 hover:from-indigo-500/25 rounded-xl border border-indigo-500/40 hover:border-indigo-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="vithimutta_sangaha.html" class="block bg-gradient-to-r from-indigo-500/15 dark:to-slate-900/40 hover:from-indigo-500/25 rounded-xl border border-indigo-500/40 hover:border-indigo-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-globe"></i></div>
                         <div>
@@ -916,7 +916,7 @@
                 </a>
 
                 <!-- Link out to Kammatthana-sangaha (40 samatha + vipassana) -->
-                <a href="kammatthana_sangaha.html" class="block bg-gradient-to-r from-teal-500/15 to-slate-900/40 hover:from-teal-500/25 rounded-xl border border-teal-500/40 hover:border-teal-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
+                <a href="kammatthana_sangaha.html" class="block bg-gradient-to-r from-teal-500/15 dark:to-slate-900/40 hover:from-teal-500/25 rounded-xl border border-teal-500/40 hover:border-teal-400 px-4 py-3.5 transition flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-700 dark:text-teal-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-spa"></i></div>
                         <div>
@@ -983,11 +983,11 @@
 
             <!-- Vithi vs Vithimutta -->
             <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-slate-200 dark:border-slate-700 grid sm:grid-cols-2 gap-4 text-xs text-slate-700 dark:text-slate-300">
-                <div class="bg-white/60 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-800">
+                <div class="bg-white/60 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                     <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm mb-1"><i class="fa-solid fa-route mr-1.5"></i>ဝီထိစိတ် (Vīthi-citta)</h4>
                     <p>ဒွါရ (၆) ပါးမှတစ်ဆင့် အာရုံအသစ်ကို သိမြင်ရာ၌ လုပ်ဆောင်ချက် အသီးသီးဖြင့် အစဉ်လိုက် ဖြစ်ပေါ်နေသော စိတ်များ — ဤစာမျက်နှာတွင် ဖော်ပြထားသော အစဉ်အတိုင်းဖြစ်သည်။</p>
                 </div>
-                <div class="bg-white/60 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-800">
+                <div class="bg-white/60 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
                     <h4 class="font-bold text-slate-700 dark:text-slate-300 text-sm mb-1"><i class="fa-solid fa-water mr-1.5"></i>ဝီထိမုတ္တစိတ် (Vīthimutta-citta)</h4>
                     <p>ဝီထိအစဉ်တွင် မပါဝင်ဘဲ သီးခြား ဖြစ်ပေါ်သော ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ စိတ်များ — ဘဝတစ်ခု၏ အစနှင့် အဆုံးကို ဆောင်ရွက်ပေးသည်။</p>
                 </div>
@@ -1031,7 +1031,7 @@
                         <span id="live-vithi-progress-text" class="font-mono text-amber-700 dark:text-amber-300">စိတ်ခဏ: ၁ / ၁၇</span>
                         <span id="live-vithi-progress-percent" class="font-mono text-slate-600 dark:text-slate-400">၆%</span>
                     </div>
-                    <div class="w-full h-2 bg-white dark:bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                    <div class="w-full h-2 bg-white dark:bg-slate-900 rounded-full overflow-hidden border border-slate-200 dark:border-slate-800">
                         <div id="live-vithi-progress-bar" class="h-full bg-gradient-to-r from-amber-500 to-emerald-400 transition-all duration-200" style="width: 6%;"></div>
                     </div>
                 </div>
@@ -1052,7 +1052,7 @@
                 </div>
 
                 <!-- Single-Line Track across all screens -->
-                <div id="live-vithi-track-container" class="w-full overflow-x-auto bg-slate-950/60 rounded-xl p-3 border border-slate-200 dark:border-slate-800 scrollbar-thin">
+                <div id="live-vithi-track-container" class="w-full overflow-x-auto bg-slate-100 dark:bg-slate-950/60 rounded-xl p-3 border border-slate-200 dark:border-slate-800 scrollbar-thin">
                     <div id="live-vithi-track" class="single-line-track items-center gap-2 min-w-max"></div>
                 </div>
 
@@ -1073,12 +1073,12 @@
                 <div class="bg-white/80 dark:bg-slate-900/80 rounded-xl border border-slate-200 dark:border-slate-800 p-4 space-y-2.5">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                         <span id="live-vithi-caption-label" class="font-bold text-sm text-amber-700 dark:text-amber-300"></span>
-                        <span id="live-vithi-citta-name" class="text-xs text-sky-700 dark:text-sky-300 font-semibold bg-sky-950/50 border border-sky-400 dark:border-sky-500/30 px-2.5 py-0.5 rounded-full"></span>
+                        <span id="live-vithi-citta-name" class="text-xs text-sky-700 dark:text-sky-300 font-semibold bg-sky-50 dark:bg-sky-950/50 border border-sky-400 dark:border-sky-500/30 px-2.5 py-0.5 rounded-full"></span>
                     </div>
                     <p id="live-vithi-caption-desc" class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed"></p>
                     
                     <!-- Causal Logic Explainer (Why this Citta?) -->
-                    <div id="live-causal-logic-box" class="p-2.5 rounded-lg bg-amber-950/30 border border-amber-300 dark:border-amber-500/20 text-xs text-amber-800 dark:text-amber-200 flex items-start gap-2">
+                    <div id="live-causal-logic-box" class="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-500/20 text-xs text-amber-800 dark:text-amber-200 flex items-start gap-2">
                         <i class="fa-solid fa-circle-nodes text-amber-700 dark:text-amber-400 mt-0.5 flex-shrink-0"></i>
                         <div>
                             <span class="font-bold block text-amber-700 dark:text-amber-300 mb-0.5">ဖြစ်ပေါ်ရခြင်း အကြောင်းရင်း (Causal Logic):</span>
@@ -1173,7 +1173,7 @@
                 <p class="text-slate-600 dark:text-slate-400 text-sm">စိတ်အမျိုးအစားတစ်ခုကို ရွေးချယ်ပြီး ထိုစိတ်၌ ယှဉ်တွဲပါဝင်သော စေတသိက်များကို လေ့လာကြည့်ပါ။</p>
             </div>
 
-            <div class="glass-card rounded-2xl p-6 max-w-5xl mx-auto space-y-6 border border-slate-700">
+            <div class="glass-card rounded-2xl p-6 max-w-5xl mx-auto space-y-6 border border-slate-200 dark:border-slate-700">
                 <div class="space-y-3">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                         <label class="block text-sm font-bold text-amber-700 dark:text-amber-400">စိတ်အမျိုးအစား ရွေးချယ်ပါ -</label>
@@ -1190,10 +1190,10 @@
                 </div>
 
                 <!-- Simulator Results Display -->
-                <div id="sim-result" class="space-y-4 pt-4 border-t border-slate-800">
+                <div id="sim-result" class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                     <!-- Dynamic details populated here -->
                 </div>
-                <div id="compare-result" class="hidden grid md:grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+                <div id="compare-result" class="hidden grid md:grid-cols-2 gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                     <!-- Dynamic compare cards populated here -->
                 </div>
             </div>
@@ -1217,23 +1217,23 @@
                 <h4 class="text-center font-bold text-amber-700 dark:text-amber-300 text-sm uppercase tracking-wider">ခန္ဓာ (၅) ပါး အလိုက် ခွဲခြားကြည့်ပါက</h4>
                 <p class="text-center text-xs text-slate-600 dark:text-slate-400 -mt-1">ဤစာမျက်နှာတွင် လေ့လာခဲ့သော နာမ်တရားအားလုံး (စိတ် ၈၉ + စေတသိက် ၅၂) သည် ခန္ဓာ (၄) ပါးအတွင်းသို့သာ လုံးဝ ကျရောက်ကြောင်း တွေ့ရမည်ဖြစ်သည် -</p>
                 <div class="grid sm:grid-cols-2 gap-3 text-xs">
-                    <button onclick="closeModal(); switchTab('citta89');" class="text-left bg-slate-950/60 hover:bg-slate-950 rounded-xl border border-sky-400 dark:border-sky-500/30 hover:border-sky-400 p-3 transition">
+                    <button onclick="closeModal(); switchTab('citta89');" class="text-left bg-slate-100 dark:bg-slate-950/60 hover:bg-slate-200 dark:hover:bg-slate-950 rounded-xl border border-sky-400 dark:border-sky-500/30 hover:border-sky-400 p-3 transition">
                         <span class="font-bold text-sky-700 dark:text-sky-300 block">ဝိညာဏက္ခန္ဓာ (Viññāṇakkhandha)</span>
                         <span class="text-slate-600 dark:text-slate-400">= စိတ် (၈၉) ပါးလုံး — "သိခြင်း" အစု</span>
                     </button>
-                    <button onclick="openCetasikaGroupModal('သင်္ခါရက္ခန္ဓာ')" class="text-left bg-slate-950/60 hover:bg-slate-950 rounded-xl border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 p-3 transition">
+                    <button onclick="openCetasikaGroupModal('သင်္ခါရက္ခန္ဓာ')" class="text-left bg-slate-100 dark:bg-slate-950/60 hover:bg-slate-200 dark:hover:bg-slate-950 rounded-xl border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 p-3 transition">
                         <span class="font-bold text-emerald-700 dark:text-emerald-300 block">သင်္ခါရက္ခန္ဓာ (Saṅkhārakkhandha)</span>
                         <span class="text-slate-600 dark:text-slate-400">= ဝေဒနာ၊ သညာမှလွဲ၍ ကျန်စေတသိက် (၅၀) ပါး — "ပြုပြင်တည်ဆောက်ခြင်း" အစု</span>
                     </button>
-                    <button onclick="openModalByName('ဝေဒနာ')" class="text-left bg-slate-950/60 hover:bg-slate-950 rounded-xl border border-rose-400 dark:border-rose-500/30 hover:border-rose-400 p-3 transition">
+                    <button onclick="openModalByName('ဝေဒနာ')" class="text-left bg-slate-100 dark:bg-slate-950/60 hover:bg-slate-200 dark:hover:bg-slate-950 rounded-xl border border-rose-400 dark:border-rose-500/30 hover:border-rose-400 p-3 transition">
                         <span class="font-bold text-rose-700 dark:text-rose-300 block">ဝေဒနာက္ခန္ဓာ (Vedanākkhandha)</span>
                         <span class="text-slate-600 dark:text-slate-400">= ဝေဒနာ စေတသိက် တစ်ပါးတည်း — "ခံစားမှု" အစု</span>
                     </button>
-                    <button onclick="openModalByName('သညာ')" class="text-left bg-slate-950/60 hover:bg-slate-950 rounded-xl border border-cyan-500/30 hover:border-cyan-400 p-3 transition">
+                    <button onclick="openModalByName('သညာ')" class="text-left bg-slate-100 dark:bg-slate-950/60 hover:bg-slate-200 dark:hover:bg-slate-950 rounded-xl border border-cyan-500/30 hover:border-cyan-400 p-3 transition">
                         <span class="font-bold text-cyan-700 dark:text-cyan-300 block">သညာက္ခန္ဓာ (Saññākkhandha)</span>
                         <span class="text-slate-600 dark:text-slate-400">= သညာ စေတသိက် တစ်ပါးတည်း — "မှတ်သားမှု" အစု</span>
                     </button>
-                    <a href="rupa_sangaha.html" class="text-left bg-slate-950/60 hover:bg-slate-950 rounded-xl border border-indigo-400 dark:border-indigo-500/30 hover:border-indigo-400 p-3 transition block">
+                    <a href="rupa_sangaha.html" class="text-left bg-slate-100 dark:bg-slate-950/60 hover:bg-slate-200 dark:hover:bg-slate-950 rounded-xl border border-indigo-400 dark:border-indigo-500/30 hover:border-indigo-400 p-3 transition block">
                         <span class="font-bold text-indigo-700 dark:text-indigo-300 block"><i class="fa-solid fa-link mr-1 text-[10px]"></i>ရူပက္ခန္ဓာ (Rūpakkhandha)</span>
                         <span class="text-slate-600 dark:text-slate-400">= ရုပ် (၂၈) ပါး — နာမ်မဟုတ်သော "ရုပ်ပိုင်း" အစု — သီးခြားစာမျက်နှာတွင် အသေးစိတ် →</span>
                     </a>
@@ -1687,7 +1687,7 @@
 
             content.innerHTML = `
                 <div class="text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center ${colorHex} text-3xl border border-slate-700">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center ${colorHex} text-3xl border border-slate-200 dark:border-slate-700">
                         <i class="fa-solid ${item.icon}"></i>
                     </div>
                     <div>
@@ -1702,7 +1702,7 @@
                         <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${item.desc}</p>
                     </div>
                     ${item.example ? `
-                    <div class="pt-3 border-t border-slate-800">
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>နေ့စဉ်ဘဝ ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${item.example}</p>
                     </div>` : ''}
@@ -1821,7 +1821,7 @@
 
         const cittaColorMap = {
             rose: 'bg-rose-500/10 border-rose-400 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 hover:bg-rose-500/25 hover:border-rose-400',
-            slate: 'bg-slate-700/30 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-700/60 hover:border-slate-400',
+            slate: 'bg-slate-200 dark:bg-slate-700/30 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/60 hover:border-slate-400',
             emerald: 'bg-emerald-500/10 border-emerald-400 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/25 hover:border-emerald-400',
             sky: 'bg-sky-100 dark:bg-sky-500/10 border-sky-400 dark:border-sky-500/30 text-sky-700 dark:text-sky-300 hover:bg-sky-500/25 hover:border-sky-400',
             indigo: 'bg-indigo-500/10 border-indigo-400 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/25 hover:border-indigo-400',
@@ -1916,7 +1916,7 @@
 
             content.innerHTML = `
                 <div class="text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center ${colorHex} text-3xl border border-slate-700">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center ${colorHex} text-3xl border border-slate-200 dark:border-slate-700">
                         <i class="fa-solid ${item.icon}"></i>
                     </div>
                     <div>
@@ -1931,11 +1931,11 @@
                         <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase">သဘာဝ လက္ခဏာ</span>
                         <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${item.desc}</p>
                     </div>
-                    <div class="pt-3 border-t border-slate-800">
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase"><i class="fa-solid fa-cubes mr-1"></i>ယှဉ်တွဲသော စေတသိက်များ (နှိပ်ကြည့်နိုင်သည်)</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${linkify(item.cetasikaNote)}</p>
                     </div>
-                    <div class="pt-3 border-t border-slate-800">
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${item.example}</p>
                     </div>
@@ -1964,7 +1964,7 @@
         // Step labels use the traditional abbreviated notation taught in Myanmar Abhidhamma
         // dhamma-school charts (ဘ/န/ဒ/ပံ/ဝိ/သံ/သန်/ဝု/မ/ဇ/တ...) rather than full spelled-out names.
         const vithiFamilyInfo = {
-            bhavanga: { color: 'bg-slate-700/30 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300', label: 'ဘဝင်', desc: 'အာရုံသစ်ကို မသိသေးဘဲ၊ ယခင်ဘဝင်ရေစီး ဆက်လက်တည်ရှိနေသော/လှုပ်ရှားနေသော/ပြတ်တောက်သွားသော အခြေအနေများ — ဤသုံးခုစလုံးသည် ဝီထိစိတ်မဟုတ်သေးဘဲ ဝီထိမတိုင်မီ ပြင်ဆင်မှုသာ ဖြစ်သည်။' },
+            bhavanga: { color: 'bg-slate-200 dark:bg-slate-700/30 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300', label: 'ဘဝင်', desc: 'အာရုံသစ်ကို မသိသေးဘဲ၊ ယခင်ဘဝင်ရေစီး ဆက်လက်တည်ရှိနေသော/လှုပ်ရှားနေသော/ပြတ်တောက်သွားသော အခြေအနေများ — ဤသုံးခုစလုံးသည် ဝီထိစိတ်မဟုတ်သေးဘဲ ဝီထိမတိုင်မီ ပြင်ဆင်မှုသာ ဖြစ်သည်။' },
             avajjana: { color: 'bg-indigo-100 dark:bg-indigo-500/15 border-indigo-500/40 text-indigo-700 dark:text-indigo-300', label: 'အာဝဇ္ဇန်', desc: 'ဒွါရမှတစ်ဆင့် အာရုံသို့ စိတ်ကို ဦးစွာ လှည့်ပေးသော ကြိယာစိတ် (ဟိတ်မလိုက်သော အဟေတုကစိတ်)။' },
             vinnana: { color: 'bg-sky-100 dark:bg-sky-500/15 border-sky-500/40 text-sky-700 dark:text-sky-300', label: 'ဝိညာဉ်', desc: 'သက်ဆိုင်ရာ ဒွါရနှင့် ကိုက်ညီသော အာရုံကို ဦးဆုံး သိမြင်သော ဝိပါက်စိတ်။' },
             sampaticchana: { color: 'bg-cyan-500/15 border-cyan-500/40 text-cyan-700 dark:text-cyan-300', label: 'သမ္ပဋိစ္ဆန်', desc: 'သိမြင်ပြီးသော အာရုံကို လက်ခံစဉ်းစားမိသော ဝိပါက်စိတ်။' },
@@ -1978,7 +1978,7 @@
             gotrabhu: { color: 'bg-amber-500/25 border-amber-500 dark:border-amber-500/50 text-amber-700 dark:text-amber-100', label: 'ဂေါတြဘူ', desc: 'ပုထုဇဉ်အနွယ် (ကာမဇာတ်) ကို လွန်မြောက်၍ အရိယာအနွယ်သို့ ကူးပြောင်းပေးသော အဆင့် — မဂ်စိတ်၏ တစ်ခဏတည်း အရင်ဆုံး အဆင့်။' },
             magga: { color: 'bg-orange-500/20 border-orange-500/50 text-orange-700 dark:text-orange-200', label: 'မဂ်', desc: 'ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်သော ဥတ္ပာဒ်ခဏ — ဤဝီထိတွင် တစ်ကြိမ်တည်းသာ ဖြစ်ပေါ်ပြီး (ပုံမှန် ဇောန ၇ ကြိမ်ကဲ့သို့ ထပ်ခါထပ်ခါ မဖြစ်ပေါ်ပေ) ချက်ချင်းဆိုသလို ဖိုလ်စိတ်အဖြစ် အကျိုးပေးသည်။' },
             phala: { color: 'bg-emerald-100 dark:bg-emerald-500/20 border-emerald-500/50 text-emerald-700 dark:text-emerald-200', label: 'ဖိုလ်', desc: 'မဂ်စိတ်၏ ချက်ချင်းအကျိုးဆက်အနေဖြင့် နိဗ္ဗာန်ကို ဆက်လက် အာရုံပြု ခံစားနေသော ဝိပါက်စိတ် — ဤဝီထိ၌ (၂) ကြိမ် ထပ်ခါတလဲလဲ ဖြစ်ပေါ်သည် (ဖလသမာပတ်ဝင်စားချိန်တွင်မူ များစွာ ထပ်ကာ ထပ်ကာ ဖြစ်ပေါ်နိုင်သည်)။' },
-            cuti: { color: 'bg-red-900/30 border-red-700/50 text-red-700 dark:text-red-200', label: 'စုတိ', desc: 'ယခုဘဝ၏ နောက်ဆုံး ဘဝင်စိတ် — ဘဝတစ်ခု ကုန်ဆုံးကြောင်း အမှတ်အသားပြု ချုပ်ငြိမ်းသွားသော ဝိပါက်စိတ် (ဘဝင်နှင့် သဘောတူသော်လည်း ဘဝ၏ နောက်ဆုံးအကြိမ် ဖြစ်ခြင်းသာ ကွဲပြားသည်)။' },
+            cuti: { color: 'bg-red-100 dark:bg-red-900/30 border-red-300 dark:border-red-700/50 text-red-700 dark:text-red-200', label: 'စုတိ', desc: 'ယခုဘဝ၏ နောက်ဆုံး ဘဝင်စိတ် — ဘဝတစ်ခု ကုန်ဆုံးကြောင်း အမှတ်အသားပြု ချုပ်ငြိမ်းသွားသော ဝိပါက်စိတ် (ဘဝင်နှင့် သဘောတူသော်လည်း ဘဝ၏ နောက်ဆုံးအကြိမ် ဖြစ်ခြင်းသာ ကွဲပြားသည်)။' },
             patisandhi: { color: 'bg-teal-600/20 border-teal-500/50 text-teal-700 dark:text-teal-200', label: 'ပဋိသန္ဓေ', desc: 'ဘဝသစ်၏ ပထမဆုံး စိတ်ခဏ — ယခင်ဘဝ ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ်ထဲမှ တစ်ခုကိုပင် အာရုံပြု၍ ဘဝသစ်သို့ ချိတ်ဆက်ပေးသော ဝိပါက်စိတ်။' },
             appana: { color: 'bg-amber-600/20 border-amber-500 dark:border-amber-500/50 text-amber-700 dark:text-amber-100', label: 'အပ္ပနာဇောန (ဈာန်)', desc: 'ကမ္မဋ္ဌာန်း အာရုံကို အခိုင်အမာ တွယ်ငြိတွားလျက် ဈာန်သို့ တစ်ကြိမ်တည်း ရောက်ရှိသွားသော မဟဂ္ဂတဇောနစိတ် — ပုံမှန် ကာမာဝစရဇောန (၇) ကြိမ်နှင့် မတူဘဲ တစ်ကြိမ်သာ ဖြစ်ပေါ်သည်။' }
         };
@@ -2160,7 +2160,7 @@
             const content = document.getElementById('modal-content');
             content.innerHTML = `
                 <div class="text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-3xl border border-slate-700">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-3xl border border-slate-200 dark:border-slate-700">
                         <i class="fa-solid ${s.icon}"></i>
                     </div>
                     <div>
@@ -2429,27 +2429,27 @@
             // "ကုသိုလ်" as a substring, so a plain .includes('ကုသိုလ်') would wrongly fire on
             // every akusala-only line too (e.g. "အကုသိုလ်သာဓာရဏ (၄)...").
             if (text.includes('သို့') && text.includes('အကုသိုလ်') && text.includes('သောဘဏ')) {
-                return 'text-slate-700 dark:text-slate-300 bg-slate-700/40 border border-slate-500/40';
+                return 'text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-700/40 border border-slate-500/40';
             }
             if (text.includes('သဗ္ဗစိတ္တသာဓာရဏ')) return 'text-slate-800 dark:text-slate-200 bg-slate-800/40 border border-slate-500/30';
-            if (text.includes('အကုသိုလ်သာဓာရဏ')) return 'text-rose-800 dark:text-rose-200 bg-rose-950/40 border border-rose-500/30';
-            if (text.includes('သောဘဏသာဓာရဏ')) return 'text-emerald-800 dark:text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
-            if (text.includes('ဝိရတီ')) return 'text-teal-700 dark:text-teal-200 bg-teal-950/40 border border-teal-500/30';
-            if (text.includes('အပ္ပမညာ')) return 'text-violet-800 dark:text-violet-200 bg-violet-950/40 border border-violet-500/30';
-            if (text.includes('ပညိန္ဒြေ')) return 'text-amber-800 dark:text-amber-200 bg-amber-950/40 border border-amber-500/30';
-            if (/ဈာန်အင်္ဂါ|ဈာနင်္ဂ/.test(text)) return 'text-orange-700 dark:text-orange-200 bg-orange-950/40 border border-orange-500/30';
-            if (text.includes('ပကိဏ္ဏက')) return 'text-sky-800 dark:text-sky-200 bg-sky-950/40 border border-sky-500/30';
-            if (/လောဘ|ဒေါသ|မောဟ|ဒိဋ္ဌိ|မာန|ဣဿာ|မစ္ဆရိယ|ကုက္ကုစ္စ|ထိန|မိဒ္ဓ|ဝိစိကိစ္ဆာ|ဥဒ္ဓစ္စ/.test(text)) return 'text-red-800 dark:text-red-200 bg-red-950/40 border border-red-600/30';
+            if (text.includes('အကုသိုလ်သာဓာရဏ')) return 'text-rose-800 dark:text-rose-200 bg-rose-50 dark:bg-rose-950/40 border border-rose-500/30';
+            if (text.includes('သောဘဏသာဓာရဏ')) return 'text-emerald-800 dark:text-emerald-200 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500/30';
+            if (text.includes('ဝိရတီ')) return 'text-teal-700 dark:text-teal-200 bg-teal-50 dark:bg-teal-950/40 border border-teal-500/30';
+            if (text.includes('အပ္ပမညာ')) return 'text-violet-800 dark:text-violet-200 bg-violet-50 dark:bg-violet-950/40 border border-violet-500/30';
+            if (text.includes('ပညိန္ဒြေ')) return 'text-amber-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-950/40 border border-amber-500/30';
+            if (/ဈာန်အင်္ဂါ|ဈာနင်္ဂ/.test(text)) return 'text-orange-700 dark:text-orange-200 bg-orange-50 dark:bg-orange-950/40 border border-orange-500/30';
+            if (text.includes('ပကိဏ္ဏက')) return 'text-sky-800 dark:text-sky-200 bg-sky-50 dark:bg-sky-950/40 border border-sky-500/30';
+            if (/လောဘ|ဒေါသ|မောဟ|ဒိဋ္ဌိ|မာန|ဣဿာ|မစ္ဆရိယ|ကုက္ကုစ္စ|ထိန|မိဒ္ဓ|ဝိစိကိစ္ဆာ|ဥဒ္ဓစ္စ/.test(text)) return 'text-red-800 dark:text-red-200 bg-red-50 dark:bg-red-950/40 border border-red-600/30';
             // Reached only when the earlier "akusala/sobhana mixed" check didn't match, so
             // any mention of သောဘဏ / မဂ္ဂင် / ဗောဇ္ဈင် here is unambiguously wholesome-only.
-            if (text.includes('သောဘဏ') || /မဂ္ဂင်|ဗောဇ္ဈင်/.test(text)) return 'text-emerald-800 dark:text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
+            if (text.includes('သောဘဏ') || /မဂ္ဂင်|ဗောဇ္ဈင်/.test(text)) return 'text-emerald-800 dark:text-emerald-200 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500/30';
             // The generic fallback chips (liveStepCetasikas) are bare individual cetasika
             // names rather than category-header phrases, so match those directly too.
             if (/^(ဖဿ|ဝေဒနာ|သညာ|စေတနာ|ဧကဂ္ဂတာ|ဇီဝိတိန္ဒြေ|မနသိကာရ)/.test(text)) return 'text-slate-800 dark:text-slate-200 bg-slate-800/40 border border-slate-500/30';
-            if (/^(ဝိတက်|ဝိစာရ|အဓိမောက္ခ|ဝီရိယ|ပီတိ|ဆန္ဒ)/.test(text)) return 'text-sky-800 dark:text-sky-200 bg-sky-950/40 border border-sky-500/30';
+            if (/^(ဝိတက်|ဝိစာရ|အဓိမောက္ခ|ဝီရိယ|ပီတိ|ဆန္ဒ)/.test(text)) return 'text-sky-800 dark:text-sky-200 bg-sky-50 dark:bg-sky-950/40 border border-sky-500/30';
             // Neutral default — never defaults to a colour that implies a specific kamma-nature
             // (kusala/akusala) for text this function doesn't actually recognise.
-            return 'text-slate-700 dark:text-slate-300 bg-slate-700/40 border border-slate-500/40';
+            return 'text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-700/40 border border-slate-500/40';
         }
 
         function updateLiveVithiCaption() {
@@ -2749,7 +2749,7 @@
                     emerald: active ? 'bg-emerald-100 dark:bg-emerald-500/20 border-emerald-400 text-emerald-700 dark:text-emerald-300' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-emerald-400/50',
                     sky: active ? 'bg-sky-500/20 border-sky-400 text-sky-700 dark:text-sky-300' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-400/50',
                     amber: active ? 'bg-amber-100 dark:bg-amber-500/20 border-amber-400 text-amber-700 dark:text-amber-300' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-amber-400/50',
-                    slate: active ? 'bg-slate-700/40 border-slate-400 text-slate-800 dark:text-slate-200' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-400/50'
+                    slate: active ? 'bg-slate-200 dark:bg-slate-700/40 border-slate-400 text-slate-800 dark:text-slate-200' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-400/50'
                 };
                 return `
                     <button onclick="updateSimulator('${m.id}')" class="flex items-center gap-2.5 text-left px-4 py-2.5 rounded-xl border bg-white/60 dark:bg-slate-900/60 text-sm font-semibold transition ${colorMap[m.color]}">
