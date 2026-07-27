@@ -251,6 +251,11 @@
         }
     </style>
     
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col pb-12 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
@@ -361,7 +366,7 @@
                     <div class="flex items-start justify-between">
                         <div>
                             <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 mb-2">Cetasika</span>
-                            <h3 class="text-2xl font-bold text-cyan-400">စေတသိက် (Cetasika)</h3>
+                            <h3 class="text-2xl font-bold text-cyan-700 dark:text-cyan-400">စေတသိက် (Cetasika)</h3>
                             <p class="text-slate-700 dark:text-slate-300 text-sm mt-1">စိတ်၌ မှီ၍ဖြစ်သော စေတသိက် (Mental Factors)</p>
                         </div>
                         <div class="p-4 bg-cyan-500/10 rounded-2xl text-cyan-700 dark:text-cyan-400 text-4xl">
@@ -433,7 +438,7 @@
                     <div class="w-14 h-14 mx-auto rounded-full bg-cyan-500/20 text-cyan-700 dark:text-cyan-400 flex items-center justify-center text-2xl font-bold border border-cyan-500/40">
                         ၃
                     </div>
-                    <h3 class="text-lg font-bold text-cyan-300">အာရုံတူ (Ekālambaṇa)</h3>
+                    <h3 class="text-lg font-bold text-cyan-700 dark:text-cyan-300">အာရုံတူ (Ekālambaṇa)</h3>
                     <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                         စိတ်က မည်သည့်အာရုံ (ဥပမာ- အဆင်း) ကို သိယူပါက စေတသိက်ကလည်း ထိုအာရုံကိုပင် အတူတကွ သိယူသည်။
                     </p>
@@ -698,7 +703,7 @@
                                 <span class="block font-bold text-emerald-700 dark:text-emerald-300">၁ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">သုခ (ကိုယ်)</span>
                             </button>
                             <button onclick="openCittaFieldGroupModal('vedanaType', 'dukkha', 'ဒုက္ခ (Dukkha)', 'ကိုယ်ဖြင့် ဆင်းရဲစွာ ခံစားခြင်း — ကာယဝိညာဉ် (အကုသိုလ်ဝိပါက်) တစ်ပါးတည်း')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-red-500/30 transition">
-                                <span class="block font-bold text-red-300">၁ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">ဒုက္ခ (ကိုယ်)</span>
+                                <span class="block font-bold text-red-700 dark:text-red-300">၁ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">ဒုက္ခ (ကိုယ်)</span>
                             </button>
                             <button onclick="openCittaFieldGroupModal('vedanaType', 'variable', 'လောကုတ္တရာ (ပြောင်းလဲနိုင်)', 'ဈာန်အခြေခံပေါ်မူတည်၍ သောမနဿ (သို့) ဥပေက္ခာ ဖြစ်နိုင် — (၁၂၁) အဆင့်တွင်သာ အတိအကျ ပိုင်းခြားရသည်')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-sky-400 dark:border-sky-500/30 transition">
                                 <span class="block font-bold text-sky-700 dark:text-sky-300">၈ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">လောကုတ္တရာ (variable)</span>
@@ -721,11 +726,11 @@
                             <button onclick="openCittaFieldGroupModal('vatthuType', 'jivha', 'ဇိဝှါဝတ္ထု', 'လျှာအတွင်းရှိ ပသာဒရုပ်')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-slate-200 dark:border-slate-700 transition"><span class="block font-bold text-slate-800 dark:text-slate-200">၂ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">ဇိဝှါဝတ္ထု</span></button>
                             <button onclick="openCittaFieldGroupModal('vatthuType', 'kaya', 'ကာယဝတ္ထု', 'ကိုယ်တစ်ခုလုံးရှိ ပသာဒရုပ်')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-slate-200 dark:border-slate-700 transition"><span class="block font-bold text-slate-800 dark:text-slate-200">၂ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">ကာယဝတ္ထု</span></button>
                             <button onclick="openCittaFieldGroupModal('vatthuType', 'hadaya', 'ဟဒယဝတ္ထု', 'နှလုံးသွေးအိုးအတွင်းရှိ မှီရာရုပ် — အခြားစိတ်အားလုံး ဤရုပ်ကို မှီသည်')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-amber-400 dark:border-amber-500/30 transition"><span class="block font-bold text-amber-700 dark:text-amber-300">၆၇ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">ဟဒယဝတ္ထု</span></button>
-                            <button onclick="openCittaFieldGroupModal('vatthuType', 'none', 'ဝတ္ထုရဟိတ (Vatthu-rahita)', 'အရူပဗြဟ္မာတို့၌ ရုပ်ခန္ဓာ လုံးဝ မရှိသဖြင့် မှီရာရုပ် လုံးဝ မလိုအပ်ပေ')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-indigo-400 dark:border-indigo-500/30 transition"><span class="block font-bold text-indigo-300">၁၂ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">ဝတ္ထုမရှိ (အရူပ)</span></button>
+                            <button onclick="openCittaFieldGroupModal('vatthuType', 'none', 'ဝတ္ထုရဟိတ (Vatthu-rahita)', 'အရူပဗြဟ္မာတို့၌ ရုပ်ခန္ဓာ လုံးဝ မရှိသဖြင့် မှီရာရုပ် လုံးဝ မလိုအပ်ပေ')" class="bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:bg-slate-800 rounded-lg p-2.5 text-center border border-indigo-400 dark:border-indigo-500/30 transition"><span class="block font-bold text-indigo-700 dark:text-indigo-300">၁၂ ပါး</span><span class="text-[10px] text-slate-600 dark:text-slate-400">ဝတ္ထုမရှိ (အရူပ)</span></button>
                         </div>
                         <div class="flex flex-wrap gap-x-4 gap-y-1 pt-1">
-                            <a href="paccaya_sangaha.html?open=nissaya" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-violet-700 dark:text-violet-300 hover:text-violet-200"><i class="fa-solid fa-link"></i> ဝတ္ထု "မှီရာ" သဘော — Nissaya-paccaya (Paccaya-saṅgaha) တွင် ထပ်ဆင့်ကြည့်ရန်</a>
-                            <a href="rupa_sangaha.html" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-200"><i class="fa-solid fa-link"></i> ဝတ္ထု (၆) ပါးကို ရုပ်တရား ရှုထောင့်မှ — Rūpa-saṅgaha တွင် ထပ်ဆင့်ကြည့်ရန်</a>
+                            <a href="paccaya_sangaha.html?open=nissaya" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-violet-700 dark:text-violet-300 hover:text-violet-700 dark:text-violet-200"><i class="fa-solid fa-link"></i> ဝတ္ထု "မှီရာ" သဘော — Nissaya-paccaya (Paccaya-saṅgaha) တွင် ထပ်ဆင့်ကြည့်ရန်</a>
+                            <a href="rupa_sangaha.html" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-700 dark:text-indigo-200"><i class="fa-solid fa-link"></i> ဝတ္ထု (၆) ပါးကို ရုပ်တရား ရှုထောင့်မှ — Rūpa-saṅgaha တွင် ထပ်ဆင့်ကြည့်ရန်</a>
                         </div>
                     </div>
                 </details>
@@ -775,8 +780,8 @@
                         </div>
                         <p class="text-[11px] text-slate-500">* "ငါ" ဟူသော အနှစ်သာရ တစ်ခုတည်း တစ်ဘဝမှ တစ်ဘဝ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ ကံ၏ တွန်းအားဖြင့် စိတ်တစ်ခုစီ အလိုလို ဆက်ရိုက်ဖြစ်ပေါ်နေခြင်းသာ ဖြစ်ကြောင်း ဤ ၃ ကိစ္စက ပြသည်။</p>
                         <div class="flex flex-wrap gap-x-4 gap-y-1 pt-1">
-                            <a href="paccaya_sangaha.html?open=anantara" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-violet-700 dark:text-violet-300 hover:text-violet-200"><i class="fa-solid fa-link"></i> ဝီထိစိတ် ဆက်တိုက်ဖြစ်ပေါ်မှု — Anantara-paccaya (Paccaya-saṅgaha) တွင် ထပ်ဆင့်ကြည့်ရန်</a>
-                            <a href="vithimutta_sangaha.html" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-200"><i class="fa-solid fa-link"></i> ဘူမိ (၃၁)/ကံစတုက္က/သေခါနီး လုပ်ငန်းစဉ် — ဝီထိမုတ္တသင်္ဂဟ တွင် ထပ်ဆင့်ကြည့်ရန်</a>
+                            <a href="paccaya_sangaha.html?open=anantara" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-violet-700 dark:text-violet-300 hover:text-violet-700 dark:text-violet-200"><i class="fa-solid fa-link"></i> ဝီထိစိတ် ဆက်တိုက်ဖြစ်ပေါ်မှု — Anantara-paccaya (Paccaya-saṅgaha) တွင် ထပ်ဆင့်ကြည့်ရန်</a>
+                            <a href="vithimutta_sangaha.html" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-700 dark:text-indigo-200"><i class="fa-solid fa-link"></i> ဘူမိ (၃၁)/ကံစတုက္က/သေခါနီး လုပ်ငန်းစဉ် — ဝီထိမုတ္တသင်္ဂဟ တွင် ထပ်ဆင့်ကြည့်ရန်</a>
                         </div>
                     </div>
                 </details>
@@ -919,7 +924,7 @@
                             <span class="text-slate-600 dark:text-slate-400 text-[11px]">သမထ ကမ္မဋ္ဌာန်း (၄၀) + ဝိပဿနာ — သီအိုရီမှ လက်တွေ့ ဘာဝနာသို့ — သီးခြားစာမျက်နှာ၌ ဆက်လက် လေ့လာပါ</span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-arrow-right text-teal-400 flex-shrink-0"></i>
+                    <i class="fa-solid fa-arrow-right text-teal-700 dark:text-teal-400 flex-shrink-0"></i>
                 </a>
             </div>
         </section>
@@ -1677,8 +1682,8 @@
             const content = document.getElementById('modal-content');
 
             let colorHex = "text-amber-700 dark:text-amber-400";
-            if (item.cat === 'akusala') colorHex = "text-rose-400";
-            if (item.cat === 'sobhana') colorHex = "text-emerald-400";
+            if (item.cat === 'akusala') colorHex = "text-rose-700 dark:text-rose-400";
+            if (item.cat === 'sobhana') colorHex = "text-emerald-700 dark:text-emerald-400";
 
             content.innerHTML = `
                 <div class="text-center space-y-3">
@@ -1775,16 +1780,16 @@
             }
             return text.replace(cetasikaNameRegex, (m) => {
                 if (cetasikaGroupAliases[m]) {
-                    return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-amber-500 hover:text-amber-700 dark:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openCetasikaGroupModal('${m.replace(/'/g, "\\'")}')">${m}</span>`;
+                    return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-amber-500 hover:text-amber-700 dark:text-amber-300 text-amber-700 dark:text-amber-200/90" onclick="event.stopPropagation(); openCetasikaGroupModal('${m.replace(/'/g, "\\'")}')">${m}</span>`;
                 }
                 if (bareGroupAliases.hasOwnProperty(m)) {
                     const groupKey = bareGroupAliases[m];
                     if (groupKey === null) {
-                        return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-slate-500 hover:text-amber-700 dark:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openModalByName('ပညိန္ဒြေ (ပညာ)')">${m}</span>`;
+                        return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-slate-500 hover:text-amber-700 dark:text-amber-300 text-amber-700 dark:text-amber-200/90" onclick="event.stopPropagation(); openModalByName('ပညိန္ဒြေ (ပညာ)')">${m}</span>`;
                     }
-                    return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-amber-500 hover:text-amber-700 dark:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openCetasikaGroupModal('${groupKey.replace(/'/g, "\\'")}')">${m}</span>`;
+                    return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-amber-500 hover:text-amber-700 dark:text-amber-300 text-amber-700 dark:text-amber-200/90" onclick="event.stopPropagation(); openCetasikaGroupModal('${groupKey.replace(/'/g, "\\'")}')">${m}</span>`;
                 }
-                return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-slate-500 hover:text-amber-700 dark:text-amber-300 text-amber-200/90" onclick="event.stopPropagation(); openModalByName('${m.replace(/'/g, "\\'")}')">${m}</span>`;
+                return `<span class="cetasika-link cursor-pointer underline decoration-dotted decoration-slate-500 hover:text-amber-700 dark:text-amber-300 text-amber-700 dark:text-amber-200/90" onclick="event.stopPropagation(); openModalByName('${m.replace(/'/g, "\\'")}')">${m}</span>`;
             });
         }
 
@@ -1907,7 +1912,7 @@
             lastFocusedElement = document.activeElement;
             const modal = document.getElementById('modal');
             const content = document.getElementById('modal-content');
-            const colorHex = { rose: 'text-rose-400', slate: 'text-slate-700 dark:text-slate-300', emerald: 'text-emerald-400', sky: 'text-sky-400', indigo: 'text-indigo-400', amber: 'text-amber-700 dark:text-amber-400' }[item.color] || 'text-amber-700 dark:text-amber-400';
+            const colorHex = { rose: 'text-rose-700 dark:text-rose-400', slate: 'text-slate-700 dark:text-slate-300', emerald: 'text-emerald-700 dark:text-emerald-400', sky: 'text-sky-700 dark:text-sky-400', indigo: 'text-indigo-700 dark:text-indigo-400', amber: 'text-amber-700 dark:text-amber-400' }[item.color] || 'text-amber-700 dark:text-amber-400';
 
             content.innerHTML = `
                 <div class="text-center space-y-3">
@@ -1960,29 +1965,29 @@
         // dhamma-school charts (ဘ/န/ဒ/ပံ/ဝိ/သံ/သန်/ဝု/မ/ဇ/တ...) rather than full spelled-out names.
         const vithiFamilyInfo = {
             bhavanga: { color: 'bg-slate-700/30 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300', label: 'ဘဝင်', desc: 'အာရုံသစ်ကို မသိသေးဘဲ၊ ယခင်ဘဝင်ရေစီး ဆက်လက်တည်ရှိနေသော/လှုပ်ရှားနေသော/ပြတ်တောက်သွားသော အခြေအနေများ — ဤသုံးခုစလုံးသည် ဝီထိစိတ်မဟုတ်သေးဘဲ ဝီထိမတိုင်မီ ပြင်ဆင်မှုသာ ဖြစ်သည်။' },
-            avajjana: { color: 'bg-indigo-100 dark:bg-indigo-500/15 border-indigo-500/40 text-indigo-300', label: 'အာဝဇ္ဇန်', desc: 'ဒွါရမှတစ်ဆင့် အာရုံသို့ စိတ်ကို ဦးစွာ လှည့်ပေးသော ကြိယာစိတ် (ဟိတ်မလိုက်သော အဟေတုကစိတ်)။' },
+            avajjana: { color: 'bg-indigo-100 dark:bg-indigo-500/15 border-indigo-500/40 text-indigo-700 dark:text-indigo-300', label: 'အာဝဇ္ဇန်', desc: 'ဒွါရမှတစ်ဆင့် အာရုံသို့ စိတ်ကို ဦးစွာ လှည့်ပေးသော ကြိယာစိတ် (ဟိတ်မလိုက်သော အဟေတုကစိတ်)။' },
             vinnana: { color: 'bg-sky-100 dark:bg-sky-500/15 border-sky-500/40 text-sky-700 dark:text-sky-300', label: 'ဝိညာဉ်', desc: 'သက်ဆိုင်ရာ ဒွါရနှင့် ကိုက်ညီသော အာရုံကို ဦးဆုံး သိမြင်သော ဝိပါက်စိတ်။' },
-            sampaticchana: { color: 'bg-cyan-500/15 border-cyan-500/40 text-cyan-300', label: 'သမ္ပဋိစ္ဆန်', desc: 'သိမြင်ပြီးသော အာရုံကို လက်ခံစဉ်းစားမိသော ဝိပါက်စိတ်။' },
-            santirana: { color: 'bg-teal-500/15 border-teal-500/40 text-teal-300', label: 'သန္တီရဏ', desc: 'လက်ခံပြီးသော အာရုံကို စစ်ဆေးဆင်ခြင်နေသော ဝိပါက်စိတ်။' },
+            sampaticchana: { color: 'bg-cyan-500/15 border-cyan-500/40 text-cyan-700 dark:text-cyan-300', label: 'သမ္ပဋိစ္ဆန်', desc: 'သိမြင်ပြီးသော အာရုံကို လက်ခံစဉ်းစားမိသော ဝိပါက်စိတ်။' },
+            santirana: { color: 'bg-teal-500/15 border-teal-500/40 text-teal-700 dark:text-teal-300', label: 'သန္တီရဏ', desc: 'လက်ခံပြီးသော အာရုံကို စစ်ဆေးဆင်ခြင်နေသော ဝိပါက်စိတ်။' },
             votthapana: { color: 'bg-violet-100 dark:bg-violet-500/15 border-violet-500/40 text-violet-700 dark:text-violet-300', label: 'ဝုဋ္ဌပ္ပန်', desc: 'အာရုံကို ကောင်း/မကောင်း အပြီးသတ် ဆုံးဖြတ်ပေးသော ကြိယာစိတ် (မနောဒွါရာဝဇ္ဇန်းစိတ်ကပင် ဤတာဝန်ကို ယူသည်)။' },
-            javana: { color: 'bg-fuchsia-500/15 border-fuchsia-500/40 text-fuchsia-300', label: 'ဇောန', desc: 'ဆုံးဖြတ်ပြီးနောက် အာရုံကို အပြင်းအထန် တွန်းအားဖြင့် ခံစားနေသော အခိုက် — ကုသိုလ်/အကုသိုလ်/ကြိယာ ဖြစ်နိုင်ပြီး ဤအဆင့်၌သာ ကံအသစ် ဖန်တီးသည်။' },
+            javana: { color: 'bg-fuchsia-500/15 border-fuchsia-500/40 text-fuchsia-700 dark:text-fuchsia-300', label: 'ဇောန', desc: 'ဆုံးဖြတ်ပြီးနောက် အာရုံကို အပြင်းအထန် တွန်းအားဖြင့် ခံစားနေသော အခိုက် — ကုသိုလ်/အကုသိုလ်/ကြိယာ ဖြစ်နိုင်ပြီး ဤအဆင့်၌သာ ကံအသစ် ဖန်တီးသည်။' },
             tadarammana: { color: 'bg-emerald-100 dark:bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-300', label: 'တဒါရမ္မဏ', desc: 'ဇောနစိတ်ပြီးနောက် အာရုံ၏ အကျိုးဆက်ကို ခေတ္တခဏမျှ ဆက်လက် မှတ်သားနေသော ဝိပါက်စိတ် (အာရုံ အလွန်ထင်ရှားသော အခါမျိုးတွင်သာ ဖြစ်တတ်သည်)။' },
-            parikamma: { color: 'bg-amber-500/10 border-amber-400 dark:border-amber-500/30 text-amber-200', label: 'ပရိကမ်', desc: 'အပ္ပနာ (ဈာန်) သို့မဟုတ် မဂ်ဖိုလ်မတိုင်မီ ပြင်ဆင်ပေးသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ် (ဉာဏကြီးသူတို့၌ ချန်ခြင်တတ်သည်)။' },
-            upacara: { color: 'bg-amber-500/15 border-amber-500/35 text-amber-200', label: 'ဥပစာရ', desc: 'အပ္ပနာ/မဂ်ဖိုလ်နှင့် နီးကပ်စွာ ချဉ်းကပ်လာသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ်။' },
-            anuloma: { color: 'bg-amber-100 dark:bg-amber-500/20 border-amber-500/40 text-amber-100', label: 'အနုလောမ', desc: 'ရှေ့က ကာမာဝစရစိတ်များနှင့် နောက်က ဖြစ်ပေါ်မည့် အပ္ပနာ/လောကုတ္တရာစိတ်ကို လိုက်လျောညီထွေ ဖြစ်စေသော အဆင့်။' },
-            gotrabhu: { color: 'bg-amber-500/25 border-amber-500 dark:border-amber-500/50 text-amber-100', label: 'ဂေါတြဘူ', desc: 'ပုထုဇဉ်အနွယ် (ကာမဇာတ်) ကို လွန်မြောက်၍ အရိယာအနွယ်သို့ ကူးပြောင်းပေးသော အဆင့် — မဂ်စိတ်၏ တစ်ခဏတည်း အရင်ဆုံး အဆင့်။' },
-            magga: { color: 'bg-orange-500/20 border-orange-500/50 text-orange-200', label: 'မဂ်', desc: 'ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်သော ဥတ္ပာဒ်ခဏ — ဤဝီထိတွင် တစ်ကြိမ်တည်းသာ ဖြစ်ပေါ်ပြီး (ပုံမှန် ဇောန ၇ ကြိမ်ကဲ့သို့ ထပ်ခါထပ်ခါ မဖြစ်ပေါ်ပေ) ချက်ချင်းဆိုသလို ဖိုလ်စိတ်အဖြစ် အကျိုးပေးသည်။' },
-            phala: { color: 'bg-emerald-100 dark:bg-emerald-500/20 border-emerald-500/50 text-emerald-200', label: 'ဖိုလ်', desc: 'မဂ်စိတ်၏ ချက်ချင်းအကျိုးဆက်အနေဖြင့် နိဗ္ဗာန်ကို ဆက်လက် အာရုံပြု ခံစားနေသော ဝိပါက်စိတ် — ဤဝီထိ၌ (၂) ကြိမ် ထပ်ခါတလဲလဲ ဖြစ်ပေါ်သည် (ဖလသမာပတ်ဝင်စားချိန်တွင်မူ များစွာ ထပ်ကာ ထပ်ကာ ဖြစ်ပေါ်နိုင်သည်)။' },
-            cuti: { color: 'bg-red-900/30 border-red-700/50 text-red-200', label: 'စုတိ', desc: 'ယခုဘဝ၏ နောက်ဆုံး ဘဝင်စိတ် — ဘဝတစ်ခု ကုန်ဆုံးကြောင်း အမှတ်အသားပြု ချုပ်ငြိမ်းသွားသော ဝိပါက်စိတ် (ဘဝင်နှင့် သဘောတူသော်လည်း ဘဝ၏ နောက်ဆုံးအကြိမ် ဖြစ်ခြင်းသာ ကွဲပြားသည်)။' },
-            patisandhi: { color: 'bg-teal-600/20 border-teal-500/50 text-teal-200', label: 'ပဋိသန္ဓေ', desc: 'ဘဝသစ်၏ ပထမဆုံး စိတ်ခဏ — ယခင်ဘဝ ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ်ထဲမှ တစ်ခုကိုပင် အာရုံပြု၍ ဘဝသစ်သို့ ချိတ်ဆက်ပေးသော ဝိပါက်စိတ်။' },
-            appana: { color: 'bg-amber-600/20 border-amber-500 dark:border-amber-500/50 text-amber-100', label: 'အပ္ပနာဇောန (ဈာန်)', desc: 'ကမ္မဋ္ဌာန်း အာရုံကို အခိုင်အမာ တွယ်ငြိတွားလျက် ဈာန်သို့ တစ်ကြိမ်တည်း ရောက်ရှိသွားသော မဟဂ္ဂတဇောနစိတ် — ပုံမှန် ကာမာဝစရဇောန (၇) ကြိမ်နှင့် မတူဘဲ တစ်ကြိမ်သာ ဖြစ်ပေါ်သည်။' }
+            parikamma: { color: 'bg-amber-500/10 border-amber-400 dark:border-amber-500/30 text-amber-700 dark:text-amber-200', label: 'ပရိကမ်', desc: 'အပ္ပနာ (ဈာန်) သို့မဟုတ် မဂ်ဖိုလ်မတိုင်မီ ပြင်ဆင်ပေးသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ် (ဉာဏကြီးသူတို့၌ ချန်ခြင်တတ်သည်)။' },
+            upacara: { color: 'bg-amber-500/15 border-amber-500/35 text-amber-700 dark:text-amber-200', label: 'ဥပစာရ', desc: 'အပ္ပနာ/မဂ်ဖိုလ်နှင့် နီးကပ်စွာ ချဉ်းကပ်လာသော ကာမာဝစရအဆင့် ကုသိုလ်ဇောနစိတ်။' },
+            anuloma: { color: 'bg-amber-100 dark:bg-amber-500/20 border-amber-500/40 text-amber-700 dark:text-amber-100', label: 'အနုလောမ', desc: 'ရှေ့က ကာမာဝစရစိတ်များနှင့် နောက်က ဖြစ်ပေါ်မည့် အပ္ပနာ/လောကုတ္တရာစိတ်ကို လိုက်လျောညီထွေ ဖြစ်စေသော အဆင့်။' },
+            gotrabhu: { color: 'bg-amber-500/25 border-amber-500 dark:border-amber-500/50 text-amber-700 dark:text-amber-100', label: 'ဂေါတြဘူ', desc: 'ပုထုဇဉ်အနွယ် (ကာမဇာတ်) ကို လွန်မြောက်၍ အရိယာအနွယ်သို့ ကူးပြောင်းပေးသော အဆင့် — မဂ်စိတ်၏ တစ်ခဏတည်း အရင်ဆုံး အဆင့်။' },
+            magga: { color: 'bg-orange-500/20 border-orange-500/50 text-orange-700 dark:text-orange-200', label: 'မဂ်', desc: 'ကိလေသာကို အမြစ်ပြတ် ပယ်ဖြတ်သော ဥတ္ပာဒ်ခဏ — ဤဝီထိတွင် တစ်ကြိမ်တည်းသာ ဖြစ်ပေါ်ပြီး (ပုံမှန် ဇောန ၇ ကြိမ်ကဲ့သို့ ထပ်ခါထပ်ခါ မဖြစ်ပေါ်ပေ) ချက်ချင်းဆိုသလို ဖိုလ်စိတ်အဖြစ် အကျိုးပေးသည်။' },
+            phala: { color: 'bg-emerald-100 dark:bg-emerald-500/20 border-emerald-500/50 text-emerald-700 dark:text-emerald-200', label: 'ဖိုလ်', desc: 'မဂ်စိတ်၏ ချက်ချင်းအကျိုးဆက်အနေဖြင့် နိဗ္ဗာန်ကို ဆက်လက် အာရုံပြု ခံစားနေသော ဝိပါက်စိတ် — ဤဝီထိ၌ (၂) ကြိမ် ထပ်ခါတလဲလဲ ဖြစ်ပေါ်သည် (ဖလသမာပတ်ဝင်စားချိန်တွင်မူ များစွာ ထပ်ကာ ထပ်ကာ ဖြစ်ပေါ်နိုင်သည်)။' },
+            cuti: { color: 'bg-red-900/30 border-red-700/50 text-red-700 dark:text-red-200', label: 'စုတိ', desc: 'ယခုဘဝ၏ နောက်ဆုံး ဘဝင်စိတ် — ဘဝတစ်ခု ကုန်ဆုံးကြောင်း အမှတ်အသားပြု ချုပ်ငြိမ်းသွားသော ဝိပါက်စိတ် (ဘဝင်နှင့် သဘောတူသော်လည်း ဘဝ၏ နောက်ဆုံးအကြိမ် ဖြစ်ခြင်းသာ ကွဲပြားသည်)။' },
+            patisandhi: { color: 'bg-teal-600/20 border-teal-500/50 text-teal-700 dark:text-teal-200', label: 'ပဋိသန္ဓေ', desc: 'ဘဝသစ်၏ ပထမဆုံး စိတ်ခဏ — ယခင်ဘဝ ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ်ထဲမှ တစ်ခုကိုပင် အာရုံပြု၍ ဘဝသစ်သို့ ချိတ်ဆက်ပေးသော ဝိပါက်စိတ်။' },
+            appana: { color: 'bg-amber-600/20 border-amber-500 dark:border-amber-500/50 text-amber-700 dark:text-amber-100', label: 'အပ္ပနာဇောန (ဈာန်)', desc: 'ကမ္မဋ္ဌာန်း အာရုံကို အခိုင်အမာ တွယ်ငြိတွားလျက် ဈာန်သို့ တစ်ကြိမ်တည်း ရောက်ရှိသွားသော မဟဂ္ဂတဇောနစိတ် — ပုံမှန် ကာမာဝစရဇောန (၇) ကြိမ်နှင့် မတူဘဲ တစ်ကြိမ်သာ ဖြစ်ပေါ်သည်။' }
         };
 
         // Root-specific overrides for ordinary (kāma) javana — color/description/linked citta example per root
         const javanaRootInfo = {
             lobha: { label: 'လောဘမူ ဇောန', color: 'bg-rose-100 dark:bg-rose-500/15 border-rose-500/40 text-rose-700 dark:text-rose-300', desc: 'တပ်မက်မှု (လောဘ) ကို အခြေခံသော အကုသိုလ်ဇောနစိတ် — အာရုံကို ကပ်ငြိတွယ်တာစွာ ခံစားနေသည်။', cittaId: 1, nature: 'akusala' },
-            dosa: { label: 'ဒေါသမူ ဇောန', color: 'bg-red-600/15 border-red-600/40 text-red-300', desc: 'ခက်ထန်မှု (ဒေါသ) ကို အခြေခံသော အကုသိုလ်ဇောနစိတ် — ဒေါမနဿ ခံစားမှုနှင့်သာ ယှဉ်ပြီး ပီတိနှင့် လုံးဝ မယှဉ်ပေ။', cittaId: 9, nature: 'akusala' },
-            moha: { label: 'မောဟမူ ဇောန', color: 'bg-stone-500/15 border-stone-500/40 text-stone-300', desc: 'သံသယ (သို့) စိတ်ပျံ့လွင့်မှုကို အခြေခံသော အကုသိုလ်ဇောနစိတ်။', cittaId: 11, nature: 'akusala' },
+            dosa: { label: 'ဒေါသမူ ဇောန', color: 'bg-red-600/15 border-red-600/40 text-red-700 dark:text-red-300', desc: 'ခက်ထန်မှု (ဒေါသ) ကို အခြေခံသော အကုသိုလ်ဇောနစိတ် — ဒေါမနဿ ခံစားမှုနှင့်သာ ယှဉ်ပြီး ပီတိနှင့် လုံးဝ မယှဉ်ပေ။', cittaId: 9, nature: 'akusala' },
+            moha: { label: 'မောဟမူ ဇောန', color: 'bg-stone-500/15 border-stone-500/40 text-stone-700 dark:text-stone-300', desc: 'သံသယ (သို့) စိတ်ပျံ့လွင့်မှုကို အခြေခံသော အကုသိုလ်ဇောနစိတ်။', cittaId: 11, nature: 'akusala' },
             kusala: { label: 'ကုသိုလ် ဇောန', color: 'bg-emerald-100 dark:bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-300', desc: 'ဒါန၊ သီလ၊ ဘာဝနာကဲ့သို့ ကောင်းမှုပြုလုပ်စဉ် ဖြစ်ပေါ်သော ကုသိုလ်ဇောနစိတ်။', cittaId: 31, nature: 'kusala' },
             kiriya: { label: 'ကြိယာ ဇောန', color: 'bg-sky-100 dark:bg-sky-500/15 border-sky-500/40 text-sky-700 dark:text-sky-300', desc: 'ရဟန္တာပုဂ္ဂိုလ်တို့၌သာ ဖြစ်တတ်သော၊ ကုသိုလ်/အကုသိုလ် နှစ်မျိုးလုံး မဟုတ်တော့သည့် ကြိယာဇောနစိတ်။', cittaId: 47, nature: 'kiriya' }
         };
@@ -2429,10 +2434,10 @@
             if (text.includes('သဗ္ဗစိတ္တသာဓာရဏ')) return 'text-slate-800 dark:text-slate-200 bg-slate-800/40 border border-slate-500/30';
             if (text.includes('အကုသိုလ်သာဓာရဏ')) return 'text-rose-800 dark:text-rose-200 bg-rose-950/40 border border-rose-500/30';
             if (text.includes('သောဘဏသာဓာရဏ')) return 'text-emerald-800 dark:text-emerald-200 bg-emerald-950/40 border border-emerald-500/30';
-            if (text.includes('ဝိရတီ')) return 'text-teal-200 bg-teal-950/40 border border-teal-500/30';
+            if (text.includes('ဝိရတီ')) return 'text-teal-700 dark:text-teal-200 bg-teal-950/40 border border-teal-500/30';
             if (text.includes('အပ္ပမညာ')) return 'text-violet-800 dark:text-violet-200 bg-violet-950/40 border border-violet-500/30';
             if (text.includes('ပညိန္ဒြေ')) return 'text-amber-800 dark:text-amber-200 bg-amber-950/40 border border-amber-500/30';
-            if (/ဈာန်အင်္ဂါ|ဈာနင်္ဂ/.test(text)) return 'text-orange-200 bg-orange-950/40 border border-orange-500/30';
+            if (/ဈာန်အင်္ဂါ|ဈာနင်္ဂ/.test(text)) return 'text-orange-700 dark:text-orange-200 bg-orange-950/40 border border-orange-500/30';
             if (text.includes('ပကိဏ္ဏက')) return 'text-sky-800 dark:text-sky-200 bg-sky-950/40 border border-sky-500/30';
             if (/လောဘ|ဒေါသ|မောဟ|ဒိဋ္ဌိ|မာန|ဣဿာ|မစ္ဆရိယ|ကုက္ကုစ္စ|ထိန|မိဒ္ဓ|ဝိစိကိစ္ဆာ|ဥဒ္ဓစ္စ/.test(text)) return 'text-red-800 dark:text-red-200 bg-red-950/40 border border-red-600/30';
             // Reached only when the earlier "akusala/sobhana mixed" check didn't match, so

@@ -48,6 +48,11 @@
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
     
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
@@ -81,7 +86,7 @@
 
         <!-- Completion bar -->
         <div class="glass-card rounded-2xl p-4 max-w-2xl mx-auto flex items-center justify-center gap-3 text-sm border border-slate-700">
-            <i class="fa-solid fa-chart-simple text-emerald-400"></i>
+            <i class="fa-solid fa-chart-simple text-emerald-700 dark:text-emerald-400"></i>
             <span class="text-slate-700 dark:text-slate-300">ပြီးစီးမှု —</span>
             <span id="progress-label" class="font-bold text-emerald-700 dark:text-emerald-300"></span>
         </div>
@@ -160,15 +165,15 @@
             sky: { border: 'border-sky-500', bg: 'bg-sky-500/10', text: 'text-sky-700 dark:text-sky-300' },
             emerald: { border: 'border-emerald-500', bg: 'bg-emerald-500/10', text: 'text-emerald-700 dark:text-emerald-300' },
             amber: { border: 'border-amber-500', bg: 'bg-amber-500/10', text: 'text-amber-700 dark:text-amber-300' },
-            cyan: { border: 'border-cyan-500', bg: 'bg-cyan-500/10', text: 'text-cyan-300' },
-            indigo: { border: 'border-indigo-500', bg: 'bg-indigo-500/10', text: 'text-indigo-300' },
+            cyan: { border: 'border-cyan-500', bg: 'bg-cyan-500/10', text: 'text-cyan-700 dark:text-cyan-300' },
+            indigo: { border: 'border-indigo-500', bg: 'bg-indigo-500/10', text: 'text-indigo-700 dark:text-indigo-300' },
             rose: { border: 'border-rose-500', bg: 'bg-rose-500/10', text: 'text-rose-700 dark:text-rose-300' },
             violet: { border: 'border-violet-500', bg: 'bg-violet-500/10', text: 'text-violet-700 dark:text-violet-300' },
-            teal: { border: 'border-teal-500', bg: 'bg-teal-500/10', text: 'text-teal-300' }
+            teal: { border: 'border-teal-500', bg: 'bg-teal-500/10', text: 'text-teal-700 dark:text-teal-300' }
         };
 
         const statusInfo = {
-            done: { label: 'ပြီးစီး', icon: 'fa-circle-check', color: 'text-emerald-400' },
+            done: { label: 'ပြီးစီး', icon: 'fa-circle-check', color: 'text-emerald-700 dark:text-emerald-400' },
             partial: { label: 'တစ်စိတ်တစ်ပိုင်း', icon: 'fa-circle-half-stroke', color: 'text-amber-700 dark:text-amber-400' },
             pending: { label: 'မကြာမီ ဆက်လက် ဖော်ပြပါဦးမည်', icon: 'fa-circle-notch', color: 'text-slate-500' }
         };

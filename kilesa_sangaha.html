@@ -57,6 +57,11 @@
         .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
     </style>
     
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
@@ -98,11 +103,11 @@
         <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm border border-slate-700">
             <button onclick="jumpToGroup('asava')" class="px-2.5 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">အာသဝ (၄)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('ogha')" class="px-2.5 py-1.5 rounded-lg bg-orange-500/15 text-orange-300 border border-orange-500/30 hover:bg-orange-500/25 hover:border-orange-400 transition">ဩဃ (၄)</button>
+            <button onclick="jumpToGroup('ogha')" class="px-2.5 py-1.5 rounded-lg bg-orange-500/15 text-orange-700 dark:text-orange-300 border border-orange-500/30 hover:bg-orange-500/25 hover:border-orange-400 transition">ဩဃ (၄)</button>
             <span class="text-slate-600">+</span>
             <button onclick="jumpToGroup('yoga')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ယောဂ (၄)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('gantha')" class="px-2.5 py-1.5 rounded-lg bg-lime-500/15 text-lime-300 border border-lime-500/30 hover:bg-lime-500/25 hover:border-lime-400 transition">ဂန္ထ (၄)</button>
+            <button onclick="jumpToGroup('gantha')" class="px-2.5 py-1.5 rounded-lg bg-lime-500/15 text-lime-700 dark:text-lime-300 border border-lime-500/30 hover:bg-lime-500/25 hover:border-lime-400 transition">ဂန္ထ (၄)</button>
             <span class="text-slate-600">+</span>
             <button onclick="jumpToGroup('upadana')" class="px-2.5 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">ဥပါဒါန် (၄)</button>
             <span class="text-slate-600">+</span>
@@ -305,12 +310,12 @@
 
         const groupInfo = {
             asava:     { label: 'အာသဝ', sub: 'Āsava — ယိုစီးနစ်မြုပ်စေမှု', color: 'text-rose-700 dark:text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/10' },
-            ogha:      { label: 'ဩဃ', sub: 'Ogha — ရေလွှမ်းမိုးမှု', color: 'text-orange-300', border: 'border-orange-500', bg: 'bg-orange-500/10' },
+            ogha:      { label: 'ဩဃ', sub: 'Ogha — ရေလွှမ်းမိုးမှု', color: 'text-orange-700 dark:text-orange-300', border: 'border-orange-500', bg: 'bg-orange-500/10' },
             yoga:      { label: 'ယောဂ', sub: 'Yoga — ယောက်ကန်ချည်နှောင်မှု', color: 'text-amber-700 dark:text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
-            gantha:    { label: 'ဂန္ထ', sub: 'Gantha — နာမ်/ရုပ် အနှောင်အဖွဲ့', color: 'text-lime-300', border: 'border-lime-500', bg: 'bg-lime-500/10' },
+            gantha:    { label: 'ဂန္ထ', sub: 'Gantha — နာမ်/ရုပ် အနှောင်အဖွဲ့', color: 'text-lime-700 dark:text-lime-300', border: 'border-lime-500', bg: 'bg-lime-500/10' },
             upadana:   { label: 'ဥပါဒါန်', sub: 'Upādāna — ခိုင်မြဲစွာ ဆုပ်ကိုင်မှု', color: 'text-emerald-700 dark:text-emerald-300', border: 'border-emerald-500', bg: 'bg-emerald-500/10' },
-            nivarana:  { label: 'နီဝရဏ', sub: 'Nīvaraṇa — ကုသိုလ်ကို ဟန့်တားမှု', color: 'text-cyan-300', border: 'border-cyan-500', bg: 'bg-cyan-500/10' },
-            anusaya:   { label: 'အနုသယ', sub: 'Anusaya — ကိန်းအောင်းနေသော နောက်ခံ', color: 'text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' },
+            nivarana:  { label: 'နီဝရဏ', sub: 'Nīvaraṇa — ကုသိုလ်ကို ဟန့်တားမှု', color: 'text-cyan-700 dark:text-cyan-300', border: 'border-cyan-500', bg: 'bg-cyan-500/10' },
+            anusaya:   { label: 'အနုသယ', sub: 'Anusaya — ကိန်းအောင်းနေသော နောက်ခံ', color: 'text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' },
             samyojana: { label: 'သံယောဇဉ်', sub: 'Saṃyojana — သံသရာနှင့် ချည်နှောင်မှု', color: 'text-violet-700 dark:text-violet-300', border: 'border-violet-500', bg: 'bg-violet-500/10' }
         };
 

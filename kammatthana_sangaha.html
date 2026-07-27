@@ -57,17 +57,22 @@
         .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
     </style>
     
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-teal-500/20 border border-teal-500/50 flex items-center justify-center text-teal-400 text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-teal-500/20 border border-teal-500/50 flex items-center justify-center text-teal-700 dark:text-teal-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-spa"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-teal-300">ကမ္မဋ္ဌာနသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Kammaṭṭhāna-saṅgaha)</span></h1>
+                    <h1 class="text-lg font-bold text-teal-700 dark:text-teal-300">ကမ္မဋ္ဌာနသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Kammaṭṭhāna-saṅgaha)</span></h1>
                     <p class="text-[11px] text-slate-600 dark:text-slate-400">သမထ ကမ္မဋ္ဌာန်း (၄၀) + ဝိပဿနာ</p>
                 </div>
             </div>
@@ -89,7 +94,7 @@
 
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <span class="text-teal-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၉ ပိုင်းမြောက် (နောက်ဆုံးအပိုင်း)</span>
+            <span class="text-teal-700 dark:text-teal-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၉ ပိုင်းမြောက် (နောက်ဆုံးအပိုင်း)</span>
             <h2 class="text-2xl md:text-3xl font-bold">သီအိုရီမှ လက်တွေ့ ဘာဝနာအလေ့အကျင့်သို့</h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm">ယခုအထိ လေ့လာခဲ့သော စိတ်/စေတသိက်/ရုပ်/ပစ္စယ/သစ္စာ အားလုံးသည် သီအိုရီအသိပညာသာ ဖြစ်သည်။ ကမ္မဋ္ဌာနသင်္ဂဟကမူ ထိုအသိပညာကို "သမထ" (စိတ်တည်ငြိမ်မှု ဖွံ့ဖြိုးရန်) နှင့် "ဝိပဿနာ" (ပညာဉာဏ် ဖွံ့ဖြိုးရန်) ဟူသော ဘာဝနာအလေ့အကျင့် (၂) မျိုးအဖြစ် လက်တွေ့ အသုံးချပုံကို ရှင်းပြသည်။</p>
         </div>
@@ -106,7 +111,7 @@
             <span class="text-slate-600">+</span>
             <button onclick="jumpToGroup('aruppa')" class="px-2.5 py-1.5 rounded-lg bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border border-indigo-400 dark:border-indigo-500/30 hover:bg-indigo-500/25 hover:border-indigo-400 transition">အာရုပ္ပ (၄)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('misc')" class="px-2.5 py-1.5 rounded-lg bg-lime-500/15 text-lime-300 border border-lime-500/30 hover:bg-lime-500/25 hover:border-lime-400 transition">အခြား (၂)</button>
+            <button onclick="jumpToGroup('misc')" class="px-2.5 py-1.5 rounded-lg bg-lime-500/15 text-lime-700 dark:text-lime-300 border border-lime-500/30 hover:bg-lime-500/25 hover:border-lime-400 transition">အခြား (၂)</button>
             <span class="text-slate-600">=</span>
             <button onclick="jumpToGroup('kasina')" class="px-2.5 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">ကမ္မဋ္ဌာန်း (၄၀) ပါး</button>
         </div>
@@ -186,7 +191,7 @@
 
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-teal-500/20 text-center space-y-3 max-w-3xl mx-auto">
-            <i class="fa-solid fa-book-open text-teal-400 text-2xl"></i>
+            <i class="fa-solid fa-book-open text-teal-700 dark:text-teal-400 text-2xl"></i>
             <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ကမ္မဋ္ဌာနသင်္ဂဟကို ဤ Guide ၏ နောက်ဆုံး အခန်းအဖြစ် ထားရှိခြင်းမှာ — အဘိဓမ္မာ ပညာရပ်၏ နောက်ဆုံး ရည်ရွယ်ချက်သည် သီအိုရီအသိ တစ်ခုတည်း မဟုတ်ဘဲ၊ လက်တွေ့ ဘာဝနာအားထုတ်မှုမှတစ်ဆင့် ဒုက္ခမှ လွတ်မြောက်ရန် ဖြစ်ကြောင်း ညွှန်ပြရန် ဖြစ်သည်။ ဤ Guide တစ်ခုလုံးကို ဖတ်ရှုလေ့လာခဲ့ပြီးသူသည် စိတ်၊ စေတသိက်၊ ရုပ်၊ ပစ္စယ၊ သစ္စာ — အားလုံးကို ပေါင်းစပ် နားလည်ပြီး ဖြစ်ပါသည်။
             </p>
             <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
@@ -258,7 +263,7 @@
 
             // Misc (2) — lime
             { id: 39, key: 'aharepatikulasanna', pali: 'Āhāre-paṭikūlasaññā', name: 'အာဟာရေပဋိကူလသညာ', group: 'misc', icon: 'fa-bowl-rice', desc: 'အစားအစာ၏ ရှာဖွေခြင်း၊ စားသုံးခြင်း၊ ခြေဣရိယာ ဖြစ်ပေါ်ခြင်း အဆင့်ဆင့်ကို "စက်ဆုပ်ဖွယ်" ဟု ဆင်ခြင်ခြင်း — ဥပစာရသမာဓိသာ ရရှိနိုင်သည်။', example: 'အာဟာရ တပ်မက်မှုကို လျှော့ချရန် အစားအစာ၏ မလှပ ဇစ်မြစ်ကို ဆင်ခြင်ခြင်း။' },
-            { id: 40, key: 'catudhatuvavatthana', pali: 'Catudhātuvavatthāna', name: 'စတုဓာတုဝဝတ္ထာန်', group: 'misc', icon: 'fa-atom', desc: 'ခန္ဓာကိုယ်ကို ပထဝီ/အာပေါ/တေဇော/ဝါယော ဓာတ်ကြီး (၄) ပါးအဖြစ်သာ ခွဲခြမ်း ဆင်ခြင်ခြင်း — ဥပစာရသမာဓိသာ ရရှိနိုင်သော်လည်း ဝိပဿနာဉာဏ်၏ အခြေခံ ဖြစ်သည်။', example: '"ခန္ဓာကိုယ်တွင် ခက်မာမှု (ပထဝီ)၊ စီးဆင်းမှု (အာပေါ)၊ ပူနွေးမှု (တေဇော)၊ ရွေ့လျားမှု (ဝါယော) ဓာတ်များသာ ရှိသည်" ဟု ဆင်ခြင်ခြင်း — <a href="rupa_sangaha.html" class="text-lime-300 underline decoration-dotted hover:text-lime-200">ရူပသင်္ဂဟ</a> တွင် ဤ (၄) ပါးကို အသေးစိတ် ဖော်ပြထားသည်။' }
+            { id: 40, key: 'catudhatuvavatthana', pali: 'Catudhātuvavatthāna', name: 'စတုဓာတုဝဝတ္ထာန်', group: 'misc', icon: 'fa-atom', desc: 'ခန္ဓာကိုယ်ကို ပထဝီ/အာပေါ/တေဇော/ဝါယော ဓာတ်ကြီး (၄) ပါးအဖြစ်သာ ခွဲခြမ်း ဆင်ခြင်ခြင်း — ဥပစာရသမာဓိသာ ရရှိနိုင်သော်လည်း ဝိပဿနာဉာဏ်၏ အခြေခံ ဖြစ်သည်။', example: '"ခန္ဓာကိုယ်တွင် ခက်မာမှု (ပထဝီ)၊ စီးဆင်းမှု (အာပေါ)၊ ပူနွေးမှု (တေဇော)၊ ရွေ့လျားမှု (ဝါယော) ဓာတ်များသာ ရှိသည်" ဟု ဆင်ခြင်ခြင်း — <a href="rupa_sangaha.html" class="text-lime-700 dark:text-lime-300 underline decoration-dotted hover:text-lime-700 dark:text-lime-200">ရူပသင်္ဂဟ</a> တွင် ဤ (၄) ပါးကို အသေးစိတ် ဖော်ပြထားသည်။' }
         ];
 
         const groupInfo = {
@@ -266,8 +271,8 @@
             asubha:       { label: 'အသုဘ', sub: 'Asubha — အလောင်း အခြေအနေ (၁၀)', color: 'text-rose-700 dark:text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/10' },
             anussati:     { label: 'အနုဿတိ', sub: 'Anussati — အဖန်ဖန် အောက်မေ့ခြင်း (၁၀)', color: 'text-amber-700 dark:text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
             brahmavihara: { label: 'ဗြဟ္မဝိဟာရ', sub: 'Brahmavihāra — မြင့်မြတ်သော နေထိုင်မှု (၄)', color: 'text-emerald-700 dark:text-emerald-300', border: 'border-emerald-500', bg: 'bg-emerald-500/10' },
-            aruppa:       { label: 'အာရုပ္ပ', sub: 'Āruppa — အရူပဈာန် အာရုံ (၄)', color: 'text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' },
-            misc:         { label: 'အခြား', sub: 'ဥပစာရသမာဓိသာ ရရှိသော ကမ္မဋ္ဌာန်း (၂)', color: 'text-lime-300', border: 'border-lime-500', bg: 'bg-lime-500/10' }
+            aruppa:       { label: 'အာရုပ္ပ', sub: 'Āruppa — အရူပဈာန် အာရုံ (၄)', color: 'text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' },
+            misc:         { label: 'အခြား', sub: 'ဥပစာရသမာဓိသာ ရရှိသော ကမ္မဋ္ဌာန်း (၂)', color: 'text-lime-700 dark:text-lime-300', border: 'border-lime-500', bg: 'bg-lime-500/10' }
         };
 
         const caritaData = [
