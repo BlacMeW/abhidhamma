@@ -6,6 +6,14 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ရူပသင်္ဂဟ — ရုပ် (၂၈) ပါးကို မဟာဘုတ်/ဥပါဒါယရုပ် အလိုက် ရှင်းလင်းတင်ပြထားသော Visual Guide">
     <title>ရူပသင်္ဂဟ — ရုပ် (၂၈) ပါး (Rūpa-saṅgaha)</title>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,36 +55,29 @@
         details[open] > summary .tree-chevron { transform: rotate(90deg); }
         .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-sky-500/20 border border-sky-500/50 flex items-center justify-center text-sky-400 text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-sky-500/20 border border-sky-500 dark:border-sky-500/50 flex items-center justify-center text-sky-700 dark:text-sky-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-cube"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-sky-300">ရူပသင်္ဂဟ <span class="text-slate-500 font-normal text-sm">(Rūpa-saṅgaha)</span></h1>
+                    <h1 class="text-lg font-bold text-sky-300">ရူပသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Rūpa-saṅgaha)</span></h1>
                     <p class="text-[11px] text-slate-400">ပဉ္စမကျမ်း (ရူပသင်္ဂဟဝိဘာဂ) လာ ရုပ် (၂၈) ပါး</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
                 </a>
-                <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="glossary.html" class="text-xs font-semibold bg-emerald-100 dark:bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-700 dark:text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
                 </a>
             </div>
@@ -87,36 +88,36 @@
 
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <span class="text-sky-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၆ ပိုင်းမြောက်</span>
+            <span class="text-sky-700 dark:text-sky-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၆ ပိုင်းမြောက်</span>
             <h2 class="text-2xl md:text-3xl font-bold">နာမ်တရား (စိတ်+စေတသိက်) ၏ တွဲဖက် "ရူပက္ခန္ဓာ"</h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm">Citta & Cetasika Guide ၏ Khandha (ခန္ဓာငါးပါး) section တွင် "ရူပက္ခန္ဓာသည် နာမ်တရားမဟုတ်၍ ထိုစာမျက်နှာ၏ နယ်ပယ်အပြင် ဖြစ်သည်" ဟု ဖော်ပြခဲ့သည်။ ဤစာမျက်နှာသည် ထိုရူပက္ခန္ဓာ — ရုပ် (၂၈) ပါး — ကို သီးခြား အသေးစိတ် ဖော်ပြထားခြင်း ဖြစ်သည်။ ရုပ်တို့သည် "သိခြင်း" သဘော လုံးဝ မရှိဘဲ၊ ကံ၊ စိတ်၊ ဥတု၊ အာဟာရ — အကြောင်း (၄) မျိုးမှ ဖြစ်ပေါ်ကြသည်။</p>
         </div>
 
         <!-- Total verification bar -->
         <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
-            <button onclick="jumpToRupaGroup('mahabhuta')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">မဟာဘုတ်ရုပ် (၄)</button>
+            <button onclick="jumpToRupaGroup('mahabhuta')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">မဟာဘုတ်ရုပ် (၄)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToRupaGroup('pasada')" class="px-3 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ဥပါဒါယရုပ် (၂၄)</button>
+            <button onclick="jumpToRupaGroup('pasada')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ဥပါဒါယရုပ် (၂၄)</button>
             <span class="text-slate-600">=</span>
-            <button onclick="scrollToRupaId('supergroup-nipphanna')" class="px-3 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">စုစုပေါင်း ရုပ် (၂၈) ပါး</button>
+            <button onclick="scrollToRupaId('supergroup-nipphanna')" class="px-3 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">စုစုပေါင်း ရုပ် (၂၈) ပါး</button>
         </div>
-        <p class="text-center text-[11px] text-slate-500 -mt-4">* ဖောဋ္ဌဗ္ဗာရမ္မဏ (အတွေ့ခံအာရုံ) ကို သီးခြား ရုပ်တစ်ပါးအဖြစ် မရေတွက်ပါ — အကြောင်းမှာ ပထဝီ၊ တေဇော၊ ဝါယော ဟူသော မဟာဘုတ် (၃) ပါးကိုပင် တိုက်ရိုက် "အတွေ့" ဖြင့် ခံစားခြင်း ဖြစ်၍ သီးခြား ရုပ်သစ် မဟုတ်သောကြောင့် ဖြစ်သည်။</p>
+        <p class="text-center text-[11px] text-slate-500 dark:text-slate-500 -mt-4">* ဖောဋ္ဌဗ္ဗာရမ္မဏ (အတွေ့ခံအာရုံ) ကို သီးခြား ရုပ်တစ်ပါးအဖြစ် မရေတွက်ပါ — အကြောင်းမှာ ပထဝီ၊ တေဇော၊ ဝါယော ဟူသော မဟာဘုတ် (၃) ပါးကိုပင် တိုက်ရိုက် "အတွေ့" ဖြင့် ခံစားခြင်း ဖြစ်၍ သီးခြား ရုပ်သစ် မဟုတ်သောကြောင့် ဖြစ်သည်။</p>
 
         <!-- Nipphanna / Anipphanna verification bar -->
         <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
-            <button onclick="scrollToRupaId('supergroup-nipphanna')" class="px-3 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">နိပ္ဖန္နရုပ် — အမှန်တကယ် တည်ရှိသော ရုပ် (၁၈)</button>
+            <button onclick="scrollToRupaId('supergroup-nipphanna')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">နိပ္ဖန္နရုပ် — အမှန်တကယ် တည်ရှိသော ရုပ် (၁၈)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="scrollToRupaId('supergroup-anipphanna')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">အနိပ္ဖန္နရုပ် — ဖော်ပြရုံသာ ရုပ် (၁၀)</button>
+            <button onclick="scrollToRupaId('supergroup-anipphanna')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">အနိပ္ဖန္နရုပ် — ဖော်ပြရုံသာ ရုပ် (၁၀)</button>
             <span class="text-slate-600">=</span>
-            <button onclick="scrollToRupaId('supergroup-nipphanna')" class="px-3 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">၂၈ ပါး</button>
+            <button onclick="scrollToRupaId('supergroup-nipphanna')" class="px-3 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">၂၈ ပါး</button>
         </div>
 
         <!-- Nipphanna supergroup -->
         <div id="supergroup-nipphanna" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-sky-500 space-y-4 scroll-mt-24">
             <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-xl bg-sky-500/15 text-sky-300 flex items-center justify-center text-xl border border-sky-500/30 flex-shrink-0"><i class="fa-solid fa-cube"></i></div>
+                <div class="w-11 h-11 rounded-xl bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 flex items-center justify-center text-xl border border-sky-400 dark:border-sky-500/30 flex-shrink-0"><i class="fa-solid fa-cube"></i></div>
                 <div>
-                    <h3 class="font-bold text-sky-300 text-lg">နိပ္ဖန္နရုပ် (၁၈) — အမှန်တကယ် တည်ရှိသော ရုပ်စစ်</h3>
+                    <h3 class="font-bold text-sky-700 dark:text-sky-300 text-lg">နိပ္ဖန္နရုပ် (၁၈) — အမှန်တကယ် တည်ရှိသော ရုပ်စစ်</h3>
                     <p class="text-xs text-slate-400">ကိုယ်ပိုင် သဘာဝလက္ခဏာ ရှိပြီး၊ ဉာဏ်ဖြင့် တိုက်ရိုက် ထိုးထွင်း သိမြင်နိုင်သော ရုပ်များ — အနိစ္စ/ဒုက္ခ/အနတ္တ ရှုနိုင်သော ရုပ်စစ်များ ဖြစ်သည်။</p>
                 </div>
             </div>
@@ -126,9 +127,9 @@
         <!-- Anipphanna supergroup -->
         <div id="supergroup-anipphanna" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-amber-500 space-y-4 scroll-mt-24">
             <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-300 flex items-center justify-center text-xl border border-amber-500/30 flex-shrink-0"><i class="fa-solid fa-wind"></i></div>
+                <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-700 dark:text-amber-300 flex items-center justify-center text-xl border border-amber-400 dark:border-amber-500/30 flex-shrink-0"><i class="fa-solid fa-wind"></i></div>
                 <div>
-                    <h3 class="font-bold text-amber-300 text-lg">အနိပ္ဖန္နရုပ် (၁၀) — အယူအဆအားဖြင့်သာ ဖော်ပြသော ရုပ်</h3>
+                    <h3 class="font-bold text-amber-700 dark:text-amber-300 text-lg">အနိပ္ဖန္နရုပ် (၁၀) — အယူအဆအားဖြင့်သာ ဖော်ပြသော ရုပ်</h3>
                     <p class="text-xs text-slate-400">ကိုယ်ပိုင် သီးခြား ရုပ်စစ် မဟုတ်ဘဲ၊ နိပ္ဖန္နရုပ် (၁၈) ၏ အခြေအနေ/အသွင်အပြင်/အဆင့်ကို ဖော်ပြရုံသာ ဖြစ်ပြီး အနိစ္စ/ဒုက္ခ/အနတ္တ တိုက်ရိုက် ရှုနိုင်ခြင်း မရှိပေ။</p>
                 </div>
             </div>
@@ -137,13 +138,13 @@
 
         <!-- Rupa-vibhaga explainer -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ရူပဝိဘာဂ — ရုပ်၏ ဂုဏ်သတ္တိအမျိုးမျိုး (Dvaya-pairs)</span>
             </summary>
             <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
                 <p>ရုပ် (၂၈) ပါးကို ကျမ်းဂန်တွင် ဂုဏ်သတ္တိ (၁၁) မျိုးဖြင့် ခွဲခြားလေ့ ရှိသော်လည်း၊ အဓိက အနှစ်ချုပ်မှာ —</p>
                 <div class="bg-slate-950/60 rounded-lg p-3 border border-sky-500/30">
-                    <span class="font-bold text-sky-300 block mb-1">"၁၈ / ၁၀" ခွဲခြားမှု (အမည် ၄ မျိုးဖြင့် ထပ်ခါထပ်ခါ ခေါ်ဆို)</span>
+                    <span class="font-bold text-sky-700 dark:text-sky-300 block mb-1">"၁၈ / ၁၀" ခွဲခြားမှု (အမည် ၄ မျိုးဖြင့် ထပ်ခါထပ်ခါ ခေါ်ဆို)</span>
                     <p class="text-slate-400">သဘာဝရုပ် (Sabhāva) = သလက္ခဏရုပ် (Salakkhaṇa) = နိပ္ဖန္နရုပ် (Nipphanna) = ရူပရုပ် (Rūparūpa) — ဤ (၄) မျိုးစလုံးသည် "၁၈ ပါးရုပ်" ကို ကျမ်းအနက်အမျိုးမျိုးဖြင့် ထပ်ခါထပ်ခါ ခေါ်ဆိုခြင်းသာ ဖြစ်ပြီး၊ ဆန့်ကျင်ဘက် "အသဘာဝ/အလက္ခဏ/အနိပ္ဖန္န/အရူပ" ရုပ်သည်လည်း "၁၀ ပါးရုပ်" အတူတူပင် ရည်ညွှန်းသည်။</p>
                 </div>
                 <div class="bg-slate-950/60 rounded-lg p-3 border border-slate-700">
@@ -156,15 +157,15 @@
 
         <!-- Rupa-samutthana -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ရူပသမုဋ္ဌာန — ရုပ် ဘယ်လို ဖြစ်ပေါ်လာသလဲ (အကြောင်း ၄ မျိုး)</span>
             </summary>
             <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
                 <div class="grid sm:grid-cols-2 gap-2">
-                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-rose-500/30"><span class="text-rose-300 font-bold">ကမ္မဇ</span> — အတိတ် ကံကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
-                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-sky-500/30"><span class="text-sky-300 font-bold">စိတ္တဇ</span> — ပစ္စုပ္ပန် စိတ်ကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
-                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-amber-500/30"><span class="text-amber-300 font-bold">ဥတုဇ</span> — တေဇောဓာတ် (အပူချိန်) ကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
-                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-emerald-500/30"><span class="text-emerald-300 font-bold">အာဟာရဇ</span> — အစားအစာ၏ အာဟာရဓာတ်ကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
+                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-rose-500/30"><span class="text-rose-700 dark:text-rose-300 font-bold">ကမ္မဇ</span> — အတိတ် ကံကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
+                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-sky-500/30"><span class="text-sky-700 dark:text-sky-300 font-bold">စိတ္တဇ</span> — ပစ္စုပ္ပန် စိတ်ကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
+                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-amber-500/30"><span class="text-amber-700 dark:text-amber-300 font-bold">ဥတုဇ</span> — တေဇောဓာတ် (အပူချိန်) ကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
+                    <div class="bg-slate-950/60 rounded-lg p-2.5 border border-emerald-500/30"><span class="text-emerald-700 dark:text-emerald-300 font-bold">အာဟာရဇ</span> — အစားအစာ၏ အာဟာရဓာတ်ကြောင့် ဖြစ်ပေါ်သော ရုပ်</div>
                 </div>
                 <p class="pt-1">သိသာထင်ရှားသော ဥပမာအချို့ —</p>
                 <ul class="space-y-1.5 list-disc list-inside text-slate-400">
@@ -172,132 +173,132 @@
                     <li><span class="text-slate-800 dark:text-slate-200 font-semibold">စိတ္တဇ-သက်သက် ရုပ် (၂) ပါး</span> — ကာယဝိညတ်၊ ဝစီဝိညတ် — ဤ (၂) ပါးသည် စိတ်မှလွဲ၍ အခြားအကြောင်းဖြင့် လုံးဝ မဖြစ်ပေါ်နိုင်ပေ (ကိုယ်ဟန်ပြ/စကားပြောသည် ယခုစိတ်၏ တိုက်ရိုက် အကျိုးဆက် ဖြစ်သောကြောင့်)။</li>
                     <li><span class="text-slate-800 dark:text-slate-200 font-semibold">သဒ္ဒရုပ် (အသံ)</span> — ဥတုဇ (သဘာဝအသံ) သို့မဟုတ် စိတ္တဇ (စကားသံ) မှသာ ဖြစ်ပေါ်နိုင်ပြီး၊ ကမ္မဇ လုံးဝ မဖြစ်နိုင်ပေ။</li>
                 </ul>
-                <p class="text-[11px] text-slate-500 pt-1">* ဤသည် ကွက်တိကျကျ ရုပ် (၂၈) ပါးလုံး၏ အကြောင်း (၄) မျိုးစလုံးကို ပြည့်စုံစွာ ဖော်ပြခြင်း မဟုတ်ဘဲ၊ အကျယ်ဆုံး သိသာသော ဥပမာများသာ ဖြစ်သည် — အသေးစိတ် ဇယားသည် ပဋ္ဌာန်း/ရူပသင်္ဂဟ ဋီကာများ၌ ပို၍ ရှုပ်ထွေးစွာ ဖော်ပြထားသည်။</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">* ဤသည် ကွက်တိကျကျ ရုပ် (၂၈) ပါးလုံး၏ အကြောင်း (၄) မျိုးစလုံးကို ပြည့်စုံစွာ ဖော်ပြခြင်း မဟုတ်ဘဲ၊ အကျယ်ဆုံး သိသာသော ဥပမာများသာ ဖြစ်သည် — အသေးစိတ် ဇယားသည် ပဋ္ဌာန်း/ရူပသင်္ဂဟ ဋီကာများ၌ ပို၍ ရှုပ်ထွေးစွာ ဖော်ပြထားသည်။</p>
             </div>
         </details>
 
         <!-- Rupa-Rupa Paccaya -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ရုပ်-ရုပ် ဆက်စပ်မှု — ပဋ္ဌာန်းနည်းအရ</span>
             </summary>
             <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
                 <p>ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha) ၏ အခြေအနေ (၂၄) ပါးသည် နာမ်-နာမ်၊ နာမ်-ရုပ် ဆက်စပ်မှုသာမက ရုပ်-ရုပ် ဆက်စပ်မှုကိုပါ ရှင်းပြသည်။ အသိအမှတ်ပြု အများဆုံး ဥပမာအချို့ —</p>
-                <a href="paccaya_sangaha.html?open=sahajata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                    <span class="text-sky-300 font-bold">သဟဇာတပစ္စည်း</span> — ကလာပ် (ရုပ်စု) တစ်ခုတည်းအတွင်း ရုပ်များ တစ်ပြိုင်နက်တည်း အတူတကွ ဖြစ်ပေါ်၍ တစ်ခုက တစ်ခုကို ထောက်ပံ့ခြင်း။
+                <a href="paccaya_sangaha.html?open=sahajata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                    <span class="text-sky-700 dark:text-sky-300 font-bold">သဟဇာတပစ္စည်း</span> — ကလာပ် (ရုပ်စု) တစ်ခုတည်းအတွင်း ရုပ်များ တစ်ပြိုင်နက်တည်း အတူတကွ ဖြစ်ပေါ်၍ တစ်ခုက တစ်ခုကို ထောက်ပံ့ခြင်း။
                 </a>
-                <a href="paccaya_sangaha.html?open=annamanna" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                    <span class="text-sky-300 font-bold">အညမညပစ္စည်း</span> — မဟာဘုတ်ရုပ် (၄) ပါးသည် တစ်ပါးနှင့်တစ်ပါး အပြန်အလှန် ထောက်ပံ့ကြသည် — တိုင် (၃) ချောင်း အချင်းချင်း မှီရပ်နေသကဲ့သို့။
+                <a href="paccaya_sangaha.html?open=annamanna" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                    <span class="text-sky-700 dark:text-sky-300 font-bold">အညမညပစ္စည်း</span> — မဟာဘုတ်ရုပ် (၄) ပါးသည် တစ်ပါးနှင့်တစ်ပါး အပြန်အလှန် ထောက်ပံ့ကြသည် — တိုင် (၃) ချောင်း အချင်းချင်း မှီရပ်နေသကဲ့သို့။
                 </a>
-                <a href="paccaya_sangaha.html?open=nissaya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                    <span class="text-sky-300 font-bold">နိဿယပစ္စည်း</span> — ဥပါဒါယရုပ် (၂၄) ပါးအားလုံးသည် မဟာဘုတ်ရုပ် (၄) ပါးကို မှီ၍သာ တည်ရှိနိုင်သည်။
+                <a href="paccaya_sangaha.html?open=nissaya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                    <span class="text-sky-700 dark:text-sky-300 font-bold">နိဿယပစ္စည်း</span> — ဥပါဒါယရုပ် (၂၄) ပါးအားလုံးသည် မဟာဘုတ်ရုပ် (၄) ပါးကို မှီ၍သာ တည်ရှိနိုင်သည်။
                 </a>
-                <a href="paccaya_sangaha.html?open=ahara" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-emerald-500/30 transition">
-                    <span class="text-emerald-300 font-bold">အာဟာရပစ္စည်း</span> — ကဗဠီကာရာဟာရ (အစားအစာ) ၏ ဩဇာသည် ခန္ဓာကိုယ်ရှိ ရုပ်များကို တိုက်ရိုက် အားဖြည့် ထောက်ပံ့သည်။
+                <a href="paccaya_sangaha.html?open=ahara" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-emerald-400 dark:border-emerald-500/30 transition">
+                    <span class="text-emerald-700 dark:text-emerald-300 font-bold">အာဟာရပစ္စည်း</span> — ကဗဠီကာရာဟာရ (အစားအစာ) ၏ ဩဇာသည် ခန္ဓာကိုယ်ရှိ ရုပ်များကို တိုက်ရိုက် အားဖြည့် ထောက်ပံ့သည်။
                 </a>
-                <a href="paccaya_sangaha.html?open=indriya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-amber-500/30 transition">
-                    <span class="text-amber-300 font-bold">ဣန္ဒြေပစ္စည်း</span> — ရူပဇီဝိတိန္ဒြေသည် မိမိ ကလာပ်အတွင်းရှိ ကမ္မဇရုပ်များကို ထိန်းသိမ်း ထောက်ပံ့သည်။
+                <a href="paccaya_sangaha.html?open=indriya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-amber-400 dark:border-amber-500/30 transition">
+                    <span class="text-amber-700 dark:text-amber-300 font-bold">ဣန္ဒြေပစ္စည်း</span> — ရူပဇီဝိတိန္ဒြေသည် မိမိ ကလာပ်အတွင်းရှိ ကမ္မဇရုပ်များကို ထိန်းသိမ်း ထောက်ပံ့သည်။
                 </a>
-                <a href="paccaya_sangaha.html?open=atthi" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-violet-500/30 transition">
-                    <span class="text-violet-300 font-bold">အတ္ထိပစ္စည်း</span> — ကလာပ်တစ်ခုအတွင်းရှိ ရုပ်တစ်ပါးစီ "လက်ရှိ တည်ရှိနေခြင်း" ကိုယ်တိုင်ကပင် အတူပါ ကလာပ်တွဲရှိ အခြားရုပ်များကို ထောက်ပံ့သည်။
+                <a href="paccaya_sangaha.html?open=atthi" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-violet-400 dark:border-violet-500/30 transition">
+                    <span class="text-violet-700 dark:text-violet-300 font-bold">အတ္ထိပစ္စည်း</span> — ကလာပ်တစ်ခုအတွင်းရှိ ရုပ်တစ်ပါးစီ "လက်ရှိ တည်ရှိနေခြင်း" ကိုယ်တိုင်ကပင် အတူပါ ကလာပ်တွဲရှိ အခြားရုပ်များကို ထောက်ပံ့သည်။
                 </a>
-                <p class="text-[11px] text-slate-500 pt-1">* ဤ (၆) ပါးသည် ရုပ်-ရုပ် ဆက်စပ်မှုတွင် ကျမ်းဂန်အသိအမှတ်ပြု အဓိက အခြေအနေများ ဖြစ်ကြသည် (အဝိဂတပစ္စည်းသည် အတ္ထိပစ္စည်းနှင့် အနက်တူ၍ ခြွင်းချန်ထား)။ သမ္ပယုတ္တပစ္စည်း မူ နာမ်-နာမ် (စိတ်+စေတသိက်) ကြားတွင်သာ ဖြစ်ပေါ်နိုင်၍ ရုပ်နှင့် လုံးဝ မသက်ဆိုင်ပေ။</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">* ဤ (၆) ပါးသည် ရုပ်-ရုပ် ဆက်စပ်မှုတွင် ကျမ်းဂန်အသိအမှတ်ပြု အဓိက အခြေအနေများ ဖြစ်ကြသည် (အဝိဂတပစ္စည်းသည် အတ္ထိပစ္စည်းနှင့် အနက်တူ၍ ခြွင်းချန်ထား)။ သမ္ပယုတ္တပစ္စည်း မူ နာမ်-နာမ် (စိတ်+စေတသိက်) ကြားတွင်သာ ဖြစ်ပေါ်နိုင်၍ ရုပ်နှင့် လုံးဝ မသက်ဆိုင်ပေ။</p>
             </div>
         </details>
 
         <!-- Rupa-Nama Paccaya -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ရုပ်-နာမ် ဆက်စပ်မှု — ပဋ္ဌာန်းနည်းအရ</span>
             </summary>
             <div class="mt-3 pl-5 space-y-3 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
                 <div class="space-y-2">
                     <p class="font-semibold text-slate-200"><i class="fa-solid fa-arrow-right-to-bracket mr-1 text-sky-400"></i>ရုပ် → နာမ် (ရုပ်က နာမ်ကို ထောက်ပံ့ခြင်း)</p>
-                    <a href="paccaya_sangaha.html?open=nissaya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                        <span class="text-sky-300 font-bold">နိဿယပစ္စည်း</span> — ဟဒယဝတ္ထုသည် မနောဓာတု/မနောဝိညာဏဓာတု (စိတ်အများစု) ၏ မှီရာအဖြစ် ထောက်ပံ့သည်။
+                    <a href="paccaya_sangaha.html?open=nissaya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                        <span class="text-sky-700 dark:text-sky-300 font-bold">နိဿယပစ္စည်း</span> — ဟဒယဝတ္ထုသည် မနောဓာတု/မနောဝိညာဏဓာတု (စိတ်အများစု) ၏ မှီရာအဖြစ် ထောက်ပံ့သည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=purejata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                        <span class="text-sky-300 font-bold">ပုရေဇာတပစ္စည်း</span> — စက္ခုပသာဒ စသော ပသာဒရုပ်များသည် ရှေးကတည်းက ဖြစ်ပေါ်နေပြီးမှ၊ ဆိုင်ရာ ဝိညာဉ်စိတ်များ ဖြစ်ပေါ်လာစေရန် ထောက်ပံ့သည်။
+                    <a href="paccaya_sangaha.html?open=purejata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                        <span class="text-sky-700 dark:text-sky-300 font-bold">ပုရေဇာတပစ္စည်း</span> — စက္ခုပသာဒ စသော ပသာဒရုပ်များသည် ရှေးကတည်းက ဖြစ်ပေါ်နေပြီးမှ၊ ဆိုင်ရာ ဝိညာဉ်စိတ်များ ဖြစ်ပေါ်လာစေရန် ထောက်ပံ့သည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=arammana" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                        <span class="text-sky-300 font-bold">အာရမ္မဏပစ္စည်း</span> — ဝဏ္ဏ၊ သဒ္ဒ၊ ဂန္ဓ၊ ရသ စသော ဂေါစရရုပ်များသည် ဆိုင်ရာ ဝိညာဉ်စိတ်တို့၏ အာရုံအဖြစ် ထောက်ပံ့သည်။
+                    <a href="paccaya_sangaha.html?open=arammana" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                        <span class="text-sky-700 dark:text-sky-300 font-bold">အာရမ္မဏပစ္စည်း</span> — ဝဏ္ဏ၊ သဒ္ဒ၊ ဂန္ဓ၊ ရသ စသော ဂေါစရရုပ်များသည် ဆိုင်ရာ ဝိညာဉ်စိတ်တို့၏ အာရုံအဖြစ် ထောက်ပံ့သည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=indriya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                        <span class="text-sky-300 font-bold">ဣန္ဒြေပစ္စည်း</span> — ပသာဒရုပ် (၅) ပါးသည် ဣန္ဒြေအဖြစ်ဖြင့် ဆိုင်ရာ ဝိညာဉ်စိတ်ကို အုပ်ချုပ် ထောက်ပံ့သည် (ဥပမာ — စက္ခုန္ဒြေ)။
+                    <a href="paccaya_sangaha.html?open=indriya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                        <span class="text-sky-700 dark:text-sky-300 font-bold">ဣန္ဒြေပစ္စည်း</span> — ပသာဒရုပ် (၅) ပါးသည် ဣန္ဒြေအဖြစ်ဖြင့် ဆိုင်ရာ ဝိညာဉ်စိတ်ကို အုပ်ချုပ် ထောက်ပံ့သည် (ဥပမာ — စက္ခုန္ဒြေ)။
                     </a>
-                    <a href="paccaya_sangaha.html?open=adhipati" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                        <span class="text-sky-300 font-bold">အဓိပတိပစ္စည်း</span> — အလွန်နှစ်သက်ဖွယ် ဝဏ္ဏ/သဒ္ဒ/ဂန္ဓ/ရသ ရုပ်အာရုံသည် "အာရမ္မဏာဓိပတိ" အနေဖြင့် ၎င်းကို သိသော စိတ်ကို လွှမ်းမိုး ဦးဆောင် ထောက်ပံ့နိုင်သည်။
+                    <a href="paccaya_sangaha.html?open=adhipati" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                        <span class="text-sky-700 dark:text-sky-300 font-bold">အဓိပတိပစ္စည်း</span> — အလွန်နှစ်သက်ဖွယ် ဝဏ္ဏ/သဒ္ဒ/ဂန္ဓ/ရသ ရုပ်အာရုံသည် "အာရမ္မဏာဓိပတိ" အနေဖြင့် ၎င်းကို သိသော စိတ်ကို လွှမ်းမိုး ဦးဆောင် ထောက်ပံ့နိုင်သည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=upanissaya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-500/30 transition">
-                        <span class="text-sky-300 font-bold">ဥပနိဿယပစ္စည်း</span> — အလွန်နှစ်သက်ဖွယ် ရုပ်အာရုံနှင့် ထပ်ခါထပ်ခါ တွေ့ကြုံရခြင်းသည် "အာရမ္မဏူပနိဿယ" အနေဖြင့် နောင်တွင် တဏှာ ပို၍ ပြင်းထန်စွာ ဖြစ်ပေါ်ရန် ခိုင်မာသော ကျောထောက်နောက်ခံ ဖြစ်နိုင်သည်။
+                    <a href="paccaya_sangaha.html?open=upanissaya" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-sky-400 dark:border-sky-500/30 transition">
+                        <span class="text-sky-700 dark:text-sky-300 font-bold">ဥပနိဿယပစ္စည်း</span> — အလွန်နှစ်သက်ဖွယ် ရုပ်အာရုံနှင့် ထပ်ခါထပ်ခါ တွေ့ကြုံရခြင်းသည် "အာရမ္မဏူပနိဿယ" အနေဖြင့် နောင်တွင် တဏှာ ပို၍ ပြင်းထန်စွာ ဖြစ်ပေါ်ရန် ခိုင်မာသော ကျောထောက်နောက်ခံ ဖြစ်နိုင်သည်။
                     </a>
                 </div>
                 <div class="space-y-2 pt-2">
                     <p class="font-semibold text-slate-200"><i class="fa-solid fa-arrow-right-from-bracket mr-1 text-rose-400"></i>နာမ် → ရုပ် (နာမ်က ရုပ်ကို ထောက်ပံ့ခြင်း)</p>
-                    <a href="paccaya_sangaha.html?open=pacchajata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-500/30 transition">
-                        <span class="text-rose-300 font-bold">ပစ္ဆာဇာတပစ္စည်း</span> — ပစ္စုပ္ပန် စိတ်သည် ရှေးကတည်းက ဖြစ်ပေါ်ပြီးသား ခန္ဓာကိုယ်ရုပ်များကို ပြန်လည် ပြုစုပျိုးထောင် ထောက်ပံ့သည်။
+                    <a href="paccaya_sangaha.html?open=pacchajata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-400 dark:border-rose-500/30 transition">
+                        <span class="text-rose-700 dark:text-rose-300 font-bold">ပစ္ဆာဇာတပစ္စည်း</span> — ပစ္စုပ္ပန် စိတ်သည် ရှေးကတည်းက ဖြစ်ပေါ်ပြီးသား ခန္ဓာကိုယ်ရုပ်များကို ပြန်လည် ပြုစုပျိုးထောင် ထောက်ပံ့သည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=kamma" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-500/30 transition">
-                        <span class="text-rose-300 font-bold">ကမ္မပစ္စည်း</span> — စေတနာ (ကံ) သည် ကမ္မဇရုပ် (ပသာဒ၊ ဘာဝ၊ ဟဒယဝတ္ထု၊ ဇီဝိတိန္ဒြေ) များကို ဖြစ်ပေါ်စေသည်။
+                    <a href="paccaya_sangaha.html?open=kamma" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-400 dark:border-rose-500/30 transition">
+                        <span class="text-rose-700 dark:text-rose-300 font-bold">ကမ္မပစ္စည်း</span> — စေတနာ (ကံ) သည် ကမ္မဇရုပ် (ပသာဒ၊ ဘာဝ၊ ဟဒယဝတ္ထု၊ ဇီဝိတိန္ဒြေ) များကို ဖြစ်ပေါ်စေသည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=sahajata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-500/30 transition">
-                        <span class="text-rose-300 font-bold">သဟဇာတပစ္စည်း</span> — စိတ်သည် ကာယဝိညတ်/ဝစီဝိညတ် ကဲ့သို့ စိတ္တဇရုပ်များကို မိမိနှင့် တစ်ပြိုင်နက်တည်း ဖြစ်ပေါ်စေသည်။
+                    <a href="paccaya_sangaha.html?open=sahajata" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-400 dark:border-rose-500/30 transition">
+                        <span class="text-rose-700 dark:text-rose-300 font-bold">သဟဇာတပစ္စည်း</span> — စိတ်သည် ကာယဝိညတ်/ဝစီဝိညတ် ကဲ့သို့ စိတ္တဇရုပ်များကို မိမိနှင့် တစ်ပြိုင်နက်တည်း ဖြစ်ပေါ်စေသည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=vipaka" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-500/30 transition">
-                        <span class="text-rose-300 font-bold">ဝိပါကပစ္စည်း</span> — ဝိပါက်စိတ်သည် မိမိနှင့် ယှဉ်ဖက်စေတသိက်များကို ထောက်ပံ့ရုံသာမက၊ မိမိကြောင့် တစ်ပြိုင်နက် ဖြစ်ပေါ်လာသော စိတ္တဇရုပ်ကိုပါ ကြိုးစားမှု မလိုဘဲ အလိုလို ထောက်ပံ့သည်။
+                    <a href="paccaya_sangaha.html?open=vipaka" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-400 dark:border-rose-500/30 transition">
+                        <span class="text-rose-700 dark:text-rose-300 font-bold">ဝိပါကပစ္စည်း</span> — ဝိပါက်စိတ်သည် မိမိနှင့် ယှဉ်ဖက်စေတသိက်များကို ထောက်ပံ့ရုံသာမက၊ မိမိကြောင့် တစ်ပြိုင်နက် ဖြစ်ပေါ်လာသော စိတ္တဇရုပ်ကိုပါ ကြိုးစားမှု မလိုဘဲ အလိုလို ထောက်ပံ့သည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=hetu" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-500/30 transition">
-                        <span class="text-rose-300 font-bold">ဟေတုပစ္စည်း</span> — စိတ်တစ်ခုနှင့် ယှဉ်ဖက်နေသော ဟေတုသည် ထိုစိတ်၏ နာမ်တရားများကို အမြစ်ကဲ့သို့ ခိုင်မြဲစေရုံသာမက၊ ထိုစိတ်ကြောင့် တစ်ပြိုင်နက် ဖြစ်ပေါ်လာသော စိတ္တဇရုပ်ကိုပါ တစ်ပါတည်း ခိုင်မြဲစွာ ထောက်ပံ့သည်။
+                    <a href="paccaya_sangaha.html?open=hetu" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-400 dark:border-rose-500/30 transition">
+                        <span class="text-rose-700 dark:text-rose-300 font-bold">ဟေတုပစ္စည်း</span> — စိတ်တစ်ခုနှင့် ယှဉ်ဖက်နေသော ဟေတုသည် ထိုစိတ်၏ နာမ်တရားများကို အမြစ်ကဲ့သို့ ခိုင်မြဲစေရုံသာမက၊ ထိုစိတ်ကြောင့် တစ်ပြိုင်နက် ဖြစ်ပေါ်လာသော စိတ္တဇရုပ်ကိုပါ တစ်ပါတည်း ခိုင်မြဲစွာ ထောက်ပံ့သည်။
                     </a>
-                    <a href="paccaya_sangaha.html?open=ahara" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-500/30 transition">
-                        <span class="text-rose-300 font-bold">အာဟာရပစ္စည်း</span> — ပဋိသန္ဓေယူသည့်ခဏ၊ ပဋိသန္ဓေဝိညာဉ် (ဝိညာဏာဟာရ) ကိုယ်တိုင်ကပင် ကမ္မဇရုပ် (ဟဒယဝတ္ထု အစရှိသည်) အသစ် ဖြစ်ပေါ်လာစေရန် "အာဟာရ" အနေဖြင့် ထောက်ပံ့သည်။
+                    <a href="paccaya_sangaha.html?open=ahara" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-2.5 border border-rose-400 dark:border-rose-500/30 transition">
+                        <span class="text-rose-700 dark:text-rose-300 font-bold">အာဟာရပစ္စည်း</span> — ပဋိသန္ဓေယူသည့်ခဏ၊ ပဋိသန္ဓေဝိညာဉ် (ဝိညာဏာဟာရ) ကိုယ်တိုင်ကပင် ကမ္မဇရုပ် (ဟဒယဝတ္ထု အစရှိသည်) အသစ် ဖြစ်ပေါ်လာစေရန် "အာဟာရ" အနေဖြင့် ထောက်ပံ့သည်။
                     </a>
                 </div>
-                <p class="text-[11px] text-slate-500 pt-1">* <a href="paccaya_sangaha.html?open=vippayutta" class="text-violet-300 underline decoration-dotted hover:text-violet-200">ဝိပ္ပယုတ္တပစ္စည်း</a> သည် ဤရုပ်-နာမ်/နာမ်-ရုပ် ဆက်စပ်မှု အားလုံး၏ "ရောယှက်ခြင်း မရှိဘဲ ကွဲကွာစွာ ထောက်ပံ့ခြင်း" သဘောကို ယေဘုယျအားဖြင့် ခြုံငုံ ဖော်ပြသည် — အထက်ဖော်ပြပါ ပုရေဇာတ၊ ပစ္ဆာဇာတ၊ နိဿယ၊ ကမ္မ၊ ဝိပါက၊ အာဟာရ၊ ဟေတု၊ အဓိပတိ၊ ဥပနိဿယ ပစ္စည်းများ အားလုံးသည် အခြေခံအားဖြင့် ဝိပ္ပယုတ္တပစ္စည်းနှင့်လည်း အတူတကွ ပါဝင်နေတတ်သည် (ဒွန်တွဲ အခြေအနေ)။ အာသေဝနပစ္စည်း၊ အနန္တရ/သမနန္တရ/နတ္ထိ/ဝိဂတပစ္စည်း (ဝီထိစိတ် ဆက်တိုက်ဆက်စပ်မှု ၄ မျိုး)၊ ဈာနပစ္စည်း၊ မဂ္ဂပစ္စည်း တို့မူ နာမ်-နာမ် (စိတ်တစ်ခုမှ စိတ်တစ်ခုသို့) ကြားတွင်သာ ဖြစ်ပေါ်နိုင်၍ ရုပ်နှင့် တိုက်ရိုက် မသက်ဆိုင်ပေ။ ဤနည်းဖြင့် ပစ္စယသင်္ဂဟ (၂၄) ပါးလုံးကို ရုပ်ဆိုင်ရာ သက်ဆိုင်မှု ရှိ/မရှိ အတိအကျ စစ်ဆေး ဖော်ပြပြီး ဖြစ်သည်။</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">* <a href="paccaya_sangaha.html?open=vippayutta" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-200">ဝိပ္ပယုတ္တပစ္စည်း</a> သည် ဤရုပ်-နာမ်/နာမ်-ရုပ် ဆက်စပ်မှု အားလုံး၏ "ရောယှက်ခြင်း မရှိဘဲ ကွဲကွာစွာ ထောက်ပံ့ခြင်း" သဘောကို ယေဘုယျအားဖြင့် ခြုံငုံ ဖော်ပြသည် — အထက်ဖော်ပြပါ ပုရေဇာတ၊ ပစ္ဆာဇာတ၊ နိဿယ၊ ကမ္မ၊ ဝိပါက၊ အာဟာရ၊ ဟေတု၊ အဓိပတိ၊ ဥပနိဿယ ပစ္စည်းများ အားလုံးသည် အခြေခံအားဖြင့် ဝိပ္ပယုတ္တပစ္စည်းနှင့်လည်း အတူတကွ ပါဝင်နေတတ်သည် (ဒွန်တွဲ အခြေအနေ)။ အာသေဝနပစ္စည်း၊ အနန္တရ/သမနန္တရ/နတ္ထိ/ဝိဂတပစ္စည်း (ဝီထိစိတ် ဆက်တိုက်ဆက်စပ်မှု ၄ မျိုး)၊ ဈာနပစ္စည်း၊ မဂ္ဂပစ္စည်း တို့မူ နာမ်-နာမ် (စိတ်တစ်ခုမှ စိတ်တစ်ခုသို့) ကြားတွင်သာ ဖြစ်ပေါ်နိုင်၍ ရုပ်နှင့် တိုက်ရိုက် မသက်ဆိုင်ပေ။ ဤနည်းဖြင့် ပစ္စယသင်္ဂဟ (၂၄) ပါးလုံးကို ရုပ်ဆိုင်ရာ သက်ဆိုင်မှု ရှိ/မရှိ အတိအကျ စစ်ဆေး ဖော်ပြပြီး ဖြစ်သည်။</p>
             </div>
         </details>
 
         <!-- Rupa Kalapa & Samutthana Visualizer -->
-        <section class="glass-card rounded-2xl p-6 border border-sky-500/30 space-y-5 max-w-4xl mx-auto">
+        <section class="glass-card rounded-2xl p-6 border border-sky-400 dark:border-sky-500/30 space-y-5 max-w-4xl mx-auto">
             <div class="text-center space-y-2">
-                <span class="text-sky-400 font-semibold text-xs uppercase tracking-wide">ရုပ်ကလာပ် (၂၁) စီး နှင့် ဖြစ်ကြောင်း (၄) ပါး</span>
+                <span class="text-sky-700 dark:text-sky-400 font-semibold text-xs uppercase tracking-wide">ရုပ်ကလာပ် (၂၁) စီး နှင့် ဖြစ်ကြောင်း (၄) ပါး</span>
                 <h3 class="text-xl font-bold text-slate-100">ရုပ်များ စည်းလုံးဖြစ်ပေါ်ပုံ (Rūpa Kalāpa Diagram)</h3>
                 <p class="text-xs text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">ရုပ်တို့သည် တစ်ပါးတည်း သီးခြား မဖြစ်ပေါ်ဘဲ အနည်းဆုံး ရုပ် (၈) ပါး စုစည်းလျက် "ရုပ်ကလာပ်" အဖြစ် ဖြစ်ပေါ်ကြသည်။</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-                <div class="glass-card p-3.5 rounded-xl border border-amber-500/30 bg-amber-950/10 space-y-1">
-                    <div class="font-bold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-sun"></i> ကမ္မဇရုပ် (၉ စီး)</div>
+                <div class="glass-card p-3.5 rounded-xl border border-amber-400 dark:border-amber-500/30 bg-amber-950/10 space-y-1">
+                    <div class="font-bold text-amber-700 dark:text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-sun"></i> ကမ္မဇရုပ် (၉ စီး)</div>
                     <p class="text-slate-600 dark:text-slate-400 text-[11px]">အတိတ် ကုသိုလ်/အကုသိုလ် ကံကြောင့် ဖြစ်ပေါ်သော ရုပ်ကလာပ်များ (စက္ခုဒသက စသည်)</p>
                 </div>
-                <div class="glass-card p-3.5 rounded-xl border border-sky-500/30 bg-sky-950/10 space-y-1">
-                    <div class="font-bold text-sky-300 flex items-center gap-1.5"><i class="fa-solid fa-brain"></i> စိတ္တဇရုပ် (၆ စီး)</div>
+                <div class="glass-card p-3.5 rounded-xl border border-sky-400 dark:border-sky-500/30 bg-sky-950/10 space-y-1">
+                    <div class="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1.5"><i class="fa-solid fa-brain"></i> စိတ္တဇရုပ် (၆ စီး)</div>
                     <p class="text-slate-600 dark:text-slate-400 text-[11px]">စိတ်၏ ဖြစ်ပေါ်မှုကြောင့် ဖြစ်ပေါ်သော ရုပ်ကလာပ်များ (စိတ္တဇအဋ္ဌက စသည်)</p>
                 </div>
-                <div class="glass-card p-3.5 rounded-xl border border-emerald-500/30 bg-emerald-950/10 space-y-1">
-                    <div class="font-bold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-snowflake"></i> ဥတုဇရုပ် (၄ စီး)</div>
+                <div class="glass-card p-3.5 rounded-xl border border-emerald-400 dark:border-emerald-500/30 bg-emerald-950/10 space-y-1">
+                    <div class="font-bold text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-snowflake"></i> ဥတုဇရုပ် (၄ စီး)</div>
                     <p class="text-slate-600 dark:text-slate-400 text-[11px]">တေဇောဓာတ် (အပူ/အအေး) ကြောင့် ဖြစ်ပေါ်သော ရုပ်ကလာပ်များ</p>
                 </div>
-                <div class="glass-card p-3.5 rounded-xl border border-rose-500/30 bg-rose-950/10 space-y-1">
-                    <div class="font-bold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-bowl-food"></i> အာဟာရဇရုပ် (၂ စီး)</div>
+                <div class="glass-card p-3.5 rounded-xl border border-rose-400 dark:border-rose-500/30 bg-rose-950/10 space-y-1">
+                    <div class="font-bold text-rose-700 dark:text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-bowl-food"></i> အာဟာရဇရုပ် (၂ စီး)</div>
                     <p class="text-slate-600 dark:text-slate-400 text-[11px]">မျိုးဝါးမျိုလိုက်သော အာဟာရ ဩဇာကြောင့် ဖြစ်ပေါ်သော ရုပ်ကလာပ်များ</p>
                 </div>
             </div>
         </section>
 
         <!-- Cross-link to Paccaya -->
-        <a href="paccaya_sangaha.html" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
-            <i class="fa-solid fa-link text-violet-400 text-xl"></i>
-            <h4 class="font-bold text-violet-300 text-sm">ရုပ်တရားများအချင်းချင်း (နှင့် နာမ်နှင့်ပါ) ထောက်ပံ့ပုံကို ပဋ္ဌာန်းနည်းအရ ဆက်လေ့လာရန် — ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha)</h4>
+        <a href="paccaya_sangaha.html" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+            <i class="fa-solid fa-link text-violet-700 dark:text-violet-400 text-xl"></i>
+            <h4 class="font-bold text-violet-700 dark:text-violet-300 text-sm">ရုပ်တရားများအချင်းချင်း (နှင့် နာမ်နှင့်ပါ) ထောက်ပံ့ပုံကို ပဋ္ဌာန်းနည်းအရ ဆက်လေ့လာရန် — ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha)</h4>
             <p class="text-[11px] text-slate-400">ဥပမာ — ပုရေဇာတပစ္စည်း (စက္ခုဝတ္ထု စသည်)၊ ပစ္ဆာဇာတပစ္စည်း (စိတ်က ရုပ်ကို ပြန်ထောက်ပံ့ခြင်း)၊ နိဿယပစ္စည်း (ဟဒယဝတ္ထု) →</p>
         </a>
 
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-sky-500/20 text-center space-y-3 max-w-3xl mx-auto">
-            <i class="fa-solid fa-book-open text-sky-400 text-2xl"></i>
+            <i class="fa-solid fa-book-open text-sky-700 dark:text-sky-400 text-2xl"></i>
             <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ရုပ် (၂၈) ပါးသည် ခန္ဓာငါးပါးအနက် ရူပက္ခန္ဓာ တစ်ခုတည်း ဖြစ်ပြီး၊ ကျန်ခန္ဓာ (၄) ပါး (ဝေဒနာ၊ သညာ၊ သင်္ခါရ၊ ဝိညာဏ်) သည် နာမ်တရားချည်း ဖြစ်ကြသည်။ ရုပ်တရားများသည် ကိုယ်တိုင် "သိခြင်း" မရှိသော်လည်း၊ နာမ်တရားများ ဖြစ်ပေါ်ရန် မှီရာ/ထောက်ပံ့ရာအဖြစ် မရှိမဖြစ် လိုအပ်သည်။
             </p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
                 <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
             </a>
         </section>
@@ -450,7 +451,7 @@
                 return `
                     <details id="acc-rupa-${gk}" class="bg-white/60 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-3 scroll-mt-24">
                         <summary class="flex items-center justify-between font-semibold ${info.color} text-sm">
-                            <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>${info.label} <span class="text-slate-500 font-normal">— ${info.sub}</span></span>
+                            <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>${info.label} <span class="text-slate-500 dark:text-slate-500 font-normal">— ${info.sub}</span></span>
                         </summary>
                         <div class="mt-3 flex flex-wrap gap-1.5">
                             ${items.map(r => `
@@ -491,7 +492,7 @@
                     <div>
                         <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(r.id)}/၂၈</span>
                         <h3 class="text-xl font-bold ${info.color}">${r.name}</h3>
-                        <p class="text-[11px] text-slate-500 font-mono mt-1">${r.pali}</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-500 font-mono mt-1">${r.pali}</p>
                     </div>
                 </div>
                 <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
@@ -500,7 +501,7 @@
                         <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${r.desc}</p>
                     </div>
                     <div class="pt-3 border-t border-slate-800">
-                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${r.example}</p>
                     </div>
                 </div>

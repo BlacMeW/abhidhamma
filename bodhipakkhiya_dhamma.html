@@ -6,6 +6,14 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဗောဓိပက္ခိယဓမ္မာ — အသိတရားဘက်သို့ ယိုစီးစေသော တရား (၃၇) ပါးကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
     <title>ဗောဓိပက္ခိယဓမ္မာ — (၃၇) ပါး (Bodhipakkhiya-dhammā)</title>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,36 +51,29 @@
         .bp-card:hover { transform: translateY(-2px); }
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-500/20 border border-amber-500 dark:border-amber-500/50 flex items-center justify-center text-amber-700 dark:text-amber-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-seedling"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-amber-300">ဗောဓိပက္ခိယဓမ္မာ <span class="text-slate-500 font-normal text-sm">(Bodhipakkhiya-dhammā)</span></h1>
+                    <h1 class="text-lg font-bold text-amber-300">ဗောဓိပက္ခိယဓမ္မာ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Bodhipakkhiya-dhammā)</span></h1>
                     <p class="text-[11px] text-slate-400">အသိတရားဘက်သို့ ယိုစီးစေသော တရား (၃၇) ပါး</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
                 </a>
-                <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="glossary.html" class="text-xs font-semibold bg-emerald-100 dark:bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-700 dark:text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
                 </a>
             </div>
@@ -83,61 +84,61 @@
 
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — ဗောဓိပက္ခိယအပိုင်း)</span>
+            <span class="text-amber-700 dark:text-amber-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — ဗောဓိပက္ခိယအပိုင်း)</span>
             <h2 class="text-2xl md:text-3xl font-bold">"ဗောဓိ" (ဉာဏ်အလင်း) ဘက်သို့ ဦးတည်စေသော တရား (၃၇) ပါး</h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm">ဗောဓိပက္ခိယဓမ္မာသည် မဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိရန် တိုက်ရိုက် ကူညီပံ့ပိုးပေးသော တရား (၃၇) ပါး ဖြစ်သည်။ အုပ်စု (၇) စု ခွဲထားသော်လည်း၊ အခြေခံ စေတသိက် (၁၄) ပါးသာ ထပ်ခါထပ်ခါ ပြန်လည် ပေါင်းစပ် အသုံးပြုထားခြင်း ဖြစ်ကြောင်း — အောက်ပါ အတည်ပြုကတ်ဇယားတွင် တွေ့နိုင်သည်။</p>
         </div>
 
         <!-- Total verification bar -->
         <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2.5 text-xs md:text-sm border border-slate-700">
-            <button onclick="jumpToGroup('satipatthana')" class="px-2.5 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">သတိပဋ္ဌာန် (၄)</button>
+            <button onclick="jumpToGroup('satipatthana')" class="px-2.5 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">သတိပဋ္ဌာန် (၄)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('sammappadhana')" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">သမ္မပ္ပဓာန် (၄)</button>
+            <button onclick="jumpToGroup('sammappadhana')" class="px-2.5 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">သမ္မပ္ပဓာန် (၄)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('iddhipada')" class="px-2.5 py-1.5 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition">ဣဒ္ဓိပါဒ် (၄)</button>
+            <button onclick="jumpToGroup('iddhipada')" class="px-2.5 py-1.5 rounded-lg bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition">ဣဒ္ဓိပါဒ် (၄)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('indriya')" class="px-2.5 py-1.5 rounded-lg bg-violet-500/15 text-violet-300 border border-violet-500/30 hover:bg-violet-500/25 hover:border-violet-400 transition">ဣန္ဒြေ (၅)</button>
+            <button onclick="jumpToGroup('indriya')" class="px-2.5 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-400 dark:border-violet-500/30 hover:bg-violet-500/25 hover:border-violet-400 transition">ဣန္ဒြေ (၅)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('bala')" class="px-2.5 py-1.5 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ဗလ (၅)</button>
+            <button onclick="jumpToGroup('bala')" class="px-2.5 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ဗလ (၅)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('bojjhanga')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ဗောဇ္ဈင် (၇)</button>
+            <button onclick="jumpToGroup('bojjhanga')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ဗောဇ္ဈင် (၇)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('magganga')" class="px-2.5 py-1.5 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/25 hover:border-indigo-400 transition">မဂ္ဂင် (၈)</button>
+            <button onclick="jumpToGroup('magganga')" class="px-2.5 py-1.5 rounded-lg bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border border-indigo-400 dark:border-indigo-500/30 hover:bg-indigo-500/25 hover:border-indigo-400 transition">မဂ္ဂင် (၈)</button>
             <span class="text-slate-600">=</span>
-            <button onclick="jumpToGroup('satipatthana')" class="px-2.5 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">(၃၇) ပါး</button>
+            <button onclick="jumpToGroup('satipatthana')" class="px-2.5 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">(၃၇) ပါး</button>
         </div>
 
         <!-- 7 groups -->
         <div id="bp-groups" class="space-y-6"></div>
 
         <!-- Underlying 14 unique dhamma cross-check -->
-        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
-            <h3 class="font-bold text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-star"></i> (၃၇) ပါးအောက်က အခြေခံ စေတသိက် (၁၄) ပါးသာ</h3>
+        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-400 dark:border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
+            <h3 class="font-bold text-amber-700 dark:text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-star"></i> (၃၇) ပါးအောက်က အခြေခံ စေတသိက် (၁၄) ပါးသာ</h3>
             <p class="text-xs text-slate-300">ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါးသည် နာမည်အသစ် (၃၇) မျိုး မဟုတ်ဘဲ၊ အောက်ပါ စေတသိက် (၁၄) ပါးသာ အုပ်စု (၇) စု အတွင်း ထပ်ခါထပ်ခါ ပေါင်းစပ် ပါဝင်နေခြင်း ဖြစ်သည် — ဥပမာ "ဝီရိယ" တစ်ပါးတည်းက (၉) နေရာတွင် ထပ်ခါထပ်ခါ ပါဝင်နေသည်:</p>
             <div id="unique-dhamma-chips" class="flex flex-wrap gap-1.5"></div>
-            <p class="text-[11px] text-slate-500 pt-1">* ဤအချက်ကပင် ဗောဓိပက္ခိယဓမ္မာသည် "အသစ်ရှာစရာ မလိုဘဲ၊ ရှိပြီးသား စေတသိက်များကို မှန်ကန်သော အချိုးအစားဖြင့် ဖွံ့ဖြိုးအားထုတ်ရုံမျှသာ" ဖြစ်ကြောင်း ညွှန်ပြသည်။</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">* ဤအချက်ကပင် ဗောဓိပက္ခိယဓမ္မာသည် "အသစ်ရှာစရာ မလိုဘဲ၊ ရှိပြီးသား စေတသိက်များကို မှန်ကန်သော အချိုးအစားဖြင့် ဖွံ့ဖြိုးအားထုတ်ရုံမျှသာ" ဖြစ်ကြောင်း ညွှန်ပြသည်။</p>
         </div>
 
         <!-- Cross-links -->
         <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            <a href="citta_cetasikas_visual_guide.html#cetasika" class="block glass-card rounded-2xl p-5 border border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
-                <i class="fa-solid fa-layer-group text-emerald-400 text-xl"></i>
-                <h4 class="font-bold text-emerald-300 text-sm">အခြေခံ စေတသိက် (၁၄) ပါးအားလုံးကို အသေးစိတ် ကြည့်ရန်</h4>
+            <a href="citta_cetasikas_visual_guide.html#cetasika" class="block glass-card rounded-2xl p-5 border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-layer-group text-emerald-700 dark:text-emerald-400 text-xl"></i>
+                <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">အခြေခံ စေတသိက် (၁၄) ပါးအားလုံးကို အသေးစိတ် ကြည့်ရန်</h4>
                 <p class="text-[11px] text-slate-400">Citta & Cetasika Guide ၏ စေတသိက် (၅၂) ပါး tab သို့ →</p>
             </a>
-            <a href="paccaya_sangaha.html?open=magga" class="block glass-card rounded-2xl p-5 border border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
-                <i class="fa-solid fa-route text-violet-400 text-xl"></i>
-                <h4 class="font-bold text-violet-300 text-sm">မဂ္ဂင် (၈) ပါးသည် ပဋ္ဌာန်း၏ မဂ္ဂပစ္စည်းနှင့် ဆက်စပ်ပုံ</h4>
+            <a href="paccaya_sangaha.html?open=magga" class="block glass-card rounded-2xl p-5 border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+                <i class="fa-solid fa-route text-violet-700 dark:text-violet-400 text-xl"></i>
+                <h4 class="font-bold text-violet-700 dark:text-violet-300 text-sm">မဂ္ဂင် (၈) ပါးသည် ပဋ္ဌာန်း၏ မဂ္ဂပစ္စည်းနှင့် ဆက်စပ်ပုံ</h4>
                 <p class="text-[11px] text-slate-400">ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha) သို့ →</p>
             </a>
         </div>
 
         <!-- Footer -->
-        <section class="glass-card rounded-2xl p-6 border border-amber-500/20 text-center space-y-3 max-w-3xl mx-auto">
-            <i class="fa-solid fa-book-open text-amber-400 text-2xl"></i>
+        <section class="glass-card rounded-2xl p-6 border border-amber-300 dark:border-amber-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-amber-700 dark:text-amber-400 text-2xl"></i>
             <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါးသည် ဘာဝနာအားထုတ်သူများအတွက် လက်တွေ့ လမ်းညွှန်ချက် ဖြစ်ပြီး၊ သတိ၊ ဝီရိယ၊ ပညာ တို့ကို ဗဟိုပြု၍ မဂ်ဖိုလ်ဆီသို့ တစ်ဆင့်ချင်း ရောက်ရှိစေသော အင်္ဂါရပ်များ ပေါင်းစည်းမှု ဖြစ်သည်။
             </p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
                 <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
             </a>
         </section>
@@ -340,7 +341,7 @@
             const el = document.getElementById('unique-dhamma-chips');
             el.innerHTML = Object.keys(dhammaInfo).map(k => {
                 const d = dhammaInfo[k];
-                return `<span class="px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-200 text-xs font-semibold">${d.label} × ${mm(d.count)}</span>`;
+                return `<span class="px-3 py-1.5 rounded-full border border-amber-400 dark:border-amber-500/30 bg-amber-500/10 text-amber-800 dark:text-amber-200 text-xs font-semibold">${d.label} × ${mm(d.count)}</span>`;
             }).join('');
         }
 
@@ -363,7 +364,7 @@
                     <div>
                         <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(b.id)}/၃၇</span>
                         <h3 class="text-xl font-bold ${info.color}">${b.name}</h3>
-                        <p class="text-[11px] text-slate-500 font-mono mt-1">${b.pali}</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-500 font-mono mt-1">${b.pali}</p>
                     </div>
                 </div>
                 <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
@@ -372,7 +373,7 @@
                         <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${b.desc}</p>
                     </div>
                     <div class="pt-3 border-t border-slate-800">
-                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${b.example}</p>
                     </div>
                 </div>

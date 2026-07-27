@@ -6,6 +6,14 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="description" content="အဘိဓမ္မတ္ထသင်္ဂဟ ၉ အခန်းလုံး၏ မာတိကာ — Citta & Cetasika Visual Guide စာမျက်နှာစုံ၏ ညွှန်းဆက်စာမျက်နှာ">
     <title>မာတိကာ — အဘိဓမ္မတ္ထသင်္ဂဟ ၉ အခန်း (Matikā)</title>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,30 +46,23 @@
         .chapter-card:hover { transform: translateY(-3px); }
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-violet-500/20 border border-violet-500/50 flex items-center justify-center text-violet-400 text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-500/50 flex items-center justify-center text-violet-700 dark:text-violet-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-list-check"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-violet-300">မာတိကာ <span class="text-slate-500 font-normal text-sm">(Matikā)</span></h1>
+                    <h1 class="text-lg font-bold text-violet-300">မာတိကာ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Matikā)</span></h1>
                     <p class="text-[11px] text-slate-400">အဘိဓမ္မတ္ထသင်္ဂဟ ၉ အခန်းလုံး၏ ညွှန်းဆက်</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-amber-100 dark:bg-amber-500/20 hover:bg-amber-500/30 text-amber-700 dark:text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard (Index)</span>
                 </a>
             </div>
@@ -72,7 +73,7 @@
 
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <span class="text-violet-400 font-semibold text-sm tracking-wider uppercase">Abhidhammatthasaṅgaha — ပရိစ္ဆေဒ ၉ ခန်း</span>
+            <span class="text-violet-700 dark:text-violet-400 font-semibold text-sm tracking-wider uppercase">Abhidhammatthasaṅgaha — ပရိစ္ဆေဒ ၉ ခန်း</span>
             <h2 class="text-2xl md:text-3xl font-bold">ဤ Visual Guide စာမျက်နှာစုံ၏ မာတိကာ</h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm">အဘိဓမ္မတ္ထသင်္ဂဟကျမ်းကြီး၏ ရိုးရာ ပရိစ္ဆေဒ (၉) ခန်းအလိုက်၊ ဤ Guide တွင် မည်သည့်စာမျက်နှာက မည်သည့်အခန်းကို ဖုံးလွှမ်းထားသည်ကို တစ်နေရာတည်း ကြည့်ရှုနိုင်ရန် စုစည်းထားခြင်း ဖြစ်သည်။</p>
         </div>
@@ -89,7 +90,7 @@
 
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-violet-500/20 text-center space-y-3 max-w-3xl mx-auto">
-            <i class="fa-solid fa-book-open text-violet-400 text-2xl"></i>
+            <i class="fa-solid fa-book-open text-violet-700 dark:text-violet-400 text-2xl"></i>
             <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">စာမျက်နှာအားလုံးသည် Padauk/Pyidaungsu ဖောင့်ဖြင့် မြန်မာစာလုံးသက်သက်ဖြင့် ရေးသားထားပြီး၊ ကျမ်းဂန်လာ ပါဠိအမည်များကိုသာ ကွင်းစကွင်းပိတ်တွင် ရည်ညွှန်းထားပါသည်။ ဂဏန်းစစ်ဆေးမှု (verification bar) များအားလုံးကို jsdom ဖြင့် အလိုအလျောက် ပြန်လည် စစ်ဆေးထားပါသည်။</p>
         </section>
     </main>
@@ -190,9 +191,9 @@
                             <div class="flex items-center gap-3">
                                 <div class="w-11 h-11 rounded-xl ${cm.bg} ${cm.text} flex items-center justify-center text-xl border ${cm.border}/30 flex-shrink-0"><i class="fa-solid ${ch.icon}"></i></div>
                                 <div>
-                                    <span class="text-[10px] text-slate-500 uppercase font-mono">ပရိစ္ဆေဒ ${mm(ch.num)}</span>
+                                    <span class="text-[10px] text-slate-500 dark:text-slate-500 uppercase font-mono">ပရိစ္ဆေဒ ${mm(ch.num)}</span>
                                     <h3 class="font-bold ${cm.text} text-base leading-tight">${ch.name}</h3>
-                                    <p class="text-[10px] text-slate-500 font-mono">${ch.pali}</p>
+                                    <p class="text-[10px] text-slate-500 dark:text-slate-500 font-mono">${ch.pali}</p>
                                 </div>
                             </div>
                         </div>

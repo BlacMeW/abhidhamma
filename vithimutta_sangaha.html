@@ -6,6 +6,14 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဝီထိမုတ္တသင်္ဂဟ — ဘူမိ (၃၁)၊ ယောနိ (၄)၊ ကံစတုက္က၊ သေခါနီး လုပ်ငန်းစဉ်ကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
     <title>ဝီထိမုတ္တသင်္ဂဟ — ဘူမိ (၃၁) ပါး (Vīthimutta-saṅgaha)</title>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,36 +55,29 @@
         details[open] > summary .tree-chevron { transform: rotate(90deg); }
         .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-indigo-500/20 border border-indigo-500/50 flex items-center justify-center text-indigo-400 text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-indigo-500/20 border border-indigo-500/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-globe"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-indigo-300">ဝီထိမုတ္တသင်္ဂဟ <span class="text-slate-500 font-normal text-sm">(Vīthimutta-saṅgaha)</span></h1>
+                    <h1 class="text-lg font-bold text-indigo-300">ဝီထိမုတ္တသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Vīthimutta-saṅgaha)</span></h1>
                     <p class="text-[11px] text-slate-400">ဘူမိ (၃၁)၊ ယောနိ (၄)၊ ကံစတုက္က၊ သေခါနီး လုပ်ငန်းစဉ်</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
                 </a>
-                <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="glossary.html" class="text-xs font-semibold bg-emerald-100 dark:bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-700 dark:text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
                 </a>
             </div>
@@ -87,28 +88,28 @@
 
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <span class="text-indigo-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၅ ပိုင်းမြောက်</span>
+            <span class="text-indigo-700 dark:text-indigo-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၅ ပိုင်းမြောက်</span>
             <h2 class="text-2xl md:text-3xl font-bold">ဝီထိစိတ် အစဉ်ပြင်ပက ဖြစ်စဉ်များ</h2>
-            <p class="text-slate-600 dark:text-slate-400 text-sm"><a href="citta_cetasikas_visual_guide.html#vithi" class="text-sky-300 underline decoration-dotted hover:text-sky-200">ဝီထိသင်္ဂဟ tab</a> က ဘဝတစ်ခု အတွင်းရှိ စိတ်အစဉ် ဖြစ်ပေါ်ပုံကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ဝီထိမုတ္တသင်္ဂဟကမူ ဝီထိစိတ် "အစဉ်ပြင်ပ" ဖြစ်ပေါ်ကြသော ပဋိသန္ဓေ/ဘဝင်/စုတိ တို့ ဘယ်နေရာ (ဘူမိ)၊ ဘယ်နည်းလမ်း (ယောနိ)၊ ဘယ်ကံ အလိုက် ဖြစ်ပေါ်ကြသည်ကို ရှင်းပြသည်။</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm"><a href="citta_cetasikas_visual_guide.html#vithi" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-200">ဝီထိသင်္ဂဟ tab</a> က ဘဝတစ်ခု အတွင်းရှိ စိတ်အစဉ် ဖြစ်ပေါ်ပုံကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ဝီထိမုတ္တသင်္ဂဟကမူ ဝီထိစိတ် "အစဉ်ပြင်ပ" ဖြစ်ပေါ်ကြသော ပဋိသန္ဓေ/ဘဝင်/စုတိ တို့ ဘယ်နေရာ (ဘူမိ)၊ ဘယ်နည်းလမ်း (ယောနိ)၊ ဘယ်ကံ အလိုက် ဖြစ်ပေါ်ကြသည်ကို ရှင်းပြသည်။</p>
         </div>
 
         <!-- 31 Bhumi verification bar -->
         <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-700">
-            <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ကာမဘူမိ (၁၁)</button>
+            <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ကာမဘူမိ (၁၁)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('rupabhumi')" class="px-3 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ရူပဘူမိ (၁၆)</button>
+            <button onclick="jumpToGroup('rupabhumi')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ရူပဘူမိ (၁၆)</button>
             <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('arupabhumi')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">အရူပဘူမိ (၄)</button>
+            <button onclick="jumpToGroup('arupabhumi')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">အရူပဘူမိ (၄)</button>
             <span class="text-slate-600">=</span>
-            <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">ဘူမိ (၃၁) ဘုံ</button>
+            <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">ဘူမိ (၃၁) ဘုံ</button>
         </div>
-        <p class="text-center text-[11px] text-slate-500 -mt-4">* ဤဘူမိအားလုံးတွင် ဖြစ်ပေါ်နိုင်သော စိတ် (၈၉) ပါး၏ ကာမာဝစရ/ရူပါဝစရ/အရူပါဝစရ/လောကုတ္တရာ ခွဲခြားမှုကို <a href="citta_cetasikas_visual_guide.html#citta89" class="text-violet-300 underline decoration-dotted hover:text-violet-200">"စိတ် (၈၉)" tab</a> ၏ verification bar တွင် ဖော်ပြထားပြီး ဖြစ်သည်။</p>
+        <p class="text-center text-[11px] text-slate-500 dark:text-slate-500 -mt-4">* ဤဘူမိအားလုံးတွင် ဖြစ်ပေါ်နိုင်သော စိတ် (၈၉) ပါး၏ ကာမာဝစရ/ရူပါဝစရ/အရူပါဝစရ/လောကုတ္တရာ ခွဲခြားမှုကို <a href="citta_cetasikas_visual_guide.html#citta89" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-200">"စိတ် (၈၉)" tab</a> ၏ verification bar တွင် ဖော်ပြထားပြီး ဖြစ်သည်။</p>
 
         <!-- Bhumi groups -->
         
         <!-- 31 Planes Interactive Map -->
         <details class="glass-card rounded-2xl p-4 md:p-6 max-w-4xl mx-auto border border-sky-500/30">
-            <summary class="flex items-center justify-between font-bold text-sky-300 text-base md:text-lg">
+            <summary class="flex items-center justify-between font-bold text-sky-700 dark:text-sky-300 text-base md:text-lg">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>၃၁-ဘုံ အပြန်အလှန်လေ့လာနိုင်သော မြေပုံ (Interactive Map)</span>
                 <span class="text-xs font-normal bg-sky-500/20 px-2 py-1 rounded">Click to expand</span>
             </summary>
@@ -125,7 +126,7 @@
 
         <!-- Catuyoni -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>စတုယောနိ — ပဋိသန္ဓေယူသည့် နည်းလမ်း (၄) မျိုး</span>
             </summary>
             <div class="mt-3 pl-5 flex flex-wrap gap-1.5" id="yoni-chips"></div>
@@ -133,48 +134,48 @@
 
         <!-- Kamma-catukka (16 = 4x4) -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20" open>
-            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ကံစတုက္က — ကံကို ရှုထောင့် (၄) မျိုးမှ ခွဲခြားနည်း (၄×၄ = ၁၆)</span>
             </summary>
             <div id="kamma-tetrads" class="mt-3 pl-5 space-y-4"></div>
         </details>
 
         <!-- Near-death process -->
-        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
-            <h3 class="font-bold text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-hourglass-end"></i> မရဏာသန္နဝီထိ — သေခါနီး ဖြစ်ပေါ်သော လုပ်ငန်းစဉ်</h3>
+        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-400 dark:border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
+            <h3 class="font-bold text-amber-700 dark:text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-hourglass-end"></i> မရဏာသန္နဝီထိ — သေခါနီး ဖြစ်ပေါ်သော လုပ်ငန်းစဉ်</h3>
             <p class="text-xs text-slate-300">သေခါနီးအချိန် နောက်ဆုံး ဇောနဝီထိ (၅ ကြိမ် ၆ ကြိမ်မျှသာ ဖြစ်တတ်သော "ပရိတ္တဇောန") ၏ အာရုံအဖြစ် အောက်ပါ (၃) မျိုးအနက် တစ်မျိုးမျိုး ပေါ်လာတတ်ပြီး၊ ထိုအာရုံသည်ပင် နောင်ဘဝ ပဋိသန္ဓေစိတ်၏ အာရုံ ဖြစ်လာသည် —</p>
             <div id="near-death-chips" class="grid sm:grid-cols-3 gap-2"></div>
             <div class="flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-400 pt-2">
                 <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-700">စုတိစိတ်</span>
                 <i class="fa-solid fa-arrow-right text-amber-400"></i>
-                <span class="px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">ကြားမဲ့ခြားနား လုံးဝ မရှိ</span>
+                <span class="px-3 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ကြားမဲ့ခြားနား လုံးဝ မရှိ</span>
                 <i class="fa-solid fa-arrow-right text-amber-400"></i>
                 <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-700">ပဋိသန္ဓေစိတ် (ဘဝသစ်)</span>
             </div>
-            <p class="text-[11px] text-slate-500 pt-1">* ဤ "ကြားမဲ့ခြားနား လုံးဝ မရှိခြင်း" ကို ပဋိစ္စသမုပ္ပါဒ်တွင် <a href="paticcasamuppada.html?open=jaramarana" class="text-violet-300 underline decoration-dotted hover:text-violet-200">ဇရာမရဏ → ဝိညာဉ် ပထမသန္ဓိ</a> အဖြစ် ဖော်ပြခဲ့သည်။</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">* ဤ "ကြားမဲ့ခြားနား လုံးဝ မရှိခြင်း" ကို ပဋိစ္စသမုပ္ပါဒ်တွင် <a href="paticcasamuppada.html?open=jaramarana" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-200">ဇရာမရဏ → ဝိညာဉ် ပထမသန္ဓိ</a> အဖြစ် ဖော်ပြခဲ့သည်။</p>
         </div>
 
         <!-- Marananuppatti causes -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>မရဏုပ္ပတ္တိ — သေခြင်း၏ အကြောင်း (၄) မျိုး</span>
             </summary>
             <div class="mt-3 pl-5 flex flex-wrap gap-1.5" id="marana-chips"></div>
         </details>
 
         <!-- Cross-link -->
-        <a href="citta_cetasikas_visual_guide.html#citta89:kicca-sangaha" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
-            <i class="fa-solid fa-link text-emerald-400 text-xl"></i>
-            <h4 class="font-bold text-emerald-300 text-sm">ပဋိသန္ဓေ/ဘဝင်/စုတိ ဆောင်ရွက်နိုင်သော စိတ် (၁၉) ပါးကို အသေးစိတ် ကြည့်ရန်</h4>
+        <a href="citta_cetasikas_visual_guide.html#citta89:kicca-sangaha" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+            <i class="fa-solid fa-link text-emerald-700 dark:text-emerald-400 text-xl"></i>
+            <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">ပဋိသန္ဓေ/ဘဝင်/စုတိ ဆောင်ရွက်နိုင်သော စိတ် (၁၉) ပါးကို အသေးစိတ် ကြည့်ရန်</h4>
             <p class="text-[11px] text-slate-400">Citta & Cetasika Guide ၏ Kicca-saṅgaha explainer သို့ →</p>
         </a>
 
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-indigo-500/20 text-center space-y-3 max-w-3xl mx-auto">
-            <i class="fa-solid fa-book-open text-indigo-400 text-2xl"></i>
+            <i class="fa-solid fa-book-open text-indigo-700 dark:text-indigo-400 text-2xl"></i>
             <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ဝီထိမုတ္တသင်္ဂဟကို လေ့လာခြင်းဖြင့် "ဘဝသစ် မွေးဖွားခြင်း" ဆိုသည်မှာ ဝိညာဉ်တစ်ခု တစ်ခန္ဓာမှ တစ်ခန္ဓာသို့ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ ရှေးကံ၏ တွန်းအားဖြင့် စိတ်အသစ် ချက်ချင်းဆက်တိုက် ဖြစ်ပေါ်ခြင်းသာ ဖြစ်ကြောင်း ပို၍ ရှင်းလင်းစွာ နားလည်နိုင်သည်။
             </p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
                 <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
             </a>
         </section>
@@ -284,9 +285,9 @@
         ];
 
         const nearDeathData = [
-            { key: 'kamma', name: 'ကံ', icon: 'fa-scale-balanced', cls: 'border-rose-500/30 text-rose-300', desc: 'ယခင်က ပြုခဲ့ဖူးသော ကုသိုလ်/အကုသိုလ် ကံလုပ်ဆောင်ချက်ကို ပြန်လည် သတိရ ခံစားမိခြင်း' },
-            { key: 'kammanimitta', name: 'ကမ္မနိမိတ်', icon: 'fa-image', cls: 'border-amber-500/30 text-amber-300', desc: 'ထိုကံနှင့် ဆက်စပ်သော အရာဝတ္ထု/ပုံရိပ် ပေါ်လာခြင်း (ဥပမာ — ဒါနပေးရာ၌ အသုံးပြုခဲ့သော ပစ္စည်း)' },
-            { key: 'gatinimitta', name: 'ဂတိနိမိတ်', icon: 'fa-road', cls: 'border-sky-500/30 text-sky-300', desc: 'နောင်ဘဝ ရောက်ရှိမည့် ဘုံ၏ ရှေ့အနာဂတ် ပုံရိပ် ကြိုတင် ပေါ်လာခြင်း (ဥပမာ — ငရဲမီးလျှံ၊ နတ်ပြာသာဒ်)' }
+            { key: 'kamma', name: 'ကံ', icon: 'fa-scale-balanced', cls: 'border-rose-400 dark:border-rose-500/30 text-rose-300', desc: 'ယခင်က ပြုခဲ့ဖူးသော ကုသိုလ်/အကုသိုလ် ကံလုပ်ဆောင်ချက်ကို ပြန်လည် သတိရ ခံစားမိခြင်း' },
+            { key: 'kammanimitta', name: 'ကမ္မနိမိတ်', icon: 'fa-image', cls: 'border-amber-400 dark:border-amber-500/30 text-amber-300', desc: 'ထိုကံနှင့် ဆက်စပ်သော အရာဝတ္ထု/ပုံရိပ် ပေါ်လာခြင်း (ဥပမာ — ဒါနပေးရာ၌ အသုံးပြုခဲ့သော ပစ္စည်း)' },
+            { key: 'gatinimitta', name: 'ဂတိနိမိတ်', icon: 'fa-road', cls: 'border-sky-400 dark:border-sky-500/30 text-sky-300', desc: 'နောင်ဘဝ ရောက်ရှိမည့် ဘုံ၏ ရှေ့အနာဂတ် ပုံရိပ် ကြိုတင် ပေါ်လာခြင်း (ဥပမာ — ငရဲမီးလျှံ၊ နတ်ပြာသာဒ်)' }
         ];
 
         const maranaData = [
@@ -308,14 +309,14 @@
 
             // Structure of planes (top to bottom)
             const mapStructure = [
-                { group: 'arupabhumi', items: [31, 30, 29, 28], color: 'border-amber-500/50 bg-amber-500/10 hover:bg-amber-500/30 text-amber-300', title: 'အရူပဘုံ (၄) ဘုံ' },
+                { group: 'arupabhumi', items: [31, 30, 29, 28], color: 'border-amber-500 dark:border-amber-500/50 bg-amber-500/10 hover:bg-amber-500/30 text-amber-300', title: 'အရူပဘုံ (၄) ဘုံ' },
                 
                 // Rupa planes (16)
                 { group: 'rupabhumi', items: [27, 26, 25, 24, 23], color: 'border-emerald-500/50 bg-emerald-500/10 hover:bg-emerald-500/30 text-emerald-300', title: 'သုဒ္ဓါဝါသဘုံ (၅)' }, // Suddhavasa
-                { group: 'rupabhumi', items: [22, 21], color: 'border-sky-500/50 bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'စတုတ္ထဈာန်ဘုံ' }, 
-                { group: 'rupabhumi', items: [20, 19, 18], color: 'border-sky-500/50 bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'တတိယဈာန်ဘုံ (၃)' },
-                { group: 'rupabhumi', items: [17, 16, 15], color: 'border-sky-500/50 bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'ဒုတိယဈာန်ဘုံ (၃)' },
-                { group: 'rupabhumi', items: [14, 13, 12], color: 'border-sky-500/50 bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'ပဌမဈာန်ဘုံ (၃)' },
+                { group: 'rupabhumi', items: [22, 21], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'စတုတ္ထဈာန်ဘုံ' }, 
+                { group: 'rupabhumi', items: [20, 19, 18], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'တတိယဈာန်ဘုံ (၃)' },
+                { group: 'rupabhumi', items: [17, 16, 15], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'ဒုတိယဈာန်ဘုံ (၃)' },
+                { group: 'rupabhumi', items: [14, 13, 12], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-300', title: 'ပဌမဈာန်ဘုံ (၃)' },
                 
                 // Kama Sugati planes (7)
                 { group: 'kamabhumi_deva', items: [11, 10, 9, 8, 7, 6], color: 'border-indigo-500/50 bg-indigo-500/10 hover:bg-indigo-500/30 text-indigo-300', title: 'နတ်ဘုံ (၆)' },
@@ -329,7 +330,7 @@
             mapStructure.forEach((level) => {
                 html += `
                     <div class="flex items-center gap-2 mb-2 w-full justify-center">
-                        <div class="hidden md:block w-32 text-right text-[10px] uppercase text-slate-500 font-bold pr-4 border-r border-slate-700/50">\${level.title}</div>
+                        <div class="hidden md:block w-32 text-right text-[10px] uppercase text-slate-500 dark:text-slate-500 font-bold pr-4 border-r border-slate-700/50">\${level.title}</div>
                         <div class="flex flex-wrap items-center justify-center gap-1.5 md:gap-2 flex-1 max-w-2xl">
                 `;
                 
@@ -384,12 +385,12 @@
 
         function renderYoniChips() {
             document.getElementById('yoni-chips').innerHTML = yoniData.map(y => `
-                <button onclick="openYoniModal('${y.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-emerald-500/10 border-emerald-500/30 text-emerald-300 hover:brightness-125">${y.name}</button>
+                <button onclick="openYoniModal('${y.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-emerald-500/10 border-emerald-400 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:brightness-125">${y.name}</button>
             `).join('');
         }
 
         function renderKammaTetrads() {
-            const colorClass = { sky: 'border-sky-500/30 bg-sky-500/10 text-sky-300', emerald: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300', amber: 'border-amber-500/30 bg-amber-500/10 text-amber-300', violet: 'border-violet-500/30 bg-violet-500/10 text-violet-300' };
+            const colorClass = { sky: 'border-sky-400 dark:border-sky-500/30 bg-sky-100 dark:bg-sky-500/10 text-sky-300', emerald: 'border-emerald-400 dark:border-emerald-500/30 bg-emerald-500/10 text-emerald-300', amber: 'border-amber-400 dark:border-amber-500/30 bg-amber-500/10 text-amber-300', violet: 'border-violet-400 dark:border-violet-500/30 bg-violet-500/10 text-violet-300' };
             document.getElementById('kamma-tetrads').innerHTML = kammaTetrads.map(t => `
                 <div class="bg-slate-950/60 rounded-lg p-3 border ${colorClass[t.color]}">
                     <h4 class="font-bold text-sm mb-2">${t.title}</h4>
@@ -417,7 +418,7 @@
 
         function renderMaranaChips() {
             document.getElementById('marana-chips').innerHTML = maranaData.map(m => `
-                <button onclick="openMaranaModal('${m.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:brightness-125">${m.name}</button>
+                <button onclick="openMaranaModal('${m.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-slate-100/80 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:brightness-125">${m.name}</button>
             `).join('');
         }
 
@@ -456,7 +457,7 @@
                     <div>
                         <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${label}</span>
                         <h3 class="text-xl font-bold ${colorClass}">${name}</h3>
-                        <p class="text-[11px] text-slate-500 font-mono mt-1">${pali}</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-500 font-mono mt-1">${pali}</p>
                     </div>
                 </div>
                 <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
@@ -466,7 +467,7 @@
                     </div>
                     ${example ? `
                     <div class="pt-3 border-t border-slate-800">
-                        <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${example}</p>
                     </div>` : ''}
                 </div>

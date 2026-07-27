@@ -7,6 +7,14 @@
     <meta name="description" content="အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide — ပရိစ္ဆေဒ (၉) ခန်းလုံး၏ ပင်မ Dashboard နှင့် visual guides စုစည်းမှု">
     <title>အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide — Main Dashboard</title>
     <link rel="manifest" href="manifest.json">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,14 +47,7 @@
         .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.5); }
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
@@ -54,7 +55,7 @@
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-500/20 border border-amber-500 dark:border-amber-500/50 flex items-center justify-center text-amber-700 dark:text-amber-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-dharmachakra"></i>
                 </div>
                 <div>
@@ -64,16 +65,16 @@
             </div>
             <div class="flex items-center gap-2">
                 <!-- Search Button trigger -->
-                <button onclick="openGlobalSearch()" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-sky-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <button onclick="openGlobalSearch()" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-sky-700 dark:text-sky-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-magnifying-glass"></i> <span>ရှာဖွေရန် (Ctrl+K)</span>
                 </button>
-                <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="glossary.html" class="text-xs font-semibold bg-emerald-100 dark:bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-700 dark:text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span>မာတိကာ (Index)</span>
                 </a>
-                <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-amber-100 dark:bg-amber-500/20 hover:bg-amber-500/30 text-amber-700 dark:text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-brain"></i> <span>Citta & Cetasika Guide</span>
                 </a>
             </div>
@@ -83,12 +84,12 @@
     <main class="max-w-7xl mx-auto px-4 mt-8 flex-1 w-full space-y-10">
 
         <!-- Hero Section -->
-        <section class="glass-card rounded-3xl p-6 md:p-10 border border-amber-500/30 text-center relative overflow-hidden space-y-4">
+        <section class="glass-card rounded-3xl p-6 md:p-10 border border-amber-400 dark:border-amber-500/30 text-center relative overflow-hidden space-y-4">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <span class="inline-block px-3.5 py-1.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 text-xs font-semibold tracking-wide uppercase">
-                <i class="fa-solid fa-star text-amber-400 mr-1.5"></i> Abhidhamma Interactive Visual Guide
+            <span class="inline-block px-3.5 py-1.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 text-xs font-semibold tracking-wide uppercase">
+                <i class="fa-solid fa-star text-amber-700 dark:text-amber-400 mr-1.5"></i> Abhidhamma Interactive Visual Guide
             </span>
             <h2 class="text-2xl md:text-4xl font-extrabold text-slate-100 leading-tight max-w-4xl mx-auto">
                 အဘိဓမ္မာဒေသနာတော်လာ ပါဠိ/မြန်မာ အဓိပ္ပာယ်များ နှင့် ဓမ္မသဘာဝများကို Visual Diagram များဖြင့် လေ့လာရန်
@@ -99,19 +100,19 @@
 
             <!-- Quick Overview Stats Counter -->
             <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto">
-                <div class="glass-card rounded-2xl p-4 border border-sky-500/30 bg-sky-950/20">
+                <div class="glass-card rounded-2xl p-4 border border-sky-400 dark:border-sky-500/30 bg-sky-950/20">
                     <div class="text-2xl md:text-3xl font-extrabold text-sky-300">၈၉ / ၁၂၁</div>
                     <div class="text-xs text-sky-400/80 font-medium mt-1">စိတ် (Citta)</div>
                 </div>
-                <div class="glass-card rounded-2xl p-4 border border-emerald-500/30 bg-emerald-950/20">
+                <div class="glass-card rounded-2xl p-4 border border-emerald-400 dark:border-emerald-500/30 bg-emerald-950/20">
                     <div class="text-2xl md:text-3xl font-extrabold text-emerald-300">၅၂</div>
                     <div class="text-xs text-emerald-400/80 font-medium mt-1">စေတသိက် (Cetasika)</div>
                 </div>
-                <div class="glass-card rounded-2xl p-4 border border-amber-500/30 bg-amber-950/20">
+                <div class="glass-card rounded-2xl p-4 border border-amber-400 dark:border-amber-500/30 bg-amber-950/20">
                     <div class="text-2xl md:text-3xl font-extrabold text-amber-300">၂၈</div>
                     <div class="text-xs text-amber-400/80 font-medium mt-1">ရုပ် (Rūpa)</div>
                 </div>
-                <div class="glass-card rounded-2xl p-4 border border-violet-500/30 bg-violet-950/20">
+                <div class="glass-card rounded-2xl p-4 border border-violet-400 dark:border-violet-500/30 bg-violet-950/20">
                     <div class="text-2xl md:text-3xl font-extrabold text-violet-300">၉ ခန်း</div>
                     <div class="text-xs text-violet-400/80 font-medium mt-1">ပရိစ္ဆေဒ (၁၀၀% Complete)</div>
                 </div>
@@ -133,7 +134,7 @@
 
         <!-- System Architecture & Design Info -->
         <section class="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-700 text-center space-y-3 max-w-4xl mx-auto">
-            <div class="flex justify-center text-amber-400 text-2xl gap-3">
+            <div class="flex justify-center text-amber-700 dark:text-amber-400 text-2xl gap-3">
                 <i class="fa-solid fa-bolt"></i>
                 <i class="fa-solid fa-mobile-screen"></i>
                 <i class="fa-solid fa-wifi"></i>
@@ -264,12 +265,12 @@
             const query = document.getElementById('search-input').value.trim().toLowerCase();
             const resultsContainer = document.getElementById('search-results');
             if (!query) {
-                resultsContainer.innerHTML = '<p class="text-slate-500 text-center py-4">ရှာဖွေလိုသော တရားအမည် ရိုက်ထည့်ပါ...</p>';
+                resultsContainer.innerHTML = '<p class="text-slate-500 dark:text-slate-500 text-center py-4">ရှာဖွေလိုသော တရားအမည် ရိုက်ထည့်ပါ...</p>';
                 return;
             }
             const filtered = searchDatabase.filter(item => item.name.toLowerCase().includes(query) || item.category.toLowerCase().includes(query));
             if (filtered.length === 0) {
-                resultsContainer.innerHTML = '<p class="text-slate-500 text-center py-4">ရှာဖွေမှု မတွေ့ရှိပါ။</p>';
+                resultsContainer.innerHTML = '<p class="text-slate-500 dark:text-slate-500 text-center py-4">ရှာဖွေမှု မတွေ့ရှိပါ။</p>';
                 return;
             }
             resultsContainer.innerHTML = filtered.map(item => `
@@ -297,7 +298,7 @@
             container.innerHTML = chaptersData.map(ch => {
                 const c = themeColors[ch.color];
                 const links = ch.links.map(l => `
-                    <a href="${l.href}" class="flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 ${c.text} text-xs font-semibold border border-slate-700/80 transition group">
+                    <a href="${l.href}" class="flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-700/80 ${c.text} text-xs font-semibold border border-slate-700/80 transition group">
                         <span>${l.label}</span>
                         <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
