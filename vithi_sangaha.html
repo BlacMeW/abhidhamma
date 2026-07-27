@@ -46,6 +46,11 @@
         .timeline-scroll::-webkit-scrollbar {
             display: none;
         }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
     <style>
         :root { color-scheme: light dark; }
@@ -113,11 +118,14 @@
             <div class="space-y-6 relative z-10">
                 <!-- 1. Atimahantarama -->
                 <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-                    <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
                         <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၁။ အတိမဟန္တာရုံဝီထိ (အလွန်ကြီးမားသော အာရုံ)</h4>
-                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 font-semibold border border-cyan-500/20">ဝီထိစိတ် ၁၄ ကြိမ် + အာရုံ ၁၇ ချက်</span>
+                        <div class="flex items-center gap-2">
+                            <button id="btn-ati-next" onclick="nextAtiStep()" class="text-[11px] md:text-xs px-3 py-1.5 rounded-full bg-cyan-600 text-white font-bold hover:bg-cyan-700 transition shadow-md shadow-cyan-500/20 active:scale-95 flex items-center gap-1.5"><i class="fa-solid fa-play"></i> ရှေ့သို့ (Step)</button>
+                            <button id="btn-ati-reset" onclick="resetAtiStep()" class="text-[11px] md:text-xs px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-300 dark:hover:bg-slate-600 transition active:scale-95"><i class="fa-solid fa-rotate-right"></i> ပြန်စရန်</button>
+                        </div>
                     </div>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">တဒါရုံကျပြီးမှ ဘဝင်သို့ ပြန်ကျသည်။ (အာရုံသက်တမ်း ၁၇ ချက် အပြည့်)</p>
+                    <p class="text-[11.5px] text-slate-500 dark:text-slate-400 bg-cyan-50 dark:bg-cyan-900/10 p-2 rounded border border-cyan-100 dark:border-cyan-900/50" id="ati-desc-text">တဒါရုံကျပြီးမှ ဘဝင်သို့ ပြန်ကျသည်။ (အာရုံသက်တမ်း ၁၇ ချက် အပြည့်)</p>
                     <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="panca-ati-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
@@ -235,7 +243,7 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30">အပ္ပနာ ၄ မျိုး</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs" id="appana-detailed-grid"></div>
+            <div class="grid grid-cols-1 gap-4 text-xs" id="appana-detailed-grid"></div>
         </section>
 
         <!-- 4. PUGGALA & BHUMI VITHI CITTA BREAKDOWN -->
@@ -268,24 +276,37 @@
             <div class="grid md:grid-cols-2 gap-4 text-xs">
                 <div class="bg-white/60 dark:bg-slate-900/60 p-4 rounded-xl border border-amber-500/30 space-y-2">
                     <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm border-b border-amber-200 dark:border-amber-900/50 pb-1">တဒါရုံနိယာမ (Tadārammaṇa-niyāma)</h4>
-                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
-                        တဒါရုံစိတ် ၂ ကြိမ် ကျရန်အတွက် အောက်ပါ အချက် (၃) ချက်စလုံး ပြည့်စုံရမည် —
-                    </p>
-                    <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
-                        <li><b>ကာမဇော ဖြစ်ရမည်:</b> အပ္ပနာဇော သို့မဟုတ် မဟဂ္ဂတဇော မဟုတ်ရပါ။</li>
-                        <li><b>ကာမသတ္တဝါ ဖြစ်ရမည်:</b> ကာမ ၁၁ ဘုံသား ဖြစ်ရမည် (ရူပ/အရူပ ဗြဟ္မာများ၌ တဒါရုံ မကျပါ)။</li>
-                        <li><b>ကာမအာရုံ ဖြစ်ရမည်:</b> အာရုံသည် အတိမဟန္တာရုံ သို့မဟုတ် ဝိဘူတာရုံ ဖြစ်ရမည်။</li>
-                    </ul>
-                </div>
+                    <p class="        const appanaJhanaSeq = ['b', 'mano', 'parikamma', 'upacara', 'anuloma', 'gotrabhu', 'appana', 'b', 'b'];
+        const appanaMaggaSeq = ['b', 'mano', 'parikamma', 'upacara', 'anuloma', 'gotrabhu', 'magga', 'phala', 'phala', 'b'];
+        const appanaPhalaSeq = ['b', 'mano', 'anuloma', 'anuloma', 'anuloma', 'anuloma', 'phala', 'phala', 'phala', 'phala', 'b'];
+        const appanaNirodhaSeq = ['b', 'mano', 'parikamma', 'upacara', 'anuloma', 'gotrabhu', 'neva', 'neva', 'nirodha', 'anagami', 'b']; 
 
-                <div class="bg-white/60 dark:bg-slate-900/60 p-4 rounded-xl border border-amber-500/30 space-y-2">
-                    <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm border-b border-amber-200 dark:border-amber-900/50 pb-1">ဇဝနနိယာမ (Javana-niyāma)</h4>
-                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
-                        ဇောစိတ်များ အတန်းလိုက် ဖြစ်ပေါ်ပုံ စည်းကမ်းများ —
-                    </p>
-                    <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
-                        <li><b>ကာမဇော:</b> ပုံမှန်အားဖြင့် (၇) ကြိမ် စောသည်။ (သေခါနီး မရဏာသန္နဝီထိ ၌ ၅ ကြိမ်သာ စောသည်)</li>
-                        <li><b>ပထမဆုံး ဈာန်ရချိန်:</b> အပ္ပနာဇော (၁) ကြိမ်သာ စောသည်။</li>
+        const appanaDetailedData = [
+            { id: 'jhana', seq: appanaJhanaSeq, name: '၁။ ဈာနဝီထိ (Jhāna Vīthi)', icon: 'fa-mountain', color: 'sky', desc: 'သမထ ကမ္မဋ္ဌာန်း စီးဖြန်း၍ ရူပ/အရူပ ဈာန် ရရှိဝင်စားသော ဝီထိဖြစ်သည် — ပရိကံ၊ ဥပစာ၊ အနုလုံ၊ ဂေါတြဘူ ဟူသော ကာမဇော ၄ ကြိမ် အပြီးတွင် ဈာန်အပ္ပနာဇော ဖြစ်ပေါ်သည်။' },
+            { id: 'magga', seq: appanaMaggaSeq, name: '၂။ မဂ္ဂဝီထိ (Magga Vīthi)', icon: 'fa-dharmachakra', color: 'amber', desc: 'ဝိပဿနာ ရှုမှတ်၍ မဂ်ဉာဏ် ရရှိသော ဝီထိဖြစ်သည် — ပရိကံ၊ ဥပစာ၊ အနုလုံ၊ ဂေါတြဘူ ပြီးနောက် သောတာပတ္တိမဂ် စသော မဂ်စိတ် ၁ ကြိမ်၊ ထို့နောက် ဖိုလ်စိတ် ၂ ကြိမ် သို့မဟုတ် ၃ ကြိမ် ဖြစ်ပေါ်သည်။' },
+            { id: 'phala', seq: appanaPhalaSeq, name: '၃။ ဖလသမာပတ္တိဝီထိ (Phala-samāpatti Vīthi)', icon: 'fa-sun', color: 'emerald', desc: 'အရိယာပုဂ္ဂိုလ်များ မိမိတို့ ရရှိပြီးသော ဖိုလ်သမာပတ်ကို ဝင်စား၍ နိဗ္ဗာန်ချမ်းသာကို နာရီပေါင်းများစွာ ဆက်တိုက် ခံစားသော ဝီထိ။ (အနုလုံ ၃-၄ ကြိမ် အပြီးတွင် ဖိုလ်ဇော မရေမတွက်နိုင်အောင် စောသည်)' },
+            { id: 'nirodha', seq: appanaNirodhaSeq, name: '၄။ နိရောဓသမာပတ္တိဝီထိ (Nirodha-samāpatti Vīthi)', icon: 'fa-peace', color: 'rose', desc: 'အနာဂါမီ သို့မဟုတ် အရဟတ္တဖလဋ္ဌာန် ရဟန္တာအရှင်မြတ်များ စိတ်၊ စေတသိက်၊ စိတ္တဇရုပ် တရားအားလုံးကို ၇ ရက်တိုင်တိုင် အကြွင်းမဲ့ ငြိမ်းအေးစေလျက် ဝင်စားသော အမြင့်ဆုံး သမာပတ် ဝီထိ။ (နေဝသညာ ၂ ကြိမ်အပြီး ချုပ်ငြိမ်းသည်၊ ထပြီးနောက် ဖိုလ် ၁ ကြိမ် ပြန်ကျသည်)' }
+        ];
+
+        const puggalaData = [
+            { id: 1, title: 'ပုဂ္ဂိုလ် (၈) ယောက် နှင့် ဝီထိ', icon: 'fa-users', color: 'emerald', 
+              short: 'ပုထုဇဉ် (၄) ယောက် နှင့် အရိယာ (၄) ယောက်တို့၏ ဝီထိကွာခြားချက်များ',
+              items: [
+                '<b>ပုထုဇဉ် (၄ ယောက်):</b> ဒိဋ္ဌိဂတသမ္ပယုတ် အကုသိုလ်စိတ်၊ မဟာကုသိုလ်စိတ် စသည်တို့ ဖြစ်နိုင်သည်။ မဂ်ဖိုလ်စိတ်များ မဖြစ်ပါ။',
+                '<b>သေက္ခ ပုဂ္ဂိုလ် (၃ ပါး - သောတာပန်၊ သကဒါဂါမ်၊ အနာဂါမ်):</b> ဒိဋ္ဌိဂတသမ္ပယုတ် (၄) ပါး နှင့် ဝိစိကိစ္ဆာ သမ္ပယုတ် (၁) ပါး လုံးဝ မဖြစ်တော့ပါ။ (သောတာပန်သည် အပါယ်သွားမည့် အကုသိုလ်များ ကင်းစင်သွားသည်)',
+                '<b>အသေက္ခ ပုဂ္ဂိုလ် (၁ ပါး - ရဟန္တာ):</b> အကုသိုလ်စိတ် (၁၂) ပါး လုံးဝ မဖြစ်တော့ဘဲ၊ ကုသိုလ်စိတ် အစား ကြိယာစိတ်များသာ ဖြစ်ပေါ်သည်။ ထို့ကြောင့် ရဟန္တာတွင် ကုသိုလ်/အကုသိုလ် ဇော မစောတော့ပါ။'
+              ]
+            },
+            { id: 2, title: 'ဘုံ (၃၁) ဘုံ နှင့် ဝီထိ', icon: 'fa-earth-asia', color: 'indigo', 
+              short: 'ကာမ၊ ရူပ၊ အသညသတ်၊ အရူပ ဘုံတို့၌ ရနိုင်သော ဝီထိစိတ်များ',
+              items: [
+                '<b>ကာမဘုံ (၁၁ ဘုံ):</b> ပဉ္စဒွါရဝီထိ နှင့် မနောဒွါရဝီထိ အားလုံး (တဒါရုံ အပါအဝင်) အပြည့်အစုံ ဖြစ်နိုင်သည်။',
+                '<b>ရူပဘုံ (၁၅ ဘုံ):</b> ဃာန၊ ဇိဝှာ၊ ကာယ ဒွါရဝီထိများ (အနံ့၊ အရသာ၊ အတွေ့) မရှိပါ။ စက္ခု (အဆင်း)၊ သောတ (အသံ)၊ မနော ဒွါရဝီထိများသာ ဖြစ်နိုင်သည်။ တဒါရုံစိတ် လုံးဝ မကျပါ။ (ဗြဟ္မာများတွင် တဒါရုံ မရှိ)',
+                '<b>အသညသတ်ဘုံ (၁ ဘုံ):</b> နာမ်တရား လုံးဝ မရှိသောကြောင့် ဝီထိစိတ် လုံးဝ မဖြစ်ပေါ်ပါ။',
+                '<b>အရူပဘုံ (၄ ဘုံ):</b> ရုပ်တရား လုံးဝ မရှိသောကြောင့် ပဉ္စဒွါရဝီထိ လုံးဝ မရှိပါ။ မနောဒွါရဝီထိ (စိတ်ဒွါရ) တစ်ခုတည်းသာ ဖြစ်ပေါ်နိုင်သည်။'
+              ]
+            }
+        ];ထမဆုံး ဈာန်ရချိန်:</b> အပ္ပနာဇော (၁) ကြိမ်သာ စောသည်။</li>
                         <li><b>ဈာန်သမာပတ် ဝင်စားချိန်:</b> အပ္ပနာဇော မရေတွက်နိုင်အောင် အကြိမ်ပေါင်းများစွာ ဆက်တိုက် စောနိုင်သည်။</li>
                         <li><b>မဂ်စိတ်:</b> မဂ်ဇောသည် မည်သည့်အခါမဆို (၁) ကြိမ်သာ စောသည်။</li>
                     </ul>
@@ -349,23 +370,28 @@
         ];
 
         const vithiNodes = [
-            { id: 'b', code: 'ဘ', name: 'ဘဝင်', full: 'ဘဝင်္ဂ (Bhavanga)', desc: 'အိပ်ပျော်နေစဉ် သို့မဟုတ် အာရုံသစ်မပေါ်မီ အတိတ်ဘဝက အာရုံတစ်ခုကို ယူ၍ ဖြစ်ပေါ်နေသော စိတ်အစဉ်။', color: 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700' },
-            { id: 'atita', code: 'တီ', name: 'အတီတဘဝင်', full: 'အတီတဘဝင်္ဂ (Atīta-bhavanga)', desc: 'အာရုံသစ် (ဥပမာ- ရူပါရုံ) ဒွါရသို့ ရောက်လာသော်လည်း မသိသေးဘဲ လွန်သွားသော ဘဝင်စိတ်။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600' },
-            { id: 'calana', code: 'န', name: 'ဘဝင်္ဂစလန', full: 'ဘဝင်္ဂစလန (Bhavanga-calana)', desc: 'အာရုံသစ်ကို သိရှိသွား၍ ဘဝင်အစဉ် တုန်လှုပ်သွားခြင်း (လှိုင်းထခြင်း)။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600' },
-            { id: 'upaccheda', code: 'ဒ', name: 'ဘဝင်္ဂုပစ္ဆေဒ', full: 'ဘဝင်္ဂုပစ္ဆေဒ (Bhavangupaccheda)', desc: 'ဘဝင်အစဉ် ပြတ်တောက်သွားခြင်း (အာရုံဟောင်းကို စွန့်လွှတ်လိုက်ခြင်း)။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600' },
-            { id: 'avajjana', code: 'ပ', name: 'ပဉ္စဒွါရာဝဇ္ဇန်း', full: 'ပဉ္စဒွါရာဝဇ္ဇန်း (Pañcadvārāvajjana)', desc: 'ဒွါရငါးပါးသို့ ရောက်လာသော အာရုံသစ်ကို လှည့်၍ ဆင်ခြင်ခြင်း (ဘယ်အာရုံလဲဟု စစ်ဆေးခြင်း)။', color: 'bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border-cyan-400 dark:border-cyan-600' },
-            { id: 'vinnana', code: 'စ', name: 'စက္ခုဝိညာဉ်', full: 'စက္ခုဝိညာဉ် (Cakkhuviññāṇa)', desc: 'ရောက်လာသော ရူပါရုံကို မြင်ခြင်း (သိခြင်းသက်သက်)။ နားဆိုလျှင် သောတဝိညာဉ် ဖြစ်မည်။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
-            { id: 'sampa', code: 'သံ', name: 'သမ္ပဋိစ္ဆန်း', full: 'သမ္ပဋိစ္ဆန်း (Sampaṭicchana)', desc: 'မြင်လိုက်သော အာရုံကို လက်ခံယူခြင်း။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
-            { id: 'santi', code: 'တီ', name: 'သန္တီရဏ', full: 'သန္တီရဏ (Santīraṇa)', desc: 'လက်ခံရရှိသော အာရုံကို ကောင်း/မကောင်း စူးစမ်းဆင်ခြင်ခြင်း။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
-            { id: 'vuttho', code: 'ဝု', name: 'ဝုဋ္ဌော', full: 'ဝုဋ္ဌော (Voṭṭhapana)', desc: 'အာရုံကို ကောင်းသည်/မကောင်းသည်ဟု ဆုံးဖြတ်ခြင်း (မနောဒွါရာဝဇ္ဇန်းစိတ်က ဤနေရာတွင် ဆုံးဖြတ်သည်)။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
-            { id: 'javana', code: 'ဇော', name: 'ဇော', full: 'ဇော ၇ ကြိမ် (Javana)', desc: 'ဆုံးဖြတ်ချက်အရ ကုသိုလ် သို့မဟုတ် အကုသိုလ်ဖြစ်၍ အာရုံ၏ အရသာကို ခံစားခြင်း (ကံမြောက်ခြင်း)။ အရှိန်အဟုန်ပြင်းသဖြင့် ၇ ကြိမ် ဆက်တိုက် ဖြစ်သည်။', color: 'bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 border-rose-400 dark:border-rose-600 ring-2 ring-rose-500/30' },
-            { id: 'tada', code: 'ဒါ', name: 'တဒါရုံ', full: 'တဒါရုံ (Tadārammaṇa)', desc: 'ဇော၏ အရှိန်အဟုန်ကို အသာအယာ ငြိမ်ကျသွားစေရန် ဇော၏အာရုံကို ဆက်လက်ယူ၍ ဖြစ်ပေါ်သော စိတ် ၂ ကြိမ်။ ပြီးလျှင် ဘဝင်သို့ ပြန်ကျသွားသည်။', color: 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-400 dark:border-amber-600' },
-            { id: 'mano', code: 'မ', name: 'မနောဒွါရာဝဇ္ဇန်း', full: 'မနောဒွါရာဝဇ္ဇန်း (Manodvārāvajjana)', desc: 'မနောဒွါရ (စိတ်) သို့ ရောက်လာသော အာရုံကို ဆင်ခြင်ခြင်း။ ဤစိတ်ပြီးလျှင် ဇော ချက်ချင်း ကျသည်။', color: 'bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border-cyan-400 dark:border-cyan-600' },
-            { id: 'parikamma', code: 'ပ', name: 'ပရိကံ', full: 'ပရိကမ္မ (Parikamma)', desc: 'အပ္ပနာဇော (ဈာန်/မဂ်) ကျရန် ပြင်ဆင်သည့် အစပိုင်း ကာမဇောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600' },
-            { id: 'upacara', code: 'ဥ', name: 'ဥပစာ', full: 'ဥပစာရ (Upacāra)', desc: 'အပ္ပနာဇော (ဈာန်/မဂ်) သို့ ချဉ်းကပ်သည့် ကာမဇောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600' },
-            { id: 'anuloma', code: 'နု', name: 'အနုလုံ', full: 'အနုလောမ (Anuloma)', desc: 'အပ္ပနာဇောနှင့် လျော်ညီစွာ ဖြစ်ပေါ်သော ကာမဇောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600' },
-            { id: 'gotrabhu', code: 'ဂေါ', name: 'ဂေါတြဘူ/ဝေါဒါန်', full: 'ဂေါတြဘူ (Gotrabhū)', desc: 'ပုထုဇဉ် အနွယ်ကို ဖြတ်၍ အရိယာ အနွယ်သို့ ကူးပြောင်းပေးသောစိတ် သို့မဟုတ် ဈာန်အနွယ်သို့ ကူးပြောင်းပေးသောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600' },
-            { id: 'appana', code: 'ဈာ', name: 'အပ္ပနာဇော', full: 'အပ္ပနာဇော (Appanā Javana)', desc: 'ဈာန်၊ မဂ်၊ ဖိုလ် ဟူသော အပ္ပနာဇောစိတ်။ အာရုံ၌ စွဲမြဲစွာ တည်သည်။', color: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-400 dark:border-indigo-600 ring-2 ring-indigo-500/50 shadow-[0_0_12px_rgba(99,102,241,0.5)]' }
+            { id: 'b', code: 'ဘ', name: 'ဘဝင်', full: 'ဘဝင်္ဂ (Bhavanga)', desc: 'အိပ်ပျော်နေစဉ် သို့မဟုတ် အာရုံသစ်မပေါ်မီ အတိတ်ဘဝက အာရုံတစ်ခုကို ယူ၍ ဖြစ်ပေါ်နေသော စိတ်အစဉ်။', color: 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700', kicca: 'ဘဝင်္ဂကိစ္စ (ဘဝအစဉ်ကို မပြတ်အောင် ဆက်စပ်ပေးခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'atita', code: 'တီ', name: 'အတီတဘဝင်', full: 'အတီတဘဝင်္ဂ (Atīta-bhavanga)', desc: 'အာရုံသစ် (ဥပမာ- ရူပါရုံ) ဒွါရသို့ ရောက်လာသော်လည်း မသိသေးဘဲ လွန်သွားသော ဘဝင်စိတ်။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600', kicca: 'ဘဝင်္ဂကိစ္စ', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'calana', code: 'န', name: 'ဘဝင်္ဂစလန', full: 'ဘဝင်္ဂစလန (Bhavanga-calana)', desc: 'အာရုံသစ်ကို သိရှိသွား၍ ဘဝင်အစဉ် တုန်လှုပ်သွားခြင်း (လှိုင်းထခြင်း)။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600', kicca: 'ဘဝင်္ဂကိစ္စ', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'upaccheda', code: 'ဒ', name: 'ဘဝင်္ဂုပစ္ဆေဒ', full: 'ဘဝင်္ဂုပစ္ဆေဒ (Bhavangupaccheda)', desc: 'ဘဝင်အစဉ် ပြတ်တောက်သွားခြင်း (အာရုံဟောင်းကို စွန့်လွှတ်လိုက်ခြင်း)။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600', kicca: 'ဘဝင်္ဂကိစ္စ', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'avajjana', code: 'ပ', name: 'ပဉ္စဒွါရာဝဇ္ဇန်း', full: 'ပဉ္စဒွါရာဝဇ္ဇန်း (Pañcadvārāvajjana)', desc: 'ဒွါရငါးပါးသို့ ရောက်လာသော အာရုံသစ်ကို လှည့်၍ ဆင်ခြင်ခြင်း (ဘယ်အာရုံလဲဟု စစ်ဆေးခြင်း)။', color: 'bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border-cyan-400 dark:border-cyan-600', kicca: 'အာဝဇ္ဇနကိစ္စ (ဆင်ခြင်ခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'vinnana', code: 'စ', name: 'စက္ခုဝိညာဉ်', full: 'စက္ခုဝိညာဉ် (Cakkhuviññāṇa)', desc: 'ရောက်လာသော ရူပါရုံကို မြင်ခြင်း (သိခြင်းသက်သက်)။ နားဆိုလျှင် သောတဝိညာဉ် ဖြစ်မည်။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600', kicca: 'ဒဿနကိစ္စ (မြင်ခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'sampa', code: 'သံ', name: 'သမ္ပဋိစ္ဆန်း', full: 'သမ္ပဋိစ္ဆန်း (Sampaṭicchana)', desc: 'မြင်လိုက်သော အာရုံကို လက်ခံယူခြင်း။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600', kicca: 'သမ္ပဋိစ္ဆနကိစ္စ (လက်ခံခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'santi', code: 'တီ', name: 'သန္တီရဏ', full: 'သန္တီရဏ (Santīraṇa)', desc: 'လက်ခံရရှိသော အာရုံကို ကောင်း/မကောင်း စူးစမ်းဆင်ခြင်ခြင်း။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600', kicca: 'သန္တီရဏကိစ္စ (စူးစမ်းခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'vuttho', code: 'ဝု', name: 'ဝုဋ္ဌော', full: 'ဝုဋ္ဌော (Voṭṭhapana)', desc: 'အာရုံကို ကောင်းသည်/မကောင်းသည်ဟု ဆုံးဖြတ်ခြင်း (မနောဒွါရာဝဇ္ဇန်းစိတ်က ဤနေရာတွင် ဆုံးဖြတ်သည်)။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600', kicca: 'ဝေါဋ္ဌဗ္ဗနကိစ္စ (ဆုံးဖြတ်ခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'javana', code: 'ဇော', name: 'ဇော', full: 'ဇော ၇ ကြိမ် (Javana)', desc: 'ဆုံးဖြတ်ချက်အရ ကုသိုလ် သို့မဟုတ် အကုသိုလ်ဖြစ်၍ အာရုံ၏ အရသာကို ခံစားခြင်း (ကံမြောက်ခြင်း)။ အရှိန်အဟုန်ပြင်းသဖြင့် ၇ ကြိမ် ဆက်တိုက် ဖြစ်သည်။', color: 'bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 border-rose-400 dark:border-rose-600 ring-2 ring-rose-500/30', kicca: 'ဇဝနကိစ္စ (အဟုန်ဖြင့် ပြေးသွား ခံစားခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'tada', code: 'ဒါ', name: 'တဒါရုံ', full: 'တဒါရုံ (Tadārammaṇa)', desc: 'ဇော၏ အရှိန်အဟုန်ကို အသာအယာ ငြိမ်ကျသွားစေရန် ဇော၏အာရုံကို ဆက်လက်ယူ၍ ဖြစ်ပေါ်သော စိတ် ၂ ကြိမ်။ ပြီးလျှင် ဘဝင်သို့ ပြန်ကျသွားသည်။', color: 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-400 dark:border-amber-600', kicca: 'တဒါရမ္မဏကိစ္စ (အာရုံကို အစဉ်အတိုင်း ယူခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'mano', code: 'မ', name: 'မနောဒွါရာဝဇ္ဇန်း', full: 'မနောဒွါရာဝဇ္ဇန်း (Manodvārāvajjana)', desc: 'မနောဒွါရ (စိတ်) သို့ ရောက်လာသော အာရုံကို ဆင်ခြင်ခြင်း။ ဤစိတ်ပြီးလျှင် ဇော ချက်ချင်း ကျသည်။', color: 'bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border-cyan-400 dark:border-cyan-600', kicca: 'အာဝဇ္ဇနကိစ္စ (မနောဒွါရ၌)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'parikamma', code: 'ပ', name: 'ပရိကံ', full: 'ပရိကမ္မ (Parikamma)', desc: 'အပ္ပနာဇော (ဈာန်/မဂ်) ကျရန် ပြင်ဆင်သည့် အစပိုင်း ကာမဇောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600', kicca: 'ဇဝနကိစ္စ (ပြင်ဆင်ခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'upacara', code: 'ဥ', name: 'ဥပစာ', full: 'ဥပစာရ (Upacāra)', desc: 'အပ္ပနာဇော (ဈာန်/မဂ်) သို့ ချဉ်းကပ်သည့် ကာမဇောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600', kicca: 'ဇဝနကိစ္စ (ချဉ်းကပ်ခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'anuloma', code: 'နု', name: 'အနုလုံ', full: 'အနုလောမ (Anuloma)', desc: 'အပ္ပနာဇောနှင့် လျော်ညီစွာ ဖြစ်ပေါ်သော ကာမဇောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600', kicca: 'ဇဝနကိစ္စ (လျော်ညီခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'gotrabhu', code: 'ဂေါ', name: 'ဂေါတြဘူ/ဝေါဒါန်', full: 'ဂေါတြဘူ (Gotrabhū)', desc: 'ပုထုဇဉ် အနွယ်ကို ဖြတ်၍ အရိယာ အနွယ်သို့ ကူးပြောင်းပေးသောစိတ် သို့မဟုတ် ဈာန်အနွယ်သို့ ကူးပြောင်းပေးသောစိတ်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600', kicca: 'ဇဝနကိစ္စ (အနွယ်ဖြတ်ခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'appana', code: 'ဈာ', name: 'အပ္ပနာဇော', full: 'အပ္ပနာဇော (Appanā Javana)', desc: 'ဈာန်၊ မဂ်၊ ဖိုလ် ဟူသော အပ္ပနာဇောစိတ်။ အာရုံ၌ စွဲမြဲစွာ တည်သည်။', color: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-400 dark:border-indigo-600 ring-2 ring-indigo-500/50 shadow-[0_0_12px_rgba(99,102,241,0.5)]', kicca: 'ဇဝနကိစ္စ (စွဲမြဲတည်တံ့ခြင်း)', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'magga', code: 'မဂ်', name: 'မဂ်ဇော', full: 'မဂ္ဂ (Magga)', desc: 'ကိလေသာများကို ပယ်သတ်သော မဂ်စိတ် (၁ ကြိမ်သာ စောသည်)။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600 ring-2 ring-emerald-500/50 shadow-[0_0_12px_rgba(16,185,129,0.5)]', kicca: 'ဇဝနကိစ္စ', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'phala', code: 'ဖိုလ်', name: 'ဖိုလ်ဇော', full: 'ဖလ (Phala)', desc: 'မဂ်၏ အကျိုးရလဒ်အဖြစ် ချက်ချင်းဖြစ်ပေါ်သော ဖိုလ်စိတ် (၂ ကြိမ် သို့မဟုတ် ၃ ကြိမ်)။', color: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-400 dark:border-indigo-600 ring-2 ring-indigo-500/50 shadow-[0_0_12px_rgba(99,102,241,0.5)]', kicca: 'ဇဝနကိစ္စ', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'nirodha', code: 'ချုပ်', name: 'နိရောဓ', full: 'နိရောဓ (Nirodha)', desc: 'စိတ်၊ စေတသိက်၊ စိတ္တဇရုပ်တို့ လုံးဝ ချုပ်ငြိမ်းသွားခြင်း (၇ ရက်တိုင်တိုင်)။', color: 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-500 border-slate-300 dark:border-slate-700 border-dashed border-2 opacity-50', kicca: 'စိတ်မရှိပါ', utb: '-' },
+            { id: 'neva', code: 'နေ', name: 'နေဝသညာ', full: 'နေဝသညာနာသညာယတန', desc: 'နိရောဓသမာပတ် ဝင်စားမည့် ပုဂ္ဂိုလ်သည် ရှေးဦးစွာ နေဝသညာနာသညာယတန ဈာန်ဇော (၂) ကြိမ် စောရသည်။', color: 'bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-400 dark:border-fuchsia-600', kicca: 'ဇဝနကိစ္စ', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' },
+            { id: 'anagami', code: 'ဖိုလ်', name: 'ဖိုလ် (အနာဂါမိ/အရဟတ္တ)', full: 'ဖိုလ် (အနာဂါမိ/အရဟတ္တ)', desc: 'နိရောဓသမာပတ်မှ ထပြီးနောက် မိမိရရှိပြီးသော ဖိုလ်စိတ် (၁) ကြိမ် ပြန်လည်ဖြစ်ပေါ်သည်။', color: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-400 dark:border-indigo-600 ring-2 ring-indigo-500/50 shadow-[0_0_12px_rgba(99,102,241,0.5)]', kicca: 'ဇဝနကိစ္စ', utb: 'ဥပါဒ်၊ ဌီ၊ ဘင် ၃ ချက်' }
         ];
 
         const pancaAtiSeq = ['b', 'b', 'atita', 'calana', 'upaccheda', 'avajjana', 'vinnana', 'sampa', 'santi', 'vuttho', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'tada', 'tada', 'b', 'b'];
@@ -377,56 +403,140 @@
         const manoAvibhuSeq = ['b', 'calana', 'upaccheda', 'mano', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'b', 'b'];
         const manoAppanaSeq = ['b', 'b', 'calana', 'upaccheda', 'mano', 'parikamma', 'upacara', 'anuloma', 'gotrabhu', 'appana', 'b', 'b'];
 
-        function renderTimeline(elementId, sequence) {
+        // Step-by-Step Logic for Atimahantarama
+        let atiStepIndex = -1;
+        const atiDescriptions = [
+            "အိပ်ပျော်နေသကဲ့သို့ ဘဝင်စိတ်များ အစဉ်အတိုင်း ဖြစ်နေသည်။",
+            "အာရုံသစ် (ဥပမာ ရူပါရုံ) သည် မျက်စိအကြည်နှင့် ထိခိုက်မိသော်လည်း မသိသေးဘဲ ၁ ကြိမ် လွန်သွားသည်။ (အတီတဘဝင်)",
+            "အာရုံကြောင့် ဘဝင်အစဉ် တုန်လှုပ်သွားသည်။ (ဘဝင်္ဂစလန)",
+            "ဘဝင်အစဉ် ပြတ်တောက်သွားသည်။ (ဘဝင်္ဂုပစ္ဆေဒ)",
+            "မည်သည့်အာရုံဖြစ်သည်ကို လှည့်၍ ဆင်ခြင်သည်။ (ပဉ္စဒွါရာဝဇ္ဇန်း)",
+            "အာရုံကို မြင်သိလိုက်သည်။ (စက္ခုဝိညာဉ်)",
+            "မြင်ပြီးသော အာရုံကို လက်ခံယူသည်။ (သမ္ပဋိစ္ဆန်း)",
+            "လက်ခံရရှိသော အာရုံကို စူးစမ်းဆင်ခြင်သည်။ (သန္တီရဏ)",
+            "အာရုံကို ကောင်း/မကောင်း ဆုံးဖြတ်ချက်ချသည်။ (ဝုဋ္ဌော)",
+            "ဆုံးဖြတ်ချက်အရ ကောင်းလျှင် လောဘ၊ မကောင်းလျှင် ဒေါသ စသည်ဖြင့် ဇော (၁) ကြိမ် စောသည်။",
+            "ဇော (၂) ကြိမ် စောသည်။",
+            "ဇော (၃) ကြိမ် စောသည်။",
+            "ဇော (၄) ကြိမ် စောသည်။",
+            "ဇော (၅) ကြိမ် စောသည်။",
+            "ဇော (၆) ကြိမ် စောသည်။",
+            "ဇော (၇) ကြိမ် စောသည်။ ကံမြောက်သွားပြီ ဖြစ်သည်။",
+            "ဇော၏ အရှိန်ကို ထိန်းရန် အာရုံကို ဆက်ခံစားသော တဒါရုံ (၁) ကြိမ် ကျသည်။",
+            "တဒါရုံ (၂) ကြိမ် ကျသည်။",
+            "ဝီထိစိတ်စဉ် ပြီးဆုံးသွားသဖြင့် ဘဝင်သို့ ပြန်ကျသွားသည်။ အာရုံချုပ်သွားပြီ။"
+        ];
+        const atiIndexMap = [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 18];
+
+        function nextAtiStep() {
+            if (atiStepIndex === -1) atiStepIndex = 1; // skip first b
+            else if (atiStepIndex < pancaAtiSeq.length - 1) atiStepIndex++;
+            else atiStepIndex = -1;
+            renderTimeline('panca-ati-timeline', pancaAtiSeq, atiStepIndex, true);
+        }
+
+        function resetAtiStep() {
+            atiStepIndex = -1;
+            renderTimeline('panca-ati-timeline', pancaAtiSeq, atiStepIndex, true);
+        }
+
+        function renderTimeline(elementId, sequence, stepIndex = -1, isAti = false) {
             const container = document.getElementById(elementId);
             container.innerHTML = '';
             
-            sequence.forEach((nodeId, index) => {
+            const seqToRender = stepIndex === -1 ? sequence : sequence.slice(0, stepIndex + 1);
+
+            if (isAti) {
+                const descText = document.getElementById('ati-desc-text');
+                if (stepIndex === -1) {
+                    descText.innerHTML = 'တဒါရုံကျပြီးမှ ဘဝင်သို့ ပြန်ကျသည်။ (အာရုံသက်တမ်း ၁၇ ချက် အပြည့်)';
+                } else {
+                    descText.innerHTML = `<span class="text-cyan-700 dark:text-cyan-300 font-bold">အဆင့် ${stepIndex}:</span> ${atiDescriptions[atiIndexMap[stepIndex]]}`;
+                }
+            }
+            
+            seqToRender.forEach((nodeId, index) => {
                 const node = vithiNodes.find(n => n.id === nodeId);
                 if (!node) return;
 
                 const isVithi = (nodeId !== 'b');
                 let numberLabel = '';
                 
-                if(elementId === 'panca-ati-timeline' && isVithi) {
+                if((elementId === 'panca-ati-timeline' || isAti) && isVithi) {
                     const vithiCount = index - 1;
                     if(vithiCount >= 1 && vithiCount <= 17) numberLabel = `<div class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-slate-400 font-bold">${vithiCount}</div>`;
                 }
 
+                const animateClass = (stepIndex !== -1 && index === stepIndex) ? 'animate-[popIn_0.3s_ease-out]' : '';
+
                 container.innerHTML += `
-                    <div class="flex items-center">
+                    <div class="flex items-center ${animateClass}">
                         <button onclick="openModal('${node.id}')" 
                             class="vithi-node relative w-12 h-12 md:w-14 md:h-14 rounded-full flex flex-col items-center justify-center border-2 ${node.color} shadow-sm shrink-0">
                             ${numberLabel}
                             <span class="font-bold text-sm md:text-base">${node.code}</span>
                         </button>
-                        ${index < sequence.length - 1 ? '<div class="w-3 h-0.5 bg-slate-300 dark:bg-slate-700 shrink-0"></div>' : ''}
+                        ${index < seqToRender.length - 1 ? '<div class="w-3 h-0.5 bg-slate-300 dark:bg-slate-700 shrink-0"></div>' : ''}
                     </div>
                 `;
             });
+
+            if (stepIndex !== -1) {
+                container.parentElement.scrollLeft = container.scrollWidth;
+            }
         }
 
         function renderAppanaDetailed() {
             document.getElementById('appana-detailed-grid').innerHTML = appanaDetailedData.map(a => `
-                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 space-y-2">
-                    <div class="flex items-center gap-2">
+                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 space-y-3">
+                    <div class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
                         <i class="fa-solid ${a.icon} text-${a.color}-500 text-lg"></i>
                         <h4 class="font-bold text-sm text-${a.color}-700 dark:text-${a.color}-300">${a.name}</h4>
                     </div>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${a.desc}</p>
+                    <p class="text-[11.5px] text-slate-600 dark:text-slate-400 leading-relaxed">${a.desc}</p>
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing mt-2 bg-slate-100/50 dark:bg-slate-900/50 rounded-xl">
+                        <div id="appana-tl-${a.id}" class="flex items-center gap-2 min-w-max px-3 py-3"></div>
+                    </div>
                 </div>
             `).join('');
+
+            // Render timelines
+            appanaDetailedData.forEach(a => {
+                renderTimeline(`appana-tl-${a.id}`, a.seq);
+            });
         }
 
         function renderPuggalaGrid() {
             document.getElementById('puggala-grid').innerHTML = puggalaData.map(p => `
-                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 space-y-2">
-                    <h4 class="font-bold text-sm text-emerald-700 dark:text-emerald-300 border-b border-emerald-200 dark:border-emerald-900/50 pb-1">${p.title}</h4>
-                    <ul class="space-y-1.5 list-disc list-inside text-slate-600 dark:text-slate-400">
-                        ${p.items.map(it => `<li>${it}</li>`).join('')}
+                <button onclick="openPuggalaModal(${p.id})" class="text-left w-full p-5 rounded-2xl border border-${p.color}-500/30 bg-white/60 dark:bg-slate-900/60 hover:bg-${p.color}-50 dark:hover:bg-${p.color}-900/20 transition group shadow-sm hover:shadow-md">
+                    <div class="flex items-center gap-3 mb-3 border-b border-${p.color}-200 dark:border-${p.color}-900/50 pb-2">
+                        <div class="w-10 h-10 shrink-0 rounded-full bg-${p.color}-500/20 flex items-center justify-center text-${p.color}-600 dark:text-${p.color}-400 text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid ${p.icon}"></i>
+                        </div>
+                        <h4 class="font-bold text-base text-${p.color}-700 dark:text-${p.color}-300 group-hover:text-${p.color}-600 transition">${p.title}</h4>
+                    </div>
+                    <p class="text-[12.5px] text-slate-600 dark:text-slate-400 leading-relaxed">${p.short}</p>
+                    <div class="mt-3 text-[11px] font-bold text-${p.color}-600 flex items-center gap-1.5"><i class="fa-solid fa-arrow-right-long"></i> အသေးစိတ် ဖတ်ရန်</div>
+                </button>
+            `).join('');
+        }
+
+        function openPuggalaModal(id) {
+            const data = puggalaData.find(x => x.id === id);
+            if(!data) return;
+
+            document.getElementById('modal-content').innerHTML = `
+                <div class="flex items-center gap-3 mb-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center bg-${data.color}-500/20 text-${data.color}-500 text-2xl"><i class="fa-solid ${data.icon}"></i></div>
+                    <h3 class="font-bold text-lg md:text-xl text-${data.color}-700 dark:text-${data.color}-300">${data.title}</h3>
+                </div>
+                <div class="space-y-4 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl text-sm border border-slate-200 dark:border-slate-800">
+                    <ul class="space-y-3 text-slate-700 dark:text-slate-300 leading-relaxed">
+                        ${data.items.map(it => `<li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-${data.color}-500 mt-1 text-[10px]"></i> <span>${it}</span></li>`).join('')}
                     </ul>
                 </div>
-            `).join('');
+            `;
+            document.getElementById('modal').classList.remove('hidden');
         }
 
         function openModal(nodeId) {
@@ -434,11 +544,24 @@
             if (!node) return;
 
             document.getElementById('modal-content').innerHTML = `
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-10 h-10 rounded-full flex items-center justify-center border-2 font-bold text-lg ${node.color}">${node.code}</div>
-                    <h3 class="font-bold text-lg md:text-xl text-slate-800 dark:text-slate-100">${node.full}</h3>
+                <div class="flex items-center gap-3 mb-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <div class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center border-2 font-bold text-xl ${node.color}">${node.code}</div>
+                    <div>
+                        <h3 class="font-bold text-lg md:text-xl text-slate-800 dark:text-slate-100">${node.full}</h3>
+                        ${node.kicca ? `<p class="text-xs text-sky-600 dark:text-sky-400 font-medium mt-0.5"><i class="fa-solid fa-briefcase mr-1.5"></i>${node.kicca}</p>` : ''}
+                    </div>
                 </div>
-                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3">${node.desc}</p>
+                <div class="space-y-3 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl text-sm border border-slate-200 dark:border-slate-800">
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">အဘိဓမ္မာ ရှင်းလင်းချက်</span>
+                        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">${node.desc}</p>
+                    </div>
+                    ${node.utb ? `
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-700">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">စိတ္တက္ခဏ (Thought Moment)</span>
+                        <p class="text-slate-600 dark:text-slate-400 text-xs">${node.utb} အချိန်ကြာမြင့်သည်။</p>
+                    </div>` : ''}
+                </div>
             `;
             document.getElementById('modal').classList.remove('hidden');
         }
