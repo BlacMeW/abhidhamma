@@ -336,7 +336,7 @@
             mapStructure.forEach((level) => {
                 html += `
                     <div class="flex items-center gap-2 mb-2 w-full justify-center">
-                        <div class="hidden md:block w-32 text-right text-[10px] uppercase text-slate-500 dark:text-slate-500 font-bold pr-4 border-r border-slate-300 dark:border-slate-700/50">\${level.title}</div>
+                        <div class="hidden md:block w-32 text-right text-[10px] uppercase text-slate-500 dark:text-slate-500 font-bold pr-4 border-r border-slate-300 dark:border-slate-700/50">${level.title}</div>
                         <div class="flex flex-wrap items-center justify-center gap-1.5 md:gap-2 flex-1 max-w-2xl">
                 `;
                 
@@ -344,11 +344,11 @@
                     const b = bhumiData.find(x => x.id === id);
                     if (b) {
                         html += `
-                            <button onclick="openBhumiModal('\${b.key}')" 
-                                class="vm-card flex flex-col items-center justify-center p-2 rounded-xl border \${level.color} transition-all w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shadow-lg">
-                                <i class="fa-solid \${b.icon} text-lg md:text-xl mb-1 md:mb-2 opacity-80"></i>
-                                <span class="text-[9px] md:text-[11px] font-bold text-center leading-tight">\${b.name}</span>
-                                <span class="text-[8px] md:text-[9px] opacity-60 font-mono mt-0.5">#\${mm(b.id)}</span>
+                            <button onclick="openBhumiModal('${b.key}')" 
+                                class="vm-card flex flex-col items-center justify-center p-2 rounded-xl border ${level.color} transition-all w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shadow-lg">
+                                <i class="fa-solid ${b.icon} text-lg md:text-xl mb-1 md:mb-2 opacity-80"></i>
+                                <span class="text-[9px] md:text-[11px] font-bold text-center leading-tight">${b.name}</span>
+                                <span class="text-[8px] md:text-[9px] opacity-60 font-mono mt-0.5">#${mm(b.id)}</span>
                             </button>
                         `;
                     }
