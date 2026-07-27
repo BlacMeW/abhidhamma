@@ -42,11 +42,17 @@
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .animate-fade-in { animation: fade-in 0.2s ease-out; }
-        .pn-card { transition: transform 0.15s ease; }
-        .pn-card:hover { transform: translateY(-2px); }
-    </style>
-    <style>
-        :root { color-scheme: light dark; }
+        .pn-card { transition: all 0.2s ease; cursor: pointer; text-align: left; }
+        .pn-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .pn-card:active { transform: translateY(0); }
+        
+        /* Modal specific animations */
+        @keyframes modal-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes modal-panel-in { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        
+        .modal-active { overflow: hidden; }
+        .modal-bg-anim { animation: modal-backdrop-in 0.2s ease-out forwards; }
+        .modal-panel-anim { animation: modal-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
@@ -73,17 +79,17 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
+    <main class="max-w-5xl mx-auto px-4 mt-8 flex-1 w-full space-y-10">
 
         <!-- Intro -->
         <div class="text-center max-w-4xl mx-auto space-y-3">
             <span class="text-violet-700 dark:text-violet-400 font-semibold text-sm tracking-wider uppercase">ပစ္စယသင်္ဂဟအခန်း၏ နောက်ဆက်တွဲ</span>
             <h2 class="text-2xl md:text-3xl font-bold">ပညတ်ဆိုတာ ဘာလဲ?</h2>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-left md:text-center">
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-left md:text-center mt-2">
                 အဘိဓမ္မာတွင် ပရမတ္ထသစ္စာ (အမှန်တကယ်ရှိသော ရုပ်၊ နာမ်၊ နိဗ္ဗာန်) ကို အဓိက လေ့လာသော်လည်း၊ လူ့ဘောင်လောကတွင် ဆက်သွယ်ပြောဆိုရန်အတွက် သမ္မုတိသစ္စာဖြစ်သော "ပညတ်" (Concepts / Names) များ လိုအပ်ပါသည်။ ပညတ်သည် အမှန်တကယ် မရှိသော်လည်း နားလည်အောင် ဖွဲ့စည်းခေါ်ဝေါ်ထားသော အရာများ ဖြစ်သည်။ ဥပမာ - <b>"ပုဂ္ဂလပညတ်" (ပုဂ္ဂိုလ်၊ သတ္တဝါ)</b> သည် ခန္ဓာငါးပါး အစုအဝေးကို ပညတ်ထားခြင်းသာ ဖြစ်သည်။
             </p>
             
-            <div class="glass-card rounded-2xl p-5 mt-4 inline-block mx-auto border border-violet-500/30 text-left space-y-3 w-full md:w-auto">
+            <div class="glass-card rounded-2xl p-5 mt-6 inline-block mx-auto border border-violet-500/30 text-left space-y-3 w-full md:w-auto shadow-sm">
                 <h3 class="font-bold text-violet-700 dark:text-violet-300 text-center mb-3 text-sm md:text-base">ပညတ် အဓိက ၂ မျိုး (အဘိဓမ္မာ ဖွင့်ဆိုချက်)</h3>
                 
                 <div class="flex items-start gap-3 bg-white/50 dark:bg-slate-900/50 p-3 rounded-xl border border-sky-500/10">
@@ -98,37 +104,43 @@
                     <div class="mt-1 w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0"><i class="fa-solid fa-font"></i></div>
                     <div>
                         <div class="font-bold text-rose-700 dark:text-rose-300 text-sm">ပညာပနတော ပညတ္တိ <span class="font-normal text-slate-500 text-[11px]">(Paññāpanato paññatti)</span></div>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">သိစေ-ပြစေ-ထင်ရှားစေတတ်သောကြောင့် ပညတ်မည်၏။ သူတစ်ပါးသိအောင် ခေါ်ဝေါ်ပြောဆိုရသော အမည်/အသံ <span class="font-bold text-rose-600 dark:text-rose-400">နာမပညတ်</span> ကို ဆိုလိုသည်။</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">သိစေ-ပြစေ-ထင်ရှားစေတတ်သောကြောင့် ပညတ်မည်၏။ သူတစ်ပါးသိအောင် ခေါ်ဝေါ်ပြောဆိုရသော အမည်/အသံ <span class="font-bold text-rose-600 dark:text-rose-400">နာမပညတ် (သဒ္ဒပညတ်)</span> ကို ဆိုလိုသည်။</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 1. Attha Pannatti -->
-        <section class="glass-card rounded-2xl p-6 border border-sky-500/30 space-y-4 max-w-4xl mx-auto">
-            <h3 class="text-xl font-bold text-sky-700 dark:text-sky-300 flex items-center gap-2">
-                <i class="fa-solid fa-shapes"></i> ၁။ အတ္ထပညတ် (Concept of Meaning)
-            </h3>
-            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                ရုပ်တရားများ၏ ပုံသဏ္ဌာန်၊ တည်နေရာ၊ အစုအဝေး၊ အချိန်ကာလ စသည်တို့ကို အကြောင်းပြု၍ စိတ်ထဲတွင် "အဓိပ္ပာယ်" အနေဖြင့် မှတ်ယူထားသော ပညတ်များ ဖြစ်သည်။
-            </p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm" id="attha-container">
+        <!-- 1. Attha Pannatti Group -->
+        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-sky-500 space-y-4 shadow-sm">
+            <div class="flex items-center gap-3 pb-2 border-b border-slate-100 dark:border-slate-800">
+                <div class="w-11 h-11 rounded-xl bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-400 flex items-center justify-center text-xl border border-sky-500/30"><i class="fa-solid fa-shapes"></i></div>
+                <div>
+                    <h3 class="font-bold text-sky-700 dark:text-sky-300 text-lg">အတ္ထပညတ် ၆ မျိုး (Attha-paññatti)</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">အနက်အဓိပ္ပာယ်၊ ပုံသဏ္ဌာန်အနေဖြင့် စိတ်ထဲတွင် သိမှတ်ရသော ပညတ်များ (Concept of Meaning)</p>
+                </div>
+            </div>
+            
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic mb-2">အသေးစိတ်သိရှိရန် ကတ်တစ်ခုချင်းစီကို နှိပ်ပါ။</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3" id="attha-container">
                 <!-- Rendered via JS -->
             </div>
-        </section>
+        </div>
 
-        <!-- 2. Nama Pannatti -->
-        <section class="glass-card rounded-2xl p-6 border border-rose-500/30 space-y-4 max-w-4xl mx-auto">
-            <h3 class="text-xl font-bold text-rose-700 dark:text-rose-300 flex items-center gap-2">
-                <i class="fa-solid fa-font"></i> ၂။ နာမပညတ် ၆ မျိုး (Concept of Name)
-            </h3>
-            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                အတ္ထပညတ် (သို့မဟုတ် ပရမတ်) များကို ခေါ်ဝေါ်ပြောဆိုရန် သတ်မှတ်ထားသော အမည်နာမ၊ အသံ (Words) များ ဖြစ်သည်။ ပရမတ်တရား ရှိ/မရှိ (ဝိဇ္ဇမာန / အဝိဇ္ဇမာန) ကို မူတည်၍ ၆ မျိုး ခွဲခြားထားသည်။
-            </p>
-            <div class="grid md:grid-cols-2 gap-4 text-sm" id="nama-container">
+        <!-- 2. Nama Pannatti Group -->
+        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-rose-500 space-y-4 shadow-sm">
+            <div class="flex items-center gap-3 pb-2 border-b border-slate-100 dark:border-slate-800">
+                <div class="w-11 h-11 rounded-xl bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 flex items-center justify-center text-xl border border-rose-500/30"><i class="fa-solid fa-font"></i></div>
+                <div>
+                    <h3 class="font-bold text-rose-700 dark:text-rose-300 text-lg">နာမပညတ် ၆ မျိုး (Nāma-paññatti)</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">ပရမတ်/ပညတ် တရားများကို ခေါ်ဝေါ်ပြောဆိုရန် သတ်မှတ်ထားသော အမည်/အသံများ (Concept of Name)</p>
+                </div>
+            </div>
+
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic mb-2">အသေးစိတ်သိရှိရန် ကတ်တစ်ခုချင်းစီကို နှိပ်ပါ။</p>
+            <div class="grid md:grid-cols-2 gap-4" id="nama-container">
                 <!-- Rendered via JS -->
             </div>
-        </section>
+        </div>
 
         <!-- Footer -->
         <section class="text-center space-y-3 max-w-3xl mx-auto mt-8">
@@ -138,51 +150,176 @@
         </section>
     </main>
 
+    <!-- Generic Pannatti Modal -->
+    <div id="pannatti-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4 pt-4 pb-20 sm:p-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm transition-opacity" onclick="closePannattiModal()"></div>
+        <div id="modal-panel" class="relative bg-white dark:bg-slate-900 rounded-2xl max-w-xl w-full border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-800" id="modal-header-bg">
+                <div class="flex items-center gap-3">
+                    <div id="modal-icon" class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 border"></div>
+                    <div>
+                        <h3 class="text-lg font-bold" id="modal-title">Title</h3>
+                        <p class="text-xs font-mono opacity-80" id="modal-pali">Pali</p>
+                    </div>
+                </div>
+                <button onclick="closePannattiModal()" class="w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-5 overflow-y-auto space-y-5 custom-scrollbar bg-slate-50/50 dark:bg-slate-900/50 flex-1 text-left">
+                
+                <!-- Simple Desc -->
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5"><i class="fa-solid fa-book-open mr-1"></i> အဓိပ္ပာယ်</h4>
+                    <p class="text-[13px] leading-relaxed text-slate-800 dark:text-slate-200 font-semibold" id="modal-desc"></p>
+                </div>
+
+                <!-- Deep Desc -->
+                <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> အဘိဓမ္မာ ရှင်းလင်းချက် အကျယ်</h4>
+                    <p class="text-[12px] leading-relaxed text-slate-700 dark:text-slate-300" id="modal-deep-desc"></p>
+                </div>
+
+                <!-- Paramattha vs Sammuti Link -->
+                <div class="bg-amber-50/50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-200/50 dark:border-amber-900/50">
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-500 mb-2"><i class="fa-solid fa-link mr-1"></i> ပရမတ် နှင့် ဆက်စပ်ပုံ</h4>
+                    <p class="text-[12px] leading-relaxed text-amber-900/80 dark:text-amber-200/80" id="modal-paramattha"></p>
+                </div>
+
+                <!-- Logic Badges (For Nama Pannatti Only) -->
+                <div id="modal-logic-section" class="hidden border-t border-slate-200 dark:border-slate-700 pt-4">
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2"><i class="fa-solid fa-sitemap mr-1"></i> ဖွဲ့စည်းပုံ သရုပ်ခွဲ</h4>
+                    <div id="modal-logic-badges" class="flex flex-wrap items-center gap-y-2"></div>
+                </div>
+
+                <!-- Examples -->
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2"><i class="fa-solid fa-list-ul mr-1"></i> ဥပမာများ</h4>
+                    <div class="bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-100 dark:border-slate-700">
+                        <ul class="text-[12px] text-slate-700 dark:text-slate-300 space-y-1.5 list-disc list-inside marker:text-slate-400" id="modal-ex-list">
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <script>
         const atthaPannatti = [
-            { name: 'သန္တာနပညတ်', pali: 'Santhāna-paññatti', desc: 'ပထဝီစသော ရုပ်တရားတို့၏ အတို/အရှည်၊ အဝိုင်း/လေးထောင့် စသည့် ပုံသဏ္ဌာန်ကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။', ex: 'တောင်၊ လိုဏ်ဂူ၊ အိမ်၊ ကား', icon: 'fa-mountain' },
-            { name: 'သမုဟပညတ်', pali: 'Samūha-paññatti', desc: 'ရုပ်/နာမ် အစိတ်အပိုင်းများကို စုပေါင်းဖွဲ့စည်းထားမှုကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။ <b>ပုဂ္ဂလပညတ် (ပုဂ္ဂိုလ်၊ သတ္တဝါ၊ လူ၊ နတ်)</b> သည်လည်း ဤအစုအဝေးပညတ်တွင် ပါဝင်သည်။', ex: 'လူ၊ ရထား၊ ရွာ၊ တပ်မတော်', icon: 'fa-users' },
-            { name: 'ဒိသာပညတ်', pali: 'Disā-paññatti', desc: 'နေထွက်ရာ၊ နေဝင်ရာ စသည်တို့ကို စွဲ၍ ခေါ်ဝေါ်သော အရပ်မျက်နှာ ပညတ်။ (အမှန်တကယ် ပရမတ်အားဖြင့် အရှေ့/အနောက် မရှိပါ)။', ex: 'အရှေ့၊ အနောက်၊ တောင်၊ မြောက်', icon: 'fa-compass' },
-            { name: 'ကာလပညတ်', pali: 'Kāla-paññatti', desc: 'နေ၊ လ တို့၏ လှည့်ပတ်မှု၊ အလင်း/အမှောင်၊ ရာသီဥတုတို့ကို စွဲ၍ ခေါ်ဝေါ်သော အချိန်ကာလ ပညတ်။', ex: 'မနက်၊ ည၊ နွေ၊ မိုး၊ နာရီ', icon: 'fa-clock' },
-            { name: 'အာကာသပညတ်', pali: 'Ākāsa-paññatti', desc: 'မြေကြီး/ရုပ်တရားများ မရှိသော နေရာလွတ် (ဟာဝပ်) ကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။', ex: 'ရေတွင်း၊ ဥမင်၊ တွင်း၊ လေဟာပြင်', icon: 'fa-cubes' },
-            { name: 'နိမိတ္တပညတ်', pali: 'Nimitta-paññatti', desc: 'ကသိုဏ်းဝန်း စသည့် အာရုံများကို စွဲ၍ ဘာဝနာစွမ်းအားကြောင့် စိတ်ထဲ၌ ထင်လာသော နိမိတ် ပညတ်။', ex: 'ပရိကမ္မနိမိတ်၊ ဥဂ္ဂဟနိမိတ်၊ ပဋိဘာဂနိမိတ်', icon: 'fa-circle-dot' }
+            { 
+                id: 'santhana',
+                name: 'သန္တာနပညတ်', pali: 'Santhāna-paññatti', 
+                desc: 'ပထဝီစသော ရုပ်တရားတို့၏ အတို/အရှည်၊ အဝိုင်း/လေးထောင့် စသည့် ပုံသဏ္ဌာန်ကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။', 
+                ex: ['တောင်', 'လိုဏ်ဂူ', 'အိမ်', 'ကား', 'ပုလင်း'], 
+                icon: 'fa-mountain',
+                deepDesc: 'အမှန်တကယ် ပရမတ်အားဖြင့် တောင်၊ လိုဏ်ဂူ စသည်တို့သည် မရှိပါ။ ပထဝီ၊ တေဇော၊ ဝါယော၊ အာပေါ စသော ရုပ်ကလာပ် အစုအဝေးများ ဖြစ်ပေါ်နေမှုအပေါ်တွင် စိတ်က အတို၊ အရှည်၊ အဝန်းအဝိုင်း စသည်ဖြင့် "ပုံသဏ္ဌာန်" (Shape/Form) ယူကာ မှတ်သားလိုက်ခြင်းသာ ဖြစ်သည်။',
+                paramatthaLink: 'ရုပ်တရားတို့၏ တည်နေရာနှင့် ဖွဲ့စည်းပုံသဏ္ဌာန်ကို အခြေခံ၍ ပညတ်ထားသည်။'
+            },
+            { 
+                id: 'samuha',
+                name: 'သမုဟပညတ်', pali: 'Samūha-paññatti', 
+                desc: 'ရုပ်/နာမ် အစိတ်အပိုင်းများကို စုပေါင်းဖွဲ့စည်းထားမှုကို စွဲ၍ ခေါ်ဝေါ်သော အစုအဝေးပညတ်။', 
+                ex: ['လူ၊ နတ်၊ ဗြဟ္မာ (ပုဂ္ဂလပညတ်)', 'ရထား၊ ကား', 'ရွာ၊ မြို့၊ တပ်မတော်', 'သစ်ပင်'], 
+                icon: 'fa-users',
+                deepDesc: 'အစိတ်အပိုင်းလေးများစွာ စုပေါင်းထားသည့်အခါ စိတ်ထဲ၌ တစ်ခုတည်းသော အရာဝတ္ထု သို့မဟုတ် အကောင်အထည်အဖြစ် ထင်မြင်လာခြင်းဖြစ်သည်။ ဥပမာ - ဘီး၊ ဝင်ရိုး၊ ထမ်းပိုး၊ ယာဉ်အုံ တို့ကို စုပေါင်းလိုက်သောအခါ "ရထား" ဟူသော ပညတ်ဖြစ်လာသည်။ ထို့အတူ ခန္ဓာငါးပါး (ရုပ်၊ နာမ်) စုပေါင်းလိုက်သောအခါ "ပုဂ္ဂိုလ်၊ သတ္တဝါ" (ပုဂ္ဂလပညတ်) ဟူ၍ ဖြစ်လာသည်။',
+                paramatthaLink: 'ရုပ်နာမ် အစိတ်အပိုင်း အမြောက်အမြား (ခန္ဓာ ၅ ပါး) စုပေါင်းဖြစ်ပေါ်မှုကို အခြေခံ၍ ပညတ်ထားသည်။'
+            },
+            { 
+                id: 'disa',
+                name: 'ဒိသာပညတ်', pali: 'Disā-paññatti', 
+                desc: 'နေထွက်ရာ၊ နေဝင်ရာ စသည်တို့ကို စွဲ၍ ခေါ်ဝေါ်သော အရပ်မျက်နှာ ပညတ်။', 
+                ex: ['အရှေ့ (နေထွက်ရာ)', 'အနောက် (နေဝင်ရာ)', 'တောင်', 'မြောက်', 'အထက်', 'အောက်'], 
+                icon: 'fa-compass',
+                deepDesc: 'အမှန်တကယ် ပရမတ်အားဖြင့် အရှေ့၊ အနောက် စသော အရပ်မျက်နှာများ မရှိပါ။ နေ၊ လ တို့၏ တည်နေရာကို အခြေခံ၍သော်လည်းကောင်း၊ မိမိ၏ မျက်နှာမူရာကို အခြေခံ၍သော်လည်းကောင်း စိတ်က ဖန်တီးသတ်မှတ်ထားသော (Relative Direction) သဘောတရားမျှသာ ဖြစ်သည်။',
+                paramatthaLink: 'နေ၊ လ တို့၏ ရုပ်တရားများနှင့် မိမိရုပ်ခန္ဓာ၏ တည်နေရာ ဆက်စပ်မှုကို အခြေခံ၍ ပညတ်ထားသည်။'
+            },
+            { 
+                id: 'kala',
+                name: 'ကာလပညတ်', pali: 'Kāla-paññatti', 
+                desc: 'နေ၊ လ တို့၏ လှည့်ပတ်မှု၊ အလင်း/အမှောင်၊ ရာသီဥတုတို့ကို စွဲ၍ ခေါ်ဝေါ်သော အချိန်ကာလ ပညတ်။', 
+                ex: ['မနက်၊ နေ့၊ ည', 'နွေ၊ မိုး၊ ဆောင်း', 'စက္ကန့်၊ မိနစ်၊ နာရီ', 'အတိတ်၊ အနာဂတ်၊ ပစ္စုပ္ပန်'], 
+                icon: 'fa-clock',
+                deepDesc: 'အချိန် (Time) ဟူသည် ပရမတ္ထတရား မဟုတ်ပါ။ ရုပ်တရား၊ နာမ်တရားတို့၏ အသစ်အသစ် ဖြစ်ပေါ်မှု၊ တည်မှု၊ ပျက်မှု (ဥပါဒ်၊ ဌီ၊ ဘင်) ဟူသော အစဉ်အတန်း (Continuity) ကို အခြေခံ၍ "အချိန်ကာလ" ဟု စိတ်က ဖန်တီးမှတ်ယူထားခြင်း ဖြစ်သည်။',
+                paramatthaLink: 'ရုပ်၊ နာမ် တို့၏ ဖြစ်-တည်-ပျက် (ဥပါဒ်-ဌီ-ဘင်) အစဉ်အတန်းကို အခြေခံ၍ ပညတ်ထားသည်။'
+            },
+            { 
+                id: 'akasa',
+                name: 'အာကာသပညတ်', pali: 'Ākāsa-paññatti', 
+                desc: 'မြေကြီး/ရုပ်တရားများ မရှိသော နေရာလွတ် (ဟာဝပ်) ကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။', 
+                ex: ['ရေတွင်း', 'ဥမင်လိုဏ်ခေါင်း', 'တွင်းပေါက်', 'လေဟာပြင်', 'ပြတင်းပေါက်'], 
+                icon: 'fa-cubes',
+                deepDesc: 'အရာဝတ္ထု ရုပ်တရားများ တစ်ခုနှင့်တစ်ခု မထိစပ်ဘဲ ကင်းကွာနေသော နေရာ၊ သို့မဟုတ် ရုပ်တရားများ ကင်းမဲ့နေသော ဟာလာဟင်းလင်း (Void/Space) ကို "နေရာလွတ်" ဟု စိတ်က မှတ်ယူခြင်းဖြစ်သည်။ ထိုနေရာလွတ်သည် ရုပ်တရား မဟုတ်ပါ။',
+                paramatthaLink: 'ပထဝီ စသော ရုပ်တရားများ ကင်းမဲ့နေမှုကို အခြေခံ၍ ပညတ်ထားသည်။'
+            },
+            { 
+                id: 'nimitta',
+                name: 'နိမိတ္တပညတ်', pali: 'Nimitta-paññatti', 
+                desc: 'ကသိုဏ်းဝန်း စသည့် အာရုံများကို စွဲ၍ ဘာဝနာစွမ်းအားကြောင့် စိတ်ထဲ၌ ထင်လာသော နိမိတ် ပညတ်။', 
+                ex: ['ပရိကမ္မနိမိတ် (စတင်ရှုပွားသော အာရုံ)', 'ဥဂ္ဂဟနိမိတ် (မျက်စိမှိတ်ထားသော်လည်း စိတ်ထဲ၌ ထင်ရှားစွာမြင်နေရသော အာရုံ)', 'ပဋိဘာဂနိမိတ် (ဥဂ္ဂဟနိမိတ်ထက် အဆတစ်ရာမက ကြည်လင်တောက်ပလာသော အာရုံ)'], 
+                icon: 'fa-circle-dot',
+                deepDesc: 'ကသိုဏ်း (ဥပမာ- မြေကသိုဏ်း) ကို ကြည့်ရှုပွားများရာမှ ဘာဝနာစိတ် စူးစိုက်မှု အားကောင်းလာသောအခါ ထိုရုပ်ဝတ္ထုအပေါ်မှ စိတ်က ဖန်တီးယူလိုက်သော "နိမိတ်ပုံရိပ်" များ ဖြစ်သည်။ ၎င်းနိမိတ်တို့သည် ရုပ်တရား မဟုတ်တော့ဘဲ စိတ်က ဖန်တီးထားသော အတ္ထပညတ် သက်သက်သာ ဖြစ်သည်။ ဤနိမိတ်များကို အာရုံပြု၍ ဈာန်များ ရရှိနိုင်သည်။',
+                paramatthaLink: 'ကသိုဏ်းစသော ရုပ်အာရုံများအပေါ် ဘာဝနာစိတ် (နာမ်) ၏ စူးစိုက်မှုကြောင့် ထင်မြင်လာသော ပုံရိပ်ဖြစ်သည်။'
+            }
         ];
 
         const namaPannatti = [
             { 
-                id: 1, name: 'ဝိဇ္ဇမာန ပညတ်', pali: 'Vijjamāna-paññatti',
-                desc: 'ပရမတ္ထအားဖြင့် အမှန်တကယ် <span class="font-bold text-emerald-600 dark:text-emerald-400">ရှိသော</span> တရားကို ခေါ်ဝေါ်သော အမည်။',
-                reason: '၎င်းတို့သည် ခွဲစိတ်၍မရတော့သော အဆုံးစွန် အမှန်တရား (ပရမတ်) များ ဖြစ်သောကြောင့်။',
-                parts: [ {type: 'real', text: 'ရုပ်၊ နာမ်၊ စိတ်၊ စေတသိက်၊ နိဗ္ဗာန်'} ]
+                id: 'vijjamana',
+                name: 'ဝိဇ္ဇမာန ပညတ်', pali: 'Vijjamāna-paññatti',
+                desc: 'ပရမတ္ထအားဖြင့် အမှန်တကယ် "ရှိသော" တရားကို ခေါ်ဝေါ်သော အမည်။',
+                ex: ['ရုပ်', 'နာမ်', 'စိတ်', 'စေတသိက်', 'နိဗ္ဗာန်', 'စက္ခု', 'ဖဿ'],
+                deepDesc: 'ဝိဇ္ဇမာန = ရှိသော (Real), ပညတ္တိ = အမည်နာမ (Concept of name)။ သဘာဝအားဖြင့်၊ ပရမတ္ထအားဖြင့် အမှန်တကယ် ထင်ရှားရှိသော တရားများကို သူတစ်ပါး သိနားလည်အောင် ပေးထားသော အမည်နာမများ ဖြစ်သည်။ ထိုအမည်များ (ဥပမာ - "စိတ်" ဟူသော အသံ) သည် ပညတ်ဖြစ်သော်လည်း၊ ထိုအသံက ရည်ညွှန်းသော အရာ (သိတတ်သော သဘော) သည် အမှန်တကယ် ရှိသည်။',
+                paramatthaLink: 'ပရမတ်သက်သက်ကိုသာ တိုက်ရိုက် ရည်ညွှန်းသော အမည်ဖြစ်သည်။',
+                parts: [ {type: 'real', text: 'ရုပ်၊ နာမ် စသည်'} ]
             },
             { 
-                id: 2, name: 'အဝိဇ္ဇမာန ပညတ်', pali: 'Avijjamāna-paññatti',
-                desc: 'ပရမတ္ထအားဖြင့် အမှန်တကယ် <span class="font-bold text-rose-600 dark:text-rose-400">မရှိသော</span> တရားကို ခေါ်ဝေါ်သော အမည်။',
-                reason: 'ခန္ဓာ ၅ ပါး၊ သို့မဟုတ် ရုပ်အစုအဝေးများကို ပေါင်းစပ်ခေါ်ဝေါ်သော သမ္မုတိများ (သမုဟပညတ်) သာ ဖြစ်သောကြောင့်။',
-                parts: [ {type: 'unreal', text: 'ယောက်ျား၊ မိန်းမ၊ ပုဂ္ဂိုလ်၊ ကား'} ]
+                id: 'avijjamana',
+                name: 'အဝိဇ္ဇမာန ပညတ်', pali: 'Avijjamāna-paññatti',
+                desc: 'ပရမတ္ထအားဖြင့် အမှန်တကယ် "မရှိသော" တရားကို ခေါ်ဝေါ်သော အမည်။',
+                ex: ['ယောက်ျား', 'မိန်းမ', 'ပုဂ္ဂိုလ် (ပုဂ္ဂလပညတ်)', 'ခွေး', 'ကား', 'တောင်'],
+                deepDesc: 'အဝိဇ္ဇမာန = မရှိသော (Unreal)။ ပရမတ္ထအားဖြင့် အမှန်တကယ် မရှိဘဲ၊ ရုပ်နာမ်များ၏ အစုအဝေး သို့မဟုတ် ပုံသဏ္ဌာန်ကို ကြည့်၍ လူတို့ သမုတ်ထားသော အရာများကို ခေါ်ဝေါ်သည့် အမည်နာမ ဖြစ်သည်။ ဥပမာ - "ယောက်ျား" ဆိုသည်မှာ အမှန်တကယ် မရှိပါ၊ ခန္ဓာငါးပါး အစုအဝေးသာ ရှိသည်။',
+                paramatthaLink: 'ပညတ်သက်သက်ကိုသာ ရည်ညွှန်းသော အမည်ဖြစ်သည်။',
+                parts: [ {type: 'unreal', text: 'ယောက်ျား၊ မိန်းမ စသည်'} ]
             },
             { 
-                id: 3, name: 'ဝိဇ္ဇမာနေန အဝိဇ္ဇမာန ပညတ်', pali: 'Vijjamānena Avijjamāna',
-                desc: '<span class="font-bold text-emerald-600 dark:text-emerald-400">ရှိသော</span> တရား နှင့် <span class="font-bold text-rose-600 dark:text-rose-400">မရှိသော</span> တရား တွဲဖက်ထားသော အမည်။',
-                reason: 'ပရမတ် နှင့် ပညတ် ကို ရှေ့နောက် တွဲဖက်ထားသည်။',
+                id: 'vijjamana-avijjamana',
+                name: 'ဝိဇ္ဇမာနေန အဝိဇ္ဇမာန ပညတ်', pali: 'Vijjamānena Avijjamāna',
+                desc: '"ရှိသော" တရား နှင့် "မရှိသော" တရား တွဲဖက်ထားသော အမည်။',
+                ex: ['အဘိညာဉ် ၆ ပါးရသော ပုဂ္ဂိုလ်', 'ရူပက္ခန္ဓာ', 'တေဇောကသိုဏ်း'],
+                deepDesc: 'ပရမတ္ထအားဖြင့် အမှန်တကယ် ရှိသောတရား (ဝိဇ္ဇမာန) ကို ရှေ့ကထား၍၊ အမှန်တကယ် မရှိသောတရား (အဝိဇ္ဇမာန) ကို နောက်ကထားကာ တွဲဖက် ခေါ်ဝေါ်သော အမည်ဖြစ်သည်။ ဥပမာ - "တေဇောကသိုဏ်း" တွင် တေဇော(အပူ/အအေး) သည် အမှန်တကယ် ရှိသော ရုပ်တရားဖြစ်ပြီး၊ ကသိုဏ်း (နိမိတ်) သည် အမှန်တကယ် မရှိသော ပညတ်ဖြစ်သည်။',
+                paramatthaLink: 'ပရမတ် (ရှေ့) + ပညတ် (နောက်) တွဲဖက်ထားသည်။',
                 parts: [ {type: 'real', text: 'အဘိညာဉ် ၆ ပါးရသော'}, {type: 'unreal', text: 'ပုဂ္ဂိုလ်'} ]
             },
             { 
-                id: 4, name: 'အဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ်', pali: 'Avijjamānena Vijjamāna',
-                desc: '<span class="font-bold text-rose-600 dark:text-rose-400">မရှိသော</span> တရား နှင့် <span class="font-bold text-emerald-600 dark:text-emerald-400">ရှိသော</span> တရား တွဲဖက်ထားသော အမည်။',
-                reason: 'ပညတ် နှင့် ပရမတ် ကို ရှေ့နောက် တွဲဖက်ထားသည်။',
+                id: 'avijjamana-vijjamana',
+                name: 'အဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ်', pali: 'Avijjamānena Vijjamāna',
+                desc: '"မရှိသော" တရား နှင့် "ရှိသော" တရား တွဲဖက်ထားသော အမည်။',
+                ex: ['မိန်းမ၏ အသံ (သဒ္ဒါရုံ)', 'ဘုရင်၏ စိတ်', 'ကား၏ အဆင်း (ရူပါရုံ)'],
+                deepDesc: 'အမှန်တကယ် မရှိသော ပညတ်တရား (အဝိဇ္ဇမာန) ကို ရှေ့ကထား၍၊ အမှန်တကယ် ရှိသော ပရမတ်တရား (ဝိဇ္ဇမာန) ကို နောက်ကထားကာ တွဲဖက် ခေါ်ဝေါ်သော အမည်ဖြစ်သည်။ ဥပမာ - "မိန်းမအသံ" တွင် မိန်းမ သည် ပညတ်ဖြစ်၍ တကယ်မရှိပါ၊ သို့သော် အသံ (သဒ္ဒါရုံ) သည် ပရမတ်ဖြစ်၍ အမှန်တကယ် ရှိသည်။',
+                paramatthaLink: 'ပညတ် (ရှေ့) + ပရမတ် (နောက်) တွဲဖက်ထားသည်။',
                 parts: [ {type: 'unreal', text: 'မိန်းမ၏'}, {type: 'real', text: 'အသံ (သဒ္ဒါရုံ)'} ]
             },
             { 
-                id: 5, name: 'ဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ်', pali: 'Vijjamānena Vijjamāna',
-                desc: '<span class="font-bold text-emerald-600 dark:text-emerald-400">ရှိသော</span> တရား နှင့် <span class="font-bold text-emerald-600 dark:text-emerald-400">ရှိသော</span> တရား တွဲဖက်ထားသော အမည်။',
-                reason: 'ပရမတ် နှင့် ပရမတ် ကို ရှေ့နောက် တွဲဖက်ထားသည်။',
+                id: 'vijjamana-vijjamana',
+                name: 'ဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ်', pali: 'Vijjamānena Vijjamāna',
+                desc: '"ရှိသော" တရား နှင့် "ရှိသော" တရား တွဲဖက်ထားသော အမည်။',
+                ex: ['စက္ခုဝိညာဉ်', 'သောတဝိညာဉ်', 'မနောသမ္ဖဿ'],
+                deepDesc: 'ပရမတ္ထအားဖြင့် အမှန်တကယ် ရှိသော ပရမတ်တရားများကိုသာ ရှေ့နောက် တွဲဖက်၍ ခေါ်ဝေါ်သော အမည်ဖြစ်သည်။ ဥပမာ - "စက္ခုဝိညာဉ်" တွင် စက္ခု (မျက်စိအကြည်ရုပ်) သည်လည်း အမှန်တကယ် ရှိသော ရုပ်ပရမတ်ဖြစ်ပြီး၊ ဝိညာဉ် (မြင်သိစိတ်) သည်လည်း အမှန်တကယ် ရှိသော နာမ်ပရမတ် ဖြစ်သည်။ နှစ်ခုစလုံး ရှိသည်။',
+                paramatthaLink: 'ပရမတ် (ရှေ့) + ပရမတ် (နောက်) တွဲဖက်ထားသည်။',
                 parts: [ {type: 'real', text: 'စက္ခု (အကြည်ရုပ်)'}, {type: 'real', text: 'ဝိညာဉ် (စိတ်)'} ]
             },
             { 
-                id: 6, name: 'အဝိဇ္ဇမာနေန အဝိဇ္ဇမာန ပညတ်', pali: 'Avijjamānena Avijjamāna',
-                desc: '<span class="font-bold text-rose-600 dark:text-rose-400">မရှိသော</span> တရား နှင့် <span class="font-bold text-rose-600 dark:text-rose-400">မရှိသော</span> တရား တွဲဖက်ထားသော အမည်။',
-                reason: 'ပညတ် နှင့် ပညတ် ကို ရှေ့နောက် တွဲဖက်ထားသည်။',
+                id: 'avijjamana-avijjamana',
+                name: 'အဝိဇ္ဇမာနေန အဝိဇ္ဇမာန ပညတ်', pali: 'Avijjamānena Avijjamāna',
+                desc: '"မရှိသော" တရား နှင့် "မရှိသော" တရား တွဲဖက်ထားသော အမည်။',
+                ex: ['ဘုရင်၏ သား', 'သစ်သား အိမ်', 'ရွှေ တောင်'],
+                deepDesc: 'ပရမတ္ထအားဖြင့် အမှန်တကယ် မရှိသော ပညတ်တရားများကိုသာ ရှေ့နောက် တွဲဖက်၍ ခေါ်ဝေါ်သော အမည်ဖြစ်သည်။ ဥပမာ - "ဘုရင်၏သား" တွင် ဘုရင် သည်လည်း ပညတ်ဖြစ်၍ တကယ်မရှိပါ၊ သား သည်လည်း ပညတ်ဖြစ်၍ တကယ်မရှိပါ။ လူတို့၏ သမုတ်ချက် (Conventional names) သက်သက်များကို တွဲဖက်ထားခြင်းဖြစ်သည်။',
+                paramatthaLink: 'ပညတ် (ရှေ့) + ပညတ် (နောက်) တွဲဖက်ထားသည်။',
                 parts: [ {type: 'unreal', text: 'ဘုရင်၏'}, {type: 'unreal', text: 'သား'} ]
             }
         ];
@@ -195,58 +332,134 @@
         document.addEventListener('DOMContentLoaded', () => {
             const atthaContainer = document.getElementById('attha-container');
             atthaPannatti.forEach(item => {
+                const exString = item.ex.slice(0, 2).join('၊ ') + (item.ex.length > 2 ? ' ...' : '');
                 atthaContainer.innerHTML += `
-                    <div class="pn-card bg-sky-50/50 dark:bg-sky-950/20 border border-sky-500/20 rounded-xl p-4 flex flex-col h-full space-y-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0 text-lg">
+                    <button onclick="openPannattiModal('attha', '${item.id}')" class="pn-card bg-sky-50/50 dark:bg-sky-950/20 border border-sky-500/20 rounded-xl p-4 flex flex-col h-full w-full group">
+                        <div class="flex items-center justify-between mb-3 w-full">
+                            <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg border border-sky-500/10 group-hover:bg-sky-500 group-hover:text-white transition-colors">
                                 <i class="fa-solid ${item.icon}"></i>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-sky-800 dark:text-sky-200">${item.name}</h4>
-                                <div class="text-[11px] text-sky-600/70 dark:text-sky-400/70 font-mono">${item.pali}</div>
-                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sky-500/30 text-[10px] group-hover:text-sky-500 transition-colors"></i>
                         </div>
-                        <p class="text-[12px] text-slate-700 dark:text-slate-300 leading-relaxed grow">${item.desc}</p>
-                        <div class="text-[11px] font-semibold text-sky-700 dark:text-sky-300 bg-sky-100/50 dark:bg-sky-900/30 p-2.5 rounded-lg border border-sky-200 dark:border-sky-800">
-                            <span class="font-bold text-sky-800 dark:text-sky-400">ဥပမာ —</span> ${item.ex}
+                        <div class="w-full">
+                            <h4 class="font-bold text-sky-800 dark:text-sky-200 text-sm group-hover:text-sky-600 transition-colors">${item.name}</h4>
+                            <div class="text-[10px] text-sky-600/70 dark:text-sky-400/70 font-mono mb-2">${item.pali}</div>
                         </div>
-                    </div>
+                        <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed grow line-clamp-3 w-full">${item.desc}</p>
+                        <div class="w-full text-[10px] font-semibold text-sky-700/80 dark:text-sky-300/80 mt-3 pt-3 border-t border-sky-500/10">
+                            ဥပမာ — ${exString}
+                        </div>
+                    </button>
                 `;
             });
 
             const namaContainer = document.getElementById('nama-container');
-            namaPannatti.forEach(item => {
+            namaPannatti.forEach((item, idx) => {
                 const partsHtml = item.parts.map(p => {
                     const isReal = p.type === 'real';
                     const color = isReal ? 'emerald' : 'rose';
-                    const label = isReal ? 'ရှိ' : 'မရှိ';
                     const icon = isReal ? 'fa-check' : 'fa-xmark';
-                    return `<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-${color}-100 dark:bg-${color}-900/40 border border-${color}-200 dark:border-${color}-800 text-${color}-800 dark:text-${color}-200 font-semibold"><i class="fa-solid ${icon} text-[10px]"></i> ${p.text} <span class="text-[9px] opacity-70 uppercase tracking-widest ml-1">(${label})</span></span>`;
-                }).join(' <span class="text-slate-400 mx-1">+</span> ');
+                    return `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-${color}-100 dark:bg-${color}-900/40 border border-${color}-200 dark:border-${color}-800 text-${color}-800 dark:text-${color}-200 font-semibold"><i class="fa-solid ${icon} text-[8px]"></i> ${p.text}</span>`;
+                }).join('<span class="text-slate-400 text-[10px] mx-0.5">+</span>');
 
                 namaContainer.innerHTML += `
-                    <div class="pn-card bg-rose-50/50 dark:bg-slate-900/40 border border-rose-500/20 rounded-xl p-4 flex gap-3.5 h-full items-start">
-                        <div class="w-8 h-8 shrink-0 rounded-full bg-rose-200 dark:bg-rose-500/30 text-rose-800 dark:text-rose-200 font-bold flex items-center justify-center text-sm border border-rose-300 dark:border-rose-600 shadow-sm">
-                            ${mm(item.id)}
+                    <button onclick="openPannattiModal('nama', '${item.id}')" class="pn-card bg-rose-50/50 dark:bg-rose-950/20 border border-rose-500/20 rounded-xl p-4 flex gap-3 h-full items-start w-full group">
+                        <div class="w-8 h-8 shrink-0 rounded-full bg-rose-200 dark:bg-rose-500/30 text-rose-800 dark:text-rose-200 font-bold flex items-center justify-center text-sm border border-rose-300 dark:border-rose-600 shadow-sm group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                            ${mm(idx + 1)}
                         </div>
-                        <div class="space-y-2.5 grow">
-                            <div>
-                                <h4 class="font-bold text-rose-800 dark:text-rose-200">${item.name}</h4>
-                                <div class="text-[11px] text-rose-600/70 dark:text-rose-400/70 font-mono">${item.pali}</div>
-                            </div>
-                            <p class="text-[12px] text-slate-700 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/50 pt-2">${item.desc}</p>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">${item.reason}</p>
-                            <div class="text-[11px] mt-2 pt-2 border-t border-rose-500/10">
-                                <div class="mb-1.5 text-slate-500 font-semibold text-[10px] uppercase tracking-wider">ဥပမာ ဖွဲ့စည်းပုံ</div>
-                                <div class="flex flex-wrap items-center gap-y-1">
-                                    ${partsHtml}
+                        <div class="space-y-1.5 grow w-full">
+                            <div class="flex items-start justify-between w-full">
+                                <div>
+                                    <h4 class="font-bold text-rose-800 dark:text-rose-200 text-sm group-hover:text-rose-600 transition-colors">${item.name}</h4>
+                                    <div class="text-[10px] text-rose-600/70 dark:text-rose-400/70 font-mono">${item.pali}</div>
                                 </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-rose-500/30 text-[10px] group-hover:text-rose-500 transition-colors mt-1"></i>
+                            </div>
+                            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed border-t border-rose-500/10 pt-1.5 line-clamp-2 w-full">${item.desc}</p>
+                            <div class="flex flex-wrap items-center gap-y-1 mt-2 w-full">
+                                ${partsHtml}
                             </div>
                         </div>
-                    </div>
+                    </button>
                 `;
             });
         });
+
+        function openPannattiModal(type, id) {
+            const data = type === 'attha' ? atthaPannatti.find(x => x.id === id) : namaPannatti.find(x => x.id === id);
+            if (!data) return;
+
+            const modal = document.getElementById('pannatti-modal');
+            const theme = type === 'attha' ? 'sky' : 'rose';
+            
+            // Populate basic info
+            document.getElementById('modal-title').textContent = data.name;
+            document.getElementById('modal-title').className = `text-lg font-bold text-${theme}-800 dark:text-${theme}-200`;
+            document.getElementById('modal-pali').textContent = data.pali;
+            document.getElementById('modal-pali').className = `text-xs font-mono text-${theme}-600 dark:text-${theme}-400`;
+            
+            document.getElementById('modal-desc').textContent = data.desc;
+            document.getElementById('modal-deep-desc').textContent = data.deepDesc;
+            document.getElementById('modal-paramattha').textContent = data.paramatthaLink;
+            
+            // Populate Examples
+            const exList = document.getElementById('modal-ex-list');
+            exList.innerHTML = data.ex.map(e => `<li>${e}</li>`).join('');
+
+            // Icon & Header styling
+            const header = document.getElementById('modal-header-bg');
+            const icon = document.getElementById('modal-icon');
+            
+            header.className = `flex items-center justify-between px-5 py-4 border-b border-${theme}-200 dark:border-${theme}-800 bg-${theme}-50 dark:bg-${theme}-900/30`;
+            
+            if (type === 'attha') {
+                icon.className = `w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 border bg-${theme}-100 dark:bg-${theme}-800 text-${theme}-600 dark:text-${theme}-300 border-${theme}-300 dark:border-${theme}-600`;
+                icon.innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+                document.getElementById('modal-logic-section').classList.add('hidden');
+            } else {
+                icon.className = `w-10 h-10 rounded-full flex items-center justify-center text-lg shrink-0 border bg-${theme}-100 dark:bg-${theme}-800 text-${theme}-600 dark:text-${theme}-300 border-${theme}-300 dark:border-${theme}-600 font-bold font-serif`;
+                const idx = namaPannatti.findIndex(x => x.id === id);
+                icon.innerHTML = mm(idx + 1);
+                
+                // Logic Badges for Nama
+                const logicSec = document.getElementById('modal-logic-section');
+                const logicContainer = document.getElementById('modal-logic-badges');
+                logicSec.classList.remove('hidden');
+                
+                logicContainer.innerHTML = data.parts.map(p => {
+                    const isReal = p.type === 'real';
+                    const color = isReal ? 'emerald' : 'rose';
+                    const label = isReal ? 'ရှိ' : 'မရှိ';
+                    const i = isReal ? 'fa-check' : 'fa-xmark';
+                    return `
+                        <div class="flex items-center gap-2 bg-${color}-50 dark:bg-${color}-900/20 px-3 py-1.5 rounded-lg border border-${color}-200 dark:border-${color}-800">
+                            <div class="w-5 h-5 rounded-full bg-${color}-200 dark:bg-${color}-800 flex items-center justify-center text-${color}-700 dark:text-${color}-300"><i class="fa-solid ${i} text-[10px]"></i></div>
+                            <span class="text-xs font-bold text-${color}-800 dark:text-${color}-200">${p.text}</span>
+                            <span class="text-[10px] text-${color}-600 dark:text-${color}-400 font-semibold uppercase tracking-wider ml-1">(${label})</span>
+                        </div>
+                    `;
+                }).join('<span class="text-slate-400 text-xs mx-1 font-bold">+</span>');
+            }
+
+            // Show modal
+            document.body.classList.add('modal-active');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('modal-backdrop').classList.add('modal-bg-anim');
+            document.getElementById('modal-panel').classList.add('modal-panel-anim');
+        }
+
+        function closePannattiModal() {
+            const modal = document.getElementById('pannatti-modal');
+            document.body.classList.remove('modal-active');
+            
+            document.getElementById('modal-backdrop').classList.remove('modal-bg-anim');
+            document.getElementById('modal-panel').classList.remove('modal-panel-anim');
+            
+            // tiny delay to allow fade out if we added it, but here we just hide
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
     </script>
     <script src="accessibility.js"></script>
 </body>
