@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဝီထိမုတ္တသင်္ဂဟ — ဘူမိ (၃၁)၊ ယောနိ (၄)၊ ကံစတုက္က၊ သေခါနီး လုပ်ငန်းစဉ်ကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
-    <title>ဝီထိမုတ္တသင်္ဂဟ — ဘူမိ (၃၁) ပါး (Vīthimutta-saṅgaha)</title>
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဝီထိမုတ္တသင်္ဂဟ — ဘူမိ (၃၁)၊ ပဋိသန္ဓေ (၂၀)၊ ကမ္မစတုက္က (၁၆)၊ မရဏုပ္ပတ္တိ (၄) ကို ၁၀၀% ပြည့်စုံစွာ ရှင်းလင်းတင်ပြထားသော Interactive Visual Guide">
+    <title>ဝီထိမုတ္တသင်္ဂဟ — ဘူမိ၊ ပဋိသန္ဓေ၊ ကံ၊ မရဏ (Vīthimutta-saṅgaha)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,11 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-            
-            
-        }
+        body { font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', sans-serif; }
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -35,36 +31,24 @@
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
         html { scroll-behavior: smooth; }
-        * { -webkit-tap-highlight-color: transparent; }
-        button { touch-action: manipulation; }
-        button:active { transform: scale(0.97); }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(8px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fade-in { animation: fade-in 0.2s ease-out; }
         .vm-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
         .vm-card:hover { transform: translateY(-2px); }
-        :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
-        summary { cursor: pointer; list-style: none; }
-        summary::-webkit-details-marker { display: none; }
         details[open] > summary .tree-chevron { transform: rotate(90deg); }
         .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
     </style>
-    
     <style>
-        :root {
-            color-scheme: light dark;
-        }
+        :root { color-scheme: light dark; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
+    <!-- Navigation Header -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
@@ -73,7 +57,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-indigo-700 dark:text-indigo-300">ဝီထိမုတ္တသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Vīthimutta-saṅgaha)</span></h1>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400">ဘူမိ (၃၁)၊ ယောနိ (၄)၊ ကံစတုက္က၊ သေခါနီး လုပ်ငန်းစဉ်</p>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">စတုက္က (၄) မျိုး — ဘူမိ (၃၁)၊ ပဋိသန္ဓေ (၂၀)၊ ကမ္မ (၁၆)၊ မရဏုပ္ပတ္တိ (၄)</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
@@ -91,103 +75,166 @@
 
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <span class="text-indigo-700 dark:text-indigo-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၅ ပိုင်းမြောက်</span>
-            <h2 class="text-2xl md:text-3xl font-bold">ဝီထိစိတ် အစဉ်ပြင်ပက ဖြစ်စဉ်များ</h2>
-            <p class="text-slate-600 dark:text-slate-400 text-sm"><a href="citta_cetasikas_visual_guide.html#vithi" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-700 dark:text-sky-200">ဝီထိသင်္ဂဟ tab</a> က ဘဝတစ်ခု အတွင်းရှိ စိတ်အစဉ် ဖြစ်ပေါ်ပုံကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ဝီထိမုတ္တသင်္ဂဟကမူ ဝီထိစိတ် "အစဉ်ပြင်ပ" ဖြစ်ပေါ်ကြသော ပဋိသန္ဓေ/ဘဝင်/စုတိ တို့ ဘယ်နေရာ (ဘူမိ)၊ ဘယ်နည်းလမ်း (ယောနိ)၊ ဘယ်ကံ အလိုက် ဖြစ်ပေါ်ကြသည်ကို ရှင်းပြသည်။</p>
-        </div>
-
-        <!-- 31 Bhumi verification bar -->
-        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
-            <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ကာမဘူမိ (၁၁)</button>
-            <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('rupabhumi')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">ရူပဘူမိ (၁၆)</button>
-            <span class="text-slate-600">+</span>
-            <button onclick="jumpToGroup('arupabhumi')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">အရူပဘူမိ (၄)</button>
-            <span class="text-slate-600">=</span>
-            <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">ဘူမိ (၃၁) ဘုံ</button>
-        </div>
-        <p class="text-center text-[11px] text-slate-500 dark:text-slate-500 -mt-4">* ဤဘူမိအားလုံးတွင် ဖြစ်ပေါ်နိုင်သော စိတ် (၈၉) ပါး၏ ကာမာဝစရ/ရူပါဝစရ/အရူပါဝစရ/လောကုတ္တရာ ခွဲခြားမှုကို <a href="citta_cetasikas_visual_guide.html#citta89" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-700 dark:text-violet-200">"စိတ် (၈၉)" tab</a> ၏ verification bar တွင် ဖော်ပြထားပြီး ဖြစ်သည်။</p>
-
-        <!-- Bhumi groups -->
-        
-        <!-- 31 Planes Interactive Map -->
-        <details class="glass-card rounded-2xl p-4 md:p-6 max-w-4xl mx-auto border border-sky-500/30">
-            <summary class="flex items-center justify-between font-bold text-sky-700 dark:text-sky-300 text-base md:text-lg">
-                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>၃၁-ဘုံ အပြန်အလှန်လေ့လာနိုင်သော မြေပုံ (Interactive Map)</span>
-                <span class="text-xs font-normal bg-sky-500/20 px-2 py-1 rounded">Click to expand</span>
-            </summary>
-            
-            <div class="mt-6 pt-4 border-t border-slate-300 dark:border-slate-700/50">
-                <p class="text-center text-xs text-slate-600 dark:text-slate-400 mb-6">ဘုံတစ်ခုစီကို နှိပ်၍ အသေးစိတ်ဖတ်ရှုနိုင်ပါသည်။</p>
-                <div id="interactive-map-container" class="flex flex-col items-center gap-1 md:gap-2 w-full overflow-x-auto pb-4">
-                    <!-- Rendered by JS -->
-                </div>
-            </div>
-        </details>
-
-        <div id="bhumi-groups" class="space-y-4"></div>
-
-        <!-- Catuyoni -->
-        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
-                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>စတုယောနိ — ပဋိသန္ဓေယူသည့် နည်းလမ်း (၄) မျိုး</span>
-            </summary>
-            <div class="mt-3 pl-5 flex flex-wrap gap-1.5" id="yoni-chips"></div>
-        </details>
-
-        <!-- Kamma-catukka (16 = 4x4) -->
-        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20" open>
-            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
-                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>ကံစတုက္က — ကံကို ရှုထောင့် (၄) မျိုးမှ ခွဲခြားနည်း (၄×၄ = ၁၆)</span>
-            </summary>
-            <div id="kamma-tetrads" class="mt-3 pl-5 space-y-4"></div>
-        </details>
-
-        <!-- Near-death process -->
-        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-400 dark:border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
-            <h3 class="font-bold text-amber-700 dark:text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-hourglass-end"></i> မရဏာသန္နဝီထိ — သေခါနီး ဖြစ်ပေါ်သော လုပ်ငန်းစဉ်</h3>
-            <p class="text-xs text-slate-700 dark:text-slate-300">သေခါနီးအချိန် နောက်ဆုံး ဇောနဝီထိ (၅ ကြိမ် ၆ ကြိမ်မျှသာ ဖြစ်တတ်သော "ပရိတ္တဇောန") ၏ အာရုံအဖြစ် အောက်ပါ (၃) မျိုးအနက် တစ်မျိုးမျိုး ပေါ်လာတတ်ပြီး၊ ထိုအာရုံသည်ပင် နောင်ဘဝ ပဋိသန္ဓေစိတ်၏ အာရုံ ဖြစ်လာသည် —</p>
-            <div id="near-death-chips" class="grid sm:grid-cols-3 gap-2"></div>
-            <div class="flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-400 pt-2">
-                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">စုတိစိတ်</span>
-                <i class="fa-solid fa-arrow-right text-amber-700 dark:text-amber-400"></i>
-                <span class="px-3 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ကြားမဲ့ခြားနား လုံးဝ မရှိ</span>
-                <i class="fa-solid fa-arrow-right text-amber-700 dark:text-amber-400"></i>
-                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">ပဋိသန္ဓေစိတ် (ဘဝသစ်)</span>
-            </div>
-            <p class="text-[11px] text-slate-500 dark:text-slate-500 pt-1">* ဤ "ကြားမဲ့ခြားနား လုံးဝ မရှိခြင်း" ကို ပဋိစ္စသမုပ္ပါဒ်တွင် <a href="paticcasamuppada.html?open=jaramarana" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-700 dark:text-violet-200">ဇရာမရဏ → ဝိညာဉ် ပထမသန္ဓိ</a> အဖြစ် ဖော်ပြခဲ့သည်။</p>
-        </div>
-
-        <!-- Marananuppatti causes -->
-        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20">
-            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
-                <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>မရဏုပ္ပတ္တိ — သေခြင်း၏ အကြောင်း (၄) မျိုး</span>
-            </summary>
-            <div class="mt-3 pl-5 flex flex-wrap gap-1.5" id="marana-chips"></div>
-        </details>
-
-        <!-- Cross-link -->
-        <a href="citta_cetasikas_visual_guide.html#citta89:kicca-sangaha" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
-            <i class="fa-solid fa-link text-emerald-700 dark:text-emerald-400 text-xl"></i>
-            <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">ပဋိသန္ဓေ/ဘဝင်/စုတိ ဆောင်ရွက်နိုင်သော စိတ် (၁၉) ပါးကို အသေးစိတ် ကြည့်ရန်</h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400">Citta & Cetasika Guide ၏ Kicca-saṅgaha explainer သို့ →</p>
-        </a>
-
-        <!-- Footer -->
-        <section class="glass-card rounded-2xl p-6 border border-indigo-500/20 text-center space-y-3 max-w-3xl mx-auto">
-            <i class="fa-solid fa-book-open text-indigo-700 dark:text-indigo-400 text-2xl"></i>
-            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ဝီထိမုတ္တသင်္ဂဟကို လေ့လာခြင်းဖြင့် "ဘဝသစ် မွေးဖွားခြင်း" ဆိုသည်မှာ ဝိညာဉ်တစ်ခု တစ်ခန္ဓာမှ တစ်ခန္ဓာသို့ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ ရှေးကံ၏ တွန်းအားဖြင့် စိတ်အသစ် ချက်ချင်းဆက်တိုက် ဖြစ်ပေါ်ခြင်းသာ ဖြစ်ကြောင်း ပို၍ ရှင်းလင်းစွာ နားလည်နိုင်သည်။
+            <span class="text-indigo-700 dark:text-indigo-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မတ္ထသင်္ဂဟကျမ်း အခန်း (၅)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">ဝီထိစိတ် အစဉ်ပြင်ပက ဖြစ်စဉ်များ (စတုက္က ၄ မျိုး)</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+                အခန်း (၄) <a href="vithi_sangaha.html" class="text-sky-700 dark:text-sky-300 underline font-semibold">ဝီထိသင်္ဂဟ</a> သည် ဘဝတစ်ခုအတွင်း အာရုံကို သိမြင်ပုံ ဝီထိစိတ်အစဉ်များကို ရှင်းပြခဲ့သည်။ ဤ **ဝီထိမုတ္တသင်္ဂဟ** သည် ဝီထိစိတ်အစဉ် ပြင်ပဖြစ်သော ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ တို့ မည်သည့်နေရာ (<b>ဘူမိစတုက္က</b>)၊ မည်သည့်နည်းလမ်း/စိတ် (<b>ပဋိသန္ဓေစတုက္က</b>)၊ မည်သည့်ကံ (<b>ကမ္မစတုက္က</b>) နှင့် သေလွန်ပုံ (<b>မရဏုပ္ပတ္တိစတုက္က</b>) တို့ဖြင့် ဖြစ်ပေါ်ကြသည်ကို စတုက္က (၄) မျိုးဖြင့် ၁၀၀% အပြည့်အစုံ ရှင်းလင်းပြသသော အခန်းဖြစ်ပါသည်။
             </p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
-                <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
-            </a>
+        </div>
+
+        <!-- Master 4-Catukka Quick Navigation Bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
+            <button onclick="scrollToSection('sec-bhumi')" class="px-3.5 py-1.5 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-layer-group"></i> ၁။ ဘူမိစတုက္က (၃၁ ဘုံ)</button>
+            <button onclick="scrollToSection('sec-patisandhi')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-baby"></i> ၂။ ပဋိသန္ဓေစတုက္က (၂၀ မျိုး)</button>
+            <button onclick="scrollToSection('sec-kamma')" class="px-3.5 py-1.5 rounded-lg bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30 hover:bg-violet-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-scale-balanced"></i> ၃။ ကမ္မစတုက္က (၁၆ မျိုး)</button>
+            <button onclick="scrollToSection('sec-marana')" class="px-3.5 py-1.5 rounded-lg bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30 hover:bg-rose-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-hourglass-end"></i> ၄။ မရဏုပ္ပတ္တိစတုက္က (၄ မျိုး)</button>
+        </div>
+
+        <!-- 1. BHUMI CATUKKA -->
+        <section id="sec-bhumi" class="space-y-4">
+            <div class="glass-card rounded-2xl p-5 md:p-6 border border-indigo-500/30 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                    <div>
+                        <h3 class="font-bold text-indigo-700 dark:text-indigo-300 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> ၁။ ဘူမိစတုက္က (Bhūmi-catukka — ဘုံ ၃၁ ပါး)
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">သတ္တဝါတို့ ပဋိသန္ဓေနေထိုင်ရာ ဘုံ ၃၁ ပါး (ကာမ ၁၁ + ရူပ ၁၆ + အရူပ ၄)</p>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30">၃၁ ဘုံ</span>
+                </div>
+
+                <!-- 31 Bhumi quick filter -->
+                <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
+                    <button onclick="jumpToGroup('kamabhumi')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 transition">ကာမဘူမိ (၁၁ ဘုံ)</button>
+                    <button onclick="jumpToGroup('rupabhumi')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 transition">ရူပဘူမိ (၁၆ ဘုံ)</button>
+                    <button onclick="jumpToGroup('arupabhumi')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 transition">အရူပဘူမိ (၄ ဘုံ)</button>
+                </div>
+
+                <!-- 31 Planes Interactive Diagram -->
+                <details class="glass-card rounded-xl p-4 md:p-6 border border-sky-500/30" open>
+                    <summary class="flex items-center justify-between font-bold text-sky-700 dark:text-sky-300 text-sm md:text-base">
+                        <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>၃၁-ဘုံ အပြန်အလှန်လေ့လာနိုင်သော မြေပုံ (Interactive Map)</span>
+                        <span class="text-xs font-normal bg-sky-500/20 px-2 py-1 rounded">နှိပ်၍ ပိတ်/ဖွင့် ပါ</span>
+                    </summary>
+                    
+                    <div class="mt-4 pt-4 border-t border-slate-300 dark:border-slate-700/50">
+                        <p class="text-center text-xs text-slate-600 dark:text-slate-400 mb-4">ဘုံတစ်ခုစီကို နှိပ်၍ ပါဠိတော်နှင့် အသေးစိတ်ကို ဖတ်ရှုနိုင်ပါသည်။</p>
+                        <div id="interactive-map-container" class="flex flex-col items-center gap-1 md:gap-2 w-full overflow-x-auto pb-4">
+                            <!-- Rendered by JS -->
+                        </div>
+                    </div>
+                </details>
+
+                <div id="bhumi-groups" class="space-y-4"></div>
+            </div>
         </section>
+
+        <!-- 2. PATISANDHI CATUKKA -->
+        <section id="sec-patisandhi" class="space-y-4">
+            <div class="glass-card rounded-2xl p-5 md:p-6 border border-emerald-500/30 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                    <div>
+                        <h3 class="font-bold text-emerald-700 dark:text-emerald-300 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-baby"></i> ၂။ ပဋိသန္ဓေစတုက္က (Paṭisandhi-catukka — ပဋိသန္ဓေ ၂၀ မျိုး)
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">ဘဝသစ် ဆက်စပ်ဖြစ်ပေါ်ပုံ ပဋိသန္ဓေ ၂၀ မျိုး (နာမ်ပဋိသန္ဓေ စိတ် ၁၉ ပါး + ရုပ်ပဋိသန္ဓေ ၁)</p>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ပဋိသန္ဓေ ၂၀</span>
+                </div>
+
+                <!-- 4 Patisandhi Types Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="patisandhi-grid"></div>
+
+                <!-- Catuyoni (4 Yoni) -->
+                <details class="glass-card rounded-xl p-4 border border-emerald-500/20" open>
+                    <summary class="flex items-center justify-between font-bold text-emerald-700 dark:text-emerald-300 text-sm">
+                        <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>စတုယောနိ — ပဋိသန္ဓေ ယူသည့် နည်းလမ်း (၄) မျိုး</span>
+                    </summary>
+                    <div class="mt-3 pl-2 flex flex-wrap gap-2" id="yoni-chips"></div>
+                </details>
+            </div>
+        </section>
+
+        <!-- 3. KAMMA CATUKKA -->
+        <section id="sec-kamma" class="space-y-4">
+            <div class="glass-card rounded-2xl p-5 md:p-6 border border-violet-500/30 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                    <div>
+                        <h3 class="font-bold text-violet-700 dark:text-violet-300 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-scale-balanced"></i> ၃။ ကမ္မစတုက္က (Kamma-catukka — ကံ ၁၆ ပါး)
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">ကံတရားကို ရှုထောင့် (၄) မျိုးဖြင့် ခွဲခြားပြသခြင်း (၄×၄ = ၁၆ မျိုး)</p>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30">ကံ ၁၆ ပါး</span>
+                </div>
+
+                <div id="kamma-tetrads" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- 4. MARANUPPATTI CATUKKA -->
+        <section id="sec-marana" class="space-y-4">
+            <div class="glass-card rounded-2xl p-5 md:p-6 border border-rose-500/30 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                    <div>
+                        <h3 class="font-bold text-rose-700 dark:text-rose-300 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-hourglass-end"></i> ၄။ မရဏုပ္ပတ္တိစတုက္က (Maraṇuppatti-catukka)
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">သေခြင်းအကြောင်း (၄) မျိုး၊ သေခါနီး အာရုံ (၃) မျိုး နှင့် မရဏာသန္နဝီထိ</p>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30">သေခြင်းနှင့် အာရုံ</span>
+                </div>
+
+                <!-- Near-death process -->
+                <div class="glass-card rounded-xl p-5 border border-amber-400 dark:border-amber-500/30 space-y-3">
+                    <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-star"></i> သေခါနီး ထင်လာသော အာရုံ (၃) မျိုး (မရဏာသန္နအာရုံ)
+                    </h4>
+                    <p class="text-xs text-slate-700 dark:text-slate-300">
+                        သေခါနီးအချိန် မရဏာသန္နဇောနဝီထိ၌ အောက်ပါ (၃) မျိုးအနက် တစ်မျိုးမျိုး ထင်လာတတ်ပြီး ထိုအာရုံသည်ပင် နောင်ဘဝ ပဋိသန္ဓေစိတ်၏ အာရုံ ဖြစ်လာပါသည် —
+                    </p>
+                    <div id="near-death-chips" class="grid sm:grid-cols-3 gap-3"></div>
+                    
+                    <div class="flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-400 pt-2 flex-wrap">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">စုတိစိတ် (ဘဝဟောင်း)</span>
+                        <i class="fa-solid fa-arrow-right text-amber-500"></i>
+                        <span class="px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-bold">ကြားမဲ့ခြားနား လုံးဝမရှိ (အနန္တရ)</span>
+                        <i class="fa-solid fa-arrow-right text-amber-500"></i>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">ပဋိသန္ဓေစိတ် (ဘဝသစ်)</span>
+                    </div>
+                </div>
+
+                <!-- Marananuppatti causes (4) -->
+                <details class="glass-card rounded-xl p-4 border border-rose-500/20" open>
+                    <summary class="flex items-center justify-between font-bold text-rose-700 dark:text-rose-300 text-sm">
+                        <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>မရဏုပ္ပတ္တိ — သေခြင်း၏ အကြောင်း (၄) မျိုး</span>
+                    </summary>
+                    <div class="mt-3 pl-2 flex flex-wrap gap-2" id="marana-chips"></div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Cross-link Footer Section -->
+        <div class="glass-card rounded-2xl p-6 border border-indigo-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-indigo-700 dark:text-indigo-400 text-2xl"></i>
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                ဝီထိမုတ္တသင်္ဂဟကို လေ့လာခြင်းဖြင့် "ဘဝသစ် မွေးဖွားခြင်း" ဆိုသည်မှာ ဝိညာဉ်တစ်ခု တစ်ခန္ဓာမှ တစ်ခန္ဓာသို့ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ ရှေးကံ၏ တွန်းအားဖြင့် စိတ်အသစ် ချက်ချင်းဆက်တိုက် အနန္တရပစ္စယသတ္တိဖြင့် ဖြစ်ပေါ်ခြင်းသာ ဖြစ်ကြောင်း ပို၍ ရှင်းလင်းစွာ နားလည်နိုင်သည်။
+            </p>
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="citta_cetasikas_visual_guide.html#citta89:kicca-sangaha" class="text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-brain mr-1.5"></i> ပဋိသန္ဓေစိတ် ၁၉ ပါး သရုပ်ကြည့်ရန်
+                </a>
+                <a href="index.html" class="text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-house mr-1.5"></i> ပင်မ Dashboard သို့
+                </a>
+            </div>
+        </div>
     </main>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div id="modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
@@ -195,7 +242,12 @@
     </div>
 
     <script>
-        // ===== Vithimutta-sangaha (31 Bhumi + 4 Yoni + Kamma-catukka + Near-death process) — Abhidhammattha Sangaha Ch.5 =====
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 31 Bhumi Data
         const bhumiData = [
             // Kamabhumi (11) — rose
             { id: 1, key: 'niraya', pali: 'Niraya', name: 'ငရဲဘုံ', group: 'kamabhumi', icon: 'fa-fire', desc: 'အပါယ်ဘုံ (၄) ပါးအနက် ဆင်းရဲဒုက္ခ အပြင်းထန်ဆုံး ဘုံ — အကုသိုလ်ကံ၏ အကျိုးဆက်ဖြင့် ပဋိသန္ဓေယူရသည်။', example: 'သတ္တဝါတို့ အလွန်ပြင်းထန်သော ဝေဒနာများကို ဆက်တိုက် ခံစားနေရသော ဘုံ။' },
@@ -241,6 +293,30 @@
             arupabhumi: { label: 'အရူပဘူမိ', sub: 'အရူပဈာန် (၄) ပါးအလိုက် ဘုံ (၄)', color: 'text-amber-700 dark:text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' }
         };
 
+        // 20 Patisandhi Types
+        const patisandhiData = [
+            {
+                name: '၁။ အပါယပဋိသန္ဓေ', count: '၁ ပါး', color: 'rose', icon: 'fa-fire-flame-curved',
+                desc: 'အပါယ် ၄ ဘုံ၌ ပဋိသန္ဓေနေသော စိတ်။',
+                detail: 'အကုသလဝိပါက် ဥပေက္ခာသန္တီရဏစိတ် ၁ ပါး ဖြစ်သည်။ ငရဲ၊ တိရစ္ဆာန်၊ ပြိတ္တာ၊ အသုရကာယ် ဘုံတို့၌ ပဋိသန္ဓေကျသည်။'
+            },
+            {
+                name: '၂။ ကာမသုဂတိပဋိသန္ဓေ', count: '၉ ပါး', color: 'emerald', icon: 'fa-hands-holding-child',
+                desc: 'လူ့ဘုံ နှင့် ကာမနတ် ၆ ဘုံ၌ ပဋိသန္ဓေနေသော စိတ်များ။',
+                detail: 'အဟေတုက ကုသလဝိပါက် ဥပေက္ခာသန္တီရဏ ၁ ပါး (လူအကန္ဓ/မွေးရာပါဆမအကုသိုလ်အကျိုး) + မဟာဝိပါက်စိတ် ၈ ပါး = စုစုပေါင်း ၉ ပါး ဖြစ်သည်။'
+            },
+            {
+                name: '၃။ ရူပါဝစရပဋိသန္ဓေ', count: '၆ မျိုး (နာမ်၅ + ရုပ်၁)', color: 'sky', icon: 'fa-mountain',
+                desc: 'ရူပ ၁၆ ဘုံ၌ ပဋိသန္ဓေနေသော နာမ်/ရုပ် တရားများ။',
+                detail: 'ရူပါဝစရ ဝိပါက်စိတ် ၅ ပါး (ပထမဈာန် မှ ပဉ္စမဈာန်) + အသညသတ်ဘုံ၌ ရုပ်ပဋိသန္ဓေ ၁ မျိုး (ဇီဝိတနဝကကလာပ်ရုပ်) = စုစုပေါင်း ၆ မျိုး ဖြစ်သည်။'
+            },
+            {
+                name: '၄။ အရူပါဝစရပဋိသန္ဓေ', count: '၄ ပါး', color: 'amber', icon: 'fa-expand',
+                desc: 'အရူပ ၄ ဘုံ၌ ပဋိသန္ဓေနေသော စိတ်များ။',
+                detail: 'အရူပါဝစရ ဝိပါက်စိတ် ၄ ပါး (အာကာသာနဉ္စာယတန မှ နေဝသညာနာသညာယတန အထိ) ဖြစ်သည်။'
+            }
+        ];
+
         const yoniData = [
             { key: 'andaja', pali: 'Aṇḍaja', name: 'အဏ္ဍဇယောနိ', desc: 'ဥအဖြစ် ဦးစွာ ဖွားမြင်ပြီးမှ အသက်ဝင်လာသော နည်းလမ်း — ငှက်၊ ကြက်။' },
             { key: 'jalabuja', pali: 'Jalābuja', name: 'ဇလာဗုဇယောနိ', desc: 'အမိဝမ်းတွင်းမှ တိုက်ရိုက် အသက်ရှင်လျက် မွေးဖွားလာသော နည်းလမ်း — လူ၊ နွား။' },
@@ -250,7 +326,7 @@
 
         const kammaTetrads = [
             {
-                title: '၁။ ကိစ္စအားဖြင့် (Kicca-catukka)', color: 'sky',
+                title: '၁။ ကိစ္စအားဖြင့် (Kicca-catukka — အမှုကိစ္စ ၄ ပါး)', color: 'sky',
                 items: [
                     { name: 'ဇနကကံ', desc: 'ပဋိသန္ဓေနှင့် ဘဝတွင်း ရုပ်/နာမ် ခန္ဓာများကို ဖန်တီး ဖြစ်ပေါ်စေသော ကံ' },
                     { name: 'ဥပတ္ထမ္ဘကကံ', desc: 'အခြားကံ၏ အကျိုးကို ခိုင်မြဲစွာ ထောက်ပံ့ ကူညီသော ကံ' },
@@ -259,7 +335,7 @@
                 ]
             },
             {
-                title: '၂။ ဆောင်ရွက်ရမည့် အစီအစဉ်အားဖြင့် (Pāka-dāna-pariyāya-catukka)', color: 'emerald',
+                title: '၂။ ဆောင်ရွက်ရမည့် အစီအစဉ်အားဖြင့် (Pāka-dāna-pariyāya-catukka — အစဉ် ၄ ပါး)', color: 'emerald',
                 items: [
                     { name: 'ဂရုကကံ', desc: 'အလွန်လေးလံသော ကံ (ပဉ္စာနန္တရိယကံ/မဟဂ္ဂတကံ) — အကျိုးပေးရန် ဦးစားပေးဆုံး' },
                     { name: 'အာသန္နကံ', desc: 'သေချိန်နီးအချိန် သတိရမိသော ကံ — ဒုတိယ ဦးစားပေး' },
@@ -268,7 +344,7 @@
                 ]
             },
             {
-                title: '၃။ အကျိုးပေးချိန်အားဖြင့် (Pāka-kāla-catukka)', color: 'amber',
+                title: '၃။ အကျိုးပေးချိန်အားဖြင့် (Pāka-kāla-catukka — ကာလ ၄ ပါး)', color: 'amber',
                 items: [
                     { name: 'ဒိဋ္ဌဓမ္မဝေဒနီယကံ', desc: 'ဤဘဝတွင်ပင် ချက်ချင်း အကျိုးပေးသော ကံ' },
                     { name: 'ဥပပဇ္ဇဝေဒနီယကံ', desc: 'နောက်ဘဝ (ဒုတိယဘဝ) တွင် အကျိုးပေးသော ကံ' },
@@ -277,12 +353,12 @@
                 ]
             },
             {
-                title: '၄။ အကျိုးပေးရာ နေရာအားဖြင့် (Pākaṭṭhāna-catukka)', color: 'violet',
+                title: '၄။ အကျိုးပေးရာ နေရာအားဖြင့် (Pākaṭṭhāna-catukka — ဌာန ၄ ပါး)', color: 'violet',
                 items: [
-                    { name: 'အကုသိုလ်ကံ', desc: 'အကုသိုလ်စိတ် (၁၂) ပါးမှ ဖြစ်သော ကံ — အပါယ်ဘုံသို့ ဦးတည်' },
-                    { name: 'ကာမာဝစရ ကုသိုလ်ကံ', desc: 'မဟာကုသိုလ်စိတ် (၈) ပါးမှ ဖြစ်သော ကံ — ကာမသုဂတိဘုံသို့ ဦးတည်' },
-                    { name: 'ရူပါဝစရ ကုသိုလ်ကံ', desc: 'ရူပါဝစရကုသိုလ်စိတ် (၅) ပါးမှ ဖြစ်သော ကံ — ရူပဘုံသို့ ဦးတည်' },
-                    { name: 'အရူပါဝစရ ကုသိုလ်ကံ', desc: 'အရူပါဝစရကုသိုလ်စိတ် (၄) ပါးမှ ဖြစ်သော ကံ — အရူပဘုံသို့ ဦးတည်' }
+                    { name: 'အကုသိုလ်ကံ (၁၂)', desc: 'အကုသိုလ်စိတ် (၁၂) ပါးမှ ဖြစ်သော ကံ — အပါယ်ဘုံ (၄) ဘုံသို့ ဦးတည်' },
+                    { name: 'ကာမာဝစရ ကုသိုလ်ကံ (၈)', desc: 'မဟာကုသိုလ်စိတ် (၈) ပါးမှ ဖြစ်သော ကံ — ကာမသုဂတိ (၇) ဘုံသို့ ဦးတည်' },
+                    { name: 'ရူပါဝစရ ကုသိုလ်ကံ (၅)', desc: 'ရူပါဝစရကုသိုလ်စိတ် (၅) ပါးမှ ဖြစ်သော ကံ — ရူပ (၁၆) ဘုံသို့ ဦးတည်' },
+                    { name: 'အရူပါဝစရ ကုသိုလ်ကံ (၄)', desc: 'အရူပါဝစရကုသိုလ်စိတ် (၄) ပါးမှ ဖြစ်သော ကံ — အရူပ (၄) ဘုံသို့ ဦးတည်' }
                 ]
             }
         ];
@@ -305,27 +381,19 @@
             return String(n).replace(/[0-9]/g, d => map[d]);
         }
 
-        
         function renderInteractiveMap() {
             const mapContainer = document.getElementById('interactive-map-container');
             if (!mapContainer) return;
 
-            // Structure of planes (top to bottom)
             const mapStructure = [
                 { group: 'arupabhumi', items: [31, 30, 29, 28], color: 'border-amber-500 dark:border-amber-500/50 bg-amber-500/10 hover:bg-amber-500/30 text-amber-700 dark:text-amber-300', title: 'အရူပဘုံ (၄) ဘုံ' },
-                
-                // Rupa planes (16)
-                { group: 'rupabhumi', items: [27, 26, 25, 24, 23], color: 'border-emerald-500/50 bg-emerald-500/10 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300', title: 'သုဒ္ဓါဝါသဘုံ (၅)' }, // Suddhavasa
+                { group: 'rupabhumi', items: [27, 26, 25, 24, 23], color: 'border-emerald-500/50 bg-emerald-500/10 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300', title: 'သုဒ္ဓါဝါသဘုံ (၅)' },
                 { group: 'rupabhumi', items: [22, 21], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-700 dark:text-sky-300', title: 'စတုတ္ထဈာန်ဘုံ' }, 
                 { group: 'rupabhumi', items: [20, 19, 18], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-700 dark:text-sky-300', title: 'တတိယဈာန်ဘုံ (၃)' },
                 { group: 'rupabhumi', items: [17, 16, 15], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-700 dark:text-sky-300', title: 'ဒုတိယဈာန်ဘုံ (၃)' },
                 { group: 'rupabhumi', items: [14, 13, 12], color: 'border-sky-500 dark:border-sky-500/50 bg-sky-100 dark:bg-sky-500/10 hover:bg-sky-500/30 text-sky-700 dark:text-sky-300', title: 'ပဌမဈာန်ဘုံ (၃)' },
-                
-                // Kama Sugati planes (7)
                 { group: 'kamabhumi_deva', items: [11, 10, 9, 8, 7, 6], color: 'border-indigo-500/50 bg-indigo-500/10 hover:bg-indigo-500/30 text-indigo-700 dark:text-indigo-300', title: 'နတ်ဘုံ (၆)' },
                 { group: 'kamabhumi_manussa', items: [5], color: 'border-violet-500/50 bg-violet-500/10 hover:bg-violet-500/30 text-violet-700 dark:text-violet-300', title: 'လူ့ဘုံ (၁)' },
-                
-                // Apaya planes (4)
                 { group: 'apayabhumi', items: [4, 3, 2, 1], color: 'border-rose-500/50 bg-rose-500/10 hover:bg-rose-500/30 text-rose-700 dark:text-rose-300', title: 'အပါယ်ဘုံ (၄)' }
             ];
 
@@ -386,6 +454,25 @@
             }).join('');
         }
 
+        function renderPatisandhiGrid() {
+            document.getElementById('patisandhi-grid').innerHTML = patisandhiData.map((p, i) => `
+                <button onclick="openPatisandhiModal(${i})" class="vm-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${p.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid ${p.icon} text-${p.color}-500 text-xl"></i>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-${p.color}-500/10 text-${p.color}-700 dark:text-${p.color}-300 border border-${p.color}-500/20">${p.count}</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-${p.color}-600 transition">${p.name}</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-1">${p.desc}</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/50 flex items-center justify-between text-[11px] text-${p.color}-600 dark:text-${p.color}-400 font-semibold">
+                        <span>အသေးစိတ် ကြည့်မည်</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </button>
+            `).join('');
+        }
+
         function renderYoniChips() {
             document.getElementById('yoni-chips').innerHTML = yoniData.map(y => `
                 <button onclick="openYoniModal('${y.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-emerald-500/10 border-emerald-400 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:brightness-125">${y.name}</button>
@@ -395,13 +482,13 @@
         function renderKammaTetrads() {
             const colorClass = { sky: 'border-sky-400 dark:border-sky-500/30 bg-sky-100 dark:bg-sky-500/10 text-sky-700 dark:text-sky-300', emerald: 'border-emerald-400 dark:border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300', amber: 'border-amber-400 dark:border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300', violet: 'border-violet-400 dark:border-violet-500/30 bg-violet-500/10 text-violet-700 dark:text-violet-300' };
             document.getElementById('kamma-tetrads').innerHTML = kammaTetrads.map(t => `
-                <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border ${colorClass[t.color]}">
-                    <h4 class="font-bold text-sm mb-2">${t.title}</h4>
-                    <div class="grid sm:grid-cols-2 gap-2">
+                <div class="bg-slate-100 dark:bg-slate-950/60 rounded-xl p-4 border ${colorClass[t.color]}">
+                    <h4 class="font-bold text-sm mb-3 flex items-center gap-2">${t.title}</h4>
+                    <div class="grid sm:grid-cols-2 gap-2.5">
                         ${t.items.map(it => `
-                            <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800">
-                                <span class="text-slate-800 dark:text-slate-200 font-semibold text-xs block">${it.name}</span>
-                                <span class="text-slate-600 dark:text-slate-400 text-[11px]">${it.desc}</span>
+                            <div class="bg-white/70 dark:bg-slate-900/70 rounded-lg p-3 border border-slate-200 dark:border-slate-800">
+                                <span class="text-slate-900 dark:text-slate-100 font-bold text-xs block mb-0.5">${it.name}</span>
+                                <span class="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed block">${it.desc}</span>
                             </div>
                         `).join('')}
                     </div>
@@ -411,17 +498,17 @@
 
         function renderNearDeathChips() {
             document.getElementById('near-death-chips').innerHTML = nearDeathData.map(n => `
-                <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-3 border ${n.cls} text-center">
-                    <i class="fa-solid ${n.icon} ${n.cls.split(' ')[1]} text-lg mb-1"></i>
-                    <span class="${n.cls.split(' ')[1]} font-bold block text-sm">${n.name}</span>
-                    <span class="text-slate-600 dark:text-slate-400 text-[11px]">${n.desc}</span>
+                <div class="bg-slate-100 dark:bg-slate-950/60 rounded-xl p-3.5 border ${n.cls} text-center">
+                    <i class="fa-solid ${n.icon} ${n.cls.split(' ')[1]} text-xl mb-1.5"></i>
+                    <span class="${n.cls.split(' ')[1]} font-bold block text-sm mb-1">${n.name}</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed block">${n.desc}</span>
                 </div>
             `).join('');
         }
 
         function renderMaranaChips() {
             document.getElementById('marana-chips').innerHTML = maranaData.map(m => `
-                <button onclick="openMaranaModal('${m.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-slate-100/80 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:brightness-125">${m.name}</button>
+                <button onclick="openMaranaModal('${m.key}')" class="vm-card text-xs font-semibold px-3.5 py-2 rounded-full border transition bg-slate-100/80 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:brightness-125">${m.name}</button>
             `).join('');
         }
 
@@ -438,6 +525,11 @@
             const info = groupInfo[b.group];
             showModal(b.icon, info.color, info.label + ' — အမှတ် ' + mm(b.id) + '/၃၁', b.name, b.pali, b.desc, b.example);
         }
+        function openPatisandhiModal(index) {
+            const p = patisandhiData[index];
+            if (!p) return;
+            showModal(p.icon, 'text-emerald-700 dark:text-emerald-300', 'ပဋိသန္ဓေစတုက္က', p.name, p.count, p.desc, p.detail);
+        }
         function openYoniModal(key) {
             const y = yoniData.find(x => x.key === key);
             if (!y) return;
@@ -446,7 +538,7 @@
         function openMaranaModal(key) {
             const m = maranaData.find(x => x.key === key);
             if (!m) return;
-            showModal('fa-hourglass-end', 'text-slate-700 dark:text-slate-300', 'မရဏုပ္ပတ္တိ', m.name, m.pali, m.desc, null);
+            showModal('fa-hourglass-end', 'text-rose-700 dark:text-rose-300', 'မရဏုပ္ပတ္တိ', m.name, m.pali, m.desc, null);
         }
 
         function showModal(icon, colorClass, label, name, pali, desc, example) {
@@ -458,19 +550,19 @@
                         <i class="fa-solid ${icon}"></i>
                     </div>
                     <div>
-                        <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${label}</span>
+                        <span class="text-xs text-slate-500 uppercase font-mono">${label}</span>
                         <h3 class="text-xl font-bold ${colorClass}">${name}</h3>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-500 font-mono mt-1">${pali}</p>
+                        <p class="text-[11px] text-slate-500 font-mono mt-1">${pali}</p>
                     </div>
                 </div>
                 <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
                     <div>
-                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <span class="text-xs font-semibold text-slate-500 block uppercase">အနက်အဓိပ္ပာယ် / ရှင်းလင်းချက်</span>
                         <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${desc}</p>
                     </div>
                     ${example ? `
                     <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
-                        <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
+                        <span class="text-xs font-semibold text-amber-600 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>အဘိဓမ္မာ အသေးစိတ်</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${example}</p>
                     </div>` : ''}
                 </div>
@@ -490,7 +582,8 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderBhumiGroups();
-        renderInteractiveMap();
+            renderInteractiveMap();
+            renderPatisandhiGrid();
             renderYoniChips();
             renderKammaTetrads();
             renderNearDeathChips();
@@ -501,18 +594,6 @@
             }
         });
     </script>
-    <script>
-        // Offline/PWA support (sw.js) is temporarily disabled — unregister any
-        // previously installed service worker and clear its caches so this page
-        // always loads fresh from the network.
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
-        }
-        if (window.caches) {
-            caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
-        }
-    </script>
-
     <script src="accessibility.js"></script>
 </body>
 </html>
