@@ -73,6 +73,12 @@
             <span class="text-violet-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၉ ပိုင်းမြောက်</span>
             <h2 class="text-2xl md:text-3xl font-bold">စိတ်နှင့် စေတသိက်တို့ တစ်ခုနှင့်တစ်ခု ဘယ်လို "ထောက်ပံ့" ကြသလဲ</h2>
             <p class="text-slate-400 text-sm"><a href="citta_cetasikas_visual_guide.html#sampayoga" class="text-violet-300 underline decoration-dotted hover:text-violet-200">ယှဉ်ဖက်လက္ခဏာ (Sampayoga)</a> က "စိတ်နှင့် စေတသိက် အတူတကွ ဖြစ်ပေါ်ကြောင်း" ဖော်ပြခဲ့ပြီး ဖြစ်သည်။ ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း) ကမူ "ဘယ်လို နည်းလမ်း (၂၄) မျိုးဖြင့် တစ်ခုက တစ်ခုကို ထောက်ပံ့ကူညီ ဖြစ်ပေါ်စေသလဲ" ဆိုသည်ကို အသေးစိတ် ရှင်းပြသည်။ ဤအခန်းသည် အဘိဓမ္မာပိဋကတ် (၇) ကျမ်းအနက် "ပဋ္ဌာန်း" ဟု ခေါ်သော အနက်ရှိုင်းဆုံး၊ အကျယ်ဝန်းဆုံး ကျမ်းကြီး၏ အနှစ်ချုပ် ဖြစ်သည်။</p>
+            
+            <div class="pt-4">
+                <button onclick="showPatthanaPali()" class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-5 py-2.5 rounded-full font-semibold transition shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+                    <i class="fa-solid fa-book-open-reader"></i> ပဋ္ဌာန်းပါဠိတော် (ပစ္စယုဒ္ဒေသ) ဖတ်ရှုပူဇော်ရန်
+                </button>
+            </div>
         </div>
 
         <!-- Total verification bar -->
@@ -379,6 +385,55 @@
                     </div>
                 </div>
             `;
+            modal.classList.remove('hidden');
+        }
+
+        function showPatthanaPali() {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            
+            content.innerHTML = `
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto text-3xl border border-amber-500/30">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-amber-300 font-[Pyidaungsu]">ပဋ္ဌာန်း ပစ္စယုဒ္ဒေသ ပါဠိတော်</h3>
+                    <p class="text-sm text-slate-400">ဗုဒ္ဓမြတ်စွာ ဟောကြားတော်မူခဲ့သော အခြေအနေ (၂၄) ပါး</p>
+                    
+                    <div class="bg-slate-950/70 p-6 rounded-xl border border-slate-700 text-left space-y-4 max-h-[50vh] overflow-y-auto">
+                        <p class="text-slate-200 leading-8 text-base md:text-lg font-[Pyidaungsu] tracking-wide">
+                            ၁။ <strong>ဟေတုပစ္စယော</strong>၊<br>
+                            ၂။ <strong>အာရမ္မဏပစ္စယော</strong>၊<br>
+                            ၃။ <strong>အဓိပတိပစ္စယော</strong>၊<br>
+                            ၄။ <strong>အနန္တရပစ္စယော</strong>၊<br>
+                            ၅။ <strong>သမနန္တရပစ္စယော</strong>၊<br>
+                            ၆။ <strong>သဟဇာတပစ္စယော</strong>၊<br>
+                            ၇။ <strong>အညမညပစ္စယော</strong>၊<br>
+                            ၈။ <strong>နိဿယပစ္စယော</strong>၊<br>
+                            ၉။ <strong>ဥပနိဿယပစ္စယော</strong>၊<br>
+                            ၁၀။ <strong>ပုရေဇာတပစ္စယော</strong>၊<br>
+                            ၁၁။ <strong>ပစ္ဆာဇာတပစ္စယော</strong>၊<br>
+                            ၁၂။ <strong>အာသေဝနပစ္စယော</strong>၊<br>
+                            ၁၃။ <strong>ကမ္မပစ္စယော</strong>၊<br>
+                            ၁၄။ <strong>ဝိပါကပစ္စယော</strong>၊<br>
+                            ၁၅။ <strong>အာဟာရပစ္စယော</strong>၊<br>
+                            ၁၆။ <strong>ဣန္ဒြိယပစ္စယော</strong>၊<br>
+                            ၁၇။ <strong>ဈာနပစ္စယော</strong>၊<br>
+                            ၁၈။ <strong>မဂ္ဂပစ္စယော</strong>၊<br>
+                            ၁၉။ <strong>သမ္ပယုတ္တပစ္စယော</strong>၊<br>
+                            ၂၀။ <strong>ဝိပ္ပယုတ္တပစ္စယော</strong>၊<br>
+                            ၂၁။ <strong>အတ္ထိပစ္စယော</strong>၊<br>
+                            ၂၂။ <strong>နတ္ထိပစ္စယော</strong>၊<br>
+                            ၂၃။ <strong>ဝိဂတပစ္စယော</strong>၊<br>
+                            ၂၄။ <strong>အဝိဂတပစ္စယော</strong>တိ။
+                        </p>
+                    </div>
+                    <div class="pt-2 text-xs text-slate-500">
+                        * ဤပါဠိတော်သည် ပဋ္ဌာန်းကျမ်းကြီး၏ နိဒါန်းအကျဉ်း (ပစ္စယုဒ္ဒေသ) သာဖြစ်ပြီး၊ တစ်ပါးစီ၏ အကျယ်နှင့် သဘောတရား သရုပ်ခွဲများကို အောက်ပါ ကတ်များတွင် ဆက်လက် လေ့လာနိုင်ပါသည်။
+                    </div>
+                </div>
+            `;
+            
             modal.classList.remove('hidden');
         }
 
