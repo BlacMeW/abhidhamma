@@ -126,6 +126,22 @@
             </div>
         </div>
 
+        <!-- 1.1 Tika/Dipani Extra Attha Pannatti Group -->
+        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-indigo-500 space-y-4 shadow-sm mt-6">
+            <div class="flex items-center gap-3 pb-2 border-b border-slate-100 dark:border-slate-800">
+                <div class="w-11 h-11 rounded-xl bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 flex items-center justify-center text-xl border border-indigo-500/30"><i class="fa-solid fa-layer-group"></i></div>
+                <div>
+                    <h3 class="font-bold text-indigo-700 dark:text-indigo-300 text-lg">အခြား အတ္ထပညတ်များ <span class="text-sm font-normal text-slate-500">(ဋီကာ နှင့် ဒီပနီလာ)</span></h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">အဘိဓမ္မတ္ထဝိဘာဝိနီဋီကာ စသည်တို့တွင် ထပ်မံခွဲခြားပြဆိုထားသော အတ္ထပညတ်များ</p>
+                </div>
+            </div>
+            
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic mb-2">အသေးစိတ်သိရှိရန် ကတ်တစ်ခုချင်းစီကို နှိပ်ပါ။</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3" id="extra-container">
+                <!-- Rendered via JS -->
+            </div>
+        </div>
+
         <!-- 2. Nama Pannatti Group -->
         <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-rose-500 space-y-4 shadow-sm">
             <div class="flex items-center gap-3 pb-2 border-b border-slate-100 dark:border-slate-800">
@@ -267,6 +283,45 @@
             }
         ];
 
+        const extraPannatti = [
+            {
+                id: 'santati',
+                name: 'သန္တတိပညတ်', pali: 'Santati-paññatti',
+                desc: 'ရုပ်နာမ်တို့၏ အစဉ်မပြတ် ဆက်တိုက်ဖြစ်ပေါ်နေမှုကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။',
+                ex: ['ရုပ်ရှင်', 'အသံလှိုင်း', 'သက်တမ်း (အသက်)'],
+                icon: 'fa-film',
+                deepDesc: 'အမှန်တကယ်အားဖြင့် ရုပ်ရှင် သို့မဟုတ် သက်တမ်း ဟူ၍ တစ်ဆက်တည်းသော အရာမရှိပါ။ ရုပ်နာမ်များ၏ လျင်မြန်စွာ ဖြစ်-ပျက်-ဖြစ်-ပျက် အစဉ်အတန်း (Continuity) ကို စိတ်က ပေါင်းစပ်ပြီး "တစ်ခုတည်းသော အရာ၊ အစဉ်အဆက်" ဟု မှတ်ယူလိုက်ခြင်း ဖြစ်သည်။',
+                paramatthaLink: 'ရုပ်၊ နာမ်တို့၏ အစဉ်မပြတ် ဖြစ်-ပျက် နေသော သန္တတိ (Continuity) အပေါ် အခြေခံသည်။'
+            },
+            {
+                id: 'kicca',
+                name: 'ကိစ္စပညတ်', pali: 'Kicca-paññatti',
+                desc: 'ပြုလုပ်သော အလုပ် (Function) ကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။',
+                ex: ['ဆရာဝန်', 'ကျောင်းဆရာ', 'ရဟန်း', 'ဒရိုင်ဘာ'],
+                icon: 'fa-briefcase',
+                deepDesc: 'လူပုဂ္ဂိုလ် (သမုဟပညတ်) တစ်ဦးဦးသည် ဆေးကုသခြင်း၊ စာသင်ပေးခြင်း စသည့် အလုပ်ကိစ္စ တစ်ခုခုကို ဆောင်ရွက်သည့်အခါ ထိုလုပ်ဆောင်ချက်ကို အကြောင်းပြု၍ အမည်အသစ်တစ်ခု ထပ်မံပေးလိုက်ခြင်း ဖြစ်သည်။',
+                paramatthaLink: 'ရုပ်နာမ်တို့၏ အပြုအမူ လုပ်ဆောင်ချက် (Kicca / Function) အပေါ် အခြေခံသည်။'
+            },
+            {
+                id: 'linga',
+                name: 'လိင်္ဂပညတ်', pali: 'Linga-paññatti',
+                desc: 'ယောက်ျား၊ မိန်းမ စသည့် အသွင်အပြင် လက္ခဏာ (Sign/Gender) ကို စွဲ၍ ခေါ်ဝေါ်သော ပညတ်။',
+                ex: ['ယောက်ျား', 'မိန်းမ', 'ရသေ့', 'ပုဏ္ဏား'],
+                icon: 'fa-venus-mars',
+                deepDesc: 'ခန္ဓာကိုယ်၏ ဖွဲ့စည်းပုံ၊ အသွင်သဏ္ဌာန်၊ အဝတ်အစား ဆင်ယင်ပုံ စသည့် ထင်ရှားသော လက္ခဏာ (Sign) ကို ကြည့်၍ ခွဲခြားသတ်မှတ်သော ပညတ်ဖြစ်သည်။ "ပုဂ္ဂိုလ်" ဟူသော သမုဟပညတ်ထဲမှ အသွင်အပြင်ကို ခွဲထုတ်လိုက်ခြင်းဖြစ်သည်။',
+                paramatthaLink: 'ဣတ္ထိဘောရုပ်၊ ပုရိသဘောရုပ် နှင့် ပုံသဏ္ဌာန် (Santhāna) တို့၏ ထင်ရှားမှုအပေါ် အခြေခံသည်။'
+            },
+            {
+                id: 'upada',
+                name: 'ဥပါဒါပညတ်', pali: 'Upādā-paññatti',
+                desc: 'အခြားအရာတစ်ခု (ဥပမာ- ရုပ်ဝတ္ထု) ကို မှီခို၍ သို့မဟုတ် အကြောင်းပြု၍ ဖြစ်ပေါ်လာသော ပညတ်။',
+                ex: ['အရိပ်', 'မှန်ထဲက ပုံရိပ် (Reflection)'],
+                icon: 'fa-cloud-sun',
+                deepDesc: 'အမှန်တကယ် ရုပ်တရား မဟုတ်ဘဲ၊ ရုပ်ဝတ္ထုတစ်ခုခုကြောင့် ဖြစ်ပေါ်လာသည့် အလင်း/အမှောင်၏ ရောင်ပြန်ဟပ်မှု၊ ကွယ်ကာမှု တို့ကို "အရိပ်" ဟု ပညတ်လိုက်ခြင်း ဖြစ်သည်။ ၎င်းသည် ကိုယ်ပိုင်အထည်ကိုယ် မရှိဘဲ အခြားအရာကို အမှီပြုနေရသည်။',
+                paramatthaLink: 'ပထဝီစသော ရုပ်တရားများ၏ ပိတ်ဆို့မှု သို့မဟုတ် ရောင်ပြန်ဟပ်မှုအပေါ် အမှီပြု၍ ပညတ်ထားသည်။'
+            }
+        ];
+
         const namaPannatti = [
             { 
                 id: 'vijjamana',
@@ -353,6 +408,29 @@
                 `;
             });
 
+            const extraContainer = document.getElementById('extra-container');
+            extraPannatti.forEach(item => {
+                const exString = item.ex.slice(0, 2).join('၊ ') + (item.ex.length > 2 ? ' ...' : '');
+                extraContainer.innerHTML += `
+                    <button onclick="openPannattiModal('extra', '${item.id}')" class="pn-card bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 flex flex-col h-full w-full group">
+                        <div class="flex items-center justify-between mb-3 w-full">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg border border-indigo-500/10 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-indigo-500/30 text-[10px] group-hover:text-indigo-500 transition-colors"></i>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="font-bold text-indigo-800 dark:text-indigo-200 text-sm group-hover:text-indigo-600 transition-colors">${item.name}</h4>
+                            <div class="text-[10px] text-indigo-600/70 dark:text-indigo-400/70 font-mono mb-2">${item.pali}</div>
+                        </div>
+                        <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed grow line-clamp-3 w-full">${item.desc}</p>
+                        <div class="w-full text-[10px] font-semibold text-indigo-700/80 dark:text-indigo-300/80 mt-3 pt-3 border-t border-indigo-500/10">
+                            ဥပမာ — ${exString}
+                        </div>
+                    </button>
+                `;
+            });
+
             const namaContainer = document.getElementById('nama-container');
             namaPannatti.forEach((item, idx) => {
                 const partsHtml = item.parts.map(p => {
@@ -386,11 +464,21 @@
         });
 
         function openPannattiModal(type, id) {
-            const data = type === 'attha' ? atthaPannatti.find(x => x.id === id) : namaPannatti.find(x => x.id === id);
+            let data;
+            let theme;
+            if (type === 'attha') {
+                data = atthaPannatti.find(x => x.id === id);
+                theme = 'sky';
+            } else if (type === 'extra') {
+                data = extraPannatti.find(x => x.id === id);
+                theme = 'indigo';
+            } else {
+                data = namaPannatti.find(x => x.id === id);
+                theme = 'rose';
+            }
             if (!data) return;
 
             const modal = document.getElementById('pannatti-modal');
-            const theme = type === 'attha' ? 'sky' : 'rose';
             
             // Populate basic info
             document.getElementById('modal-title').textContent = data.name;
@@ -412,7 +500,7 @@
             
             header.className = `flex items-center justify-between px-5 py-4 border-b border-${theme}-200 dark:border-${theme}-800 bg-${theme}-50 dark:bg-${theme}-900/30`;
             
-            if (type === 'attha') {
+            if (type === 'attha' || type === 'extra') {
                 icon.className = `w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 border bg-${theme}-100 dark:bg-${theme}-800 text-${theme}-600 dark:text-${theme}-300 border-${theme}-300 dark:border-${theme}-600`;
                 icon.innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
                 document.getElementById('modal-logic-section').classList.add('hidden');
