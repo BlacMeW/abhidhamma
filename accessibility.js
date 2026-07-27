@@ -82,6 +82,7 @@
     function setTheme(theme) {
         if (theme === 'dark') {
             htmlEl.classList.add('dark');
+            document.body.style.removeProperty('background-color');
             btnDark.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-slate-900', 'dark:text-white');
             btnDark.classList.remove('text-slate-600', 'dark:text-slate-400');
             
@@ -89,6 +90,7 @@
             btnLight.classList.add('text-slate-600', 'dark:text-slate-400');
         } else {
             htmlEl.classList.remove('dark');
+            document.body.style.setProperty('background-color', '#f8fafc', 'important');
             btnLight.classList.add('bg-white', 'shadow-sm', 'text-slate-900');
             btnLight.classList.remove('text-slate-600', 'dark:text-slate-400');
             
