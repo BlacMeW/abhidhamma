@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဝီထိသင်္ဂဟ — ပဉ္စဒွါရဝီထိ၊ မနောဒွါရဝီထိ စိတ်ဖြစ်စဉ်များကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဝီထိသင်္ဂဟ — ပဉ္စဒွါရဝီထိ (၄) မျိုး၊ မနောဒွါရဝီထိ (၃) မျိုး နှင့် အပ္ပနာဝီထိ တို့ကို ၁၀၀% ပြည့်စုံစွာ ရှင်းလင်းတင်ပြထားသော Interactive Visual Guide">
     <title>ဝီထိသင်္ဂဟ — စိတ်ဖြစ်စဉ် (၁၇) ချက် (Vīthi-saṅgaha)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,9 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-        }
+        body { font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', sans-serif; }
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -39,22 +37,14 @@
         .dark ::-webkit-scrollbar-thumb { background: #475569; }
         ::-webkit-scrollbar-thumb:hover { background: #64748b; }
         html { scroll-behavior: smooth; }
-        * { -webkit-tap-highlight-color: transparent; }
-        button { touch-action: manipulation; }
-        button:active { transform: scale(0.97); }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(8px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fade-in { animation: fade-in 0.2s ease-out; }
-        .vithi-node { transition: transform 0.2s; }
+        .vithi-node { transition: transform 0.2s, box-shadow 0.2s; }
         .vithi-node:hover { transform: translateY(-4px); }
         .timeline-scroll {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .timeline-scroll::-webkit-scrollbar {
-            display: none; /* Chrome, Safari and Opera */
+            display: none;
         }
     </style>
     <style>
@@ -63,6 +53,7 @@
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
+    <!-- Header -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
@@ -71,12 +62,15 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-cyan-700 dark:text-cyan-300">ဝီထိသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Vīthi-saṅgaha)</span></h1>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400">အဘိဓမ္မာ (၄) ပိုင်းမြောက် — စိတ်ဖြစ်စဉ်များ (Cognitive Processes)</p>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">စတုတ္ထပိုင်း — စိတ်ဖြစ်စဉ်များ (Cognitive Processes)</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
                 <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
+                </a>
+                <a href="glossary.html" class="text-xs font-semibold bg-emerald-100 dark:bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
             </div>
         </div>
@@ -86,134 +80,228 @@
         
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <h2 class="text-2xl md:text-3xl font-bold">စိတ်တို့၏ ဖြစ်စဉ် (၁၇) ချက်</h2>
-            <p class="text-slate-600 dark:text-slate-400 text-sm">"ဝီထိ" ဟူသည် လမ်းကြောင်း သို့မဟုတ် အစဉ်အဆက် ဟု အဓိပ္ပာယ်ရသည်။ အာရုံတစ်ခုကို သိရှိရန်အတွက် စိတ်တစ်ခုတည်းက သိလိုက်ခြင်း မဟုတ်ဘဲ၊ လွန်စွာလျင်မြန်သော စိတ်အစဉ်အဆက် (၁၇) ချက်ခန့် ဆက်တိုက် ဖြစ်ပေါ်မှသာ "သိခြင်း" ကိစ္စ ပြီးမြောက်သည်။</p>
+            <span class="text-cyan-700 dark:text-cyan-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မတ္ထသင်္ဂဟကျမ်း အခန်း (၄)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">စိတ်တို့၏ ဖြစ်စဉ် (၁၇) ချက် နှင့် ဝီထိနိယာမများ</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+                "ဝီထိ" ဟူသည် လမ်းကြောင်း သို့မဟုတ် အစဉ်အဆက် ဟု အဓိပ္ပာယ်ရသည်။ အာရုံတစ်ခုကို သိရှိရန်အတွက် စိတ်တစ်ခုတည်းက သိလိုက်ခြင်း မဟုတ်ဘဲ၊ လွန်စွာလျင်မြန်သော စိတ်အစဉ်အဆက် (၁၇) ချက်ခန့် ဆက်တိုက် ဖြစ်ပေါ်မှသာ "သိခြင်း" ကိစ္စ ပြီးမြောက်သည်။ ဤအခန်းတွင် <b>ပဉ္စဒွါရဝီထိ (၄) မျိုး</b>၊ <b>မနောဒွါရဝီထိ (၃) မျိုး</b>၊ <b>တဒါရုံ/ဇဝန နိယာမများ</b> ကို ၁၀၀% အပြည့်အစုံ ဖော်ပြထားပါသည်။
+            </p>
         </div>
 
-        <!-- Pancadvara Vithi -->
-        <div class="glass-card rounded-2xl p-4 md:p-6 border border-cyan-500/30 relative overflow-hidden">
+        <!-- Master Quick Navigation Bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
+            <button onclick="scrollToSection('sec-panca')" class="px-3.5 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-eye"></i> ၁။ ပဉ္စဒွါရဝီထိ (၄ မျိုး)</button>
+            <button onclick="scrollToSection('sec-mano')" class="px-3.5 py-1.5 rounded-lg bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30 hover:bg-violet-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-brain"></i> ၂။ မနောဒွါရဝီထိ (၃ မျိုး)</button>
+            <button onclick="scrollToSection('sec-rules')" class="px-3.5 py-1.5 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-scale-balanced"></i> ၃။ ဝီထိနိယာမများ</button>
+        </div>
+
+        <!-- 1. PANCADVARA VITHI -->
+        <section id="sec-panca" class="glass-card rounded-2xl p-4 md:p-6 border border-cyan-500/30 relative overflow-hidden space-y-6">
             <div class="absolute -top-10 -right-10 text-cyan-500/5 text-9xl"><i class="fa-solid fa-eye"></i></div>
-            <h3 class="font-bold text-cyan-700 dark:text-cyan-300 text-lg flex items-center gap-2 mb-2 relative z-10">
-                <i class="fa-solid fa-eye"></i> ပဉ္စဒွါရဝီထိ (Pañcadvāra Vīthi)
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 relative z-10">
-                ဒွါရငါးပါး (မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ်) ၌ အာရုံလာရောက်တိုက်ခိုက်ရာတွင် အာရုံ၏ ထင်ရှားမှုပေါ်မူတည်၍ ဝီထိ (၄) မျိုး ကွဲပြားသည်။ (ဘယ်ညာသို့ ပွတ်ဆွဲ၍ ကြည့်ပါ)
-            </p>
+            
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2 relative z-10">
+                <div>
+                    <h3 class="font-bold text-cyan-700 dark:text-cyan-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-eye"></i> ၁။ ပဉ္စဒွါရဝီထိ (Pañcadvāra Vīthi — ဒွါရ ၅ ပါး စိတ်ဖြစ်စဉ်)
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">ဒွါရငါးပါး (မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ်) ၌ အာရုံ၏ ထင်ရှားမှုပေါ်မူတည်၍ ဖြစ်ပေါ်သော ဝီထိ (၄) မျိုး</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30">ပဉ္စဒွါရ ၄ မျိုး</span>
+            </div>
 
             <div class="space-y-6 relative z-10">
                 <!-- 1. Atimahantarama -->
-                <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၁။ အတိမဟန္တာရုံဝီထိ (အလွန်ကြီးမားသော အာရုံ)</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">တဒါရုံကျပြီးမှ ဘဝင်သို့ ပြန်ကျသည်။ (ဝီထိစိတ် ၁၄ ကြိမ်၊ အာရုံသက်တမ်း ၁၇ ချက် အပြည့်)</p>
-                    <div class="w-full overflow-x-auto pb-2 timeline-scroll">
+                <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၁။ အတိမဟန္တာရုံဝီထိ (အလွန်ကြီးမားသော အာရုံ)</h4>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 font-semibold border border-cyan-500/20">ဝီထိစိတ် ၁၄ ကြိမ် + အာရုံ ၁၇ ချက်</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">တဒါရုံကျပြီးမှ ဘဝင်သို့ ပြန်ကျသည်။ (အာရုံသက်တမ်း ၁၇ ချက် အပြည့်)</p>
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="panca-ati-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
                 </div>
 
                 <!-- 2. Mahantarama -->
-                <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၂။ မဟန္တာရုံဝီထိ (ကြီးမားသော အာရုံ)</h4>
+                <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၂။ မဟန္တာရုံဝီထိ (ကြီးမားသော အာရုံ)</h4>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 font-semibold border border-cyan-500/20">ဇောအဆုံး ဘဝင်ကျ</span>
+                    </div>
                     <p class="text-[11px] text-slate-500 dark:text-slate-400">တဒါရုံ မကျဘဲ ဇောအဆုံးတွင် ဘဝင်သို့ ပြန်ကျသည်။</p>
-                    <div class="w-full overflow-x-auto pb-2 timeline-scroll">
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="panca-maha-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
                 </div>
 
                 <!-- 3. Parittarama -->
-                <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၃။ ပရိတ္တာရုံဝီထိ (သေးငယ်သော အာရုံ)</h4>
+                <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၃။ ပရိတ္တာရုံဝီထိ (သေးငယ်သော အာရုံ)</h4>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 font-semibold border border-cyan-500/20">ဝုဋ္ဌော ၃ ကြိမ်</span>
+                    </div>
                     <p class="text-[11px] text-slate-500 dark:text-slate-400">ဇောမစောဘဲ ဝုဋ္ဌော (၃) ကြိမ်ဖြစ်ပြီး ဘဝင်သို့ ပြန်ကျသည်။</p>
-                    <div class="w-full overflow-x-auto pb-2 timeline-scroll">
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="panca-pari-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
                 </div>
 
                 <!-- 4. Atiparittarama -->
-                <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၄။ အတိပရိတ္တာရုံဝီထိ (အလွန်သေးငယ်သော အာရုံ)</h4>
+                <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 class="font-bold text-sm text-cyan-800 dark:text-cyan-200">၄။ အတိပရိတ္တာရုံဝီထိ (အလွန်သေးငယ်သော အာရုံ)</h4>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 font-semibold border border-cyan-500/20">ဘဝင် ၂ ကြိမ် လှုပ်ရုံ</span>
+                    </div>
                     <p class="text-[11px] text-slate-500 dark:text-slate-400">ဝီထိစိတ် လုံးဝမဖြစ်ပေါ်ဘဲ ဘဝင်သာ (၂) ကြိမ် လှုပ်သွားသည်။</p>
-                    <div class="w-full overflow-x-auto pb-2 timeline-scroll">
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="panca-atipari-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
                 </div>
             </div>
             
             <!-- Legend -->
-            <div class="flex flex-wrap justify-center gap-3 mt-6 text-[10px] md:text-xs">
-                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700"></span> <span>ဘဝင် (အိပ်ပျော်နေသကဲ့သို့)</span></div>
-                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-cyan-400 dark:bg-cyan-600"></span> <span>အာဝဇ္ဇန်း (ဆင်ခြင်ခြင်း)</span></div>
+            <div class="flex flex-wrap justify-center gap-3 mt-4 text-[10px] md:text-xs pt-3 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700"></span> <span>ဘဝင်</span></div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-cyan-400 dark:bg-cyan-600"></span> <span>အာဝဇ္ဇန်း</span></div>
                 <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-400 dark:bg-emerald-600"></span> <span>ဝိညာဉ်/သမ္ပ/သန္တီ/ဝုဋ္ဌော</span></div>
-                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-rose-400 dark:bg-rose-600 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></span> <span class="font-bold">ဇော (ကံမြောက်ခြင်း)</span></div>
-                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-400 dark:bg-amber-600"></span> <span>တဒါရုံ (အာရုံအရသာခံ)</span></div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-rose-400 dark:bg-rose-600 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></span> <span class="font-bold">ဇော (ကံမြောက်)</span></div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-400 dark:bg-amber-600"></span> <span>တဒါရုံ</span></div>
             </div>
-        </div>
+        </section>
 
-        <!-- Manodvara Vithi -->
-        <div class="glass-card rounded-2xl p-4 md:p-6 border border-violet-500/30 relative overflow-hidden">
+        <!-- 2. MANODVARA VITHI -->
+        <section id="sec-mano" class="glass-card rounded-2xl p-4 md:p-6 border border-violet-500/30 relative overflow-hidden space-y-6">
             <div class="absolute -top-10 -right-10 text-violet-500/5 text-9xl"><i class="fa-solid fa-brain"></i></div>
-            <h3 class="font-bold text-violet-700 dark:text-violet-300 text-lg flex items-center gap-2 mb-2 relative z-10">
-                <i class="fa-solid fa-brain"></i> မနောဒွါရဝီထိ (Manodvāra Vīthi)
-            </h3>
             
-            <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 relative z-10">
-                မနောဒွါရ (စိတ်) ၌ အာရုံလာရောက်ထင်ပေါ်ရာတွင် ကာမဇော နှင့် အပ္ပနာဇော ဟူ၍ ကွဲပြားသည်။ 
-            </p>
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2 relative z-10">
+                <div>
+                    <h3 class="font-bold text-violet-700 dark:text-violet-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> ၂။ မနောဒွါရဝီထိ (Manodvāra Vīthi — စိတ်ဒွါရ စိတ်ဖြစ်စဉ်)
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">မနောဒွါရ (စိတ်) ၌ အာရုံလာရောက်ထင်ပေါ်ရာတွင် ဖြစ်ပေါ်သော ဝီထိ (၃) မျိုး</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30">မနောဒွါရ ၃ မျိုး</span>
+            </div>
 
             <div class="space-y-6 relative z-10">
                 <!-- 1. Vibhutarammana -->
-                <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-violet-800 dark:text-violet-200">၁။ ဝိဘူတာရုံဝီထိ (ထင်ရှားသော အာရုံ)</h4>
+                <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 class="font-bold text-sm text-violet-800 dark:text-violet-200">၁။ ဝိဘူတာရုံဝီထိ (ထင်ရှားသော အာရုံ)</h4>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-700 dark:text-violet-300 font-semibold border border-violet-500/20">တဒါရုံ ကျ</span>
+                    </div>
                     <p class="text-[11px] text-slate-500 dark:text-slate-400">တဒါရုံကျပြီးမှ ဘဝင်သို့ ပြန်ကျသည်။ (ကာမဇော)</p>
-                    <div class="w-full overflow-x-auto pb-2 timeline-scroll">
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="mano-vibhu-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
                 </div>
 
                 <!-- 2. Avibhutarammana -->
-                <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-violet-800 dark:text-violet-200">၂။ အဝိဘူတာရုံဝီထိ (မထင်ရှားသော အာရုံ)</h4>
+                <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 class="font-bold text-sm text-violet-800 dark:text-violet-200">၂။ အဝိဘူတာရုံဝီထိ (မထင်ရှားသော အာရုံ)</h4>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-700 dark:text-violet-300 font-semibold border border-violet-500/20">ဇောအဆုံး ဘဝင်ကျ</span>
+                    </div>
                     <p class="text-[11px] text-slate-500 dark:text-slate-400">တဒါရုံ မကျဘဲ ဇောအဆုံးတွင် ဘဝင်သို့ ပြန်ကျသည်။ (ကာမဇော)</p>
-                    <div class="w-full overflow-x-auto pb-2 timeline-scroll">
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="mano-avibhu-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
                 </div>
 
                 <!-- 3. Appana -->
-                <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-rose-700 dark:text-rose-300">၃။ အပ္ပနာဝီထိ (ဈာန်/မဂ်/ဖိုလ် စိတ်ဖြစ်စဉ်)</h4>
+                <div class="space-y-1 bg-white/40 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 class="font-bold text-sm text-rose-700 dark:text-rose-300">၃။ အပ္ပနာဝီထိ (ဈာန်/မဂ်/ဖိုလ် စိတ်ဖြစ်စဉ်)</h4>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-300 font-semibold border border-rose-500/20">မဟဂ္ဂတ/လောကုတ္တရာ</span>
+                    </div>
                     <p class="text-[11px] text-slate-500 dark:text-slate-400">သမထ သို့မဟုတ် ဝိပဿနာ ကျင့်စဉ်ကြောင့် အပ္ပနာဇော (ဈာန်၊ မဂ်၊ ဖိုလ်) စောသော ဝီထိစဉ်။</p>
-                    <div class="w-full overflow-x-auto pb-2 timeline-scroll">
+                    <div class="w-full overflow-x-auto pb-2 timeline-scroll cursor-grab active:cursor-grabbing">
                         <div id="mano-appana-timeline" class="flex items-center gap-2 min-w-max px-2 py-4"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Legend addition for Appana -->
-            <div class="flex flex-wrap justify-center gap-3 mt-6 text-[10px] md:text-xs relative z-10">
+            <!-- Legend for Appana -->
+            <div class="flex flex-wrap justify-center gap-3 mt-4 text-[10px] md:text-xs pt-3 border-t border-slate-200 dark:border-slate-800">
                 <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-fuchsia-400 dark:bg-fuchsia-600"></span> <span>ပရိကံ/ဥပစာ/အနုလုံ/ဂေါတြဘူ</span></div>
                 <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-indigo-400 dark:bg-indigo-600 shadow-[0_0_8px_rgba(99,102,241,0.6)]"></span> <span class="font-bold text-indigo-700 dark:text-indigo-300">အပ္ပနာဇော (Absorption)</span></div>
             </div>
-        </div>
+        </section>
+
+        <!-- 3. VITHI RULES & NIYAMA -->
+        <section id="sec-rules" class="glass-card rounded-2xl p-5 md:p-6 border border-amber-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-amber-700 dark:text-amber-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced"></i> ၃။ ဝီထိနိယာမများ (Vīthi-niyāma)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">တဒါရုံနိယာမ နှင့် ဇဝနနိယာမ စည်းကမ်းများ</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30">နိယာမ စည်းကမ်းများ</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <div class="bg-white/60 dark:bg-slate-900/60 p-4 rounded-xl border border-amber-500/30 space-y-2">
+                    <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm border-b border-amber-200 dark:border-amber-900/50 pb-1">တဒါရုံနိယာမ (Tadārammaṇa-niyāma)</h4>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                        တဒါရုံစိတ် ၂ ကြိမ် ကျရန်အတွက် အောက်ပါ အချက် (၃) ချက်စလုံး ပြည့်စုံရမည် —
+                    </p>
+                    <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                        <li><b>ကာမဇော ဖြစ်ရမည်:</b> အပ္ပနာဇော သို့မဟုတ် မဟဂ္ဂတဇော မဟုတ်ရပါ။</li>
+                        <li><b>ကာမသတ္တဝါ ဖြစ်ရမည်:</b> ကာမ ၁၁ ဘုံသား ဖြစ်ရမည် (ရူပ/အရူပ ဗြဟ္မာများ၌ တဒါရုံ မကျပါ)။</li>
+                        <li><b>ကာမအာရုံ ဖြစ်ရမည်:</b> အာရုံသည် အတိမဟန္တာရုံ သို့မဟုတ် ဝိဘူတာရုံ ဖြစ်ရမည်။</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white/60 dark:bg-slate-900/60 p-4 rounded-xl border border-amber-500/30 space-y-2">
+                    <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm border-b border-amber-200 dark:border-amber-900/50 pb-1">ဇဝနနိယာမ (Javana-niyāma)</h4>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                        ဇောစိတ်များ အတန်းလိုက် ဖြစ်ပေါ်ပုံ စည်းကမ်းများ —
+                    </p>
+                    <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                        <li><b>ကာမဇော:</b> ပုံမှန်အားဖြင့် (၇) ကြိမ် စောသည်။ (သေခါနီး မရဏာသန္နဝီထိ ၌ ၅ ကြိမ်သာ စောသည်)</li>
+                        <li><b>ပထမဆုံး ဈာန်ရချိန်:</b> အပ္ပနာဇော (၁) ကြိမ်သာ စောသည်။</li>
+                        <li><b>ဈာန်သမာပတ် ဝင်စားချိန်:</b> အပ္ပနာဇော မရေတွက်နိုင်အောင် အကြိမ်ပေါင်းများစွာ ဆက်တိုက် စောနိုင်သည်။</li>
+                        <li><b>မဂ်စိတ်:</b> မဂ်ဇောသည် မည်သည့်အခါမဆို (၁) ကြိမ်သာ စောသည်။</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!-- Cross-link -->
-        <a href="citta_cetasikas_visual_guide.html#vithi" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
-            <i class="fa-solid fa-link text-emerald-700 dark:text-emerald-400 text-xl"></i>
-            <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">စိတ် (၈၉) ပါးနှင့် ဝီထိဆက်စပ်ပုံကို လေ့လာရန်</h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400">Citta & Cetasika Guide သို့ ပြန်သွားရန် →</p>
-        </a>
+        <div class="glass-card rounded-2xl p-6 border border-cyan-500/20 text-center space-y-3 max-w-3xl mx-auto">
+            <i class="fa-solid fa-book-open text-cyan-700 dark:text-cyan-400 text-2xl"></i>
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                ဝီထိစိတ်ဖြစ်စဉ်များကို လေ့လာခြင်းဖြင့် "ငါ၊ သူတစ်ပါး" ဟု ထိန်းချုပ်နေသော အတ္တ မဟုတ်ဘဲ၊ အကြောင်းတိုက်ဆိုင်၍ စိတ်အစဉ်အဆက် လျင်မြန်စွာ ဖြစ်ပျက်နေခြင်းသာ ဖြစ်ကြောင်း ဝိပဿနာ ဉာဏ်အမြင် ရရှိနိုင်သည်။
+            </p>
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="citta_cetasikas_visual_guide.html#vithi" class="text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-brain mr-1.5"></i> စိတ် ၈၉ ပါးနှင့် ဝီထိ ဆက်စပ်ပုံ လေ့လာရန်
+                </a>
+                <a href="index.html" class="text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-house mr-1.5"></i> ပင်မ Dashboard သို့
+                </a>
+            </div>
+        </div>
+
     </main>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div id="modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4"></div>
         </div>
     </div>
 
+    <!-- Scripting -->
     <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
         const vithiNodes = [
             { id: 'b', code: 'ဘ', name: 'ဘဝင်', full: 'ဘဝင်္ဂ (Bhavanga)', desc: 'အိပ်ပျော်နေစဉ် သို့မဟုတ် အာရုံသစ်မပေါ်မီ အတိတ်ဘဝက အာရုံတစ်ခုကို ယူ၍ ဖြစ်ပေါ်နေသော စိတ်အစဉ်။', color: 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700' },
             { id: 'atita', code: 'တီ', name: 'အတီတဘဝင်', full: 'အတီတဘဝင်္ဂ (Atīta-bhavanga)', desc: 'အာရုံသစ် (ဥပမာ- ရူပါရုံ) ဒွါရသို့ ရောက်လာသော်လည်း မသိသေးဘဲ လွန်သွားသော ဘဝင်စိတ်။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600' },
@@ -254,9 +342,8 @@
                 const isVithi = (nodeId !== 'b');
                 let numberLabel = '';
                 
-                // Count only vithi cittas for the 17 moments of Atimahantarama
                 if(elementId === 'panca-ati-timeline' && isVithi) {
-                    const vithiCount = index - 1; // since 'b', 'b' are first
+                    const vithiCount = index - 1;
                     if(vithiCount >= 1 && vithiCount <= 17) numberLabel = `<div class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-slate-400 font-bold">${vithiCount}</div>`;
                 }
 
@@ -294,6 +381,9 @@
         document.getElementById('modal').addEventListener('click', (e) => {
             if (e.target.id === 'modal') closeModal();
         });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             renderTimeline('panca-ati-timeline', pancaAtiSeq);
@@ -305,7 +395,7 @@
             renderTimeline('mano-avibhu-timeline', manoAvibhuSeq);
             renderTimeline('mano-appana-timeline', manoAppanaSeq);
 
-            // Drag to scroll functionality for timeline-scroll containers (Desktop support)
+            // Drag scroll desktop support
             document.querySelectorAll('.timeline-scroll').forEach(slider => {
                 let isDown = false;
                 let startX;
@@ -329,7 +419,7 @@
                     if (!isDown) return;
                     e.preventDefault();
                     const x = e.pageX - slider.offsetLeft;
-                    const walk = (x - startX) * 2; // scroll-fast multiplier
+                    const walk = (x - startX) * 2;
                     slider.scrollLeft = scrollLeft - walk;
                 });
                 slider.style.cursor = 'grab';
