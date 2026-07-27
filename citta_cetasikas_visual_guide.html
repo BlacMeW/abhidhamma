@@ -1550,13 +1550,13 @@
             document.getElementById('sec-' + tabId).classList.remove('hidden');
 
             document.querySelectorAll('.tab-btn-mobile').forEach(btn => {
-                btn.classList.remove('active', 'text-amber-700 dark:text-amber-400');
-                btn.classList.add('text-slate-600 dark:text-slate-400');
+                btn.classList.remove('active', 'text-amber-700', 'dark:text-amber-400');
+                btn.classList.add('text-slate-600', 'dark:text-slate-400');
                 btn.setAttribute('aria-selected', 'false');
             });
             const activeBtnMobile = document.getElementById('tabm-' + tabId);
             if (activeBtnMobile) {
-                activeBtnMobile.classList.remove('text-slate-600 dark:text-slate-400');
+                activeBtnMobile.classList.remove('text-slate-600', 'dark:text-slate-400');
                 activeBtnMobile.classList.add('active');
                 activeBtnMobile.setAttribute('aria-selected', 'true');
             }
@@ -2540,14 +2540,14 @@
         function setLiveVithiSpeed(ms, label) {
             liveVithiSpeedMs = ms;
             document.querySelectorAll('.vithi-speed-btn').forEach(b => {
-                b.classList.remove('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-700 dark:text-amber-300');
-                b.classList.add('text-slate-600 dark:text-slate-400');
+                b.classList.remove('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-700', 'dark:text-amber-300');
+                b.classList.add('text-slate-600', 'dark:text-slate-400');
                 b.setAttribute('aria-pressed', 'false');
             });
             const activeBtn = document.getElementById('speed-' + label);
             if (activeBtn) {
-                activeBtn.classList.remove('text-slate-600 dark:text-slate-400');
-                activeBtn.classList.add('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-700 dark:text-amber-300');
+                activeBtn.classList.remove('text-slate-600', 'dark:text-slate-400');
+                activeBtn.classList.add('bg-amber-500/20', 'border', 'border-amber-500/40', 'text-amber-700', 'dark:text-amber-300');
                 activeBtn.setAttribute('aria-pressed', 'true');
             }
             if (liveVithiPlaying) startLiveVithiAnimation();
