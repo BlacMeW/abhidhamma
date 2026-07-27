@@ -92,7 +92,7 @@
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
             <span class="text-cyan-700 dark:text-cyan-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — သဗ္ဗအပိုင်း)</span>
-            <h2 class="text-2xl md:text-3xl font-bold">လောကီ/လောကုတ္တရာ တရားအားလုံးကို ခွဲခြားနည်း (၄) မျိုး</h2>
+            <h2 class="text-2xl md:text-3xl font-bold">လောကီ/လောကုတ္တရာ တရားအားလုံးကို ခွဲခြားနည်း (၅) မျိုး</h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm">သဗ္ဗသင်္ဂဟသည် ဥပါဒါနက္ခန္ဓာ (Citta & Cetasika Guide ၏ Khandha card တွင် ဖော်ပြခဲ့) အပြင်၊ အာယတန (၁၂)၊ ဓာတု (၁၈)၊ သစ္စာ (၄) ဟူသော နည်းလမ်း (၃) မျိုးဖြင့်ထပ်၍ တရားအားလုံးကို ခြုံငုံ ခွဲခြားထားသည် — နည်းလမ်း အသီးသီးသည် ထပ်တူ တရားစုများကိုပင် ရှုထောင့်ခြားနားစွာ ပြန်လည် ဖွဲ့စည်းထားခြင်း ဖြစ်သည်။</p>
         </div>
 
@@ -209,6 +209,40 @@
     <script>
         // ===== Sabba-sangaha (Ayatana 12 + Dhatu 18 + Sacca 4) — Abhidhammattha Sangaha Ch.7 =====
         const sbData = [
+            // Khandha (5) — indigo
+            { id: 101, key: 'rupakkhandha', pali: 'Rūpakkhandha', name: 'ရူပက္ခန္ဓာ', group: 'khandha', icon: 'fa-cubes',
+              desc: 'ရုပ်တရား (၂၈) ပါး အစုအဝေး။',
+              example: 'အတိတ်/အနာဂတ်/ပစ္စုပ္ပန် စသည့် ရုပ်အားလုံးကို တစ်ပေါင်းတည်းပြု၍ ရူပက္ခန္ဓာဟု ခေါ်သည်။' },
+            { id: 102, key: 'vedanakkhandha', pali: 'Vedanākkhandha', name: 'ဝေဒနာက္ခန္ဓာ', group: 'khandha', icon: 'fa-heart',
+              desc: 'ဝေဒနာစေတသိက် တစ်ပါးတည်း အစုအဝေး။',
+              example: 'စိတ် ၈၉ ပါးလုံး၌ ယှဉ်သော ဝေဒနာအားလုံး ပါဝင်သည်။' },
+            { id: 103, key: 'sannakkhandha', pali: 'Saññākkhandha', name: 'သညာက္ခန္ဓာ', group: 'khandha', icon: 'fa-tag',
+              desc: 'သညာစေတသိက် တစ်ပါးတည်း အစုအဝေး။',
+              example: 'စိတ် ၈၉ ပါးလုံး၌ ယှဉ်သော မှတ်သားမှုသညာအားလုံး ပါဝင်သည်။' },
+            { id: 104, key: 'sankharakkhandha', pali: 'Saṅkhārakkhandha', name: 'သင်္ခါရက္ခန္ဓာ', group: 'khandha', icon: 'fa-gears',
+              desc: 'ဝေဒနာ၊ သညာ မှလွဲ၍ ကျန်သော စေတသိက် (၅၀) အစုအဝေး။',
+              example: 'စိတ်ကို ပြုပြင်ပေးသော စေတနာ အစရှိသည့် တရားများ အားလုံး ပါဝင်သည်။' },
+            { id: 105, key: 'vinnanakkhandha', pali: 'Viññāṇakkhandha', name: 'ဝိညာဏက္ခန္ဓာ', group: 'khandha', icon: 'fa-brain',
+              desc: 'စိတ် (၈၉) ပါး အစုအဝေး။',
+              example: 'လောကီရော လောကုတ္တရာပါ စိတ်အားလုံး ပါဝင်သည်။' },
+
+            // Upadanakkhandha (5) — rose
+            { id: 106, key: 'rupupadanakkhandha', pali: 'Rūpupādānakkhandha', name: 'ရူပုပါဒါနက္ခန္ဓာ', group: 'upadanakkhandha', icon: 'fa-cubes',
+              desc: 'ဥပါဒါန်၏ အာရုံဖြစ်သော ရုပ်တရား (၂၈) ပါး အစုအဝေး။',
+              example: 'ရုပ်အားလုံးသည် လောကီချည်းဖြစ်၍ ရူပက္ခန္ဓာနှင့် အတူတူပင်ဖြစ်သည်။' },
+            { id: 107, key: 'vedanupadanakkhandha', pali: 'Vedanupādānakkhandha', name: 'ဝေဒနုပါဒါနက္ခန္ဓာ', group: 'upadanakkhandha', icon: 'fa-heart',
+              desc: 'ဥပါဒါန်၏ အာရုံဖြစ်သော လောကီဝေဒနာ အစုအဝေး။',
+              example: 'လောကီစိတ် (၈၁) ပါး၌ ယှဉ်သော ဝေဒနာကိုသာ ယူသည်။' },
+            { id: 108, key: 'sannupadanakkhandha', pali: 'Saññupādānakkhandha', name: 'သညုပါဒါနက္ခန္ဓာ', group: 'upadanakkhandha', icon: 'fa-tag',
+              desc: 'ဥပါဒါန်၏ အာရုံဖြစ်သော လောကီသညာ အစုအဝေး။',
+              example: 'လောကီစိတ် (၈၁) ပါး၌ ယှဉ်သော သညာကိုသာ ယူသည်။' },
+            { id: 109, key: 'sankharupadanakkhandha', pali: 'Saṅkhārupādānakkhandha', name: 'သင်္ခါရုပါဒါနက္ခန္ဓာ', group: 'upadanakkhandha', icon: 'fa-gears',
+              desc: 'ဥပါဒါန်၏ အာရုံဖြစ်သော လောကီစေတသိက် (၅၀) အစုအဝေး။',
+              example: 'လောကီစိတ်၌ ယှဉ်သော စေတသိက်များကိုသာ ယူသည်။' },
+            { id: 110, key: 'vinnanupadanakkhandha', pali: 'Viññāṇupādānakkhandha', name: 'ဝိညာဏုပါဒါနက္ခန္ဓာ', group: 'upadanakkhandha', icon: 'fa-brain',
+              desc: 'ဥပါဒါန်၏ အာရုံဖြစ်သော လောကီစိတ် (၈၁) ပါး အစုအဝေး။',
+              example: 'လောကုတ္တရာစိတ် (၈) ပါးသည် ဥပါဒါန်၏ အာရုံ မဖြစ်နိုင်သဖြင့် ဤအစုတွင် မပါဝင်ပါ။' },
+
             // Ayatana internal (6) — sky
             { id: 1, key: 'cakkhayatana', pali: 'Cakkhāyatana', name: 'စက္ခာယတန', group: 'ayatana-internal', icon: 'fa-eye',
               desc: 'မျက်စိ၏ ပသာဒရုပ် — အဆင်းကို ခံစားနိုင်စွမ်းရှိသော အာယတန။',
@@ -327,6 +361,8 @@
         ];
 
         const groupInfo = {
+            'khandha':          { label: 'ခန္ဓာ', sub: 'အစုအဝေး (၅)', color: 'text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', bg: 'bg-indigo-500/10' },
+            'upadanakkhandha':  { label: 'ဥပါဒါနက္ခန္ဓာ', sub: 'စွဲလမ်းဖွယ် အစုအဝေး (၅)', color: 'text-rose-700 dark:text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/10' },
             'ayatana-internal': { label: 'အဇ္ဈတ္တိကာယတန', sub: 'အတွင်းပိုင်း အာယတန (၆)', color: 'text-sky-700 dark:text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/10' },
             'ayatana-external': { label: 'ဗာဟိရာယတန', sub: 'အပြင်ပိုင်း အာယတန (၆)', color: 'text-amber-700 dark:text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/10' },
             'dhatu-pasada':     { label: 'ပသာဒဓာတု', sub: 'ဣန္ဒြေ ဓာတု (၅)', color: 'text-sky-700 dark:text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/10' },
@@ -411,6 +447,7 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
+            renderSection('khandha-groups', ['khandha', 'upadanakkhandha']);
             renderSection('ayatana-groups', ['ayatana-internal', 'ayatana-external']);
             renderSection('dhatu-groups', ['dhatu-pasada', 'dhatu-visaya', 'dhatu-vinnana', 'dhatu-mano']);
             renderSection('sacca-group', ['sacca']);
