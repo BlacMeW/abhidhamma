@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာ အဘိဓာန် - Abhidhamma Glossary">
+    <title>အဘိဓမ္မာ အဘိဓာန် (Abhidhamma Glossary)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', system-ui, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        mark { background-color: rgba(251, 191, 36, 0.3); color: #fbbf24; border-radius: 2px; padding: 0 2px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16">
+
+    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-spell-check"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-emerald-300">အဘိဓမ္မာ အဘိဓာန် <span class="text-slate-500 font-normal text-sm">(Glossary)</span></h1>
+                    <p class="text-[11px] text-slate-400">ပါဠိဝေါဟာရများ ရှာဖွေလေ့လာရန်</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 mt-8 flex-1 w-full space-y-6">
+        <div class="text-center space-y-3">
+            <h2 class="text-2xl md:text-3xl font-bold">ဝေါဟာရများကို အလွယ်တကူ ရှာဖွေပါ</h2>
+            <p class="text-slate-400 text-sm">အဘိဓမ္မာကျမ်းလာ အရေးကြီးသော ပါဠိဝေါဟာရများကို ဤနေရာတွင် ရှာဖွေလေ့လာနိုင်ပါသည်။</p>
+            
+            <div class="relative max-w-lg mx-auto mt-6">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-slate-500"></i>
+                </div>
+                <input type="text" id="searchInput" class="w-full bg-slate-900 border border-slate-700 rounded-full py-3 pl-11 pr-4 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition shadow-inner" placeholder="ဝေါဟာရ (သို့) အဓိပ္ပာယ်ကို ရှာဖွေပါ...">
+                <button id="clearSearch" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 hover:text-slate-300 hidden">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="resultCount" class="text-xs text-slate-500 mt-2"></div>
+        </div>
+
+        <div id="glossaryList" class="space-y-3 mt-8">
+            <!-- Items injected by JS -->
+        </div>
+    </main>
+
+    <script>
+        const terms = [
+            { term: 'Citta (စိတ္တ)', meaning: 'အာရုံကို သိတတ်သော သဘော (စိတ်)' },
+            { term: 'Cetasika (စေတသိက)', meaning: 'စိတ်နှင့် ယှဉ်တွဲ၍ ဖြစ်ပေါ်သော၊ စိတ်ကို ခြယ်လှယ်တတ်သော သဘောတရားများ (စေတသိက်)' },
+            { term: 'Rūpa (ရူပ)', meaning: 'ဖောက်ပြန်တတ်သော သဘော (ရုပ်တရား)' },
+            { term: 'Nibbāna (နိဗ္ဗာန)', meaning: 'တဏှာမှ ကင်းလွတ်ရာ၊ ဒုက္ခငြိမ်းရာ (နိဗ္ဗာန်)' },
+            { term: 'Asaṅkhārika (အသင်္ခါရိက)', meaning: 'တိုက်တွန်းမှု မပါဘဲ မိမိအလိုအလျောက် ထက်မြက်စွာ ဖြစ်ပေါ်သော စိတ်' },
+            { term: 'Sasaṅkhārika (သသင်္ခါရိက)', meaning: 'မိမိ/သူတစ်ပါး၏ တိုက်တွန်းမှုကြောင့် နှေးကွေးစွာ ဖြစ်ပေါ်သော စိတ်' },
+            { term: 'Ahetuka (အဟေတုက)', meaning: 'ဟေတု (လောဘ၊ ဒေါသ စသည့် အမြစ်) မပါဝင်သော စိတ်' },
+            { term: 'Sahetuka (သဟေတုက)', meaning: 'ဟေတု ပါဝင်သော စိတ်' },
+            { term: 'Kusala (ကုသလ)', meaning: 'အပြစ်ကင်း၍ ကောင်းသောအကျိုးကို ပေးတတ်သော သဘော (ကုသိုလ်)' },
+            { term: 'Akusala (အကုသလ)', meaning: 'အပြစ်ရှိ၍ ဆင်းရဲသောအကျိုးကို ပေးတတ်သော သဘော (အကုသိုလ်)' },
+            { term: 'Vipāka (ဝိပါက)', meaning: 'ကံ၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော (ဝိပါက်)' },
+            { term: 'Kiriya / Kriyā (ကြိယာ)', meaning: 'အကျိုး မပေးတော့သော၊ ပြုကာမတ္တမျှသာဖြစ်သော သဘော (ရဟန္တာများ၏ စိတ်)' },
+            { term: 'Vīthi (ဝီထိ)', class: 'text-sky-300', meaning: 'အာရုံကို သိရှိရန် အစဉ်အတိုင်း ဖြစ်ပေါ်သော စိတ်အစဉ်' },
+            { term: 'Bhavaṅga (ဘဝင်)', meaning: 'ဘဝ၏ အင်္ဂါ၊ ဘဝကို ဆက်စပ်ပေးသော၊ ဝီထိစိတ် မဖြစ်ပေါ်ချိန်တွင် ဖြစ်ပေါ်နေသော စိတ်' },
+            { term: 'Javana (ဇောန / ဇော)', meaning: 'အာရုံ၏ အရသာကို လျင်မြန်စွာ ခံစားသော၊ ကံမြောက်စေသော စိတ်' },
+            { term: 'Paṭisandhi (ပဋိသန္ဓေ)', meaning: 'ဘဝဟောင်းနှင့် ဘဝသစ်ကို ဆက်စပ်ပေးသော၊ ဘဝသစ်၏ ပထမဆုံး စိတ်' },
+            { term: 'Cuti (စုတိ)', meaning: 'ဘဝတစ်ခု၏ နောက်ဆုံး ပြတ်စဲသွားသော စိတ်' },
+            { term: 'Uppāda (ဥပါဒ်)', meaning: 'စတင်ဖြစ်ပေါ်ခြင်း ခဏ' },
+            { term: 'Ṭhiti (ဌီ)', meaning: 'တည်နေခြင်း ခဏ' },
+            { term: 'Bhaṅga (ဘင်)', meaning: 'ချုပ်ပျောက်ခြင်း ခဏ' },
+            { term: 'Kicca (ကိစ္စ)', meaning: 'စိတ်၏ လုပ်ငန်းဆောင်တာ (၁၄ မျိုး ရှိသည်)' },
+            { term: 'Dvāra (ဒွါရ)', meaning: 'စိတ်ဖြစ်ပေါ်ရန် ဝင်ပေါက်/ထွက်ပေါက် (တံခါး ၆ ပေါက်)' },
+            { term: 'Ārammaṇa (အာရမ္မဏ)', meaning: 'စိတ်၏ မှီတွယ်ရာ/သိစရာ (အာရုံ ၆ ပါး)' },
+            { term: 'Vatthu (ဝတ္ထု)', meaning: 'စိတ် မှီရာ ရုပ်အခြေခံ (ဝတ္ထုရုပ် ၆ ပါး)' },
+            { term: 'Paccaya (ပစ္စယ)', meaning: 'တစ်ခုက တစ်ခုကို ထောက်ပံ့ ကျေးဇူးပြုတတ်သော အခြေအနေ' },
+            { term: 'Kammaṭṭhāna (ကမ္မဋ္ဌာန)', meaning: 'ဘာဝနာအလုပ်၏ တည်ရာ အာရုံ' },
+            { term: 'Samatha (သမထ)', meaning: 'စိတ်ကို ငြိမ်းအေး တည်ငြိမ်စေသော အကျင့်' },
+            { term: 'Vipassanā (ဝိပဿနာ)', meaning: 'ရုပ်နာမ်တို့၏ အနိစ္စ၊ ဒုက္ခ၊ အနတ္တ သဘောကို အထူး သိမြင်အောင် ရှုပွားသော အကျင့်' },
+            { term: 'Jhāna (ဈာန / ဈာန်)', meaning: 'အာရုံကို စူးစိုက်စွာ ရှုတတ်သော၊ ဆန့်ကျင်ဘက် နီဝရဏတရားများကို လောင်ကျွမ်းစေတတ်သော သဘော' },
+            { term: 'Magga (မဂ္ဂ / မဂ်)', meaning: 'နိဗ္ဗာန်သို့ သွားရာလမ်း၊ ကိလေသာများကို ပယ်သတ်တတ်သော သဘော' },
+            { term: 'Phala (ဖလ / ဖိုလ်)', meaning: 'မဂ်၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော' },
+            { term: 'Kilesā (ကိလေသာ)', meaning: 'စိတ်ကို ပူလောင် ညစ်နွမ်းစေတတ်သော သဘော' }
+        ];
+
+        // Sort terms alphabetically by english equivalent mostly
+        terms.sort((a, b) => a.term.localeCompare(b.term));
+
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearSearch');
+        const listEl = document.getElementById('glossaryList');
+        const countEl = document.getElementById('resultCount');
+
+        function highlight(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+
+        function render(query = '') {
+            const q = query.toLowerCase().trim();
+            const filtered = terms.filter(t => t.term.toLowerCase().includes(q) || t.meaning.toLowerCase().includes(q));
+            
+            if (filtered.length === 0) {
+                listEl.innerHTML = `<div class="text-center text-slate-500 py-8">ရှာဖွေမှု ရလဒ် မတွေ့ရှိပါ</div>`;
+            } else {
+                listEl.innerHTML = filtered.map(t => `
+                    <div class="glass-card p-4 rounded-xl border border-slate-700 hover:border-emerald-500/30 transition flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                        <div class="md:w-1/3 font-bold text-emerald-300 text-lg">
+                            ${highlight(t.term, q)}
+                        </div>
+                        <div class="md:w-2/3 text-slate-300 text-sm md:text-base leading-relaxed">
+                            ${highlight(t.meaning, q)}
+                        </div>
+                    </div>
+                `).join('');
+            }
+            countEl.textContent = `စုစုပေါင်း ဝေါဟာရ (${filtered.length}) ခု ပြသထားပါသည်`;
+            clearBtn.classList.toggle('hidden', q === '');
+        }
+
+        searchInput.addEventListener('input', (e) => render(e.target.value));
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            render();
+            searchInput.focus();
+        });
+
+        // Init
+        render();
+    </script>
+</body>
+</html>
