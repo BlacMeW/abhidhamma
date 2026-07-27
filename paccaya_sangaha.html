@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း) အခြေအနေ (၂၄) ပါးကို စိတ်နှင့် စေတသိက် ဆက်စပ်မှုအရ ရှင်းလင်းတင်ပြထားသော Visual Guide">
-    <title>ပစ္စယသင်္ဂဟ — အခြေအနေ (၂၄) ပါး (Paccaya-saṅgaha)</title>
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ပစ္စယသင်္ဂဟ — ပဋ္ဌာန်းအခြေအနေ (၂၄) ပါး၊ ပစ္စယနိဒ္ဒေသ ပါဠိတော်၊ ပစ္စယ/ပစ္စယုပ္ပန္န သရုပ်ခွဲ နှင့် ပစ္စယသဘာဂ ၆ မျိုး အပြည့်အစုံ Visual Guide">
+    <title>ပစ္စယသင်္ဂဟ — ပဋ္ဌာန်း အခြေအနေ (၂၄) ပါး (Paccaya-saṅgaha)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,11 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-            
-            
-        }
+        body { font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', sans-serif; }
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -35,34 +31,22 @@
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
         html { scroll-behavior: smooth; }
-        * { -webkit-tap-highlight-color: transparent; }
-        button { touch-action: manipulation; }
-        button:active { transform: scale(0.97); }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(8px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fade-in { animation: fade-in 0.2s ease-out; }
-        .paccaya-card {
-            transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-        }
+        .paccaya-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
         .paccaya-card:hover { transform: translateY(-2px); }
-        :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
-    
     <style>
-        :root {
-            color-scheme: light dark;
-        }
+        :root { color-scheme: light dark; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
+    <!-- Header -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
@@ -71,7 +55,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-violet-700 dark:text-violet-300">ပစ္စယသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Paccaya-saṅgaha)</span></h1>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400">ပဋ္ဌာန်းကျမ်းလာ အခြေအနေ (၂၄) ပါး</p>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">အဘိဓမ္မာ (၇) ကျမ်းမြောက် — ပဋ္ဌာန်းကျမ်းလာ အခြေအနေ (၂၄) ပါး</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
@@ -89,44 +73,56 @@
 
         <!-- Intro -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <span class="text-violet-700 dark:text-violet-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၉ ပိုင်းမြောက်</span>
-            <h2 class="text-2xl md:text-3xl font-bold">စိတ်နှင့် စေတသိက်တို့ တစ်ခုနှင့်တစ်ခု ဘယ်လို "ထောက်ပံ့" ကြသလဲ</h2>
-            <p class="text-slate-600 dark:text-slate-400 text-sm"><a href="citta_cetasikas_visual_guide.html#sampayoga" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-700 dark:text-violet-200">ယှဉ်ဖက်လက္ခဏာ (Sampayoga)</a> က "စိတ်နှင့် စေတသိက် အတူတကွ ဖြစ်ပေါ်ကြောင်း" ဖော်ပြခဲ့ပြီး ဖြစ်သည်။ ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း) ကမူ "ဘယ်လို နည်းလမ်း (၂၄) မျိုးဖြင့် တစ်ခုက တစ်ခုကို ထောက်ပံ့ကူညီ ဖြစ်ပေါ်စေသလဲ" ဆိုသည်ကို အသေးစိတ် ရှင်းပြသည်။ ဤအခန်းသည် အဘိဓမ္မာပိဋကတ် (၇) ကျမ်းအနက် "ပဋ္ဌာန်း" ဟု ခေါ်သော အနက်ရှိုင်းဆုံး၊ အကျယ်ဝန်းဆုံး ကျမ်းကြီး၏ အနှစ်ချုပ် ဖြစ်သည်။</p>
+            <span class="text-violet-700 dark:text-violet-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မတ္ထသင်္ဂဟကျမ်း အခန်း (၈)</span>
+            <h2 class="text-2xl md:text-3xl font-bold">ရုပ်နှင့် နာမ်တို့ တစ်ခုနှင့်တစ်ခု "ထောက်ပံ့" ကြပုံ (၂၄) မျိုး</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+                ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း) သည် "ဘယ်လို နည်းလမ်း (၂၄) မျိုးဖြင့် ရုပ်နှင့် နာမ်တရားတို့သည် တစ်ခုက တစ်ခုကို ထောက်ပံ့ကူညီ ဖြစ်ပေါ်စေသလဲ" ဆိုသည်ကို အသေးစိတ် ရှင်းပြသည်။ ဤအခန်းသည် အဘိဓမ္မာပိဋကတ် (၇) ကျမ်းအနက် "ပဋ္ဌာန်း" ဟု ခေါ်သော အနက်ရှိုင်းဆုံး၊ အကျယ်ဝန်းဆုံး ကျမ်းကြီး၏ အနှစ်ချုပ် ဖြစ်သည်။
+            </p>
             
-            <div class="pt-4">
-                <button onclick="showPatthanaPali()" class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-slate-900 dark:text-white px-5 py-2.5 rounded-full font-semibold transition shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+            <div class="pt-2">
+                <button onclick="showPatthanaPali()" class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-5 py-2.5 rounded-full font-semibold transition shadow-[0_0_15px_rgba(139,92,246,0.3)] text-xs md:text-sm">
                     <i class="fa-solid fa-book-open-reader"></i> ပဋ္ဌာန်းပါဠိတော် (ပစ္စယုဒ္ဒေသ) ဖတ်ရှုပူဇော်ရန်
                 </button>
             </div>
         </div>
 
-        <!-- Total verification bar -->
-        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
-            <button onclick="scrollToPaccayaCluster('together')" class="px-3 py-1.5 rounded-lg bg-sky-100 dark:bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30 hover:bg-sky-500/25 hover:border-sky-400 transition">တွဲဖက်ဖြစ်ပေါ်မှု (၆)</button>
-            <span class="text-slate-600">+</span>
-            <button onclick="scrollToPaccayaCluster('succession')" class="px-3 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400 transition">အဆက်အစပ် (၅)</button>
-            <span class="text-slate-600">+</span>
-            <button onclick="scrollToPaccayaCluster('strong')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400 transition">ခိုင်မာသော လွှမ်းမိုးမှု (၆)</button>
-            <span class="text-slate-600">+</span>
-            <button onclick="scrollToPaccayaCluster('special')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">အထူးဆက်စပ်မှု (၇)</button>
-            <span class="text-slate-600">=</span>
-            <button onclick="scrollToPaccayaCluster('together')" class="px-3 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/40 font-bold hover:bg-violet-500/30 hover:border-violet-400 transition">စုစုပေါင်း (၂၄) ပါး</button>
-        </div>
-        <p class="text-center text-[11px] text-slate-500 dark:text-slate-500 -mt-4">* ဤ (၂၄) ပါးအနက် အချို့သည် လုပ်ဆောင်ချက် အတူတူပင် ဖြစ်၍ (ဥပမာ- အနန္တရ/သမနန္တရ၊ အတ္ထိ/အဝိဂတ၊ နတ္ထိ/ဝိဂတ) "အမည်ခွဲ၊ သဘောတူ" စုံတွဲများ ဖြစ်ကြောင်း အောက်တွင် သတိပြုပါ။</p>
-
-        <!-- Highlight: the "always together" 6 for citta+cetasika -->
-        <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-amber-400 dark:border-amber-500/30 space-y-3" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
-            <h3 class="font-bold text-amber-700 dark:text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-star"></i> စိတ်နှင့် စေတသိက် အတူတကွ ဖြစ်ပေါ်တိုင်း တပြိုင်နက် ပါဝင်နေသော အခြေအနေ (၆) ခု</h3>
-            <p class="text-xs text-slate-700 dark:text-slate-300"><a href="citta_cetasikas_visual_guide.html#sampayoga" class="text-amber-700 dark:text-amber-300 underline decoration-dotted hover:text-amber-700 dark:text-amber-200">Sampayoga tab</a> တွင် ဖော်ပြခဲ့သော "ဖြစ်အတူ၊ ချုပ်အတူ" စသည့် (၄) ချက်ကို ဤနေရာတွင် ပဋ္ဌာန်းနည်းအရ ပိုမို တိကျစွာ ခွဲခြမ်းစိတ်ဖြာနိုင်သည် — စိတ်တစ်ခုနှင့် စေတသိက်များ ယှဉ်တွဲ ဖြစ်ပေါ်တိုင်း အောက်ပါ အခြေအနေ (၆) ခုစလုံး တစ်ပြိုင်နက် အမြဲ ပါဝင်နေသည် -</p>
-            <div class="flex flex-wrap gap-1.5" id="always-together-chips"></div>
+        <!-- Master Quick Navigation Bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
+            <button onclick="scrollToSection('sec-paccaya24')" class="px-3.5 py-1.5 rounded-lg bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30 hover:bg-violet-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-list-check"></i> ၁။ ပဋ္ဌာန်း (၂၄) ပါး</button>
+            <button onclick="scrollToSection('sec-triplet')" class="px-3.5 py-1.5 rounded-lg bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-layer-group"></i> ၂။ သရုပ် (၃) ပါး ခွဲခြားမှု</button>
+            <button onclick="scrollToSection('sec-sabhaga')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-cubes"></i> ၃။ ပစ္စယသဘာဂ (၆ အုပ်စု)</button>
         </div>
 
-        <!-- Paccaya Triplet Explanation (အကြောင်း / အကျိုး / ကျင်လွတ် သရုပ်) -->
-        <section class="glass-card rounded-2xl p-6 border border-violet-400 dark:border-violet-500/30 space-y-4 max-w-4xl mx-auto">
-            <div class="text-center space-y-1">
-                <span class="text-violet-700 dark:text-violet-400 font-semibold text-xs uppercase tracking-wide">ပဋ္ဌာန်းကျမ်းလာ သရုပ် (၃) ပါး ခွဲခြားမှု</span>
-                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100">ပစ္စယ ၊ ပစ္စယုပ္ပန္န ၊ ပစ္စနိက သရုပ်ခွဲ</h3>
+        <!-- 1. PACCAYA 24 GRID SECTION -->
+        <section id="sec-paccaya24" class="space-y-4">
+            <div class="glass-card rounded-2xl p-5 md:p-6 border border-violet-500/30 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                    <div>
+                        <h3 class="font-bold text-violet-700 dark:text-violet-300 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-list-check"></i> ၁။ ပဋ္ဌာန်း ပစ္စည်း (၂၄) ပါး — နှိပ်၍ အသေးစိတ် ကြည့်နိုင်သည်
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">ပဋ္ဌာန်းနိဒ္ဒေသ ပါဠိတော်၊ ပစ္စယ/ပစ္စယုပ္ပန္န သရုပ်ခွဲ နှင့် ဥပမာများ</p>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30">၂၄ ပါး</span>
+                </div>
+
+                <!-- 24 Paccaya Grid Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="grid-paccaya24"></div>
             </div>
+        </section>
+
+        <!-- 2. PACCAYA TRIPLET SECTION -->
+        <section id="sec-triplet" class="glass-card rounded-2xl p-5 md:p-6 border border-sky-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-sky-700 dark:text-sky-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group"></i> ၂။ ပဋ္ဌာန်းကျမ်းလာ သရုပ် (၃) ပါး ခွဲခြားမှု
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">ပစ္စယ ၊ ပစ္စယုပ္ပန္န ၊ ပစ္စနိက တရားများ</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30">သရုပ် ၃ ပါး</span>
+            </div>
+
             <div class="grid sm:grid-cols-3 gap-3 text-xs">
                 <div class="glass-card p-4 rounded-xl border border-sky-400 dark:border-sky-500/30 bg-sky-50 dark:bg-sky-950/20 space-y-1">
                     <div class="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-right-to-bracket"></i> ၁။ ပစ္စယတရား (အကြောင်း)</div>
@@ -143,447 +139,344 @@
             </div>
         </section>
 
-        <!-- 4 clusters -->
-        <div id="paccaya-clusters" class="space-y-6"></div>
-
-        <!-- Paccaya Sabhaga (6 Groups) -->
-        <section class="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-700 space-y-4 max-w-4xl mx-auto mt-8">
-            <div class="text-center space-y-1">
-                <span class="text-indigo-600 dark:text-indigo-400 font-semibold text-xs uppercase tracking-wide">ပစ္စည်း ၂၄ ပါးကို အုပ်စု ၆ ခု ဖွဲ့ခြင်း</span>
-                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100">ပစ္စယသဘာဂ (Paṭṭhāna Groupings)</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-400 pt-2">ပဋ္ဌာန်းပစ္စည်း ၂၄ ပါးသည် သဘောတရားတူရာကို စုစည်းလိုက်ပါက အောက်ပါ အုပ်စုကြီး ၆ ခု (ဇာတ် ၆ မျိုး) သာ ရှိပါသည်။ ထို့ကြောင့် ဤဇာတ် ၆ မျိုးကို နားလည်ပါက ပဋ္ဌာန်း ၂၄ ပါးလုံးကို လွယ်ကူစွာ ချုပ်ငုံနိုင်ပါသည်။</p>
+        <!-- 3. PACCAYA SABHAGA (6 GROUPS) -->
+        <section id="sec-sabhaga" class="glass-card rounded-2xl p-5 md:p-6 border border-emerald-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-emerald-700 dark:text-emerald-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-cubes"></i> ၃။ ပစ္စယသဘာဂ (အုပ်စု ၆ ခု ဖွဲ့ခြင်း)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">ပဋ္ဌာန်း ပစ္စည်း ၂၄ ပါးကို သဘောတရားတူရာ အုပ်စု (ဇာတ်) ၆ ခုဖြင့် ပိုင်းခြားခြင်း</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ဇာတ် ၆ မျိုး</span>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-4 mt-4 text-sm">
-                <!-- 1. Sahajata -->
-                <div class="p-4 rounded-xl border border-sky-200 dark:border-sky-500/20 bg-sky-50 dark:bg-sky-900/10 flex flex-col">
-                    <h4 class="font-bold text-sky-700 dark:text-sky-300 mb-1"><i class="fa-solid fa-people-arrows mr-2"></i>၁။ သဟဇာတဇာတ် <span class="text-xs font-normal opacity-80">(၁၅ ပါး)</span></h4>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-3">အတူတကွ တပြိုင်နက် ဖြစ်ပေါ်၍ ကျေးဇူးပြုသော အုပ်စု။</p>
-                    <div class="flex flex-wrap gap-1.5 mt-auto">
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁-ဟေတု</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၃-အဓိပတိ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၆-သဟဇာတ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၇-အညမည</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၈-နိဿယ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁၃-ကမ္မ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁၄-ဝိပါက</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁၅-အာဟာရ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁၆-ဣန္ဒြိယ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁၇-ဈာန</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁၈-မဂ္ဂ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၁၉-သမ္ပယုတ္တ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၂၀-ဝိပ္ပယုတ္တ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၂၁-အတ္ထိ</span>
-                        <span class="px-2 py-0.5 bg-sky-100 dark:bg-sky-800/40 text-sky-700 dark:text-sky-300 rounded text-[10px] border border-sky-200 dark:border-sky-700/50">၂၄-အဝိဂတ</span>
-                    </div>
-                </div>
 
-                <!-- 2. Arammana -->
-                <div class="p-4 rounded-xl border border-rose-200 dark:border-rose-500/20 bg-rose-50 dark:bg-rose-900/10 flex flex-col">
-                    <h4 class="font-bold text-rose-700 dark:text-rose-300 mb-1"><i class="fa-solid fa-bullseye mr-2"></i>၂။ အာရမ္မဏဇာတ် <span class="text-xs font-normal opacity-80">(၈ ပါး)</span></h4>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-3">အာရုံအဖြစ်ဖြင့် သိအပ်သောတရားက သိတတ်သောတရားကို ကျေးဇူးပြုသော အုပ်စု။</p>
-                    <div class="flex flex-wrap gap-1.5 mt-auto">
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၂-အာရမ္မဏ</span>
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၃-အဓိပတိ</span>
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၈-နိဿယ</span>
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၉-ဥပနိဿယ</span>
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၁၀-ပုရေဇာတ</span>
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၂၀-ဝိပ္ပယုတ္တ</span>
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၂၁-အတ္ထိ</span>
-                        <span class="px-2 py-0.5 bg-rose-100 dark:bg-rose-800/40 text-rose-700 dark:text-rose-300 rounded text-[10px] border border-rose-200 dark:border-rose-700/50">၂၄-အဝိဂတ</span>
-                    </div>
-                </div>
-
-                <!-- 3. Anantara -->
-                <div class="p-4 rounded-xl border border-emerald-200 dark:border-emerald-500/20 bg-emerald-50 dark:bg-emerald-900/10 flex flex-col">
-                    <h4 class="font-bold text-emerald-700 dark:text-emerald-300 mb-1"><i class="fa-solid fa-forward mr-2"></i>၃။ အနန္တရဇာတ် <span class="text-xs font-normal opacity-80">(၇ ပါး)</span></h4>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-3">ရှေးစိတ်ချုပ်ပြီး နောက်စိတ် ချက်ချင်းဆက်တိုက် ဖြစ်ပေါ်လာစေရန် ကျေးဇူးပြုသော အုပ်စု။</p>
-                    <div class="flex flex-wrap gap-1.5 mt-auto">
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-800/40 text-emerald-700 dark:text-emerald-300 rounded text-[10px] border border-emerald-200 dark:border-emerald-700/50">၄-အနန္တရ</span>
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-800/40 text-emerald-700 dark:text-emerald-300 rounded text-[10px] border border-emerald-200 dark:border-emerald-700/50">၅-သမနန္တရ</span>
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-800/40 text-emerald-700 dark:text-emerald-300 rounded text-[10px] border border-emerald-200 dark:border-emerald-700/50">၉-ဥပနိဿယ</span>
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-800/40 text-emerald-700 dark:text-emerald-300 rounded text-[10px] border border-emerald-200 dark:border-emerald-700/50">၁၂-အာသေဝန</span>
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-800/40 text-emerald-700 dark:text-emerald-300 rounded text-[10px] border border-emerald-200 dark:border-emerald-700/50">၁၃-ကမ္မ</span>
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-800/40 text-emerald-700 dark:text-emerald-300 rounded text-[10px] border border-emerald-200 dark:border-emerald-700/50">၂၂-နတ္ထိ</span>
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-800/40 text-emerald-700 dark:text-emerald-300 rounded text-[10px] border border-emerald-200 dark:border-emerald-700/50">၂၃-ဝိဂတ</span>
-                    </div>
-                </div>
-
-                <!-- 4. Purejata -->
-                <div class="p-4 rounded-xl border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-900/10 flex flex-col">
-                    <h4 class="font-bold text-amber-700 dark:text-amber-300 mb-1"><i class="fa-solid fa-hourglass-start mr-2"></i>၄။ ပုရေဇာတဇာတ် <span class="text-xs font-normal opacity-80">(၃ ပါး)</span></h4>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-3">ရှေးကတည်းက ကြိုတင်ဖြစ်နှင့်ပြီးသော ရုပ်တရားက နောက်မှဖြစ်သော နာမ်တရားကို ကျေးဇူးပြုသော အုပ်စု။</p>
-                    <div class="flex flex-wrap gap-1.5 mt-auto">
-                        <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-800/40 text-amber-700 dark:text-amber-300 rounded text-[10px] border border-amber-200 dark:border-amber-700/50">၈-နိဿယ</span>
-                        <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-800/40 text-amber-700 dark:text-amber-300 rounded text-[10px] border border-amber-200 dark:border-amber-700/50">၁၀-ပုရေဇာတ</span>
-                        <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-800/40 text-amber-700 dark:text-amber-300 rounded text-[10px] border border-amber-200 dark:border-amber-700/50">၁၆-ဣန္ဒြိယ</span>
-                    </div>
-                </div>
-
-                <!-- 5. Pacchajata -->
-                <div class="p-4 rounded-xl border border-violet-200 dark:border-violet-500/20 bg-violet-50 dark:bg-violet-900/10 flex flex-col">
-                    <h4 class="font-bold text-violet-700 dark:text-violet-300 mb-1"><i class="fa-solid fa-hourglass-end mr-2"></i>၅။ ပစ္ဆာဇာတဇာတ် <span class="text-xs font-normal opacity-80">(၄ ပါး)</span></h4>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-3">နောက်မှဖြစ်သော နာမ်တရားက ရှေးက ကြိုတင်ဖြစ်နှင့်သော ရုပ်ခန္ဓာကို ထောက်ပံ့ပြုစုသော အုပ်စု။</p>
-                    <div class="flex flex-wrap gap-1.5 mt-auto">
-                        <span class="px-2 py-0.5 bg-violet-100 dark:bg-violet-800/40 text-violet-700 dark:text-violet-300 rounded text-[10px] border border-violet-200 dark:border-violet-700/50">၁၁-ပစ္ဆာဇာတ</span>
-                        <span class="px-2 py-0.5 bg-violet-100 dark:bg-violet-800/40 text-violet-700 dark:text-violet-300 rounded text-[10px] border border-violet-200 dark:border-violet-700/50">၂၀-ဝိပ္ပယုတ္တ</span>
-                        <span class="px-2 py-0.5 bg-violet-100 dark:bg-violet-800/40 text-violet-700 dark:text-violet-300 rounded text-[10px] border border-violet-200 dark:border-violet-700/50">၂၁-အတ္ထိ</span>
-                        <span class="px-2 py-0.5 bg-violet-100 dark:bg-violet-800/40 text-violet-700 dark:text-violet-300 rounded text-[10px] border border-violet-200 dark:border-violet-700/50">၂၄-အဝိဂတ</span>
-                    </div>
-                </div>
-
-                <!-- 6. Nanakhanika Kamma -->
-                <div class="p-4 rounded-xl border border-orange-200 dark:border-orange-500/20 bg-orange-50 dark:bg-orange-900/10 flex flex-col">
-                    <h4 class="font-bold text-orange-700 dark:text-orange-300 mb-1"><i class="fa-solid fa-scale-balanced mr-2"></i>၆။ နာနာက္ခဏိကကမ္မဇာတ် <span class="text-xs font-normal opacity-80">(၁ ပါး)</span></h4>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-3">အချိန်မတူသော အတိတ်က ကံ (စေတနာ) ကြောင့် အကျိုးတရား (ဝိပါက်နှင့် ကမ္မဇရုပ်) များ ဖြစ်ပေါ်လာရသော အုပ်စု။</p>
-                    <div class="flex flex-wrap gap-1.5 mt-auto">
-                        <span class="px-2 py-0.5 bg-orange-100 dark:bg-orange-800/40 text-orange-700 dark:text-orange-300 rounded text-[10px] border border-orange-200 dark:border-orange-700/50">၁၃-ကမ္မ</span>
-                    </div>
-                </div>
-            </div>
+            <div class="grid md:grid-cols-2 gap-4 text-xs" id="sabhaga-grid"></div>
         </section>
 
-        <!-- Cross-link to Paticcasamuppada -->
-        <a href="paticcasamuppada.html" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
-            <i class="fa-solid fa-circle-notch text-emerald-700 dark:text-emerald-400 text-xl"></i>
-            <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">ဤအခြေအနေ (၂၄) ပါးကို "ဘဝတစ်ခုမှ တစ်ခုသို့ ဒုက္ခ ဆက်တိုက် ဖြစ်ပေါ်ရပုံ" ရှုထောင့်မှ ဆက်လေ့လာရန် — ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)</h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400">ပစ္စယနည်းနှင့် ပဋိစ္စသမုပ္ပါဒနည်းသည် အကြောင်းရင်းသဘောတရား တစ်ခုတည်း၏ ရှင်းပြချက် နည်းလမ်း (၂) မျိုးသာ ဖြစ်သည် →</p>
-        </a>
-
-        <!-- Cross-link to Bodhipakkhiya-dhamma -->
-        <a href="bodhipakkhiya_dhamma.html" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-amber-400 dark:border-amber-500/30 hover:border-amber-400 transition text-center space-y-1.5">
-            <i class="fa-solid fa-seedling text-amber-700 dark:text-amber-400 text-xl"></i>
-            <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm">မဂ္ဂပစ္စည်း၏ မဂ္ဂင် (၁၂) ပါးအနက် ကုသိုလ်ဘက် (၈) ပါးကို အသေးစိတ် ဆက်လေ့လာရန် — ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါး</h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400">မဂ်ဉာဏ်ဆီသို့ ဦးတည်စေသော သတိ/ဝီရိယ/ပညာ အခြေခံ တရားများ →</p>
-        </a>
+        <!-- Cross-links -->
+        <div class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+            <a href="paticcasamuppada.html" class="glass-card rounded-2xl p-4 border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1">
+                <i class="fa-solid fa-circle-notch text-emerald-700 dark:text-emerald-400 text-lg"></i>
+                <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-xs">ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda) သို့</h4>
+                <p class="text-[11px] text-slate-600 dark:text-slate-400">အင်္ဂါ ၁၂ ပါး၊ ဝဋ် ၃ ပါး ဆက်စပ်မှု →</p>
+            </a>
+            <a href="rupa_sangaha.html" class="glass-card rounded-2xl p-4 border border-sky-400 dark:border-sky-500/30 hover:border-sky-400 transition text-center space-y-1">
+                <i class="fa-solid fa-cube text-sky-700 dark:text-sky-400 text-lg"></i>
+                <h4 class="font-bold text-sky-700 dark:text-sky-300 text-xs">ရူပသင်္ဂဟ (Rūpa-saṅgaha) သို့</h4>
+                <p class="text-[11px] text-slate-600 dark:text-slate-400">ရုပ် ၂၈ ပါး၊ ရုပ်-ရုပ် ပဋ္ဌာန်း ဆက်စပ်မှု →</p>
+            </a>
+        </div>
 
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-violet-500/20 text-center space-y-3 max-w-3xl mx-auto">
             <i class="fa-solid fa-book-open text-violet-700 dark:text-violet-400 text-2xl"></i>
-            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ပဋ္ဌာန်းကျမ်းကြီးသည် စာမျက်နှာ ထောင်ပေါင်းများစွာ ရှိပြီး၊ ဤစာမျက်နှာသည် စိတ်/စေတသိက် ဆက်စပ်မှုကို အခြေခံ၍ အနှစ်ချုပ်သာ တင်ပြထားခြင်း ဖြစ်သည်။ အခြေအနေ တစ်ခုစီသည် <a href="rupa_sangaha.html" class="text-indigo-700 dark:text-indigo-300 underline decoration-dotted hover:text-indigo-700 dark:text-indigo-200">ရုပ်တရား (၂၈) ပါး</a> နှင့်ပါ ဆက်စပ်နိုင်သေးသော်လည်း၊ ဤစာမျက်နှာသည် နာမ်တရား (စိတ်+စေတသိက်) ဆက်စပ်မှုကိုသာ အဓိကထား ရှင်းပြထားပါသည်။</p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
-                <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                ပဋ္ဌာန်းကျမ်းကြီးသည် မြတ်စွာဘုရားရှင်၏ သဗ္ဗညုတဉာဏ်တော် အလွန်တောက်ပစွာ ကွန့်မြူးရာ ပိဋကတ်တော်၏ အမြင့်ဆုံး အထွဋ်အထိပ် ကျမ်းကြီး ဖြစ်ပါသည်။
+            </p>
+            <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
+                <i class="fa-solid fa-house"></i> ပင်မ Dashboard သို့ ပြန်သွားရန်
             </a>
         </section>
     </main>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div id="modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
         </div>
     </div>
 
+    <!-- Scripting -->
     <script>
-        // ===== Paccaya-saṅgaha (24 Conditions) — Paṭṭhāna, 7th book of Abhidhamma Piṭaka =====
-        const paccayaData = [
-            // Cluster A: Co-nascence / "always together" cluster (sky) — 6
-            { id: 6, key: 'sahajata', pali: 'Sahajāta-paccaya', name: 'သဟဇာတပစ္စည်း', cluster: 'together', color: 'sky', icon: 'fa-people-arrows',
-              desc: 'အတူတကွ ဖြစ်ပေါ်ကြသော တရားတို့သည် ဖြစ်ပေါ်ချိန် တူညီခြင်း တစ်ခုတည်းဖြင့်ပင် တစ်ခုကို တစ်ခု ထောက်ပံ့ ဖြစ်ပေါ်စေခြင်း။',
-              paccayaText: 'စိတ် ၁ ပါးနှင့် ယှဉ်ဖက်စေတသိက်များ၊ မဟာဘုတ် ၄ ပါး၊ ပဋိသန္ဓေဟဒယဝတ္ထု',
-              paccayuppannaText: 'ယှဉ်ဖက်စေတသိက်များ၊ စိတ္တဇရုပ်များ၊ ဥပါဒါယရုပ်များ၊ ပဋိသန္ဓေစိတ်',
-              example: 'ဖဿ ဖြစ်ပေါ်ချိန်တွင် ဝေဒနာ၊ သညာ စသော ယှဉ်ဖက်စေတသိက်များသည် ချက်ချင်း တစ်ပြိုင်နက် အတူ ဖြစ်ပေါ်ကြသည် — ဒါက "ဖြစ်အတူ" ဟူသော ယှဉ်ဖက်လက္ခဏာ၏ ပဋ္ဌာန်းနည်း ရှင်းပြချက် ဖြစ်သည်။',
-              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ သဟဇာတပစ္စယေန ပစ္စယော။ စတ္တာရော မဟာဘူတာ အညမညံ သဟဇာတပစ္စယေန ပစ္စယော။ ...' },
-            { id: 7, key: 'annamanna', pali: 'Aññamañña-paccaya', name: 'အညမညပစ္စည်း', cluster: 'together', color: 'sky', icon: 'fa-arrows-rotate',
-              desc: 'တရားနှစ်ခု (သို့) အများသည် တစ်ဖက်စီမှ တစ်ဖက်ကို အပြန်အလှန် ထောက်ပံ့ခြင်း — တိုင် (၃) ချောင်း အချင်းချင်း မှီတွယ်ရပ်တည်နေသကဲ့သို့။',
-              paccayaText: 'နာမ်ခန္ဓာ ၄ ပါး (စိတ်+စေတသိက်)၊ မဟာဘုတ် ၄ ပါး၊ ပဋိသန္ဓေစိတ်+ဟဒယဝတ္ထု',
-              paccayuppannaText: 'အပြန်အလှန် ယှဉ်ဖက် နာမ်ခန္ဓာများ၊ မဟာဘုတ်အချင်းချင်း၊ ပဋိသန္ဓေ နာမ်+ရုပ်',
-              example: 'ဖဿနှင့် ဝေဒနာသည် တစ်ဖက်ကို တစ်ဖက် အပြန်အလှန် ထောက်ပံ့ကြသည် — ဖဿ မရှိလျှင် ဝေဒနာ မဖြစ်နိုင်သကဲ့သို့၊ ဝေဒနာ ဖြစ်ပေါ်ခြင်းကလည်း ဖဿ၏ အားကို ပြန်လည် ထောက်ပံ့သည်။',
-              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညပစ္စယေန ပစ္စယော။ စတ္တာရော မဟာဘူတာ အညမညပစ္စယေန ပစ္စယော။ ဩက္ကန္တိက္ခဏေ နာမရူပံ အညမညပစ္စယေန ပစ္စယော။' },
-            { id: 8, key: 'nissaya', pali: 'Nissaya-paccaya', name: 'နိဿယပစ္စည်း', cluster: 'together', color: 'sky', icon: 'fa-anchor',
-              desc: 'တစ်ခုက အခြားတစ်ခု၏ "မှီရာ" အခြေခံ အုတ်မြစ်အဖြစ် ထောက်ပံ့ခြင်း — မြေက အပင်ကို မှီခိုစေသကဲ့သို့။',
-              paccayaText: 'သဟဇာတ နာမ်ခန္ဓာများ၊ မဟာဘုတ် ၄ ပါး၊ ဝတ္ထုရုပ် ၆ ပါး (စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ ဟဒယ)',
-              paccayuppannaText: 'မှီတွယ်ဖြစ်ပေါ်လာသော စိတ်၊ စေတသိက်၊ စိတ္တဇရုပ်၊ ဥပါဒါယရုပ်များ',
-              example: '<a href="rupa_sangaha.html?open=hadayavatthu" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-700 dark:text-sky-200">ဟဒယဝတ္ထု</a> သည် စိတ်၏ မှီရာအဖြစ် ထောက်ပံ့သကဲ့သို့၊ စေတသိက်များသည်လည်း စိတ်ကို "မှီ၍ ဖြစ်" ဟူသော အနက်အရ စိတ်ကို မှီတွယ်ကြသည်။',
-              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ နိဿယပစ္စယေန ပစ္စယော။ ... စက္ခာယတနံ စက္ခုဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ နိဿယပစ္စယေန ပစ္စယော။ ... ယံ ရူပံ နိဿာယ မနောဓာတု စ မနောဝိညာဏဓာတု စ ဝတ္တန္တိ၊ တံ ရူပံ မနောဓာတုယာ စ မနောဝိညာဏဓာတုယာ စ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ နိဿယပစ္စယေန ပစ္စယော။' },
-            { id: 19, key: 'sampayutta', pali: 'Sampayutta-paccaya', name: 'သမ္ပယုတ္တပစ္စည်း', cluster: 'together', color: 'sky', icon: 'fa-droplet',
-              desc: 'နာမ်တရားချင်းသာ တစ်ခုနှင့်တစ်ခု ရေနှင့်နို့ရောသကဲ့သို့ လုံးဝ ရောယှက် ထောက်ပံ့ခြင်း — ခွဲခြား၍ မရအောင် တွဲနေသော အဆက်အစပ်။',
-              paccayaText: 'နာမ်ခန္ဓာ ၄ ပါး (စိတ် ၈၉ ပါး နှင့် စေတသိက် ၅၂ ပါး)',
-              paccayuppannaText: 'ယှဉ်ဖက် နာမ်ခန္ဓာ ၄ ပါး (ဆေးဆိုးရောင် ရောသကဲ့သို့ အတူဖြစ်/ချုပ်/မှီ/အာရုံတူ နာမ်တရားများ)',
-              example: 'စိတ်နှင့် စေတသိက်များသည် "ဆေးဆိုးရောင်" ကဲ့သို့ လုံးဝ ရောယှက်နေသည် — ဤပစ္စည်းကပင် <a href="citta_cetasikas_visual_guide.html#def" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-700 dark:text-sky-200">အဓိပ္ပာယ် tab</a> ၏ "ရေသန့်+ဆေးဆိုးရောင်" metaphor၏ ပဋ္ဌာန်း အခြေခံ ဖြစ်သည်။',
-              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ သမ္ပယုတ္တပစ္စယေန ပစ္စယော။' },
-            { id: 21, key: 'atthi', pali: 'Atthi-paccaya', name: 'အတ္ထိပစ္စည်း', cluster: 'together', color: 'sky', icon: 'fa-check',
-              desc: 'တရားတစ်ခု လက်ရှိ "တည်ရှိနေခြင်း" ကိုယ်တိုင်ကပင် အခြားတစ်ခုကို ထောက်ပံ့ခြင်း။',
-              paccayaText: 'လက်ရှိ ထိထင်တည်ရှိနေသော သဟဇာတ နာမ်/ရုပ်၊ ပုရေဇာတ ဝတ္ထု/အာရုံ၊ ကဗဠီကာရာဟာရ',
-              paccayuppannaText: 'ထိုလက်ရှိတရားကို မှီ၍ တည်ရှိခွင့်ရသော နာမ်ခန္ဓာများနှင့် ရုပ်တရားများ',
-              example: 'စိတ် တည်ရှိနေသောကြောင့်သာ ယှဉ်ဖက်စေတသိက်များလည်း တည်ရှိနိုင်ခြင်း ဖြစ်သည်။',
-              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ အတ္ထိပစ္စယေန ပစ္စယော။ စတ္တာရော မဟာဘူတာ အညမညံ အတ္ထိပစ္စယေန ပစ္စယော။ ... ယံ ရူပံ နိဿာယ မနောဓာတု စ မနောဝိညာဏဓာတု စ ဝတ္တန္တိ၊ တံ ရူပံ မနောဓာတုယာ စ မနောဝိညာဏဓာတုယာ စ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ အတ္ထိပစ္စယေန ပစ္စယော။' },
-            { id: 24, key: 'avigata', pali: 'Avigata-paccaya', name: 'အဝိဂတပစ္စည်း', cluster: 'together', color: 'sky', icon: 'fa-check-double',
-              desc: 'အတ္ထိပစ္စည်း နှင့် အနက် အတူတူပင် — "မကွယ်ပျောက်သေးခြင်း" ကဲ့သို့ ဖော်ပြသော အမည်ခွဲ ဖြစ်သည်။',
-              paccayaText: 'မကွယ်ပျောက်သေးဘဲ ထိထင် တည်ရှိနေသော အကြောင်းတရားများ',
-              paccayuppannaText: 'မကွယ်ပျောက်သေးသော အကြောင်းကြောင့် ဖြစ်ပေါ်ခွင့်ရသော အကျိုးတရားများ',
-              example: 'ဤစုံတွဲသည် အတ္ထိပစ္စည်း ၏ အခြားအမည်တစ်ခုသာ ဖြစ်ပြီး၊ ပဋ္ဌာန်းကျမ်း၏ ပုံသေ အရေအတွက် (၂၄) ပြည့်စေရန် သီးခြား ဖော်ပြထားခြင်း ဖြစ်သည်။',
-              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ အဝိဂတပစ္စယေန ပစ္စယော။ ... ယံ ရူပံ နိဿာယ မနောဓာတု စ မနောဝိညာဏဓာတု စ ဝတ္တန္တိ၊ တံ ရူပံ မနောဓာတုယာ စ မနောဝိညာဏဓာတုယာ စ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ အဝိဂတပစ္စယေန ပစ္စယော။' },
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
 
-            // Cluster B: Succession / moment-to-moment flow (emerald) — 5, ties to Vithi
-            { id: 4, key: 'anantara', pali: 'Anantara-paccaya', name: 'အနန္တရပစ္စည်း', cluster: 'succession', color: 'emerald', icon: 'fa-forward',
-              desc: 'ချုပ်ငြိမ်းသွားသော စိတ်တစ်ခုသည် ကြားမဲ့ခြားနားမှု လုံးဝ မရှိစေဘဲ၊ ချက်ချင်းဆက်တိုက် နောက်စိတ်အတွက် နေရာ ဖွင့်ပေးခြင်း။',
-              paccayaText: 'ရှေးရှေး ချုပ်ငြိမ်းသွားသော စိတ် ၈၉ ပါး နှင့် စေတသိက် ၅၂ ပါး (အရဟတ္တဖိုလ် စုတိစိတ် မှလွဲ၍)',
-              paccayuppannaText: 'နောက်ဆက်တိုက် ကြားမခြား ချက်ချင်းဖြစ်ပေါ်လာသော နောက်နောက် စိတ်နှင့် စေတသိက်များ',
-              example: 'ဝီထိစိတ် အစဉ်တွင် ဘဝင်ပစ္ဆေဒ ချုပ်ပြီးသည်နှင့် ပဉ္စဒွါရာဝဇ္ဇန်း ချက်ချင်း ဆက်တိုက် ဖြစ်ပေါ်ခြင်း — <a href="citta_cetasikas_visual_guide.html#vithi" class="text-emerald-700 dark:text-emerald-300 underline decoration-dotted hover:text-emerald-700 dark:text-emerald-200">Vīthi tab</a> ၏ track ကို ကြည့်ပါက ဤပစ္စည်းကို တိုက်ရိုက် တွေ့နိုင်သည်။',
-              niddesaPali: 'စက္ခုဝိညာဏဓာတု တံသမ္ပယုတ္တကာ စ ဓမ္မာ မနောဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ အနန္တရပစ္စယေန ပစ္စယော။ ... ယေသံ ယေသံ ဓမ္မာနံ အနန္တရာ ယေ ယေ ဓမ္မာ ဥပ္ပဇ္ဇန္တိ စိတ္တစေတသိကာ ဓမ္မာ၊ တေ တေ ဓမ္မာ တေသံ တေသံ ဓမ္မာနံ အနန္တရပစ္စယေန ပစ္စယော။' },
-            { id: 5, key: 'samanantara', pali: 'Samanantara-paccaya', name: 'သမနန္တရပစ္စည်း', cluster: 'succession', color: 'emerald', icon: 'fa-forward-fast',
-              desc: 'အနန္တရပစ္စည်း နှင့် လုပ်ဆောင်ချက် အတူတူပင် — "အလွန် နီးကပ်စွာ ဆက်စပ်ခြင်း" ကို အထူးပြု ဖော်ပြသည်။',
+        const paccayaData = [
+            { id: 1, key: 'hetu', pali: 'Hetu-paccaya', name: 'ဟေတုပစ္စည်း', color: 'amber', icon: 'fa-seedling',
+              desc: 'ဟေတု (၆) ပါး (လောဘ၊ ဒေါသ၊ မောဟ၊ အလောဘ၊ အဒေါသ၊ အမောဟ) သည် အမြစ်ကဲ့သို့ ခိုင်မြဲစွာ တည်ရှိစေရန် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'ဟေတု စေတသိက် ၆ ပါး (လောဘ၊ ဒေါသ၊ မောဟ၊ အလောဘ၊ အဒေါသ၊ အမောဟ)',
+              paccayuppannaText: 'သဟေတုက စိတ် ၇၁ ပါး၊ ယှဉ်ဖက်စေတသိက်များ၊ စိတ္တဇရုပ်/ပဋိသန္ဓေကမ္မဇရုပ်များ',
+              example: 'သစ်ပင်တစ်ပင် ခိုင်မြဲစွာ တည်ရှိရန် အမြစ်က ထောက်ပံ့သကဲ့သို့၊ စေတသိက် ဟေတု ၆ ပါးသည် စိတ်တရားများကို ခိုင်မြဲစေသည်။',
+              niddesaPali: 'ဟေတူ ဟေတုသမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ ဟေတုပစ္စယေန ပစ္စယော။' },
+            
+            { id: 2, key: 'arammana', pali: 'Ārammaṇa-paccaya', name: 'အာရမ္မဏပစ္စည်း', color: 'rose', icon: 'fa-bullseye',
+              desc: 'အာရုံ (၆) ပါးသည် သိတတ်သော စိတ်နှင့် စေတသိက်များ ဖြစ်ပေါ်လာရန် ဆွဲဆောင် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'အာရုံ ၆ ပါး (ရူပါရုံ၊ သဒ္ဒါရုံ၊ ဂန္ဓာရုံ၊ ရသာရုံ၊ ဖောဋ္ဌဗ္ဗာရုံ၊ ဓမ္မာရုံ)',
+              paccayuppannaText: 'စိတ် ၈၉ ပါး နှင့် စေတသိက် ၅၂ ပါးလုံး',
+              example: 'တောင်ဝှေးကို အားပြု၍ လူထမြောက်နိုင်သကဲ့သို့၊ စိတ်သည် အာရုံကို မှီ၍သာ ဖြစ်ပေါ်နိုင်သည်။',
+              niddesaPali: 'ရူပါယတနံ စက္ခုဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ အာရမ္မဏပစ္စယေန ပစ္စယော။ ... ယံ ယံ ဓမ္မံ အာရဗ္ဘ ယေ ယေ ဓမ္မာ ဥပ္ပဇ္ဇန္တိ စိတ္တစေတသိကာ ဓမ္မာ၊ တေ တေ ဓမ္မာ တေသံ တေသံ ဓမ္မာနံ အာရမ္မဏပစ္စယေန ပစ္စယော။' },
+
+            { id: 3, key: 'adhipati', pali: 'Adhipati-paccaya', name: 'အဓိပတိပစ္စည်း', color: 'amber', icon: 'fa-crown',
+              desc: 'ဆန္ဒ၊ ဝီရိယ၊ စိတ်၊ ဝီမံသာ (ပညာ) — (၄) ပါးအနက် တစ်ပါးသည် ဘုရင်ကဲ့သို့ လွှမ်းမိုး အုပ်ချုပ်၍ ထောက်ပံ့ခြင်း။',
+              paccayaText: 'အဓိပတိ တရား ၄ ပါး သို့မဟုတ် ဂရုကတ အာရုံများ',
+              paccayuppannaText: 'လွှမ်းမိုးခံရသော သဟဇာတ စိတ်၊ စေတသိက်၊ စိတ္တဇရုပ်များ',
+              example: 'စက္ကဝတ္တိ မင်းကြီးသည် စေနံများအား အုပ်ချုပ် ဦးဆောင်သကဲ့သို့၊ အဓိပတိတရားသည် ကျန်တရားများကို လွှမ်းမိုးသည်။',
+              niddesaPali: 'ဆန္ဒာဓိပတိ ဆန္ဒသမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ အဓိပတိပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 4, key: 'anantara', pali: 'Anantara-paccaya', name: 'အနန္တရပစ္စည်း', color: 'emerald', icon: 'fa-forward',
+              desc: 'ချုပ်ငြိမ်းသွားသော စိတ်တစ်ခုသည် ကြားမဲ့ခြားနားမှု လုံးဝ မရှိစေဘဲ ချက်ချင်းဆက်တိုက် နောက်စိတ်အတွက် နေရာ ဖွင့်ပေးခြင်း။',
+              paccayaText: 'ရှေးရှေး ချုပ်ငြိမ်းသွားသော စိတ် ၈၉ ပါး နှင့် စေတသိက် ၅၂ ပါး',
+              paccayuppannaText: 'နောက်ဆက်တိုက် ချက်ချင်းဖြစ်ပေါ်လာသော နောက်နောက် စိတ်နှင့် စေတသိက်များ',
+              example: 'စက္ကဝတ္တိမင်းကြီး နတ်ရွာစံလျှင် သားကြီးသည် ကြားမခြား မင်းဖြစ်သကဲ့သို့၊ စိတ်သည်လည်း ကြားမခြား ချက်ချင်းဖြစ်ပေါ်သည်။',
+              niddesaPali: 'စက္ခုဝိညာဏဓာတု တံသမ္ပယုတ္တကာ စ ဓမ္မာ မနောဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ အနန္တရပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 5, key: 'samanantara', pali: 'Samanantara-paccaya', name: 'သမနန္တရပစ္စည်း', color: 'emerald', icon: 'fa-forward-fast',
+              desc: 'အနန္တရပစ္စည်း နှင့် လုပ်ဆောင်ချက် အတူတူပင် — ကောင်းစွာ ကြားမခြား အဆက်မပြတ် ဖြစ်ပေါ်စေခြင်း။',
               paccayaText: 'ရှေးရှေး ကောင်းစွာ ချုပ်ငြိမ်းသွားသော စိတ်နှင့် စေတသိက်များ',
               paccayuppannaText: 'နောက်နောက် ဆက်တိုက် ဖြစ်ပေါ်လာသော စိတ်နှင့် စေတသိက်များ',
-              example: 'ဤစုံတွဲသည် အနန္တရပစ္စည်း ၏ အခြားအမည်တစ်ခုသာ ဖြစ်သည်။',
-              niddesaPali: 'စက္ခုဝိညာဏဓာတု တံသမ္ပယုတ္တကာ စ ဓမ္မာ မနောဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ သမနန္တရပစ္စယေန ပစ္စယော။ ... ယေသံ ယေသံ ဓမ္မာနံ သမနန္တရာ ယေ ယေ ဓမ္မာ ဥပ္ပဇ္ဇန္တိ စိတ္တစေတသိကာ ဓမ္မာ၊ တေ တေ ဓမ္မာ တေသံ တေသံ ဓမ္မာနံ သမနန္တရပစ္စယေန ပစ္စယော။' },
-            { id: 22, key: 'natthi', pali: 'Natthi-paccaya', name: 'နတ္ထိပစ္စည်း', cluster: 'succession', color: 'emerald', icon: 'fa-xmark',
-              desc: 'ရှေးစိတ် ချုပ်ငြိမ်း "ကွယ်ပျောက်သွားခြင်း" ကိုယ်တိုင်ကပင် နောက်စိတ် ဖြစ်ပေါ်လာနိုင်ရန် အခွင့်အလမ်း ဖန်တီးပေးခြင်း။',
-              paccayaText: 'ချုပ်ငြိမ်း ကွယ်ပျောက်သွားပြီးဖြစ်သော ရှေးစိတ်နှင့် စေတသိက်များ',
-              paccayuppannaText: 'ရှေးစိတ် ကွယ်ပျောက်မှုကြောင့် ချက်ချင်း ဖြစ်ပေါ်လာခွင့်ရသော နောက်စိတ်နှင့် စေတသိက်များ',
-              example: 'ရှေးစိတ် မကွယ်ပျောက်လျှင် နောက်စိတ် ဖြစ်ပေါ်ရန် နေရာ ကျန်မည် မဟုတ်ပေ — ဤပစ္စည်းက "ချုပ်အတူ" ယှဉ်ဖက်လက္ခဏာကို ရှင်းပြသည်။',
-              niddesaPali: 'သမနန္တရနိရုဒ္ဓါ စိတ္တစေတသိကာ ဓမ္မာ ပဋုပ္ပန္နာနံ စိတ္တစေတသိကာနံ ဓမ္မာနံ နတ္ထိပစ္စယေန ပစ္စယော။' },
-            { id: 23, key: 'vigata', pali: 'Vigata-paccaya', name: 'ဝိဂတပစ္စည်း', cluster: 'succession', color: 'emerald', icon: 'fa-eraser',
-              desc: 'နတ္ထိပစ္စည်း နှင့် အနက် အတူတူပင် — "ကွယ်ပျောက်ခြင်း" ကို အထူးပြု ဖော်ပြသော အမည်ခွဲ ဖြစ်သည်။',
-              paccayaText: 'ကင်းကွာ ကွယ်ပျောက်သွားသော ရှေးနာမ်တရားများ',
-              paccayuppannaText: 'ရှေးနာမ်တရား ကင်းကွာမှုကြောင့် ဖြစ်ပေါ်လာသော နောက်နာမ်တရားများ',
-              example: 'ဤစုံတွဲသည် နတ္ထိပစ္စည်း ၏ အခြားအမည်တစ်ခုသာ ဖြစ်သည်။',
-              niddesaPali: 'သမနန္တရဝိဂတာ စိတ္တစေတသိကာ ဓမ္မာ ပဋုပ္ပန္နာနံ စိတ္တစေတသိကာနံ ဓမ္မာနံ ဝိဂတပစ္စယေန ပစ္စယော။' },
-            { id: 12, key: 'asevana', pali: 'Āsevana-paccaya', name: 'အာသေဝနပစ္စည်း', cluster: 'succession', color: 'emerald', icon: 'fa-repeat',
-              desc: 'ရှေးဇောနစိတ်သည် နောက်တစ်ဆက်တည်း ဖြစ်ပေါ်မည့် တူညီသော ဇောနစိတ်ကို "ထပ်ခါထပ်ခါ လေ့ကျင့်၍ အားကောင်းလာစေခြင်း" ဖြင့် ထောက်ပံ့ခြင်း။',
-              paccayaText: 'ရှေးရှေး ဖြစ်ပေါ်ခဲ့သော ကုသိုလ် ဇော၊ အကုသိုလ် ဇော၊ ကြိယာ ဇော စိတ် ၄၇ ပါး (နောက်ဆုံး ဇောမှလွဲ၍)',
-              paccayuppannaText: 'နောက်နောက် ထပ်မံ ဖြစ်ပေါ်လာသော ဇောနစိတ်များနှင့် ယှဉ်ဖက်စေတသိက်များ',
-              example: 'ဇောနစိတ် (၇) ကြိမ် ဆက်တိုက် ဖြစ်ပေါ်ရာတွင် ၁ ကြိမ်ချင်းစီသည် ၂ ကြိမ်မြောက်ကို ပိုမို အားကောင်းအောင် ထောက်ပံ့သည် — ဤအကြောင်းကြောင့် ဇောနအဆုံးပိုင်း (၅-၇ ကြိမ်မြောက်) များသည် ပို၍ အားကောင်းသော ကံဖြစ်စေတတ်သည်။',
-              niddesaPali: 'ပုရိမာ ပုရိမာ ကုသလာ ဓမ္မာ ပစ္ဆိမာနံ ပစ္ဆိမာနံ ကုသလာနံ ဓမ္မာနံ အာသေဝနပစ္စယေန ပစ္စယော။ ပုရိမာ ပုရိမာ အကုသလာ ဓမ္မာ... ပုရိမာ ပုရိမာ ကိရိယာဗျာကတာ ဓမ္မာ ပစ္ဆိမာနံ ပစ္ဆိမာနံ ကိရိယာဗျာကတာနံ ဓမ္မာနံ အာသေဝနပစ္စယေန ပစ္စယော။' },
+              example: 'စက္ကဝတ္တိမင်း စုတိလျှင် သားတော် စက္ကဝါမင်းဖြစ်ပုံကဲ့သို့ တိကျစွာ အစဉ်အတိုင်း ဖြစ်ပေါ်ခြင်း။',
+              niddesaPali: 'စက္ခုဝိညာဏဓာတု တံသမ္ပယုတ္တကာ စ ဓမ္မာ မနောဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ သမနန္တရပစ္စယေန ပစ္စယော။ ...' },
 
-            // Cluster C: Strong-influence cluster (amber) — 6
-            { id: 1, key: 'hetu', pali: 'Hetu-paccaya', name: 'ဟေတုပစ္စည်း', cluster: 'strong', color: 'amber', icon: 'fa-seedling',
-              desc: 'ဟေတု (၆) ပါး (လောဘ၊ ဒေါသ၊ မောဟ၊ အလောဘ၊ အဒေါသ၊ အမောဟ) သည် အမြစ်ကဲ့သို့ ခိုင်မြဲစွာ တည်ရှိစေရန် ထောက်ပံ့ခြင်း — <a href="citta_cetasikas_visual_guide.html#citta89:hetu-sangaha" class="text-amber-700 dark:text-amber-300 underline decoration-dotted hover:text-amber-700 dark:text-amber-200">ဟေတုသင်္ဂဟ tab</a> တွင် လေ့လာခဲ့ပြီးသော ဟေတုကို ဤနေရာ၌ "ပစ္စည်း" အနေဖြင့် တရားဝင် သတ်မှတ်ခြင်း ဖြစ်သည်။',
-              paccayaText: 'ဟေတု စေတသိက် ၆ ပါး (လောဘ၊ ဒေါသ၊ မောဟ၊ အလောဘ၊ အဒေါသ၊ အမောဟ)',
-              paccayuppannaText: 'သဟေတုက စိတ် ၇၁ ပါး၊ ယှဉ်ဖက်စေတသိက်များ၊ သဟေတုက စိတ္တဇရုပ်/ပဋိသန္ဓေကမ္မဇရုပ်များ',
-              example: 'လောဘသည် လောဘမူစိတ်နှင့် ယှဉ်ဖက်စေတသိက်များကို အမြစ်ကဲ့သို့ ခိုင်မြဲစွာ ထောက်ပံ့ထားသည်။',
-              niddesaPali: 'ဟေတူ ဟေတုသမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ ဟေတုပစ္စယေန ပစ္စယော။' },
-            { id: 3, key: 'adhipati', pali: 'Adhipati-paccaya', name: 'အဓိပတိပစ္စည်း', cluster: 'strong', color: 'amber', icon: 'fa-crown',
-              desc: 'ဆန္ဒ၊ ဝီရိယ၊ စိတ်၊ ဝီမံသာ (ပညာ) — (၄) ပါးအနက် တစ်ပါးသည် ဘုရင်ကဲ့သို့ လွှမ်းမိုး အုပ်ချုပ်၍ ထောက်ပံ့ခြင်း။',
-              paccayaText: 'အဓိပတိ တရား ၄ ပါး (ဆန္ဒ၊ ဝီရိယ၊ စိတ္တ၊ ဝီမံသာ)',
-              paccayuppannaText: 'ဂရုကတ အာရုံ ၆ ပါး သို့မဟုတ် လွှမ်းမိုးခံရသော သဟဇာတ စိတ်၊ စေတသိက်၊ စိတ္တဇရုပ်များ',
-              example: 'ပြင်းထန်စွာ လိုလားသော ဆန္ဒ (ဇာန္ဒာဓိပတိ) သည် ကျန်စေတသိက်များကို လွှမ်းမိုးထိန်းချုပ်ကာ ဦးဆောင် ထောက်ပံ့သည်။',
-              niddesaPali: 'ဆန္ဒာဓိပတိ ဆန္ဒသမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ အဓိပတိပစ္စယေန ပစ္စယော။ ... ယံ ယံ ဓမ္မံ ဂရုံ ကတွာ ယေ ယေ ဓမ္မာ ဥပ္ပဇ္ဇန္တိ စိတ္တစေတသိကာ ဓမ္မာ၊ တေ တေ ဓမ္မာ တေသံ တေသံ ဓမ္မာနံ အဓိပတိပစ္စယေန ပစ္စယော။' },
-            { id: 9, key: 'upanissaya', pali: 'Upanissaya-paccaya', name: 'ဥပနိဿယပစ္စည်း', cluster: 'strong', color: 'amber', icon: 'fa-mountain',
-              desc: 'ခိုင်မာသော အားကောင်းသည့် ကျောထောက်နောက်ခံ — အတိတ်က အလေ့အကျင့်၊ ပတ်ဝန်းကျင်၊ လူမှုဆက်ဆံရေးများပင် ပစ္စုပ္ပန် စိတ်အခြေအနေကို ခိုင်မာစွာ ထောက်ပံ့ခြင်း။',
-              paccayaText: 'အားကောင်းသော အာရုံ၊ ရှေးရှေး အနန္တရ စိတ်များ၊ အတိတ် ကံ/ဥတု/အာဟာရ/ပုဂ္ဂိုလ်/သေနသန အလေ့အထများ',
-              paccayuppannaText: 'နောက်နောင် ဖြစ်ပေါ်လာသော ကုသိုလ်၊ အကုသိုလ်၊ ဝိပါက်၊ ကြိယာ စိတ်နှင့် စေတသိက်များ',
-              example: 'ကလျာဏမိတ်ဆွေကောင်းများနှင့် ရင်းနှီးစွာ ပေါင်းသင်းခဲ့ခြင်းသည် ယနေ့ ကုသိုလ်စိတ် လွယ်ကူစွာ ဖြစ်ပေါ်နိုင်ရန် ခိုင်မာသော ကျောထောက်နောက်ခံ ဖြစ်သည်။',
-              niddesaPali: 'ပုရိမာ ပုရိမာ ကုသလာ ဓမ္မာ ပစ္ဆိမာနံ ပစ္ဆိမာနံ ကုသလာနံ ဓမ္မာနံ ဥပနိဿယပစ္စယေန ပစ္စယော။ ... ဥတုဘောဇနမ္ပိ ဥပနိဿယပစ္စယေန ပစ္စယော။ ပုဂ္ဂလောပိ ဥပနိဿယပစ္စယေန ပစ္စယော။ သေနာသနမ္ပိ ဥပနိဿယပစ္စယေန ပစ္စယော။' },
-            { id: 16, key: 'indriya', pali: 'Indriya-paccaya', name: 'ဣန္ဒြေပစ္စည်း', cluster: 'strong', color: 'amber', icon: 'fa-gauge-high',
-              desc: 'ဣန္ဒြေ (၂၂) ပါးအနက် တစ်ပါးစီသည် မိမိ နယ်ပယ်အတွင်း အထွဋ်အမြတ် အုပ်ချုပ် ထိန်းချုပ်ခွင့်ဖြင့် ထောက်ပံ့ခြင်း။',
-              paccayaText: 'စက္ခုန္ဒြေ စသော ပသာဒရုပ် ၅ ပါး၊ ရူပဇီဝိတိန္ဒြေ၊ နာမဇီဝိတိန္ဒြေ၊ စိတ်၊ ဝေဒနာ၊ သဒ္ဓါ၊ ဝီရိယ၊ သတိ၊ သမာဓိ၊ ပညာ',
-              paccayuppannaText: 'စက္ခုဝိညာဉ် စသော ဝိညာဉ်စိတ်များ၊ သဟဇာတ စိတ္တဇရုပ်နှင့် ကမ္မဇရုပ်များ',
-              example: 'ဇီဝိတိန္ဒြေသည် ယှဉ်ဖက်နာမ်တရားတို့၏ အသက်ဝင်မှုကို ထိန်းချုပ် ထောက်ပံ့သကဲ့သို့၊ ပညိန္ဒြေသည် အသိပညာ ကဏ္ဍတွင် အထွဋ်အမြတ် ဖြစ်သည်။',
-              niddesaPali: 'စက္ခုန္ဒြိယံ စက္ခုဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ ဣန္ဒြိယပစ္စယေန ပစ္စယော။ ... ရူပဇီဝိတိန္ဒြိယံ ကဋတ္တာရူပါနံ ဣန္ဒြိယပစ္စယေန ပစ္စယော။ အရူပိနော ဣန္ဒြိယာ သမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ ဣန္ဒြိယပစ္စယေန ပစ္စယော။' },
-            { id: 17, key: 'jhana', pali: 'Jhāna-paccaya', name: 'ဈာနပစ္စည်း', cluster: 'strong', color: 'amber', icon: 'fa-mountain-sun',
-              desc: 'ဈာန်အင်္ဂါ (၅) ပါး (ဝိတက်၊ ဝိစာရ၊ ပီတိ၊ သုခ/ဒုက္ခ/ဥပေက္ခာ၊ ဧကဂ္ဂတာ) သည် အာရုံကို "စူးစိုက် စေ့ငေးကြည့်ခြင်း" ဖြင့် ထောက်ပံ့ခြင်း — ဈာန်ဝင်စားချိန်၌သာမက ပုံမှန် စိတ်တိုင်းတွင်လည်း အားနည်းငယ်စွာ ပါဝင်နေသည်။',
+            { id: 6, key: 'sahajata', pali: 'Sahajāta-paccaya', name: 'သဟဇာတပစ္စည်း', color: 'sky', icon: 'fa-people-arrows',
+              desc: 'အတူတကွ တပြိုင်နက် ဖြစ်ပေါ်ကြသော တရားတို့သည် တစ်ခုကို တစ်ခု ထောက်ပံ့ ဖြစ်ပေါ်စေခြင်း။',
+              paccayaText: 'စိတ် ၁ ပါးနှင့် ယှဉ်ဖက်စေတသိက်များ၊ မဟာဘုတ် ၄ ပါး',
+              paccayuppannaText: 'ယှဉ်ဖက်စေတသိက်များ၊ စိတ္တဇရုပ်များ၊ ဥပါဒါယရုပ်များ',
+              example: 'ဆီမီးတောက်သည် အလင်းရောင်ကို တစ်ပြိုင်နက် ဖြစ်ပေါ်စေသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ သဟဇာတပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 7, key: 'annamanna', pali: 'Aññamañña-paccaya', name: 'အညမညပစ္စည်း', color: 'sky', icon: 'fa-arrows-rotate',
+              desc: 'တရားအများသည် တစ်ဖက်စီမှ တစ်ဖက်ကို အပြန်အလှန် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'နာမ်ခန္ဓာ ၄ ပါး၊ မဟာဘုတ် ၄ ပါး၊ ပဋိသန္ဓေ နာမ်+ဟဒယရုပ်',
+              paccayuppannaText: 'အပြန်အလှန် ယှဉ်ဖက် နာမ်/ရုပ် တရားများ',
+              example: 'တိုင် ၃ ချောင်း အချင်းချင်း အပြန်အလှန် မှီရပ်နေသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 8, key: 'nissaya', pali: 'Nissaya-paccaya', name: 'နိဿယပစ္စည်း', color: 'sky', icon: 'fa-anchor',
+              desc: 'တစ်ခုက အခြားတစ်ခု၏ "မှီရာ" အခြေခံ အုတ်မြစ်အဖြစ် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'သဟဇာတ နာမ်ခန္ဓာများ၊ မဟာဘုတ် ၄ ပါး၊ ဝတ္ထုရုပ် ၆ ပါး',
+              paccayuppannaText: 'မှီတွယ်ဖြစ်ပေါ်လာသော စိတ်၊ စေတသိက်၊ စိတ္တဇရုပ်များ',
+              example: 'သစ်ပင်သည် မြေကြီးကို မှီ၍ တည်ရှိရသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ နိဿယပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 9, key: 'upanissaya', pali: 'Upanissaya-paccaya', name: 'ဥပနိဿယပစ္စည်း', color: 'amber', icon: 'fa-mountain',
+              desc: 'ခိုင်မာသော အားကောင်းသည့် ကျောထောက်နောက်ခံအဖြစ် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'အားကောင်းသော အာရုံ၊ အတိတ် ကံ/ဥတု/အာဟာရ/ပုဂ္ဂိုလ် အလေ့အထများ',
+              paccayuppannaText: 'နောက်နောင် ဖြစ်ပေါ်လာသော ကုသိုလ်၊ အကုသိုလ် စိတ်များ',
+              example: 'မိုးကြီးသည် သစ်ပင်များ ကြီးထွားရန် အားကောင်းသော အထောက်အပံ့ ဖြစ်သကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'ပုရိမာ ပုရိမာ ကုသလာ ဓမ္မာ ပစ္ဆိမာနံ ပစ္ဆိမာနံ ကုသလာနံ ဓမ္မာနံ ဥပနိဿယပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 10, key: 'purejata', pali: 'Purejāta-paccaya', name: 'ပုရေဇာတပစ္စည်း', color: 'amber', icon: 'fa-hourglass-start',
+              desc: 'ရှေးကတည်းက ကြိုတင်ဖြစ်နှင့်ပြီးသော ရုပ်တရားက နောက်မှဖြစ်သော နာမ်တရားကို ထောက်ပံ့ခြင်း။',
+              paccayaText: 'ဝတ္ထုရုပ် ၆ ပါး နှင့် ပစ္စုပ္ပန် နိပ္ဖန္န အာရုံရုပ်များ',
+              paccayuppannaText: 'စက္ခုဝိညာဉ် စသော ဝိညာဉ်စိတ်များ',
+              example: 'ကမ္ဘာဦးကတည်းက ဖြစ်နှင့်သော နေ၊ လ တို့သည် နောက်မှဖြစ်သော သတ္တဝါများကို အလင်းပေးသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စက္ခာယတနံ စက္ခုဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ ပုရေဇာတပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 11, key: 'pacchajata', pali: 'Pacchājāta-paccaya', name: 'ပစ္ဆာဇာတပစ္စည်း', color: 'violet', icon: 'fa-hourglass-end',
+              desc: 'နောက်မှဖြစ်သော နာမ်တရားက ရှေးက ကြိုတင်ဖြစ်နှင့်သော ရုပ်ခန္ဓာကို ထောက်ပံ့ခြင်း။',
+              paccayaText: 'နောက်မှ ဖြစ်ပေါ်လာသော စိတ်နှင့် စေတသိက်များ',
+              paccayuppannaText: 'ရှေးကတည်းက ဖြစ်ပေါ်ပြီးသား ခန္ဓာကိုယ် ကမ္မဇရုပ်များ',
+              example: 'လင်းတငယ်၏ အစာဆာမှု ကင်းစေရန် မိဘ၏ အစာရှာပေးမှုက ထောက်ပံ့သကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'ပစ္ဆာဇာတာ စိတ္တစေတသိကာ ဓမ္မာ ပုရေဇာတဿ ဣမဿ ကာယဿ ပစ္ဆာဇာတပစ္စယေန ပစ္စယော။' },
+
+            { id: 12, key: 'asevana', pali: 'Āsevana-paccaya', name: 'အာသေဝနပစ္စည်း', color: 'emerald', icon: 'fa-repeat',
+              desc: 'ရှေးဇောနစိတ်သည် နောက်တူညီသော ဇောနစိတ်ကို ထပ်ခါထပ်ခါ လေ့ကျင့်၍ အားကောင်းစေခြင်း။',
+              paccayaText: 'ရှေးရှေး ဖြစ်ပေါ်ခဲ့သော ဇောနစိတ်များ (နောက်ဆုံးဇောမှလွဲ၍)',
+              paccayuppannaText: 'နောက်နောက် ထပ်မံ ဖြစ်ပေါ်လာသော ဇောနစိတ်များ',
+              example: 'စာအုပ်ကို ထပ်ခါထပ်ခါ ဖတ်ပါက နှုတ်တိုက် ရသွားသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'ပုရိမာ ပုရိမာ ကုသလာ ဓမ္မာ ပစ္ဆိမာနံ ပစ္ဆိမာနံ ကုသလာနံ ဓမ္မာနံ အာသေဝနပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 13, key: 'kamma', pali: 'Kamma-paccaya', name: 'ကမ္မပစ္စည်း', color: 'rose', icon: 'fa-scale-balanced',
+              desc: 'စေတနာ (ကံ) သည် အကျိုးတရားများ ဖြစ်ပေါ်လာရန် ပြုပြင် စီရင် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'သဟဇာတ စေတနာ နှင့် နာနာက္ခဏိက အတိတ် ကုသိုလ်/အကုသိုလ် စေတနာများ',
+              paccayuppannaText: 'ဝိပါက်စိတ်များ၊ စိတ္တဇရုပ်များ နှင့် ကမ္မဇရုပ်များ',
+              example: 'မျိုးစေ့သည် အပင်ကို ဖြစ်ပေါ်စေသကဲ့သို့ စေတနာသည် အကျိုးကို ဖြစ်ပေါ်စေသည်။',
+              niddesaPali: 'ကုသလာကုသလံ ကမ္မံ ဝိပါကာနံ ခန္ဓာနံ ကဋတ္တာ စ ရူပါနံ ကမ္မပစ္စယေန ပစ္စယော။' },
+
+            { id: 14, key: 'vipaka', pali: 'Vipāka-paccaya', name: 'ဝိပါကပစ္စည်း', color: 'sky', icon: 'fa-gift',
+              desc: 'ဝိပါက်စိတ်တို့သည် ငြိမ်သက်အေးချမ်းစွာ အလိုလို အကျိုးပေး ထောက်ပံ့ခြင်း။',
+              paccayaText: 'ဝိပါက်စိတ် ၃၆ ပါး နှင့် ယှဉ်ဖက်စေတသိက်များ',
+              paccayuppannaText: 'ယှဉ်ဖက် နာမ်ခန္ဓာများ၊ ဝိပါက်စိတ္တဇရုပ်/ပဋိသန္ဓေကမ္မဇရုပ်များ',
+              example: 'ငြိမ်းအေးသော လေညင်းသည် သစ်ပင်များကို အားသစ်လန်းဆန်းစေသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'ဝိပါကာ အရူပိနော ခန္ဓာ အညမညံ ဝိပါကပစ္စယေန ပစ္စယော။' },
+
+            { id: 15, key: 'ahara', pali: 'Āhāra-paccaya', name: 'အာဟာရပစ္စည်း', color: 'lime', icon: 'fa-bowl-rice',
+              desc: 'အာဟာရ (၄) မျိုးသည် ရုပ်/နာမ် တရားများကို အားဖြည့် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'ကဗဠီကာရာဟာရ (ဩဇာရုပ်) နှင့် နာမ်အာဟာရ ၃ ပါး (ဖဿ၊ စေတနာ၊ ဝိညာဏ်)',
+              paccayuppannaText: 'အာဟာရဇရုပ်များ နှင့် နာမ်တရားများ',
+              example: 'ထမင်း အာဟာရသည် ကိုယ်ခန္ဓာ ကြီးထွားစေရန် ထောက်ပံ့သကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'ကဗဠီကာရော အာဟာရော ဣမဿ ကာယဿ အာဟာရပစ္စယေန ပစ္စယော။ အရူပိနော အာဟာရာ သမ္ပယုတ္တကာနံ ဓမ္မာနံ... ပစ္စယော။' },
+
+            { id: 16, key: 'indriya', pali: 'Indriya-paccaya', name: 'ဣန္ဒြေပစ္စည်း', color: 'amber', icon: 'fa-gauge-high',
+              desc: 'ဣန္ဒြေတရားတို့သည် မိမိနယ်ပယ်၌ အထွဋ်အမြတ် စိုးပိုင် အုပ်ချုပ်၍ ထောက်ပံ့ခြင်း။',
+              paccayaText: 'ပသာဒရုပ် ၅၊ ဇီဝိတရုပ် ၁၊ စိတ်၊ ဝေဒနာ၊ သဒ္ဓါ၊ ဝီရိယ၊ သတိ၊ သမာဓိ၊ ပညာ',
+              paccayuppannaText: 'စက္ခုဝိညာဉ် စသော စိတ်များ၊ သဟဇာတရုပ်များ',
+              example: 'ဝန်ကြီးများသည် မိမိဌာနအလိုက် အုပ်ချုပ်ထောက်ပံ့သကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စက္ခုန္ဒြိယံ စက္ခုဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ ဣန္ဒြိယပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 17, key: 'jhana', pali: 'Jhāna-paccaya', name: 'ဈာနပစ္စည်း', color: 'amber', icon: 'fa-mountain-sun',
+              desc: 'ဈာန်အင်္ဂါများ က အာရုံကို စူးစိုက် စေ့ငေးကြည့်ခြင်းဖြင့် ထောက်ပံ့ခြင်း။',
               paccayaText: 'ဈာန်အင်္ဂါ စေတသိက် ၅ ပါး (ဝိတက်၊ ဝိစာရ၊ ပီတိ၊ ဝေဒနာ၊ ဧကဂ္ဂတာ)',
-              paccayuppannaText: 'ဒွေပဉ္စဝိညာဏ် ၇ ပါးမှလွဲ၍ ကျန်စိတ် ၇၉ ပါး၊ ယှဉ်ဖက်စေတသိက်များ၊ သဟဇာတရုပ်များ',
-              example: 'ဧကဂ္ဂတာသည် စိတ်တစ်ခုစီတွင် အမြဲပါဝင်ပြီး အာရုံပေါ်တွင် တည်ငြိမ်စွာ စေ့ငေးကြည့်နိုင်ရန် ထောက်ပံ့ထားသည် — ဤအကြောင်းကြောင့် ဈာန်စိတ် မဟုတ်သော ပုံမှန်စိတ်များ၌ပင် ဈာန်ပစ္စည်း ရှိနေသည်။',
+              paccayuppannaText: 'ဒွိပဉ္စဝိညာဏ် ၇ ပါးမှလွဲ၍ ကျန်စိတ် ၇၉ ပါး၊ ယှဉ်ဖက်စေတသိက်များ',
+              example: 'တောင်ထိပ်မှ အောက်သို့ စေ့ငေးကြည့်သကဲ့သို့ အာရုံ၌ တည်စူးစေသည်။',
               niddesaPali: 'ဈာနင်္ဂါနိ ဈာနသမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ ဈာနပစ္စယေန ပစ္စယော။' },
-            { id: 18, key: 'magga', pali: 'Magga-paccaya', name: 'မဂ္ဂပစ္စည်း', cluster: 'strong', color: 'amber', icon: 'fa-route',
-              desc: 'မဂ္ဂင် (၁၂) ပါး (ကုသိုလ်ဘက်၊ အကုသိုလ်ဘက် ပါဝင်) သည် သက်ဆိုင်ရာ လားရာသို့ "လမ်းကြောင်း" ပြသ ဦးဆောင်ခြင်းဖြင့် ထောက်ပံ့ခြင်း။',
+
+            { id: 18, key: 'magga', pali: 'Magga-paccaya', name: 'မဂ္ဂပစ္စည်း', color: 'amber', icon: 'fa-route',
+              desc: 'မဂ္ဂင်တရားများ က သက်ဆိုင်ရာ လားရာသို့ လမ်းကြောင်းပြ ဦးဆောင် ထောက်ပံ့ခြင်း။',
               paccayaText: 'မဂ္ဂင် စေတသိက် ၉ ပါး (ပညာ၊ ဝိတက်၊ ဝိရတီ ၃၊ ဝီရိယ၊ သတိ၊ ဧကဂ္ဂတာ၊ ဒိဋ္ဌိ)',
-              paccayuppannaText: 'အဟေတုက စိတ် ၁၈ ပါးမှလွဲ၍ ကျန် သဟေတုက စိတ် ၇၁ ပါး၊ ယှဉ်ဖက်စေတသိက်၊ သဟဇာတရုပ်များ',
-              example: 'မိစ္ဆာဒိဋ္ဌိသည် အပါယ်ဘုံသို့ ဦးတည်သော လမ်းကြောင်းအဖြစ် ထောက်ပံ့သကဲ့သို့၊ သမ္မာဒိဋ္ဌိသည် သုဂတိသို့ ဦးတည်သော လမ်းကြောင်းအဖြစ် ထောက်ပံ့သည်။',
+              paccayuppannaText: 'သဟေတုက စိတ် ၇၁ ပါး၊ ယှဉ်ဖက်စေတသိက်များ',
+              example: 'ခရီးလမ်းညွှန်သည် ခရီးသည်အား လမ်းမှန်ပြသပေးသကဲ့သို့ ဖြစ်သည်။',
               niddesaPali: 'မဂ္ဂင်္ဂါနိ မဂ္ဂသမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ မဂ္ဂပစ္စယေန ပစ္စယော။' },
 
-            // Cluster D: Special-relations cluster (rose) — 7
-            { id: 2, key: 'arammana', pali: 'Ārammaṇa-paccaya', name: 'အာရမ္မဏပစ္စည်း', cluster: 'special', color: 'rose', icon: 'fa-bullseye',
-              desc: 'အာရုံသည် "သိအပ်သောအရာ" အဖြစ်ဖြင့် ၎င်းကို သိသော စိတ်နှင့် စေတသိက်များကို ထောက်ပံ့ခြင်း — ပစ်မှတ်သည် လေးသမားကို ရည်ညွှန်းပေးသကဲ့သို့။',
-              paccayaText: 'အာရုံ ၆ မျိုး (ရူပါရုံ၊ သဒ္ဒါရုံ၊ ဂန္ဓာရုံ၊ ရသာရုံ၊ ဖောဋ္ဌဗ္ဗာရုံ၊ ဓမ္မာရုံ — စိတ်/စေတသိက်/ရုပ်/နိဗ္ဗာန်/ပညတ်)',
-              paccayuppannaText: 'ထိုအာရုံကို သိကြကုန်သော စိတ် ၈၉ ပါး နှင့် စေတသိက် ၅၂ ပါး',
-              example: '<a href="citta_cetasikas_visual_guide.html#citta89:arammana-sangaha" class="text-rose-700 dark:text-rose-300 underline decoration-dotted hover:text-rose-700 dark:text-rose-200">အာရမ္မဏသင်္ဂဟ tab</a> တွင် ဖော်ပြထားသော အာရုံ (၆) မျိုးသည် ဤပစ္စည်း၏ ဥပမာများ ဖြစ်ကြသည်။',
-              niddesaPali: 'ရူပါယတနံ စက္ခုဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ အာရမ္မဏပစ္စယေန ပစ္စယော။ သဒ္ဒါယတနံ သောတဝိညာဏဓာတုယာ... ယံ ယံ ဓမ္မံ အာရဗ္ဘ ယေ ယေ ဓမ္မာ ဥပ္ပဇ္ဇန္တိ စိတ္တစေတသိကာ ဓမ္မာ၊ တေ တေ ဓမ္မာ တေသံ တေသံ ဓမ္မာနံ အာရမ္မဏပစ္စယေန ပစ္စယော။' },
-            { id: 10, key: 'purejata', pali: 'Purejāta-paccaya', name: 'ပုရေဇာတပစ္စည်း', cluster: 'special', color: 'rose', icon: 'fa-hourglass-start',
-              desc: 'ရှေးကတည်းက ဖြစ်ပေါ်၍ တည်ရှိနေပြီးသား ရုပ်တရားသည် နောက်မှ ဖြစ်ပေါ်လာမည့် နာမ်တရားကို ထောက်ပံ့ခြင်း။',
-              paccayaText: 'ရှေးကတည်းက ဖြစ်နှင့်ပြီးသော ဝတ္ထုရုပ် ၆ ပါး (စက္ခု၊ သောတ စသည်) နှင့် အာရုံရုပ် ၅ ပါး',
-              paccayuppannaText: 'နောင်မှ ဖြစ်ပေါ်လာသော စက္ခုဝိညာဉ် အစရှိသော မနောဝိညာဏ်ဓာတ် စိတ်နှင့် စေတသိက်များ',
-              example: '<a href="rupa_sangaha.html?open=cakkhu" class="text-rose-700 dark:text-rose-300 underline decoration-dotted hover:text-rose-700 dark:text-rose-200">စက္ခုပသာဒ</a> (မျက်စိအလုံးရုပ်) သည် ရှေးကတည်းက ဖြစ်ပေါ်နေပြီးမှ၊ နောင်တွင် ဖြစ်ပေါ်လာမည့် စက္ခုဝိညာဉ်ကို ထောက်ပံ့သည်။',
-              niddesaPali: 'စက္ခာယတနံ စက္ခုဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ ပုရေဇာတပစ္စယေန ပစ္စယော။ ... ယံ ရူပံ နိဿာယ မနောဓာတု စ မနောဝိညာဏဓာတု စ ဝတ္တန္တိ၊ တံ ရူပံ မနောဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ ပုရေဇာတပစ္စယေန ပစ္စယော။ မနောဝိညာဏဓာတုယာ တံသမ္ပယုတ္တကာနဉ္စ ဓမ္မာနံ ကိဉ္စိ ကာလေ ပုရေဇာတပစ္စယေန ပစ္စယော၊ ကိဉ္စိ ကာလေ န ပုရေဇာတပစ္စယေန ပစ္စယော။' },
-            { id: 11, key: 'pacchajata', pali: 'Pacchājāta-paccaya', name: 'ပစ္ဆာဇာတပစ္စည်း', cluster: 'special', color: 'rose', icon: 'fa-hourglass-end',
-              desc: 'နောက်မှ ဖြစ်ပေါ်လာသော စိတ်သည် ရှေးကတည်းက ဖြစ်ပေါ်ပြီးသား ရုပ်ခန္ဓာကို ပြန်လည် "ပြုစုပျိုးထောင်" ထောက်ပံ့ခြင်း။',
-              paccayaText: 'နောင်မှ ဖြစ်ပေါ်လာသော နောက်နောက် စိတ် ၈၅ ပါး (အရူပဝိပါက် ၄ ပါးမှလွဲ၍) နှင့် စေတသိက်များ',
-              paccayuppannaText: 'ရှေးကတည်းက တည်ရှိနေပြီးသော အာဟာရဇရုပ် အစရှိသည့် ဤရုပ်ခန္ဓာကိုယ်ကြီး',
-              example: 'ပစ္စုပ္ပန် စိတ်သည် ခန္ဓာကိုယ်ရှိ ရုပ်တရားများကို ပြန်လည် ထောက်ပံ့ ပြုစုပေးနေသည် — ဤကြောင့် စိတ်ဓာတ်ကျသောအခါ ခန္ဓာကိုယ်ပါ ချိနဲ့သွားတတ်ခြင်း ဖြစ်နိုင်သည်။',
-              niddesaPali: 'ပစ္ဆာဇာတာ စိတ္တစေတသိကာ ဓမ္မာ ပုရေဇာတဿ ဣမဿ ကာယဿ ပစ္ဆာဇာတပစ္စယေန ပစ္စယော။' },
-            { id: 13, key: 'kamma', pali: 'Kamma-paccaya', name: 'ကမ္မပစ္စည်း', cluster: 'special', color: 'rose', icon: 'fa-scale-balanced',
-              desc: 'စေတနာ (ကံ) သည် (၁) ဖြစ်ချိန်တူ ယှဉ်ဖက်တရားများကို (သဟဇာတကံ) သော်လည်းကောင်း၊ (၂) အခြားအချိန်၌ ၎င်း၏ အကျိုးဆက်ကို (နာနာက္ခဏိကကံ) သော်လည်းကောင်း ထောက်ပံ့ခြင်း။',
-              paccayaText: 'စေတနာ စေတသိက် (သဟဇာတကံ အနေဖြင့် စေတနာ သီးသန့်၊ နာနာက္ခဏိကကံ အနေဖြင့် အတိတ် ကုသိုလ်/အကုသိုလ် စေတနာများ)',
-              paccayuppannaText: 'ယှဉ်ဖက် စိတ်/စေတသိက်၊ စိတ္တဇရုပ် (သဟဇာတ)၊ နောင်ဘဝ ဝိပါက်စိတ် ၃၆ ပါးနှင့် ကမ္မဇရုပ်များ (နာနာက္ခဏိက)',
-              example: 'ယနေ့ ဒါနပေးလှူစဉ် စေတနာသည် ထိုစိတ်ခဏ၏ အခြားစေတသိက်များကို ချက်ချင်း ထောက်ပံ့ (သဟဇာတ) သည့်အပြင်၊ ထိုကံ၏ အကျိုးဆက်ကို နောင်ဘဝ၌ပါ ထောက်ပံ့ (နာနာက္ခဏိက) နိုင်သည် — <a href="citta_cetasikas_visual_guide.html#simulator" class="text-rose-700 dark:text-rose-300 underline decoration-dotted hover:text-rose-700 dark:text-rose-200">Mind Simulator tab</a> ၏ ကံ/ကုသိုလ် entry တို့တွင် ဤသဘောတရားကို လက်တွေ့ စမ်းသပ်နိုင်သည်။',
-              niddesaPali: 'ကုသလာကုသလံ ကမ္မံ ဝိပါကာနံ ခန္ဓာနံ ကဋတ္တာ စ ရူပါနံ ကမ္မပစ္စယေန ပစ္စယော။ စေတနာ သမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ ကမ္မပစ္စယေန ပစ္စယော။' },
-            { id: 14, key: 'vipaka', pali: 'Vipāka-paccaya', name: 'ဝိပါကပစ္စည်း', cluster: 'special', color: 'rose', icon: 'fa-seedling',
-              desc: 'ဝိပါက်စိတ်နှင့် ယှဉ်ဖက်စေတသိက်များသည် ကြိုးစားအားထုတ်စရာ မလိုဘဲ "အလိုလို ငြိမ်သက်စွာ" တစ်ခုကို တစ်ခု ထောက်ပံ့ကြခြင်း။',
-              example: 'မဟာဝိပါက်စိတ်သည် ကြိုးစားမှု မလိုဘဲ အလိုလို ဖြစ်ပေါ်နေတတ်သည် — ဤပစ္စည်းကြောင့်ပင် ဖြစ်သည်။ <a href="citta_cetasikas_visual_guide.html#simulator" class="text-rose-700 dark:text-rose-300 underline decoration-dotted hover:text-rose-700 dark:text-rose-200">Mind Simulator tab</a> ၏ "ဝိပါက်" entry တွင် ဤသဘောကို ထပ်မံ လေ့လာနိုင်သည်။',
-              niddesaPali: 'ဝိပါကာ စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ ဝိပါကပစ္စယေန ပစ္စယော။' },
-            { id: 15, key: 'ahara', pali: 'Āhāra-paccaya', name: 'အာဟာရပစ္စည်း', cluster: 'special', color: 'rose', icon: 'fa-bowl-rice',
-              desc: 'အာဟာရ (၄) မျိုး (ကဗဠီကာရာဟာရ=အစားအစာ၊ ဖဿာဟာရ=ဖဿ၊ မနောသဉ္စေတနာဟာရ=စေတနာ၊ ဝိညာဏာဟာရ=ဝိညာဉ်) သည် သက်ဆိုင်ရာ ကိုးကွယ် တရားများကို "အားဖြည့် မွေးမြူ" ထောက်ပံ့ခြင်း။',
-              example: 'ဖဿာဟာရသည် ဝေဒနာ၊ သညာ၊ စေတနာတို့ကို အားဖြည့်သကဲ့သို့၊ ကဗဠီကာရာဟာရ (အစားအစာ) သည် ခန္ဓာကိုယ်ရုပ်တရားများကို အားဖြည့်သည်။',
-              niddesaPali: 'ကဗဠီကာရော အာဟာရော ဣမဿ ကာယဿ အာဟာရပစ္စယေန ပစ္စယော။ အရူပိနော အာဟာရာ သမ္ပယုတ္တကာနံ ဓမ္မာနံ တံသမုဋ္ဌာနာနဉ္စ ရူပါနံ အာဟာရပစ္စယေန ပစ္စယော။' },
-            { id: 20, key: 'vippayutta', pali: 'Vippayutta-paccaya', name: 'ဝိပ္ပယုတ္တပစ္စည်း', cluster: 'special', color: 'rose', icon: 'fa-arrows-split-up-and-left',
-              desc: 'နာမ်နှင့် ရုပ် (ခွဲခြားသော သဘောရှိသည့် တရားနှစ်ရပ်) သည် သမ္ပယုတ္တပစ္စည်း ကဲ့သို့ ရောယှက်ခြင်း မရှိဘဲ၊ ကိုယ်စီ သီးခြားရပ်တည်လျက်ပင် တစ်ခုက တစ်ခုကို ထောက်ပံ့ခြင်း။',
-              example: '<a href="rupa_sangaha.html?open=hadayavatthu" class="text-rose-700 dark:text-rose-300 underline decoration-dotted hover:text-rose-700 dark:text-rose-200">ဟဒယဝတ္ထု</a> (ရုပ်) နှင့် စိတ် (နာမ်) သည် အချင်းချင်း ထောက်ပံ့နေကြသော်လည်း၊ သမ္ပယုတ္တပစ္စည်း ကဲ့သို့ "ဖြစ်ချိန်တူ၊ ချုပ်ချိန်တူ၊ အာရုံတူ" အားလုံးကို မျှဝေနိုင်ခြင်း မရှိပေ — ရုပ်နှင့်နာမ် သဘောသဘာဝ ကွဲပြားနေသောကြောင့် ဤကဲ့သို့ "ကွဲကွာစွာ တည်လျက် ထောက်ပံ့ခြင်း" ဟု ခေါ်ဆိုရခြင်း ဖြစ်သည်။',
-              niddesaPali: 'ရူပိနော ဓမ္မာ အရူပီနံ ဓမ္မာနံ ဝိပ္ပယုတ္တပစ္စယေန ပစ္စယော။ အရူပိနော ဓမ္မာ ရူပီနံ ဓမ္မာနံ ဝိပ္ပယုတ္တပစ္စယေန ပစ္စယော။' }
+            { id: 19, key: 'sampayutta', pali: 'Sampayutta-paccaya', name: 'သမ္ပယုတ္တပစ္စည်း', color: 'sky', icon: 'fa-droplet',
+              desc: 'နာမ်တရားချင်း ရေနှင့်နို့ ကဲ့သို့ လုံးဝ ရောယှက် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'စိတ် ၈၉ ပါး နှင့် စေတသိက် ၅၂ ပါး',
+              paccayuppannaText: 'ယှဉ်ဖက် နာမ်တရားများ (အတူဖြစ်/ချုပ်/မှီ/အာရုံတူ)',
+              example: 'နို့နှင့် ရေ ရောစပ်သွားပါက ခွဲခြား၍ မရတော့သကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ သမ္ပယုတ္တပစ္စယေန ပစ္စယော။' },
+
+            { id: 20, key: 'vippayutta', pali: 'Vippayutta-paccaya', name: 'ဝိပ္ပယုတ္တပစ္စည်း', color: 'violet', icon: 'fa-puzzle-piece',
+              desc: 'ရုပ်နှင့် နာမ်တရားတို့သည် မရောယှက်ဘဲ သီးခြားစီ တည်ရှိလျက် ထောက်ပံ့ခြင်း။',
+              paccayaText: 'ဝတ္ထုရုပ်များ၊ သဟဇာတ ရုပ်/နာမ်များ၊ ပစ္ဆာဇာတ နာမ်တရားများ',
+              paccayuppannaText: 'ဆိုင်ရာ နာမ်တရားများ သို့မဟုတ် ရုပ်တရားများ',
+              example: 'အရသာ ၆ မျိုးသည် ရောစပ်သော်လည်း အရသာ မပျက်ဘဲ သီးခြားရှိသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'သဟဇာတာ အရူပိနော ခန္ဓာ ကဋတ္တာရူပါနံ ဝိပ္ပယုတ္တပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 21, key: 'atthi', pali: 'Atthi-paccaya', name: 'အတ္ထိပစ္စည်း', color: 'sky', icon: 'fa-check',
+              desc: 'တရားတစ်ခု လက်ရှိ တည်ရှိနေခြင်း ကပင် အခြားတစ်ခုကို ထောက်ပံ့ခြင်း။',
+              paccayaText: 'လက်ရှိ တည်ရှိနေသော နာမ်/ရုပ် တရားများ',
+              paccayuppannaText: 'ထိုတရားကို မှီ၍ တည်ရှိခွင့်ရသော တရားများ',
+              example: 'မြေကြီး ရှိနေ၍သာ သစ်ပင် တည်ရှိနိုင်သကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ အတ္ထိပစ္စယေန ပစ္စယော။ ...' },
+
+            { id: 22, key: 'natthi', pali: 'Natthi-paccaya', name: 'နတ္ထိပစ္စည်း', color: 'emerald', icon: 'fa-xmark',
+              desc: 'ရှေးစိတ် ချုပ်ငြိမ်း ကွယ်ပျောက်သွားခြင်း ကပင် နောက်စိတ် ဖြစ်ပေါ်ရန် နေရာ ပေးခြင်း။',
+              paccayaText: 'ချုပ်ငြိမ်း ကွယ်ပျောက်သွားသော ရှေးစိတ်များ',
+              paccayuppannaText: 'ချက်ချင်း ဖြစ်ပေါ်လာခွင့်ရသော နောက်စိတ်များ',
+              example: 'မီးအိမ် ငြိမ်းသွားပါက အမှောင် ရောက်လာသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'သမနန္တရနိရုဒ္ဓါ စိတ္တစေတသိကာ ဓမ္မာ ပဋုပ္ပန္နာနံ စိတ္တစေတသိကာနံ ဓမ္မာနံ နတ္ထိပစ္စယေန ပစ္စယော။' },
+
+            { id: 23, key: 'vigata', pali: 'Vigata-paccaya', name: 'ဝိဂတပစ္စည်း', color: 'emerald', icon: 'fa-eraser',
+              desc: 'နတ္ထိပစ္စည်း နှင့် အနက် အတူတူပင် — "ကင်းကွာ ကွယ်ပျောက်ခြင်း" ကို အထူးပြုပြသည်။',
+              paccayaText: 'ကင်းကွာ ကွယ်ပျောက်သွားသော ရှေးနာမ်တရားများ',
+              paccayuppannaText: 'ဖြစ်ပေါ်လာသော နောက်နာမ်တရားများ',
+              example: 'နေကွယ်သွားပါက လရောင် ထွန်းလင်းလာသကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'သမနန္တရဝိဂတာ စိတ္တစေတသိကာ ဓမ္မာ ပဋုပ္ပန္နာနံ စိတ္တစေတသိကာနံ ဓမ္မာနံ ဝိဂတပစ္စယေန ပစ္စယော။' },
+
+            { id: 24, key: 'avigata', pali: 'Avigata-paccaya', name: 'အဝိဂတပစ္စည်း', color: 'sky', icon: 'fa-check-double',
+              desc: 'အတ္ထိပစ္စည်း နှင့် အနက် အတူတူပင် — "မကွယ်ပျောက်သေးခြင်း" ကို အထူးပြုပြသည်။',
+              paccayaText: 'မကွယ်ပျောက်သေးဘဲ ရှိနေသော တရားများ',
+              paccayuppannaText: 'ထိုတရားကြောင့် ဖြစ်ပေါ်ခွင့်ရသော တရားများ',
+              example: 'သမုဒ္ဒရာ ရေမခမ်းသေးသရွေ့ ငါးများ ကူးခတ်နိုင်သကဲ့သို့ ဖြစ်သည်။',
+              niddesaPali: 'စတ္တာရော ခန္ဓာ အရူပိနော အညမညံ အဝိဂတပစ္စယေန ပစ္စယော။ ...' }
         ];
 
-        const clusterInfo = {
-            together: { label: 'တွဲဖက်ဖြစ်ပေါ်မှု အုပ်စု', sub: 'ဖြစ်ချိန်တူ တစ်ပြိုင်နက် ထောက်ပံ့ခြင်း', color: 'text-sky-700 dark:text-sky-300', border: 'border-sky-500', bg: 'bg-sky-500/15', icon: 'fa-people-arrows' },
-            succession: { label: 'အဆက်အစပ် အုပ်စု (ဝီထိနှင့် ဆက်စပ်)', sub: 'ရှေးစိတ်မှ နောက်စိတ်သို့ ဆက်တိုက် ဖြစ်ပေါ်ခြင်း', color: 'text-emerald-700 dark:text-emerald-300', border: 'border-emerald-500', bg: 'bg-emerald-500/15', icon: 'fa-route' },
-            strong: { label: 'ခိုင်မာသော လွှမ်းမိုးမှု အုပ်စု', sub: 'ကျောထောက်နောက်ခံအဖြစ် ခိုင်မာစွာ လွှမ်းမိုးခြင်း', color: 'text-amber-700 dark:text-amber-300', border: 'border-amber-500', bg: 'bg-amber-500/15', icon: 'fa-crown' },
-            special: { label: 'အထူးဆက်စပ်မှု အုပ်စု', sub: 'အထူးနည်းလမ်းအားဖြင့် ထောက်ပံ့ခြင်း', color: 'text-rose-700 dark:text-rose-300', border: 'border-rose-500', bg: 'bg-rose-500/15', icon: 'fa-diagram-project' }
-        };
-
-        const colorClassMap = {
-            sky: 'bg-sky-100 dark:bg-sky-500/10 border-sky-400 dark:border-sky-500/30 text-sky-700 dark:text-sky-300 hover:bg-sky-500/25 hover:border-sky-400',
-            emerald: 'bg-emerald-500/10 border-emerald-400 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/25 hover:border-emerald-400',
-            amber: 'bg-amber-500/10 border-amber-400 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 hover:bg-amber-500/25 hover:border-amber-400',
-            rose: 'bg-rose-500/10 border-rose-400 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 hover:bg-rose-500/25 hover:border-rose-400'
-        };
+        const sabhagaData = [
+            { name: '၁။ သဟဇာတဇာတ် (၁၅ ပါး)', count: '၁၅ ပါး', color: 'sky', desc: 'အတူတကွ တပြိုင်နက် ဖြစ်ပေါ်၍ ကျေးဇူးပြုသော အုပ်စု။ (ဟေတု၊ သဟဇာတ၊ အညမည၊ နိဿယ၊ ကမ္မ၊ ဝိပါက၊ အာဟာရ၊ ဣန္ဒြိယ၊ ဈာန၊ မဂ္ဂ၊ သမ္ပယုတ္တ၊ ဝိပ္ပယုတ္တ၊ အတ္ထိ၊ အဝိဂတ၊ အဓိပတိ)' },
+            { name: '၂။ အာရမ္မဏဇာတ် (၈ ပါး)', count: '၈ ပါး', color: 'rose', desc: 'အာရုံအဖြစ်ဖြင့် သိအပ်သောတရားက သိတတ်သောတရားကို ကျေးဇူးပြုသော အုပ်စု။ (အာရမ္မဏ၊ အဓိပတိ၊ နိဿယ၊ ဥပနိဿယ၊ ပုရေဇာတ၊ ဝိပ္ပယုတ္တ၊ အတ္ထိ၊ အဝိဂတ)' },
+            { name: '၃။ အနန္တရဇာတ် (၇ ပါး)', count: '၇ ပါး', color: 'emerald', desc: 'ရှေးစိတ်ချုပ်ပြီး နောက်စိတ် ချက်ချင်းဆက်တိုက် ဖြစ်ပေါ်လာစေရန် ကျေးဇူးပြုသော အုပ်စု။ (အနန္တရ၊ သမနန္တရ၊ ဥပနိဿယ၊ အာသေဝန၊ ကမ္မ၊ နတ္ထိ၊ ဝိဂတ)' },
+            { name: '၄။ ပုရေဇာတဇာတ် (၃ ပါး)', count: '၃ ပါး', color: 'amber', desc: 'ရှေးကတည်းက ကြိုတင်ဖြစ်နှင့်ပြီးသော ရုပ်တရားက နောက်မှဖြစ်သော နာမ်တရားကို ကျေးဇူးပြုသော အုပ်စု။ (နိဿယ၊ ပုရေဇာတ၊ ဣန္ဒြိယ)' },
+            { name: '၅။ ပစ္ဆာဇာတဇာတ် (၄ ပါး)', count: '၄ ပါး', color: 'violet', desc: 'နောက်မှဖြစ်သော နာမ်တရားက ရှေးက ကြိုတင်ဖြစ်နှင့်သော ရုပ်ခန္ဓာကို ထောက်ပံ့ပြုစုသော အုပ်စု။ (ပစ္ဆာဇာတ၊ ဝိပ္ပယုတ္တ၊ အတ္ထိ၊ အဝိဂတ)' },
+            { name: '၆။ နာနာက္ခဏိကကမ္မဇာတ် (၁ ပါး)', count: '၁ ပါး', color: 'orange', desc: 'အချိန်မတူသော အတိတ်က ကံ (စေတနာ) ကြောင့် အကျိုးတရား (ဝိပါက်နှင့် ကမ္မဇရုပ်) များ ဖြစ်ပေါ်လာရသော အုပ်စု။ (ကမ္မပစ္စည်း)' }
+        ];
 
         function mm(n) {
             const map = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
             return String(n).replace(/[0-9]/g, d => map[d]);
         }
 
-        function renderClusters() {
-            const container = document.getElementById('paccaya-clusters');
-            const order = ['together', 'succession', 'strong', 'special'];
-            container.innerHTML = order.map(clusterKey => {
-                const info = clusterInfo[clusterKey];
-                const items = paccayaData.filter(p => p.cluster === clusterKey);
-                return `
-                    <div id="cluster-${clusterKey}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-3 scroll-mt-24">
-                        <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-xl ${info.bg} ${info.color} flex items-center justify-center text-xl border ${info.border}/30 flex-shrink-0"><i class="fa-solid ${info.icon}"></i></div>
-                            <div>
-                                <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400">${info.sub}</p>
-                            </div>
+        function renderGrids() {
+            // 24 Paccaya Grid Cards
+            document.getElementById('grid-paccaya24').innerHTML = paccayaData.map(p => `
+                <button onclick="openPaccayaModal('${p.key}')" class="paccaya-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${p.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid ${p.icon} text-${p.color}-500 text-xl"></i>
+                            <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-${p.color}-500/10 text-${p.color}-700 dark:text-${p.color}-300 border border-${p.color}-500/20">#${mm(p.id)}</span>
                         </div>
-                        <div class="flex flex-wrap gap-1.5">
-                            ${items.map(p => `
-                                <button onclick="openPaccayaModal('${p.key}')" class="paccaya-card text-xs font-semibold px-3 py-1.5 rounded-full border transition ${colorClassMap[p.color]}">
-                                    ${mm(p.id)}. ${p.name}
-                                </button>
-                            `).join('')}
-                        </div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-${p.color}-600 transition">${p.name}</h4>
+                        <p class="text-[11px] font-mono text-slate-400 mb-1">${p.pali}</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${p.desc}</p>
                     </div>
-                `;
-            }).join('');
-        }
+                    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/50 flex items-center justify-between text-[11px] text-${p.color}-600 dark:text-${p.color}-400 font-semibold">
+                        <span>အသေးစိတ် ကြည့်မည်</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </button>
+            `).join('');
 
-        function scrollToPaccayaCluster(clusterKey) {
-            const el = document.getElementById('cluster-' + clusterKey);
-            if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function renderAlwaysTogetherChips() {
-            const keys = ['sahajata', 'annamanna', 'nissaya', 'sampayutta', 'atthi', 'avigata'];
-            const el = document.getElementById('always-together-chips');
-            el.innerHTML = keys.map(k => {
-                const p = paccayaData.find(x => x.key === k);
-                return `<button onclick="openPaccayaModal('${k}')" class="text-xs font-semibold px-3 py-1.5 rounded-full border transition ${colorClassMap[p.color]}">${p.name}</button>`;
-            }).join('');
+            // Sabhaga 6 Groups
+            document.getElementById('sabhaga-grid').innerHTML = sabhagaData.map(s => `
+                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-sm text-${s.color}-700 dark:text-${s.color}-300">${s.name}</h4>
+                        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-${s.color}-500/10 text-${s.color}-600 border border-${s.color}-500/20">${s.count}</span>
+                    </div>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${s.desc}</p>
+                </div>
+            `).join('');
         }
 
         function openPaccayaModal(key) {
             const p = paccayaData.find(x => x.key === key);
             if (!p) return;
-            const modal = document.getElementById('modal');
-            const content = document.getElementById('modal-content');
-            const info = clusterInfo[p.cluster];
-            content.innerHTML = `
+
+            document.getElementById('modal-content').innerHTML = `
                 <div class="text-center space-y-2">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-3xl border border-slate-200 dark:border-slate-700 ${info.color}">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-${p.color}-500/10 text-${p.color}-500 flex items-center justify-center text-3xl border border-${p.color}-500/30">
                         <i class="fa-solid ${p.icon}"></i>
                     </div>
                     <div>
-                        <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(p.id)}/၂၄</span>
-                        <h3 class="text-xl font-bold ${info.color}">${p.name}</h3>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-500 font-mono mt-1">${p.pali}</p>
+                        <span class="text-xs text-slate-500 uppercase font-mono">ပဋ္ဌာန်း ပစ္စည်းအမှတ် ${mm(p.id)} / ၂၄</span>
+                        <h3 class="text-xl font-bold text-${p.color}-700 dark:text-${p.color}-300">${p.name}</h3>
+                        <p class="text-[11px] text-slate-500 font-mono mt-0.5">${p.pali}</p>
                     </div>
                 </div>
-                
+
                 ${p.niddesaPali ? `
-                <div class="mt-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-300 dark:border-amber-500/20 p-4 rounded-xl text-center space-y-2 relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 opacity-10 text-amber-500 text-6xl"><i class="fa-solid fa-leaf"></i></div>
-                    <span class="text-[10px] font-bold text-amber-500/70 block uppercase tracking-widest">ပစ္စယနိဒ္ဒေသ ပါဠိတော်</span>
-                    <p class="text-amber-700 dark:text-amber-200/90 leading-relaxed font-[Pyidaungsu] text-[13px] md:text-sm">" ${p.niddesaPali} "</p>
+                <div class="mt-3 bg-amber-50 dark:bg-amber-950/20 border border-amber-300 dark:border-amber-500/20 p-3.5 rounded-xl text-center space-y-1 relative overflow-hidden">
+                    <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 block uppercase tracking-widest">ပစ္စယနိဒ္ဒေသ ပါဠိတော်</span>
+                    <p class="text-amber-800 dark:text-amber-200 leading-relaxed text-xs md:text-sm font-[Pyidaungsu]">" ${p.niddesaPali} "</p>
                 </div>
                 ` : ''}
 
-                <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
+                <div class="mt-3 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
                     <div>
-                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
-                        <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${p.desc}</p>
+                        <span class="text-xs font-semibold text-slate-500 block uppercase">သဘောတရား ရှင်းလင်းချက်</span>
+                        <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed text-xs md:text-sm">${p.desc}</p>
                     </div>
+
                     <div class="grid sm:grid-cols-2 gap-2 pt-2 text-xs">
                         <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-500/20">
-                            <span class="font-bold text-sky-700 dark:text-sky-300 block">ပစ္စယတရား (အကြောင်း)</span>
-                            <span class="text-slate-700 dark:text-slate-300 text-[11px]">${p.paccayaText || 'သဟဇာတ နာမ်/ရုပ် တရားများ'}</span>
+                            <span class="font-bold text-sky-700 dark:text-sky-300 block mb-0.5">ပစ္စယတရား (အကြောင်း)</span>
+                            <span class="text-slate-700 dark:text-slate-300 text-[11px] block leading-relaxed">${p.paccayaText}</span>
                         </div>
                         <div class="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500/20">
-                            <span class="font-bold text-emerald-700 dark:text-emerald-300 block">ပစ္စယုပ္ပန္နတရား (အကျိုး)</span>
-                            <span class="text-slate-700 dark:text-slate-300 text-[11px]">${p.paccayuppannaText || 'ယှဉ်ဖက် နာမ်/ရုပ် တရားများ'}</span>
+                            <span class="font-bold text-emerald-700 dark:text-emerald-300 block mb-0.5">ပစ္စယုပ္ပန္နတရား (အကျိုး)</span>
+                            <span class="text-slate-700 dark:text-slate-300 text-[11px] block leading-relaxed">${p.paccayuppannaText}</span>
                         </div>
                     </div>
+
                     <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
-                        <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ သရုပ်ပြ</span>
-                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${p.example}</p>
+                        <span class="text-xs font-semibold text-amber-600 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ သရုပ်ဖော်ချက်</span>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed text-xs">${p.example}</p>
                     </div>
                 </div>
             `;
-            modal.classList.remove('hidden');
+            document.getElementById('modal').classList.remove('hidden');
         }
 
         function showPatthanaPali() {
-            const modal = document.getElementById('modal');
-            const content = document.getElementById('modal-content');
-            
-            content.innerHTML = `
+            document.getElementById('modal-content').innerHTML = `
                 <div class="text-center space-y-4">
                     <div class="w-16 h-16 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-full flex items-center justify-center mx-auto text-3xl border border-amber-500/30">
                         <i class="fa-solid fa-book-open-reader"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-amber-700 dark:text-amber-300 font-[Pyidaungsu]">ပဋ္ဌာန်း ပစ္စယုဒ္ဒေသ ပါဠိတော်</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400">ဗုဒ္ဓမြတ်စွာ ဟောကြားတော်မူခဲ့သော အခြေအနေ (၂၄) ပါး</p>
+                    <p class="text-xs text-slate-500">ဗုဒ္ဓမြတ်စွာ ဟောကြားတော်မူခဲ့သော အခြေအနေ (၂၄) ပါး</p>
                     
-                    <div class="bg-slate-100 dark:bg-slate-950/70 p-6 rounded-xl border border-slate-200 dark:border-slate-700 text-left space-y-4 max-h-[50vh] overflow-y-auto">
-                        <p class="text-slate-800 dark:text-slate-200 leading-8 text-base md:text-lg font-[Pyidaungsu] tracking-wide">
-                            ၁။ <strong>ဟေတုပစ္စယော</strong>၊<br>
-                            ၂။ <strong>အာရမ္မဏပစ္စယော</strong>၊<br>
-                            ၃။ <strong>အဓိပတိပစ္စယော</strong>၊<br>
-                            ၄။ <strong>အနန္တရပစ္စယော</strong>၊<br>
-                            ၅။ <strong>သမနန္တရပစ္စယော</strong>၊<br>
-                            ၆။ <strong>သဟဇာတပစ္စယော</strong>၊<br>
-                            ၇။ <strong>အညမညပစ္စယော</strong>၊<br>
-                            ၈။ <strong>နိဿယပစ္စယော</strong>၊<br>
-                            ၉။ <strong>ဥပနိဿယပစ္စယော</strong>၊<br>
-                            ၁၀။ <strong>ပုရေဇာတပစ္စယော</strong>၊<br>
-                            ၁၁။ <strong>ပစ္ဆာဇာတပစ္စယော</strong>၊<br>
-                            ၁၂။ <strong>အာသေဝနပစ္စယော</strong>၊<br>
-                            ၁၃။ <strong>ကမ္မပစ္စယော</strong>၊<br>
-                            ၁၄။ <strong>ဝိပါကပစ္စယော</strong>၊<br>
-                            ၁၅။ <strong>အာဟာရပစ္စယော</strong>၊<br>
-                            ၁၆။ <strong>ဣန္ဒြိယပစ္စယော</strong>၊<br>
-                            ၁၇။ <strong>ဈာနပစ္စယော</strong>၊<br>
-                            ၁၈။ <strong>မဂ္ဂပစ္စယော</strong>၊<br>
-                            ၁၉။ <strong>သမ္ပယုတ္တပစ္စယော</strong>၊<br>
-                            ၂၀။ <strong>ဝိပ္ပယုတ္တပစ္စယော</strong>၊<br>
-                            ၂၁။ <strong>အတ္ထိပစ္စယော</strong>၊<br>
-                            ၂၂။ <strong>နတ္ထိပစ္စယော</strong>၊<br>
-                            ၂၃။ <strong>ဝိဂတပစ္စယော</strong>၊<br>
-                            ၂၄။ <strong>အဝိဂတပစ္စယော</strong>တိ။
-                        </p>
-                    </div>
-                    <div class="pt-2 text-xs text-slate-500">
-                        * ဤပါဠိတော်သည် ပဋ္ဌာန်းကျမ်းကြီး၏ နိဒါန်းအကျဉ်း (ပစ္စယုဒ္ဒေသ) သာဖြစ်ပြီး၊ တစ်ပါးစီ၏ အကျယ်နှင့် သဘောတရား သရုပ်ခွဲများကို အောက်ပါ ကတ်များတွင် ဆက်လက် လေ့လာနိုင်ပါသည်။
+                    <div class="bg-slate-100 dark:bg-slate-950/70 p-5 rounded-xl border border-slate-200 dark:border-slate-700 text-left space-y-2 max-h-[50vh] overflow-y-auto font-[Pyidaungsu] text-sm md:text-base leading-loose">
+                        ၁။ <strong>ဟေတုပစ္စယော</strong>၊ ၂။ <strong>အာရမ္မဏပစ္စယော</strong>၊ ၃။ <strong>အဓိပတိပစ္စယော</strong>၊ ၄။ <strong>အနန္တရပစ္စယော</strong>၊ ၅။ <strong>သမနန္တရပစ္စယော</strong>၊ ၆။ <strong>သဟဇာတပစ္စယော</strong>၊ ၇။ <strong>အညမညပစ္စယော</strong>၊ ၈။ <strong>နိဿယပစ္စယော</strong>၊ ၉။ <strong>ဥပနိဿယပစ္စယော</strong>၊ ၁၀။ <strong>ပုရေဇာတပစ္စယော</strong>၊ ၁၁။ <strong>ပစ္ဆာဇာတပစ္စယော</strong>၊ ၁၂။ <strong>အာသေဝနပစ္စယော</strong>၊ ၁၃။ <strong>ကမ္မပစ္စယော</strong>၊ ၁၄။ <strong>ဝိပါကပစ္စယော</strong>၊ ၁၅။ <strong>အာဟာရပစ္စယော</strong>၊ ၁၆။ <strong>ဣန္ဒြိယပစ္စယော</strong>၊ ၁၇။ <strong>ဈာနပစ္စယော</strong>၊ ၁၈။ <strong>မဂ္ဂပစ္စယော</strong>၊ ၁၉။ <strong>သမ္ပယုတ္တပစ္စယော</strong>၊ ၂၀။ <strong>ဝိပ္ပယုတ္တပစ္စယော</strong>၊ ၂၁။ <strong>အတ္ထိပစ္စယော</strong>၊ ၂၂။ <strong>နတ္ထိပစ္စယော</strong>၊ ၂၃။ <strong>ဝိဂတပစ္စယော</strong>၊ ၂၄။ <strong>အဝိဂတပစ္စယော</strong>တိ။
                     </div>
                 </div>
             `;
-            
-            modal.classList.remove('hidden');
+            document.getElementById('modal').classList.remove('hidden');
         }
 
         function closeModal() {
@@ -597,28 +490,13 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderClusters();
-            renderAlwaysTogetherChips();
-
-            // Deep-link support: paccaya_sangaha.html?open=hetu opens that condition's modal directly.
+            renderGrids();
             const openKey = new URLSearchParams(location.search).get('open');
             if (openKey && paccayaData.some(p => p.key === openKey)) {
                 setTimeout(() => openPaccayaModal(openKey), 80);
             }
         });
     </script>
-    <script>
-        // Offline/PWA support (sw.js) is temporarily disabled — unregister any
-        // previously installed service worker and clear its caches so this page
-        // always loads fresh from the network.
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
-        }
-        if (window.caches) {
-            caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
-        }
-    </script>
-
     <script src="accessibility.js"></script>
 </body>
 </html>
