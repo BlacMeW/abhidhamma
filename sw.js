@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abhidhamma-guide-v2';
+const CACHE_NAME = 'abhidhamma-guide-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
