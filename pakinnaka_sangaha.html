@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ပကိဏ္ဏကသင်္ဂဟ — ဝေဒနာ၊ ဟေတု၊ ကိစ္စ၊ ဒွါရ၊ အာရမ္မဏ၊ ဝတ္ထု ဟူသော (၆) မျိုး ခွဲခြားမှုကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ပကိဏ္ဏကသင်္ဂဟ — ဝေဒနာ၊ ဟေတု၊ ကိစ္စ၊ ဒွါရ၊ အာရမ္မဏ၊ ဝတ္ထု ဟူသော (၆) မျိုး ခွဲခြားမှုကို ရှင်းလင်းတင်ပြထားသော Interactive Visual Guide">
     <title>ပကိဏ္ဏကသင်္ဂဟ — အထွေထွေ (၆) မျိုး (Pakiṇṇaka-saṅgaha)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -37,15 +37,18 @@
         .dark ::-webkit-scrollbar-thumb { background: #475569; }
         ::-webkit-scrollbar-thumb:hover { background: #64748b; }
         html { scroll-behavior: smooth; }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(8px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fade-in { animation: fade-in 0.2s ease-out; }
+        .pk-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+        .pk-card:hover { transform: translateY(-2px); }
+        details[open] > summary .tree-chevron { transform: rotate(90deg); }
+        .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
+    </style>
+    <style>
+        :root { color-scheme: light dark; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
+    <!-- Header -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
@@ -53,18 +56,17 @@
                     <i class="fa-solid fa-sitemap"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-amber-700 dark:text-amber-300">ပကိဏ္ဏကသင်္ဂဟ <span class="text-slate-500 dark:text-slate-400 font-normal text-sm">(Pakiṇṇaka-saṅgaha)</span></h1>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400">အဘိဓမ္မာ အခန်း (၃) — စိတ်တို့ကို ရှုထောင့်အမျိုးမျိုးမှ အထွေထွေ ခွဲခြားခြင်း ၆ မျိုး</p>
+                    <h1 class="text-lg font-bold text-amber-700 dark:text-amber-300">ပကိဏ္ဏကသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Pakiṇṇaka-saṅgaha)</span></h1>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">အထွေထွေ သင်္ဂဟ (၆) မျိုး — ဝေဒနာ၊ ဟေတု၊ ကိစ္စ၊ ဒွါရ၊ အာရမ္မဏ၊ ဝတ္ထု</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                    <i class="fa-solid fa-moon dark:hidden"></i>
-                    <i class="fa-solid fa-sun hidden dark:block"></i>
-                </button>
-
+                
                 <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
+                </a>
+                <a href="glossary.html" class="text-xs font-semibold bg-emerald-100 dark:bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
             </div>
         </div>
@@ -72,178 +74,413 @@
 
     <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
         
-        <!-- Intro -->
+        <!-- Intro Section -->
         <div class="text-center max-w-3xl mx-auto space-y-2">
-            <h2 class="text-2xl md:text-3xl font-bold">ပကိဏ္ဏကသင်္ဂဟ (၆) မျိုး</h2>
+            <span class="text-amber-700 dark:text-amber-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၃ ပိုင်းမြောက်</span>
+            <h2 class="text-2xl md:text-3xl font-bold">စိတ်နှင့် စေတသိက်များ၏ အထွေထွေ လက္ခဏာ (၆) မျိုး</h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
-                "ပကိဏ္ဏက" ဆိုသည်မှာ "ရောနှောသော/အထွေထွေ" ဟု အဓိပ္ပာယ်ရသည်။ စိတ် ၈၉ ပါး (သို့) ၁၂၁ ပါးတို့ကို ဝေဒနာ၊ ဟေတု၊ ကိစ္စ၊ ဒွါရ၊ အာရုံ၊ ဝတ္ထု ဟူသော ရှုထောင့် (၆) မျိုးဖြင့် အစုံလိုက် ရောနှော၍ ပြန်လည် လေ့လာခြင်း ဖြစ်သည်။
+                အခန်း (၁) <a href="citta_cetasikas_visual_guide.html#citta89" class="text-amber-700 dark:text-amber-300 underline">စိတ္တသင်္ဂဟ</a> တွင် စိတ် ၈၉ ပါး အပြားကို လည်းကောင်း၊ အခန်း (၂) <a href="citta_cetasikas_visual_guide.html#cetasika" class="text-amber-700 dark:text-amber-300 underline">စေတသိကသင်္ဂဟ</a> တွင် စေတသိက် ၅၂ ပါး အပြားကို လည်းကောင်း လေ့လာခဲ့ပြီး ဖြစ်သည်။ ဤ **ပကိဏ္ဏကသင်္ဂဟ** အခန်းသည် စိတ်နှင့် စေတသိက်တို့၏ ဖြစ်ကြောင်း သဘောတရားများကို <b>ဝေဒနာ၊ ဟေတု၊ ကိစ္စ၊ ဒွါရ၊ အာရမ္မဏ၊ ဝတ္ထု</b> ဟူသော အထွေထွေ (၆) မျိုးဖြင့် အသေးစိတ် သီးခြား ဝေဖန်ဆန်းစစ်ပြသသော အခန်းဖြစ်ပါသည်။
             </p>
         </div>
 
-        <!-- Verification bar -->
-        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs border border-slate-200 dark:border-slate-700">
-            <a href="#vedana" class="px-3 py-1.5 rounded-lg bg-pink-500/10 text-pink-700 dark:text-pink-300 border border-pink-500/30 hover:bg-pink-500/20 transition">ဝေဒနာသင်္ဂဟ</a>
-            <a href="#hetu" class="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30 hover:bg-rose-500/20 transition">ဟေတုသင်္ဂဟ</a>
-            <a href="#kicca" class="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-500/30 hover:bg-blue-500/20 transition">ကိစ္စသင်္ဂဟ</a>
-            <a href="#dvara" class="px-3 py-1.5 rounded-lg bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/30 hover:bg-teal-500/20 transition">ဒွါရသင်္ဂဟ</a>
-            <a href="#arammana" class="px-3 py-1.5 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/20 transition">အာရမ္မဏသင်္ဂဟ</a>
-            <a href="#vatthu" class="px-3 py-1.5 rounded-lg bg-orange-500/10 text-orange-700 dark:text-orange-300 border border-orange-500/30 hover:bg-orange-500/20 transition">ဝတ္ထုသင်္ဂဟ</a>
+        <!-- Interactive Verification & Quick Jump Bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
+            <button onclick="scrollToSection('sec-vedana')" class="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30 hover:bg-rose-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-heart-pulse"></i> ၁။ ဝေဒနာ (၅)</button>
+            <button onclick="scrollToSection('sec-hetu')" class="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-seedling"></i> ၂။ ဟေတု (၆)</button>
+            <button onclick="scrollToSection('sec-kicca')" class="px-3 py-1.5 rounded-lg bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-briefcase"></i> ၃။ ကိစ္စ (၁၄)</button>
+            <button onclick="scrollToSection('sec-dvara')" class="px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-door-open"></i> ၄။ ဒွါရ (၆)</button>
+            <button onclick="scrollToSection('sec-arammana')" class="px-3 py-1.5 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-eye"></i> ၅။ အာရမ္မဏ (၆)</button>
+            <button onclick="scrollToSection('sec-vatthu')" class="px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30 hover:bg-violet-500/20 transition font-semibold flex items-center gap-1.5"><i class="fa-solid fa-building"></i> ၆။ ဝတ္ထု (၆)</button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="groups-container">
-            <!-- Data will be injected here -->
-        </div>
+        <!-- 1. Vedana Sangaha -->
+        <section id="sec-vedana" class="glass-card rounded-2xl p-5 md:p-6 border border-rose-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-rose-700 dark:text-rose-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-heart-pulse"></i> ၁။ ဝေဒနာသင်္ဂဟ (Vedanā-saṅgaha)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">ခံစားမှု သဘောတရားဖြင့် စိတ်များကို ဝေဖန်ခြင်း (ဝေဒနာ ၃ ပါး နှင့် ဝေဒနာ ၅ ပါး)</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30">ခံစားမှု လက္ခဏာ</span>
+            </div>
+
+            <!-- Vedana Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3" id="vedana-grid"></div>
+        </section>
+
+        <!-- 2. Hetu Sangaha -->
+        <section id="sec-hetu" class="glass-card rounded-2xl p-5 md:p-6 border border-emerald-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-emerald-700 dark:text-emerald-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-seedling"></i> ၂။ ဟေတုသင်္ဂဟ (Hetu-saṅgaha)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">စိတ်တို့၏ ဖြစ်ပေါ်ရာ အမြစ်အကြောင်းရင်း (၆) ပါးနှင့် စိတ်အုပ်စုများ</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ဟိတ် ၆ ပါး / စိတ် ၄ အုပ်စု</span>
+            </div>
+
+            <!-- Hetu Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="hetu-grid"></div>
+        </section>
+
+        <!-- 3. Kicca Sangaha -->
+        <section id="sec-kicca" class="glass-card rounded-2xl p-5 md:p-6 border border-sky-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-sky-700 dark:text-sky-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase"></i> ၃။ ကိစ္စသင်္ဂဟ (Kicca-saṅgaha)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">စိတ်တို့ ဆောင်ရွက်သော အမှုကိစ္စ တာဝန် (၁၄) မျိုး</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30">လုပ်ငန်း ၁၄ မျိုး</span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="kicca-grid"></div>
+            
+            <!-- Summary Accordion for Kicca Performers -->
+            <details class="glass-card rounded-xl p-4 border border-sky-500/20">
+                <summary class="font-bold text-sky-700 dark:text-sky-300 text-sm flex items-center justify-between">
+                    <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ကိစ္စ အရေအတွက်အလိုက် စိတ်များ ခွဲခြားပုံ (၁ မျိုး မှ ၅ မျိုးအထိ ဆောင်ရွက်သော စိတ်များ)</span>
+                    <span class="text-xs text-slate-500">နှိပ်၍ ကြည့်ပါ</span>
+                </summary>
+                <div class="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700 text-xs space-y-2 text-slate-700 dark:text-slate-300">
+                    <p><b>• ကိစ္စ ၁ မျိုးသာ ဆောင်ရွက်သော စိတ် (၆၈ ပါး):</b> ဒွိပဉ္စဝိညာဉ် (၁၀)၊ သမ္ပဋိစ္ဆန်း (၂)၊ ပဉ္စဒွါရာဝဇ္ဇန်း (၁)၊ ဟသိတုပ္ပါဒ် (၁)၊ ဇောသက်သက်ဖြစ်သော စိတ် (၅၅) ပါး။</p>
+                    <p><b>• ကိစ္စ ၂ မျိုး ဆောင်ရွက်သော စိတ် (၂ ပါး):</b> သောမနဿ သန္တီရဏ (၁) ပါး (သန္တီရဏ နှင့် တဒါရုံ)၊ မဟဂ္ဂုတ် ဝိပါက် (၉) ပါး (ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ ၃ မျိုး သို့သော် အမည်တူ)။</p>
+                    <p><b>• ကိစ္စ ၃ မျိုး ဆောင်ရွက်သော စိတ် (၉ ပါး):</b> မဟာဝိပါက် (၈) ပါး (ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ၊ တဒါရုံ)။</p>
+                    <p><b>• ကိစ္စ ၄ မျိုး ဆောင်ရွက်သော စိတ် (၁ ပါး):</b> အကုသလဝိပါက် ဥပေက္ခာသန္တီရဏ (၁) ပါး (တီရဏ၊ တဒါရုံ၊ ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ)။</p>
+                    <p><b>• ကိစ္စ ၅ မျိုး ဆောင်ရွက်သော စိတ် (၂ ပါး):</b> ကုသလဝိပါက် ဥပေက္ခာသန္တီရဏ (၁) ပါး နှင့် မနောဒွါရာဝဇ္ဇန်း (၁) ပါး။</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 4. Dvara Sangaha -->
+        <section id="sec-dvara" class="glass-card rounded-2xl p-5 md:p-6 border border-amber-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-amber-700 dark:text-amber-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-door-open"></i> ၄။ ဒွါရသင်္ဂဟ (Dvāra-saṅgaha)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">စိတ်တို့ ဖြစ်ပေါ်ရာ တံခါး (၆) ပေါက်နှင့် ဒွါရအလိုက် စိတ်ခွဲခြားမှု</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30">တံခါး ၆ ပေါက်</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" id="dvara-grid"></div>
+        </section>
+
+        <!-- 5. Arammana Sangaha -->
+        <section id="sec-arammana" class="glass-card rounded-2xl p-5 md:p-6 border border-indigo-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-indigo-700 dark:text-indigo-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-eye"></i> ၅။ အာရမ္မဏသင်္ဂဟ (Ārammaṇa-saṅgaha)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">စိတ်တို့ သိယူရာ အာရုံ (၆) မျိုးနှင့် အာရုံအလိုက် စိတ်ခွဲခြားမှု</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30">အာရုံ ၆ ပါး</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="arammana-grid"></div>
+        </section>
+
+        <!-- 6. Vatthu Sangaha -->
+        <section id="sec-vatthu" class="glass-card rounded-2xl p-5 md:p-6 border border-violet-500/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
+                <div>
+                    <h3 class="font-bold text-violet-700 dark:text-violet-300 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-building"></i> ၆။ ဝတ္ထုသင်္ဂဟ (Vatthu-saṅgaha)
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">စိတ်တို့ မှီရာ ဝတ္ထုရုပ် (၆) မျိုးနှင့် မှီရာအလိုက် စိတ်ခွဲခြားမှု</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/30">မှီရာရုပ် ၆ မျိုး</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="vatthu-grid"></div>
+        </section>
 
     </main>
 
+    <!-- Interactive Detail Modal -->
+    <div id="pk-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full relative animate-fade-in shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-2.5">
+                    <div id="modal-icon-bg" class="w-9 h-9 rounded-xl flex items-center justify-center text-lg">
+                        <i id="modal-icon" class="fa-solid"></i>
+                    </div>
+                    <div>
+                        <h3 id="modal-title" class="font-bold text-slate-900 dark:text-slate-100 text-base"></h3>
+                        <p id="modal-subtitle" class="text-xs text-slate-500 dark:text-slate-400"></p>
+                    </div>
+                </div>
+                <button onclick="closePkModal()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div id="modal-body" class="p-5 overflow-y-auto space-y-4 text-xs md:text-sm"></div>
+
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex justify-end">
+                <a id="modal-filter-btn" href="#" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs transition flex items-center gap-2">
+                    <span>စိတ် (၈၉) ပါး Visual Guide တွင် စစ်ထုတ်ကြည့်ရန်</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripting -->
     <script>
-        const sangahaGroups = [
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Data Definitions for all 6 Sangahas
+        const vedanaData = [
             {
-                id: 'vedana',
-                title: 'ဝေဒနာသင်္ဂဟ (ခံစားမှု ၅ ပါး)',
-                icon: 'fa-heart-pulse',
-                color: 'rose',
-                desc: 'စိတ်တို့၏ ခံစားမှုသဘောတရား (ဝေဒနာ) ၅ မျိုးကို ခွဲခြားပြခြင်း။',
-                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-                    <li><b>သုခ (၁) ပါး:</b> သုခသဟဂုတ် ကိုယ်အသိစိတ် (၁) ပါး။</li>
-                    <li><b>ဒုက္ခ (၁) ပါး:</b> ဒုက္ခသဟဂုတ် ကိုယ်အသိစိတ် (၁) ပါး။</li>
-                    <li><b>သောမနဿ (၆၂) ပါး:</b> လောဘမူ(၄)၊ သောမနဿသန္တီရဏ(၁)၊ ဟသိတုပ္ပါဒ်(၁)၊ မဟာကုသိုလ်(၄)၊ မဟာဝိပါက်(၄)၊ မဟာကြိယာ(၄) နှင့် ပထမဈာန်မှ စတုတ္ထဈာန်အထိ (၄၄) ပါး။ စုစုပေါင်း ၆၂ ပါး။</li>
-                    <li><b>ဒေါမနဿ (၂) ပါး:</b> ဒေါသမူစိတ် (၂) ပါး။</li>
-                    <li><b>ဥပေက္ခာ (၅၅) ပါး:</b> ကျန်သော လောဘမူ(၄)၊ မောဟမူ(၂)၊ အဟေတုက(၁၄)၊ ကာမာဝစရသောဘဏ(၁၂)၊ ပဉ္စမဈာန်(၂၃) ပါး။</li>
-                </ul>`,
-                filterLink: 'citta_cetasikas_visual_guide.html#citta89:vedana-sangaha'
+                name: 'သုခဝေဒနာ', pali: 'Sukha-vedanā', count: '၁ ပါး', color: 'emerald', icon: 'fa-face-laugh-beam',
+                desc: 'ကိုယ်၏ ချမ်းသာသော ခံစားမှု လက္ခဏာ။',
+                cittas: 'သုခသဟဂုတ် ကာယဝိညာဉ်စိတ် (၁) ပါး။',
+                detail: 'ကာယိကသုခ ဟုလည်း ခေါ်သည်။ ကုသလဝိပါက် ကာယဝိညာဉ်စိတ် ၁ ပါး၌သာ ယှဉ်၏။'
             },
             {
-                id: 'hetu',
-                title: 'ဟေတုသင်္ဂဟ (အကြောင်းရင်း ၆ ပါး)',
-                icon: 'fa-seedling',
-                color: 'emerald',
-                desc: 'စိတ်တို့၏ အခြေခံအကြောင်းရင်း (ဟေတု) အရေအတွက်ကို ခွဲခြားပြခြင်း။',
-                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-                    <li><b>အဟေတုက (၁၈) ပါး:</b> ဟိတ်မပါသောစိတ် (၁၈) ပါး။</li>
-                    <li><b>ဧကဟေတုက (၂) ပါး:</b> မောဟဟိတ် တစ်ခုတည်းသာပါသော မောဟမူစိတ် (၂) ပါး။</li>
-                    <li><b>ဒွိဟေတုက (၂၂) ပါး:</b> ဟိတ် ၂ ခုစီပါသော လောဘမူ(၈)၊ ဒေါသမူ(၂)၊ ဉာဏဝိပ္ပယုတ် ကာမာဝစရသောဘဏ(၁၂) ပါး။</li>
-                    <li><b>တိဟေတုက (၄၇) ပါး:</b> ဟိတ် ၃ ခုစီပါသော ဉာဏသမ္ပယုတ် ကာမာဝစရသောဘဏ(၁၂) ပါး နှင့် မဟဂ္ဂုတ်(၂၇)၊ လောကုတ္တရာ(၈) ပါး။</li>
-                </ul>`,
-                filterLink: 'citta_cetasikas_visual_guide.html#citta89:hetu-sangaha'
+                name: 'ဒုက္ခဝေဒနာ', pali: 'Dukkha-vedanā', count: '၁ ပါး', color: 'rose', icon: 'fa-face-frown-open',
+                desc: 'ကိုယ်၏ ဆင်းရဲသော ခံစားမှု လက္ခဏာ။',
+                cittas: 'ဒုက္ခသဟဂုတ် ကာယဝိညာဉ်စိတ် (၁) ပါး။',
+                detail: 'ကာယိကဒုက္ခ ဟု ခေါ်သည်။ အကုသလဝိပါက် ကာယဝိညာဉ်စိတ် ၁ ပါး၌သာ ယှဉ်၏။'
             },
             {
-                id: 'kicca',
-                title: 'ကိစ္စသင်္ဂဟ (လုပ်ငန်းတာဝန် ၁၄ မျိုး)',
-                icon: 'fa-briefcase',
-                color: 'sky',
-                desc: 'စိတ်တို့ ဆောင်ရွက်သော အမှုကိစ္စ (၁၄) မျိုးကို ခွဲခြားပြခြင်း။',
-                content: `<div class="space-y-3">
-                    <p class="text-sm">ကိစ္စ ၁၄ မျိုးကို တာဝန်ယူသော စိတ် ၆၈ ပါး (ဒွိပဉ္စဝိညာဉ် ၁၀ ကို ၁ ခုစီ ခွဲ၍ ရေတွက်သည်)။</p>
-                    <ul class="list-disc pl-5 space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
-                        <li><b>ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ ကိစ္စ (၁၉):</b> ဥပေက္ခာသန္တီရဏ (၂)၊ မဟာဝိပါက် (၈)၊ မဟဂ္ဂုတ်ဝိပါက် (၉)</li>
-                        <li><b>အာဝဇ္ဇန်း ကိစ္စ (၂):</b> ပဉ္စဒွါရာဝဇ္ဇန်း (၁)၊ မနောဒွါရာဝဇ္ဇန်း (၁)</li>
-                        <li><b>ဒဿန (မြင်)၊ သဝန (ကြား)၊ ဃာယန (နံ)၊ သာယန (စား)၊ ဖုသန (ထိ) (၁၀):</b> ဒွိပဉ္စဝိညာဉ် ၁၀ ပါး</li>
-                        <li><b>သမ္ပဋိစ္ဆန်း ကိစ္စ (၂):</b> သမ္ပဋိစ္ဆန်းစိတ် ၂ ပါး</li>
-                        <li><b>သန္တီရဏ ကိစ္စ (၃):</b> သန္တီရဏစိတ် ၃ ပါး</li>
-                        <li><b>ဝုဋ္ဌော ကိစ္စ (၁):</b> မနောဒွါရာဝဇ္ဇန်း (၁) ပါး (ပဉ္စဒွါရဝီထိ၌ ဝုဋ္ဌောအမည်ရသည်)</li>
-                        <li><b>ဇော ကိစ္စ (၅၅):</b> အကုသိုလ်(၁၂)၊ ကုသိုလ်(၂၁)၊ ကြိယာ(၁၈)၊ ဖိုလ်(၄) ပါး</li>
-                        <li><b>တဒါရုံ ကိစ္စ (၁၁):</b> သန္တီရဏ(၃)၊ မဟာဝိပါက်(၈) ပါး</li>
-                    </ul>
-                </div>`,
-                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
+                name: 'သောမနဿဝေဒနာ', pali: 'Somanassa-vedanā', count: '၆၂ ပါး', color: 'sky', icon: 'fa-face-smile',
+                desc: 'စိတ်၏ ချမ်းသာ ဝမ်းမြောက်သော ခံစားမှု လက္ခဏာ။',
+                cittas: 'လောဘမူ (၄)၊ သန္တီရဏ (၁)၊ ဟသိတုပ္ပါဒ် (၁)၊ ကာမာဝစရသောဘဏ (၁၂)၊ ဈာန်စိတ် (၄၄) ပါး။',
+                detail: 'စေတသိကသုခ ဟု ခေါ်သည်။ ကာမစိတ် ၁၈ ပါး + ပထမ၊ ဒုတိယ၊ တတိယ၊ စတုတ္ထဈာန် စိတ် ၄၄ ပါး (၁၁×၄) = စုစုပေါင်း ၆၂ ပါး။'
             },
             {
-                id: 'dvara',
-                title: 'ဒွါရသင်္ဂဟ (တံခါး ၆ ပေါက်)',
-                icon: 'fa-door-open',
-                color: 'amber',
-                desc: 'အာရုံကို လက်ခံယူရာ တံခါးပေါက် (၆) ခုကို မှီ၍ဖြစ်သော စိတ်များ။',
-                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-                    <li><b>ဧကဒွါရိက (၃၆) ပါး:</b> တံခါး (၁) ခုတည်း၌သာဖြစ်သော စိတ် ၃၆ ပါး - ဒွိပဉ္စဝိညာဉ်(၁၀)၊ အပ္ပနာဇော(၂၆) ပါး။</li>
-                    <li><b>ပဉ္စဒွါရိက (၃) ပါး:</b> တံခါး (၅) ခု၌ဖြစ်သော စိတ် ၃ ပါး - မနောဓာတ်(၃) ပါး။</li>
-                    <li><b>ဆဒွါရိက (၃၁) ပါး:</b> တံခါး (၆) ခုလုံး၌ဖြစ်သော စိတ် ၃၁ ပါး - သောမနဿသန္တီရဏ(၁)၊ မနောဒွါရာဝဇ္ဇန်း(၁)၊ ကာမာဝစရဇော(၂၉) ပါး။</li>
-                    <li><b>ဆဒွါရိက-ဒွါရဝိမုတ် (၁၀) ပါး:</b> တံခါး (၆) ခု၌လည်းဖြစ်၊ တံခါးလွတ် (ဘဝင်/စုတိ) လည်းဖြစ်သော ဥပေက္ခာသန္တီရဏ(၂)၊ မဟာဝိပါက်(၈) ပါး။</li>
-                    <li><b>ဒွါရဝိမုတ် (၉) ပါး:</b> တံခါးလုံးဝလွတ်သော (ဘဝင်/စုတိ/ပဋိသန္ဓေ သက်သက်သာဖြစ်သော) မဟဂ္ဂုတ်ဝိပါက်(၉) ပါး။</li>
-                </ul>`,
-                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
+                name: 'ဒေါမနဿဝေဒနာ', pali: 'Domanassa-vedanā', count: '၂ ပါး', color: 'purple', icon: 'fa-face-sad-cry',
+                desc: 'စိတ်၏ ဆင်းရဲ နှောင့်ယှက်သော ခံစားမှု လက္ခဏာ။',
+                cittas: 'ဒေါသမူစိတ် (၂) ပါး။',
+                detail: 'စေတသိကဒုက္ခ ဟု ခေါ်သည်။ ဒေါသမူစိတ် ၂ ပါး၌သာ သီးသန့် ဖြစ်ပွား၏။'
             },
             {
-                id: 'arammana',
-                title: 'အာရမ္မဏသင်္ဂဟ (အာရုံ ၆ မျိုး)',
-                icon: 'fa-eye',
-                color: 'indigo',
-                desc: 'စိတ်တို့ သိယူသော အာရုံ ၆ မျိုးအလိုက် ခွဲခြားခြင်း။',
-                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-                    <li><b>ပဉ္စာရုံ (၂၅) ပါး:</b> အာရုံ ၅ မျိုး (ရူပ,သဒ္ဒ,ဂန္ဓ,ရသ,ဖောဋ္ဌဗ္ဗ) ကို သိသောစိတ် ၂၅ ပါး - ဒွိပဉ္စဝိညာဉ်(၁၀)၊ မနောဓာတ်(၃)၊ သန္တီရဏ(၃)၊ မဟာဝိပါက်(၈)၊ ဟသိတုပ္ပါဒ်(၁) ပါး။ (မှတ်ချက်- အချို့က အသေးစိတ်ထပ်ခွဲသည်)</li>
-                    <li><b>ဓမ္မာရုံသက်သက် (၂၁) ပါး:</b> မဟဂ္ဂုတ်(၂၇) မှ အဘိညာဉ် ၂ ပါး ဖယ်၊ လောကုတ္တရာ(၈) - ဓမ္မာရုံသက်သက်ကိုသာ အာရုံပြုသောစိတ်များ။</li>
-                    <li><b>အာရုံ ၆ ပါးလုံး (၃၁) ပါး:</b> အကုသိုလ်(၁၂)၊ မဟာကုသိုလ်(၈)၊ မဟာကြိယာ(၈)၊ မနောဒွါရာဝဇ္ဇန်း(၁)၊ အဘိညာဉ်(၂) ပါး။</li>
-                </ul>
-                <p class="mt-2 text-xs opacity-75">မှတ်ချက် - ပရိတ္တ၊ မဟဂ္ဂုတ် စသော အာရုံအသေးစိတ် ခွဲခြားမှုများလည်း ရှိသေးသည်။</p>`,
-                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
-            },
-            {
-                id: 'vatthu',
-                title: 'ဝတ္ထုသင်္ဂဟ (မှီရာရုပ် ၆ မျိုး)',
-                icon: 'fa-building',
-                color: 'violet',
-                desc: 'စိတ်တို့ ဖြစ်ပေါ်ရာ မှီရာရုပ် (ဝတ္ထု) ၆ မျိုးကို ခွဲခြားပြခြင်း။',
-                content: `<ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-                    <li><b>ဝတ္ထုနိဿိတ - အမြဲမှီ (၄၃) ပါး:</b> ပဉ္စဝိညာဉ်(၁၀)၊ မနောဓာတ်(၃)၊ ဒေါသ(၂)၊ ဟသိတုပ္ပါဒ်(၁)၊ မဟာဝိပါက်(၈)၊ ရူပါဝစရ(၁၅)၊ သောတာပတ္တိမဂ်(၁)၊ သကဒါဂါမိမဂ်(၁)၊ အနာဂါမိမဂ်(၁)၊ အရဟတ္တမဂ်(၁) ပါး။</li>
-                    <li><b>ဝတ္ထုနိဿိတ/အနိဿိတ - မှီတစ်ခါ မမှီတစ်လှည့် (၄၂) ပါး:</b> အကုသိုလ် (ဒေါသမပါ ၁၀)၊ မဟာကုသိုလ်(၈)၊ မဟာကြိယာ(၈)၊ မနောဒွါရာဝဇ္ဇန်း(၁)၊ သန္တီရဏ(၃)၊ အရူပါဝစရ ကုသိုလ်/ကြိယာ (၈)၊ ဖိုလ် (၄) ပါး။ (ပဉ္စဝေါကာရဘုံ၌ ဝတ္ထုကိုမှီ၍ စတုဝေါကာရဘုံ၌ ဝတ္ထုမပါဘဲ ဖြစ်သည်)</li>
-                    <li><b>ဝတ္ထုအနိဿိတ - လုံးဝမမှီ (၄) ပါး:</b> အရူပဝိပါက် ၄ ပါး (ဝတ္ထုရုပ် လုံးဝမရှိသော အရူပဘုံ၌သာ ဖြစ်သောကြောင့်)။</li>
-                </ul>`,
-                filterLink: 'citta_cetasikas_visual_guide.html#citta89'
+                name: 'ဥပေက္ခာဝေဒနာ', pali: 'Upekkhā-vedanā', count: '၅၅ ပါး', color: 'amber', icon: 'fa-scale-balanced',
+                desc: 'သုခလည်းမဟုတ် ဒုက္ခလည်းမဟုတ်သော အလယ်အလတ် ခံစားမှု။',
+                cittas: 'လောဘမူ (၄)၊ မောဟမူ (၂)၊ အဟေတုက (၁၄)၊ ကာမာဝစရသောဘဏ (၁၂)၊ ပဉ္စမဈာန် (၂၃) ပါး။',
+                detail: 'အဒုက္ခမသုခ ဝေဒနာ ဟုလည်း ခေါ်သည်။ ကာမစိတ် ၃၂ ပါး + ပဉ္စမဈာန်စိတ် ၂၃ ပါး = စုစုပေါင်း ၅၅ ပါး။'
             }
         ];
 
-        const container = document.getElementById('groups-container');
-        
-        sangahaGroups.forEach(group => {
-            const html = \`
-                <div id="\${group.id}" class="glass-card rounded-2xl p-5 border border-slate-200 dark:border-slate-700/60 shadow-sm relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 text-[100px] opacity-[0.03] text-\${group.color}-600 dark:text-\${group.color}-400 pointer-events-none transition-transform group-hover:scale-110">
-                        <i class="fa-solid \${group.icon}"></i>
-                    </div>
-                    
-                    <div class="flex items-start gap-3 mb-4 relative">
-                        <div class="w-10 h-10 rounded-xl bg-\${group.color}-100 dark:bg-\${group.color}-900/30 flex items-center justify-center text-\${group.color}-600 dark:text-\${group.color}-400 text-lg flex-shrink-0 border border-\${group.color}-200 dark:border-\${group.color}-800/50">
-                            <i class="fa-solid \${group.icon}"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg text-\${group.color}-700 dark:text-\${group.color}-300">\${group.title}</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-snug">\${group.desc}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="relative z-10">
-                        \${group.content}
-                    </div>
+        const hetuData = [
+            {
+                name: 'အဟေတုကစိတ်', pali: 'Ahetuka-citta', count: '၁၈ ပါး', color: 'slate', icon: 'fa-circle-xmark',
+                desc: 'ဟိတ် (အကြောင်းရင်း ၆ ပါး) စေတသိက် လုံးဝ မယှဉ်သော စိတ်များ။',
+                cittas: 'အကုသလဝိပါက် (၇)၊ အဟေတုကကုသလဝိပါက် (၈)၊ အဟေတုကကြိယာ (၃) ပါး။',
+                detail: 'ဒွိပဉ္စဝိညာဉ် ၁၀၊ မနောဓာတ် ၃၊ မနောဒွါရာဝဇ္ဇန်း ၁၊ ဟသိတုပ္ပါဒ် ၁ စသည်တို့ ဖြစ်သည်။'
+            },
+            {
+                name: 'ဧကဟေတုကစိတ်', pali: 'Ekahetuka-citta', count: '၂ ပါး', color: 'rose', icon: 'fa-1',
+                desc: 'မောဟဟိတ် (၁) ခုတည်းသာ ယှဉ်သော စိတ်များ။',
+                cittas: 'မောဟမူစိတ် (၂) ပါး (ဝိစိကိစ္ဆာသမ္ပယုတ်၊ ဥဒ္ဓစ္စသမ္ပယုတ်)။',
+                detail: 'အကုသိုလ်ဟိတ် ၃ ပါးအနက် မောဟဟိတ် တစ်ခုတည်းသာ ယှဉ်ပြိုင်ဖြစ်ပွားသည်။'
+            },
+            {
+                name: 'ဒွိဟေတုကစိတ်', pali: 'Dvihetuka-citta', count: '၂၂ ပါး', color: 'amber', icon: 'fa-2',
+                desc: 'ဟိတ် (၂) ခုစီ ယှဉ်သော စိတ်များ။',
+                cittas: 'လောဘမူ (၈)၊ ဒေါသမူ (၂)၊ ဉာဏဝိပ္ပယုတ် ကာမာဝစရသောဘဏ (၁၂) ပါး။',
+                detail: 'အကုသိုလ်စိတ်၌ (လောဘ+မောဟ သို့ ဒေါသ+မောဟ)၊ သောဘဏစိတ်၌ (အလောဘ+အဒေါသ) ယှဉ်သည်။'
+            },
+            {
+                name: 'တိဟေတုကစိတ်', pali: 'Tihetuka-citta', count: '၄၇ ပါး', color: 'emerald', icon: 'fa-3',
+                desc: 'ဟိတ် (၃) ခုစလုံး (အလောဘ၊ အဒေါသ၊ အမောဟ) ပြည့်စုံစွာ ယှဉ်သော စိတ်များ။',
+                cittas: 'ဉာဏသမ္ပယုတ် ကာမာဝစရသောဘဏ (၁၂)၊ မဟဂ္ဂုတ် (၂၇)၊ လောကုတ္တရာ (၈/၄၀) ပါး။',
+                detail: 'ဉာဏ်ပညာပါဝင်သော သောဘဏစိတ်များ၊ ဈာန်စိတ်များနှင့် မဂ်ဖိုလ်စိတ်များ ဖြစ်ကြသည်။'
+            }
+        ];
 
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-right">
-                        <a href="citta_cetasikas_visual_guide.html#citta89:\${group.id}-sangaha" class="inline-flex items-center gap-1.5 text-xs font-semibold text-\${group.color}-600 dark:text-\${group.color}-400 hover:text-\${group.color}-800 dark:hover:text-\${group.color}-200 transition">
-                            ဤအုပ်စုအလိုက် စိတ်များကို စစ်ထုတ်ကြည့်ရန် <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            \`;
-            container.innerHTML += html;
-        });
-    </script>
+        const kiccaData = [
+            { name: '၁။ ပဋိသန္ဓေကိစ္စ', count: '၁၉ ပါး', color: 'indigo', icon: 'fa-baby', desc: 'ဘဝသစ် ဆက်စပ်ပေးသော အမှု။ (ဥပေက္ခာသန္တီရဏ ၂၊ မဟာဝိပါက် ၈၊ မဟဂ္ဂုတ်ဝိပါက် ၉)' },
+            { name: '၂။ ဘဝင်ကိစ္စ', count: '၁၉ ပါး', color: 'cyan', icon: 'fa-water', desc: 'ဘဝအစဉ် မပြတ်တမ်း ထိန်းသိမ်းပေးသော အမှု။ (ပဋိသန္ဓေစိတ် ၁၉ ပါးနှင့် အတူတူပင်)' },
+            { name: '၃။ အာဝဇ္ဇန်းကိစ္စ', count: '၂ ပါး', color: 'sky', icon: 'fa-bell', desc: 'အာရုံဆီသို့ စိတ်ကို ညွတ်ရှေးရှုပေးသော အမှု။ (ပဉ္စဒွါရာဝဇ္ဇန်း ၁၊ မနောဒွါရာဝဇ္ဇန်း ၁)' },
+            { name: '၄။ ဒဿနကိစ္စ', count: '၂ ပါး', color: 'emerald', icon: 'fa-eye', desc: 'ရူပါရုံကို မြင်သိသော အမှု။ (စက္ခုဝိညာဉ်စိတ် ဥပေက္ခာသဟဂုတ် ၂ ပါး)' },
+            { name: '၅။ သဝနကိစ္စ', count: '၂ ပါး', color: 'emerald', icon: 'fa-ear-listen', desc: 'သဒ္ဒါရုံကို ကြားသိသော အမှု။ (သောတဝိညာဉ်စိတ် ဥပေက္ခာသဟဂုတ် ၂ ပါး)' },
+            { name: '၆။ ဃာယနကိစ္စ', count: '၂ ပါး', color: 'emerald', icon: 'fa-wind', desc: 'ဂန္ဓာရုံကို နံသိသော အမှု။ (ဃာနဝိညာဉ်စိတ် ဥပေက္ခာသဟဂုတ် ၂ ပါး)' },
+            { name: '၇။ သာယနကိစ္စ', count: '၂ ပါး', color: 'emerald', icon: 'fa-utensils', desc: 'ရသာရုံကို စားသိသော အမှု။ (ဇိဝှာဝိညာဉ်စိတ် ဥပေက္ခာသဟဂုတ် ၂ ပါး)' },
+            { name: '၈။ ဖုသနကိစ္စ', count: '၂ ပါး', color: 'emerald', icon: 'fa-hand', desc: 'ဖောဋ္ဌဗ္ဗာရုံကို ထိသိသော အမှု။ (ကာယဝိညာဉ်စိတ် သုခ/ဒုက္ခ ၂ ပါး)' },
+            { name: '၉။ သမ္ပဋိစ္ဆန်းကိစ္စ', count: '၂ ပါး', color: 'amber', icon: 'fa-hand-holding', desc: 'ငါးဒွါရ အာရုံကို လက်ခံယူသော အမှု။ (သမ္ပဋိစ္ဆန်းစိတ် ၂ ပါး)' },
+            { name: '၁၀။ သန္တီရဏကိစ္စ', count: '၃ ပါး', color: 'amber', icon: 'fa-magnifying-glass', desc: 'အာရုံ၏ ကောင်းမကောင်းကို စုံစမ်းစိစစ်သော အမှု။ (သန္တီရဏစိတ် ၃ ပါး)' },
+            { name: '၁၁။ ဝုဋ္ဌောကိစ္စ', count: '၁ ပါး', color: 'orange', icon: 'fa-gavel', desc: 'အာရုံကို ကုသိုလ်/အကုသိုလ် ဆုံးဖြတ်ပေးသော အမှု။ (မနောဒွါရာဝဇ္ဇန်းစိတ် ၁ ပါး)' },
+            { name: '၁၂။ ဇောကိစ္စ', count: '၅၅ ပါး', color: 'rose', icon: 'fa-bolt', desc: 'အာရုံကို ခံစား၍ ကံစွမ်းအင် ဖြစ်ပေါ်စေသော အမှု။ (အကု ၁၂၊ ကု ၂၁၊ ကြိ ၁၈၊ ဖိုလ် ၄)' },
+            { name: '၁၃။ တဒါရုံကိစ္စ', count: '၁၁ ပါး', color: 'purple', icon: 'fa-box-archive', desc: 'ဇော၏ အာရုံအတိုင်း ၂ ကြိမ် ညှို့ယူ မှတ်သားသော အမှု။ (သန္တီရဏ ၃၊ မဟာဝိပါက် ၈)' },
+            { name: '၁၄။ စုတိကိစ္စ', count: '၁၉ ပါး', color: 'slate', icon: 'fa-skull', desc: 'ဘဝဟောင်းမှ စွန့်ခွာသေလွန်သော အမှု။ (ပဋိသန္ဓေစိတ် ၁၉ ပါးနှင့် အတူတူပင်)' }
+        ];
 
-    <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
+        const dvaradata = [
+            { name: 'ဧကဒွါရိကစိတ်', count: '၃၆ ပါး', color: 'sky', desc: 'တံခါး (၁) ခုတည်း၌သာ ဖြစ်ပေါ်သော စိတ်များ။ (ဒွိပဉ္စဝိညာဉ် ၁၀ + မဟဂ္ဂုတ်ကုသိုလ်/ကြိယာ ၁၈ + အနုတ္တရ ၈)' },
+            { name: 'ပဉ္စဒွါရိကစိတ်', count: '၃ ပါး', color: 'emerald', desc: 'ပဉ္စဒွါရ (၅) ခု၌ ဖြစ်ပေါ်သော စိတ်များ။ (မနောဓာတ် ၃ ပါး = သမ္ပဋိစ္ဆန်း ၂ + ပဉ္စဒွါရာဝဇ္ဇန်း ၁)' },
+            { name: 'ဆဒွါရိကစိတ်', count: '၃၁ ပါး', color: 'amber', desc: 'တံခါး (၆) ခုလုံး၌ ဖြစ်ပေါ်နိုင်သော စိတ်များ။ (သောမနဿသန္တီရဏ ၁ + မနောဒွါရာဝဇ္ဇန်း ၁ + ကာမာဝစရဇော ၂၉)' },
+            { name: 'ဆဒွါရိက-ဒွါရဝိမုတ်စိတ်', count: '၁၀ ပါး', color: 'indigo', desc: 'တံခါး ၆ ခု၌လည်းဖြစ်၊ တံခါးလွတ်လည်း ဖြစ်နိုင်သော စိတ်များ။ (ဥပေက္ခာသန္တီရဏ ၂ + မဟာဝိပါက် ၈)' },
+            { name: 'ဒွါရဝိမုတ်သက်သက်စိတ်', count: '၉ ပါး', color: 'slate', desc: 'တံခါး လုံးဝလွတ်၍ ဘဝင်/စုတိ/ပဋိသန္ဓေ သာ ဖြစ်သော စိတ်များ။ (မဟဂ္ဂုတ်ဝိပါက် ၉ ပါး)' }
+        ];
+
+        const arammanaData = [
+            { name: 'ပရိတ္တာရုံစိတ် (ကာမအာရုံ)', count: '၂၅ ပါး', color: 'emerald', desc: 'ကာမတရား (ရူပါရုံ စသော ပရိတ္တာရုံ) သက်သက်ကိုသာ အာရုံပြုသော စိတ်များ။ (ဒွိပဉ္စဝိညာဉ် ၁၀၊ မနောဓာတ် ၃၊ သန္တီရဏ ၃၊ မဟာဝိပါက် ၈၊ ဟသိတုပ္ပါဒ် ၁)' },
+            { name: 'မဟဂ္ဂတာရုံစိတ် (ဈာန်အာရုံ)', count: '၆ ပါး', color: 'sky', desc: 'မဟဂ္ဂုတ်တရား (ဈာန်အာရုံ) ကိုသာ အာရုံပြုသော စိတ်များ။ (ဝိညာဏဉ္စာယတန ကု/ဝိ/ကြိ ၃ + အာကိဉ္စညာယတန ကု/ဝိ/ကြိ ၃)' },
+            { name: 'နိဗ္ဗာနာရုံစိတ် (နိဗ္ဗာန်အာရုံ)', count: '၈ ပါး', color: 'violet', desc: 'နိဗ္ဗာန်တရားတော်ကိုသာ သီးသန့် အာရုံပြုသော စိတ်များ။ (လောကုတ္တရာ မဂ်စိတ် ၄ + ဖိုလ်စိတ် ၄)' },
+            { name: 'အာရုံ ၆ ပါးလုံး အကျုံးဝင်စိတ်', count: '၅၀ ပါး', color: 'amber', desc: 'အခြေအနေအလိုက် အာရုံ ၆ ပါးလုံးကို မသိမဖြစ် သိနိုင်သော စိတ်များ။ (အကုသိုလ် ၁၂၊ မဟာကုသိုလ် ၈၊ မဟာကြိယာ ၈ စသဖြင့်)' }
+        ];
+
+        const vatthuData = [
+            { name: 'ဝတ္ထုနိဿိတ အမြဲမှီစိတ်', count: '၄၃ ပါး', color: 'rose', desc: 'ပဉ္စဝေါကာရဘုံ၌ ဝတ္ထုရုပ်ကို အမြဲမှီ၍ ဖြစ်ပေါ်သော စိတ်များ။ (ဒွိပဉ္စဝိညာဉ် ၁၀၊ မနောဓာတ် ၃၊ ဒေါသ ဥပေက္ခာသန္တီရဏ ၁၊ ဟသိတုပ္ပါဒ် ၁၊ မဟာဝိပါက် ၈၊ ရူပါဝစရ ၁၅၊ သောတာပတ္တိမဂ် ၁)' },
+            { name: 'ဝတ္ထုနိဿိတ / အနိဿိတ စိတ်', count: '၄၂ ပါး', color: 'amber', desc: 'ရုပ်ရှိသောဘုံ၌ မှီ၍၊ အရူပဘုံ၌ ဝတ္ထုမမှီဘဲ ဖြစ်ပေါ်သော စိတ်များ။ (အကုသိုလ် ၁၀၊ မဟာကု ၈၊ မဟာကြိ ၈၊ မနောဒွါရာဝဇ္ဇန်း ၁၊ သန္တီရဏ ၃၊ အရူပကု/ကြိ ၈၊ ဖိုလ် ၄)' },
+            { name: 'ဝတ္ထုအနိဿိတ လုံးဝမမှီစိတ်', count: '၄ ပါး', color: 'slate', desc: 'ဝတ္ထုရုပ် လုံးဝမရှိသော အရူပဘုံ၌သာ ဖြစ်၍ ဝတ္ထုကို မမှီသော စိတ်များ။ (အရူပဝိပါက်စိတ် ၄ ပါး)' }
+        ];
+
+        // Rendering Functions
+        function renderGrids() {
+            // Vedana Grid
+            document.getElementById('vedana-grid').innerHTML = vedanaData.map((d, i) => `
+                <button onclick="openPkModal('vedana', ${i})" class="pk-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${d.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid ${d.icon} text-${d.color}-500 text-xl"></i>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-${d.color}-500/10 text-${d.color}-700 dark:text-${d.color}-300 border border-${d.color}-500/20">${d.count}</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-${d.color}-600 transition">${d.name}</h4>
+                        <p class="text-[11px] font-mono text-slate-400 mb-2">${d.pali}</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${d.desc}</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/50 flex items-center justify-between text-[11px] text-${d.color}-600 dark:text-${d.color}-400 font-semibold">
+                        <span>အသေးစိတ် ကြည့်မည်</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </button>
+            `).join('');
+
+            // Hetu Grid
+            document.getElementById('hetu-grid').innerHTML = hetuData.map((d, i) => `
+                <button onclick="openPkModal('hetu', ${i})" class="pk-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${d.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid ${d.icon} text-${d.color}-500 text-xl"></i>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-${d.color}-500/10 text-${d.color}-700 dark:text-${d.color}-300 border border-${d.color}-500/20">${d.count}</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-${d.color}-600 transition">${d.name}</h4>
+                        <p class="text-[11px] font-mono text-slate-400 mb-2">${d.pali}</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${d.desc}</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/50 flex items-center justify-between text-[11px] text-${d.color}-600 dark:text-${d.color}-400 font-semibold">
+                        <span>အသေးစိတ် ကြည့်မည်</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </button>
+            `).join('');
+
+            // Kicca Grid
+            document.getElementById('kicca-grid').innerHTML = kiccaData.map((d, i) => `
+                <button onclick="openPkModal('kicca', ${i})" class="pk-card p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${d.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <i class="fa-solid ${d.icon} text-${d.color}-500 text-lg"></i>
+                            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-${d.color}-500/10 text-${d.color}-700 dark:text-${d.color}-300 border border-${d.color}-500/20">${d.count}</span>
+                        </div>
+                        <h4 class="font-bold text-xs text-slate-800 dark:text-slate-100 group-hover:text-${d.color}-600 transition">${d.name}</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">${d.desc}</p>
+                    </div>
+                </button>
+            `).join('');
+
+            // Dvara Grid
+            document.getElementById('dvara-grid').innerHTML = dvaradata.map((d, i) => `
+                <button onclick="openPkModal('dvara', ${i})" class="pk-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${d.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-${d.color}-600 transition">${d.name}</h4>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-${d.color}-500/10 text-${d.color}-700 dark:text-${d.color}-300 border border-${d.color}-500/20">${d.count}</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${d.desc}</p>
+                    </div>
+                </button>
+            `).join('');
+
+            // Arammana Grid
+            document.getElementById('arammana-grid').innerHTML = arammanaData.map((d, i) => `
+                <button onclick="openPkModal('arammana', ${i})" class="pk-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${d.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-${d.color}-600 transition">${d.name}</h4>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-${d.color}-500/10 text-${d.color}-700 dark:text-${d.color}-300 border border-${d.color}-500/20">${d.count}</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${d.desc}</p>
+                    </div>
+                </button>
+            `).join('');
+
+            // Vatthu Grid
+            document.getElementById('vatthu-grid').innerHTML = vatthuData.map((d, i) => `
+                <button onclick="openPkModal('vatthu', ${i})" class="pk-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${d.color}-500/50 flex flex-col justify-between text-left h-full group">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-${d.color}-600 transition">${d.name}</h4>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-${d.color}-500/10 text-${d.color}-700 dark:text-${d.color}-300 border border-${d.color}-500/20">${d.count}</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${d.desc}</p>
+                    </div>
+                </button>
+            `).join('');
         }
 
-        themeToggleBtn.addEventListener('click', function() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        });
+        function openPkModal(type, index) {
+            let item;
+            if (type === 'vedana') item = vedanaData[index];
+            else if (type === 'hetu') item = hetuData[index];
+            else if (type === 'kicca') item = kiccaData[index];
+            else if (type === 'dvara') item = dvaradata[index];
+            else if (type === 'arammana') item = arammanaData[index];
+            else if (type === 'vatthu') item = vatthuData[index];
+
+            if (!item) return;
+
+            document.getElementById('modal-title').innerText = item.name;
+            document.getElementById('modal-subtitle').innerText = item.pali || item.count;
+            document.getElementById('modal-icon').className = 'fa-solid ' + (item.icon || 'fa-circle-info');
+            document.getElementById('modal-icon-bg').className = 'w-9 h-9 rounded-xl flex items-center justify-center text-lg bg-' + item.color + '-500/10 text-' + item.color + '-500';
+
+            document.getElementById('modal-body').innerHTML = `
+                <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wide block mb-1">ပါဝင်သော စိတ်အရေအတွက်</span>
+                    <span class="text-base font-bold text-amber-600 dark:text-amber-400">${item.count}</span>
+                </div>
+                <div class="space-y-2">
+                    <h5 class="font-bold text-slate-800 dark:text-slate-200">သဘောတရား ရှင်းလင်းချက်:</h5>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${item.desc}</p>
+                </div>
+                ${item.cittas ? `
+                <div class="space-y-2">
+                    <h5 class="font-bold text-slate-800 dark:text-slate-200">ပါဝင်သော စိတ်များ:</h5>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed bg-amber-500/5 p-3 rounded-xl border border-amber-500/20">${item.cittas}</p>
+                </div>
+                ` : ''}
+                ${item.detail ? `
+                <div class="space-y-2">
+                    <h5 class="font-bold text-slate-800 dark:text-slate-200">အဘိဓမ္မာ အသေးစိတ် သုံးသပ်ချက်:</h5>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-xs opacity-90">${item.detail}</p>
+                </div>
+                ` : ''}
+            `;
+
+            document.getElementById('modal-filter-btn').href = 'citta_cetasikas_visual_guide.html#citta89';
+            document.getElementById('pk-modal').classList.remove('hidden');
+        }
+
+        function closePkModal() {
+            document.getElementById('pk-modal').classList.add('hidden');
+        }
+
+        // Initialize Grids
+        document.addEventListener('DOMContentLoaded', renderGrids);
     </script>
+    <script src="accessibility.js"></script>
 </body>
 </html>
