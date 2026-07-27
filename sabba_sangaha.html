@@ -14,12 +14,16 @@
     <style>
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            
+            
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; }
@@ -43,10 +47,18 @@
         details[open] > summary .tree-chevron { transform: rotate(90deg); }
         .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
-    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 text-xl flex-shrink-0">
@@ -58,13 +70,13 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
                 </a>
                 <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
                 </a>
             </div>
@@ -77,7 +89,7 @@
         <div class="text-center max-w-3xl mx-auto space-y-2">
             <span class="text-cyan-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — သဗ္ဗအပိုင်း)</span>
             <h2 class="text-2xl md:text-3xl font-bold">လောကီ/လောကုတ္တရာ တရားအားလုံးကို ခွဲခြားနည်း (၄) မျိုး</h2>
-            <p class="text-slate-400 text-sm">သဗ္ဗသင်္ဂဟသည် ဥပါဒါနက္ခန္ဓာ (Citta & Cetasika Guide ၏ Khandha card တွင် ဖော်ပြခဲ့) အပြင်၊ အာယတန (၁၂)၊ ဓာတု (၁၈)၊ သစ္စာ (၄) ဟူသော နည်းလမ်း (၃) မျိုးဖြင့်ထပ်၍ တရားအားလုံးကို ခြုံငုံ ခွဲခြားထားသည် — နည်းလမ်း အသီးသီးသည် ထပ်တူ တရားစုများကိုပင် ရှုထောင့်ခြားနားစွာ ပြန်လည် ဖွဲ့စည်းထားခြင်း ဖြစ်သည်။</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">သဗ္ဗသင်္ဂဟသည် ဥပါဒါနက္ခန္ဓာ (Citta & Cetasika Guide ၏ Khandha card တွင် ဖော်ပြခဲ့) အပြင်၊ အာယတန (၁၂)၊ ဓာတု (၁၈)၊ သစ္စာ (၄) ဟူသော နည်းလမ်း (၃) မျိုးဖြင့်ထပ်၍ တရားအားလုံးကို ခြုံငုံ ခွဲခြားထားသည် — နည်းလမ်း အသီးသီးသည် ထပ်တူ တရားစုများကိုပင် ရှုထောင့်ခြားနားစွာ ပြန်လည် ဖွဲ့စည်းထားခြင်း ဖြစ်သည်။</p>
         </div>
 
         <!-- Khandha link-out -->
@@ -86,7 +98,7 @@
                 <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-layer-group"></i></div>
                 <div class="text-left">
                     <span class="font-semibold text-indigo-300 text-sm block">ခန္ဓာ (၅) ပါး — ရုပ်/ဝေဒနာ/သညာ/သင်္ခါရ/ဝိညာဏ</span>
-                    <span class="text-slate-400 text-[11px]">Citta & Cetasika Guide ၏ Khandha card တွင် အသေးစိတ် ဖော်ပြထားပြီး ဖြစ်သည်</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-[11px]">Citta & Cetasika Guide ၏ Khandha card တွင် အသေးစိတ် ဖော်ပြထားပြီး ဖြစ်သည်</span>
                 </div>
             </div>
             <i class="fa-solid fa-arrow-right text-indigo-400 flex-shrink-0"></i>
@@ -141,11 +153,11 @@
             <summary class="flex items-center justify-between font-bold text-violet-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>မိဿကသင်္ဂဟ — ရှိပြီးသား တရားစုများ ရောနှော ပေါင်းစပ်ပုံ</span>
             </summary>
-            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-300 border-l border-slate-800">
+            <div class="mt-3 pl-5 space-y-2 text-xs text-slate-700 dark:text-slate-300 border-l border-slate-800">
                 <p>မိဿကသင်္ဂဟသည် နာမည်အသစ် တရားများ မိတ်ဆက်ခြင်း မဟုတ်ဘဲ၊ ဤ Guide တွင် အခြားနေရာများ၌ လေ့လာခဲ့ပြီးသား တရားစုများကို ရှုထောင့် (၅) မျိုးမှ ပြန်လည် ပေါင်းစပ် ခွဲခြားပြခြင်း ဖြစ်သည်:</p>
                 <div class="grid sm:grid-cols-2 gap-2">
-                    <a href="citta_cetasikas_visual_guide.html#citta89:hetu-sangaha" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-3 border border-slate-700 transition">
-                        <span class="text-slate-200 font-bold block">ဟေတု (၆)</span>
+                    <a href="citta_cetasikas_visual_guide.html#citta89:hetu-sangaha" class="block bg-slate-950/60 hover:bg-slate-950 rounded-lg p-3 border border-slate-200 dark:border-slate-700 transition">
+                        <span class="text-slate-800 dark:text-slate-200 font-bold block">ဟေတု (၆)</span>
                         <span class="text-slate-400">လောဘ/ဒေါသ/မောဟ/အလောဘ/အဒေါသ/အမောဟ — ဟေတုသင်္ဂဟတွင် အသေးစိတ် ရှိပြီးသား</span>
                     </a>
                     <div class="bg-slate-950/60 rounded-lg p-3 border border-sky-500/30">
@@ -172,18 +184,18 @@
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-cyan-500/20 text-center space-y-3 max-w-3xl mx-auto">
             <i class="fa-solid fa-book-open text-cyan-400 text-2xl"></i>
-            <p class="text-xs text-slate-300 leading-relaxed">ခန္ဓာ၊ အာယတန၊ ဓာတု၊ သစ္စာ — ဤနည်းလမ်း (၄) မျိုးလုံးသည် "ခန္ဓာငါးပါး/သတ္တဝါ" ဟု ခေါ်ဝေါ်နေသော အရာများ အားလုံးကို ကွက်တိကျကျ ခွဲခြမ်းစိတ်ဖြာနိုင်ကြောင်း၊ ၎င်းတို့တွင် ခိုင်မြဲသော "ငါ"/"အတ္တ" မတွေ့ရကြောင်း ထပ်ခါထပ်ခါ သက်သေပြနေခြင်း ဖြစ်သည်။
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ခန္ဓာ၊ အာယတန၊ ဓာတု၊ သစ္စာ — ဤနည်းလမ်း (၄) မျိုးလုံးသည် "ခန္ဓာငါးပါး/သတ္တဝါ" ဟု ခေါ်ဝေါ်နေသော အရာများ အားလုံးကို ကွက်တိကျကျ ခွဲခြမ်းစိတ်ဖြာနိုင်ကြောင်း၊ ၎င်းတို့တွင် ခိုင်မြဲသော "ငါ"/"အတ္တ" မတွေ့ရကြောင်း ထပ်ခါထပ်ခါ သက်သေပြနေခြင်း ဖြစ်သည်။
             </p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
                 <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
             </a>
         </section>
     </main>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
@@ -361,23 +373,23 @@
             const content = document.getElementById('modal-content');
             content.innerHTML = `
                 <div class="text-center space-y-2">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${info.color}">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-3xl border border-slate-200 dark:border-slate-700 ${info.color}">
                         <i class="fa-solid ${s.icon}"></i>
                     </div>
                     <div>
-                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label}</span>
+                        <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${info.label}</span>
                         <h3 class="text-xl font-bold ${info.color}">${s.name}</h3>
                         <p class="text-[11px] text-slate-500 font-mono mt-1">${s.pali}</p>
                     </div>
                 </div>
-                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
                     <div>
-                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
-                        <p class="text-slate-200 mt-1 leading-relaxed">${s.desc}</p>
+                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${s.desc}</p>
                     </div>
                     <div class="pt-3 border-t border-slate-800">
                         <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
-                        <p class="text-slate-300 mt-1 leading-relaxed">${s.example}</p>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${s.example}</p>
                     </div>
                 </div>
             `;
@@ -415,5 +427,7 @@
             caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
         }
     </script>
+
+    <script src="accessibility.js"></script>
 </body>
 </html>

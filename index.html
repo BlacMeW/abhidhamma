@@ -15,12 +15,16 @@
     <style>
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            
+            
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; }
@@ -35,30 +39,38 @@
         .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.5); }
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
     <!-- Sticky Navigation Header -->
-    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-dharmachakra"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-amber-300">အဘိဓမ္မတ္ထသင်္ဂဟ <span class="text-slate-400 font-normal text-sm">Visual Guide System</span></h1>
+                    <h1 class="text-lg font-bold text-amber-300">အဘိဓမ္မတ္ထသင်္ဂဟ <span class="text-slate-600 dark:text-slate-400 font-normal text-sm">Visual Guide System</span></h1>
                     <p class="text-[11px] text-slate-400">ပရိစ္ဆေဒ (၉) ခန်းလုံး၏ ပင်မ Dashboard & Interactive Visual Guides</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
                 <!-- Search Button trigger -->
-                <button onclick="openGlobalSearch()" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <button onclick="openGlobalSearch()" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-sky-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-magnifying-glass"></i> <span>ရှာဖွေရန် (Ctrl+K)</span>
                 </button>
                 <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span>မာတိကာ (Index)</span>
                 </a>
                 <a href="citta_cetasikas_visual_guide.html" class="text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
@@ -81,7 +93,7 @@
             <h2 class="text-2xl md:text-4xl font-extrabold text-slate-100 leading-tight max-w-4xl mx-auto">
                 အဘိဓမ္မာဒေသနာတော်လာ ပါဠိ/မြန်မာ အဓိပ္ပာယ်များ နှင့် ဓမ္မသဘာဝများကို Visual Diagram များဖြင့် လေ့လာရန်
             </h2>
-            <p class="text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+            <p class="text-slate-700 dark:text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
                 အရှင်အနုရုဒ္ဓါမဟာထေရ် စီရင်တော်မူသော <strong>အဘိဓမ္မတ္ထသင်္ဂဟကျမ်း</strong> လာ ပရိစ္ဆေဒ (၉) ခန်းလုံး၏ ဓမ္မသဘာဝများ (စိတ်၊ စေတသိက်၊ ရုပ်၊ နိဗ္ဗာန်၊ ဝီထိ၊ ဘုံ၊ ပဋ္ဌာန်း ပစ္စယသင်္ဂဟ စသည်) ကို ခေတ်မှီ Dynamic Visual Guides များဖြင့် သီးခြားစီ စုစည်းဖော်ပြထားသော ပင်မစာမျက်နှာ ဖြစ်ပါသည်။
             </p>
 
@@ -107,12 +119,12 @@
         </section>
 
         <!-- Main Chapters Section Header -->
-        <div class="flex items-center justify-between gap-4 border-b border-slate-800 pb-3">
+        <div class="flex items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-3">
             <div>
                 <h3 class="text-xl font-bold text-slate-100 flex items-center gap-2">
                     <i class="fa-solid fa-layer-group text-amber-400"></i> အဘိဓမ္မတ္ထသင်္ဂဟ ပရိစ္ဆေဒ (၉) ခန်း Visual Modules
                 </h3>
-                <p class="text-xs text-slate-400 mt-0.5">မိမိလေ့လာလိုသည့် ပရိစ္ဆေဒ Card ကို နှိပ်၍ သီးခြား Visual Guide စာမျက်နှာများသို့ တိုက်ရိုက် သွားရောက်နိုင်ပါသည်</p>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">မိမိလေ့လာလိုသည့် ပရိစ္ဆေဒ Card ကို နှိပ်၍ သီးခြား Visual Guide စာမျက်နှာများသို့ တိုက်ရိုက် သွားရောက်နိုင်ပါသည်</p>
             </div>
         </div>
 
@@ -120,14 +132,14 @@
         <div id="dashboard-matrix" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
 
         <!-- System Architecture & Design Info -->
-        <section class="glass-card rounded-2xl p-6 border border-slate-700 text-center space-y-3 max-w-4xl mx-auto">
+        <section class="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-700 text-center space-y-3 max-w-4xl mx-auto">
             <div class="flex justify-center text-amber-400 text-2xl gap-3">
                 <i class="fa-solid fa-bolt"></i>
                 <i class="fa-solid fa-mobile-screen"></i>
                 <i class="fa-solid fa-wifi"></i>
             </div>
             <h4 class="text-base font-bold text-slate-200">ခေတ်မီဆန်းသစ်သော Visual Guide & Offline Support</h4>
-            <p class="text-xs text-slate-400 leading-relaxed max-w-2xl mx-auto">
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
                 ဖောင့်စနစ်များအား မြန်မာစာလုံးသန့်သန့် Padauk / Pyidaungsu ဖောင့်များဖြင့် ပြင်ဆင်ထားပြီး၊ Service Worker ဖြင့် အင်တာနက် မလိုဘဲ Offline သုံးစွဲနိုင်သော PWA Support ပါဝင်ပါသည်။
             </p>
         </section>
@@ -135,22 +147,22 @@
     </main>
 
     <!-- Global Search Modal -->
-    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm p-4 flex items-start justify-center pt-16">
-        <div class="glass-card w-full max-w-2xl rounded-2xl border border-slate-700 p-5 space-y-4 shadow-2xl">
-            <div class="flex items-center justify-between gap-3 border-b border-slate-800 pb-3">
+    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm p-4 flex items-start justify-center pt-16">
+        <div class="glass-card w-full max-w-2xl rounded-2xl border border-slate-200 dark:border-slate-700 p-5 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
                 <div class="flex items-center gap-2 text-sky-400">
                     <i class="fa-solid fa-magnifying-glass text-lg"></i>
                     <h3 class="font-bold text-base text-slate-200">အဘိဓမ္မာ ဓမ္မတရားများ ရှာဖွေရန်</h3>
                 </div>
-                <button onclick="closeGlobalSearch()" class="text-slate-400 hover:text-slate-200 text-sm px-2 py-1 rounded-lg bg-slate-800">Esc</button>
+                <button onclick="closeGlobalSearch()" class="text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 text-sm px-2 py-1 rounded-lg bg-slate-800">Esc</button>
             </div>
-            <input type="text" id="search-input" oninput="handleSearch()" placeholder="ဥပမာ- လောဘ၊ စိတ်၊ စေတသိက်၊ ရုပ်၊ ပဋ္ဌာန်း၊ ဘုံ..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+            <input type="text" id="search-input" oninput="handleSearch()" placeholder="ဥပမာ- လောဘ၊ စိတ်၊ စေတသိက်၊ ရုပ်၊ ပဋ္ဌာန်း၊ ဘုံ..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
             <div id="search-results" class="max-h-80 overflow-y-auto space-y-2 text-xs"></div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="mt-12 border-t border-slate-800 text-center py-6 text-xs text-slate-500">
+    <footer class="mt-12 border-t border-slate-200 dark:border-slate-800 text-center py-6 text-xs text-slate-500">
         <p>အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide System — Citta, Cetasika, Rūpa & Nibbāna</p>
     </footer>
 
@@ -261,7 +273,7 @@
                 return;
             }
             resultsContainer.innerHTML = filtered.map(item => `
-                <a href="${item.link}" class="block p-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 transition flex items-center justify-between">
+                <a href="${item.link}" class="block p-3 rounded-xl bg-white/80 dark:bg-slate-900/80 hover:bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 transition flex items-center justify-between">
                     <div>
                         <div class="font-bold text-sky-300">${item.name}</div>
                         <div class="text-[10px] text-slate-400">${item.category}</div>
@@ -298,15 +310,15 @@
                                 <div class="w-12 h-12 rounded-2xl ${c.iconBg} ${c.text} flex items-center justify-center text-2xl border ${c.border} flex-shrink-0">
                                     <i class="fa-solid ${ch.icon}"></i>
                                 </div>
-                                <span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-slate-400 font-semibold">
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-semibold">
                                     ပရိစ္ဆေဒ ${toMyanmarNum(ch.num)}
                                 </span>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold ${c.text} leading-tight">${ch.name}</h4>
-                                <span class="text-[11px] text-slate-400 font-mono">${ch.pali}</span>
+                                <span class="text-[11px] text-slate-600 dark:text-slate-400 font-mono">${ch.pali}</span>
                             </div>
-                            <p class="text-xs text-slate-300 leading-relaxed">${ch.desc}</p>
+                            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">${ch.desc}</p>
                         </div>
                         <div class="pt-3 border-t border-slate-800/80 space-y-1.5">
                             ${links}
@@ -332,5 +344,7 @@
             caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
         }
     </script>
+
+    <script src="accessibility.js"></script>
 </body>
 </html>

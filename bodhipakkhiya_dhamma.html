@@ -14,12 +14,16 @@
     <style>
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            
+            
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; }
@@ -39,10 +43,18 @@
         .bp-card:hover { transform: translateY(-2px); }
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
-    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
@@ -54,13 +66,13 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
                 </a>
                 <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
                 </a>
             </div>
@@ -73,7 +85,7 @@
         <div class="text-center max-w-3xl mx-auto space-y-2">
             <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၇ ပိုင်းမြောက် (သမုစ္စယသင်္ဂဟ — ဗောဓိပက္ခိယအပိုင်း)</span>
             <h2 class="text-2xl md:text-3xl font-bold">"ဗောဓိ" (ဉာဏ်အလင်း) ဘက်သို့ ဦးတည်စေသော တရား (၃၇) ပါး</h2>
-            <p class="text-slate-400 text-sm">ဗောဓိပက္ခိယဓမ္မာသည် မဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိရန် တိုက်ရိုက် ကူညီပံ့ပိုးပေးသော တရား (၃၇) ပါး ဖြစ်သည်။ အုပ်စု (၇) စု ခွဲထားသော်လည်း၊ အခြေခံ စေတသိက် (၁၄) ပါးသာ ထပ်ခါထပ်ခါ ပြန်လည် ပေါင်းစပ် အသုံးပြုထားခြင်း ဖြစ်ကြောင်း — အောက်ပါ အတည်ပြုကတ်ဇယားတွင် တွေ့နိုင်သည်။</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">ဗောဓိပက္ခိယဓမ္မာသည် မဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိရန် တိုက်ရိုက် ကူညီပံ့ပိုးပေးသော တရား (၃၇) ပါး ဖြစ်သည်။ အုပ်စု (၇) စု ခွဲထားသော်လည်း၊ အခြေခံ စေတသိက် (၁၄) ပါးသာ ထပ်ခါထပ်ခါ ပြန်လည် ပေါင်းစပ် အသုံးပြုထားခြင်း ဖြစ်ကြောင်း — အောက်ပါ အတည်ပြုကတ်ဇယားတွင် တွေ့နိုင်သည်။</p>
         </div>
 
         <!-- Total verification bar -->
@@ -123,18 +135,18 @@
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-amber-500/20 text-center space-y-3 max-w-3xl mx-auto">
             <i class="fa-solid fa-book-open text-amber-400 text-2xl"></i>
-            <p class="text-xs text-slate-300 leading-relaxed">ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါးသည် ဘာဝနာအားထုတ်သူများအတွက် လက်တွေ့ လမ်းညွှန်ချက် ဖြစ်ပြီး၊ သတိ၊ ဝီရိယ၊ ပညာ တို့ကို ဗဟိုပြု၍ မဂ်ဖိုလ်ဆီသို့ တစ်ဆင့်ချင်း ရောက်ရှိစေသော အင်္ဂါရပ်များ ပေါင်းစည်းမှု ဖြစ်သည်။
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါးသည် ဘာဝနာအားထုတ်သူများအတွက် လက်တွေ့ လမ်းညွှန်ချက် ဖြစ်ပြီး၊ သတိ၊ ဝီရိယ၊ ပညာ တို့ကို ဗဟိုပြု၍ မဂ်ဖိုလ်ဆီသို့ တစ်ဆင့်ချင်း ရောက်ရှိစေသော အင်္ဂါရပ်များ ပေါင်းစည်းမှု ဖြစ်သည်။
             </p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
                 <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
             </a>
         </section>
     </main>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
@@ -345,23 +357,23 @@
             const content = document.getElementById('modal-content');
             content.innerHTML = `
                 <div class="text-center space-y-2">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${info.color}">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-3xl border border-slate-200 dark:border-slate-700 ${info.color}">
                         <i class="fa-solid ${b.icon}"></i>
                     </div>
                     <div>
-                        <span class="text-xs text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(b.id)}/၃၇</span>
+                        <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(b.id)}/၃၇</span>
                         <h3 class="text-xl font-bold ${info.color}">${b.name}</h3>
                         <p class="text-[11px] text-slate-500 font-mono mt-1">${b.pali}</p>
                     </div>
                 </div>
-                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
                     <div>
-                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
-                        <p class="text-slate-200 mt-1 leading-relaxed">${b.desc}</p>
+                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${b.desc}</p>
                     </div>
                     <div class="pt-3 border-t border-slate-800">
                         <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
-                        <p class="text-slate-300 mt-1 leading-relaxed">${b.example}</p>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${b.example}</p>
                     </div>
                 </div>
             `;
@@ -398,5 +410,7 @@
             caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
         }
     </script>
+
+    <script src="accessibility.js"></script>
 </body>
 </html>

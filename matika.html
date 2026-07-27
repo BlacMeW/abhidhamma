@@ -14,12 +14,16 @@
     <style>
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            
+            
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; }
@@ -34,10 +38,18 @@
         .chapter-card:hover { transform: translateY(-3px); }
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
-    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full bg-violet-500/20 border border-violet-500/50 flex items-center justify-center text-violet-400 text-xl flex-shrink-0">
@@ -62,7 +74,7 @@
         <div class="text-center max-w-3xl mx-auto space-y-2">
             <span class="text-violet-400 font-semibold text-sm tracking-wider uppercase">Abhidhammatthasaṅgaha — ပရိစ္ဆေဒ ၉ ခန်း</span>
             <h2 class="text-2xl md:text-3xl font-bold">ဤ Visual Guide စာမျက်နှာစုံ၏ မာတိကာ</h2>
-            <p class="text-slate-400 text-sm">အဘိဓမ္မတ္ထသင်္ဂဟကျမ်းကြီး၏ ရိုးရာ ပရိစ္ဆေဒ (၉) ခန်းအလိုက်၊ ဤ Guide တွင် မည်သည့်စာမျက်နှာက မည်သည့်အခန်းကို ဖုံးလွှမ်းထားသည်ကို တစ်နေရာတည်း ကြည့်ရှုနိုင်ရန် စုစည်းထားခြင်း ဖြစ်သည်။</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">အဘိဓမ္မတ္ထသင်္ဂဟကျမ်းကြီး၏ ရိုးရာ ပရိစ္ဆေဒ (၉) ခန်းအလိုက်၊ ဤ Guide တွင် မည်သည့်စာမျက်နှာက မည်သည့်အခန်းကို ဖုံးလွှမ်းထားသည်ကို တစ်နေရာတည်း ကြည့်ရှုနိုင်ရန် စုစည်းထားခြင်း ဖြစ်သည်။</p>
         </div>
 
         <!-- Completion bar -->
@@ -78,7 +90,7 @@
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-violet-500/20 text-center space-y-3 max-w-3xl mx-auto">
             <i class="fa-solid fa-book-open text-violet-400 text-2xl"></i>
-            <p class="text-xs text-slate-300 leading-relaxed">စာမျက်နှာအားလုံးသည် Padauk/Pyidaungsu ဖောင့်ဖြင့် မြန်မာစာလုံးသက်သက်ဖြင့် ရေးသားထားပြီး၊ ကျမ်းဂန်လာ ပါဠိအမည်များကိုသာ ကွင်းစကွင်းပိတ်တွင် ရည်ညွှန်းထားပါသည်။ ဂဏန်းစစ်ဆေးမှု (verification bar) များအားလုံးကို jsdom ဖြင့် အလိုအလျောက် ပြန်လည် စစ်ဆေးထားပါသည်။</p>
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">စာမျက်နှာအားလုံးသည် Padauk/Pyidaungsu ဖောင့်ဖြင့် မြန်မာစာလုံးသက်သက်ဖြင့် ရေးသားထားပြီး၊ ကျမ်းဂန်လာ ပါဠိအမည်များကိုသာ ကွင်းစကွင်းပိတ်တွင် ရည်ညွှန်းထားပါသည်။ ဂဏန်းစစ်ဆေးမှု (verification bar) များအားလုံးကို jsdom ဖြင့် အလိုအလျောက် ပြန်လည် စစ်ဆေးထားပါသည်။</p>
         </section>
     </main>
 
@@ -188,7 +200,7 @@
                         <div class="flex items-center gap-1.5 text-[11px] ${st.color}">
                             <i class="fa-solid ${st.icon}"></i><span>${st.label}</span>
                         </div>
-                        <div class="pt-2 border-t border-slate-800 space-y-0.5">${linksHtml}</div>
+                        <div class="pt-2 border-t border-slate-200 dark:border-slate-800 space-y-0.5">${linksHtml}</div>
                     </div>
                 `;
             }).join('');
@@ -217,5 +229,7 @@
             caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
         }
     </script>
+
+    <script src="accessibility.js"></script>
 </body>
 </html>

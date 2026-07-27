@@ -14,12 +14,16 @@
     <style>
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            
+            
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; }
@@ -43,10 +47,18 @@
         details[open] > summary .tree-chevron { transform: rotate(90deg); }
         .tree-chevron { transition: transform 0.15s ease; display: inline-block; }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
 
-    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full bg-indigo-500/20 border border-indigo-500/50 flex items-center justify-center text-indigo-400 text-xl flex-shrink-0">
@@ -58,13 +70,13 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
                 </a>
                 <a href="glossary.html" class="text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
-                <a href="matika.html" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-violet-300 border border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="matika.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-violet-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i> <span class="hidden sm:inline">မာတိကာ</span>
                 </a>
             </div>
@@ -77,7 +89,7 @@
         <div class="text-center max-w-3xl mx-auto space-y-2">
             <span class="text-indigo-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၅ ပိုင်းမြောက်</span>
             <h2 class="text-2xl md:text-3xl font-bold">ဝီထိစိတ် အစဉ်ပြင်ပက ဖြစ်စဉ်များ</h2>
-            <p class="text-slate-400 text-sm"><a href="citta_cetasikas_visual_guide.html#vithi" class="text-sky-300 underline decoration-dotted hover:text-sky-200">ဝီထိသင်္ဂဟ tab</a> က ဘဝတစ်ခု အတွင်းရှိ စိတ်အစဉ် ဖြစ်ပေါ်ပုံကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ဝီထိမုတ္တသင်္ဂဟကမူ ဝီထိစိတ် "အစဉ်ပြင်ပ" ဖြစ်ပေါ်ကြသော ပဋိသန္ဓေ/ဘဝင်/စုတိ တို့ ဘယ်နေရာ (ဘူမိ)၊ ဘယ်နည်းလမ်း (ယောနိ)၊ ဘယ်ကံ အလိုက် ဖြစ်ပေါ်ကြသည်ကို ရှင်းပြသည်။</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm"><a href="citta_cetasikas_visual_guide.html#vithi" class="text-sky-300 underline decoration-dotted hover:text-sky-200">ဝီထိသင်္ဂဟ tab</a> က ဘဝတစ်ခု အတွင်းရှိ စိတ်အစဉ် ဖြစ်ပေါ်ပုံကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ဝီထိမုတ္တသင်္ဂဟကမူ ဝီထိစိတ် "အစဉ်ပြင်ပ" ဖြစ်ပေါ်ကြသော ပဋိသန္ဓေ/ဘဝင်/စုတိ တို့ ဘယ်နေရာ (ဘူမိ)၊ ဘယ်နည်းလမ်း (ယောနိ)၊ ဘယ်ကံ အလိုက် ဖြစ်ပေါ်ကြသည်ကို ရှင်းပြသည်။</p>
         </div>
 
         <!-- 31 Bhumi verification bar -->
@@ -102,7 +114,7 @@
             </summary>
             
             <div class="mt-6 pt-4 border-t border-slate-700/50">
-                <p class="text-center text-xs text-slate-400 mb-6">ဘုံတစ်ခုစီကို နှိပ်၍ အသေးစိတ်ဖတ်ရှုနိုင်ပါသည်။</p>
+                <p class="text-center text-xs text-slate-600 dark:text-slate-400 mb-6">ဘုံတစ်ခုစီကို နှိပ်၍ အသေးစိတ်ဖတ်ရှုနိုင်ပါသည်။</p>
                 <div id="interactive-map-container" class="flex flex-col items-center gap-1 md:gap-2 w-full overflow-x-auto pb-4">
                     <!-- Rendered by JS -->
                 </div>
@@ -132,12 +144,12 @@
             <h3 class="font-bold text-amber-300 text-base flex items-center gap-2"><i class="fa-solid fa-hourglass-end"></i> မရဏာသန္နဝီထိ — သေခါနီး ဖြစ်ပေါ်သော လုပ်ငန်းစဉ်</h3>
             <p class="text-xs text-slate-300">သေခါနီးအချိန် နောက်ဆုံး ဇောနဝီထိ (၅ ကြိမ် ၆ ကြိမ်မျှသာ ဖြစ်တတ်သော "ပရိတ္တဇောန") ၏ အာရုံအဖြစ် အောက်ပါ (၃) မျိုးအနက် တစ်မျိုးမျိုး ပေါ်လာတတ်ပြီး၊ ထိုအာရုံသည်ပင် နောင်ဘဝ ပဋိသန္ဓေစိတ်၏ အာရုံ ဖြစ်လာသည် —</p>
             <div id="near-death-chips" class="grid sm:grid-cols-3 gap-2"></div>
-            <div class="flex items-center justify-center gap-2 text-xs text-slate-400 pt-2">
-                <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700">စုတိစိတ်</span>
+            <div class="flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-400 pt-2">
+                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-700">စုတိစိတ်</span>
                 <i class="fa-solid fa-arrow-right text-amber-400"></i>
                 <span class="px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">ကြားမဲ့ခြားနား လုံးဝ မရှိ</span>
                 <i class="fa-solid fa-arrow-right text-amber-400"></i>
-                <span class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700">ပဋိသန္ဓေစိတ် (ဘဝသစ်)</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-700">ပဋိသန္ဓေစိတ် (ဘဝသစ်)</span>
             </div>
             <p class="text-[11px] text-slate-500 pt-1">* ဤ "ကြားမဲ့ခြားနား လုံးဝ မရှိခြင်း" ကို ပဋိစ္စသမုပ္ပါဒ်တွင် <a href="paticcasamuppada.html?open=jaramarana" class="text-violet-300 underline decoration-dotted hover:text-violet-200">ဇရာမရဏ → ဝိညာဉ် ပထမသန္ဓိ</a> အဖြစ် ဖော်ပြခဲ့သည်။</p>
         </div>
@@ -160,18 +172,18 @@
         <!-- Footer -->
         <section class="glass-card rounded-2xl p-6 border border-indigo-500/20 text-center space-y-3 max-w-3xl mx-auto">
             <i class="fa-solid fa-book-open text-indigo-400 text-2xl"></i>
-            <p class="text-xs text-slate-300 leading-relaxed">ဝီထိမုတ္တသင်္ဂဟကို လေ့လာခြင်းဖြင့် "ဘဝသစ် မွေးဖွားခြင်း" ဆိုသည်မှာ ဝိညာဉ်တစ်ခု တစ်ခန္ဓာမှ တစ်ခန္ဓာသို့ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ ရှေးကံ၏ တွန်းအားဖြင့် စိတ်အသစ် ချက်ချင်းဆက်တိုက် ဖြစ်ပေါ်ခြင်းသာ ဖြစ်ကြောင်း ပို၍ ရှင်းလင်းစွာ နားလည်နိုင်သည်။
+            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">ဝီထိမုတ္တသင်္ဂဟကို လေ့လာခြင်းဖြင့် "ဘဝသစ် မွေးဖွားခြင်း" ဆိုသည်မှာ ဝိညာဉ်တစ်ခု တစ်ခန္ဓာမှ တစ်ခန္ဓာသို့ ကူးပြောင်းခြင်း လုံးဝ မဟုတ်ဘဲ၊ ရှေးကံ၏ တွန်းအားဖြင့် စိတ်အသစ် ချက်ချင်းဆက်တိုက် ဖြစ်ပေါ်ခြင်းသာ ဖြစ်ကြောင်း ပို၍ ရှင်းလင်းစွာ နားလည်နိုင်သည်။
             </p>
-            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-4 py-2.5 rounded-full transition">
+            <a href="citta_cetasikas_visual_guide.html" class="inline-flex items-center gap-2 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-300 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full transition">
                 <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
             </a>
         </section>
     </main>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition z-10">
+    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
@@ -383,9 +395,9 @@
                     <h4 class="font-bold text-sm mb-2">${t.title}</h4>
                     <div class="grid sm:grid-cols-2 gap-2">
                         ${t.items.map(it => `
-                            <div class="bg-slate-900/60 rounded-lg p-2.5 border border-slate-800">
-                                <span class="text-slate-200 font-semibold text-xs block">${it.name}</span>
-                                <span class="text-slate-400 text-[11px]">${it.desc}</span>
+                            <div class="bg-white/60 dark:bg-slate-900/60 rounded-lg p-2.5 border border-slate-800">
+                                <span class="text-slate-800 dark:text-slate-200 font-semibold text-xs block">${it.name}</span>
+                                <span class="text-slate-600 dark:text-slate-400 text-[11px]">${it.desc}</span>
                             </div>
                         `).join('')}
                     </div>
@@ -398,14 +410,14 @@
                 <div class="bg-slate-950/60 rounded-lg p-3 border ${n.cls} text-center">
                     <i class="fa-solid ${n.icon} ${n.cls.split(' ')[1]} text-lg mb-1"></i>
                     <span class="${n.cls.split(' ')[1]} font-bold block text-sm">${n.name}</span>
-                    <span class="text-slate-400 text-[11px]">${n.desc}</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-[11px]">${n.desc}</span>
                 </div>
             `).join('');
         }
 
         function renderMaranaChips() {
             document.getElementById('marana-chips').innerHTML = maranaData.map(m => `
-                <button onclick="openMaranaModal('${m.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-slate-800/80 border-slate-700 text-slate-200 hover:brightness-125">${m.name}</button>
+                <button onclick="openMaranaModal('${m.key}')" class="vm-card text-xs font-semibold px-3 py-1.5 rounded-full border transition bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:brightness-125">${m.name}</button>
             `).join('');
         }
 
@@ -438,24 +450,24 @@
             const content = document.getElementById('modal-content');
             content.innerHTML = `
                 <div class="text-center space-y-2">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-3xl border border-slate-700 ${colorClass}">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-3xl border border-slate-200 dark:border-slate-700 ${colorClass}">
                         <i class="fa-solid ${icon}"></i>
                     </div>
                     <div>
-                        <span class="text-xs text-slate-400 uppercase font-mono">${label}</span>
+                        <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${label}</span>
                         <h3 class="text-xl font-bold ${colorClass}">${name}</h3>
                         <p class="text-[11px] text-slate-500 font-mono mt-1">${pali}</p>
                     </div>
                 </div>
-                <div class="mt-4 space-y-3 bg-slate-950/50 p-4 rounded-xl border border-slate-800 text-sm">
+                <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
                     <div>
-                        <span class="text-xs font-semibold text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
-                        <p class="text-slate-200 mt-1 leading-relaxed">${desc}</p>
+                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
+                        <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${desc}</p>
                     </div>
                     ${example ? `
                     <div class="pt-3 border-t border-slate-800">
                         <span class="text-xs font-semibold text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
-                        <p class="text-slate-300 mt-1 leading-relaxed">${example}</p>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${example}</p>
                     </div>` : ''}
                 </div>
             `;
@@ -496,5 +508,7 @@
             caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
         }
     </script>
+
+    <script src="accessibility.js"></script>
 </body>
 </html>
