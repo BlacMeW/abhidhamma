@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာဒေသနာလာ ဝီထိသင်္ဂဟ — ပဉ္စဒွါရဝီထိ၊ မနောဒွါရဝီထိ စိတ်ဖြစ်စဉ်များကို ရှင်းလင်းတင်ပြထားသော Visual Guide">
+    <title>ဝီထိသင်္ဂဟ — စိတ်ဖြစ်စဉ် (၁၇) ချက် (Vīthi-saṅgaha)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        html { scroll-behavior: smooth; }
+        * { -webkit-tap-highlight-color: transparent; }
+        button { touch-action: manipulation; }
+        button:active { transform: scale(0.97); }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(8px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in { animation: fade-in 0.2s ease-out; }
+        .vithi-node { transition: transform 0.2s; }
+        .vithi-node:hover { transform: translateY(-4px); }
+        .timeline-scroll {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .timeline-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+    </style>
+    <style>
+        :root { color-scheme: light dark; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
+
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-700 dark:text-cyan-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-water"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-cyan-700 dark:text-cyan-300">ဝီထိသင်္ဂဟ <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">(Vīthi-saṅgaha)</span></h1>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">အဘိဓမ္မာ (၄) ပိုင်းမြောက် — စိတ်ဖြစ်စဉ်များ (Cognitive Processes)</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> <span>ပင်မ Dashboard</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 mt-6 flex-1 w-full space-y-8">
+        
+        <!-- Intro -->
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <h2 class="text-2xl md:text-3xl font-bold">စိတ်တို့၏ ဖြစ်စဉ် (၁၇) ချက်</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">"ဝီထိ" ဟူသည် လမ်းကြောင်း သို့မဟုတ် အစဉ်အဆက် ဟု အဓိပ္ပာယ်ရသည်။ အာရုံတစ်ခုကို သိရှိရန်အတွက် စိတ်တစ်ခုတည်းက သိလိုက်ခြင်း မဟုတ်ဘဲ၊ လွန်စွာလျင်မြန်သော စိတ်အစဉ်အဆက် (၁၇) ချက်ခန့် ဆက်တိုက် ဖြစ်ပေါ်မှသာ "သိခြင်း" ကိစ္စ ပြီးမြောက်သည်။</p>
+        </div>
+
+        <!-- Pancadvara Vithi -->
+        <div class="glass-card rounded-2xl p-4 md:p-6 border border-cyan-500/30 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 text-cyan-500/5 text-9xl"><i class="fa-solid fa-eye"></i></div>
+            <h3 class="font-bold text-cyan-700 dark:text-cyan-300 text-lg flex items-center gap-2 mb-4 relative z-10">
+                <i class="fa-solid fa-eye"></i> ပဉ္စဒွါရဝီထိ (အာရုံကြီးမားသည့် အတိမဟန္တာရုံ ဝီထိ)
+            </h3>
+            
+            <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 relative z-10">
+                မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ် ဟူသော ဒွါရ ၅-ပါးအနက် တစ်ခုခုတွင် အလွန်ထင်ရှားသော အာရုံ (ဥပမာ- ရူပါရုံ) တိုက်မိသောအခါ ဖြစ်ပေါ်သည့် စိတ်ဖြစ်စဉ် ၁၇-ချက် အပြည့်အစုံ ဖြစ်သည်။ (ဘယ်ညာသို့ ပွတ်ဆွဲ၍ ကြည့်ပါ)
+            </p>
+
+            <div class="w-full overflow-x-auto pb-4 timeline-scroll relative z-10">
+                <div id="pancadvara-timeline" class="flex items-center gap-2 min-w-max px-2 py-4">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+            
+            <!-- Legend -->
+            <div class="flex flex-wrap justify-center gap-3 mt-4 text-[10px] md:text-xs">
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700"></span> <span>ဘဝင် (အိပ်ပျော်နေသကဲ့သို့)</span></div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-cyan-400 dark:bg-cyan-600"></span> <span>အာဝဇ္ဇန်း (ဆင်ခြင်ခြင်း)</span></div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-400 dark:bg-emerald-600"></span> <span>ဝိညာဉ်/သမ္ပ/သန္တီ/ဝုဋ္ဌော</span></div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-rose-400 dark:bg-rose-600 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></span> <span class="font-bold">ဇော (ကံမြောက်ခြင်း)</span></div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-400 dark:bg-amber-600"></span> <span>တဒါရုံ (အာရုံအရသာခံ)</span></div>
+            </div>
+        </div>
+
+        <!-- Manodvara Vithi -->
+        <div class="glass-card rounded-2xl p-4 md:p-6 border border-violet-500/30 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 text-violet-500/5 text-9xl"><i class="fa-solid fa-brain"></i></div>
+            <h3 class="font-bold text-violet-700 dark:text-violet-300 text-lg flex items-center gap-2 mb-4 relative z-10">
+                <i class="fa-solid fa-brain"></i> မနောဒွါရဝီထိ (မနောဒွါရ၌ အာရုံထင်လာသည့် ဝီထိ)
+            </h3>
+            
+            <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 relative z-10">
+                မျက်စိစသည်တို့နှင့် မတိုက်ဆိုင်ဘဲ စိတ်ကူး (မနောဒွါရ) သက်သက်ဖြင့် တွေးတောကြံစည်သည့်အခါ ဖြစ်ပေါ်သော ဝီထိဖြစ်သည်။ အတီတဘဝင်၊ ပဉ္စဝိညာဉ်၊ သမ္ပဋိစ္ဆန်း စသည်တို့ မပါဝင်ဘဲ လွန်စွာတိုတောင်း မြန်ဆန်သည်။
+            </p>
+
+            <div class="w-full overflow-x-auto pb-4 timeline-scroll relative z-10">
+                <div id="manodvara-timeline" class="flex items-center gap-2 min-w-max px-2 py-4">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Cross-link -->
+        <a href="citta_cetasikas_visual_guide.html#vithi" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+            <i class="fa-solid fa-link text-emerald-700 dark:text-emerald-400 text-xl"></i>
+            <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">စိတ် (၈၉) ပါးနှင့် ဝီထိဆက်စပ်ပုံကို လေ့လာရန်</h4>
+            <p class="text-[11px] text-slate-600 dark:text-slate-400">Citta & Cetasika Guide သို့ ပြန်သွားရန် →</p>
+        </a>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content" class="p-6 space-y-4"></div>
+        </div>
+    </div>
+
+    <script>
+        const vithiNodes = [
+            { id: 'b', code: 'ဘ', name: 'ဘဝင်', full: 'ဘဝင်္ဂ (Bhavanga)', desc: 'အိပ်ပျော်နေစဉ် သို့မဟုတ် အာရုံသစ်မပေါ်မီ အတိတ်ဘဝက အာရုံတစ်ခုကို ယူ၍ ဖြစ်ပေါ်နေသော စိတ်အစဉ်။', color: 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700' },
+            { id: 'atita', code: 'တီ', name: 'အတီတဘဝင်', full: 'အတီတဘဝင်္ဂ (Atīta-bhavanga)', desc: 'အာရုံသစ် (ဥပမာ- ရူပါရုံ) ဒွါရသို့ ရောက်လာသော်လည်း မသိသေးဘဲ လွန်သွားသော ဘဝင်စိတ်။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600' },
+            { id: 'calana', code: 'န', name: 'ဘဝင်္ဂစလန', full: 'ဘဝင်္ဂစလန (Bhavanga-calana)', desc: 'အာရုံသစ်ကို သိရှိသွား၍ ဘဝင်အစဉ် တုန်လှုပ်သွားခြင်း (လှိုင်းထခြင်း)။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600' },
+            { id: 'upaccheda', code: 'ဒ', name: 'ဘဝင်္ဂုပစ္ဆေဒ', full: 'ဘဝင်္ဂုပစ္ဆေဒ (Bhavangupaccheda)', desc: 'ဘဝင်အစဉ် ပြတ်တောက်သွားခြင်း (အာရုံဟောင်းကို စွန့်လွှတ်လိုက်ခြင်း)။', color: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600' },
+            { id: 'avajjana', code: 'ပ', name: 'ပဉ္စဒွါရာဝဇ္ဇန်း', full: 'ပဉ္စဒွါရာဝဇ္ဇန်း (Pañcadvārāvajjana)', desc: 'ဒွါရငါးပါးသို့ ရောက်လာသော အာရုံသစ်ကို လှည့်၍ ဆင်ခြင်ခြင်း (ဘယ်အာရုံလဲဟု စစ်ဆေးခြင်း)။', color: 'bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border-cyan-400 dark:border-cyan-600' },
+            { id: 'vinnana', code: 'စ', name: 'စက္ခုဝိညာဉ်', full: 'စက္ခုဝိညာဉ် (Cakkhuviññāṇa)', desc: 'ရောက်လာသော ရူပါရုံကို မြင်ခြင်း (သိခြင်းသက်သက်)။ နားဆိုလျှင် သောတဝိညာဉ် ဖြစ်မည်။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
+            { id: 'sampa', code: 'သံ', name: 'သမ္ပဋိစ္ဆန်း', full: 'သမ္ပဋိစ္ဆန်း (Sampaṭicchana)', desc: 'မြင်လိုက်သော အာရုံကို လက်ခံယူခြင်း။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
+            { id: 'santi', code: 'တီ', name: 'သန္တီရဏ', full: 'သန္တီရဏ (Santīraṇa)', desc: 'လက်ခံရရှိသော အာရုံကို ကောင်း/မကောင်း စူးစမ်းဆင်ခြင်ခြင်း။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
+            { id: 'vuttho', code: 'ဝု', name: 'ဝုဋ္ဌော', full: 'ဝုဋ္ဌော (Voṭṭhapana)', desc: 'အာရုံကို ကောင်းသည်/မကောင်းသည်ဟု ဆုံးဖြတ်ခြင်း (မနောဒွါရာဝဇ္ဇန်းစိတ်က ဤနေရာတွင် ဆုံးဖြတ်သည်)။', color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600' },
+            { id: 'javana', code: 'ဇော', name: 'ဇော', full: 'ဇော ၇ ကြိမ် (Javana)', desc: 'ဆုံးဖြတ်ချက်အရ ကုသိုလ် သို့မဟုတ် အကုသိုလ်ဖြစ်၍ အာရုံ၏ အရသာကို ခံစားခြင်း (ကံမြောက်ခြင်း)။ အရှိန်အဟုန်ပြင်းသဖြင့် ၇ ကြိမ် ဆက်တိုက် ဖြစ်သည်။', color: 'bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 border-rose-400 dark:border-rose-600 ring-2 ring-rose-500/30' },
+            { id: 'tada', code: 'ဒါ', name: 'တဒါရုံ', full: 'တဒါရုံ (Tadārammaṇa)', desc: 'ဇော၏ အရှိန်အဟုန်ကို အသာအယာ ငြိမ်ကျသွားစေရန် ဇော၏အာရုံကို ဆက်လက်ယူ၍ ဖြစ်ပေါ်သော စိတ် ၂ ကြိမ်။ ပြီးလျှင် ဘဝင်သို့ ပြန်ကျသွားသည်။', color: 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-400 dark:border-amber-600' },
+            { id: 'mano', code: 'မ', name: 'မနောဒွါရာဝဇ္ဇန်း', full: 'မနောဒွါရာဝဇ္ဇန်း (Manodvārāvajjana)', desc: 'မနောဒွါရ (စိတ်) သို့ ရောက်လာသော အာရုံကို ဆင်ခြင်ခြင်း။ ဤစိတ်ပြီးလျှင် ဇော ချက်ချင်း ကျသည်။', color: 'bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border-cyan-400 dark:border-cyan-600' }
+        ];
+
+        const pancadvaraSequence = ['b', 'b', 'atita', 'calana', 'upaccheda', 'avajjana', 'vinnana', 'sampa', 'santi', 'vuttho', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'tada', 'tada', 'b', 'b'];
+        const manodvaraSequence = ['b', 'b', 'calana', 'upaccheda', 'mano', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'javana', 'tada', 'tada', 'b', 'b'];
+
+        function renderTimeline(elementId, sequence) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+            
+            sequence.forEach((nodeId, index) => {
+                const node = vithiNodes.find(n => n.id === nodeId);
+                if (!node) return;
+
+                const isVithi = (nodeId !== 'b');
+                let numberLabel = '';
+                
+                // Count only vithi cittas for the 17 moments
+                if(elementId === 'pancadvara-timeline' && isVithi) {
+                    const vithiCount = index - 1; // since 'b', 'b' are first
+                    if(vithiCount >= 1 && vithiCount <= 17) numberLabel = `<div class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-slate-400 font-bold">${vithiCount}</div>`;
+                }
+
+                container.innerHTML += `
+                    <div class="flex items-center">
+                        <button onclick="openModal('${node.id}')" 
+                            class="vithi-node relative w-12 h-12 md:w-14 md:h-14 rounded-full flex flex-col items-center justify-center border-2 ${node.color} shadow-sm shrink-0">
+                            ${numberLabel}
+                            <span class="font-bold text-sm md:text-base">${node.code}</span>
+                        </button>
+                        ${index < sequence.length - 1 ? '<div class="w-3 h-0.5 bg-slate-300 dark:bg-slate-700 shrink-0"></div>' : ''}
+                    </div>
+                `;
+            });
+        }
+
+        function openModal(nodeId) {
+            const node = vithiNodes.find(n => n.id === nodeId);
+            if (!node) return;
+
+            document.getElementById('modal-content').innerHTML = `
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center border-2 font-bold text-lg ${node.color}">${node.code}</div>
+                    <h3 class="font-bold text-lg md:text-xl text-slate-800 dark:text-slate-100">${node.full}</h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3">${node.desc}</p>
+            `;
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTimeline('pancadvara-timeline', pancadvaraSequence);
+            renderTimeline('manodvara-timeline', manodvaraSequence);
+        });
+    </script>
+</body>
+</html>
