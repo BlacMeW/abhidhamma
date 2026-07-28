@@ -119,17 +119,35 @@
         </div>
 
         <!-- Progress Bar (Visible only during run) -->
-        <div id="progress-container" class="hidden w-full space-y-1.5 px-2">
-            <div class="flex justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
-                <span>ယခုအဆင့် တိုးတက်မှု</span>
-                <span id="stage-progress-text">0%</span>
+        <div id="progress-container" class="hidden w-full space-y-3 px-2">
+            <!-- 1. Current Stage Progress -->
+            <div class="space-y-1">
+                <div class="flex justify-between text-xs font-semibold text-rose-600 dark:text-rose-400">
+                    <span>ယခုအဆင့် တိုးတက်မှု (Current Stage)</span>
+                    <span id="stage-progress-text">0%</span>
+                </div>
+                <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div id="stage-progress-bar" class="h-full bg-rose-500 transition-all duration-300 w-0 rounded-full"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+                    <span>အဆင့် ကြာမြင့်ချိန်: <span id="stage-elapsed-display" class="font-mono">00:00</span></span>
+                    <span>အဆင့် လက်ကျန်: <span id="stage-left-display" class="font-mono">00:00</span></span>
+                </div>
             </div>
-            <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div id="stage-progress-bar" class="h-full bg-rose-500 transition-all duration-300 w-0 rounded-full"></div>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-400 pt-0.5">
-                <span>စုစုပေါင်း ကြာမြင့်ချိန်: <span id="elapsed-time-display" class="font-mono">00:00</span></span>
-                <span>လက်ကျန်: <span id="total-left-display" class="font-mono">12:00</span></span>
+
+            <!-- 2. Total Session Progress -->
+            <div class="space-y-1 pt-2 border-t border-slate-200/60 dark:border-slate-800">
+                <div class="flex justify-between text-xs font-semibold text-slate-600 dark:text-slate-300">
+                    <span>စုစုပေါင်း တိုးတက်မှု (Total Session)</span>
+                    <span id="total-progress-text">0%</span>
+                </div>
+                <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div id="total-progress-bar" class="h-full bg-sky-600 dark:bg-sky-500 transition-all duration-300 w-0 rounded-full"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+                    <span>စုစုပေါင်း ကြာမြင့်ချိန်: <span id="elapsed-time-display" class="font-mono">00:00</span></span>
+                    <span>စုစုပေါင်း လက်ကျန်: <span id="total-left-display" class="font-mono">00:00</span></span>
+                </div>
             </div>
         </div>
 
@@ -513,6 +531,11 @@
         // Progress elements
         const stageProgressBar = document.getElementById('stage-progress-bar');
         const stageProgressText = document.getElementById('stage-progress-text');
+        const stageElapsedDisplay = document.getElementById('stage-elapsed-display');
+        const stageLeftDisplay = document.getElementById('stage-left-display');
+        
+        const totalProgressBar = document.getElementById('total-progress-bar');
+        const totalProgressText = document.getElementById('total-progress-text');
         const elapsedTimeDisplay = document.getElementById('elapsed-time-display');
         const totalLeftDisplay = document.getElementById('total-left-display');
 
@@ -801,16 +824,24 @@
         }
 
         function updateProgressUI() {
+            // 1. Current Stage Progress
             const totalStageSeconds = timePerStepMinutes * 60;
             const elapsedInStage = totalStageSeconds - timeLeftInStage;
-            const percent = Math.min(100, Math.round((elapsedInStage / totalStageSeconds) * 100));
+            const stagePercent = Math.min(100, Math.round((elapsedInStage / totalStageSeconds) * 100));
             
-            stageProgressBar.style.width = `${percent}%`;
-            stageProgressText.textContent = `${percent}%`;
-            elapsedTimeDisplay.textContent = formatTime(totalElapsedSeconds);
+            stageProgressBar.style.width = `${stagePercent}%`;
+            stageProgressText.textContent = `${stagePercent}%`;
+            if (stageElapsedDisplay) stageElapsedDisplay.textContent = formatTime(elapsedInStage);
+            if (stageLeftDisplay) stageLeftDisplay.textContent = formatTime(timeLeftInStage);
             
+            // 2. Total Session Progress
             const totalAllSeconds = timePerStepMinutes * 60 * activeStages.length;
             const remainingAll = Math.max(0, totalAllSeconds - totalElapsedSeconds);
+            const totalPercent = Math.min(100, Math.round((totalElapsedSeconds / totalAllSeconds) * 100));
+
+            if (totalProgressBar) totalProgressBar.style.width = `${totalPercent}%`;
+            if (totalProgressText) totalProgressText.textContent = `${totalPercent}%`;
+            elapsedTimeDisplay.textContent = formatTime(totalElapsedSeconds);
             totalLeftDisplay.textContent = formatTime(remainingAll);
         }
 
