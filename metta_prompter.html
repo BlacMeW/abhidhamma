@@ -258,7 +258,10 @@
             </div>
 
             <!-- Additional Options & Test Bell -->
-            <div class="flex items-center justify-end pt-2 border-t border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
+                <button onclick="toggleChantAudio()" id="btn-chant-audio" type="button" class="px-3.5 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/40 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
+                    <i class="fa-solid fa-volume-high" id="chant-audio-icon"></i> <span id="chant-audio-text">မေတ္တာရွတ်သံ ဖွင့်ထားမည်</span>
+                </button>
                 <button onclick="testBellSound()" type="button" class="px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
                     <i class="fa-solid fa-bell text-amber-500"></i> ခေါင်းလောင်းသံ စမ်းမည်
                 </button>
@@ -320,6 +323,8 @@
             </button>
         </div>
     </div>
+
+    <audio id="metta-audio" src="assets/mp3/Metta.mp3" loop preload="none"></audio>
 
     <script>
         const standardStages = [
@@ -482,6 +487,8 @@
         let isRunning = false;
         let isPaused = false;
         let wakeLock = null;
+        let chantAudioEnabled = true;
+        const chantAudio = document.getElementById('metta-audio');
 
         // DOM elements
         const timeDisplay = document.getElementById('time-display');
@@ -604,6 +611,23 @@
 
         function testBellSound() {
             playBell(false);
+        }
+
+        function toggleChantAudio() {
+            if (isRunning) return;
+            chantAudioEnabled = !chantAudioEnabled;
+            const btn = document.getElementById('btn-chant-audio');
+            const icon = document.getElementById('chant-audio-icon');
+            const text = document.getElementById('chant-audio-text');
+            if (chantAudioEnabled) {
+                btn.className = "px-3.5 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/40 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm";
+                icon.className = "fa-solid fa-volume-high";
+                text.textContent = "မေတ္တာရွတ်သံ ဖွင့်ထားမည်";
+            } else {
+                btn.className = "px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm";
+                icon.className = "fa-solid fa-volume-xmark";
+                text.textContent = "မေတ္တာရွတ်သံ ပိတ်ထားမည်";
+            }
         }
 
         // Wake Lock API
@@ -824,7 +848,12 @@
             timeSinceLastBell = 0;
 
             requestWakeLock();
-            
+
+            if (chantAudioEnabled && chantAudio) {
+                chantAudio.currentTime = 0;
+                chantAudio.play().catch(() => {});
+            }
+
             setupPanel.classList.add('hidden');
             runControls.classList.remove('hidden');
             progressContainer.classList.remove('hidden');
@@ -869,11 +898,13 @@
                 pauseIcon.className = "fa-solid fa-play";
                 pauseText.textContent = "ဆက်လက်ပွားမည်";
                 containerEl.classList.remove('timer-active');
+                if (chantAudio) chantAudio.pause();
             } else {
                 pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold shadow-md shadow-amber-500/20 transition-all active:scale-95 flex items-center justify-center gap-2";
                 pauseIcon.className = "fa-solid fa-pause";
                 pauseText.textContent = "ရပ်နားမည်";
                 containerEl.classList.add('timer-active');
+                if (chantAudioEnabled && chantAudio) chantAudio.play().catch(() => {});
             }
         }
 
@@ -893,7 +924,12 @@
             isRunning = false;
             isPaused = false;
             releaseWakeLock();
-            
+
+            if (chantAudio) {
+                chantAudio.pause();
+                chantAudio.currentTime = 0;
+            }
+
             setupPanel.classList.remove('hidden');
             runControls.classList.add('hidden');
             progressContainer.classList.add('hidden');
@@ -921,7 +957,12 @@
             isPaused = false;
             releaseWakeLock();
             playBell(true);
-            
+
+            if (chantAudio) {
+                chantAudio.pause();
+                chantAudio.currentTime = 0;
+            }
+
             runControls.classList.add('hidden');
             progressContainer.classList.add('hidden');
             containerEl.classList.remove('timer-active');
