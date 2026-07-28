@@ -5,153 +5,664 @@
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="အာနာပါန ရှုမှတ်ရန် အသက်ရှူလမ်းကြောင်းပြ (Anapana Visualizer)">
-    <title>အာနာပါန Visualizer</title>
+    <meta name="description" content="အာနာပါန ရှုမှတ်ရန် အသက်ရှူလမ်းကြောင်းပြ (Anapana Visualizer) - ဂဏနာ၊ အနုဗန္ဓနာ၊ ဖုသနာ၊ ဌပနာ နှင့် သတိပဋ္ဌာန် လမ်းညွှန်">
+    <title>အာနာပါန Visualizer - ထွက်သက်ဝင်သက် သတိပဋ္ဌာန် လေ့ကျင့်ရေး</title>
     <link rel="stylesheet" href="output.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', system-ui, sans-serif; }
         
-        .breathe-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #38bdf8, #0284c7);
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
+        /* Breathing Visualizer Outer Container */
+        .visualizer-container {
+            position: relative;
+            width: 240px;
+            height: 240px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
-            position: relative;
+            margin: 1.5rem auto;
         }
-
-        /* Scale the circle down on narrow phones so its breathing animation
-           (up to 2x scale) stays comfortably inside the viewport. */
         @media (max-width: 639px) {
-            .breathe-circle { width: 110px; height: 110px; font-size: 1rem; }
-        }
-        @media (min-width: 640px) and (max-width: 767px) {
-            .breathe-circle { width: 130px; height: 130px; font-size: 1.1rem; }
+            .visualizer-container { width: 200px; height: 200px; margin: 1rem auto; }
         }
 
-        .breathe-circle::after {
-            content: '';
+        /* Outer Aura Glowing Ring */
+        .aura-ring {
             position: absolute;
-            inset: -20px;
+            inset: 0;
             border-radius: 50%;
-            border: 2px solid rgba(56, 189, 248, 0.3);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Normal Speed: 4s inhale, 4s exhale */
-        .anim-breathe-normal {
-            animation: breatheNormal 8s ease-in-out infinite;
-        }
-        .anim-breathe-normal::after {
-            animation: pulseRing 8s ease-in-out infinite;
-        }
-
-        /* Slow Speed: 6s inhale, 6s exhale */
-        .anim-breathe-slow {
-            animation: breatheSlow 12s ease-in-out infinite;
-        }
-        .anim-breathe-slow::after {
-            animation: pulseRing 12s ease-in-out infinite;
-        }
-
-        @keyframes breatheNormal {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
-            50% { transform: scale(1.8); box-shadow: 0 0 60px rgba(56, 189, 248, 0.6); }
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(2, 132, 199, 0.05) 70%, transparent 100%);
+            border: 2px dashed rgba(56, 189, 248, 0.3);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, border-color 0.5s ease;
+            transform: scale(0.85);
+            opacity: 0.5;
         }
         
-        @keyframes breatheSlow {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
-            50% { transform: scale(2); box-shadow: 0 0 60px rgba(56, 189, 248, 0.6); }
+        /* Middle Pulse Ring */
+        .pulse-ring {
+            position: absolute;
+            inset: 15%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, transparent 70%);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+            transform: scale(0.85);
+            opacity: 0.6;
         }
 
-        @keyframes pulseRing {
-            0%, 100% { transform: scale(0.9); opacity: 0; }
-            50% { transform: scale(1.1); opacity: 1; }
+        /* Main Core Breathing Circle */
+        .breathe-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7, #0369a1);
+            box-shadow: 0 0 35px rgba(14, 165, 233, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 10;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.5s ease, box-shadow 0.5s ease;
+            transform: scale(1);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        @media (max-width: 639px) {
+            .breathe-circle { width: 110px; height: 110px; }
         }
 
+        /* Animation States controlled via JS styling for exact custom rhythms */
+        .phase-inhale .aura-ring { transform: scale(1.65); opacity: 1; border-color: #38bdf8; }
+        .phase-inhale .pulse-ring { transform: scale(1.45); opacity: 0.9; }
+        .phase-inhale .breathe-circle { transform: scale(1.35); background: linear-gradient(135deg, #38bdf8, #0284c7); box-shadow: 0 0 60px rgba(56, 189, 248, 0.8), inset 0 0 25px rgba(255, 255, 255, 0.6); }
+
+        .phase-hold .aura-ring { transform: scale(1.65); opacity: 0.85; border-color: #facc15; }
+        .phase-hold .pulse-ring { transform: scale(1.45); opacity: 0.8; }
+        .phase-hold .breathe-circle { transform: scale(1.35); background: linear-gradient(135deg, #eab308, #ca8a04); box-shadow: 0 0 50px rgba(250, 204, 21, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.5); border-color: #fef08a; }
+
+        .phase-exhale .aura-ring { transform: scale(0.85); opacity: 0.4; border-color: #f97316; }
+        .phase-exhale .pulse-ring { transform: scale(0.85); opacity: 0.4; }
+        .phase-exhale .breathe-circle { transform: scale(0.9); background: linear-gradient(135deg, #f97316, #c2410c); box-shadow: 0 0 25px rgba(249, 115, 22, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2); border-color: rgba(255,255,255,0.3); }
+
+        /* Glassmorphism Card */
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
         .dark .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
+
+        /* Tab Navigation */
+        .tab-btn { transition: all 0.2s ease; }
+        .tab-btn.active {
+            background-color: #0ea5e9; color: white; font-weight: bold; box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
+        }
+        .tab-btn:not(.active) {
+            background-color: transparent; color: #64748b;
+        }
+        .dark .tab-btn:not(.active) { color: #94a3b8; }
+        .tab-btn:not(.active):hover {
+            background-color: rgba(14, 165, 233, 0.1); color: #0ea5e9;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.5); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
-    <header class="border-b border-transparent sticky top-0 z-40 transition-all duration-300 backdrop-blur-md">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-            <a href="satipatthana_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <h1 class="text-base sm:text-lg font-bold text-sky-700 dark:text-sky-400 text-center px-2">အာနာပါန <span class="font-normal text-slate-500">Visualizer</span></h1>
-        </div>
-    </header>
-
-    <main class="flex-1 flex flex-col items-center justify-center p-4">
-
-        <div class="text-center mb-8 sm:mb-12 md:mb-16 min-h-[2.5rem] sm:min-h-[2rem] flex items-center justify-center px-2">
-            <h2 id="instruction-text" class="text-lg sm:text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 tracking-wide sm:tracking-wider opacity-50">အသင့်ပြင်ပါ</h2>
-        </div>
-
-        <div class="h-[220px] sm:h-[260px] md:h-[300px] flex items-center justify-center">
-            <div id="circle" class="breathe-circle">
-                <span id="circle-text">ရှူသွင်း...</span>
-            </div>
-        </div>
-
-        <div class="mt-8 sm:mt-12 md:mt-16 glass-card p-5 sm:p-6 rounded-3xl w-full max-w-sm space-y-6">
-            <div>
-                <label class="block text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 text-center">အမြန်နှုန်း (Speed)</label>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <button id="btn-speed-normal" onclick="setSpeed('normal')" class="flex-1 px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">ပုံမှန် (Normal)</button>
-                    <button id="btn-speed-slow" onclick="setSpeed('slow')" class="flex-1 px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">နှေး (Slow)</button>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-sky-50 sm:from-slate-100 to-teal-50/40 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-200">
+    
+    <!-- Header -->
+    <header class="border-b border-sky-200/60 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 sticky top-0 z-40 transition-all duration-300 backdrop-blur-md shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+                <a href="satipatthana_guide.html" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 transition cursor-pointer shrink-0 border border-slate-200 dark:border-slate-700" title="သတိပဋ္ဌာန် လမ်းညွှန်သို့ ပြန်သွားရန်">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold text-sky-700 dark:text-sky-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-wind text-sky-500"></i> အာနာပါန <span class="font-normal text-slate-500 dark:text-slate-400 text-sm">Visualizer</span>
+                    </h1>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">ကာယာနုပဿနာ - ထွက်သက်ဝင်သက် သတိပဋ္ဌာန်</p>
                 </div>
             </div>
 
-            <button id="btn-toggle" onclick="toggleBreathing()" class="w-full py-4 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-lg shadow-lg shadow-sky-500/30 transition-transform active:scale-95 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-play"></i> စတင်မည်
+            <!-- Quick Action Audio & Fullscreen Buttons -->
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <button onclick="toggleAmbientSound()" id="btn-ambient" class="px-2.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 text-xs font-semibold transition flex items-center gap-1.5 border border-slate-200 dark:border-slate-700" title="အေးချမ်းသော နောက်ခံအသံလှိုင်း ဖွင့်/ပိတ်">
+                    <i class="fa-solid fa-water" id="ambient-icon"></i> <span class="hidden sm:inline">နောက်ခံအသံ</span>
+                </button>
+                <button onclick="toggleVoiceGuide()" id="btn-voice" class="px-2.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-emerald-600 dark:text-emerald-400 text-xs font-semibold transition flex items-center gap-1.5 border border-slate-200 dark:border-slate-700" title="အလိုအလျောက် အသံလမ်းညွှန် (Voice TTS) ဖွင့်/ပိတ်">
+                    <i class="fa-solid fa-volume-high" id="voice-icon"></i> <span class="hidden sm:inline">အသံလမ်းညွှန်</span>
+                </button>
+                <button onclick="toggleFullScreen()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 transition shrink-0 border border-slate-200 dark:border-slate-700" title="ဖန်သားပြင် အပြည့် (Fullscreen)">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col items-center justify-between gap-6">
+
+        <!-- Top Guidance & Pali Quote Box -->
+        <div class="w-full text-center space-y-2 max-w-2xl mt-1 sm:mt-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 text-xs font-bold border border-sky-300/60 dark:border-sky-800/60 shadow-sm" id="mode-badge">
+                <i class="fa-solid fa-seedling text-emerald-500"></i> ၁။ ဂဏနာ (ရေတွက်ခြင်း နည်းစနစ် - ၄/၄ စက္ကန့်)
+            </div>
+            <h2 id="instruction-text" class="text-xl sm:text-2xl md:text-3xl font-bold text-slate-700 dark:text-slate-200 tracking-wide transition-all duration-300">
+                အသင့်ပြင်ပါ
+            </h2>
+            <p id="pali-quote" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-serif italic max-w-lg mx-auto bg-white/60 dark:bg-slate-800/50 px-4 py-2 rounded-xl border border-slate-200/80 dark:border-slate-700/80">
+                "သတိကပ်လျက်သာလျှင် လေကို ရှူသွင်း၏။ သတိကပ်လျက်သာလျှင် လေကို ရှူထုတ်၏။"
+            </p>
+        </div>
+
+        <!-- Breathing Circle Visualization Area -->
+        <div id="vis-wrapper" class="visualizer-container">
+            <div class="aura-ring"></div>
+            <div class="pulse-ring"></div>
+            <div class="breathe-circle" id="circle">
+                <span id="circle-action" class="font-bold text-base sm:text-lg">အသင့်...</span>
+                <span id="circle-timer" class="text-xs font-mono opacity-85 mt-0.5">0.0s</span>
+            </div>
+            <!-- Floating Counter Badge for Ganana (Counting Mode) -->
+            <div id="counter-badge" class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-slate-900 text-amber-400 font-bold px-4 py-1.5 rounded-full text-xs border border-amber-500/50 shadow-lg hidden">
+                ရေတွက်မှု - <span id="counter-num" class="text-white font-mono text-sm">၀</span> / ၁၀
+            </div>
+        </div>
+
+        <!-- Active Timer & Breath Count Stats Bar (Visible when running) -->
+        <div id="active-stats" class="w-full max-w-sm grid grid-cols-2 gap-3 bg-white/70 dark:bg-slate-800/70 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 text-center text-xs hidden">
+            <div>
+                <span class="text-slate-500 dark:text-slate-400 block">ကျင့်ကြံချိန်</span>
+                <span id="stat-time" class="font-mono font-bold text-sky-600 dark:text-sky-400 text-sm">00:00</span>
+            </div>
+            <div>
+                <span class="text-slate-500 dark:text-slate-400 block">ရှူသွင်း/ထုတ် အကြိမ်</span>
+                <span id="stat-breaths" class="font-mono font-bold text-emerald-600 dark:text-emerald-400 text-sm">၀ ကြိမ်</span>
+            </div>
+        </div>
+
+        <!-- Interactive Settings & Controls Dashboard -->
+        <div class="glass-card w-full max-w-2xl rounded-3xl p-4 sm:p-6 shadow-xl space-y-5">
+            
+            <!-- Navigation Tabs -->
+            <div class="flex justify-center border-b border-slate-200 dark:border-slate-700/80 pb-3 gap-1 sm:gap-2 overflow-x-auto">
+                <button onclick="switchTab('modes')" id="tab-btn-modes" class="tab-btn active px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5">
+                    <i class="fa-solid fa-sliders"></i> လေ့ကျင့်ရေး မုဒ်များ
+                </button>
+                <button onclick="switchTab('guidance')" id="tab-btn-guidance" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5">
+                    <i class="fa-solid fa-book-open"></i> ရှုမှတ်နည်း (၄) မျိုး
+                </button>
+                <button onclick="switchTab('audio')" id="tab-btn-audio" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5">
+                    <i class="fa-solid fa-gear"></i> အသံ နှင့် တိုင်မာ
+                </button>
+            </div>
+
+            <!-- Tab 1: Modes & Presets -->
+            <div id="tab-content-modes" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <button onclick="selectPreset('ganana')" id="preset-ganana" class="preset-card text-left p-3.5 rounded-2xl border-2 border-sky-500 bg-sky-50/60 dark:bg-sky-950/40 transition">
+                        <div class="font-bold text-sky-800 dark:text-sky-300 text-sm flex items-center justify-between">
+                            <span>၁။ ဂဏနာ (ရေတွက်ခြင်း)</span>
+                            <span class="text-[10px] font-mono bg-sky-200 dark:bg-sky-900 text-sky-900 dark:text-sky-200 px-2 py-0.5 rounded">4s - 0s - 4s</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">၁ မှ ၁၀ အထိ တစ်ကြိမ်စီ ရေတွက်၍ စိတ်ကို ချုပ်တည်းရန်။</p>
+                    </button>
+
+                    <button onclick="selectPreset('digha')" id="preset-digha" class="preset-card text-left p-3.5 rounded-2xl border-2 border-transparent bg-slate-100/80 dark:bg-slate-800/60 hover:border-slate-300 dark:hover:border-slate-600 transition">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center justify-between">
+                            <span>၂။ ဒီဃ (ရှည်သော ထွက်သက်ဝင်သက်)</span>
+                            <span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">5s - 0s - 5s</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ရှည်ရှည် ရှူသွင်း/ရှူထုတ်သည်ကို ထင်ရှားစွာ သိလျက် ရှုမှတ်ရန်။</p>
+                    </button>
+
+                    <button onclick="selectPreset('rassa')" id="preset-rassa" class="preset-card text-left p-3.5 rounded-2xl border-2 border-transparent bg-slate-100/80 dark:bg-slate-800/60 hover:border-slate-300 dark:hover:border-slate-600 transition">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center justify-between">
+                            <span>၃။ ရဿ (တိုသော ထွက်သက်ဝင်သက်)</span>
+                            <span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">3s - 0s - 3s</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">သဘာဝအတိုင်း ပုံမှန် တိုတို ရှူသွင်း/ရှူထုတ်မှုကို သိလျက် ရှုမှတ်ရန်။</p>
+                    </button>
+
+                    <button onclick="selectPreset('calming')" id="preset-calming" class="preset-card text-left p-3.5 rounded-2xl border-2 border-transparent bg-slate-100/80 dark:bg-slate-800/60 hover:border-slate-300 dark:hover:border-slate-600 transition">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center justify-between">
+                            <span>၄။ ပဿမ္ဘယံ (ငြိမ်းအေးခြင်း)</span>
+                            <span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">4s - 2s - 6s</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ခေတ္တအောင့်၍ ရှည်လျားစွာ ထုတ်ကာ ကာယသင်္ခါရကို ငြိမ်းအေးစေရန်။</p>
+                    </button>
+                </div>
+
+                <!-- Custom Rhythm Sliders -->
+                <div class="bg-slate-100/70 dark:bg-slate-900/60 p-3.5 sm:p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-700 dark:text-slate-300"><i class="fa-solid fa-stopwatch-20 text-sky-500 mr-1.5"></i> စိတ်ကြိုက် အချိန်နှုန်း ချိန်ညှိရန် (Custom Rhythm)</span>
+                        <button onclick="selectPreset('custom')" id="btn-custom-mode" class="px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-800 text-[11px] font-semibold text-slate-700 dark:text-slate-300 hover:bg-sky-500 hover:text-white transition">စိတ်ကြိုက် သုံးမည်</button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-xs">
+                        <div>
+                            <div class="flex justify-between mb-1 text-sky-600 dark:text-sky-400 font-semibold">
+                                <span>ရှူသွင်း (Inhale)</span>
+                                <span id="val-in">4s</span>
+                            </div>
+                            <input type="range" id="slider-in" min="2" max="8" value="4" oninput="updateCustomSliders()" class="w-full accent-sky-500 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-lg cursor-pointer">
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1 text-amber-600 dark:text-amber-400 font-semibold">
+                                <span>ခေတ္တထိန်း (Hold)</span>
+                                <span id="val-hold">0s</span>
+                            </div>
+                            <input type="range" id="slider-hold" min="0" max="6" value="0" oninput="updateCustomSliders()" class="w-full accent-amber-500 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-lg cursor-pointer">
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1 text-orange-600 dark:text-orange-400 font-semibold">
+                                <span>ရှူထုတ် (Exhale)</span>
+                                <span id="val-out">4s</span>
+                            </div>
+                            <input type="range" id="slider-out" min="2" max="10" value="4" oninput="updateCustomSliders()" class="w-full accent-orange-500 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Visuddhimagga Guidance (Hidden by default) -->
+            <div id="tab-content-guidance" class="space-y-3 hidden text-xs sm:text-sm">
+                <div class="bg-sky-50/70 dark:bg-slate-900/80 p-4 rounded-2xl border border-sky-200 dark:border-slate-700 space-y-2">
+                    <h4 class="font-bold text-sky-800 dark:text-sky-300 flex items-center gap-2">
+                        <i class="fa-solid fa-list-ol text-sky-500"></i> ၁။ ဂဏနာ (ရေတွက်ခြင်း နည်းစနစ်)
+                    </h4>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        အစပထမ ရှုမှတ်သူများ စိတ်ပျံ့လွင့်မှု များနေပါက ထွက်သက်ဝင်သက် တစ်ကြိမ်ပြည့်တိုင်း <strong>'၁'၊ '၂' မှ '၁၀' အထိ</strong> စိတ်ထဲမှ (သို့) ထုတ်ဖော်ရေတွက်ပါ။ ၅-အောက် မလျော့၊ ၁၀-ထက် မကျော်လွန်စေဘဲ ဆက်တိုက် ရေတွက်ခြင်းဖြင့် စိတ်ကို အသက်ရှူခြင်းအာရုံ၌ ချုပ်တည်းနိုင်ပါသည်။
+                    </p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-900/80 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+                    <h4 class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-shoe-prints text-emerald-500"></i> ၂။ အနုဗန္ဓနာ (အစဉ်လိုက်ခြင်း နည်းစနစ်)
+                    </h4>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        ရေတွက်မှုကို စွန့်၍ လေဝင်လာသည့် အစ (နှာသီးဖျား)၊ အလယ် (ရင်ဘတ်)၊ အဆုံး (ချက်) နှင့် လေထွက်သွားသည့် အစ၊ အလယ်၊ အဆုံးတို့ကို ဉာဏ်ဖြင့် အစဉ်လိုက် ကြည့်ရှုခြင်း ဖြစ်သည်။
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-amber-50/60 dark:bg-amber-950/20 p-3.5 rounded-2xl border border-amber-200/80 dark:border-amber-900/40 space-y-1">
+                        <h4 class="font-bold text-amber-800 dark:text-amber-300">၃။ ဖုသနာ (ထိတွေ့ရာ၌သာ ထားခြင်း)</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                            လေဝင်လေထွက် ထိတွေ့ရာ နှာသီးဖျား သို့မဟုတ် အထက်ခမ်း တစ်နေရာတည်း၌သာ သတိကို ကပ်၍ စူးစိုက်ရှုမှတ်ခြင်း။
+                        </p>
+                    </div>
+                    <div class="bg-purple-50/60 dark:bg-purple-950/20 p-3.5 rounded-2xl border border-purple-200/80 dark:border-purple-900/40 space-y-1">
+                        <h4 class="font-bold text-purple-800 dark:text-purple-300">၄။ ဌပနာ (ငြိမ်ဝပ်တည်ကြည်ခြင်း)</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                            ထိတွေ့ရာ၌ စိတ်ငြိမ်ဝပ်ပြီး ပဋိဘာဂနိမိတ် (ကြယ်၊ ပုလဲ၊ ဂွမ်းစကဲ့သို့ အလင်း) ပေါ်လာသည်အထိ သမာဓိ တည်ကြည်စွာ ထားခြင်း။
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Audio & Timer Settings (Hidden by default) -->
+            <div id="tab-content-audio" class="space-y-4 hidden text-xs sm:text-sm">
+                <!-- Timer Selection -->
+                <div class="bg-slate-100/80 dark:bg-slate-900/70 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2.5">
+                    <label class="font-bold text-slate-700 dark:text-slate-200 flex items-center justify-between">
+                        <span><i class="fa-solid fa-clock text-sky-500 mr-1.5"></i> ရှုမှတ်မည့် အချိန် (Meditation Timer):</span>
+                        <span id="timer-label-val" class="text-sky-600 dark:text-sky-400 font-mono">အကန့်အသတ်မရှိ (Unlimited)</span>
+                    </label>
+                    <div class="grid grid-cols-5 gap-1.5 pt-1">
+                        <button onclick="setTimerOption(0)" class="timer-opt-btn py-2 rounded-xl bg-sky-500 text-white font-bold text-xs shadow-sm">မထားပါ</button>
+                        <button onclick="setTimerOption(5)" class="timer-opt-btn py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold">5 Min</button>
+                        <button onclick="setTimerOption(10)" class="timer-opt-btn py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold">10 Min</button>
+                        <button onclick="setTimerOption(15)" class="timer-opt-btn py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold">15 Min</button>
+                        <button onclick="setTimerOption(30)" class="timer-opt-btn py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold">30 Min</button>
+                    </div>
+                </div>
+
+                <!-- Audio Toggles -->
+                <div class="space-y-2.5">
+                    <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-700 dark:text-slate-200 block">အလိုအလျောက် အသံလမ်းညွှန် (Voice TTS)</span>
+                                <span class="text-[11px] text-slate-500 dark:text-slate-400">ရှူသွင်း၊ ရှူထုတ် နှင့် ဂဏနာ ရေတွက်မှုကို မြန်မာအသံဖြင့် ညွှန်ပြရန်</span>
+                            </div>
+                        </div>
+                        <input type="checkbox" id="check-voice" checked onchange="toggleVoiceGuide()" class="w-5 h-5 rounded accent-emerald-500">
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-600 dark:text-sky-400 flex items-center justify-center">
+                                <i class="fa-solid fa-water"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-700 dark:text-slate-200 block">အေးချမ်းသော နောက်ခံအသံ (Ambient Meditative Drone)</span>
+                                <span class="text-[11px] text-slate-500 dark:text-slate-400">ပြင်ပဆူညံသံများကို ကာကွယ်ရန် 432Hz စိတ်ငြိမ်းချမ်းစေသော အသံလှိုင်း</span>
+                            </div>
+                        </div>
+                        <input type="checkbox" id="check-ambient" onchange="toggleAmbientSound()" class="w-5 h-5 rounded accent-sky-500">
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-700 dark:text-slate-200 block">အဆင့်ကူးပြောင်းမှု ခေါင်းလောင်းသံ (Chime)</span>
+                                <span class="text-[11px] text-slate-500 dark:text-slate-400">ရှူသွင်း / ရှူထုတ် အဆင့်ပြောင်းတိုင်း ညင်သာသော ခေါင်းလောင်းသံတီးရန်</span>
+                            </div>
+                        </div>
+                        <input type="checkbox" id="check-chime" onchange="testBell()" class="w-5 h-5 rounded accent-amber-500">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Big Start / Stop Action Button -->
+            <button id="btn-toggle" onclick="toggleBreathing()" class="w-full py-4 sm:py-4.5 rounded-2xl bg-gradient-to-r from-sky-500 to-teal-500 hover:from-sky-600 hover:to-teal-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-sky-500/25 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2.5">
+                <i class="fa-solid fa-play text-xl"></i> <span>အာနာပါန ရှုမှတ်မှု စတင်မည်</span>
             </button>
         </div>
     </main>
 
-    <script>
-        let isRunning = false;
-        let speed = 'normal'; // normal or slow
-        let breatheInterval;
-        let phaseTimeout;
-        
-        const circle = document.getElementById('circle');
-        const circleText = document.getElementById('circle-text');
-        const instText = document.getElementById('instruction-text');
-        const btnToggle = document.getElementById('btn-toggle');
-        const btnNormal = document.getElementById('btn-speed-normal');
-        const btnSlow = document.getElementById('btn-speed-slow');
+    <!-- Completion Modal -->
+    <div id="modal-complete" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-7 text-center border border-slate-200 dark:border-slate-700 shadow-2xl space-y-4 animate-in fade-in zoom-in duration-300">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 text-3xl flex items-center justify-center mx-auto border border-emerald-500/30 shadow-inner">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-1">သာဓု သာဓု သာဓု</h3>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm">သတ်မှတ်ထားသော အာနာပါန ရှုမှတ်မှု အချိန် ပြီးဆုံးပါပြီ။</p>
+            </div>
+            
+            <div class="bg-slate-50 dark:bg-slate-800/80 p-4 rounded-2xl text-xs text-slate-700 dark:text-slate-300 space-y-2 border border-slate-200 dark:border-slate-700 text-left">
+                <div class="flex justify-between font-bold border-b border-slate-200 dark:border-slate-700 pb-1.5">
+                    <span>လေ့ကျင့်ခဲ့သော မုဒ်:</span>
+                    <span id="modal-mode-name" class="text-sky-600 dark:text-sky-400">၁။ ဂဏနာ (ရေတွက်ခြင်း)</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>ကြာမြင့်ချိန်:</span>
+                    <span id="modal-time" class="font-mono font-bold text-slate-900 dark:text-white">10 မိနစ်</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>ရှူသွင်း/ထုတ် စုစုပေါင်း:</span>
+                    <span id="modal-breaths" class="font-mono font-bold text-emerald-600 dark:text-emerald-400">၆၀ ကြိမ်</span>
+                </div>
+            </div>
 
-        function setSpeed(newSpeed) {
-            if (isRunning) return; // Cannot change speed while running
-            speed = newSpeed;
-            if (speed === 'normal') {
-                btnNormal.className = "flex-1 px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
-                btnSlow.className = "flex-1 px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
-            } else {
-                btnSlow.className = "flex-1 px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
-                btnNormal.className = "flex-1 px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">
+                "သတိပဋ္ဌာန် တရားလေးပါးကို ပွားများအပ်၊ ကြိမ်ဖန်များစွာ အလေ့အကျင့်ပြုအပ်သည်ရှိသော် အမြိုက်နိဗ္ဗာန်သို့ မျက်မှောက်ပြုစေ၏။"
+            </p>
+
+            <button onclick="closeModal()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-md transition">
+                ကောင်းပါပြီ / ဆက်လက် လေ့ကျင့်မည်
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Presets & Configuration
+        const presets = {
+            ganana: {
+                title: "၁။ ဂဏနာ (ရေတွက်ခြင်း နည်းစနစ်)",
+                pali: "ထွက်သက်ဝင်သက် တစ်ကြိမ်ပြည့်တိုင်း '၁' မှ '၁၀' အထိ စိတ်ထဲမှ (သို့) အသံဖြင့် ရေတွက်လျက် စူးစိုက်ပါ။",
+                inTime: 4, holdTime: 0, outTime: 4, isCounting: true
+            },
+            digha: {
+                title: "၂။ ဒီဃ (ရှည်သော ထွက်သက်ဝင်သက်)",
+                pali: "ဒီဃံ ဝါ အဿသန္တော... ရှည်ရှည် ရှူသွင်းလျှင် ရှည်ရှည် ရှူသွင်းသည်ဟု ထင်ရှားစွာ သိ၏။",
+                inTime: 5, holdTime: 0, outTime: 5, isCounting: false
+            },
+            rassa: {
+                title: "၃။ ရဿ (တိုသော ထွက်သက်ဝင်သက်)",
+                pali: "ရဿံ ဝါ အဿသန္တော... တိုတို ရှူသွင်း/ရှူထုတ်လျှင် တိုတိုဟု သဘာဝအတိုင်း ထင်ရှားစွာ သိ၏။",
+                inTime: 3, holdTime: 0, outTime: 3, isCounting: false
+            },
+            calming: {
+                title: "၄။ ပဿမ္ဘယံ (ကာယသင်္ခါရ ငြိမ်းအေးခြင်း)",
+                pali: "ပဿမ္ဘယံ ကာယသင်္ခါရံ... ရုန့်ရင်းသော ထွက်သက်ဝင်သက်ကို ဖြည်းညှင်းစွာ ငြိမ်းအေးစေလျက် ရှုမှတ်၏။",
+                inTime: 4, holdTime: 2, outTime: 6, isCounting: false
+            },
+            custom: {
+                title: "၅။ စိတ်ကြိုက် အချိန်နှုန်း ချိန်ညှိမှု (Custom Rhythm)",
+                pali: "မိမိ၏ လက်ရှိ အသက်ရှူနှုန်းနှင့် အကိုက်ညီဆုံး ဖြစ်စေရန် စိတ်ကြိုက် ချိန်ညှိထားသော လေ့ကျင့်မှု။",
+                inTime: 4, holdTime: 0, outTime: 4, isCounting: false
+            }
+        };
+
+        // State Variables
+        let currentPreset = 'ganana';
+        let isRunning = false;
+        let isVoice = true;
+        let isAmbient = false;
+        let isChime = false;
+        let timerMinutes = 0;
+        let timerSeconds = 0;
+        
+        let inSec = 4, holdSec = 0, outSec = 4;
+        let phase = 'idle'; // inhale, hold, exhale, idle
+        let breathCounter = 0;
+        let totalSessionBreaths = 0;
+        let sessionElapsedSeconds = 0;
+        
+        let phaseTimeout = null;
+        let timerInterval = null;
+        let countInterval = null;
+        let wakeLock = null;
+        let ambientOsc1 = null, ambientOsc2 = null, ambientGain = null, audioCtx = null;
+
+        // UI Elements
+        const visWrapper = document.getElementById('vis-wrapper');
+        const circleAction = document.getElementById('circle-action');
+        const circleTimer = document.getElementById('circle-timer');
+        const instText = document.getElementById('instruction-text');
+        const paliQuote = document.getElementById('pali-quote');
+        const modeBadge = document.getElementById('mode-badge');
+        const counterBadge = document.getElementById('counter-badge');
+        const counterNum = document.getElementById('counter-num');
+        const btnToggle = document.getElementById('btn-toggle');
+        const activeStats = document.getElementById('active-stats');
+        const statTime = document.getElementById('stat-time');
+        const statBreaths = document.getElementById('stat-breaths');
+
+        // Tab Switching
+        function switchTab(tabId) {
+            ['modes', 'guidance', 'audio'].forEach(id => {
+                const btn = document.getElementById(`tab-btn-${id}`);
+                const content = document.getElementById(`tab-content-${id}`);
+                if (id === tabId) {
+                    btn.classList.add('active');
+                    content.classList.remove('hidden');
+                } else {
+                    btn.classList.remove('active');
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // Preset Selection
+        function selectPreset(key) {
+            if (isRunning && key !== currentPreset) {
+                stopBreathing();
+            }
+            currentPreset = key;
+            const p = presets[key];
+
+            if (key !== 'custom') {
+                inSec = p.inTime;
+                holdSec = p.holdTime;
+                outSec = p.outTime;
+                document.getElementById('slider-in').value = inSec;
+                document.getElementById('slider-hold').value = holdSec;
+                document.getElementById('slider-out').value = outSec;
+                updateSliderText();
+            }
+
+            // Update mode info
+            modeBadge.innerHTML = `<i class="fa-solid fa-seedling text-emerald-500 mr-1.5"></i> ${p.title} (${inSec}s - ${holdSec}s - ${outSec}s)`;
+            paliQuote.textContent = `"${p.pali}"`;
+
+            // Update Preset Buttons styling
+            document.querySelectorAll('.preset-card').forEach(card => {
+                card.className = "preset-card text-left p-3.5 rounded-2xl border-2 border-transparent bg-slate-100/80 dark:bg-slate-800/60 hover:border-slate-300 dark:hover:border-slate-600 transition";
+            });
+            const activeCard = document.getElementById(`preset-${key}`);
+            if (activeCard) {
+                activeCard.className = "preset-card text-left p-3.5 rounded-2xl border-2 border-sky-500 bg-sky-50/60 dark:bg-sky-950/40 transition";
             }
         }
 
+        function updateSliderText() {
+            document.getElementById('val-in').textContent = `${inSec}s`;
+            document.getElementById('val-hold').textContent = `${holdSec}s`;
+            document.getElementById('val-out').textContent = `${outSec}s`;
+        }
+
+        function updateCustomSliders() {
+            inSec = parseInt(document.getElementById('slider-in').value);
+            holdSec = parseInt(document.getElementById('slider-hold').value);
+            outSec = parseInt(document.getElementById('slider-out').value);
+            updateSliderText();
+            selectPreset('custom');
+        }
+
+        // Timer Options
+        function setTimerOption(mins) {
+            timerMinutes = mins;
+            const label = mins === 0 ? "အကန့်အသတ်မရှိ (Unlimited)" : `${mins} မိနစ်`;
+            document.getElementById('timer-label-val').textContent = label;
+            
+            document.querySelectorAll('.timer-opt-btn').forEach(btn => {
+                const text = mins === 0 ? "မထားပါ" : `${mins} Min`;
+                if (btn.textContent.trim() === text) {
+                    btn.className = "timer-opt-btn py-2 rounded-xl bg-sky-500 text-white font-bold text-xs shadow-sm";
+                } else {
+                    btn.className = "timer-opt-btn py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold";
+                }
+            });
+        }
+
+        // Audio and Speech TTS
+        function speakText(text) {
+            if (!isVoice || !('speechSynthesis' in window)) return;
+            try {
+                window.speechSynthesis.cancel();
+                const utt = new SpeechSynthesisUtterance(text);
+                utt.lang = 'my-MM';
+                utt.rate = 0.85;
+                window.speechSynthesis.speak(utt);
+            } catch(e) { console.log(e); }
+        }
+
+        function toggleVoiceGuide() {
+            const chk = document.getElementById('check-voice');
+            isVoice = chk.checked;
+            const icon = document.getElementById('voice-icon');
+            if (icon) icon.className = isVoice ? "fa-solid fa-volume-high" : "fa-solid fa-volume-xmark";
+            if (isVoice && !isRunning) speakText("အသံလမ်းညွှန် ဖွင့်ပါပြီ");
+        }
+
+        function playBell(freq = 528, dur = 3) {
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (!AC) return;
+                if (!audioCtx) audioCtx = new AC();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + dur);
+            } catch(e) { console.log(e); }
+        }
+
+        function testBell() {
+            isChime = document.getElementById('check-chime').checked;
+            if (isChime) playBell(528, 2.5);
+        }
+
+        function toggleAmbientSound() {
+            const chk = document.getElementById('check-ambient');
+            isAmbient = chk ? chk.checked : !isAmbient;
+            if (chk) chk.checked = isAmbient;
+            
+            const icon = document.getElementById('ambient-icon');
+            if (icon) icon.className = isAmbient ? "fa-solid fa-water text-sky-400" : "fa-solid fa-water";
+            
+            if (isAmbient) {
+                startAmbientDrone();
+            } else {
+                stopAmbientDrone();
+            }
+        }
+
+        function startAmbientDrone() {
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (!AC) return;
+                if (!audioCtx) audioCtx = new AC();
+                
+                ambientOsc1 = audioCtx.createOscillator();
+                ambientOsc2 = audioCtx.createOscillator();
+                ambientGain = audioCtx.createGain();
+                
+                ambientOsc1.type = 'sine';
+                ambientOsc1.frequency.setValueAtTime(144, audioCtx.currentTime); // Relaxing fundamental drone
+                
+                ambientOsc2.type = 'sine';
+                ambientOsc2.frequency.setValueAtTime(148, audioCtx.currentTime); // 4Hz theta binaural beat
+                
+                ambientGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+                ambientGain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+                
+                ambientOsc1.connect(ambientGain);
+                ambientOsc2.connect(ambientGain);
+                ambientGain.connect(audioCtx.destination);
+                
+                ambientOsc1.start();
+                ambientOsc2.start();
+            } catch(e) { console.log(e); }
+        }
+
+        function stopAmbientDrone() {
+            if (ambientGain && audioCtx) {
+                try {
+                    ambientGain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+                    setTimeout(() => {
+                        if (ambientOsc1) { ambientOsc1.stop(); ambientOsc1.disconnect(); ambientOsc1 = null; }
+                        if (ambientOsc2) { ambientOsc2.stop(); ambientOsc2.disconnect(); ambientOsc2 = null; }
+                    }, 1000);
+                } catch(e) { console.log(e); }
+            }
+        }
+
+        // Wake Lock
+        async function requestWakeLock() {
+            try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); }
+            catch(err) { console.log(err); }
+        }
+        function releaseWakeLock() {
+            if (wakeLock !== null) wakeLock.release().then(() => { wakeLock = null; });
+        }
+
+        // Breathing Cycle Engine
         function toggleBreathing() {
             if (isRunning) {
                 stopBreathing();
@@ -160,55 +671,165 @@
             }
         }
 
-        function breatheCycle() {
-            const halfCycleTime = speed === 'normal' ? 4000 : 6000;
-            
-            // Inhale phase
-            circleText.textContent = "ရှူသွင်း...";
-            instText.textContent = "လေကိုဖြည်းညှင်းစွာ ရှူသွင်းပါ (Inhale)";
-            instText.className = "text-lg sm:text-xl md:text-2xl font-bold text-sky-600 dark:text-sky-400 tracking-wide sm:tracking-wider transition-opacity duration-500 opacity-100";
-            
-            phaseTimeout = setTimeout(() => {
-                // Exhale phase
-                circleText.textContent = "ရှူထုတ်...";
-                instText.textContent = "လေကိုဖြည်းညှင်းစွာ ရှူထုတ်ပါ (Exhale)";
-                instText.className = "text-lg sm:text-xl md:text-2xl font-bold text-amber-600 dark:text-amber-400 tracking-wide sm:tracking-wider transition-opacity duration-500 opacity-100";
-            }, halfCycleTime);
-        }
-
         function startBreathing() {
             isRunning = true;
-            btnToggle.innerHTML = '<i class="fa-solid fa-stop"></i> ရပ်မည်';
-            btnToggle.classList.replace('bg-sky-500', 'bg-rose-500');
-            btnToggle.classList.replace('hover:bg-sky-600', 'hover:bg-rose-600');
-            btnToggle.classList.replace('shadow-sky-500/30', 'shadow-rose-500/30');
-
-            // Apply animation class to circle
-            circle.classList.add(speed === 'normal' ? 'anim-breathe-normal' : 'anim-breathe-slow');
+            requestWakeLock();
+            if (isAmbient && !ambientOsc1) startAmbientDrone();
             
-            breatheCycle();
-            const fullCycleTime = speed === 'normal' ? 8000 : 12000;
-            breatheInterval = setInterval(breatheCycle, fullCycleTime);
+            btnToggle.innerHTML = '<i class="fa-solid fa-stop text-xl"></i> <span>ရှုမှတ်မှု ရပ်နားမည်</span>';
+            btnToggle.className = "w-full py-4 sm:py-4.5 rounded-2xl bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-bold text-base sm:text-lg shadow-lg shadow-rose-500/25 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2.5";
+            
+            activeStats.classList.remove('hidden');
+            breathCounter = 0;
+            totalSessionBreaths = 0;
+            sessionElapsedSeconds = 0;
+            timerSeconds = timerMinutes * 60;
+            
+            if (presets[currentPreset].isCounting) {
+                counterBadge.classList.remove('hidden');
+                counterNum.textContent = "၀";
+            } else {
+                counterBadge.classList.add('hidden');
+            }
+
+            // Start Session Timer
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!isRunning) return;
+                sessionElapsedSeconds++;
+                statTime.textContent = formatTime(sessionElapsedSeconds);
+
+                if (timerMinutes > 0) {
+                    timerSeconds--;
+                    if (timerSeconds <= 0) {
+                        finishSession();
+                    }
+                }
+            }, 1000);
+
+            runPhase('inhale');
+        }
+
+        function runPhase(newPhase) {
+            if (!isRunning) return;
+            phase = newPhase;
+            visWrapper.className = `visualizer-container phase-${phase}`;
+
+            let durationSec = 0;
+            if (phase === 'inhale') {
+                durationSec = inSec;
+                circleAction.textContent = "ရှူသွင်း...";
+                instText.textContent = "ဖြည်းညှင်းစွာ လေကို ရှူသွင်းပါ";
+                instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-sky-600 dark:text-sky-400 tracking-wide transition-all duration-300";
+                if (isChime) playBell(528, 1.5);
+                speakText("ရှူသွင်း");
+            } else if (phase === 'hold') {
+                durationSec = holdSec;
+                circleAction.textContent = "ခေတ္တထိန်း...";
+                instText.textContent = "ထွက်သက်ဝင်သက်ကို ခေတ္တ ငြိမ်သက်ထားပါ";
+                instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400 tracking-wide transition-all duration-300";
+                if (isChime) playBell(432, 1.5);
+                speakText("ငြိမ်သက်");
+            } else if (phase === 'exhale') {
+                durationSec = outSec;
+                circleAction.textContent = "ရှူထုတ်...";
+                instText.textContent = "လေကို ဖြည်းညှင်းစွာ ပြန်ရှူထုတ်ပါ";
+                instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 tracking-wide transition-all duration-300";
+                if (isChime) playBell(396, 1.5);
+                speakText("ရှူထုတ်");
+            }
+
+            // Countdown timer inside circle
+            let remaining = durationSec;
+            circleTimer.textContent = `${remaining}.0s`;
+            
+            clearInterval(countInterval);
+            countInterval = setInterval(() => {
+                if (!isRunning) return;
+                remaining = Math.max(0, (remaining - 0.1).toFixed(1));
+                circleTimer.textContent = `${remaining}s`;
+            }, 100);
+
+            // Phase transition
+            clearTimeout(phaseTimeout);
+            phaseTimeout = setTimeout(() => {
+                if (!isRunning) return;
+                if (phase === 'inhale') {
+                    if (holdSec > 0) runPhase('hold');
+                    else runPhase('exhale');
+                } else if (phase === 'hold') {
+                    runPhase('exhale');
+                } else if (phase === 'exhale') {
+                    // One breath cycle complete!
+                    totalSessionBreaths++;
+                    statBreaths.textContent = `${totalSessionBreaths} ကြိမ်`;
+
+                    if (presets[currentPreset].isCounting) {
+                        breathCounter++;
+                        if (breathCounter > 10) breathCounter = 1;
+                        counterNum.textContent = breathCounter;
+                        if (isVoice) speakText(breathCounter.toString());
+                    }
+
+                    runPhase('inhale');
+                }
+            }, durationSec * 1000);
         }
 
         function stopBreathing() {
             isRunning = false;
-            clearInterval(breatheInterval);
+            releaseWakeLock();
+            clearInterval(timerInterval);
+            clearInterval(countInterval);
             clearTimeout(phaseTimeout);
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            if (isAmbient) stopAmbientDrone();
             
-            btnToggle.innerHTML = '<i class="fa-solid fa-play"></i> စတင်မည်';
-            btnToggle.classList.replace('bg-rose-500', 'bg-sky-500');
-            btnToggle.classList.replace('hover:bg-rose-600', 'hover:bg-sky-600');
-            btnToggle.classList.replace('shadow-rose-500/30', 'shadow-sky-500/30');
-
-            // Remove animations
-            circle.classList.remove('anim-breathe-normal', 'anim-breathe-slow');
-            
-            // Reset text
-            circleText.textContent = "အသင့်...";
+            visWrapper.className = "visualizer-container";
+            circleAction.textContent = "အသင့်...";
+            circleTimer.textContent = "0.0s";
             instText.textContent = "အသင့်ပြင်ပါ";
-            instText.className = "text-lg sm:text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 tracking-wide sm:tracking-wider opacity-50";
+            instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-slate-700 dark:text-slate-200 tracking-wide transition-all duration-300";
+            
+            btnToggle.innerHTML = '<i class="fa-solid fa-play text-xl"></i> <span>အာနာပါန ရှုမှတ်မှု စတင်မည်</span>';
+            btnToggle.className = "w-full py-4 sm:py-4.5 rounded-2xl bg-gradient-to-r from-sky-500 to-teal-500 hover:from-sky-600 hover:to-teal-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-sky-500/25 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2.5";
+            
+            counterBadge.classList.add('hidden');
         }
+
+        function finishSession() {
+            stopBreathing();
+            playBell(432, 4);
+            
+            document.getElementById('modal-mode-name').textContent = presets[currentPreset].title;
+            document.getElementById('modal-time').textContent = formatTime(sessionElapsedSeconds);
+            document.getElementById('modal-breaths').textContent = `${totalSessionBreaths} ကြိမ်`;
+            
+            document.getElementById('modal-complete').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-complete').classList.add('hidden');
+        }
+
+        function formatTime(totalSec) {
+            const m = Math.floor(totalSec / 60);
+            const s = totalSec % 60;
+            return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+
+        // Initialize default
+        window.addEventListener('DOMContentLoaded', () => {
+            selectPreset('ganana');
+        });
     </script>
     <script src="accessibility.js"></script>
 </body>
