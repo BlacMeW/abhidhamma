@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', 'Myanmar Sangam MN', system-ui, sans-serif;
+}
