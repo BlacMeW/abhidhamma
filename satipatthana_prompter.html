@@ -80,7 +80,7 @@
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                 <button onclick="setMode('kaya32')" id="btn-kaya32" class="mode-btn active-sky px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between">
-                    <span><i class="fa-solid fa-skull mr-2 text-sky-500"></i>၁။ ကာယ (၃၂ ကောဋ္ဌာသ)</span>
+                    <span><i class="fa-solid fa-child-reaching mr-2 text-sky-500"></i>၁။ ကာယ (၃၂ ကောဋ္ဌာသ)</span>
                     <span class="text-[10px] bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300 px-2 py-0.5 rounded-full font-bold">၆ တွဲ</span>
                 </button>
                 <button onclick="setMode('kayaIriya')" id="btn-kayaIriya" class="mode-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between">
@@ -127,9 +127,6 @@
 
         <!-- Main Prompter Card -->
         <div id="prompter-card" class="glass-card rounded-3xl p-5 sm:p-8 md:p-10 border-t-4 border-t-sky-500 shadow-lg relative overflow-hidden transition-all duration-300">
-            <!-- Background Icon -->
-            <div id="bg-icon" class="absolute -right-12 -top-12 text-9xl text-sky-500/5 dark:text-sky-500/10 pointer-events-none transition-all"><i class="fa-solid fa-skull"></i></div>
-
             <!-- Stage Header & Counter -->
             <div class="flex items-center justify-between gap-3 mb-6 flex-wrap relative z-10">
                 <span id="stage-badge" class="px-3.5 py-1 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 font-bold text-xs sm:text-sm border border-sky-300 dark:border-sky-700">
@@ -177,7 +174,7 @@
                 
                 <!-- Progress Bar -->
                 <div class="w-full bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden mb-2 shadow-inner">
-                    <div id="progress-bar" class="bg-gradient-to-r from-sky-500 to-amber-500 h-full w-0 transition-all duration-300"></div>
+                    <div id="progress-bar" class="bg-sky-500 h-full w-0 transition-all duration-300"></div>
                 </div>
                 <div class="flex justify-between text-[11px] text-slate-500 font-semibold">
                     <span>အစ</span>
@@ -192,7 +189,7 @@
                     <i class="fa-solid fa-backward-step"></i> <span class="hidden sm:inline">ရှေ့တစ်ဆင့်</span>
                 </button>
                 
-                <button onclick="togglePlay()" id="play-btn" class="px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white transition shadow-lg shadow-sky-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95">
+                <button onclick="togglePlay()" id="play-btn" class="px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95">
                     <i class="fa-solid fa-play" id="play-icon"></i> <span id="play-text">စတင် ရှုမှတ်မည်</span>
                 </button>
 
@@ -284,7 +281,7 @@
         const stagesData = {
             kaya32: {
                 themeColor: 'sky',
-                icon: 'fa-skull',
+                icon: 'fa-child-reaching',
                 stages: [
                     {
                         badge: "အပိုင်း (၁) - တစပဉ္စက (အရေအဆုံး ၅ ကောဋ္ဌာသ)",
@@ -531,13 +528,14 @@
             const theme = stagesData[modeKey].themeColor;
             activeBtn.className = `mode-btn active-${theme} px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border text-left flex items-center justify-between transition`;
 
-            // Update Card Theme Border & Background Icon
+            // Update Card Theme Border & Progress Bar
             const card = document.getElementById('prompter-card');
             card.className = `glass-card rounded-3xl p-5 sm:p-8 md:p-10 border-t-4 border-t-${theme}-500 shadow-lg relative overflow-hidden transition-all duration-300`;
             
-            const bgIcon = document.getElementById('bg-icon');
-            bgIcon.className = `absolute -right-12 -top-12 text-9xl text-${theme}-500/5 dark:text-${theme}-500/10 pointer-events-none transition-all`;
-            bgIcon.innerHTML = `<i class="fa-solid ${stagesData[modeKey].icon}"></i>`;
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) {
+                progressBar.className = `bg-${theme}-500 h-full w-0 transition-all duration-300`;
+            }
 
             buildDots();
             renderStep();
@@ -634,13 +632,13 @@
                 isPlaying = false;
                 icon.className = 'fa-solid fa-play';
                 text.textContent = 'ဆက်လက် ရှုမှတ်မည်';
-                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white transition shadow-lg shadow-sky-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
+                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
                 status.textContent = 'ခေတ္တရပ်ထားသည်';
             } else {
                 isPlaying = true;
                 icon.className = 'fa-solid fa-pause';
                 text.textContent = 'ခေတ္တ ရပ်မည်';
-                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white transition shadow-lg shadow-amber-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95 animate-pulse-soft';
+                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95 animate-pulse-soft';
                 status.textContent = 'ရှုမှတ်နေသည်...';
                 
                 if (remainingSeconds === stepDurationSeconds) {
@@ -683,7 +681,7 @@
             document.getElementById('status-text').textContent = 'အသင့်ဖြစ်ပါပြီ';
             document.getElementById('play-icon').className = 'fa-solid fa-play';
             document.getElementById('play-text').textContent = 'စတင် ရှုမှတ်မည်';
-            document.getElementById('play-btn').className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white transition shadow-lg shadow-sky-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
+            document.getElementById('play-btn').className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
         }
 
         function nextStep() {

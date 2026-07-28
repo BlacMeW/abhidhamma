@@ -7,10 +7,12 @@
     // Inject the widget HTML
     const widgetHTML = `
         <div id="a11y-widget" class="fixed z-50 font-sans select-none" style="bottom: 16px; right: 16px; touch-action: none;">
-            <button id="a11y-toggle" class="w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl flex items-center justify-center text-xl transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900 cursor-move active:scale-95" title="နေရာရွှေ့ရန် ဖိဆွဲနိုင်သည် (Drag to move) / ဖွင့်ရန် နှိပ်ပါ" aria-label="Accessibility Settings">
+            <button id="a11y-toggle" class="relative w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl flex items-center justify-center text-xl transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900 cursor-move active:scale-95" title="နေရာရွှေ့ရန် ဖိဆွဲနိုင်သည် (Drag to move) / ဖွင့်ရန် နှိပ်ပါ" aria-label="Accessibility Settings">
                 <i class="fa-solid fa-universal-access pointer-events-none"></i>
+                <span id="a11y-audio-badge" class="hidden absolute -top-1 -right-1 w-3.5 h-3.5 bg-rose-500 rounded-full ring-2 ring-white dark:ring-slate-900 animate-pulse pointer-events-none"></span>
             </button>
-            
+            <audio id="a11y-metta-audio" src="assets/mp3/Metta.mp3" loop preload="none"></audio>
+
             <div id="a11y-panel" class="absolute bottom-16 right-0 mb-2 w-64 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-4 transition-all duration-200 origin-bottom-right scale-0 opacity-0 pointer-events-none">
                 <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3 border-b border-slate-100 dark:border-slate-700 pb-2 flex items-center justify-between">
                     <span class="flex items-center gap-1.5"><i class="fa-solid fa-universal-access text-emerald-500"></i> ဖတ်ရှုမှု အထောက်အကူ</span>
@@ -39,6 +41,20 @@
                             <span id="text-size-display" class="text-sm font-bold text-slate-700 dark:text-slate-300 w-12 text-center">100%</span>
                             <button id="text-increase" class="w-10 h-8 rounded-md bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition font-bold" aria-label="Increase text size">A+</button>
                         </div>
+                    </div>
+
+                    <!-- Background Metta Chant Audio -->
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-700">
+                        <span class="text-xs text-slate-500 dark:text-slate-400 block mb-2 font-semibold uppercase tracking-wider">မေတ္တာရွတ်သံ (Background Audio)</span>
+                        <div class="flex items-center gap-2">
+                            <button id="a11y-audio-playpause" class="flex-1 py-1.5 rounded-md text-sm font-medium flex items-center justify-center gap-2 transition-colors bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600">
+                                <i class="fa-solid fa-play" id="a11y-audio-icon"></i> <span id="a11y-audio-label">ဖွင့်မည်</span>
+                            </button>
+                            <button id="a11y-audio-stop" class="w-10 h-8 rounded-md bg-white dark:bg-slate-800 text-rose-500 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition" aria-label="Stop background audio" title="ရပ်မည်">
+                                <i class="fa-solid fa-stop"></i>
+                            </button>
+                        </div>
+                        <span class="text-[10px] text-slate-400 dark:text-slate-500 block mt-1.5"><i class="fa-solid fa-circle-info mr-1"></i> စာမျက်နှာ ပြောင်းလဲသည့်တိုင် ဆက်လက် ဖွင့်ထားနိုင်သည်</span>
                     </div>
 
                     <!-- Reset Position -->
@@ -255,5 +271,101 @@
     });
 
     applyTextSize();
+
+    // Background Metta Chant Audio (persists play position across page navigation)
+    const mettaAudio = document.getElementById('a11y-metta-audio');
+    const audioPlayPauseBtn = document.getElementById('a11y-audio-playpause');
+    const audioIcon = document.getElementById('a11y-audio-icon');
+    const audioLabel = document.getElementById('a11y-audio-label');
+    const audioStopBtn = document.getElementById('a11y-audio-stop');
+    const audioBadge = document.getElementById('a11y-audio-badge');
+    const AUDIO_STATE_KEY = 'abhidhamma_metta_audio_state';
+
+    function getAudioState() {
+        try {
+            return JSON.parse(localStorage.getItem(AUDIO_STATE_KEY)) || { playing: false, time: 0 };
+        } catch (e) {
+            return { playing: false, time: 0 };
+        }
+    }
+
+    function saveAudioState(playing) {
+        localStorage.setItem(AUDIO_STATE_KEY, JSON.stringify({
+            playing: playing,
+            time: mettaAudio.currentTime || 0
+        }));
+    }
+
+    function updateAudioUI(playing) {
+        audioIcon.className = playing ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+        audioLabel.textContent = playing ? 'ခေတ္တရပ်မည်' : 'ဖွင့်မည်';
+        audioBadge.classList.toggle('hidden', !playing);
+    }
+
+    function playMettaAudio() {
+        mettaAudio.play().then(() => {
+            updateAudioUI(true);
+            saveAudioState(true);
+        }).catch(() => {
+            // Autoplay blocked by the browser — wait for a user gesture to resume
+            updateAudioUI(false);
+        });
+    }
+
+    function pauseMettaAudio() {
+        mettaAudio.pause();
+        updateAudioUI(false);
+        saveAudioState(false);
+    }
+
+    function stopMettaAudio() {
+        mettaAudio.pause();
+        mettaAudio.currentTime = 0;
+        updateAudioUI(false);
+        localStorage.removeItem(AUDIO_STATE_KEY);
+    }
+
+    audioPlayPauseBtn.addEventListener('click', () => {
+        if (mettaAudio.paused) {
+            playMettaAudio();
+        } else {
+            pauseMettaAudio();
+        }
+    });
+
+    audioStopBtn.addEventListener('click', stopMettaAudio);
+
+    mettaAudio.addEventListener('timeupdate', () => {
+        if (!mettaAudio.paused) saveAudioState(true);
+    });
+
+    window.addEventListener('pagehide', () => {
+        if (!mettaAudio.paused) saveAudioState(true);
+    });
+
+    // Resume playback (and position) left over from the previous page
+    const initialAudioState = getAudioState();
+    if (initialAudioState.playing) {
+        mettaAudio.currentTime = initialAudioState.time || 0;
+        playMettaAudio();
+
+        // If the browser blocked autoplay, resume on the first user interaction with the new page
+        const resumeOnInteraction = () => {
+            if (mettaAudio.paused && getAudioState().playing) {
+                mettaAudio.play().then(() => updateAudioUI(true)).catch(() => {});
+            }
+        };
+        document.addEventListener('click', resumeOnInteraction, { once: true });
+        document.addEventListener('touchstart', resumeOnInteraction, { once: true });
+    }
+
+    // Exposed so other page scripts (e.g. metta_prompter.html's own guided timer) can
+    // pause this background player instead of overlapping it with their own audio.
+    window.abhidhammaMettaAudio = {
+        play: playMettaAudio,
+        pause: pauseMettaAudio,
+        stop: stopMettaAudio,
+        isPlaying: () => !mettaAudio.paused
+    };
 })();
 
