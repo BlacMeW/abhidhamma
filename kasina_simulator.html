@@ -21,6 +21,11 @@
             transform: translate(-50%, -50%);
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
             transition: width 0.3s, height 0.3s, background-color 0.5s;
+            /* Cap visual size to the viewport regardless of the slider's px
+               value (100-600px) so the disk can never force scroll/clipping
+               on small phones — it stays centered and fully visible. */
+            max-width: min(95vw, 95vh);
+            max-height: min(95vw, 95vh);
         }
 
         /* Controls Panel */
@@ -36,6 +41,8 @@
             border: 1px solid rgba(255,255,255,0.1);
             width: 90%;
             max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
             transition: opacity 0.5s ease, transform 0.5s ease;
             z-index: 100;
         }
@@ -46,6 +53,14 @@
             transform: translate(-50%, 20px);
         }
 
+        /* Tighter panel padding/offset on small phones and short (landscape) viewports */
+        @media (max-width: 400px) {
+            #controls-panel { padding: 1rem; bottom: 16px; }
+        }
+        @media (max-height: 500px) {
+            #controls-panel { bottom: 10px; padding: 0.85rem; max-height: 92vh; }
+        }
+
         /* Top Bar */
         #top-bar {
             position: absolute;
@@ -54,9 +69,9 @@
             z-index: 100;
             transition: opacity 0.5s;
         }
-        
+
         .hidden-controls #top-bar { opacity: 0; pointer-events: none; }
-        
+
         #btn-reveal {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -73,9 +88,12 @@
         .k-light { background-color: #ffffff; box-shadow: 0 0 100px #ffffff; } /* Aloka */
 
         .color-btn {
-            width: 36px; height: 36px; border-radius: 50%;
+            width: 40px; height: 40px; border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.2);
             transition: transform 0.2s;
+        }
+        @media (min-width: 640px) {
+            .color-btn { width: 44px; height: 44px; }
         }
         .color-btn:hover { transform: scale(1.1); border-color: white; }
         .color-btn.active { transform: scale(1.2); border-color: white; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
@@ -97,15 +115,15 @@
 
     <!-- Controls -->
     <div id="controls-panel">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="font-bold text-slate-200">ကသိုဏ်းဝန်း ရွေးချယ်ရန်</h2>
-            <button onclick="toggleFullScreen()" class="text-slate-400 hover:text-white" title="Full Screen">
+        <div class="flex justify-between items-center mb-4 gap-2">
+            <h2 class="font-bold text-slate-200 text-sm sm:text-base">ကသိုဏ်းဝန်း ရွေးချယ်ရန်</h2>
+            <button onclick="toggleFullScreen()" class="w-10 h-10 shrink-0 flex items-center justify-center text-slate-400 hover:text-white" title="Full Screen">
                 <i class="fa-solid fa-expand text-xl"></i>
             </button>
         </div>
 
         <!-- Color Selection -->
-        <div class="flex justify-around mb-6">
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-6">
             <button onclick="setKasina('k-earth', 'ပထဝီ (မြေ)')" class="color-btn k-earth" title="မြေကသိုဏ်း"></button>
             <button onclick="setKasina('k-red', 'လောဟိတ (အနီ)')" class="color-btn k-red active" title="အနီကသိုဏ်း"></button>
             <button onclick="setKasina('k-blue', 'နီလ (အပြာ/ညို)')" class="color-btn k-blue" title="အပြာကသိုဏ်း"></button>
@@ -119,7 +137,7 @@
         <!-- Size Slider -->
         <div class="mb-6">
             <label class="block text-xs text-slate-400 mb-2">အရွယ်အစား (Size)</label>
-            <input type="range" id="size-slider" min="100" max="600" value="250" class="w-full accent-emerald-500">
+            <input type="range" id="size-slider" min="100" max="600" value="250" class="w-full accent-emerald-500 h-6">
         </div>
 
         <!-- Start Button -->

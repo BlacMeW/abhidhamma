@@ -237,7 +237,7 @@
                     const sortedLetters = Object.keys(groups).sort();
                     if(alphabetIndexEl) {
                         alphabetIndexEl.innerHTML = sortedLetters.map(letter => 
-                            `<a href="#letter-${letter}" class="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700 dark:hover:bg-emerald-900/30 dark:hover:border-emerald-700 dark:hover:text-emerald-400 text-sm font-bold transition shadow-sm">${letter}</a>`
+                            `<a href="#letter-${letter}" class="w-9 h-9 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700 dark:hover:bg-emerald-900/30 dark:hover:border-emerald-700 dark:hover:text-emerald-400 text-sm font-bold transition shadow-sm">${letter}</a>`
                         ).join('');
                     }
 

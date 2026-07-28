@@ -193,15 +193,15 @@
             const info = groupInfo[groupKey];
             
             let html = `
-                <div id="section-${groupKey}" class="glass-card rounded-2xl p-5 border ${info.border}/30 relative overflow-hidden group">
-                    <div class="absolute -top-10 -right-10 text-slate-100 dark:text-slate-800 text-9xl font-bold opacity-30 transition-transform group-hover:scale-110 pointer-events-none">${items.length}</div>
+                <div id="section-${groupKey}" class="glass-card rounded-2xl p-5 md:p-6 border ${info.border}/30 relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 text-slate-100 dark:text-slate-800 text-7xl sm:text-8xl md:text-9xl font-bold opacity-30 transition-transform group-hover:scale-110 pointer-events-none">${items.length}</div>
                     
                     <h3 class="font-bold ${info.color} text-lg mb-1 flex items-center gap-2 relative z-10">
                         <i class="fa-solid fa-layer-group"></i> ${info.label}
                     </h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 font-semibold relative z-10">${info.sub}</p>
                     
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 relative z-10">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 relative z-10">
             `;
             
             items.forEach(item => {

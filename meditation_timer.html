@@ -30,7 +30,15 @@
             box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
             transition: all 0.5s ease;
         }
-        
+
+        /* Keep the timer circle comfortably inside narrow phone viewports */
+        @media (max-width: 400px) {
+            .timer-circle { width: 220px; height: 220px; }
+        }
+        @media (min-width: 401px) and (max-width: 639px) {
+            .timer-circle { width: 250px; height: 250px; }
+        }
+
         .dark .timer-circle {
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
             background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
@@ -75,32 +83,32 @@
 
     <!-- Header -->
     <header class="border-b border-transparent sticky top-0 z-40 transition-all duration-300" id="main-header">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="index" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer backdrop-blur-md">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <a href="index" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer backdrop-blur-md shrink-0">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
-            <button onclick="testBell()" class="text-sm text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition flex items-center gap-2">
+            <button onclick="testBell()" class="text-sm text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition flex items-center gap-2 min-h-[40px] px-2">
                 <i class="fa-solid fa-bell"></i> အသံစမ်းရန်
             </button>
         </div>
     </header>
 
-    <main class="max-w-md mx-auto px-4 py-6 flex-1 w-full flex flex-col items-center justify-center gap-8 relative z-10 fade-in">
-        
+    <main class="max-w-md mx-auto px-4 py-6 flex-1 w-full flex flex-col items-center justify-center gap-6 sm:gap-8 relative z-10 fade-in">
+
         <!-- Timer Display -->
         <div class="timer-circle bg-white dark:bg-slate-800" id="timer-container">
             <div class="text-center z-10">
-                <div id="time-display" class="text-6xl font-light tracking-wider text-slate-800 dark:text-slate-100 font-mono">15:00</div>
-                <div id="status-display" class="text-sm text-slate-500 dark:text-slate-400 mt-2 tracking-widest uppercase opacity-0 transition-opacity">တရားထိုင်နေသည်</div>
+                <div id="time-display" class="text-4xl sm:text-5xl md:text-6xl font-light tracking-wider text-slate-800 dark:text-slate-100 font-mono">15:00</div>
+                <div id="status-display" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 tracking-widest uppercase opacity-0 transition-opacity">တရားထိုင်နေသည်</div>
             </div>
-            
+
             <!-- Ripple effect when running -->
             <div id="ripple-1" class="absolute inset-0 rounded-full border border-sky-400/30 opacity-0 scale-100 transition-all"></div>
             <div id="ripple-2" class="absolute inset-0 rounded-full border border-sky-400/20 opacity-0 scale-100 transition-all"></div>
         </div>
 
         <!-- Controls Area -->
-        <div class="w-full space-y-6 glass-panel p-6 rounded-3xl" id="setup-panel">
+        <div class="w-full space-y-5 sm:space-y-6 glass-panel p-4 sm:p-6 rounded-3xl" id="setup-panel">
             
             <!-- Duration Setting -->
             <div>
@@ -108,10 +116,10 @@
                     <i class="fa-regular fa-hourglass-half"></i> တရားထိုင်မည့် အချိန် (Duration)
                 </label>
                 <div class="flex justify-center gap-2 flex-wrap">
-                    <button onclick="setDuration(15)" class="duration-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">15 Min</button>
-                    <button onclick="setDuration(30)" class="duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">30 Min</button>
-                    <button onclick="setDuration(45)" class="duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">45 Min</button>
-                    <button onclick="setDuration(60)" class="duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">60 Min</button>
+                    <button onclick="setDuration(15)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">15 Min</button>
+                    <button onclick="setDuration(30)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">30 Min</button>
+                    <button onclick="setDuration(45)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">45 Min</button>
+                    <button onclick="setDuration(60)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">60 Min</button>
                 </div>
             </div>
 
@@ -123,10 +131,10 @@
                     <i class="fa-solid fa-stopwatch"></i> သတိပေး ခေါင်းလောင်းသံ (Interval Bell)
                 </label>
                 <div class="flex justify-center gap-2 flex-wrap">
-                    <button onclick="setIntervalTime(0)" class="interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">မလိုပါ</button>
-                    <button onclick="setIntervalTime(5)" class="interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
-                    <button onclick="setIntervalTime(10)" class="interval-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">10 Min</button>
-                    <button onclick="setIntervalTime(15)" class="interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">15 Min</button>
+                    <button onclick="setIntervalTime(0)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">မလိုပါ</button>
+                    <button onclick="setIntervalTime(5)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
+                    <button onclick="setIntervalTime(10)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">10 Min</button>
+                    <button onclick="setIntervalTime(15)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">15 Min</button>
                 </div>
                 <p class="text-[11px] text-center text-slate-500 mt-2">သတ်မှတ်ထားသော အချိန်အပိုင်းအခြားရောက်တိုင်း ခေါင်းလောင်းသံ မြည်ပေးပါမည်။</p>
             </div>
@@ -280,9 +288,9 @@
             // Update UI buttons
             document.querySelectorAll('.duration-btn').forEach(btn => {
                 if (btn.textContent.includes(mins)) {
-                    btn.className = "duration-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
+                    btn.className = "duration-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
                 } else {
-                    btn.className = "duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                    btn.className = "duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
                 }
             });
         }
@@ -294,9 +302,9 @@
             // Update UI buttons
             document.querySelectorAll('.interval-btn').forEach(btn => {
                 if (btn.textContent.includes(mins) || (mins === 0 && btn.textContent === "မလိုပါ")) {
-                    btn.className = "interval-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
+                    btn.className = "interval-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
                 } else {
-                    btn.className = "interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                    btn.className = "interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
                 }
             });
         }

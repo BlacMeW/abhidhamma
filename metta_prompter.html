@@ -25,7 +25,15 @@
             transition: all 0.5s ease;
             margin: 0 auto;
         }
-        
+
+        /* Keep the timer circle comfortably inside narrow phone viewports */
+        @media (max-width: 399px) {
+            .timer-circle { width: 210px; height: 210px; }
+        }
+        @media (min-width: 400px) and (max-width: 639px) {
+            .timer-circle { width: 230px; height: 230px; }
+        }
+
         .dark .timer-circle {
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
             background: radial-gradient(circle, #331622 0%, #0f172a 100%);
@@ -71,19 +79,19 @@
 <body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200" id="app-body">
 
     <header class="border-b border-transparent sticky top-0 z-40 transition-all duration-300 backdrop-blur-md">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="metta_bhavana_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <a href="metta_bhavana_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
-            <h1 class="font-bold text-rose-700 dark:text-rose-400">Metta <span class="font-normal text-slate-500">Prompter</span></h1>
-            <div class="w-10"></div> <!-- Spacer -->
+            <h1 class="text-base sm:text-lg font-bold text-rose-700 dark:text-rose-400">Metta <span class="font-normal text-slate-500">Prompter</span></h1>
+            <div class="w-10 shrink-0"></div> <!-- Spacer -->
         </div>
     </header>
 
-    <main class="max-w-md mx-auto px-4 py-4 flex-1 w-full flex flex-col gap-6 relative z-10">
-        
+    <main class="max-w-md mx-auto px-4 py-4 flex-1 w-full flex flex-col gap-5 sm:gap-6 relative z-10">
+
         <!-- Steps Indicator -->
-        <div class="flex justify-between items-center px-4 mb-2">
+        <div class="flex justify-between items-center px-1 sm:px-4 mb-2">
             <div id="ind-0" class="step-indicator step-pending w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold">၁</div>
             <div class="h-0.5 bg-slate-200 dark:bg-slate-700 flex-1 mx-2"></div>
             <div id="ind-1" class="step-indicator step-pending w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold">၂</div>
@@ -96,35 +104,35 @@
         <!-- Timer Display -->
         <div class="timer-circle bg-white dark:bg-slate-800" id="timer-container">
             <div class="text-center z-10 fade-transition" id="stage-content">
-                <div id="stage-title" class="text-rose-600 dark:text-rose-400 font-bold mb-1">အသင့်ပြင်ပါ</div>
-                <div id="time-display" class="text-5xl font-light tracking-wider text-slate-800 dark:text-slate-100 font-mono my-2">00:00</div>
-                <div id="stage-desc" class="text-sm text-slate-500 dark:text-slate-400 mt-2 px-6">အချိန်ရွေးချယ်ပြီး စတင်ပါ</div>
+                <div id="stage-title" class="text-rose-600 dark:text-rose-400 font-bold mb-1 text-sm sm:text-base px-4">အသင့်ပြင်ပါ</div>
+                <div id="time-display" class="text-3xl sm:text-4xl md:text-5xl font-light tracking-wider text-slate-800 dark:text-slate-100 font-mono my-2">00:00</div>
+                <div id="stage-desc" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 px-4 sm:px-6">အချိန်ရွေးချယ်ပြီး စတင်ပါ</div>
             </div>
         </div>
 
         <!-- Setup Panel -->
-        <div class="w-full space-y-6 glass-panel p-6 rounded-3xl" id="setup-panel">
+        <div class="w-full space-y-5 sm:space-y-6 glass-panel p-4 sm:p-6 rounded-3xl" id="setup-panel">
             <div>
                 <label class="block text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 text-center">တစ်ဆင့်လျှင် အချိန်မည်မျှ ယူမည်နည်း?</label>
                 <div class="grid grid-cols-3 gap-2">
-                    <button onclick="setTimePerStep(1)" class="time-btn px-2 py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">1 Min</button>
-                    <button onclick="setTimePerStep(3)" class="time-btn px-2 py-2 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-bold">3 Min</button>
-                    <button onclick="setTimePerStep(5)" class="time-btn px-2 py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
+                    <button onclick="setTimePerStep(1)" class="time-btn px-2 py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">1 Min</button>
+                    <button onclick="setTimePerStep(3)" class="time-btn px-2 py-2.5 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-bold">3 Min</button>
+                    <button onclick="setTimePerStep(5)" class="time-btn px-2 py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
                 </div>
                 <p class="text-[11px] text-center text-slate-500 mt-3">အဆင့် ၄ ဆင့်အတွက် စုစုပေါင်း <span id="total-time-display">12</span> မိနစ် ကြာမြင့်ပါမည်။</p>
             </div>
-            
+
             <button id="btn-start" onclick="startPrompter()" class="w-full py-3 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-bold shadow-lg shadow-rose-500/30 transition-transform active:scale-95">
                 <i class="fa-solid fa-play mr-2"></i> စတင်မည်
             </button>
         </div>
 
         <!-- Controls (Hidden initially) -->
-        <div id="run-controls" class="hidden flex justify-center gap-4 w-full">
-            <button onclick="skipStage()" class="px-6 py-3 rounded-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold transition-transform active:scale-95 flex items-center gap-2">
+        <div id="run-controls" class="hidden flex flex-wrap justify-center gap-3 sm:gap-4 w-full">
+            <button onclick="skipStage()" class="px-5 sm:px-6 py-3 rounded-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold transition-transform active:scale-95 flex items-center gap-2">
                 ကျော်မည် <i class="fa-solid fa-forward-step"></i>
             </button>
-            <button onclick="stopPrompter()" class="px-6 py-3 rounded-full bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/50 dark:hover:bg-rose-800/50 text-rose-700 dark:text-rose-300 font-bold transition-transform active:scale-95 flex items-center gap-2">
+            <button onclick="stopPrompter()" class="px-5 sm:px-6 py-3 rounded-full bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/50 dark:hover:bg-rose-800/50 text-rose-700 dark:text-rose-300 font-bold transition-transform active:scale-95 flex items-center gap-2">
                 <i class="fa-solid fa-stop"></i> ရပ်မည်
             </button>
         </div>
@@ -185,9 +193,9 @@
             
             document.querySelectorAll('.time-btn').forEach(btn => {
                 if (btn.textContent.includes(mins)) {
-                    btn.className = "time-btn px-2 py-2 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-bold";
+                    btn.className = "time-btn px-2 py-2.5 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-bold";
                 } else {
-                    btn.className = "time-btn px-2 py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                    btn.className = "time-btn px-2 py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
                 }
             });
             document.getElementById('total-time-display').textContent = mins * 4;

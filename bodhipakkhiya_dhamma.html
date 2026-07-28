@@ -108,7 +108,7 @@
 
         <!-- Underlying 14 unique dhamma cross-check & Matrix -->
         <div class="glass-card rounded-2xl overflow-hidden border border-amber-400 dark:border-amber-500/30 max-w-5xl mx-auto" style="box-shadow: 0 0 20px rgba(234,179,8,0.15);">
-            <div class="p-5 border-b border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/5">
+            <div class="p-5 md:p-6 border-b border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/5">
                 <h3 class="font-bold text-amber-800 dark:text-amber-300 text-lg flex items-center gap-2"><i class="fa-solid fa-table-cells"></i> ဓမ္မသရုပ်ခွဲ ဇယား (၁၄ ပါး → ၃၇ ပါး Mapping)</h3>
                 <p class="text-xs text-slate-700 dark:text-slate-300 mt-2 leading-relaxed">
                     ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါးသည် နာမည်အသစ်များ မဟုတ်ဘဲ၊ <b>အခြေခံ စေတသိက်/စိတ် (၁၄) ပါးသာ</b> အုပ်စု (၇) စု အတွင်း ထပ်ခါထပ်ခါ ပေါင်းစပ် ပါဝင်နေခြင်း ဖြစ်သည်။
@@ -144,12 +144,12 @@
 
         <!-- Cross-links -->
         <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            <a href="citta_cetasikas_visual_guide#cetasika" class="block glass-card rounded-2xl p-5 border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+            <a href="citta_cetasikas_visual_guide#cetasika" class="block glass-card rounded-2xl p-5 md:p-6 border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
                 <i class="fa-solid fa-layer-group text-emerald-700 dark:text-emerald-400 text-xl"></i>
                 <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">အခြေခံ စေတသိက် (၁၄) ပါးအားလုံးကို အသေးစိတ် ကြည့်ရန်</h4>
                 <p class="text-[11px] text-slate-600 dark:text-slate-400">Citta & Cetasika Guide ၏ စေတသိက် (၅၂) ပါး tab သို့ →</p>
             </a>
-            <a href="paccaya_sangaha.html?open=magga" class="block glass-card rounded-2xl p-5 border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+            <a href="paccaya_sangaha.html?open=magga" class="block glass-card rounded-2xl p-5 md:p-6 border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
                 <i class="fa-solid fa-route text-violet-700 dark:text-violet-400 text-xl"></i>
                 <h4 class="font-bold text-violet-700 dark:text-violet-300 text-sm">မဂ္ဂင် (၈) ပါးသည် ပဋ္ဌာန်း၏ မဂ္ဂပစ္စည်းနှင့် ဆက်စပ်ပုံ</h4>
                 <p class="text-[11px] text-slate-600 dark:text-slate-400">ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha) သို့ →</p>
@@ -343,7 +343,7 @@
                 const info = groupInfo[gk];
                 const items = bpData.filter(b => b.group === gk);
                 return `
-                    <div id="group-${gk}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-3 scroll-mt-24">
+                    <div id="group-${gk}" class="glass-card rounded-2xl p-5 md:p-6 max-w-4xl mx-auto border-t-4 ${info.border} space-y-3 scroll-mt-24">
                         <div>
                             <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>
                             <p class="text-xs text-slate-600 dark:text-slate-400">${info.sub}</p>

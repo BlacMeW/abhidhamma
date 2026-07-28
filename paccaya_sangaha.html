@@ -119,7 +119,7 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30">သရုပ် ၃ ပါး</span>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-3 text-xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
                 <div class="glass-card p-4 rounded-xl border border-sky-400 dark:border-sky-500/30 bg-sky-50 dark:bg-sky-950/20 space-y-1">
                     <div class="font-bold text-sky-700 dark:text-sky-300 flex items-center gap-1.5 text-sm mb-1"><i class="fa-solid fa-arrow-right-to-bracket"></i> ၁။ ပစ္စယတရား (အကြောင်း)</div>
                     <p class="text-slate-700 dark:text-slate-300 leading-relaxed font-semibold">ကျေးဇူးပြုတတ်သော / ထောက်ပံ့တတ်သော တရား</p>
@@ -150,7 +150,7 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ဇာတ် ၆ မျိုး</span>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 text-xs" id="sabhaga-grid"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs" id="sabhaga-grid"></div>
 
             <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-3.5 text-xs text-slate-700 dark:text-slate-300 leading-relaxed flex items-start gap-2.5">
                 <i class="fa-solid fa-circle-info text-emerald-500 mt-0.5"></i>
@@ -170,7 +170,7 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30">ဆက်သွယ်မှု ၆ မျိုး</span>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs" id="namarupa-grid"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs" id="namarupa-grid"></div>
             
             <div class="bg-rose-500/5 border border-rose-500/20 rounded-xl p-3.5 text-xs text-slate-700 dark:text-slate-300 leading-relaxed flex items-start gap-2.5">
                 <i class="fa-solid fa-lightbulb text-rose-500 mt-0.5"></i>
@@ -179,7 +179,7 @@
         </section>
 
         <!-- Cross-links -->
-        <div class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-4xl mx-auto">
             <a href="paticcasamuppada" class="glass-card rounded-2xl p-4 border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1">
                 <i class="fa-solid fa-circle-notch text-emerald-700 dark:text-emerald-400 text-lg"></i>
                 <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-xs">ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda) သို့</h4>
@@ -207,10 +207,10 @@
     <!-- Modal -->
     <div id="modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center transition z-10">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
+            <div id="modal-content" class="p-4 sm:p-6 space-y-4 overflow-y-auto"></div>
         </div>
     </div>
 

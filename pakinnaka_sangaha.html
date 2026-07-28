@@ -103,7 +103,7 @@
             </div>
 
             <!-- Vedana Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3" id="vedana-grid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3" id="vedana-grid"></div>
         </section>
 
         <!-- 2. Hetu Sangaha -->
@@ -125,7 +125,7 @@
             </div>
 
             <!-- Hetu Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="hetu-grid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="hetu-grid"></div>
         </section>
 
         <!-- 3. Kicca Sangaha -->
@@ -140,11 +140,11 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30">လုပ်ငန်း ၁၄ မျိုး</span>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="kicca-grid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="kicca-grid"></div>
             
             <!-- Summary Accordion for Kicca Performers -->
             <details class="glass-card rounded-xl p-4 border border-sky-500/20" open>
-                <summary class="font-bold text-sky-700 dark:text-sky-300 text-sm flex items-center justify-between">
+                <summary class="font-bold text-sky-700 dark:text-sky-300 text-sm flex items-center justify-between flex-wrap gap-1.5">
                     <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-xs"></i>ကိစ္စ အရေအတွက်အလိုက် စိတ်များ ခွဲခြားပုံ (၁ မျိုး မှ ၅ မျိုးအထိ ဆောင်ရွက်သော စိတ်များ)</span>
                     <span class="text-xs text-slate-500">နှိပ်၍ ပိတ်/ဖွင့် ပါ</span>
                 </summary>
@@ -175,7 +175,7 @@
                 <b>• ဒွါရ (၆) ပေါက်:</b> စက္ခုဒွါရ (မျက်စိ)၊ သောတဒွါရ (နား)၊ ဃာနဒွါရ (နှာခေါင်း)၊ ဇိဝှာဒွါရ (လျှာ)၊ ကာယဒွါရ (ကိုယ်)၊ မနောဒွါရ (ဘဝင်စိတ် ၁၉ ပါး)။
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" id="dvara-grid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="dvara-grid"></div>
         </section>
 
         <!-- 5. Arammana Sangaha -->
@@ -195,7 +195,7 @@
                 <b>• အာရုံ (၆) ပါး:</b> ရူပါရုံ (အဆင်း)၊ သဒ္ဒါရုံ (အသံ)၊ ဃာနာရုံ (အနံ့)၊ ရသာရုံ (အရသာ)၊ ဖောဋ္ဌဗ္ဗာရုံ (အတွေ့အထိ)၊ ဓမ္မာရုံ (စိတ်/စေတသိက်/ပသာဒ/သုခုမရုပ်/နိဗ္ဗာန်/ပညတ်)။
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="arammana-grid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="arammana-grid"></div>
         </section>
 
         <!-- 6. Vatthu Sangaha -->
@@ -215,7 +215,7 @@
                 <b>• ဝတ္ထုရုပ် (၆) မျိုး:</b> စက္ခုဝတ္ထု၊ သောတဝတ္ထု၊ ဃာနဝတ္ထု၊ ဇိဝှာဝတ္ထု၊ ကာယဝတ္ထု၊ ဟဒယဝတ္ထု (နှလုံးအိမ်ရုပ်)။
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="vatthu-grid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="vatthu-grid"></div>
         </section>
 
     </main>
@@ -233,15 +233,15 @@
                         <p id="modal-subtitle" class="text-xs text-slate-500 dark:text-slate-400"></p>
                     </div>
                 </div>
-                <button onclick="closePkModal()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center justify-center transition">
+                <button onclick="closePkModal()" class="w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center justify-center transition flex-shrink-0">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             
-            <div id="modal-body" class="p-5 overflow-y-auto space-y-4 text-xs md:text-sm"></div>
+            <div id="modal-body" class="p-4 sm:p-5 overflow-y-auto space-y-4 text-xs md:text-sm"></div>
 
-            <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex justify-end">
-                <a id="modal-filter-btn" href="citta_cetasikas_visual_guide#citta89" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs transition flex items-center gap-2">
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-wrap justify-end">
+                <a id="modal-filter-btn" href="citta_cetasikas_visual_guide#citta89" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs transition flex items-center justify-center sm:justify-start gap-2">
                     <span>စိတ် (၈၉) ပါး Visual Guide တွင် စစ်ထုတ်ကြည့်ရန်</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>

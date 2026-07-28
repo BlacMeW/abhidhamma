@@ -34,6 +34,9 @@
             width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-shrink: 0;
             border: 2px solid rgba(255,255,255,0.5); position: relative; overflow: hidden;
         }
+        @media (max-width: 400px) {
+            .kasina-disk { width: 60px; height: 60px; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-sky-50/50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
@@ -64,7 +67,7 @@
 
         <!-- Intro -->
         <div class="text-center max-w-4xl mx-auto space-y-4">
-            <h2 class="text-3xl font-bold text-sky-800 dark:text-sky-400">ကသိုဏ်း (Kasiṇa) သဘောတရား</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-sky-800 dark:text-sky-400">ကသိုဏ်း (Kasiṇa) သဘောတရား</h2>
             <div class="flex justify-center">
                 <a href="kasina_simulator.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full shadow-lg shadow-emerald-500/30 transition flex items-center gap-2 font-bold text-sm">
                     <i class="fa-solid fa-play"></i> ကသိုဏ်းဝန်း Simulator ဖြင့် လက်တွေ့ရှုမှတ်ရန်
@@ -82,8 +85,8 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
             <!-- Mahabhuta Kasinas -->
             <div class="glass-card rounded-3xl p-6 md:p-8 border-t-4 border-t-amber-600">
                 <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
@@ -177,7 +180,7 @@
                 <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
                     <i class="fa-solid fa-sun text-emerald-500"></i> အလင်းနှင့် ကောင်းကင် ကသိုဏ်း
                 </h3>
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="flex items-start gap-4 bg-white/50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:scale-[1.02]">
                         <div class="kasina-disk" style="background: radial-gradient(circle, #fff 10%, #ffd700 50%, transparent 100%);"></div>
                         <div>
@@ -202,7 +205,7 @@
                 <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-2">
                     <i class="fa-solid fa-stairs text-sky-600 dark:text-sky-400"></i> ကသိုဏ်း ရှုမှတ်ရာတွင် နိမိတ် (၃) ပါး ဖြစ်ပေါ်လာပုံ
                 </h3>
-                <div class="grid md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-white/60 dark:bg-slate-800/60 p-5 rounded-xl text-center border-t-4 border-t-slate-400">
                         <div class="text-4xl text-slate-400 mb-3"><i class="fa-regular fa-eye"></i></div>
                         <h4 class="font-bold text-slate-700 dark:text-slate-300 mb-2">၁။ ပရိကမ္မနိမိတ် (Parikamma)</h4>

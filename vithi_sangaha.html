@@ -235,7 +235,7 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30">အပ္ပနာ ၄ မျိုး</span>
             </div>
 
-            <div class="grid grid-cols-1 gap-4 text-xs" id="appana-detailed-grid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs" id="appana-detailed-grid"></div>
         </section>
 
         <!-- 4. PUGGALA & BHUMI VITHI CITTA BREAKDOWN -->
@@ -250,7 +250,7 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">ပုဂ္ဂိုလ်/ဘုံ</span>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 text-xs" id="puggala-grid"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs" id="puggala-grid"></div>
         </section>
 
         <!-- 5. VITHI RULES & NIYAMA -->
@@ -265,7 +265,7 @@
                 <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30">နိယာမ စည်းကမ်းများ</span>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 text-xs">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div class="bg-white/60 dark:bg-slate-900/60 p-4 rounded-xl border border-amber-500/30 space-y-2">
                     <h4 class="font-bold text-amber-700 dark:text-amber-300 text-sm border-b border-amber-200 dark:border-amber-900/50 pb-1">တဒါရုံနိယာမ (Tadārammaṇa-niyāma)</h4>
                     <p class="        const appanaJhanaSeq = ['b', 'mano', 'parikamma', 'upacara', 'anuloma', 'gotrabhu', 'appana', 'b', 'b'];
@@ -326,11 +326,11 @@
 
     <!-- Modal -->
     <div id="modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center transition z-10">
+        <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div id="modal-content" class="p-6 space-y-4"></div>
+            <div id="modal-content" class="p-4 sm:p-6 space-y-4 overflow-y-auto"></div>
         </div>
     </div>
 

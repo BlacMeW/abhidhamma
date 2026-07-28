@@ -116,7 +116,7 @@
         <div id="kilesa-groups" class="space-y-6"></div>
 
         <!-- Matrix: 14 Akusala Cetasikas to 53 Defilements -->
-        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-indigo-500/20">
+        <details class="glass-card rounded-2xl p-5 md:p-6 max-w-4xl mx-auto border border-indigo-500/20">
             <summary class="flex items-center justify-between font-bold text-indigo-700 dark:text-indigo-300 text-base">
                 <span><i class="fa-solid fa-chevron-right tree-chevron mr-2 text-sm"></i>အကုသိုလ်စေတသိက် (၁၄) ပါးမှ ဤ (၅၃) ပါးသို့ ဖြန့်ခွဲမှု</span>
             </summary>
@@ -135,12 +135,12 @@
 
         <!-- Cross-links -->
         <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            <a href="citta_cetasikas_visual_guide#cetasika" class="block glass-card rounded-2xl p-5 border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
+            <a href="citta_cetasikas_visual_guide#cetasika" class="block glass-card rounded-2xl p-5 md:p-6 border border-emerald-400 dark:border-emerald-500/30 hover:border-emerald-400 transition text-center space-y-1.5">
                 <i class="fa-solid fa-layer-group text-emerald-700 dark:text-emerald-400 text-xl"></i>
                 <h4 class="font-bold text-emerald-700 dark:text-emerald-300 text-sm">ဤကိလေသာများ၏ မူရင်း စေတသိက်များကို အသေးစိတ် ကြည့်ရန်</h4>
                 <p class="text-[11px] text-slate-600 dark:text-slate-400">Citta & Cetasika Guide ၏ စေတသိက် (၅၂) ပါး tab သို့ →</p>
             </a>
-            <a href="paticcasamuppada" class="block glass-card rounded-2xl p-5 border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+            <a href="paticcasamuppada" class="block glass-card rounded-2xl p-5 md:p-6 border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
                 <i class="fa-solid fa-circle-notch text-violet-700 dark:text-violet-400 text-xl"></i>
                 <h4 class="font-bold text-violet-700 dark:text-violet-300 text-sm">တဏှာ/ဥပါဒါန်သည် ပဋိစ္စသမုပ္ပါဒ် စက်ဝန်း၏ အစိတ်အပိုင်းများ ဖြစ်ပုံ</h4>
                 <p class="text-[11px] text-slate-600 dark:text-slate-400">ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda) သို့ →</p>
@@ -430,7 +430,7 @@
                 const info = groupInfo[gk];
                 const items = kilesaData.filter(k => k.group === gk);
                 return `
-                    <details id="group-${gk}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} scroll-mt-24" open>
+                    <details id="group-${gk}" class="glass-card rounded-2xl p-5 md:p-6 max-w-4xl mx-auto border-t-4 ${info.border} scroll-mt-24" open>
                         <summary class="flex items-center justify-between">
                             <div>
                                 <h3 class="font-bold ${info.color} text-lg">${info.label} (${mm(items.length)})</h3>

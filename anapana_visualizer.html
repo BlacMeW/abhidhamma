@@ -29,6 +29,15 @@
             position: relative;
         }
 
+        /* Scale the circle down on narrow phones so its breathing animation
+           (up to 2x scale) stays comfortably inside the viewport. */
+        @media (max-width: 639px) {
+            .breathe-circle { width: 110px; height: 110px; font-size: 1rem; }
+        }
+        @media (min-width: 640px) and (max-width: 767px) {
+            .breathe-circle { width: 130px; height: 130px; font-size: 1.1rem; }
+        }
+
         .breathe-circle::after {
             content: '';
             position: absolute;
@@ -83,30 +92,30 @@
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
     <header class="border-b border-transparent sticky top-0 z-40 transition-all duration-300 backdrop-blur-md">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="satipatthana_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <a href="satipatthana_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
-            <h1 class="font-bold text-sky-700 dark:text-sky-400">အာနာပါန <span class="font-normal text-slate-500">Visualizer</span></h1>
+            <h1 class="text-base sm:text-lg font-bold text-sky-700 dark:text-sky-400 text-center px-2">အာနာပါန <span class="font-normal text-slate-500">Visualizer</span></h1>
         </div>
     </header>
 
     <main class="flex-1 flex flex-col items-center justify-center p-4">
-        
-        <div class="text-center mb-16 h-8">
-            <h2 id="instruction-text" class="text-2xl font-bold text-slate-700 dark:text-slate-300 tracking-wider opacity-50">အသင့်ပြင်ပါ</h2>
+
+        <div class="text-center mb-8 sm:mb-12 md:mb-16 min-h-[2.5rem] sm:min-h-[2rem] flex items-center justify-center px-2">
+            <h2 id="instruction-text" class="text-lg sm:text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 tracking-wide sm:tracking-wider opacity-50">အသင့်ပြင်ပါ</h2>
         </div>
 
-        <div class="h-[300px] flex items-center justify-center">
+        <div class="h-[220px] sm:h-[260px] md:h-[300px] flex items-center justify-center">
             <div id="circle" class="breathe-circle">
                 <span id="circle-text">ရှူသွင်း...</span>
             </div>
         </div>
 
-        <div class="mt-16 glass-card p-6 rounded-3xl w-full max-w-sm space-y-6">
+        <div class="mt-8 sm:mt-12 md:mt-16 glass-card p-5 sm:p-6 rounded-3xl w-full max-w-sm space-y-6">
             <div>
                 <label class="block text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 text-center">အမြန်နှုန်း (Speed)</label>
-                <div class="flex justify-center gap-2">
+                <div class="flex flex-wrap justify-center gap-2">
                     <button id="btn-speed-normal" onclick="setSpeed('normal')" class="flex-1 px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">ပုံမှန် (Normal)</button>
                     <button id="btn-speed-slow" onclick="setSpeed('slow')" class="flex-1 px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">နှေး (Slow)</button>
                 </div>
@@ -157,13 +166,13 @@
             // Inhale phase
             circleText.textContent = "ရှူသွင်း...";
             instText.textContent = "လေကိုဖြည်းညှင်းစွာ ရှူသွင်းပါ (Inhale)";
-            instText.className = "text-2xl font-bold text-sky-600 dark:text-sky-400 tracking-wider transition-opacity duration-500 opacity-100";
+            instText.className = "text-lg sm:text-xl md:text-2xl font-bold text-sky-600 dark:text-sky-400 tracking-wide sm:tracking-wider transition-opacity duration-500 opacity-100";
             
             phaseTimeout = setTimeout(() => {
                 // Exhale phase
                 circleText.textContent = "ရှူထုတ်...";
                 instText.textContent = "လေကိုဖြည်းညှင်းစွာ ရှူထုတ်ပါ (Exhale)";
-                instText.className = "text-2xl font-bold text-amber-600 dark:text-amber-400 tracking-wider transition-opacity duration-500 opacity-100";
+                instText.className = "text-lg sm:text-xl md:text-2xl font-bold text-amber-600 dark:text-amber-400 tracking-wide sm:tracking-wider transition-opacity duration-500 opacity-100";
             }, halfCycleTime);
         }
 
@@ -198,7 +207,7 @@
             // Reset text
             circleText.textContent = "အသင့်...";
             instText.textContent = "အသင့်ပြင်ပါ";
-            instText.className = "text-2xl font-bold text-slate-700 dark:text-slate-300 tracking-wider opacity-50";
+            instText.className = "text-lg sm:text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 tracking-wide sm:tracking-wider opacity-50";
         }
     </script>
     <script src="accessibility.js"></script>
