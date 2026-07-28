@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="သတိပဋ္ဌာန် (၄) ပါး လက်တွေ့ရှုမှတ်ပွားများရန် Prompter နှင့် Guide Timer (Satipaṭṭhāna Practice Simulator)">
+    <title>သတိပဋ္ဌာန် (၄) ပါး လက်တွေ့ပွားများရန် (Satipaṭṭhāna Prompter)</title>
+    <link rel="stylesheet" href="output.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        html { scroll-behavior: smooth; }
+        .mode-btn { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .mode-btn.active-sky { background: #0ea5e9; color: white; border-color: #0284c7; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35); font-weight: bold; }
+        .mode-btn.active-rose { background: #f43f5e; color: white; border-color: #e11d48; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.35); font-weight: bold; }
+        .mode-btn.active-amber { background: #f59e0b; color: white; border-color: #d97706; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); font-weight: bold; }
+        .mode-btn.active-emerald { background: #10b981; color: white; border-color: #059669; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35); font-weight: bold; }
+        .dark .mode-btn.active-sky { background: #0284c7; }
+        .dark .mode-btn.active-rose { background: #e11d48; }
+        .dark .mode-btn.active-amber { background: #d97706; }
+        .dark .mode-btn.active-emerald { background: #059669; }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
+        }
+        .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
+
+    <!-- Header -->
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-700 dark:text-amber-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-person-praying"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-amber-700 dark:text-amber-300">သတိပဋ္ဌာန် လက်တွေ့ရှုမှတ်ရန် <span class="text-slate-500 font-normal text-xs sm:text-sm">Satipaṭṭhāna Prompter</span></h1>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">ကာယ၊ ဝေဒနာ၊ စိတ္တ၊ ဓမ္မ သတိပဋ္ဌာန် ၄ ပါး လက်တွေ့ပွားများရာ အထောက်အကူပြု တိုင်မာ</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="satipatthana_guide.html" class="text-xs font-semibold bg-amber-50 dark:bg-amber-900/30 hover:bg-amber-100 dark:hover:bg-amber-800/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-book-open"></i> <span class="hidden sm:inline">လမ်းညွှန်ဖတ်ရန်</span><span class="sm:hidden">လမ်းညွှန်</span>
+                </a>
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> <span>Dashboard</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 mt-6 flex-1 w-full space-y-6">
+
+        <!-- Practice Mode Selector -->
+        <div class="glass-card p-3 sm:p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2.5 flex items-center gap-1.5">
+                <i class="fa-solid fa-list-check text-amber-500"></i> ရှုမှတ်ပွားများလိုသည့် ကမ္မဋ္ဌာန်းကဏ္ဍ (Practice Mode) ကို ရွေးချယ်ပါ -
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                <button onclick="setMode('kaya32')" id="btn-kaya32" class="mode-btn active-sky px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between">
+                    <span><i class="fa-solid fa-skull mr-2 text-sky-500"></i>၁။ ကာယ (၃၂ ကောဋ္ဌာသ)</span>
+                    <span class="text-[10px] bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300 px-2 py-0.5 rounded-full font-bold">၆ တွဲ</span>
+                </button>
+                <button onclick="setMode('kayaIriya')" id="btn-kayaIriya" class="mode-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between">
+                    <span><i class="fa-solid fa-person-walking mr-2 text-sky-500"></i>၂။ ကာယ (ဣရိယာပထ)</span>
+                    <span class="text-[10px] bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300 px-2 py-0.5 rounded-full font-bold">၅ အဆင့်</span>
+                </button>
+                <button onclick="setMode('vedana')" id="btn-vedana" class="mode-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between">
+                    <span><i class="fa-solid fa-heart-pulse mr-2 text-rose-500"></i>၃။ ဝေဒနာ (ခံစားမှု ၉ မျိုး)</span>
+                    <span class="text-[10px] bg-rose-100 dark:bg-rose-950/60 text-rose-800 dark:text-rose-300 px-2 py-0.5 rounded-full font-bold">၄ အဆင့်</span>
+                </button>
+                <button onclick="setMode('citta')" id="btn-citta" class="mode-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between">
+                    <span><i class="fa-solid fa-brain mr-2 text-amber-500"></i>၄။ စိတ္တ (စိတ် ၁၆ မျိုး)</span>
+                    <span class="text-[10px] bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 px-2 py-0.5 rounded-full font-bold">၈ တွဲ</span>
+                </button>
+                <button onclick="setMode('dhamma')" id="btn-dhamma" class="mode-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between sm:col-span-2 lg:col-span-2">
+                    <span><i class="fa-solid fa-leaf mr-2 text-emerald-500"></i>၅။ ဓမ္မ (ဗောဇ္ဈင် နှင့် သစ္စာ ၄ ပါး)</span>
+                    <span class="text-[10px] bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 px-2 py-0.5 rounded-full font-bold">၅ အဆင့်</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Timer / Settings Bar -->
+        <div class="glass-card p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3 flex-wrap">
+                <span class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-clock text-amber-500"></i> အဆင့်တစ်ဆင့်လျှင် ကြာချိန် -
+                </span>
+                <div class="flex gap-1.5 flex-wrap">
+                    <button onclick="setDuration(15)" id="btn-t15" class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-amber-500 hover:text-white transition">၁၅ စက္ကန့်</button>
+                    <button onclick="setDuration(30)" id="btn-t30" class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-amber-500 hover:text-white transition">၃၀ စက္ကန့်</button>
+                    <button onclick="setDuration(60)" id="btn-t60" class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-amber-500 text-white transition">၁ မိနစ်</button>
+                    <button onclick="setDuration(120)" id="btn-t120" class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-amber-500 hover:text-white transition">၂ မိနစ်</button>
+                    <button onclick="setDuration(180)" id="btn-t180" class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-amber-500 hover:text-white transition">၃ မိနစ်</button>
+                    <button onclick="setDuration(300)" id="btn-t300" class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-amber-500 hover:text-white transition">၅ မိနစ်</button>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="toggleGong()" id="btn-gong" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 flex items-center gap-1.5 shadow-sm transition">
+                    <i class="fa-solid fa-bell text-amber-500" id="gong-icon"></i> <span id="gong-text">ခေါင်းလောင်းသံ: ဖွင့်</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Prompter Card -->
+        <div id="prompter-card" class="glass-card rounded-3xl p-5 sm:p-8 md:p-10 border-t-4 border-t-sky-500 shadow-lg relative overflow-hidden transition-all duration-300">
+            <!-- Background Icon -->
+            <div id="bg-icon" class="absolute -right-12 -top-12 text-9xl text-sky-500/5 dark:text-sky-500/10 pointer-events-none transition-all"><i class="fa-solid fa-skull"></i></div>
+
+            <!-- Stage Header & Counter -->
+            <div class="flex items-center justify-between gap-3 mb-6 flex-wrap relative z-10">
+                <span id="stage-badge" class="px-3.5 py-1 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 font-bold text-xs sm:text-sm border border-sky-300 dark:border-sky-700">
+                    အပိုင်း (၁) - တစပဉ္စက (အရေအဆုံး ၅ ကောဋ္ဌာသ)
+                </span>
+                <span class="text-xs sm:text-sm font-bold bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    အဆင့် <span id="current-step-num" class="text-amber-600 dark:text-amber-400">၁</span> / <span id="total-steps-num">၆</span>
+                </span>
+            </div>
+
+            <!-- Title & Pali -->
+            <div class="space-y-4 mb-6 relative z-10">
+                <h2 id="stage-title" class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100">
+                    ၁။ တစပဉ္စက (ဆံပင်၊ မွေးညင်း၊ တွန်း၊ သွား၊ အရေ)
+                </h2>
+                
+                <div id="pali-container" class="bg-amber-50/80 dark:bg-amber-950/40 p-4 sm:p-5 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 text-amber-900 dark:text-amber-300 font-bold text-base sm:text-lg leading-relaxed shadow-sm">
+                    ကေသာ၊ လောမာ၊ နခါ၊ ဒန္တာ၊ တစော။
+                </div>
+            </div>
+
+            <!-- Myanmar Meaning & Contemplation Guide -->
+            <div class="space-y-4 mb-8 relative z-10">
+                <div class="bg-white/80 dark:bg-slate-800/80 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-lightbulb text-amber-500"></i> ရှုမှတ်ဆင်ခြင်ရန် သဘောတရားအနက် -
+                    </h3>
+                    <p id="stage-meaning" class="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                        ဦးခေါင်း၌ ပေါက်သော ဆံပင်များ၊ ကိုယ်ခန္ဓာ၌ ပေါက်သော မွေးညင်းများ၊ ခြေသည်း လက်သည်းများ၊ သွားများ နှင့် တစ်ကိုယ်လုံးကို ဖုံးအုပ်ထားသော အရေပြား။ ဤ (၅) မျိုးသော အစိတ်အပိုင်းတို့သည် သန့်ရှင်းစင်ကြယ်ခြင်း မရှိ၊ အဆင်း၊ သဏ္ဌာန်၊ အနံ့၊ တည်ရာ၊ ကန့်သတ်ချက်တို့ဖြင့် စက်ဆုပ်ရွံရှာဖွယ် အသုဘသဘောတရားများသာ ဖြစ်ပါသည်။
+                    </p>
+                </div>
+
+                <div id="extra-guide-container" class="bg-emerald-50/80 dark:bg-emerald-950/30 p-4 rounded-xl border border-emerald-200/60 dark:border-emerald-900/30 text-xs sm:text-sm text-emerald-900 dark:text-emerald-300 leading-relaxed flex items-start gap-2.5">
+                    <i class="fa-solid fa-compass text-emerald-600 dark:text-emerald-400 text-base mt-0.5 flex-shrink-0"></i>
+                    <div>
+                        <strong class="font-bold block mb-0.5">လက်တွေ့ ဉာဏ်သက်ဝင် ရှုမှတ်နည်း -</strong>
+                        <span id="stage-guide">ခန္ဓာကိုယ်၏ အပေါ်ယံတွင် ထင်ရှားစွာ တွေ့မြင်ရသော ဤအရေပြားနှင့် ဆံပင်မွေးညင်းများသည် လှပကြော့ရှင်းသည် မဟုတ်ဘဲ အရေခွံခွာလိုက်ပါက အလွန်စက်ဆုပ်ဖွယ် အသွေးအသားများသာ ဖြစ်ကြောင်း ဉာဏ်ဖြင့် စူးစိုက်ဆင်ခြင်ပါ။</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timer Display & Progress -->
+            <div class="bg-slate-100 dark:bg-slate-800/80 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 mb-8 text-center relative z-10 shadow-inner">
+                <div class="text-4xl sm:text-5xl font-extrabold text-slate-800 dark:text-slate-100 font-mono tracking-wider mb-3" id="time-display">01:00</div>
+                
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden mb-2 shadow-inner">
+                    <div id="progress-bar" class="bg-gradient-to-r from-sky-500 to-amber-500 h-full w-0 transition-all duration-300"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-500 font-semibold">
+                    <span>အစ</span>
+                    <span id="status-text">အသင့်ဖြစ်ပါပြီ</span>
+                    <span>အဆုံး</span>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap relative z-10">
+                <button onclick="prevStep()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-backward-step"></i> <span class="hidden sm:inline">ရှေ့တစ်ဆင့်</span>
+                </button>
+                
+                <button onclick="togglePlay()" id="play-btn" class="px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white transition shadow-lg shadow-sky-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95">
+                    <i class="fa-solid fa-play" id="play-icon"></i> <span id="play-text">စတင် ရှုမှတ်မည်</span>
+                </button>
+
+                <button onclick="resetTimer()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition flex items-center gap-2 shadow-sm" title="ပြန်စမည်">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+
+                <button onclick="nextStep()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition flex items-center gap-2 shadow-sm">
+                    <span class="hidden sm:inline">နောက်တစ်ဆင့်</span> <i class="fa-solid fa-forward-step"></i>
+                </button>
+            </div>
+
+            <!-- Stage Indicators Dots -->
+            <div id="dots-container" class="flex justify-center items-center gap-2 mt-8 flex-wrap relative z-10"></div>
+        </div>
+
+        <!-- Practical Tips Footer -->
+        <div class="glass-card p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-600 dark:text-slate-400 space-y-2">
+            <h4 class="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-amber-500"></i> သတိပဋ္ဌာန် ရှုမှတ်ရာတွင် အဓိက သတိပြုရန် (၃) ချက် -
+            </h4>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><strong>အာတာပီ (Aṭāpī):</strong> ကိလေသာကို ပူပန်စေနိုင်သော ပြင်းပြသည့် ဝီရိယ ရှိရမည်။</li>
+                <li><strong>သမ္ပဇာနော (Sampajāno):</strong> ဖြစ်ပျက်သဘောကို မှန်ကန်စွာ ပိုင်းခြားသိမြင်သော သမ္ပဇဉ်ပညာ ရှိရမည်။</li>
+                <li><strong>သတိမာ (Satimā):</strong> မမေ့မလျော့ အစဉ်အမြဲ ကပ်ငြိနေသော စွဲမြဲသည့် သတိ ရှိရမည်။</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- Web Audio API Gong Sound & Prompter Logic -->
+    <script>
+        // Web Audio API Gong Sound
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let gongEnabled = true;
+
+        function playGong() {
+            if (!gongEnabled) return;
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            
+            const now = audioCtx.currentTime;
+            
+            // Additive synthesis for a resonant Tibetan bowl / temple gong
+            const freqs = [220, 440, 660, 880, 1100];
+            const gains = [0.6, 0.3, 0.15, 0.08, 0.04];
+            
+            freqs.forEach((freq, idx) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = idx === 0 ? 'sine' : 'triangle';
+                osc.frequency.setValueAtTime(freq, now);
+                
+                // Slight pitch drop for realism
+                osc.frequency.exponentialRampToValueAtTime(freq * 0.995, now + 3.5);
+                
+                gain.gain.setValueAtTime(gains[idx], now);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.5);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start(now);
+                osc.stop(now + 3.5);
+            });
+        }
+
+        function toggleGong() {
+            gongEnabled = !gongEnabled;
+            const icon = document.getElementById('gong-icon');
+            const text = document.getElementById('gong-text');
+            const btn = document.getElementById('btn-gong');
+            
+            if (gongEnabled) {
+                icon.className = 'fa-solid fa-bell text-amber-500';
+                text.textContent = 'ခေါင်းလောင်းသံ: ဖွင့်';
+                btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 flex items-center gap-1.5 shadow-sm transition';
+                playGong();
+            } else {
+                icon.className = 'fa-solid fa-bell-slash text-slate-400';
+                text.textContent = 'ခေါင်းလောင်းသံ: ပိတ်';
+                btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center gap-1.5 shadow-sm transition';
+            }
+        }
+
+        // Satipatthana Practice Data Structures
+        const stagesData = {
+            kaya32: {
+                themeColor: 'sky',
+                icon: 'fa-skull',
+                stages: [
+                    {
+                        badge: "အပိုင်း (၁) - တစပဉ္စက (အရေအဆုံး ၅ ကောဋ္ဌာသ)",
+                        title: "၁။ တစပဉ္စက (ဆံပင်၊ မွေးညင်း၊ တွန်း၊ သွား၊ အရေ)",
+                        pali: "ကေသာ၊ လောမာ၊ နခါ၊ ဒန္တာ၊ တစော။",
+                        meaning: "ဦးခေါင်း၌ ပေါက်သော ဆံပင်များ၊ ကိုယ်ခန္ဓာ၌ ပေါက်သော မွေးညင်းများ၊ ခြေသည်း လက်သည်းများ၊ သွားများ နှင့် တစ်ကိုယ်လုံးကို ဖုံးအုပ်ထားသော အရေပြား။ ဤ (၅) မျိုးသော အစိတ်အပိုင်းတို့သည် အဆင်း၊ သဏ္ဌာန်၊ အနံ့၊ တည်ရာတို့ဖြင့် စက်ဆုပ်ရွံရှာဖွယ် အသုဘသဘောတရားများသာ ဖြစ်ပါသည်။",
+                        guide: "ခန္ဓာကိုယ်၏ အပေါ်ယံတွင် ထင်ရှားစွာ တွေ့မြင်ရသော ဤအရေပြားနှင့် ဆံပင်မွေးညင်းများသည် လှပကြော့ရှင်းသည် မဟုတ်ဘဲ အရေခွံခွာလိုက်ပါက အလွန်စက်ဆုပ်ဖွယ် အသွေးအသားများသာ ဖြစ်ကြောင်း ဉာဏ်ဖြင့် စူးစိုက်ဆင်ခြင်ပါ။"
+                    },
+                    {
+                        badge: "အပိုင်း (၂) - ဝက္ကပဉ္စက (အညှေးအဆုံး ၅ ကောဋ္ဌာသ)",
+                        title: "၂။ ဝက္ကပဉ္စက (အသား၊ အကြော၊ အရိုး၊ ရိုးတွင်းခြင်ဆီ၊ အညှေး)",
+                        pali: "မံသံ၊ နှာရု၊ အဋ္ဌိ၊ အဋ္ဌိမိဉ္ဇံ၊ ဝက္ကံ။",
+                        meaning: "အရေပြားအောက်ရှိ အသားတုံး အသားတစ်များ (မံသံ)၊ ခန္ဓာကိုယ်ကို ဖွဲ့နှောင်ထားသော အကြောကိုးရာ (နှာရု)၊ အရိုးသုံးရာ (အဋ္ဌိ)၊ အရိုးခေါင်းအတွင်းရှိ ခြင်ဆီများ (အဋ္ဌိမိဉ္ဇံ) နှင့် အညှေး/ကျောက်ကပ် (ဝက္ကံ)။",
+                        guide: "အပေါ်ယံအရေပြား ဖုံးအုပ်ထားမှုကို ခွင်း၍ အတွင်း၌ ရှိသော နီရဲနေသော အသားများ၊ ဖြူဖျော့သော အရိုးအကြောများနှင့် ရိုးတွင်းခြင်ဆီတို့၏ သဘာဝအတိုင်း ရွံရှာဖွယ်ကောင်းပုံကို စိတ်အာရုံဖြင့် ထိုးထွင်းမြင်ယောင်ပါ။"
+                    },
+                    {
+                        badge: "အပိုင်း (၃) - ပိပ္ဖလပဉ္စက (အဆုတ်အဆုံး ၅ ကောဋ္ဌာသ)",
+                        title: "၃။ ပိပ္ဖလပဉ္စက (နှလုံး၊ အသည်း၊ အမြှေး၊ သရက်ရွက်၊ အဆုတ်)",
+                        pali: "ဟဒယံ၊ ယကနံ၊ ကိလောမကံ၊ ပိဟကံ၊ ပပ္ဖါသံ။",
+                        meaning: "သွေးလည်ပတ်ရာ နှလုံးသား (ဟဒယံ)၊ အသည်း (ယကနံ)၊ ရင်ခေါင်းနှင့် ဝမ်းခေါင်းကို ခြားထားသော အမြှေး (ကိလောမကံ)၊ သရက်ရွက် (ပိဟကံ) နှင့် အဆုတ် (ပပ္ဖါသံ)။",
+                        guide: "ခန္ဓာကိုယ် အတွင်းပိုင်းရှိ ကလီစာများသည် သွေး၊ ပြည်၊ အရည်ပုပ်တို့ဖြင့် စိုစွတ် ပေကျံနေပြီး စက်ဆုပ်ဖွယ်ရာ အစုအဝေးကြီးသာ ဖြစ်ကြောင်း ဆင်ခြင်ပွားများပါ။"
+                    },
+                    {
+                        badge: "အပိုင်း (၄) - မတ္ထလုင်္ဂပဉ္စက (ဦးနှောက်အဆုံး ၅ ကောဋ္ဌာသ)",
+                        title: "၄။ မတ္ထလုင်္ဂပဉ္စက (အူမ၊ အူသိမ်၊ အစာသစ်၊ အစာဟောင်း၊ ဦးနှောက်)",
+                        pali: "အန္တံ၊ အန္တဂုဏံ၊ ဥဒရိယံ၊ ကရီသံ၊ မတ္ထလုင်္ဂံ။",
+                        meaning: "အူမကြီး (အန္တံ)၊ အူသိမ်/အူခွေ (အန္တဂုဏံ)၊ အိမ်မက်ထဲရှိ မကြေတကြေ အစာသစ် (ဥဒရိယံ)၊ ကျင်ကြီးဖြစ်မည့် အစာဟောင်း (ကရီသံ) နှင့် ဦးခေါင်းခွံအတွင်းရှိ ဦးနှောက် (မတ္ထလုင်္ဂံ)။",
+                        guide: "ကိုယ်ခန္ဓာသည် မစင်အိုးကြီးသဖွယ် အစာသစ်၊ အစာဟောင်း၊ မစင် ကြင်ကြီးတို့ဖြင့် ပြည့်နှက်နေပြီး ဦးခေါင်းခွံအတွင်း၌လည်း မစင်ကြယ်သော ဦးနှောက်အမြှေးအဖတ်များသာ ရှိကြောင်း အရှိအတိုင်း ရှုမှတ်ပါ။"
+                    },
+                    {
+                        badge: "အပိုင်း (၅) - အာပေါဆက္က (အရည် ၆ ကောဋ္ဌာသ)",
+                        title: "၅။ အာပေါဆက္က (သည်းခြေ၊ သလိပ်၊ ပြည်၊ သွေး၊ ချွေး၊ အဆီခဲ)",
+                        pali: "ပိတ္တံ၊ သေမှံ၊ ပုဗ္ဗော၊ လောဟိတံ၊ သေဒေါ၊ မေဒေါ။",
+                        meaning: "သည်းခြေရည် (ပိတ္တံ)၊ သလိပ် (သေမှံ)၊ အနာမှ ထွက်သော ပြည် (ပုဗ္ဗော)၊ သွေးနီရည် (လောဟိတံ)၊ ချွေး (သေဒေါ) နှင့် ခန္ဓာကိုယ်မှ အဆီခဲ (မေဒေါ)။",
+                        guide: "ခန္ဓာကိုယ်မှ ယိုစီးထွက်ပေါ်လာသမျှသော အရည်များသည် မွှေးကြိုင်သန့်ရှင်းခြင်း မရှိ၊ အလွန် ညစ်ညမ်း နံစော်သော အာပေါဓာတ် အရည်များသာ ဖြစ်ကြောင်း ရှုမှတ်ပါ။"
+                    },
+                    {
+                        badge: "အပိုင်း (၆) - မုတ္တဆက္က (ကျင်းငယ်ရေအဆုံး ၆ ကောဋ္ဌာသ)",
+                        title: "၆။ မုတ္တဆက္က (မျက်ရည်၊ အဆီကြည်၊ တံတွေး၊ နှပ်၊ ခြင်ဆီ၊ ကျင်ငယ်)",
+                        pali: "အဿု၊ ဝသာ၊ ခေဠော၊ သိង្ဃာဏိကာ၊ လသိကာ၊ မုတ္တံ။",
+                        meaning: "မျက်ရည် (အဿု)၊ အဆီကြည်/ဆီမွှေး (ဝသာ)၊ တံတွေး (ခေဠော)၊ နှပ် (သိង្ဃာဏိကာ)၊ အဆစ်တို့၌ရှိသော အစေး-ခြင်ဆီ (လသိကာ) နှင့် ကျင်ငယ်ရေ (မုတ္တံ)။",
+                        guide: "ဤ ၃၂ ပါးသော ကောဋ္ဌာသ (အစုအဝေး) တို့သည် 'ငါ' မဟုတ်၊ 'သူတစ်ပါး' မဟုတ်၊ ရုပ်အစုအဝေး ရွံရှာဖွယ် အသုဘတရားများသာ ဖြစ်သည်ဟု တပ်မက်မှု ရာဂကင်းစွာ ဉာဏ်ဖြင့် ရှင်းလင်းစွာ မြင်အောင် ရှုမှတ်ပါ။"
+                    }
+                ]
+            },
+            kayaIriya: {
+                themeColor: 'sky',
+                icon: 'fa-person-walking',
+                stages: [
+                    {
+                        badge: "အဆင့် (၁) - သွားခြင်း (Gacchanto vā gacchāmīti pajānāti)",
+                        title: "၁။ သွားလာလှုပ်ရှားမှု၌ သတိကပ်ခြင်း",
+                        pali: "ဂစ္ဆန္တော ဝါ ဂစ္ဆာမီတိ ပဇာနာတိ။",
+                        meaning: "လမ်းလျှောက် သွားလာသောအခါ 'ငါ သွားသည်' ဟု အတ္တစွဲဖြင့် မမှတ်ဘဲ၊ စိတ်၏ အလိုဆန္ဒကြောင့် ခြေလှမ်းလှုပ်ရှားမှု ရုပ်တရားများ ဖြစ်ပေါ်နေသည်ဟု အရှိအတိုင်း ပိုင်းခြားသိ၏။",
+                        guide: "ခြေလှမ်းတိုင်း၏ ကြွခြင်း၊ လှမ်းခြင်း၊ ချခြင်း အမူအရာ လှုပ်ရှားမှု ရုပ်တရားသက်သက်ကိုသာ သတိဖြင့် အစဉ်အမြဲ ထပ်ချပ်မကွာ စောင့်ကြည့်သိမြင်နေပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၂) - ရပ်ခြင်း (Ṭhito vā ṭhitomhīti pajānāti)",
+                        title: "၂။ ရပ်တန့်နေမှု၌ သတိကပ်ခြင်း",
+                        pali: "ဌိတော ဝါ ဌိတောမှီတိ ပဇာနာတိ။",
+                        meaning: "ရပ်နေသောအခါ၌လည်း 'ငါ ရပ်နေသည်' ဟု မမှတ်ဘဲ၊ ထောက်ကန်ထားသော ဝါယောဓာတ်၏ သဘောကြောင့် ကိုယ်ခန္ဓာ မတ်မတ်ရပ်တန့်နေခြင်း ဖြစ်သည်ဟု သိ၏။",
+                        guide: "ရပ်နေစဉ် တစ်ကိုယ်လုံး၏ တောင့်တင်းမှု၊ ညောင်းညာမှု နှင့် နေထားအမူအရာကို သတိသမ္ပဇဉ်ဖြင့် ရှင်းလင်းစွာ သိမှတ်နေပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၃) - ထိုင်ခြင်း (Nisinno vā nisinnosmhīti pajānāti)",
+                        title: "၃။ ထိုင်နေမှု၌ သတိကပ်ခြင်း",
+                        pali: "နိသိန္နော ဝါ နိသိန္နောမှီတိ ပဇာနာတိ။",
+                        meaning: "ထိုင်နေသောအခါ၌လည်း ခန္ဓာကိုယ်၏ ခေါက်ကွေး ထိုင်နေသော ရုပ်အမူအရာကို အတ္တမပါဘဲ ရုပ်တရား၏ နေထားတစ်ခုအဖြစ် သိ၏။",
+                        guide: "ထိုင်နေစဉ် ခန္ဓာကိုယ် အောက်ပိုင်း ထိတွေ့မှု၊ သက်တောင့်သက်သာရှိမှု သို့မဟုတ် တင်းကျပ်မှု သဘောတရားတို့ကို ပစ္စုပ္ပန် တည့်တည့်၌ သိမှတ်နေပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၄) - လျောင်းခြင်း (Sayāno vā sayānomhīti pajānāti)",
+                        title: "၄။ လဲလျောင်းအိပ်စက်မှု၌ သတိကပ်ခြင်း",
+                        pali: "သယာနော ဝါ သယာနောမှီတိ ပဇာနာတိ။",
+                        meaning: "လဲလျောင်းနေသောအခါ၌လည်း ကိုယ်ခန္ဓာ အလျားလိုက် ဖြစ်နေသော ရုပ်အမူအရာ နှင့် ထိတွေ့မှု သဘောတို့ကို စွဲမြဲစွာ သိမှတ်၏။",
+                        guide: "အိပ်ရာသို့ ဝင်၍ လဲလျောင်းသည့် အချိန်မှစ၍ အိပ်မပျော်မီ ကာလအထိ ခန္ဓာကိုယ်၏ ဖြေလျော့မှု၊ ထိတွေ့မှု သဘောတို့ကို မပြတ် သိမှတ်နေပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၅) - သမ္ပဇည (အသေးစိတ် အမူအရာများ ဆင်ခြင်ခြင်း)",
+                        title: "၅။ ဆင်ခြင်တုံတရား ၄ ပါးဖြင့် သိမှတ်ခြင်း",
+                        pali: "အဘိက္ကန္တေ ပဋိက္ကန္တေ သမ္ပဇာနကာရီ ဟောတိ။",
+                        meaning: "ရှေ့သို့ တက်ရာ၊ နောက်သို့ ဆုတ်ရာ၊ ကွေးရာ၊ ဆန့်ရာ၊ စားသောက်ရာ၊ စကားပြောရာ၊ တိတ်ဆိတ်စွာ နေရာ စသည့် အမူအရာ အားလုံးတို့၌ သတိ၊ သမ္ပဇဉ် ဉာဏ်ပညာဖြင့် ဆင်ခြင်သိမှတ်၏။",
+                        guide: "မိမိပြုလုပ်သမျှ လုပ်ငန်းဆောင်တာတိုင်း၌ အကျိုးရှိ/မရှိ (သာတ္ထက)၊ သင့်တော်မှု ရှိ/မရှိ (သပ္ပါယ)၊ ကမ္မဋ္ဌာန်းအာရုံ မလွတ်ခြင်း (ဂေါစရ) နှင့် ရုပ်နာမ်မျှသာ ဖြစ်ကြောင်း (အသမ္မောဟ) ဆင်ခြင်ပါ။"
+                    }
+                ]
+            },
+            vedana: {
+                themeColor: 'rose',
+                icon: 'fa-heart-pulse',
+                stages: [
+                    {
+                        badge: "အဆင့် (၁) - သုခ ဝေဒနာ (Sukha Vedanā)",
+                        title: "၁။ ချမ်းသာသော ခံစားမှုကို အရှိအတိုင်း သိခြင်း",
+                        pali: "သုခံ ဝါ ဝေဒနံ ဝေဒယမာနော သုခံ ဝေဒနံ ဝေဒယာမီတိ ပဇာနာတိ။",
+                        meaning: "ကိုယ်စိတ် နှစ်ပါး ချမ်းသာ သာယာသော သုခဝေဒနာ ခံစားရသောအခါ 'သုခဝေဒနာ ခံစားနေရသည်' ဟု ပစ္စုပ္ပန်တည့်တည့် အရှိအတိုင်း ပိုင်းခြားသိ၏။",
+                        guide: "ချမ်းသာသော ခံစားမှု ဖြစ်ပေါ်လာလျှင် ထိုခံစားမှုကို သာယာမက်မောခြင်း (တဏှာ/ရာဂ) မဖြစ်စေဘဲ၊ ဖြစ်ပေါ်ပြီးလျှင် ပြန်လည် ချုပ်ပျောက်သွားသော အနိစ္စသဘောမျှသာအဖြစ် လစ်လျူရှု သိမှတ်ပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၂) - ဒုက္ခ ဝေဒနာ (Dukkha Vedanā)",
+                        title: "၂။ ဆင်းရဲနာကျင်သော ခံစားမှုကို အရှိအတိုင်း သိခြင်း",
+                        pali: "ဒုက္ခံ ဝါ ဝေဒနံ ဝေဒယမာနော ဒုက္ခံ ဝေဒနံ ဝေဒယာမီတိ ပဇာနာတိ။",
+                        meaning: "နာကျင်၊ ကိုက်ခဲ၊ ညောင်းညာ၊ ပူလောင်သော ဆင်းရဲသည့် ဒုက္ခဝေဒနာ ခံစားရသောအခါ 'ဒုက္ခဝေဒနာ ခံစားနေရသည်' ဟု အမှန်အတိုင်း သိ၏။",
+                        guide: "နာကျင်မှု ဒုက္ခ ဖြစ်လာလျှင် စိတ်ပျက် ငြီးငြူခြင်း၊ ဒေါသထွက်ခြင်း မဖြစ်စေဘဲ 'ငါ နာသည် မဟုတ်၊ နာကျင်မှု ဝေဒနာ သဘောတရားလေး ဖြစ်ပေါ်နေခြင်းသာ ဖြစ်သည်' ဟု စိတ်ကို ခွာ၍ တည်ငြိမ်စွာ ရှုမှတ်ပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၃) - ဥပေက္ခာ ဝေဒနာ (Upekkha / Adukkhamasukha)",
+                        title: "၃။ အလယ်အလတ် ခံစားမှုကို အရှိအတိုင်း သိခြင်း",
+                        pali: "အဒုက္ခမသုခံ ဝါ ဝေဒနံ ဝေဒယမာနော အဒုက္ခမသုခံ ဝေဒနံ ဝေဒယာမီတိ ပဇာနာတိ။",
+                        meaning: "ချမ်းသာလည်း မဟုတ်၊ ဆင်းရဲလည်း မဟုတ်သော အလယ်အလတ် (ဥပေက္ခာ) ဝေဒနာ ခံစားရသောအခါ၌လည်း သတိမလွတ်ဘဲ အရှိအတိုင်း ထင်ရှားစွာ သိ၏။",
+                        guide: "ထူးခြားသော နာကျင်မှု သို့မဟုတ် ချမ်းသာမှု မရှိသည့် အခါတိုင်း စိတ်သည် တွေဝေ မေ့လျော့ (မောဟ) သွားတတ်သည်။ ထိုအလယ်အလတ် ငြိမ်သက်နေသော ဝေဒနာကိုလည်း မပြတ် သတိကပ်၍ သိနေပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၄) - သမုဒယ ဝယ ဉာဏ် (Arising & Passing Away)",
+                        title: "၄။ ဝေဒနာတို့၏ ဖြစ်ပျက် သဘောကို သိမြင်ခြင်း",
+                        pali: "သမုဒယဓမ္မာနုပဿီ ဝါ ဝေဒနာသု ဝိဟရတိ၊ ဝယဓမ္မာနုပဿီ ဝါ ဝေဒနာသု ဝိဟရတိ။",
+                        meaning: "ဝေဒနာတို့၏ ဖြစ်ပေါ်လာသော အကြောင်း (သမုဒယ) နှင့် ချုပ်ငြိမ်း ပျက်စီးသွားသော အကြောင်း (ဝယ) တို့ကို အဖန်ဖန် ရှုမြင်သုံးသပ်လျက် နေထိုင်၏။",
+                        guide: "မည်သည့် ခံစားမှု ပေါ်လာသည်ဖြစ်စေ အမြဲတမ်း တည်မြဲခြင်း မရှိ၊ အကြောင်းတိုက်ဆိုင်၍ ပေါ်လာပြီး အကြောင်းကုန်လျှင် ချက်ချင်း ချုပ်ငြိမ်းသွားသော အနိစ္စ၊ ဒုက္ခ၊ အနတ္တ သဘောတရားအဖြစ် အဆုံးသတ် ရှုမှတ်ပါ။"
+                    }
+                ]
+            },
+            citta: {
+                themeColor: 'amber',
+                icon: 'fa-brain',
+                stages: [
+                    {
+                        badge: "တွဲ (၁) - သရာဂ နှင့် ဝီတရာဂ စိတ် (Sarāga / Vītarāga)",
+                        title: "၁။ တပ်မက်မှု လောဘရှိ/မရှိ ရှုမှတ်ခြင်း",
+                        pali: "သရာဂံ ဝါ စိတ္တံ 'သရာဂံ စိတ္တ'န္တိ ပဇာနာတိ၊ ဝီတရာဂံ ဝါ စိတ္တံ 'ဝီတရာဂံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "အာရုံတစ်ခုခုအပေါ် လိုချင် တပ်မက်သော လောဘ (ရာဂ) နှင့် တကွ ဖြစ်သော စိတ်ကိုလည်း အရှိအတိုင်း သိ၏။ တပ်မက်မှု ကင်းရှင်း ငြိမ်းအေးနေသော စိတ်ကိုလည်း ကင်းရှင်းသည်ဟု သိ၏။",
+                        guide: "လိုချင်စိတ် ပေါ်လာလျှင် 'လိုချင်စိတ် ပေါ်နေသည်' ဟု သိပါ။ ကင်းရှင်းနေလျှင်လည်း 'လောဘ ကင်းနေသည်' ဟု သိပါ။ စိတ်ကို ပြုပြင်ခြင်း မလုပ်ဘဲ မှန်ကန်စွာ မှတ်သားရုံသာ ရှုမှတ်ပါ။"
+                    },
+                    {
+                        badge: "တွဲ (၂) - သဒေါသ နှင့် ဝီတဒေါသ စိတ် (Sadosa / Vītadosa)",
+                        title: "၂။ အမျက်ဒေါသ ရှိ/မရှိ ရှုမှတ်ခြင်း",
+                        pali: "သဒေါသံ ဝါ စိတ္တံ 'သဒေါသံ စိတ္တ'န္တိ ပဇာနာတိ၊ ဝီတဒေါသံ ဝါ စိတ္တံ 'ဝီတဒေါသံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "မကျေနပ်မှု၊ အမျက်ထွက်မှု၊ စိတ်တိုမှု ဒေါသ နှင့် တကွ ဖြစ်သော စိတ်ကိုလည်း သိ၏။ ဒေါသကင်း၍ ကြည်လင် အေးချမ်းနေသော စိတ်ကိုလည်း သိ၏။",
+                        guide: "စိတ်တိုခြင်း၊ စိတ်ညစ်ခြင်း ဖြစ်ပေါ်လာလျှင် ဒေါသနောက်သို့ မျောမပါဘဲ 'ဒေါသစိတ်ကလေး ဖြစ်ပေါ်နေသည်' ဟု သတိဖြင့် ချက်ချင်း ဖမ်း၍ ရှုမှတ်ပါ။"
+                    },
+                    {
+                        badge: "တွဲ (၃) - သမောဟ နှင့် ဝီတမောဟ စိတ် (Samoha / Vītamoha)",
+                        title: "၃။ တွေဝေမှု မောဟ ရှိ/မရှိ ရှုမှတ်ခြင်း",
+                        pali: "သမောဟံ ဝါ စိတ္တံ 'သမောဟံ စိတ္တ'န္တိ ပဇာနာတိ၊ ဝီတမောဟံ ဝါ စိတ္တံ 'ဝီတမောဟံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "အမှန်တရားကို မသိဘဲ တွေဝေ မိုက်မဲသော မောဟစိတ်ကိုလည်း သိ၏။ တွေဝေမှု ကင်း၍ အသိဉာဏ် ရှင်းလင်းနေသော စိတ်ကိုလည်း သိ၏။",
+                        guide: "စိတ်အာရုံ ထိုင်းမှိုင်းတွေဝေပြီး အသိလွတ်နေလျှင် သတိ ပြန်လည် ဆွဲခေါ်၍ ရှင်းလင်း တက်ကြွသော စိတ်အခြေအနေကို စောင့်ကြည့်ပါ။"
+                    },
+                    {
+                        badge: "တွဲ (၄) - သံခိတ္တ နှင့် ဝိက္ခိတ္တ စိတ် (Saṅkhitta / Vikkhitta)",
+                        title: "၄။ ကျုံ့နေသော နှင့် ပျံ့လွင့်သော စိတ်",
+                        pali: "သံခိတ္တံ ဝါ စိတ္တံ 'သံခိတ္တံ စိတ္တ'န္တိ ပဇာနာတိ၊ ဝိက္ခိတ္တံ ဝါ စိတ္တံ 'ဝိက္ခိတ္တံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "ထိနမိဒ္ဓကြောင့် တွန့်ဆုတ် ကျုံ့ဝင် ငိုက်မျဉ်းနေသော စိတ်ကိုလည်း သိ၏။ ဥဒ္ဓစ္စကြောင့် အာရုံအမျိုးမျိုးသို့ ဂဏှာမငြိမ် ပျံ့လွင့်နေသော စိတ်ကိုလည်း သိ၏။",
+                        guide: "တရားထိုင်စဉ် ငိုက်မျဉ်းလာလျှင် 'စိတ်ကျုံ့နေသည်' ဟု သိ၍၊ အတွေးအာရုံများ ပျံ့လွင့်သွားလျှင် 'စိတ်ပျံ့လွင့်နေသည်' ဟု သတိဖြင့် အကဲခတ်ပါ။"
+                    },
+                    {
+                        badge: "တွဲ (၅) - မဟဂ္ဂတ နှင့် အမဟဂ္ဂတ စိတ် (Mahaggata / Amahaggata)",
+                        title: "၅။ ကြီးကျယ်သော ဈာန်စိတ် နှင့် သာမန်စိတ်",
+                        pali: "မဟဂ္ဂတံ ဝါ စိတ္တံ 'မဟဂ္ဂတံ စိတ္တ'န္တိ ပဇာနာတိ၊ အမဟဂ္ဂတံ ဝါ စိတ္တံ 'အမဟဂ္ဂတံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "ရူပဈာန်၊ အရူပဈာန် ဟူသော ကြီးကျယ် မြင့်မြတ်သည့် မဟဂ္ဂတစိတ်ကိုလည်း သိ၏။ ဈာန်မရသော သာမန် ကာမာဝစရ (အမဟဂ္ဂတ) စိတ်ကိုလည်း သိ၏။",
+                        guide: "မိမိ၏ စိတ်သည် သမာဓိစွမ်းအင် မြင့်မား၍ ကြီးကျယ် ပြန့်ပြောနေသလား၊ သို့မဟုတ် ပုံမှန် အာရုံခံစားမှု သာမန်စိတ်အဆင့်သာ ရှိသလား ဟု ခွဲခြား ရှုမှတ်ပါ။"
+                    },
+                    {
+                        badge: "တွဲ (၆) - သဥတ္တရ နှင့် အနုတ္တရ စိတ် (Sauttara / Anuttara)",
+                        title: "၆။ သာလွန်စိတ် ရှိ/မရှိ ရှုမှတ်ခြင်း",
+                        pali: "သဥတ္တရံ ဝါ စိတ္တံ 'သဥတ္တရံ စိတ္တ'န္တိ ပဇာနာတိ၊ အနုတ္တရံ ဝါ စိတ္တံ 'အနုတ္တရံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "မိမိထက် သာလွန် မြင့်မြတ်သော စိတ် (ဥပမာ- အရူပဈာန်) ရှိသေးသည့် ရူပဈာန်၊ ကာမစိတ်တို့ကို သိ၏။ မိမိထက် သာလွန်သော စိတ် မရှိတော့သည့် အမြင့်ဆုံး အရူပဈာန်စိတ်ကို သိ၏။",
+                        guide: "လက်ရှိ စိတ်အခြေအနေထက် ပိုမို နူးညံ့ ကောင်းမွန်သော စိတ်အခြေအနေသို့ တက်လှမ်းနိုင်ရန် စိတ်၏ အဆင့်အတန်းကို ဉာဏ်ဖြင့် ပိုင်းခြားသိပါ။"
+                    },
+                    {
+                        badge: "တွဲ (၇) - သမာဟိတ နှင့် အသမာဟိတ စိတ် (Samāhita / Asamāhita)",
+                        title: "၇။ တည်ကြည်သော နှင့် မတည်ကြည်သော စိတ်",
+                        pali: "သမာဟိတံ ဝါ စိတ္တံ 'သမာဟိတံ စိတ္တ'န္တိ ပဇာနာတိ၊ အသမာဟိတံ ဝါ စိတ္တံ 'အသမာဟိတံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "အာရုံတစ်ခုတည်း၌ စွဲမြဲစွာ တည်ကြည် ငြိမ်သက်နေသော (သမာဟိတ) စိတ်ကို သိ၏။ တည်ကြည်မှု မရှိဘဲ လှုပ်ရှားနေသော (အသမာဟိတ) စိတ်ကို သိ၏။",
+                        guide: "သမာဓိ ရနေချိန်၌ အလွန် အေးချမ်း တည်ကြည်မှုကို သိမှတ်၍၊ သမာဓိ ပျက်ပြားချိန်၌လည်း စိတ်မပျက်ဘဲ မတည်ကြည်ကြောင်းကို သတိဖြင့် သိမှတ်နေပါ။"
+                    },
+                    {
+                        badge: "တွဲ (၈) - ဝိမုတ္တ နှင့် အဝိမုတ္တ စိတ် (Vimutta / Avimutta)",
+                        title: "၈။ ကိလေသာမှ လွတ်မြောက်သော နှင့် မလွတ်မြောက်သော စိတ်",
+                        pali: "ဝိမုတ္တံ ဝါ စိတ္တံ 'ဝိမုတ္တံ စိတ္တ'န္တိ ပဇာနာတိ၊ အဝိမုတ္တံ ဝါ စိတ္တံ 'အဝိမုတ္တံ စိတ္တ'န္တိ ပဇာနာတိ။",
+                        meaning: "ဝိပဿနာဉာဏ်၊ ဈာန်သမာဓိတို့ဖြင့် ကိလေသာမှ ခေတ္တ လွတ်မြောက်နေသော (တဒင်္ဂ၊ ဝိက္ခမ္ဘန ဝိမုတ္တိ) စိတ်ကို သိ၏။ ကိလေသာမှ မလွတ်မြောက်သေးသော စိတ်ကို သိ၏။",
+                        guide: "စိတ်အစဉ်၌ ကိလေသာအညစ်အကြေးများ စင်ကြယ် လွတ်မြောက်နေမှု သို့မဟုတ် ကပ်ငြိနေမှု သဘောတရားတို့ကို နောက်ဆုံးအဆင့်အဖြစ် ရှင်းလင်းစွာ စစ်ဆေး ပွားများပါ။"
+                    }
+                ]
+            },
+            dhamma: {
+                themeColor: 'emerald',
+                icon: 'fa-leaf',
+                stages: [
+                    {
+                        badge: "အဆင့် (၁) - နီဝရဏ ၅ ပါး (The 5 Hindrances)",
+                        title: "၁။ အဆီးအတား နီဝရဏ တရားများ ရှုမှတ်ခြင်း",
+                        pali: "သန္တံ ဝါ အဇ္ဈတ္တံ ကာမစ္ဆန္ဒံ 'အတ္ထိ မေ အဇ္ဈတ္တံ ကာမစ္ဆန္ဒော'တိ ပဇာနာတိ...",
+                        meaning: "မိမိသန္တာန်၌ ကာမစ္ဆန္ဒ (လိုချင်မှု)၊ ဗျာပါဒ (ဒေါသ)၊ ထိနမိဒ္ဓ (ငိုက်မျဉ်းမှု)၊ ဥဒ္ဓစ္စကုက္ကုစ္စ (ပျံ့လွင့်/နောင်တဖြစ်မှု) နှင့် ဝိစိကိစ္ဆာ (သံသယဖြစ်မှု) တို့ ရှိလျှင် ရှိသည်၊ မရှိလျှင် မရှိဟု သိ၏။ ထိုတရားတို့ ဖြစ်ပေါ်ကြောင်း နှင့် ပယ်သတ်နိုင်ကြောင်းကို သိ၏။",
+                        guide: "တရားထိုင်စဉ် သမာဓိကို နှောင့်ယှက်သော အဆီးအတား ၅ ပါး ပေါ်လာပါက ရန်သူလို မတွန်းလှန်ဘဲ 'နီဝရဏတရား ဖြစ်ပေါ်နေသည်' ဟု သတိဖြင့် စိုက်ကြည့်၍ ချုပ်ငြိမ်းစေပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၂) - ဥပါဒါနက္ခန္ဓာ ၅ ပါး (The 5 Aggregates)",
+                        title: "၂။ ခန္ဓာ ၅ ပါးတို့၏ ဖြစ်ပျက်ကို ရှုမှတ်ခြင်း",
+                        pali: "ဣတိ ရူပံ၊ ဣတိ ရူပဿ သမုဒယော၊ ဣတိ ရူပဿ အတ္ထင်္ဂမော...",
+                        meaning: "ဤကား ရုပ်၊ ဝေဒနာ (ခံစားမှု)၊ သညာ (မှတ်သားမှု)၊ သင်္ခါရ (ပြုပြင်မှု)၊ ဝိညာဏ် (သိမှု) ဟူသော ခန္ဓာ ၅ ပါးတည်း။ ဤကား ခန္ဓာတို့၏ ဖြစ်ပေါ်ခြင်းတည်း။ ဤကား ခန္ဓာတို့၏ ချုပ်ငြိမ်းပျက်စီးခြင်းတည်း ဟု သိ၏။",
+                        guide: "မိမိဟု ထင်မှတ်ထားသော ဤကိုယ်ခန္ဓာနှင့် စိတ်သည် ရုပ်၊ ဝေဒနာ၊ သညာ၊ သင်္ခါရ၊ ဝိညာဏ် ဟူသော အစုအဝေး ၅ ခု၏ အစဉ်မပြတ် ဖြစ်လိုက် ပျက်လိုက် ဖြစ်နေသော အစဉ်တန်းကြီးသာ ဖြစ်ကြောင်း ဆင်ခြင်ပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၃) - အာယတန ၁၂ ပါး နှင့် သံယောဇဉ်",
+                        title: "၃။ ဒွါရနှင့် အာရုံ တိုက်ဆိုင်မှု ရှုမှတ်ခြင်း",
+                        pali: "စက္ခုဉ္စ ပဇာနာတိ၊ ရူပေ စ ပဇာနာတိ၊ ယဉ္စ တဒုဘယံ ပဋိစ္စ ဥပ္ပဇ္ဇတိ သံယောဇနံ၊ တဉ္စ ပဇာနာတိ...",
+                        meaning: "မျက်စိကိုလည်း သိ၏၊ အဆင်းကိုလည်း သိ၏။ ထိုနှစ်ပါးကို စွဲမှီ၍ ဖြစ်ပေါ်လာသော သံယောဇဉ် (တွယ်တာနှောင်ကြိုး) ကိုလည်း သိ၏။ နားနှင့်အသံ၊ နှာခေါင်းနှင့်အနံ့၊ လျှာနှင့်အရသာ၊ ကိုယ်နှင့်အတွေ့၊ စိတ်နှင့်ဓမ္မာရုံ တို့၌လည်း ထို့အတူ သိ၏။",
+                        guide: "အာရုံ ၆ ပါးနှင့် ဒွါရ ၆ ပါး တိုက်မိသောအခါ မြင်ရုံ၊ ကြားရုံ၊ သိရုံ သက်သက်ဖြင့် ရပ်တန့်ကာ လိုချင်တပ်မက်မှု သံယောဇဉ် မဖြစ်ပေါ်စေရန် သတိဖြင့် ထိန်းချုပ် ရှုမှတ်ပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၄) - ဗောဇ္ဈင်္ဂ ၇ ပါး (The 7 Factors of Enlightenment)",
+                        title: "၄။ သစ္စာသိမြင်ရေး အင်္ဂါ ၇ ပါး ပွားများခြင်း",
+                        pali: "သန္တံ ဝါ အဇ္ဈတ္တံ သတိသမ္ဗောဇ္ဈင်္ဂံ 'အတ္ထိ မေ အဇ္ဈတ္တံ သတိသမ္ဗောဇ္ဈင်္ဂေါ'တိ ပဇာနာတိ...",
+                        meaning: "မိမိသန္တာန်၌ သတိ (အောက်မေ့မှု)၊ ဓမ္မဝိစယ (ပညာဖြင့် စူးစမ်းမှု)၊ ဝီရိယ (ကြိုးစားမှု)၊ ပီတိ (နှစ်သက်မှု)၊ ပဿဒ္ဓိ (ငြိမ်းအေးမှု)၊ သမာဓိ (တည်ကြည်မှု) နှင့် ဥပေက္ခာ (လစ်လျူရှုမှု) ဟူသော ဗောဇ္ဈင် ၇ ပါး ရှိ/မရှိ နှင့် အပြည့်အစုံ ရင့်ကျက်လာပုံကို သိ၏။",
+                        guide: "တရားထူး ရရှိရေးအတွက် အဓိက အထောက်အကူပြုသော ဤဗောဇ္ဈင် ၇ ပါး မိမိစိတ်၌ ညီညွတ်စွာ ကိန်းဝပ်နေစေရန် ဟန်ချက်ညီညီ ချိန်ညှိ ပွားများပါ။"
+                    },
+                    {
+                        badge: "အဆင့် (၅) - သစ္စ ၄ ပါး (The 4 Noble Truths)",
+                        title: "၅။ အရိယသစ္စာ ၄ ပါးကို ထိုးထွင်းသိမြင်ခြင်း",
+                        pali: "ဣဒံ ဒုက္ခ'န္တိ ယထာဘူတံ ပဇာနာတိ၊ ဣဒံ ဒုက္ခသမုဒယ'န္တိ ယထာဘူတံ ပဇာနာတိ...",
+                        meaning: "ဤကား ဆင်းရဲခြင်း ဒုက္ခသစ္စာတည်း။ ဤကား ဆင်းရဲကြောင်း တဏှာ သမုဒယသစ္စာတည်း။ ဤကား ဆင်းရဲချုပ်ရာ နိဗ္ဗာန် နိရောဓသစ္စာတည်း။ ဤကား ဆင်းရဲချုပ်ရာသို့ သွားရာ မဂ္ဂသစ္စာတည်း ဟု အမှန်အတိုင်း ထိုးထွင်းသိမြင်၏။",
+                        guide: "ခန္ဓာငါးပါး၏ ဖြစ်ပျက်မှု အားလုံးသည် ဒုက္ခသစ္စာ၊ ထိုဒုက္ခကို တွယ်တာမှုသည် သမုဒယသစ္စာ၊ ယခု ရှုမှတ်နေသော သတိပညာသည် မဂ္ဂသစ္စာ၊ ထိုမဂ္ဂင်ရင့်ကျက်၍ ကိလေသာ ချုပ်ငြိမ်းမှုသည် နိရောဓသစ္စာ ဖြစ်ကြောင်း အဆုံးစွန် ပိုင်းခြား သိမြင်တော်မူပါ။"
+                    }
+                ]
+            }
+        };
+
+        let currentMode = 'kaya32';
+        let currentStepIndex = 0;
+        let stepDurationSeconds = 60; // default 1 min
+        let remainingSeconds = 60;
+        let timerInterval = null;
+        let isPlaying = false;
+
+        function setMode(modeKey) {
+            if (isPlaying) togglePlay();
+            currentMode = modeKey;
+            currentStepIndex = 0;
+            
+            // Highlight Buttons
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.className = 'mode-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-left flex items-center justify-between transition';
+            });
+            
+            const activeBtn = document.getElementById('btn-' + modeKey);
+            const theme = stagesData[modeKey].themeColor;
+            activeBtn.className = `mode-btn active-${theme} px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border text-left flex items-center justify-between transition`;
+
+            // Update Card Theme Border & Background Icon
+            const card = document.getElementById('prompter-card');
+            card.className = `glass-card rounded-3xl p-5 sm:p-8 md:p-10 border-t-4 border-t-${theme}-500 shadow-lg relative overflow-hidden transition-all duration-300`;
+            
+            const bgIcon = document.getElementById('bg-icon');
+            bgIcon.className = `absolute -right-12 -top-12 text-9xl text-${theme}-500/5 dark:text-${theme}-500/10 pointer-events-none transition-all`;
+            bgIcon.innerHTML = `<i class="fa-solid ${stagesData[modeKey].icon}"></i>`;
+
+            buildDots();
+            renderStep();
+        }
+
+        function setDuration(seconds) {
+            stepDurationSeconds = seconds;
+            
+            // Update buttons
+            const btns = ['t15', 't30', 't60', 't120', 't180', 't300'];
+            btns.forEach(b => {
+                const el = document.getElementById('btn-' + b);
+                if (el) el.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-amber-500 hover:text-white transition';
+            });
+            const activeEl = document.getElementById('btn-t' + seconds);
+            if (activeEl) activeEl.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-amber-500 text-white transition';
+
+            if (!isPlaying) {
+                remainingSeconds = stepDurationSeconds;
+                updateTimeDisplay();
+            }
+        }
+
+        function buildDots() {
+            const container = document.getElementById('dots-container');
+            container.innerHTML = '';
+            const stages = stagesData[currentMode].stages;
+            const theme = stagesData[currentMode].themeColor;
+            
+            stages.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.onclick = () => { if (isPlaying) togglePlay(); currentStepIndex = idx; renderStep(); };
+                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${idx === currentStepIndex ? `bg-${theme}-500 scale-125 shadow-sm` : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'}`;
+                dot.title = `အဆင့် ${idx + 1}`;
+                container.appendChild(dot);
+            });
+        }
+
+        function renderStep() {
+            const data = stagesData[currentMode];
+            const stage = data.stages[currentStepIndex];
+            const theme = data.themeColor;
+
+            document.getElementById('stage-badge').textContent = stage.badge;
+            document.getElementById('stage-badge').className = `px-3.5 py-1 rounded-full bg-${theme}-100 dark:bg-${theme}-950/80 text-${theme}-800 dark:text-${theme}-300 font-bold text-xs sm:text-sm border border-${theme}-300 dark:border-${theme}-700`;
+            
+            document.getElementById('current-step-num').textContent = currentStepIndex + 1;
+            document.getElementById('total-steps-num').textContent = data.stages.length;
+            
+            document.getElementById('stage-title').textContent = stage.title;
+            
+            const paliContainer = document.getElementById('pali-container');
+            if (stage.pali) {
+                paliContainer.style.display = 'block';
+                paliContainer.textContent = stage.pali;
+            } else {
+                paliContainer.style.display = 'none';
+            }
+
+            document.getElementById('stage-meaning').textContent = stage.meaning;
+            document.getElementById('stage-guide').textContent = stage.guide;
+
+            remainingSeconds = stepDurationSeconds;
+            updateTimeDisplay();
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.getElementById('dots-container').children;
+            const theme = stagesData[currentMode].themeColor;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = `w-3 h-3 rounded-full transition-all duration-300 ${i === currentStepIndex ? `bg-${theme}-500 scale-125 shadow-sm` : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'}`;
+            }
+        }
+
+        function updateTimeDisplay() {
+            const mins = Math.floor(remainingSeconds / 60);
+            const secs = remainingSeconds % 60;
+            document.getElementById('time-display').textContent = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            
+            const percent = ((stepDurationSeconds - remainingSeconds) / stepDurationSeconds) * 100;
+            document.getElementById('progress-bar').style.width = percent + '%';
+        }
+
+        function togglePlay() {
+            const btn = document.getElementById('play-btn');
+            const icon = document.getElementById('play-icon');
+            const text = document.getElementById('play-text');
+            const status = document.getElementById('status-text');
+
+            if (isPlaying) {
+                clearInterval(timerInterval);
+                isPlaying = false;
+                icon.className = 'fa-solid fa-play';
+                text.textContent = 'ဆက်လက် ရှုမှတ်မည်';
+                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white transition shadow-lg shadow-sky-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
+                status.textContent = 'ခေတ္တရပ်ထားသည်';
+            } else {
+                isPlaying = true;
+                icon.className = 'fa-solid fa-pause';
+                text.textContent = 'ခေတ္တ ရပ်မည်';
+                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white transition shadow-lg shadow-amber-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95 animate-pulse-soft';
+                status.textContent = 'ရှုမှတ်နေသည်...';
+                
+                if (remainingSeconds === stepDurationSeconds) {
+                    playGong();
+                }
+
+                timerInterval = setInterval(() => {
+                    remainingSeconds--;
+                    updateTimeDisplay();
+                    
+                    if (remainingSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        isPlaying = false;
+                        playGong();
+                        
+                        // Advance to next step if available
+                        if (currentStepIndex < stagesData[currentMode].stages.length - 1) {
+                            setTimeout(() => {
+                                currentStepIndex++;
+                                renderStep();
+                                togglePlay(); // auto start next step
+                            }, 1500);
+                        } else {
+                            // Completed all stages
+                            icon.className = 'fa-solid fa-check';
+                            text.textContent = 'ပွားများမှု အောင်မြင်သည်';
+                            status.textContent = 'သတိပဋ္ဌာန် ၄ ပါး ရှုမှတ်မှု ပြီးမြောက်ပါပြီ';
+                            btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-lg shadow-emerald-500/30 flex items-center gap-2.5 min-w-[140px] justify-center';
+                            document.getElementById('progress-bar').style.width = '100%';
+                        }
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            if (isPlaying) togglePlay();
+            remainingSeconds = stepDurationSeconds;
+            updateTimeDisplay();
+            document.getElementById('status-text').textContent = 'အသင့်ဖြစ်ပါပြီ';
+            document.getElementById('play-icon').className = 'fa-solid fa-play';
+            document.getElementById('play-text').textContent = 'စတင် ရှုမှတ်မည်';
+            document.getElementById('play-btn').className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white transition shadow-lg shadow-sky-500/30 flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
+        }
+
+        function nextStep() {
+            if (currentStepIndex < stagesData[currentMode].stages.length - 1) {
+                if (isPlaying) togglePlay();
+                currentStepIndex++;
+                renderStep();
+                playGong();
+            }
+        }
+
+        function prevStep() {
+            if (currentStepIndex > 0) {
+                if (isPlaying) togglePlay();
+                currentStepIndex--;
+                renderStep();
+                playGong();
+            }
+        }
+
+        // Initialize default mode
+        window.onload = () => {
+            setMode('kaya32');
+        };
+    </script>
+    <script src="accessibility.js"></script>
+</body>
+</html>

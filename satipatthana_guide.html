@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="သတိပဋ္ဌာန် (၄) ပါး လက်တွေ့ကျင့်စဉ် လမ်းညွှန် - ကာယာနုပဿနာ၊ ဝေဒနာနုပဿနာ၊ စိတ္တာနုပဿနာ၊ ဓမ္မာနုပဿနာ">
+    <meta name="description" content="သတိပဋ္ဌာန် (၄) ပါး လက်တွေ့ကျင့်စဉ် လမ်းညွှန် အကျယ် - ကာယာနုပဿနာ၊ ဝေဒနာနုပဿနာ၊ စိတ္တာနုပဿနာ၊ ဓမ္မာနုပဿနာ">
     <title>သတိပဋ္ဌာန် (၄) ပါး လမ်းညွှန် (Satipaṭṭhāna Guide)</title>
     <link rel="stylesheet" href="output.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,12 +17,12 @@
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
         .dark .glass-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(30, 41, 59, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; }
@@ -31,14 +31,14 @@
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
         html { scroll-behavior: smooth; }
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .tab-btn { transition: all 0.2s ease; }
-        .tab-btn.active { background: #fbbf24; color: #78350f; border-color: #f59e0b; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); font-weight: bold; }
-        .dark .tab-btn.active { background: #d97706; color: #fffbeb; border-color: #b45309; }
+        .tab-btn.active { background: #fbbf24; color: #78350f; border-color: #f59e0b; box-shadow: 0 4px 10px -1px rgba(245, 158, 11, 0.3); font-weight: bold; }
+        .dark .tab-btn.active { background: #d97706; color: #fffbeb; border-color: #b45309; box-shadow: 0 4px 10px -1px rgba(217, 119, 6, 0.3); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
@@ -51,10 +51,13 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-amber-700 dark:text-amber-300">သတိပဋ္ဌာန် (၄) ပါး <span class="text-slate-500 dark:text-slate-500 font-normal text-sm">Satipaṭṭhāna Guide</span></h1>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400">ကာယ၊ ဝေဒနာ၊ စိတ္တ၊ ဓမ္မ ရှုမှတ်ပွားများနည်းများ</p>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">ကာယ၊ ဝေဒနာ၊ စိတ္တ၊ ဓမ္မ ရှုမှတ်ပွားများနည်းများ အကျယ်</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
+                <a href="satipatthana_prompter.html" class="text-xs font-bold bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white px-3.5 py-2 rounded-full shadow-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-play"></i> <span class="hidden sm:inline">လက်တွေ့ကျင့်ရန်</span><span class="sm:hidden">Prompter</span>
+                </a>
                 <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>Dashboard</span>
                 </a>
@@ -64,160 +67,288 @@
 
     <main class="max-w-6xl mx-auto px-4 mt-8 flex-1 w-full space-y-8">
         
-        <!-- Intro -->
+        <!-- Intro & Hero CTA Banner -->
         <div class="text-center max-w-4xl mx-auto space-y-4">
             <h2 class="text-2xl sm:text-3xl font-bold text-amber-800 dark:text-amber-400">မဟာသတိပဋ္ဌာန သုတ္တန်</h2>
-            <div class="glass-card p-6 rounded-2xl border border-amber-200 dark:border-amber-900">
-                <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed italic mb-4">
+            <div class="glass-card p-6 rounded-2xl border border-amber-200 dark:border-amber-900 shadow-sm">
+                <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed italic mb-4 font-semibold text-amber-900 dark:text-amber-200">
                     "ဧကာယနော အယံ ဘိက္ခဝေ မဂ္ဂေါ သတ္တာနံ ဝိသုဒ္ဓိယာ၊ သောကပရိဒေဝါနံ သမတိက္ကမာယ၊ ဒုက္ခဒေါမနဿာနံ အတ္ထင်္ဂမာယ၊ ဉာယဿ အဓိဂမာယ၊ နိဗ္ဗာနဿ သစ္ဆိကိရိယာယ ယဒိဒံ စတ္တာရော သတိပဋ္ဌာနာ"
                 </p>
-                <p class="text-slate-800 dark:text-slate-200 text-sm leading-relaxed">
+                <p class="text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed">
                     ရဟန်းတို့၊ သတ္တဝါတို့၏ စိတ်အညစ်အကြေး ကင်းစင်ရန်၊ စိုးရိမ်ပူဆွေးမှုနှင့် ငိုကြွေးရမှုတို့ကို လွန်မြောက်ရန်၊ ကိုယ်ဆင်းရဲနှင့် စိတ်ဆင်းရဲတို့ကို ချုပ်ငြိမ်းရန်၊ မှန်ကန်သော မဂ်ဉာဏ်ကို ရရန်နှင့် နိဗ္ဗာန်ကို မျက်မှောက်ပြုရန်အတွက် <strong>တစ်ကြောင်းတည်းသော ခရီးလမ်း</strong>သည် ဤသတိပဋ္ဌာန် (၄) ပါး ပင်ဖြစ်၏။
                 </p>
+                
+                <!-- CTA Box -->
+                <div class="mt-6 p-4 bg-gradient-to-r from-amber-500/10 to-rose-500/10 dark:from-amber-500/20 dark:to-rose-500/20 rounded-xl border border-amber-300/60 dark:border-amber-700/60 flex items-center justify-between gap-4 flex-wrap">
+                    <div class="text-left">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2">
+                            <i class="fa-solid fa-bell text-amber-500"></i> သတိပဋ္ဌာန် (၄) ပါး လက်တွေ့ ရှုမှတ်ပွားများရန်
+                        </h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">အသံတိုင်မာ၊ အဆင့်ဆင့် လမ်းညွှန်ချက်များဖြင့် ကာယ၊ ဝေဒနာ၊ စိတ္တ၊ ဓမ္မ ကမ္မဋ္ဌာန်းများကို လက်တွေ့ ပွားများနိုင်ပါသည်။</p>
+                    </div>
+                    <a href="satipatthana_prompter.html" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-bold rounded-xl shadow-md transition transform active:scale-95 text-xs sm:text-sm flex items-center gap-2">
+                        <span>Satipaṭṭhāna Prompter ဖွင့်မည်</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
         <!-- Navigation Tabs -->
         <div class="flex flex-wrap justify-center gap-2 md:gap-4 border-b border-slate-300 dark:border-slate-700 pb-4 sticky top-16 bg-slate-50/90 dark:bg-slate-900/90 z-30 pt-2 backdrop-blur-md">
-            <button onclick="openTab('kaya')" class="tab-btn active px-4 py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
-                <i class="fa-solid fa-person-walking mr-2 text-sky-500"></i>၁။ ကာယာနုပဿနာ
+            <button onclick="openTab('kaya')" class="tab-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center shadow-sm">
+                <i class="fa-solid fa-person-walking mr-2 text-sky-500"></i>၁။ ကာယာနုပဿနာ <span class="ml-1.5 px-1.5 py-0.2 rounded bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-300 text-[10px] font-bold">၁၄ ပဗ္ဗ</span>
             </button>
-            <button onclick="openTab('vedana')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
-                <i class="fa-solid fa-heart-pulse mr-2 text-rose-500"></i>၂။ ဝေဒနာနုပဿနာ
+            <button onclick="openTab('vedana')" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center shadow-sm">
+                <i class="fa-solid fa-heart-pulse mr-2 text-rose-500"></i>၂။ ဝေဒနာနုပဿနာ <span class="ml-1.5 px-1.5 py-0.2 rounded bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-300 text-[10px] font-bold">၉ မျိုး</span>
             </button>
-            <button onclick="openTab('citta')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
-                <i class="fa-solid fa-brain mr-2 text-amber-500"></i>၃။ စိတ္တာနုပဿနာ
+            <button onclick="openTab('citta')" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center shadow-sm">
+                <i class="fa-solid fa-brain mr-2 text-amber-500"></i>၃။ စိတ္တာနုပဿနာ <span class="ml-1.5 px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-300 text-[10px] font-bold">၁၆ မျိုး</span>
             </button>
-            <button onclick="openTab('dhamma')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
-                <i class="fa-solid fa-leaf mr-2 text-emerald-500"></i>၄။ ဓမ္မာနုပဿနာ
+            <button onclick="openTab('dhamma')" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center shadow-sm">
+                <i class="fa-solid fa-leaf mr-2 text-emerald-500"></i>၄။ ဓမ္မာနုပဿနာ <span class="ml-1.5 px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-300 text-[10px] font-bold">၅ ပဗ္ဗ</span>
             </button>
         </div>
 
-        <!-- Kaya Content -->
+        <!-- Kaya Content (14 Pabbas) -->
         <div id="kaya" class="tab-content active space-y-6 max-w-5xl mx-auto">
-            <div class="glass-card rounded-2xl p-6 md:p-8 border-l-4 border-l-sky-500">
-                <h3 class="text-2xl font-bold text-sky-800 dark:text-sky-400 mb-4">ကာယာနုပဿနာ သတိပဋ္ဌာန် (Kāyānupassanā)</h3>
+            <div class="glass-card rounded-3xl p-6 md:p-8 border-l-4 border-l-sky-500 shadow-md">
+                <div class="flex items-center justify-between gap-4 flex-wrap mb-4">
+                    <h3 class="text-2xl font-bold text-sky-800 dark:text-sky-400">ကာယာနုပဿနာ သတိပဋ္ဌာန် (Kāyānupassanā) - ၁၄ ပဗ္ဗ</h3>
+                    <a href="satipatthana_prompter.html" class="text-xs bg-sky-500 hover:bg-sky-600 text-white font-bold px-3.5 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-play"></i> ၃၂ ကောဋ္ဌာသ Prompter ဖွင့်ရန်
+                    </a>
+                </div>
                 <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-6">
-                    ရုပ်အစုအဝေး (ကိုယ်ခန္ဓာ) ၌ "ဤအရာကား ရုပ်မျှသာတည်း၊ ငါ မဟုတ်၊ သူ မဟုတ်၊ ပုဂ္ဂိုလ် သတ္တဝါ မဟုတ်" ဟု ခွဲခြား သိမြင်အောင် အဖန်ဖန် ရှုမှတ်ပွားများခြင်း ဖြစ်သည်။ ကာယာနုပဿနာတွင် အပိုင်း (၁၄) ပိုင်း (ပဗ္ဗ) ပါဝင်သည်။
+                    ရုပ်အစုအဝေး (ကိုယ်ခန္ဓာ) ၌ "ဤအရာကား ရုပ်မျှသာတည်း၊ ငါ မဟုတ်၊ သူ မဟုတ်၊ ပုဂ္ဂိုလ် သတ္တဝါ မဟုတ်" ဟု ခွဲခြား သိမြင်အောင် အဖန်ဖန် ရှုမှတ်ပွားများခြင်း ဖြစ်သည်။ ကာယာနုပဿနာတွင် အောက်ပါ အပိုင်း (၁၄) ပိုင်း (ပဗ္ဗ) ပါဝင်သည်။
                 </p>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <div class="flex items-center justify-between mb-3 border-b border-slate-100 dark:border-slate-700 pb-2 flex-wrap gap-2">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-wind text-sky-500 text-xl"></i>
-                                <h4 class="font-bold text-sky-700 dark:text-sky-300 text-lg">၁။ အာနာပါန ပဗ္ဗ (ထွက်သက်ဝင်သက်)</h4>
+                    <!-- 1. Anapana -->
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3 border-b border-slate-100 dark:border-slate-700 pb-2 flex-wrap gap-2">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-wind text-sky-500 text-xl"></i>
+                                    <h4 class="font-bold text-sky-700 dark:text-sky-300 text-base sm:text-lg">၁။ အာနာပါန ပဗ္ဗ (ထွက်သက်ဝင်သက်)</h4>
+                                </div>
+                                <a href="anapana_visualizer.html" class="text-xs bg-sky-500 hover:bg-sky-600 text-white px-3 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1 font-semibold">
+                                    <i class="fa-solid fa-play"></i> Visualizer
+                                </a>
                             </div>
-                            <a href="anapana_visualizer.html" class="text-xs bg-sky-500 hover:bg-sky-600 text-white px-3 py-1.5 rounded-lg shadow-sm shadow-sky-500/30 transition flex items-center gap-1.5">
-                                <i class="fa-solid fa-play"></i> လက်တွေ့ကျင့်ရန် (Visualizer)
-                            </a>
+                            <ul class="list-disc pl-5 space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                                <li><strong>ဒီဃံ ဝါ အဿသန္တော...</strong> ရှည်ရှည် ရှူသွင်းလျှင် ရှည်ရှည် ရှူသွင်းသည်ဟု သိ၏။ ရှည်ရှည် ရှူထုတ်လျှင် ရှည်ရှည် ရှူထုတ်သည်ဟု သိ၏။</li>
+                                <li><strong>ရဿံ ဝါ အဿသန္တော...</strong> တိုတို ရှူသွင်းလျှင် တိုတို ရှူသွင်းသည်ဟု သိ၏။ တိုတို ရှူထုတ်လျှင် တိုတို ရှူထုတ်သည်ဟု သိ၏။</li>
+                                <li><strong>သဗ္ဗကာယ ပဋိသံဝေဒီ...</strong> ထွက်သက်ဝင်သက်၏ အစ၊ အလယ်၊ အဆုံး (တစ်ကိုယ်လုံး) ကို ထင်ရှားစွာ သိလျက် ရှူသွင်း/ရှူထုတ်မည် ဟု ကျင့်၏။</li>
+                                <li><strong>ပဿမ္ဘယံ ကာယသင်္ခါရံ...</strong> ရုန့်ရင်းသော ထွက်သက်ဝင်သက် (ကာယသင်္ခါရ) ကို ငြိမ်းအေးစေလျက် ရှူသွင်း/ရှူထုတ်မည် ဟု ကျင့်၏။</li>
+                            </ul>
                         </div>
-                        <ul class="list-disc pl-5 space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                            <li><strong>ဒီဃံ ဝါ အဿသန္တော...</strong> ရှည်ရှည် ရှူသွင်းလျှင် ရှည်ရှည် ရှူသွင်းသည်ဟု သိ၏။ ရှည်ရှည် ရှူထုတ်လျှင် ရှည်ရှည် ရှူထုတ်သည်ဟု သိ၏။</li>
-                            <li><strong>ရဿံ ဝါ အဿသန္တော...</strong> တိုတို ရှူသွင်းလျှင် တိုတို ရှူသွင်းသည်ဟု သိ၏။ တိုတို ရှူထုတ်လျှင် တိုတို ရှူထုတ်သည်ဟု သိ၏။</li>
-                            <li><strong>သဗ္ဗကာယ ပဋိသံဝေဒီ...</strong> ထွက်သက်ဝင်သက်၏ အစ၊ အလယ်၊ အဆုံး (တစ်ကိုယ်လုံး) ကို ထင်ရှားစွာ သိလျက် ရှူသွင်း/ရှူထုတ်မည် ဟု ကျင့်၏။</li>
-                            <li><strong>ပဿမ္ဘယံ ကာယသင်္ခါရံ...</strong> ရုန့်ရင်းသော ထွက်သက်ဝင်သက် (ကာယသင်္ခါရ) ကို ငြိမ်းအေးစေလျက် ရှူသွင်း/ရှူထုတ်မည် ဟု ကျင့်၏။</li>
-                        </ul>
+                        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] text-sky-600 dark:text-sky-400 font-semibold">
+                            * ထွက်သက်ဝင်သက် အာရုံတစ်ခုတည်း၌ စိတ်ကို ငြိမ်သက်စွာ ထားခြင်းဖြင့် သမာဓိ မဟာကုသိုလ်ကို ဖြစ်စေသည်။
+                        </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
-                            <i class="fa-solid fa-person text-sky-500 text-xl"></i>
-                            <h4 class="font-bold text-sky-700 dark:text-sky-300 text-lg">၂။ ဣရိယာပထ ပဗ္ဗ (ဣရိယာပုတ် ၄ ပါး)</h4>
+                    <!-- 2. Iriyapatha -->
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3 border-b border-slate-100 dark:border-slate-700 pb-2 flex-wrap gap-2">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-person-walking text-sky-500 text-xl"></i>
+                                    <h4 class="font-bold text-sky-700 dark:text-sky-300 text-base sm:text-lg">၂။ ဣရိယာပထ ပဗ္ဗ (ဣရိယာပုတ် ၄ ပါး)</h4>
+                                </div>
+                                <a href="satipatthana_prompter.html" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-300 px-2.5 py-1 rounded transition">
+                                    Prompter တွင်ကျင့်ရန်
+                                </a>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-2">ကိုယ်ခန္ဓာ၏ နေထား (Posture) ကို အမြဲ သတိကပ်၍ သိနေခြင်း -</p>
+                            <ul class="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                                <li><strong>ဂစ္ဆန္တော ဝါ ဂစ္ဆာမီတိ ပဇာနာတိ</strong> - သွားလျှင် သွားသည်ဟု အရှိအတိုင်း သိ၏။</li>
+                                <li><strong>ဌိတော ဝါ ဌိတောမှီတိ ပဇာနာတိ</strong> - ရပ်လျှင် ရပ်သည်ဟု အရှိအတိုင်း သိ၏။</li>
+                                <li><strong>နိသိန္နော ဝါ နိသိန္နောမှီတိ ပဇာနာတိ</strong> - ထိုင်လျှင် ထိုင်သည်ဟု အရှိအတိုင်း သိ၏။</li>
+                                <li><strong>သယာနော ဝါ သယာနောမှီတိ ပဇာနာတိ</strong> - လျောင်းလျှင် လျောင်းသည်ဟု အရှိအတိုင်း သိ၏။</li>
+                            </ul>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">ကိုယ်ခန္ဓာ၏ နေထား (Posture) ကို အမြဲ သတိကပ်၍ သိနေခြင်း။</p>
-                        <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600 dark:text-slate-400">
-                            <li>သွားလျှင် သွားသည်ဟု သိ၏။ (Gacchanto vā gacchāmīti pajānāti)</li>
-                            <li>ရပ်လျှင် ရပ်သည်ဟု သိ၏။ (Ṭhito vā ṭhitomhīti pajānāti)</li>
-                            <li>ထိုင်လျှင် ထိုင်သည်ဟု သိ၏။ (Nisinno vā ninnosmhīti pajānāti)</li>
-                            <li>လျောင်းလျှင် လျောင်းသည်ဟု သိ၏။ (Sayāno vā sayānomhīti pajānāti)</li>
-                        </ul>
-                        <p class="text-xs text-sky-600 dark:text-sky-400 mt-2 font-semibold">ရည်ရွယ်ချက်: "ငါ သွားသည်၊ ငါ ရပ်သည်" ဟူသော အတ္တဒိဋ္ဌိကို ပယ်ခွာ၍ ရုပ်တရား၏ လှုပ်ရှားပြောင်းလဲမှု သက်သက်ကို သိရန်။</p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] text-sky-600 dark:text-sky-400 font-semibold">
+                            ရည်ရွယ်ချက်: "ငါ သွားသည်၊ ငါ ရပ်သည်" ဟူသော အတ္တဒိဋ္ဌိကို ပယ်ခွာ၍ ရုပ်တရား၏ လှုပ်ရှားပြောင်းလဲမှု သက်သက်ကို သိရန်။
+                        </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <!-- 3. Sampajanna -->
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm lg:col-span-2">
                         <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
                             <i class="fa-solid fa-magnifying-glass-chart text-sky-500 text-xl"></i>
-                            <h4 class="font-bold text-sky-700 dark:text-sky-300 text-lg">၃။ သမ္ပဇည ပဗ္ဗ (ဆင်ခြင်ဉာဏ် ၄ ပါး)</h4>
+                            <h4 class="font-bold text-sky-700 dark:text-sky-300 text-base sm:text-lg">၃။ သမ္ပဇည ပဗ္ဗ (ဆင်ခြင်ဉာဏ် ၄ ပါးဖြင့် သိမှတ်ခြင်း)</h4>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">အသေးစိတ် အမူအရာများတွင်ပါ သတိသမ္ပဇဉ်ဖြင့် ဆင်ခြင်သိမြင်ခြင်း။ သမ္ပဇဉ် (၄) မျိုး ရှိသည် - သာတ္ထက (အကျိုးရှိမရှိ)၊ သပ္ပါယ (သင့်တော်မှု ရှိမရှိ)၊ ဂေါစရ (ကမ္မဋ္ဌာန်းအာရုံ မလွတ်စေခြင်း)၊ အသမ္မောဟ (ငါမဟုတ် ရုပ်နာမ်ဟု အမိုက်မမှောင်ကင်းစွာ သိခြင်း)။</p>
-                        <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600 dark:text-slate-400">
-                            <li>ရှေ့သို့တက်ရာ၊ နောက်သို့ဆုတ်ရာ၌ သိလျက်ပြု၏။</li>
-                            <li>တည့်တည့်ကြည့်ရာ၊ ဘေးသို့ကြည့်ရာ၌ သိလျက်ပြု၏။</li>
-                            <li>ကွေးရာ၊ ဆန့်ရာ၌ သိလျက်ပြု၏။</li>
-                            <li>စားသောက်ရာ၊ ခဲမြုံ့ရာ၊ အရသာလျက်ရာ၌ သိလျက်ပြု၏။</li>
-                            <li>ကျင်ကြီးကျင်ငယ် စွန့်ရာ၌ သိလျက်ပြု၏။</li>
-                        </ul>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3">အသေးစိတ် အမူအရာများတွင်ပါ သတိသမ္ပဇဉ်ဖြင့် ဆင်ခြင်သိမြင်ခြင်း ဖြစ်သည်။ သမ္ပဇဉ် (၄) မျိုး ရှိသည် - <span class="text-amber-700 dark:text-amber-400 font-bold">(၁) သာတ္ထက</span> - အကျိုးရှိ/မရှိ ဆင်ခြင်ခြင်း၊ <span class="text-amber-700 dark:text-amber-400 font-bold">(၂) သပ္ပါယ</span> - သင့်တော်မှု ရှိ/မရှိ ဆင်ခြင်ခြင်း၊ <span class="text-amber-700 dark:text-amber-400 font-bold">(၃) ဂေါစရ</span> - ကမ္မဋ္ဌာန်းအာရုံ မလွတ်စေခြင်း၊ <span class="text-amber-700 dark:text-amber-400 font-bold">(၄) အသမ္မောဟ</span> - ငါမဟုတ် ရုပ်နာမ်ဟု အမိုက်မမှောင် ကင်းစွာ သိခြင်း။</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <i class="fa-solid fa-arrows-left-right text-sky-500 mr-1.5"></i> <strong>ရှေ့သို့တက်ရာ၊ နောက်သို့ဆုတ်ရာ</strong>၌ သတိသမ္ပဇဉ်ဖြင့် သိလျက်ပြု၏။
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <i class="fa-solid fa-eye text-sky-500 mr-1.5"></i> <strong>တည့်တည့်ကြည့်ရာ၊ ဘေးသို့ကြည့်ရာ</strong>၌ သတိသမ္ပဇဉ်ဖြင့် သိလျက်ပြု၏။
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <i class="fa-solid fa-hand text-sky-500 mr-1.5"></i> <strong>ကွေးရာ၊ ဆန့်ရာ</strong>၌ သတိသမ္ပဇဉ်ဖြင့် သိလျက်ပြု၏။
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <i class="fa-solid fa-shirt text-sky-500 mr-1.5"></i> <strong>သင်္ကန်းရုံရာ၊ သပိတ်ကိုင်ရာ</strong>၌ သတိသမ္ပဇဉ်ဖြင့် သိလျက်ပြု၏။
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <i class="fa-solid fa-utensils text-sky-500 mr-1.5"></i> <strong>စားသောက်ရာ၊ ခဲမြုံ့ရာ၊ အရသာလျက်ရာ</strong>၌ သိလျက်ပြု၏။
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <i class="fa-solid fa-restroom text-sky-500 mr-1.5"></i> <strong>ကျင်ကြီးကျင်ငယ် စွန့်ရာ</strong>၊ အိပ်ရာ၊ နိုးရာ၊ စကားပြောရာတို့၌ သိလျက်ပြု၏။
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
-                            <i class="fa-solid fa-skull text-sky-500 text-xl"></i>
-                            <h4 class="font-bold text-sky-700 dark:text-sky-300 text-lg">၄။ ပဋိကူလမနသိကာရ ပဗ္ဗ (၃၂ ကောဋ္ဌာသ)</h4>
+                    <!-- 4. Patikulamanasikara (32 Kotthasa Table) -->
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm lg:col-span-2 space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-skull text-sky-500 text-xl"></i>
+                                <h4 class="font-bold text-sky-700 dark:text-sky-300 text-base sm:text-lg">၄။ ပဋိကူလမနသိကာရ ပဗ္ဗ (၃၂ ကောဋ္ဌာသ အသုဘ ရှုမှတ်ခြင်း)</h4>
+                            </div>
+                            <a href="satipatthana_prompter.html" class="text-xs bg-sky-500 hover:bg-sky-600 text-white font-bold px-3 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-play"></i> ၃၂ ကောဋ္ဌာသ Prompter ဖွင့်ရန်
+                            </a>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">ခြေဖဝါးမှ ဆံပင်အထိ ဤခန္ဓာကိုယ်ကြီးကို မစင်ကြယ်သော ရွံရှာဖွယ် ၃၂ မျိုး အဖြစ် ဆင်ခြင်ခြင်း (အသုဘကမ္မဋ္ဌာန်း)။</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 italic">"အတ္ထိ ဣမသ္မိံ ကာယေ - ကေသာ (ဆံပင်)၊ လောမာ (မွေးညင်း)၊ နခါ (ခြေသည်းလက်သည်း)၊ ဒန္တာ (သွား)၊ တစော (အရေ)၊ မံသံ (အသား)၊ နှာရု (အကြော)၊ အဋ္ဌိ (အရိုး)..."</p>
-                        <p class="text-xs text-sky-600 dark:text-sky-400 mt-2 font-semibold">ရည်ရွယ်ချက်: ခန္ဓာကိုယ်အပေါ် တွယ်တာတပ်မက်မှု (ရာဂ) ကို ပယ်ခွာရန်။</p>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                            ခြေဖဝါးမှ ဆံပင်အထိ ဤခန္ဓာကိုယ်ကြီးကို မစင်ကြယ်သော ရွံရှာဖွယ် ၃၂ မျိုး အဖြစ် (၆) တွဲ ခွဲခြား၍ ဆင်ခြင်ခြင်း။ ရည်ရွယ်ချက်မှာ ခန္ဓာကိုယ်အပေါ် တွယ်တာတပ်မက်မှု (ရာဂ) ကို ပယ်ခွာရန် ဖြစ်သည်။
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            <!-- Group 1 -->
+                            <div class="bg-sky-50/60 dark:bg-sky-950/30 p-3.5 rounded-xl border border-sky-200/60 dark:border-sky-800/40">
+                                <h5 class="font-bold text-sky-800 dark:text-sky-300 text-xs sm:text-sm mb-1.5 border-b border-sky-200 dark:border-sky-800/60 pb-1">၁။ တစပဉ္စက (အရေအဆုံး ၅ ပါး)</h5>
+                                <p class="text-xs font-semibold text-amber-900 dark:text-amber-300 mb-1">ကေသာ၊ လောမာ၊ နခါ၊ ဒန္တာ၊ တစော။</p>
+                                <p class="text-[11px] text-slate-600 dark:text-slate-400">ဆံပင်၊ မွေးညင်း၊ ခြေသည်းလက်သည်း၊ သွား၊ အရေ (ဤ ၅ ပါးတို့သည် စက်ဆုပ်ဖွယ်ရာ အသုဘသဘောများ ဖြစ်၏)။</p>
+                            </div>
+                            <!-- Group 2 -->
+                            <div class="bg-sky-50/60 dark:bg-sky-950/30 p-3.5 rounded-xl border border-sky-200/60 dark:border-sky-800/40">
+                                <h5 class="font-bold text-sky-800 dark:text-sky-300 text-xs sm:text-sm mb-1.5 border-b border-sky-200 dark:border-sky-800/60 pb-1">၂။ ဝက္ကပဉ္စက (အညှေးအဆုံး ၅ ပါး)</h5>
+                                <p class="text-xs font-semibold text-amber-900 dark:text-amber-300 mb-1">မံသံ၊ နှာရု၊ အဋ္ဌိ၊ အဋ္ဌိမိဉ္ဇံ၊ ဝက္ကံ။</p>
+                                <p class="text-[11px] text-slate-600 dark:text-slate-400">အသားတုံးအသားတစ်၊ အကြော၊ အရိုး၊ ရိုးတွင်းခြင်ဆီ၊ အညှေး/ကျောက်ကပ်။</p>
+                            </div>
+                            <!-- Group 3 -->
+                            <div class="bg-sky-50/60 dark:bg-sky-950/30 p-3.5 rounded-xl border border-sky-200/60 dark:border-sky-800/40">
+                                <h5 class="font-bold text-sky-800 dark:text-sky-300 text-xs sm:text-sm mb-1.5 border-b border-sky-200 dark:border-sky-800/60 pb-1">၃။ ပိပ္ဖလပဉ္စက (အဆုတ်အဆုံး ၅ ပါး)</h5>
+                                <p class="text-xs font-semibold text-amber-900 dark:text-amber-300 mb-1">ဟဒယံ၊ ယကနံ၊ ကိလောမကံ၊ ပိဟကံ၊ ပပ္ဖါသံ။</p>
+                                <p class="text-[11px] text-slate-600 dark:text-slate-400">နှလုံးသား၊ အသည်း၊ အမြှေး၊ သရက်ရွက်၊ အဆုတ်။</p>
+                            </div>
+                            <!-- Group 4 -->
+                            <div class="bg-sky-50/60 dark:bg-sky-950/30 p-3.5 rounded-xl border border-sky-200/60 dark:border-sky-800/40">
+                                <h5 class="font-bold text-sky-800 dark:text-sky-300 text-xs sm:text-sm mb-1.5 border-b border-sky-200 dark:border-sky-800/60 pb-1">၄။ မတ္ထလုင်္ဂပဉ္စက (ဦးနှောက်အဆုံး ၅ ပါး)</h5>
+                                <p class="text-xs font-semibold text-amber-900 dark:text-amber-300 mb-1">အန္တံ၊ အန္တဂုဏံ၊ ဥဒရိယံ၊ ကရီသံ၊ မတ္ထလုင်္ဂံ။</p>
+                                <p class="text-[11px] text-slate-600 dark:text-slate-400">အူမကြီး၊ အူသိမ် (အူခွေ)၊ အစာသစ်၊ အစာဟောင်း (ကျင်ကြီး)၊ ဦးနှောက်။</p>
+                            </div>
+                            <!-- Group 5 -->
+                            <div class="bg-sky-50/60 dark:bg-sky-950/30 p-3.5 rounded-xl border border-sky-200/60 dark:border-sky-800/40">
+                                <h5 class="font-bold text-sky-800 dark:text-sky-300 text-xs sm:text-sm mb-1.5 border-b border-sky-200 dark:border-sky-800/60 pb-1">၅။ အာပေါဆက္က (အရည် ၆ ပါး)</h5>
+                                <p class="text-xs font-semibold text-amber-900 dark:text-amber-300 mb-1">ပိတ္တံ၊ သေမှံ၊ ပုဗ္ဗော၊ လောဟိတံ၊ သေဒေါ၊ မေဒေါ။</p>
+                                <p class="text-[11px] text-slate-600 dark:text-slate-400">သည်းခြေရည်၊ သလိပ်၊ ပြည်၊ သွေးနီရည်၊ ချွေး၊ အဆီခဲ။</p>
+                            </div>
+                            <!-- Group 6 -->
+                            <div class="bg-sky-50/60 dark:bg-sky-950/30 p-3.5 rounded-xl border border-sky-200/60 dark:border-sky-800/40">
+                                <h5 class="font-bold text-sky-800 dark:text-sky-300 text-xs sm:text-sm mb-1.5 border-b border-sky-200 dark:border-sky-800/60 pb-1">၆။ မုတ္တဆက္က (ကျင်ငယ်အဆုံး ၆ ပါး)</h5>
+                                <p class="text-xs font-semibold text-amber-900 dark:text-amber-300 mb-1">အဿု၊ ဝသာ၊ ခေဠော၊ သိង្ဃာဏိကာ၊ လသိကာ၊ မုတ္တံ။</p>
+                                <p class="text-[11px] text-slate-600 dark:text-slate-400">မျက်ရည်၊ အဆီကြည်၊ တံတွေး၊ နှပ်၊ အဆစ်တို့ရှိ ခြင်ဆီ-အစေး၊ ကျင်ငယ်ရေ။</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
-                            <i class="fa-solid fa-layer-group text-sky-500 text-xl"></i>
-                            <h4 class="font-bold text-sky-700 dark:text-sky-300 text-lg">၅။ ဓာတုမနသိကာရ ပဗ္ဗ (ဓာတ် ၄ ပါး)</h4>
+                    <!-- 5. Dhatu -->
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
+                                <i class="fa-solid fa-layer-group text-sky-500 text-xl"></i>
+                                <h4 class="font-bold text-sky-700 dark:text-sky-300 text-base sm:text-lg">၅။ ဓာတုမနသိကာရ ပဗ္ဗ (ဓာတ် ၄ ပါး)</h4>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                ဤခန္ဓာကိုယ်၌ ဓာတ်ကြီး ၄ ပါးသာ ရှိသည်ဟု ဉာဏ်ဖြင့် ခွဲခြမ်းစိတ်ဖြာ၍ ရှုမှတ်ခြင်း -
+                            </p>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                                <li><strong class="text-sky-700 dark:text-sky-400">ပထဝီဓာတ် (မြေဓာတ်):</strong> မာကျောခြင်း (ကက်ခဠတ္တ)၊ နူးညံ့ခြင်း (မုဒုတ္တ) သဘော။ (ဆံပင်၊ အရိုး၊ အသား စသည် ၂၀ ပါး)</li>
+                                <li><strong class="text-sky-700 dark:text-sky-400">အာပေါဓာတ် (ရေဓာတ်):</strong> ယိုစီးခြင်း (ပါဃရဏ)၊ ဖွဲ့စည်းခြင်း (ဗန္ဓန) သဘော။ (သွေး၊ ချွေး၊ ပြည် စသည် ၁၂ ပါး)</li>
+                                <li><strong class="text-sky-700 dark:text-sky-400">တေဇောဓာတ် (မီးဓာတ်):</strong> ပူခြင်း (ဥဏှတ္တ)၊ အေးခြင်း (သီတတ္တ) သဘော။ (အလွန်ပူလောင်စေသော မီး ၄ ပါး)</li>
+                                <li><strong class="text-sky-700 dark:text-sky-400">ဝါယောဓာတ် (လေဓာတ်):</strong> ထောက်ကန်ခြင်း (ဝိထမ္ဘန)၊ လှုပ်ရှားစေခြင်း (သမုဒီရဏ) သဘော။ (ထွက်သက်ဝင်သက် လေ ၆ ပါး)</li>
+                            </ul>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">ဤခန္ဓာကိုယ်၌ <strong>ပထဝီ</strong> (မာ/ပျော့ သဘော)၊ <strong>အာပေါ</strong> (ယိုစီး/ဖွဲ့စည်း သဘော)၊ <strong>တေဇော</strong> (ပူ/အေး သဘော)၊ <strong>ဝါယော</strong> (လှုပ်ရှား/ထောက်ကန် သဘော) ဟူသော ဓာတ်ကြီး ၄ ပါးသာ ရှိသည်ဟု ဉာဏ်ဖြင့် ခွဲခြမ်းစိတ်ဖြာ၍ ရှုမှတ်ခြင်း။ နွားသတ်သမားသည် နွားကို သတ်ပြီးနောက် အသား덩ိုများကို ခွဲခြားပုံချလိုက်သောအခါ "နွား" ဟူသော အမှတ်သညာ ပျောက်သွားသကဲ့သို့ ဖြစ်သည်။</p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] text-slate-500 italic">
+                            * နွားသတ်သမားသည် နွားကို သတ်ပြီးနောက် အသားတုံးများကို ခွဲခြားပုံချလိုက်သောအခါ 'နွား' ဟူသော အမှတ်သညာ ပျောက်သွားသကဲ့သို့ ခန္ဓာကိုယ်ကို ဓာတ်လေးပါးဖြင့် ခွဲခြားကြည့်လျှင် 'ငါ/သူတစ်ပါး' ဟူသော အတ္တစွဲ ပျောက်ကွယ်သွားသည်။
+                        </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
-                            <i class="fa-solid fa-bone text-sky-500 text-xl"></i>
-                            <h4 class="font-bold text-sky-700 dark:text-sky-300 text-lg">၆ မှ ၁၄။ နဝသီဝထိက ပဗ္ဗ (သူသေကောင် ၉ မျိုး)</h4>
+                    <!-- 6-14. Navasivathika (9 Sivathika Stages) -->
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
+                                <i class="fa-solid fa-bone text-sky-500 text-xl"></i>
+                                <h4 class="font-bold text-sky-700 dark:text-sky-300 text-base sm:text-lg">၆ မှ ၁၄။ နဝသီဝထိက ပဗ္ဗ (သူသေကောင် ၉ မျိုး)</h4>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-2">သင်္ချိုင်း၌ စွန့်ပစ်ထားသော သူသေကောင်၏ အဆင့်ဆင့် ပုပ်သိုးပျက်စီးသွားပုံ (၉) မျိုးကို ကြည့်ရှု၍ မိမိခန္ဓာကိုယ်နှင့် နှိုင်းယှဉ်ဆင်ခြင်ခြင်း -</p>
+                            <ul class="list-disc pl-5 space-y-1 text-xs text-slate-600 dark:text-slate-400">
+                                <li><strong>၁။ ဥဒ္ဓုမာတက:</strong> သေပြီး ၁ ရက် ၂ ရက်၌ ဖူးရောင်နေသော သူသေကောင်။</li>
+                                <li><strong>၂။ ဝိနီလက:</strong> အသားအရေများ ပြာနှမ်း ညိုမည်းနေသော သူသေကောင်။</li>
+                                <li><strong>၃။ ဝိပုဗ္ဗက:</strong> ပြည်၊ အရည်ပုပ်တို့ ပေါက်ပြဲ ယိုကျနေသော သူသေကောင်။</li>
+                                <li><strong>၄။ ဝိစ္ဆိဒ္ဒက:</strong> အလောင်းကောင် ပြတ်တောက်နေခြင်း။</li>
+                                <li><strong>၅။ ဝိက္ခာယိတက:</strong> ကျီး၊ ခွေး၊ လင်းတတို့ ထိုးဆိတ် ကိုက်ခဲ စားသောက်နေခြင်း။</li>
+                                <li><strong>၆။ ဝိက္ခိတ္တက:</strong> အခွံ၊ အသား၊ အရိုးများ အပိုင်းပိုင်း ပြန့်ကြဲနေခြင်း။</li>
+                                <li><strong>၇။ ဟတဝိက္ခိတ္တက:</strong> လက်နက်ဖြင့် ခုတ်ထစ်ထားသကဲ့သို့ ပြန့်ကြဲနေခြင်း။</li>
+                                <li><strong>၈။ လောဟိတက္ခိတ္တ:</strong> သွေးအလိမ်းလိမ်းပေကျံ၍ ပုဠုဝက လောက်တကောင်ကောင် ထိုးထိုးလှုပ်နေခြင်း။</li>
+                                <li><strong>၉။ အဋ္ဌိက:</strong> အသားမရှိတော့ဘဲ အရိုးစုသက်သက် ကျန်ခြင်း၊ နှစ်လရှည်ကြာ၍ အရိုးများ ဆွေးမြေ့ပြီး မြေမှုန့်ဖြစ်သွားခြင်း။</li>
+                            </ul>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">သင်္ချိုင်း၌ စွန့်ပစ်ထားသော သူသေကောင်၏ အဆင့်ဆင့် ပုပ်သိုးပျက်စီးသွားပုံ (၉) မျိုးကို ကြည့်ရှု၍ မိမိခန္ဓာကိုယ်နှင့် နှိုင်းယှဉ်ဆင်ခြင်ခြင်း။</p>
-                        <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600 dark:text-slate-400">
-                            <li>ဖူးရောင်၊ ပုပ်ဟောင်၊ ပြည်ယိုကျနေသော သူသေကောင်</li>
-                            <li>ကျီး၊ လင်းတ၊ ခွေး တို့ ကိုက်ခဲစားသောက်နေသော သူသေကောင်</li>
-                            <li>အရိုး၊ အကြော၊ သွေးအလိမ်းလိမ်း ကျန်သော သူသေကောင်... စသည်ဖြင့် အရိုးများ ဆွေးမြေ့၍ မြေမှုန့်ဖြစ်သွားသည့်တိုင်အောင် ရှုမှတ်ရသည်။</li>
-                        </ul>
+                        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px] text-sky-600 dark:text-sky-400 font-semibold">
+                            ဆင်ခြင်ပုံ: "ငါ၏ ဤခန္ဓာကိုယ်ကြီးသည်လည်း နောင်အခါ ဤသူသေကောင်ကဲ့သို့ ပုပ်သိုးဆွေးမြေ့မည့် သဘောရှိ၏၊ ဤသဘောကို မလွန်ဆန်နိုင်" ဟု ရှုမှတ်ပါ။
+                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <!-- Vedana Content -->
+        <!-- Vedana Content (9 Types) -->
         <div id="vedana" class="tab-content space-y-6 max-w-5xl mx-auto">
-            <div class="glass-card rounded-2xl p-6 md:p-8 border-l-4 border-l-rose-500">
-                <h3 class="text-2xl font-bold text-rose-800 dark:text-rose-400 mb-4">ဝေဒနာနုပဿနာ သတိပဋ္ဌာန် (Vedanānupassanā)</h3>
+            <div class="glass-card rounded-3xl p-6 md:p-8 border-l-4 border-l-rose-500 shadow-md">
+                <div class="flex items-center justify-between gap-4 flex-wrap mb-4">
+                    <h3 class="text-2xl font-bold text-rose-800 dark:text-rose-400">ဝေဒနာနုပဿနာ သတိပဋ္ဌာန် (Vedanānupassanā) - ၉ မျိုး</h3>
+                    <a href="satipatthana_prompter.html" class="text-xs bg-rose-500 hover:bg-rose-600 text-white font-bold px-3.5 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-play"></i> ဝေဒနာ Prompter ဖွင့်ရန်
+                    </a>
+                </div>
                 <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-6">
                     ခံစားမှု (ဝေဒနာ) တို့၏ အပေါ်၌ "ငါ ခံစားနေရသည် မဟုတ်၊ သဘောတရားအလျောက် ဖြစ်ပေါ်လာသော ဝေဒနာမျှသာတည်း" ဟု ခွဲခြား သိမြင်အောင် အဖန်ဖန် ရှုမှတ်ပွားများခြင်း ဖြစ်သည်။ ဝေဒနာကို ၉ မျိုးခွဲ၍ ပြဆိုထားသည်။
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 text-center shadow-sm relative overflow-hidden">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                    <!-- Sukha -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-center shadow-sm relative overflow-hidden">
                         <div class="absolute -top-4 -right-4 text-7xl text-emerald-500/10"><i class="fa-solid fa-face-smile"></i></div>
                         <i class="fa-solid fa-face-smile text-4xl text-emerald-500 mb-4 block"></i>
-                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-3">သုခ ဝေဒနာ (ချမ်းသာခြင်း)</h4>
-                        <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-3 text-left">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-base sm:text-lg mb-3">သုခ ဝေဒနာ (ချမ်းသာခြင်း)</h4>
+                        <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 space-y-3 text-left">
                             <li><strong>၁။ သုခဝေဒနာ:</strong> ချမ်းသာသော ခံစားမှု ဖြစ်ပေါ်လျှင်လည်း အရှိအတိုင်း သိ၏။</li>
                             <li><strong>၂။ သာမိသ သုခဝေဒနာ:</strong> ကာမဂုဏ် (အဆင်း၊ အသံ၊ အနံ့၊ အရသာ၊ အတွေ့အထိ) ကို အမှီပြု၍ ဖြစ်သော ချမ်းသာမှုကို သိ၏။ (လောကီချမ်းသာ)</li>
                             <li><strong>၃။ နိရာမိသ သုခဝေဒနာ:</strong> ကာမဂုဏ်ကို မမှီသော ချမ်းသာ (ဥပမာ- တရားထိုင်ရာတွင် ဖြစ်သော ပီတိ၊ သမာဓိ ချမ်းသာ) ကို သိ၏။</li>
                         </ul>
                     </div>
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 text-center shadow-sm relative overflow-hidden">
+                    <!-- Dukkha -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-center shadow-sm relative overflow-hidden">
                         <div class="absolute -top-4 -right-4 text-7xl text-rose-500/10"><i class="fa-solid fa-face-frown"></i></div>
                         <i class="fa-solid fa-face-frown text-4xl text-rose-500 mb-4 block"></i>
-                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-3">ဒုက္ခ ဝေဒနာ (ဆင်းရဲခြင်း)</h4>
-                        <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-3 text-left">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-base sm:text-lg mb-3">ဒုက္ခ ဝေဒနာ (ဆင်းရဲခြင်း)</h4>
+                        <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 space-y-3 text-left">
                             <li><strong>၄။ ဒုက္ခဝေဒနာ:</strong> ဆင်းရဲနာကျင်သော ခံစားမှု ဖြစ်ပေါ်လျှင် အရှိအတိုင်း သိ၏။</li>
                             <li><strong>၅။ သာမိသ ဒုက္ခဝေဒနာ:</strong> ကာမဂုဏ်ကို အမှီပြု၍ ဖြစ်သော ဆင်းရဲမှု (ဥပမာ- လိုချင်တာ မရ၍ စိတ်ဆင်းရဲခြင်း) ကို သိ၏။</li>
                             <li><strong>၆။ နိရာမိသ ဒုက္ခဝေဒနာ:</strong> ကာမဂုဏ်ကို မမှီသော ဆင်းရဲ (ဥပမာ- တရားမရသေး၍ လိုလားတောင့်တသော ဆင်းရဲ) ကို သိ၏။</li>
                         </ul>
                     </div>
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 text-center shadow-sm relative overflow-hidden">
+                    <!-- Upekkha -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-center shadow-sm relative overflow-hidden">
                         <div class="absolute -top-4 -right-4 text-7xl text-slate-500/10"><i class="fa-solid fa-face-meh"></i></div>
                         <i class="fa-solid fa-face-meh text-4xl text-slate-500 mb-4 block"></i>
-                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-3">ဥပေက္ခာ ဝေဒနာ (အလယ်အလတ်)</h4>
-                        <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-3 text-left">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-base sm:text-lg mb-3">ဥပေက္ခာ ဝေဒနာ (အလယ်အလတ်)</h4>
+                        <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 space-y-3 text-left">
                             <li><strong>၇။ အဒုက္ခမသုခ ဝေဒနာ:</strong> ချမ်းသာလည်း မဟုတ်၊ ဆင်းရဲလည်း မဟုတ်သော ခံစားမှုကို သိ၏။</li>
                             <li><strong>၈။ သာမိသ အဒုက္ခမသုခ:</strong> ကာမဂုဏ်ကို အမှီပြုသော အလယ်အလတ် ခံစားမှုကို သိ၏။</li>
                             <li><strong>၉။ နိရာမိသ အဒုက္ခမသုခ:</strong> ကာမဂုဏ်ကို မမှီသော အလယ်အလတ် ခံစားမှု (ဥပမာ- ဥပေက္ခာဈာန်) ကို သိ၏။</li>
@@ -225,90 +356,119 @@
                     </div>
                 </div>
                 
-                <div class="mt-6 bg-rose-50 dark:bg-rose-900/20 p-5 rounded-xl border border-rose-200 dark:border-rose-800">
-                    <h4 class="font-bold text-rose-800 dark:text-rose-300 mb-2">ဝေဒနာကို အနုပဿနာ ရှုနည်း</h4>
-                    <p class="text-sm text-slate-700 dark:text-slate-300">
-                        ဝေဒနာ ဖြစ်ပေါ်လာသောအခါ၊ ထိုဝေဒနာ၏ ဖြစ်ခြင်း (သမုဒယ)၊ ပျက်ခြင်း (ဝယ)၊ ဖြစ်ပျက်နှစ်ပါး (သမုဒယဝယ) ကို အဖန်ဖန် ရှုရမည်။ "ငါ နာသည်၊ ငါ့ကိုက်သည်" ဟူသော 'ငါ' (အတ္တ) ကို ဖယ်ခွာ၍၊ <strong>"နာကျင်မှု သဘောတရားလေး ပေါ်လာပြီး ပြန်ပျောက်သွားသည်"</strong> ဟူ၍သာ ဉာဏ်ဖြင့် ထိုးထွင်း သိမြင်ရမည်။ ဤသို့ဖြင့် ဝေဒနာအပေါ် တွယ်တာမှု (တဏှာ) ကို ပယ်သတ်နိုင်သည်။
+                <!-- Contemplation Guide Box -->
+                <div class="bg-rose-50 dark:bg-rose-950/40 p-6 rounded-2xl border border-rose-200 dark:border-rose-800/60 space-y-3">
+                    <h4 class="font-bold text-rose-800 dark:text-rose-300 text-base sm:text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-compass text-rose-500"></i> ဝေဒနာကို အနုပဿနာ ရှုနည်း (သတိပဋ္ဌာန် လက်တွေ့ဖော်မြူလာ)
+                    </h4>
+                    <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl font-bold text-amber-900 dark:text-amber-300 text-xs sm:text-sm leading-relaxed border border-rose-200/50 dark:border-rose-900/40">
+                        "သမုဒယဓမ္မာနုပဿီ ဝါ ဝေဒနာသု ဝိဟရတိ၊ ဝယဓမ္မာနုပဿီ ဝါ ဝေဒနာသု ဝိဟရတိ၊ သမုဒယဝယဓမ္မာနုပဿီ ဝါ ဝေဒနာသု ဝိဟရတိ။"
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        ဝေဒနာ ဖြစ်ပေါ်လာသောအခါ၊ ထိုဝေဒနာ၏ ဖြစ်ခြင်း (သမုဒယဉာဏ်)၊ ပျက်ခြင်း (ဝယဉာဏ်)၊ ဖြစ်ပျက်နှစ်ပါး (သမုဒယဝယဉာဏ်) ကို အဖန်ဖန် ရှုရမည်။ "ငါ နာသည်၊ ငါ့ကိုက်သည်" ဟူသော 'ငါ' (အတ္တ) ကို ဖယ်ခွာ၍၊ <strong>"နာကျင်မှု သဘောတရားလေး ပေါ်လာပြီး ပြန်ပျောက်သွားသည်"</strong> ဟူ၍သာ ဉာဏ်ဖြင့် ထိုးထွင်း သိမြင်ရမည်။ ဤသို့ဖြင့် သုခဝေဒနာ၌ ရာဂ၊ ဒုက္ခဝေဒနာ၌ ဒေါသ၊ ဥပေက္ခာဝေဒနာ၌ မောဟ မကပ်ငြိစေဘဲ ကိလေသာမှ လွတ်မြောက်နိုင်သည်။
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Citta Content -->
+        <!-- Citta Content (16 States / 8 Pairs) -->
         <div id="citta" class="tab-content space-y-6 max-w-5xl mx-auto">
-            <div class="glass-card rounded-2xl p-6 md:p-8 border-l-4 border-l-amber-500">
-                <h3 class="text-2xl font-bold text-amber-800 dark:text-amber-400 mb-4">စိတ္တာနုပဿနာ သတိပဋ္ဌာန် (Cittānupassanā)</h3>
+            <div class="glass-card rounded-3xl p-6 md:p-8 border-l-4 border-l-amber-500 shadow-md">
+                <div class="flex items-center justify-between gap-4 flex-wrap mb-4">
+                    <h3 class="text-2xl font-bold text-amber-800 dark:text-amber-400">စိတ္တာနုပဿနာ သတိပဋ္ဌာန် (Cittānupassanā) - စိတ် ၁၆ မျိုး</h3>
+                    <a href="satipatthana_prompter.html" class="text-xs bg-amber-500 hover:bg-amber-600 text-white font-bold px-3.5 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-play"></i> စိတ္တ Prompter ဖွင့်ရန်
+                    </a>
+                </div>
                 <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-6">
-                    ဖြစ်ပေါ်လာသော စိတ်အမျိုးမျိုးတို့အပေါ်၌ "ဤအရာကား စိတ် သဘောတရားမျှသာတည်း၊ ငါ့စိတ် မဟုတ်" ဟု ခွဲခြား သိမြင်အောင် အဖန်ဖန် ရှုမှတ်ပွားများခြင်း ဖြစ်သည်။ စိတ်၏ သဘောတရား ၁၆ မျိုးခွဲ၍ ရှုမှတ်ရသည်။
+                    ဖြစ်ပေါ်လာသော စိတ်အမျိုးမျိုးတို့အပေါ်၌ "ဤအရာကား စိတ် သဘောတရားမျှသာတည်း၊ ငါ့စိတ် မဟုတ်" ဟု ခွဲခြား သိမြင်အောင် အဖန်ဖန် ရှုမှတ်ပွားများခြင်း ဖြစ်သည်။ စိတ်၏ သဘောတရား (၁၆) မျိုး (၈ တွဲ) ခွဲ၍ ရှုမှတ်ရသည်။
                 </p>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                        <h4 class="font-bold text-amber-700 dark:text-amber-400 text-lg border-b border-slate-200 dark:border-slate-700 pb-2">ကိလေသာ နှင့် ယှဉ်သောစိတ် / ကင်းသောစိတ်</h4>
+                    <!-- Kilesa Pairs -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                        <h4 class="font-bold text-amber-700 dark:text-amber-400 text-base sm:text-lg border-b border-slate-200 dark:border-slate-700 pb-2">
+                            <i class="fa-solid fa-fire text-rose-500 mr-2"></i> ကိလေသာ နှင့် ယှဉ်သောစိတ် / ကင်းသောစိတ် (၃ တွဲ)
+                        </h4>
                         
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-magnet text-rose-500 mt-1 text-lg w-6"></i>
+                        <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                            <i class="fa-solid fa-magnet text-rose-500 mt-1 text-lg w-6 flex-shrink-0"></i>
                             <div>
-                                <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၁/၂။ သရာဂ စိတ် / ဝီတရာဂ စိတ်</p>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ရာဂ (လောဘ) နှင့် တကွဖြစ်သောစိတ်ကို သိ၏။ ရာဂကင်းသောစိတ်ကို သိ၏။</p>
+                                <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၁/၂။ သရာဂ စိတ် / ဝီတရာဂ စိတ်</p>
+                                <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"သရာဂံ ဝါ စိတ္တံ... ဝီတရာဂံ ဝါ စိတ္တံ..."</p>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ရာဂ (လောဘ-တပ်မက်မှု) နှင့် တကွဖြစ်သောစိတ်ကို သိ၏။ ရာဂကင်းသောစိတ်ကို သိ၏။</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-fire text-red-600 mt-1 text-lg w-6"></i>
+                        <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                            <i class="fa-solid fa-bolt text-red-600 mt-1 text-lg w-6 flex-shrink-0"></i>
                             <div>
-                                <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၃/၄။ သဒေါသ စိတ် / ဝီတဒေါသ စိတ်</p>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ဒေါသ နှင့် တကွဖြစ်သောစိတ်ကို သိ၏။ ဒေါသကင်းသောစိတ်ကို သိ၏။</p>
+                                <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၃/၄။ သဒေါသ စိတ် / ဝီတဒေါသ စိတ်</p>
+                                <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"သဒေါသံ ဝါ စိတ္တံ... ဝီတဒေါသံ ဝါ စိတ္တံ..."</p>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ဒေါသ (အမျက်-မကျေနပ်မှု) နှင့် တကွဖြစ်သောစိတ်ကို သိ၏။ ဒေါသကင်းသောစိတ်ကို သိ၏။</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-cloud text-slate-500 mt-1 text-lg w-6"></i>
+                        <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                            <i class="fa-solid fa-cloud text-slate-500 mt-1 text-lg w-6 flex-shrink-0"></i>
                             <div>
-                                <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၅/၆။ သမောဟ စိတ် / ဝီတမောဟ စိတ်</p>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">မောဟ နှင့် တကွဖြစ်သောစိတ်ကို သိ၏။ မောဟကင်းသောစိတ်ကို သိ၏။</p>
+                                <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၅/၆။ သမောဟ စိတ် / ဝီတမောဟ စိတ်</p>
+                                <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"သမောဟံ ဝါ စိတ္တံ... ဝီတမောဟံ ဝါ စိတ္တံ..."</p>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">မောဟ (တွေဝေမှု-မသိမိုက်မဲမှု) နှင့် တကွဖြစ်သောစိတ်ကို သိ၏။ မောဟကင်းသောစိတ်ကို သိ၏။</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                        <h4 class="font-bold text-amber-700 dark:text-amber-400 text-lg border-b border-slate-200 dark:border-slate-700 pb-2">စိတ်၏ အဆင့်အတန်း (နိမ့်/မြင့်)</h4>
+                    <!-- Level & Status Pairs -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                        <h4 class="font-bold text-amber-700 dark:text-amber-400 text-base sm:text-lg border-b border-slate-200 dark:border-slate-700 pb-2">
+                            <i class="fa-solid fa-turn-up text-sky-500 mr-2"></i> စိတ်၏ အဆင့်အတန်း (နိမ့်/မြင့်) (၃ တွဲ)
+                        </h4>
                         
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-compress text-stone-500 mt-1 text-lg w-6"></i>
+                        <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                            <i class="fa-solid fa-compress text-stone-500 mt-1 text-lg w-6 flex-shrink-0"></i>
                             <div>
-                                <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၇/၈။ သံခိတ္တ စိတ် / ဝိက္ခိတ္တ စိတ်</p>
+                                <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၇/၈။ သံခိတ္တ စိတ် / ဝိက္ခိတ္တ စိတ်</p>
+                                <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"သံခိတ္တံ ဝါ စိတ္တံ... ဝိက္ခိတ္တံ ဝါ စိတ္တံ..."</p>
                                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ကျုံ့နေသော၊ ငိုက်မျဉ်းနေသောစိတ် (ထိနမိဒ္ဓ) ကို သိ၏။ ပျံ့လွင့်နေသောစိတ် (ဥဒ္ဓစ္စ) ကို သိ၏။</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-expand text-sky-500 mt-1 text-lg w-6"></i>
+                        <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                            <i class="fa-solid fa-expand text-sky-500 mt-1 text-lg w-6 flex-shrink-0"></i>
                             <div>
-                                <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၉/၁၀။ မဟဂ္ဂတ စိတ် / အမဟဂ္ဂတ စိတ်</p>
+                                <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၉/၁၀။ မဟဂ္ဂတ စိတ် / အမဟဂ္ဂတ စိတ်</p>
+                                <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"မဟဂ္ဂတံ ဝါ စိတ္တံ... အမဟဂ္ဂတံ ဝါ စိတ္တံ..."</p>
                                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ကြီးကျယ်သော ရူပ/အရူပ ဈာန်စိတ်ကို သိ၏။ မကြီးကျယ်သော ကာမာဝစရစိတ်ကို သိ၏။</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-turn-up text-indigo-500 mt-1 text-lg w-6"></i>
+                        <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                            <i class="fa-solid fa-turn-up text-indigo-500 mt-1 text-lg w-6 flex-shrink-0"></i>
                             <div>
-                                <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၁၁/၁၂။ သဥတ္တရ စိတ် / အနုတ္တရ စိတ်</p>
+                                <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၁၁/၁၂။ သဥတ္တရ စိတ် / အနုတ္တရ စိတ်</p>
+                                <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"သဥတ္တရံ ဝါ စိတ္တံ... အနုတ္တရံ ဝါ စိတ္တံ..."</p>
                                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">မိမိထက် သာလွန်သောစိတ် (အရူပဈာန်) ရှိသေးသော ရူပဈာန်၊ ကာမစိတ်တို့ကို သိ၏။ မိမိထက် သာလွန်သောစိတ် မရှိတော့သော (အရူပဈာန်) စိတ်ကို သိ၏။</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4 md:col-span-2">
-                        <h4 class="font-bold text-amber-700 dark:text-amber-400 text-lg border-b border-slate-200 dark:border-slate-700 pb-2">သမာဓိ နှင့် လွတ်မြောက်မှု</h4>
+                    <!-- Samadhi & Vimutti Pairs -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4 md:col-span-2">
+                        <h4 class="font-bold text-amber-700 dark:text-amber-400 text-base sm:text-lg border-b border-slate-200 dark:border-slate-700 pb-2">
+                            <i class="fa-solid fa-gem text-emerald-500 mr-2"></i> သမာဓိ နှင့် လွတ်မြောက်မှု (၂ တွဲ)
+                        </h4>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="flex items-start gap-3">
-                                <i class="fa-solid fa-bullseye text-emerald-500 mt-1 text-lg w-6"></i>
+                            <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                                <i class="fa-solid fa-bullseye text-emerald-500 mt-1 text-lg w-6 flex-shrink-0"></i>
                                 <div>
-                                    <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၁၃/၁၄။ သမာဟိတ စိတ် / အသမာဟိတ စိတ်</p>
+                                    <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၁၃/၁၄။ သမာဟိတ စိတ် / အသမာဟိတ စိတ်</p>
+                                    <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"သမာဟိတံ ဝါ စိတ္တံ... အသမာဟိတံ ဝါ စိတ္တံ..."</p>
                                     <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">သမာဓိရနေသော၊ တည်ကြည်သောစိတ်ကို သိ၏။ မတည်ကြည်သောစိတ်ကို သိ၏။</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <i class="fa-solid fa-dove text-violet-500 mt-1 text-lg w-6"></i>
+                            <div class="flex items-start gap-3 bg-amber-50/50 dark:bg-slate-900/40 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                                <i class="fa-solid fa-dove text-violet-500 mt-1 text-lg w-6 flex-shrink-0"></i>
                                 <div>
-                                    <p class="text-sm text-slate-800 dark:text-slate-200 font-semibold">၁၅/၁၆။ ဝိမုတ္တ စိတ် / အဝိမုတ္တ စိတ်</p>
+                                    <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-bold">၁၅/၁၆။ ဝိမုတ္တ စိတ် / အဝိမုတ္တ စိတ်</p>
+                                    <p class="text-[11px] text-amber-800 dark:text-amber-400 font-semibold mt-0.5">"ဝိမုတ္တံ ဝါ စိတ္တံ... အဝိမုတ္တံ ဝါ စိတ္တံ..."</p>
                                     <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ကိလေသာမှ လွတ်မြောက်နေသောစိတ် (တဒင်္ဂ၊ ဝိက္ခမ္ဘန ဝိမုတ္တိ) ကို သိ၏။ မလွတ်မြောက်သောစိတ်ကို သိ၏။</p>
                                 </div>
                             </div>
@@ -318,77 +478,153 @@
             </div>
         </div>
 
-        <!-- Dhamma Content -->
+        <!-- Dhamma Content (5 Pabbas) -->
         <div id="dhamma" class="tab-content space-y-6 max-w-5xl mx-auto">
-            <div class="glass-card rounded-2xl p-6 md:p-8 border-l-4 border-l-emerald-500">
-                <h3 class="text-2xl font-bold text-emerald-800 dark:text-emerald-400 mb-4">ဓမ္မာနုပဿနာ သတိပဋ္ဌာန် (Dhammānupassanā)</h3>
+            <div class="glass-card rounded-3xl p-6 md:p-8 border-l-4 border-l-emerald-500 shadow-md">
+                <div class="flex items-center justify-between gap-4 flex-wrap mb-4">
+                    <h3 class="text-2xl font-bold text-emerald-800 dark:text-emerald-400">ဓမ္မာနုပဿနာ သတိပဋ္ဌာန် (Dhammānupassanā) - ၅ ပဗ္ဗ</h3>
+                    <a href="satipatthana_prompter.html" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3.5 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-play"></i> ဓမ္မ Prompter ဖွင့်ရန်
+                    </a>
+                </div>
                 <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-6">
                     သဘောတရားများအပေါ်၌ "သဘောတရားမျှသာတည်း" ဟု သိမြင်အောင် ရှုမှတ်ပွားများခြင်း ဖြစ်သည်။ ဤအပိုင်းသည် ဝိပဿနာဉာဏ် အဆင့်အမြင့်ဆုံးသို့ တက်လှမ်းရန် အရေးကြီးသော ကဏ္ဍ (၅) ရပ် ပါဝင်သည်။
                 </p>
                 
-                <div class="space-y-6 mt-4">
-                    <div class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm">
+                <div class="space-y-6">
+                    <!-- 1. Nivarana -->
+                    <div class="p-5 sm:p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm">
                         <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
                             <i class="fa-solid fa-cloud-showers-heavy text-slate-500 text-xl"></i>
-                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-lg">၁။ နီဝရဏ ပဗ္ဗ (အဆီးအတား ၅ ပါး)</h4>
+                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base sm:text-lg">၁။ နီဝရဏ ပဗ္ဗ (အဆီးအတား ၅ ပါး)</h4>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">စိတ်၏ တည်ကြည်မှုနှင့် ပညာကို တားဆီးတတ်သော တရား ၅ ပါး မိမိသန္တာန်၌ ရှိ/မရှိ သိခြင်း၊ ဖြစ်ပေါ်ကြောင်းနှင့် ပယ်နိုင်ကြောင်းကို သိခြင်း။</p>
-                        <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600 dark:text-slate-400">
-                            <li><strong>ကာမစ္ဆန္ဒ:</strong> ကာမဂုဏ်ကို လိုချင်တပ်မက်မှု</li>
-                            <li><strong>ဗျာပါဒ:</strong> အမျက်ထွက်မှု၊ ဖျက်ဆီးလိုမှု</li>
-                            <li><strong>ထိနမိဒ္ဓ:</strong> စိတ်/စေတသိက်တို့၏ ထိုင်းမှိုင်း ငိုက်မျဉ်းမှု</li>
-                            <li><strong>ဥဒ္ဓစ္စကုက္ကုစ္စ:</strong> စိတ်ပျံ့လွင့်မှု နှင့် နောင်တတပူပန်ဖြစ်မှု</li>
-                            <li><strong>ဝိစိကိစ္ဆာ:</strong> ဘုရား၊ တရား၊ သံဃာ၊ ကံ စသည်တို့အပေါ် ယုံမှားသံသယဖြစ်မှု</li>
-                        </ul>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3">စိတ်၏ တည်ကြည်မှုနှင့် ပညာကို တားဆီးတတ်သော တရား ၅ ပါး မိမိသန္တာန်၌ ရှိ/မရှိ သိခြင်း၊ ဖြစ်ပေါ်ကြောင်းနှင့် ပယ်နိုင်ကြောင်းကို သိခြင်း -</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-slate-800 dark:text-slate-200 block">၁။ ကာမစ္ဆန္ဒ:</strong> ကာမဂုဏ်ကို လိုချင်တပ်မက်မှု ရှိ/မရှိ သိ၏။ (အသုဘနိမိတ်ဖြင့် ပယ်၏)
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-slate-800 dark:text-slate-200 block">၂။ ဗျာပါဒ:</strong> အမျက်ထွက်မှု၊ ဖျက်ဆီးလိုမှု ရှိ/မရှိ သိ၏။ (မေတ္တာဘာဝနာဖြင့် ပယ်၏)
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-slate-800 dark:text-slate-200 block">၃။ ထိနမိဒ္ဓ:</strong> စိတ်/စေတသိက် ထိုင်းမှိုင်းမှု ရှိ/မရှိ သိ၏။ (ဝီရိယပွား၍ ပယ်၏)
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-slate-800 dark:text-slate-200 block">၄။ ဥဒ္ဓစ္စကုက္ကုစ္စ:</strong> စိတ်ပျံ့လွင့်မှု နှင့် နောင်တတပူပန်ဖြစ်မှု ရှိ/မရှိ သိ၏။ (သမထသမာဓိဖြင့် ပယ်၏)
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60 sm:col-span-2 md:col-span-1">
+                                <strong class="text-slate-800 dark:text-slate-200 block">၅။ ဝိစိကိစ္ဆာ:</strong> ဘုရား၊ တရား၊ သံဃာ၊ ကံတို့အပေါ် ယုံမှားသံသယဖြစ်မှု ရှိ/မရှိ သိ၏။ (ဓမ္မဆင်ခြင်မှုဖြင့် ပယ်၏)
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm">
+                    <!-- 2. Khandha -->
+                    <div class="p-5 sm:p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm">
                         <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
                             <i class="fa-solid fa-cubes text-emerald-500 text-xl"></i>
-                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-lg">၂။ ခန္ဓ ပဗ္ဗ (ဥပါဒါနက္ခန္ဓာ ၅ ပါး)</h4>
+                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base sm:text-lg">၂။ ခန္ဓ ပဗ္ဗ (ဥပါဒါနက္ခန္ဓာ ၅ ပါး)</h4>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">ရုပ်၊ ဝေဒနာ (ခံစားမှု)၊ သညာ (မှတ်သားမှု)၊ သင်္ခါရ (ပြုပြင်အားထုတ်မှု)၊ ဝိညာဏ် (သိမှု) တို့၏ ဖြစ်ခြင်း၊ တည်ခြင်း၊ ပျက်ခြင်း (ဥဒယဗ္ဗယ) သဘောများကို အဖန်ဖန် ဆင်ခြင်သိမြင်ခြင်း။ "ဤကား ရုပ်တည်း၊ ဤကား ရုပ်၏ ဖြစ်ပေါ်ခြင်းတည်း၊ ဤကား ရုပ်၏ ချုပ်ငြိမ်းခြင်းတည်း" ဟု အရှိအတိုင်း သိမြင်ခြင်း။</p>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3">ရုပ်၊ ဝေဒနာ (ခံစားမှု)၊ သညာ (မှတ်သားမှု)၊ သင်္ခါရ (ပြုပြင်အားထုတ်မှု)၊ ဝိညာဏ် (သိမှု) တို့၏ ဖြစ်ခြင်း၊ တည်ခြင်း၊ ပျက်ခြင်း (ဥဒယဗ္ဗယ) သဘောများကို အဖန်ဖန် ဆင်ခြင်သိမြင်ခြင်း -</p>
+                        <div class="bg-emerald-50/50 dark:bg-slate-900/50 p-4 rounded-xl border border-emerald-100 dark:border-slate-700/60 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            "ဣတိ ရူပံ၊ ဣတိ ရူပဿ သမုဒယော၊ ဣတိ ရူပဿ အတ္ထင်္ဂမော..." - 'ဤကား ရုပ်တည်း၊ ဤကား ရုပ်၏ ဖြစ်ပေါ်ခြင်းတည်း၊ ဤကား ရုပ်၏ ချုပ်ငြိမ်းခြင်းတည်း' ဟု ခန္ဓာ (၅) ပါးလုံးအပေါ် အရှိအတိုင်း ဉာဏ်ဖြင့် ထိုးထွင်းသိမြင်ခြင်း။
+                        </div>
                     </div>
                     
-                    <div class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm">
+                    <!-- 3. Ayatana -->
+                    <div class="p-5 sm:p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm">
                         <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
                             <i class="fa-solid fa-link text-emerald-500 text-xl"></i>
-                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-lg">၃။ အာယတန ပဗ္ဗ (အာယတန ၁၂ ပါး)</h4>
+                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base sm:text-lg">၃။ အာယတန ပဗ္ဗ (အာယတန ၁၂ ပါး နှင့် သံယောဇဉ်)</h4>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">အတွင်း အာယတန ၆ ပါး (မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ်၊ စိတ်) နှင့် အပြင် အာယတန ၆ ပါး (အဆင်း၊ အသံ၊ အနံ့၊ အရသာ၊ အတွေ့အထိ၊ ဓမ္မာရုံ) တို့ တိုက်မိကြရာမှ သံယောဇဉ် (သံယောဇန) များ ဖြစ်ပေါ်လာပုံ၊ ပယ်သတ်ပုံတို့ကို ထိုးထွင်းသိမြင်ခြင်း။</p>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3">အတွင်း အာယတန ၆ ပါး (မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ်၊ စိတ်) နှင့် အပြင် အာယတန ၆ ပါး (အဆင်း၊ အသံ၊ အနံ့၊ အရသာ၊ အတွေ့အထိ၊ ဓမ္မာရုံ) တို့ တိုက်မိကြရာမှ သံယောဇဉ် (တွယ်တာနှောင်ကြိုး) များ ဖြစ်ပေါ်လာပုံ၊ ပယ်သတ်ပုံတို့ကို ထိုးထွင်းသိမြင်ခြင်း။</p>
+                        <div class="text-[11px] sm:text-xs bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl text-slate-600 dark:text-slate-400 font-medium">
+                            ဆင်ခြင်နည်း - မျက်စိနှင့် အဆင်းတိုက်သည့်အခါ မြင်ရုံသက်သက်ဖြင့် ရပ်တန့်ကာ လိုချင်တပ်မက်မှု သံယောဇဉ် (၁၀) ပါး မဖြစ်ပေါ်အောင် သတိဖြင့် ထိန်းသိမ်း ရှုမှတ်ပါ။
+                        </div>
                     </div>
 
-                    <div class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm">
+                    <!-- 4. Bojjhanga -->
+                    <div class="p-5 sm:p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm">
                         <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
                             <i class="fa-solid fa-stairs text-emerald-500 text-xl"></i>
-                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-lg">၄။ ဗောဇ္ဈင်္ဂ ပဗ္ဗ (ဗောဇ္ဈင် ၇ ပါး)</h4>
+                            <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-base sm:text-lg">၄။ ဗောဇ္ဈင်္ဂ ပဗ္ဗ (ဗောဇ္ဈင် ၇ ပါး)</h4>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">သစ္စာလေးပါးကို သိရန်အတွက် အထောက်အကူပြုသော အင်္ဂါ ၇ ပါး မိမိသန္တာန်၌ ဖြစ်ပေါ်နေမှု၊ ရင့်ကျက်လာမှုတို့ကို သိမြင်ခြင်း။</p>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded text-center">သတိ (အောက်မေ့မှု)</div>
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded text-center">ဓမ္မဝိစယ (ပညာဖြင့် စူးစမ်းမှု)</div>
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded text-center">ဝီရိယ (အားထုတ်မှု)</div>
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded text-center">ပီတိ (နှစ်သက်မှု)</div>
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded text-center">ပဿဒ္ဓိ (ငြိမ်းအေးမှု)</div>
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded text-center">သမာဓိ (တည်ကြည်မှု)</div>
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded text-center md:col-span-2">ဥပေက္ခာ (လစ်လျူရှုနိုင်မှု)</div>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3">သစ္စာလေးပါးကို သိရန်အတွက် အထောက်အကူပြုသော အင်္ဂါ ၇ ပါး မိမိသန္တာန်၌ ဖြစ်ပေါ်နေမှု၊ ရင့်ကျက်လာမှုတို့ကို သိမြင်ခြင်း -</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-semibold text-emerald-900 dark:text-emerald-300">
+                            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40 text-center flex flex-col justify-center">
+                                <span class="font-bold text-emerald-700 dark:text-emerald-400">၁။ သတိသမ္ဗောဇ္ဈင်</span>
+                                <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">မမေ့မလျော့ အောက်မေ့မှု</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40 text-center flex flex-col justify-center">
+                                <span class="font-bold text-emerald-700 dark:text-emerald-400">၂။ ဓမ္မဝိစယသမ္ဗောဇ္ဈင်</span>
+                                <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">ပညာဖြင့် စူးစမ်းမှု</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40 text-center flex flex-col justify-center">
+                                <span class="font-bold text-emerald-700 dark:text-emerald-400">၃။ ဝီရိယသမ္ဗောဇ္ဈင်</span>
+                                <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">ကြိုးစား အားထုတ်မှု</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40 text-center flex flex-col justify-center">
+                                <span class="font-bold text-emerald-700 dark:text-emerald-400">၄။ ပီတိသမ္ဗောဇ္ဈင်</span>
+                                <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">စိတ်နှစ်သက် ဝမ်းမြောက်မှု</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40 text-center flex flex-col justify-center">
+                                <span class="font-bold text-emerald-700 dark:text-emerald-400">၅။ ပဿဒ္ဓိသမ္ဗောဇ္ဈင်</span>
+                                <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">ကိုယ်စိတ် ငြိမ်းအေးမှု</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40 text-center flex flex-col justify-center">
+                                <span class="font-bold text-emerald-700 dark:text-emerald-400">၆။ သမာဓိသမ္ဗောဇ္ဈင်</span>
+                                <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">စိတ်တည်ကြည် ငြိမ်သက်မှု</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40 text-center sm:col-span-2 flex flex-col justify-center">
+                                <span class="font-bold text-emerald-700 dark:text-emerald-400">၇။ ဥပေက္ခာသမ္ဗောဇ္ဈင်</span>
+                                <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">အစွန်းမရောက် လစ်လျူရှု တည်ငြိမ်မှု</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm border-l-4 border-l-amber-500">
+                    <!-- 5. Sacca -->
+                    <div class="p-5 sm:p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm border-l-4 border-l-amber-500">
                         <div class="flex items-center gap-3 mb-3 border-b border-slate-100 dark:border-slate-700 pb-2">
                             <i class="fa-solid fa-gem text-amber-500 text-xl"></i>
-                            <h4 class="font-bold text-amber-600 dark:text-amber-400 text-lg">၅။ သစ္စ ပဗ္ဗ (သစ္စာ ၄ ပါး)</h4>
+                            <h4 class="font-bold text-amber-600 dark:text-amber-400 text-base sm:text-lg">၅။ သစ္စ ပဗ္ဗ (အရိယသစ္စာ ၄ ပါး)</h4>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">အမြင့်ဆုံး ဝိပဿနာဉာဏ်ဖြင့် သစ္စာလေးပါးကို အမှန်အတိုင်း ထိုးထွင်းသိမြင်ခြင်း (မဂ်ဉာဏ် ဖိုလ်ဉာဏ် ဆိုက်ရောက်ခြင်း)။</p>
-                        <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600 dark:text-slate-400">
-                            <li><strong>ဒုက္ခသစ္စာ:</strong> ဤကား ဆင်းရဲခြင်း အမှန်တရားတည်း ဟု သိ၏။</li>
-                            <li><strong>သမုဒယသစ္စာ:</strong> ဤကား ဆင်းရဲကြောင်း အမှန်တရား (တဏှာ) တည်း ဟု သိ၏။</li>
-                            <li><strong>နိရောဓသစ္စာ:</strong> ဤကား ဆင်းရဲချုပ်ရာ အမှန်တရား (နိဗ္ဗာန်) တည်း ဟု သိ၏။</li>
-                            <li><strong>မဂ္ဂသစ္စာ:</strong> ဤကား ဆင်းရဲချုပ်ရာသို့ သွားရာလမ်း အမှန်တရား (မဂ္ဂင် ၈ ပါး) တည်း ဟု သိ၏။</li>
-                        </ul>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4">အမြင့်ဆုံး ဝိပဿနာဉာဏ်ဖြင့် သစ္စာလေးပါးကို အမှန်အတိုင်း ထိုးထွင်းသိမြင်ခြင်း (မဂ်ဉာဏ် ဖိုလ်ဉာဏ် ဆိုက်ရောက်ခြင်း) -</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-rose-600 dark:text-rose-400 block mb-1">၁။ ဒုက္ခသစ္စာ (ဆင်းရဲခြင်း အမှန်တရား):</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-xs">ခန္ဓာငါးပါး၏ ဖြစ်ပျက်မှု အားလုံးသည် ဒုက္ခသစ္စာ ဖြစ်၏။ (ပရိညေယျ - ပိုင်းခြားသိရမည်)</span>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-amber-600 dark:text-amber-400 block mb-1">၂။ သမုဒယသစ္စာ (ဆင်းရဲကြောင်း အမှန်တရား):</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-xs">ဒုက္ခကို တွယ်တာသော တဏှာသည် သမုဒယသစ္စာ ဖြစ်၏။ (ပဟာတဗ္ဗ - ပယ်စွန့်ရမည်)</span>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-emerald-600 dark:text-emerald-400 block mb-1">၃။ နိရောဓသစ္စာ (ဆင်းရဲချုပ်ရာ အမှန်တရား):</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-xs">တဏှာ ကိလေသာ ကင်းပြတ်ရာ နိဗ္ဗာန်သည် နိရောဓသစ္စာ ဖြစ်၏။ (သစ္ဆိကာတဗ္ဗ - မျက်မှောက်ပြုရမည်)</span>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                                <strong class="text-sky-600 dark:text-sky-400 block mb-1">၄။ မဂ္ဂသစ္စာ (ဆင်းရဲချုပ်ရာ လမ်းအမှန်):</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-xs">မဂ္ဂင် (၈) ပါး အကျင့်မြတ်သည် မဂ္ဂသစ္စာ ဖြစ်၏။ (ဘာဝေတဗ္ဗ - ပွားများရမည်)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Footer Action CTA -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-amber-300/60 dark:border-amber-700/50 text-center space-y-4 shadow-lg bg-gradient-to-b from-white/90 to-amber-50/50 dark:from-slate-800/90 dark:to-slate-900/90">
+            <div class="w-16 h-16 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center text-3xl mx-auto shadow-inner">
+                <i class="fa-solid fa-person-praying"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100">လက်တွေ့ သတိပဋ္ဌာန် ရှုမှတ်ပွားများရန် အဆင်သင့်ဖြစ်ပြီလား?</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+                သတိပဋ္ဌာန် (၄) ပါး၏ ၃၂ ကောဋ္ဌာသ၊ ဣရိယာပထ၊ ဝေဒနာ ၉ မျိုး၊ စိတ် ၁၆ မျိုး၊ ဗောဇ္ဈင်နှင့် သစ္စာလေးပါးတို့ကို အဆင့်ဆင့် အလွယ်တကူ ရှုမှတ်နိုင်ရန် Satipaṭṭhāna Prompter ကို ယခုပင် အသုံးပြုကြည့်ပါ။
+            </p>
+            <div class="pt-2">
+                <a href="satipatthana_prompter.html" class="inline-flex items-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-bold rounded-2xl shadow-lg shadow-amber-500/30 transition transform active:scale-95 text-sm sm:text-base">
+                    <i class="fa-solid fa-play"></i> Satipaṭṭhāna Prompter ဖွင့်မည်
+                </a>
             </div>
         </div>
 
