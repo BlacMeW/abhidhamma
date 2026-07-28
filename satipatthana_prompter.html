@@ -16,14 +16,20 @@
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
         }
+        /* Left/right/bottom only — top is intentionally left uncontested so that
+           border-t-4 border-t-{color}-500 (set per practice mode via JS) always wins. */
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-left: 1px solid rgba(0, 0, 0, 0.06);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
         .dark .glass-card {
             background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left-color: rgba(255, 255, 255, 0.1);
+            border-right-color: rgba(255, 255, 255, 0.1);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
@@ -514,6 +520,39 @@
         let timerInterval = null;
         let isPlaying = false;
 
+        // Fully-literal Tailwind class strings per theme (must NOT be built via `${theme}` interpolation
+        // elsewhere — Tailwind's build only compiles classes it can find as complete tokens in source).
+        const THEME_CLASSES = {
+            sky: {
+                cardBorder: 'border-t-sky-500',
+                badge: 'border bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 border-sky-300 dark:border-sky-700',
+                bar: 'bg-sky-500',
+                playIdle: 'bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600',
+                playActive: 'bg-sky-700 hover:bg-sky-800 dark:bg-sky-600 dark:hover:bg-sky-700'
+            },
+            rose: {
+                cardBorder: 'border-t-rose-500',
+                badge: 'border bg-rose-100 dark:bg-rose-950/80 text-rose-800 dark:text-rose-300 border-rose-300 dark:border-rose-700',
+                bar: 'bg-rose-500',
+                playIdle: 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-500 dark:hover:bg-rose-600',
+                playActive: 'bg-rose-700 hover:bg-rose-800 dark:bg-rose-600 dark:hover:bg-rose-700'
+            },
+            amber: {
+                cardBorder: 'border-t-amber-500',
+                badge: 'border bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-700',
+                bar: 'bg-amber-500',
+                playIdle: 'bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600',
+                playActive: 'bg-amber-700 hover:bg-amber-800 dark:bg-amber-600 dark:hover:bg-amber-700'
+            },
+            emerald: {
+                cardBorder: 'border-t-emerald-500',
+                badge: 'border bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700',
+                bar: 'bg-emerald-500',
+                playIdle: 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600',
+                playActive: 'bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700'
+            }
+        };
+
         function setMode(modeKey) {
             if (isPlaying) togglePlay();
             currentMode = modeKey;
@@ -530,11 +569,11 @@
 
             // Update Card Theme Border & Progress Bar
             const card = document.getElementById('prompter-card');
-            card.className = `glass-card rounded-3xl p-5 sm:p-8 md:p-10 border-t-4 border-t-${theme}-500 shadow-lg relative overflow-hidden transition-all duration-300`;
-            
+            card.className = `glass-card rounded-3xl p-5 sm:p-8 md:p-10 border-t-4 ${THEME_CLASSES[theme].cardBorder} shadow-lg relative overflow-hidden transition-all duration-300`;
+
             const progressBar = document.getElementById('progress-bar');
             if (progressBar) {
-                progressBar.className = `bg-${theme}-500 h-full w-0 transition-all duration-300`;
+                progressBar.className = `${THEME_CLASSES[theme].bar} h-full w-0 transition-all duration-300`;
             }
 
             buildDots();
@@ -568,7 +607,7 @@
             stages.forEach((_, idx) => {
                 const dot = document.createElement('button');
                 dot.onclick = () => { if (isPlaying) togglePlay(); currentStepIndex = idx; renderStep(); };
-                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${idx === currentStepIndex ? `bg-${theme}-500 scale-125 shadow-sm` : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'}`;
+                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${idx === currentStepIndex ? `${THEME_CLASSES[theme].bar} scale-125 shadow-sm` : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'}`;
                 dot.title = `အဆင့် ${idx + 1}`;
                 container.appendChild(dot);
             });
@@ -580,7 +619,7 @@
             const theme = data.themeColor;
 
             document.getElementById('stage-badge').textContent = stage.badge;
-            document.getElementById('stage-badge').className = `px-3.5 py-1 rounded-full bg-${theme}-100 dark:bg-${theme}-950/80 text-${theme}-800 dark:text-${theme}-300 font-bold text-xs sm:text-sm border border-${theme}-300 dark:border-${theme}-700`;
+            document.getElementById('stage-badge').className = `px-3.5 py-1 rounded-full font-bold text-xs sm:text-sm ${THEME_CLASSES[theme].badge}`;
             
             document.getElementById('current-step-num').textContent = currentStepIndex + 1;
             document.getElementById('total-steps-num').textContent = data.stages.length;
@@ -607,7 +646,7 @@
             const dots = document.getElementById('dots-container').children;
             const theme = stagesData[currentMode].themeColor;
             for (let i = 0; i < dots.length; i++) {
-                dots[i].className = `w-3 h-3 rounded-full transition-all duration-300 ${i === currentStepIndex ? `bg-${theme}-500 scale-125 shadow-sm` : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'}`;
+                dots[i].className = `w-3 h-3 rounded-full transition-all duration-300 ${i === currentStepIndex ? `${THEME_CLASSES[theme].bar} scale-125 shadow-sm` : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'}`;
             }
         }
 
@@ -626,19 +665,20 @@
             const icon = document.getElementById('play-icon');
             const text = document.getElementById('play-text');
             const status = document.getElementById('status-text');
+            const theme = stagesData[currentMode].themeColor;
 
             if (isPlaying) {
                 clearInterval(timerInterval);
                 isPlaying = false;
                 icon.className = 'fa-solid fa-play';
                 text.textContent = 'ဆက်လက် ရှုမှတ်မည်';
-                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
+                btn.className = `px-8 py-3 rounded-2xl text-sm sm:text-base font-bold ${THEME_CLASSES[theme].playIdle} text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95`;
                 status.textContent = 'ခေတ္တရပ်ထားသည်';
             } else {
                 isPlaying = true;
                 icon.className = 'fa-solid fa-pause';
                 text.textContent = 'ခေတ္တ ရပ်မည်';
-                btn.className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95 animate-pulse-soft';
+                btn.className = `px-8 py-3 rounded-2xl text-sm sm:text-base font-bold ${THEME_CLASSES[theme].playActive} text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95 animate-pulse-soft`;
                 status.textContent = 'ရှုမှတ်နေသည်...';
                 
                 if (remainingSeconds === stepDurationSeconds) {
@@ -681,7 +721,8 @@
             document.getElementById('status-text').textContent = 'အသင့်ဖြစ်ပါပြီ';
             document.getElementById('play-icon').className = 'fa-solid fa-play';
             document.getElementById('play-text').textContent = 'စတင် ရှုမှတ်မည်';
-            document.getElementById('play-btn').className = 'px-8 py-3 rounded-2xl text-sm sm:text-base font-bold bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95';
+            const theme = stagesData[currentMode].themeColor;
+            document.getElementById('play-btn').className = `px-8 py-3 rounded-2xl text-sm sm:text-base font-bold ${THEME_CLASSES[theme].playIdle} text-white transition shadow-md flex items-center gap-2.5 min-w-[140px] justify-center transform active:scale-95`;
         }
 
         function nextStep() {
