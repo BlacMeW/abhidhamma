@@ -9,21 +9,33 @@
     <title>Metta Prompter - မေတ္တာပို့ လမ်းညွှန် Timer</title>
     <link rel="stylesheet" href="output.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', system-ui, sans-serif; transition: background-color 0.8s ease; }
+        body { 
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+            transition: background-color 0.8s ease; 
+        }
         
         .timer-circle {
-            width: 260px;
-            height: 260px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.06), 0 10px 30px -10px rgba(244, 63, 94, 0.15);
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px -2px rgba(0,0,0,0.03);
             transition: all 0.5s ease;
             margin: 0 auto;
+        }
+        .dark .timer-circle {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            box-shadow: 0 4px 20px -2px rgba(0,0,0,0.4);
         }
 
         @media (max-width: 399px) {
@@ -32,19 +44,14 @@
         @media (min-width: 400px) and (max-width: 639px) {
             .timer-circle { width: 240px; height: 240px; }
         }
-
-        .dark .timer-circle {
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            background: radial-gradient(circle, #331622 0%, #0f172a 100%);
-        }
         
         .timer-circle::before {
             content: '';
             position: absolute;
-            inset: -8px;
+            inset: -4px;
             border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: #f43f5e; /* Rose 500 */
+            border: 2px solid transparent;
+            border-top-color: #e11d48; /* Rose 600 */
             border-right-color: #fb7185;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -52,271 +59,271 @@
 
         .timer-active .timer-circle::before {
             opacity: 1;
-            animation: spin 3.5s linear infinite;
+            animation: spin 4s linear infinite;
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+        .clean-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.25rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
         }
-        .dark .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .dark .clean-panel {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            box-shadow: none;
         }
 
-        .step-indicator { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
-        .step-active { background-color: #f43f5e; color: white; border-color: #f43f5e; transform: scale(1.15); box-shadow: 0 4px 15px rgba(244, 63, 94, 0.5); }
-        .step-pending { background-color: transparent; color: #94a3b8; border-color: #cbd5e1; }
-        .dark .step-pending { color: #64748b; border-color: #334155; }
-        .step-completed { background-color: #10b981; color: white; border-color: #10b981; }
+        .step-indicator { transition: all 0.2s ease; cursor: pointer; }
+        .step-active { background-color: #e11d48; color: white; border-color: #e11d48; font-weight: bold; transform: scale(1.1); }
+        .step-pending { background-color: #f1f5f9; color: #64748b; border-color: #e2e8f0; }
+        .dark .step-pending { background-color: #1e293b; color: #64748b; border-color: #334155; }
+        .step-completed { background-color: #0f172a; color: white; border-color: #0f172a; }
+        .dark .step-completed { background-color: #f8fafc; color: #0f172a; border-color: #f8fafc; }
 
-        .fade-transition { transition: opacity 0.4s ease; }
+        .fade-transition { transition: opacity 0.3s ease; }
 
         .tab-btn { transition: all 0.2s ease; }
-        .tab-active { background-color: #f43f5e; color: white; font-weight: bold; shadow: 0 2px 8px rgba(244, 63, 94, 0.3); }
+        .tab-active { background-color: #f1f5f9; color: #0f172a; font-weight: bold; }
+        .dark .tab-active { background-color: #1e293b; color: #f8fafc; }
         .tab-inactive { background-color: transparent; color: #64748b; }
         .dark .tab-inactive { color: #94a3b8; }
-        .tab-inactive:hover { background-color: rgba(244, 63, 94, 0.1); color: #f43f5e; }
+        .tab-inactive:hover { color: #0f172a; }
+        .dark .tab-inactive:hover { color: #f8fafc; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200" id="app-body">
+<body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-200" id="app-body">
 
-    <header class="border-b border-rose-200/50 dark:border-slate-800 sticky top-0 z-40 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-slate-900/80">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-            <a href="metta_bhavana_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0" title="မေတ္တာဘာဝနာ လမ်းညွှန်သို့ ပြန်သွားရန်">
+    <!-- Minimalist Clean Header -->
+    <header class="border-b border-slate-200/80 dark:border-slate-800/80 sticky top-0 z-40 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md">
+        <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="metta_bhavana_guide.html" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0 text-sm" title="မေတ္တာဘာဝနာ လမ်းညွှန်သို့ ပြန်သွားရန်">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
             <div class="text-center">
-                <h1 class="text-base sm:text-lg font-bold text-rose-700 dark:text-rose-400 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-heart text-rose-500 animate-pulse"></i> Metta <span class="font-normal text-slate-500 dark:text-slate-400">Prompter</span>
+                <h1 class="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-heart text-rose-600"></i> Metta Prompter
                 </h1>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">မေတ္တာပို့ကျင့်စဉ် နှင့် ကရဏီယမေတ္တာသုတ် ရွတ်ဖတ်ပွားများရန် လမ်းညွှန် Timer</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">မေတ္တာပို့ကျင့်စဉ် နှင့် ကရဏီယမေတ္တာသုတ် ရွတ်ဖတ်ပွားများရန်</p>
             </div>
-            <a href="citta_cetasikas_visual_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0" title="ပင်မစာမျက်နှာသို့">
+            <a href="index.html" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0 text-sm" title="ပင်မစာမျက်နှာသို့">
                 <i class="fa-solid fa-house"></i>
             </a>
         </div>
     </header>
 
-    <main class="max-w-xl mx-auto px-4 py-5 flex-1 w-full flex flex-col gap-5 relative z-10">
+    <main class="max-w-xl mx-auto px-4 py-6 flex-1 w-full flex flex-col gap-6 relative z-10">
 
         <!-- Steps Indicator -->
-        <div id="steps-indicator-container" class="glass-panel px-3 sm:px-4 py-3 rounded-2xl shadow-sm">
+        <div id="steps-indicator-container" class="clean-panel px-4 py-3">
             <!-- Dynamically generated by JS -->
         </div>
 
         <!-- Timer Display Circle -->
-        <div class="timer-circle bg-white dark:bg-slate-800 shadow-xl" id="timer-container">
+        <div class="timer-circle" id="timer-container">
             <div class="text-center z-10 fade-transition w-full px-4" id="stage-content">
-                <div id="stage-badge" class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-300 mb-1.5">အဆင့် (၁) - Attā</div>
-                <div id="stage-title" class="text-rose-600 dark:text-rose-400 font-bold mb-1 text-sm sm:text-base leading-snug px-2">၁။ မိမိကိုယ်ကို အရင်ပို့ပါ</div>
-                <div id="time-display" class="text-4xl sm:text-5xl font-light tracking-wider text-slate-800 dark:text-slate-100 font-mono my-2 py-1">00:00</div>
-                <div id="stage-desc" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 px-2">အောက်ပါ စာသားကို ကြည့်၍ မေတ္တာပွားများပါ</div>
+                <div id="stage-badge" class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 mb-1.5 border border-slate-200 dark:border-slate-800">အဆင့် (၁) - Attā</div>
+                <div id="stage-title" class="text-slate-900 dark:text-slate-100 font-bold mb-1 text-sm sm:text-base leading-snug px-2">၁။ မိမိကိုယ်ကို အရင်ပို့ပါ</div>
+                <div id="time-display" class="text-4xl sm:text-5xl font-light tracking-wider text-slate-900 dark:text-slate-100 font-mono my-2 py-1">00:00</div>
+                <div id="stage-desc" class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 px-2">အောက်ပါ စာသားကို ကြည့်၍ မေတ္တာပွားများပါ</div>
             </div>
         </div>
 
         <!-- Progress Bar (Visible only during run) -->
         <div id="progress-container" class="hidden w-full space-y-1.5 px-2">
-            <div class="flex justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+            <div class="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-400">
                 <span>ယခုအဆင့် တိုးတက်မှု</span>
-                <span id="stage-progress-text">0%</span>
+                <span id="stage-progress-text" class="font-mono">0%</span>
             </div>
-            <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div id="stage-progress-bar" class="h-full bg-rose-500 transition-all duration-300 w-0 rounded-full"></div>
+            <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div id="stage-progress-bar" class="h-full bg-rose-600 transition-all duration-300 w-0 rounded-full"></div>
             </div>
             <div class="flex justify-between text-[11px] text-slate-400 pt-0.5">
-                <span>စုစုပေါင်း ကြာမြင့်ချိန်: <span id="elapsed-time-display" class="font-mono">00:00</span></span>
+                <span>စုစုပေါင်း: <span id="elapsed-time-display" class="font-mono">00:00</span></span>
                 <span>လက်ကျန်: <span id="total-left-display" class="font-mono">12:00</span></span>
             </div>
         </div>
 
         <!-- Run Controls (Hidden initially) -->
         <div id="run-controls" class="hidden flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 w-full pt-1">
-            <button id="btn-pause" onclick="togglePause()" class="flex-1 min-w-[120px] py-3 px-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold shadow-md shadow-amber-500/20 transition-all active:scale-95 flex items-center justify-center gap-2">
+            <button id="btn-pause" onclick="togglePause()" class="flex-1 min-w-[120px] py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200 text-white dark:text-slate-900 font-semibold text-xs sm:text-sm transition-all active:scale-95 flex items-center justify-center gap-2">
                 <i class="fa-solid fa-pause" id="pause-icon"></i> <span id="pause-text">ရပ်နားမည်</span>
             </button>
-            <button onclick="skipStage()" class="py-3 px-4 rounded-2xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold transition-all active:scale-95 flex items-center justify-center gap-2" title="နောက်တစ်ဆင့်သို့ ကျော်မည်">
+            <button onclick="skipStage()" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs sm:text-sm transition-all active:scale-95 flex items-center justify-center gap-2" title="နောက်တစ်ဆင့်သို့ ကျော်မည်">
                 <span>ကျော်မည်</span> <i class="fa-solid fa-forward-step"></i>
             </button>
-            <button onclick="confirmStop()" class="py-3 px-4 rounded-2xl bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/50 dark:hover:bg-rose-800/50 text-rose-700 dark:text-rose-300 font-bold transition-all active:scale-95 flex items-center justify-center gap-2" title="မေတ္တာပို့ ပြီးဆုံး/ရပ်စဲမည်">
+            <button onclick="confirmStop()" class="py-3 px-4 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/50 text-rose-600 dark:text-rose-400 font-semibold text-xs sm:text-sm transition-all active:scale-95 flex items-center justify-center gap-2" title="မေတ္တာပို့ ပြီးဆုံး/ရပ်စဲမည်">
                 <i class="fa-solid fa-stop"></i> <span>ရပ်မည်</span>
             </button>
         </div>
 
-        <!-- Chanting Text & Guidance Card (Alway available to review & chant) -->
-        <div class="w-full glass-panel rounded-3xl overflow-hidden shadow-lg border border-rose-200/60 dark:border-slate-800 flex flex-col">
+        <!-- Chanting Text & Guidance Card -->
+        <div class="w-full clean-panel overflow-hidden flex flex-col">
             <!-- Tabs -->
-            <div class="flex border-b border-rose-200/50 dark:border-slate-800 bg-white/50 dark:bg-slate-800/50 p-1 sm:p-1.5 gap-1">
-                <button onclick="switchTab('chant')" id="tab-chant" class="tab-btn tab-active flex-1 py-2 px-1 sm:px-3 rounded-xl text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 whitespace-nowrap">
-                    <i class="fa-solid fa-book-open"></i> ပါဠိ + မြန်မာ
+            <div class="flex border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50 p-1 sm:p-1.5 gap-1">
+                <button onclick="switchTab('chant')" id="tab-chant" class="tab-btn tab-active flex-1 py-2 px-2 rounded-lg text-xs sm:text-sm flex items-center justify-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-book-open text-[11px]"></i> ပါဠိ + မြန်မာ
                 </button>
-                <button onclick="switchTab('guide')" id="tab-guide" class="tab-btn tab-inactive flex-1 py-2 px-1 sm:px-3 rounded-xl text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 whitespace-nowrap">
-                    <i class="fa-solid fa-lightbulb"></i> ပွားများနည်း
+                <button onclick="switchTab('guide')" id="tab-guide" class="tab-btn tab-inactive flex-1 py-2 px-2 rounded-lg text-xs sm:text-sm flex items-center justify-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-lightbulb text-[11px]"></i> ပွားများနည်း
                 </button>
-                <button onclick="switchTab('caution')" id="tab-caution" class="tab-btn tab-inactive flex-1 py-2 px-1 sm:px-3 rounded-xl text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 whitespace-nowrap">
-                    <i class="fa-solid fa-triangle-exclamation"></i> သတိပြုရန်
+                <button onclick="switchTab('caution')" id="tab-caution" class="tab-btn tab-inactive flex-1 py-2 px-2 rounded-lg text-xs sm:text-sm flex items-center justify-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-triangle-exclamation text-[11px]"></i> သတိပြုရန်
                 </button>
             </div>
 
             <!-- Tab Contents -->
-            <div class="p-4 sm:p-6 min-h-[220px] flex flex-col justify-center bg-white/40 dark:bg-slate-900/40">
+            <div class="p-5 sm:p-6 min-h-[200px] flex flex-col justify-center">
                 <!-- 1. Chanting Tab -->
                 <div id="content-chant" class="space-y-4 text-center">
-                    <div id="pali-text" class="text-base sm:text-lg md:text-xl font-bold text-amber-800 dark:text-amber-300 leading-relaxed font-serif">
+                    <div id="pali-text" class="text-sm sm:text-base md:text-lg font-bold text-slate-900 dark:text-slate-100 leading-relaxed font-serif">
                         အဟံ အဝေရော ဟောမိ၊ အဗျာပဇ္ဇော ဟောမိ၊ အနီဃော ဟောမိ၊ သုခီ အတ္တာနံ ပရိဟရာမိ။
                     </div>
-                    <div class="h-px w-16 bg-amber-500/30 mx-auto"></div>
-                    <div id="meaning-text" class="text-xs sm:text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                    <div class="h-px w-12 bg-slate-200 dark:bg-slate-800 mx-auto"></div>
+                    <div id="meaning-text" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                         ငါသည် ဘေးရန်ကင်းပါစေ၊ စိတ်ဆင်းရဲကင်းပါစေ၊ ကိုယ်ဆင်းရဲကင်းပါစေ၊ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ပါစေ။
                     </div>
                 </div>
 
                 <!-- 2. Guide Tab -->
                 <div id="content-guide" class="hidden space-y-3 text-left">
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i>
-                        <p id="guide-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
-                    </div>
-                    <div class="bg-rose-50/70 dark:bg-rose-950/30 p-3 rounded-xl border border-rose-200/50 dark:border-rose-900/30 text-xs text-rose-800 dark:text-rose-300 leading-relaxed">
-                        <i class="fa-solid fa-lightbulb text-amber-500 mr-1.5"></i> <span id="extra-guide-text"></span>
+                    <p id="guide-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
+                    <div class="bg-slate-50 dark:bg-slate-900/60 p-3 rounded-xl border border-slate-200/60 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <i class="fa-solid fa-info-circle text-rose-500 mr-1.5"></i> <span id="extra-guide-text"></span>
                     </div>
                 </div>
 
                 <!-- 3. Caution Tab -->
                 <div id="content-caution" class="hidden space-y-3 text-left">
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-1 shrink-0"></i>
-                        <p id="caution-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
-                    </div>
-                    <div class="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-xl border border-amber-200/50 dark:border-amber-900/30">
-                        <div class="text-xs font-bold text-amber-800 dark:text-amber-300 mb-1">
-                            <i class="fa-solid fa-shield-heart mr-1"></i> မေတ္တာ၏ နယ်နိမိတ်နှင့် ရန်သူ
+                    <p id="caution-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200/60 dark:border-slate-800">
+                        <div class="text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">
+                            မေတ္တာ၏ နယ်နိမိတ်နှင့် ရန်သူ
                         </div>
-                        <div class="pt-2 border-t border-rose-200 dark:border-rose-900/40 text-[11px] text-slate-500 dark:text-slate-400">
-                            <strong>သတိပြုရန်:</strong> ကာမရာဂဖြင့် တွယ်တာသော ချစ်ခြင်း (ပေမ) သည် မေတ္တာ၏ အနီးရန်သူဖြစ်ပြီး၊ အမျက်ထွက် မုန်းတီးခြင်း (ဒေါသ) သည် အဝေးရန်သူ ဖြစ်သည်။
+                        <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                            <strong>သတိပြုရန်:</strong> တွယ်တာသော ချစ်ခြင်း (ပေမ) သည် မေတ္တာ၏ အနီးရန်သူဖြစ်ပြီး၊ အမျက်ထွက်ခြင်း (ဒေါသ) သည် အဝေးရန်သူ ဖြစ်သည်။
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-slate-100/60 dark:bg-slate-800/60 px-4 py-2 border-t border-slate-200/60 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-500">
-                <span><i class="fa-solid fa-info-circle mr-1"></i> အပေါ်ရှိ အဆင့်ခလုတ်များကို နှိပ်၍ ကြိုတင်လေ့လာနိုင်သည်</span>
-                <span id="preview-badge" class="text-rose-500 font-semibold">အဆင့် (၁) ပြသနေသည်</span>
+            <div class="bg-slate-50/80 dark:bg-slate-900/80 px-4 py-2 border-t border-slate-200/60 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-500">
+                <span>အပေါ်ရှိ အဆင့်ခလုတ်များကို နှိပ်၍ ကြိုတင်လေ့လာနိုင်သည်</span>
+                <span id="preview-badge" class="text-rose-600 dark:text-rose-400 font-medium">အဆင့် (၁) ပြသနေသည်</span>
             </div>
         </div>
 
         <!-- Setup Panel (Visible only when stopped) -->
-        <div class="w-full space-y-6 glass-panel p-5 sm:p-6 rounded-3xl shadow-lg" id="setup-panel">
+        <div class="w-full space-y-6 clean-panel p-5 sm:p-6" id="setup-panel">
             <!-- Practice Mode Selector -->
             <div>
-                <label class="block text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 mb-3 text-center">
-                    <i class="fa-solid fa-scroll text-amber-500 mr-1.5"></i> ပွားများမည့် မေတ္တာကျင့်စဉ် ရွေးချယ်ပါ
+                <label class="block text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 text-center">
+                    ပွားများမည့် မေတ္တာကျင့်စဉ် ရွေးချယ်ပါ
                 </label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <button onclick="setPracticeMode('standard')" id="mode-btn-standard" type="button" class="py-3 px-4 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition">
-                        <i class="fa-solid fa-heart text-rose-500"></i> (၄) ဆင့် မေတ္တာပို့ကျင့်စဉ်
+                    <button onclick="setPracticeMode('standard')" id="mode-btn-standard" type="button" class="py-3 px-4 rounded-xl border-2 border-rose-600 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-heart text-rose-600"></i> (၄) ဆင့် မေတ္တာပို့ကျင့်စဉ်
                     </button>
-                    <button onclick="setPracticeMode('sutta')" id="mode-btn-sutta" type="button" class="py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition">
-                        <i class="fa-solid fa-book-open text-amber-500"></i> ကရဏီယမေတ္တာသုတ် (၁၀) ဂါထာ
+                    <button onclick="setPracticeMode('sutta')" id="mode-btn-sutta" type="button" class="py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 font-medium text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-book-open"></i> ကရဏီယမေတ္တာသုတ် (၁၀) ဂါထာ
                     </button>
                 </div>
             </div>
 
             <!-- Time Per Step -->
             <div>
-                <label class="block text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 mb-3 text-center">
-                    <i class="fa-solid fa-clock text-rose-500 mr-1.5"></i> တစ်ဆင့်လျှင် အချိန်မည်မျှ ပွားများမည်နည်း?
+                <label class="block text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 text-center">
+                    တစ်ဆင့်လျှင် အချိန်မည်မျှ ပွားများမည်နည်း?
                 </label>
                 <div class="grid grid-cols-4 sm:grid-cols-7 gap-2">
-                    <button onclick="setTimePerStep(1)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">1 Min</button>
-                    <button onclick="setTimePerStep(3)" class="time-btn py-2.5 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs sm:text-sm font-bold shadow-sm">3 Min</button>
-                    <button onclick="setTimePerStep(5)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
-                    <button onclick="setTimePerStep(10)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">10 Min</button>
-                    <button onclick="setTimePerStep(15)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">15 Min</button>
-                    <button onclick="setTimePerStep(20)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">20 Min</button>
-                    <button onclick="setTimePerStep(30)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 col-span-2 sm:col-span-1">30 Min</button>
+                    <button onclick="setTimePerStep(1)" class="time-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-800">1 Min</button>
+                    <button onclick="setTimePerStep(3)" class="time-btn py-2 rounded-xl border-2 border-rose-600 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-bold">3 Min</button>
+                    <button onclick="setTimePerStep(5)" class="time-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-800">5 Min</button>
+                    <button onclick="setTimePerStep(10)" class="time-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-800">10 Min</button>
+                    <button onclick="setTimePerStep(15)" class="time-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-800">15 Min</button>
+                    <button onclick="setTimePerStep(20)" class="time-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-800">20 Min</button>
+                    <button onclick="setTimePerStep(30)" class="time-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-800 col-span-2 sm:col-span-1">30 Min</button>
                 </div>
-                <div class="mt-3 p-2.5 bg-rose-50/60 dark:bg-rose-950/30 rounded-xl text-center text-xs text-rose-800 dark:text-rose-300 font-medium border border-rose-200/50 dark:border-rose-900/30">
-                    <i class="fa-solid fa-hourglass-half mr-1"></i> အဆင့် (၄) ဆင့်လုံးအတွက် စုစုပေါင်း <strong id="total-time-display" class="font-bold underline text-sm">12</strong> မိနစ် ကြာမြင့်ပါမည်။
+                <div class="mt-3 p-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl text-center text-xs text-slate-600 dark:text-slate-400 font-medium border border-slate-200/60 dark:border-slate-800">
+                    အဆင့်များအားလုံးအတွက် စုစုပေါင်း <strong id="total-time-display" class="font-bold underline text-sm text-slate-900 dark:text-slate-100">12</strong> မိနစ် ကြာမြင့်ပါမည်။
                 </div>
             </div>
 
             <!-- Interval Bell Option -->
-            <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
-                <label class="block text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 mb-2.5 text-center">
-                    <i class="fa-solid fa-bell text-amber-500 mr-1.5"></i> အဆင့်တွင်း သတိပေး ခေါင်းလောင်းသံ (Interval Bell)
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2.5 text-center">
+                    အဆင့်တွင်း သတိပေး ခေါင်းလောင်းသံ (Interval Bell)
                 </label>
                 <div class="grid grid-cols-4 gap-2">
-                    <button onclick="setIntervalTime(0)" class="interval-btn py-2 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-bold shadow-sm">မလိုပါ</button>
-                    <button onclick="setIntervalTime(1)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700">1 Min</button>
-                    <button onclick="setIntervalTime(2)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700">2 Min</button>
-                    <button onclick="setIntervalTime(5)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
+                    <button onclick="setIntervalTime(0)" class="interval-btn py-2 rounded-xl border-2 border-rose-600 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-bold">မလိုပါ</button>
+                    <button onclick="setIntervalTime(1)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-200 dark:hover:bg-slate-800">1 Min</button>
+                    <button onclick="setIntervalTime(2)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-200 dark:hover:bg-slate-800">2 Min</button>
+                    <button onclick="setIntervalTime(5)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-200 dark:hover:bg-slate-800">5 Min</button>
                 </div>
             </div>
 
             <!-- Additional Options & Test Bell -->
-            <div class="flex items-center justify-end pt-2 border-t border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
-                <button onclick="testBellSound()" type="button" class="px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
-                    <i class="fa-solid fa-bell text-amber-500"></i> ခေါင်းလောင်းသံ စမ်းမည်
+            <div class="flex items-center justify-end pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs">
+                <button onclick="testBellSound()" type="button" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium transition flex items-center gap-1.5 text-xs">
+                    <i class="fa-solid fa-bell text-[11px]"></i> ခေါင်းလောင်းသံ စမ်းမည်
                 </button>
             </div>
 
-            <button id="btn-start" onclick="startPrompter()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold text-base shadow-xl shadow-rose-500/30 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
-                <i class="fa-solid fa-play"></i> မေတ္တာပို့ Timer စတင်မည်
+            <button id="btn-start" onclick="startPrompter()" class="w-full py-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm sm:text-base transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-solid fa-play text-xs"></i> မေတ္တာပို့ Timer စတင်မည်
             </button>
         </div>
 
-        <!-- Benefits & Tips Section (Bottom footer card) -->
-        <div class="glass-panel p-5 rounded-3xl shadow-sm space-y-3 mt-2">
-            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2">
-                <i class="fa-solid fa-gift text-emerald-500"></i> မေတ္တာပို့ခြင်း၏ အကျိုး (၁၁) ပါး အကျဉ်း
+        <!-- Benefits Summary Card -->
+        <div class="clean-panel p-5 space-y-3">
+            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-xs sm:text-sm flex items-center gap-2">
+                မေတ္တာပို့ခြင်း၏ အကျိုး (၁၁) ပါး အကျဉ်း
             </h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs text-slate-600 dark:text-slate-400">
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> ချမ်းသာစွာ အိပ်ရခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> ချမ်းသာစွာ နိုးရခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> အိပ်မက်ဆိုး မမက်ခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> လူတို့ ချစ်ခင်မြတ်နိုးခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> နတ်၊ ဘီလူး ချစ်ခင်ခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> နတ်တို့ စောင့်ရှောက်ခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> မီး၊ အဆိပ်၊ လက်နက် မသင့်</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> စိတ်တည်ကြည် လွယ်ခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> မျက်နှာ ကြည်လင်ခြင်း</div>
-                <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> မတွေမဝေ သေရခြင်း</div>
-                <div class="flex items-center gap-1.5 col-span-2 sm:col-span-2"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> ဗြဟ္မာ့ဘုံသို့ ရောက်ရခြင်း (တရားမရသေးလျှင်)</div>
+                <div>01. ချမ်းသာစွာ အိပ်ရခြင်း</div>
+                <div>02. ချမ်းသာစွာ နိုးရခြင်း</div>
+                <div>03. အိပ်မက်ဆိုး မမက်ခြင်း</div>
+                <div>04. လူတို့ ချစ်ခင်မြတ်နိုးခြင်း</div>
+                <div>05. နတ်၊ ဘီလူး ချစ်ခင်ခြင်း</div>
+                <div>06. နတ်တို့ စောင့်ရှောက်ခြင်း</div>
+                <div>07. မီး၊ အဆိပ်၊ လက်နက် မသင့်</div>
+                <div>08. စိတ်တည်ကြည် လွယ်ခြင်း</div>
+                <div>09. မျက်နှာ ကြည်လင်ခြင်း</div>
+                <div>10. မတွေမဝေ သေရခြင်း</div>
+                <div class="col-span-2">11. ဗြဟ္မာ့ဘုံသို့ ရောက်ရခြင်း</div>
             </div>
-            <div class="pt-2 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 flex justify-between items-center">
-                <span><i class="fa-solid fa-book text-rose-500 mr-1"></i> အသေးစိတ်လေ့လာရန်</span>
-                <a href="metta_bhavana_guide.html" class="text-rose-600 dark:text-rose-400 font-bold hover:underline">မေတ္တာဘာဝနာ လမ်းညွှန် ဖတ်ရှုရန် &rarr;</a>
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-500 flex justify-between items-center">
+                <span>အသေးစိတ်လေ့လာရန်</span>
+                <a href="metta_bhavana_guide.html" class="text-rose-600 dark:text-rose-400 font-semibold hover:underline">မေတ္တာဘာဝနာ လမ်းညွှန် ဖတ်ရှုရန် &rarr;</a>
             </div>
         </div>
 
     </main>
 
     <!-- Completion Modal -->
-    <div id="completion-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl border border-rose-200 dark:border-slate-700 transform scale-95 transition-transform duration-300" id="modal-card">
-            <div class="w-16 h-16 rounded-full bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 text-3xl flex items-center justify-center mx-auto mb-4 animate-bounce">
+    <div id="completion-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="clean-panel max-w-md w-full p-6 sm:p-8 text-center transform scale-95 transition-transform duration-300" id="modal-card">
+            <div class="w-14 h-14 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 text-2xl flex items-center justify-center mx-auto mb-4">
                 <i class="fa-solid fa-heart"></i>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-rose-600 dark:text-rose-400 mb-2">သာဓု သာဓု သာဓု</h2>
-            <p class="text-slate-700 dark:text-slate-300 font-semibold text-sm sm:text-base mb-4">
-                မေတ္တာပို့ အဆင့် (၄) ဆင့်လုံး အောင်မြင်စွာ ပွားများပြီးမြောက်ပါပြီ။
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">သာဓု သာဓု သာဓု</h2>
+            <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm mb-4">
+                မေတ္တာပို့ အဆင့်များ အောင်မြင်စွာ ပွားများပြီးမြောက်ပါပြီ။
             </p>
-            <div class="bg-rose-50 dark:bg-slate-900/60 p-4 rounded-2xl mb-6 text-left border border-rose-100 dark:border-slate-700 text-xs sm:text-sm space-y-2 text-slate-600 dark:text-slate-300">
+            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl mb-6 text-left border border-slate-200/60 dark:border-slate-800 text-xs space-y-2 text-slate-600 dark:text-slate-300">
                 <div class="flex justify-between font-bold text-slate-800 dark:text-slate-200">
-                    <span>စုစုပေါင်း ပွားများခဲ့သည့် အချိန်:</span>
-                    <span id="modal-total-time" class="text-rose-600 dark:text-rose-400">12 မိနစ်</span>
+                    <span>စုစုပေါင်း ကြာမြင့်ချိန်:</span>
+                    <span id="modal-total-time" class="text-rose-600 dark:text-rose-400 font-mono">12 မိနစ်</span>
                 </div>
-                <hr class="border-rose-200/50 dark:border-slate-800">
+                <hr class="border-slate-200/60 dark:border-slate-800">
                 <p class="italic text-center text-slate-500 pt-1">
                     "သဗ္ဗေ သတ္တာ အဝေရာ ဟောန္တု၊ အဗျာပဇ္ဇာ ဟောန္တု၊ အနီဃာ ဟောန္တု၊ သုခီ အတ္တာနံ ပရိဟရန္တု"
                 </p>
             </div>
-            <button onclick="closeModal()" class="w-full py-3.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-bold text-base shadow-lg shadow-rose-500/30 transition">
-                <i class="fa-solid fa-check mr-2"></i> ကောင်းပါပြီ / နိဂုံးချုပ်မည်
+            <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-slate-100 dark:hover:bg-slate-200 dark:text-slate-900 font-semibold text-xs sm:text-sm transition">
+                ကောင်းပါပြီ / နိဂုံးချုပ်မည်
             </button>
         </div>
     </div>
@@ -360,7 +367,7 @@
                 pali: "ဣမေ ဝေရီပုဂ္ဂလာ အဝေရာ ဟောန္တု၊ အဗျာပဇ္ဇာ ဟောန္တု၊ အနီဃာ ဟောန္တု၊ သုခီ အတ္တာနံ ပရိဟရန္တု။\n(သီမသမ္ဘေဒ) - သဗ္ဗေ သတ္တာ အဝေရာ ဟောန္တု၊ အဗျာပဇ္ဇာ ဟောန္တု၊ အနီဃာ ဟောန္တု၊ သုခီ အတ္တာနံ ပရိဟရန္တု။",
                 meaning: "ငါ့အပေါ် မကောင်းကျင့်ဖူးသော၊ မုန်းတီးသော ပုဂ္ဂိုလ်တို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာဖြင့် မိမိတို့ခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ။\n(သီမသမ္ဘေဒ) - အလုံးစုံသော သတ္တဝါအပေါင်းတို့သည် ဘေးရန်ကင်းကြပါစေ...။",
                 guide: "ရန်သူကို မေတ္တာပို့ရာတွင် ဒေါသစိတ် ပေါ်လာပါက - (၁) ဘုရားရှင်၏ ခန္တီဂုဏ်ကို ဆင်ခြင်ပါ၊ (၂) ထိုသူ၏ ကောင်းသော အပြုအမူ တစ်ခုခုကို ရှာကြံ၍ အာရုံပြုပါ၊ (၃) သံသရာတစ်လျှောက် ဆွေမျိုးတော်စပ်ဖူးသူများဟု ဆင်ခြင်ပါ။",
-                extraGuide: "သီမသမ္ဘေဒ (နယ်နိမိတ် ကျိုးပေါက်ခြင်း) - မိမိ၊ ချစ်သူ၊ အလယ်အလတ်၊ ရန်သူ (၄) ဦးလုံးအပေါ် ခွဲခြားမှု မရှိတော့ဘဲ အညီအမျှ မေတ္တာထားနိုင်သောအခါ 'သီမသမ္ဘေဒ' ဖြစ်ပြီး အပ္ပနာဈာန် (ပထမ၊ ဒုတိယ၊ တတိယဈာန်) သို့ ရောက်ရှိပါသည်။",
+                extraGuide: "သီမသမ္ဘေဒ (နယ်နိမိတ် ကျိုးပေါက်ခြင်း) - မိမိ၊ ချစ်သူ၊ အလယ်အလတ်၊ ရန်သူ (၄) ဦးလုံးအပေါ် ခွဲခြားမှု မရှိတော့ဘဲ အညီအမျှ မေတ္တာထားနိုင်သောအခါ 'သီမသမ္ဘေဒ' ဖြစ်ပြီး အပ္ပနာဈာန်သို့ ရောက်ရှိပါသည်။",
                 caution: "မေတ္တာသည် သောမနဿဝေဒနာနှင့်သာ ယှဉ်သောကြောင့် ဥပေက္ခာဝေဒနာ ယှဉ်သော စတုတ္ထဈာန် မရနိုင်ပါ။ ဒေါသကို မေတ္တာဖြင့် အပြီးတိုင် အနိုင်ယူပါ။"
             }
         ];
@@ -483,7 +490,6 @@
         let isPaused = false;
         let wakeLock = null;
 
-        // DOM elements
         const timeDisplay = document.getElementById('time-display');
         const stageBadge = document.getElementById('stage-badge');
         const stageTitle = document.getElementById('stage-title');
@@ -495,7 +501,6 @@
         const bodyEl = document.getElementById('app-body');
         const stageContent = document.getElementById('stage-content');
 
-        // Text card elements
         const paliText = document.getElementById('pali-text');
         const meaningText = document.getElementById('meaning-text');
         const guideText = document.getElementById('guide-text');
@@ -503,13 +508,11 @@
         const cautionText = document.getElementById('caution-text');
         const previewBadge = document.getElementById('preview-badge');
 
-        // Progress elements
         const stageProgressBar = document.getElementById('stage-progress-bar');
         const stageProgressText = document.getElementById('stage-progress-text');
         const elapsedTimeDisplay = document.getElementById('elapsed-time-display');
         const totalLeftDisplay = document.getElementById('total-left-display');
 
-        // Audio setup (Authentic Tibetan Singing Bowl & Burmese Temple Gong Synthesizer)
         function playBell(isEnd = false) {
             try {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -520,7 +523,6 @@
                 const ctx = window.bellAudioCtx;
                 if (ctx.state === 'suspended') ctx.resume();
                 
-                // Master gain and Lowpass filter for warm metallic acoustics
                 const masterGain = ctx.createGain();
                 const filter = ctx.createBiquadFilter();
                 filter.type = 'lowpass';
@@ -534,13 +536,11 @@
                 const decayTime = isEnd ? 11 : 6;
 
                 masterGain.gain.setValueAtTime(0.001, ctx.currentTime);
-                masterGain.gain.linearRampToValueAtTime(isEnd ? 0.95 : 0.85, ctx.currentTime + 0.04); // soft mallet strike
+                masterGain.gain.linearRampToValueAtTime(isEnd ? 0.95 : 0.85, ctx.currentTime + 0.04);
                 masterGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + decayTime);
 
-                // Fundamental pitch (216Hz for regular chime, 144Hz for final deep gong)
                 const f0 = isEnd ? 144 : 216;
 
-                // 1. Fundamental
                 const osc1 = ctx.createOscillator();
                 const g1 = ctx.createGain();
                 osc1.type = 'sine';
@@ -548,7 +548,6 @@
                 g1.gain.value = 1.0;
                 osc1.connect(g1); g1.connect(masterGain);
 
-                // 2. Detuned fundamental for acoustic beating (singing bowl throbbing: 3.5Hz)
                 const osc2 = ctx.createOscillator();
                 const g2 = ctx.createGain();
                 osc2.type = 'sine';
@@ -556,7 +555,6 @@
                 g2.gain.value = 0.6;
                 osc2.connect(g2); g2.connect(masterGain);
 
-                // 3. Second harmonic (approx 2.76x for bell anharmonic overtone)
                 const osc3 = ctx.createOscillator();
                 const g3 = ctx.createGain();
                 osc3.type = 'sine';
@@ -565,13 +563,12 @@
                 g3.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (decayTime * 0.5));
                 osc3.connect(g3); g3.connect(masterGain);
 
-                // 4. High strike shimmer (approx 5.4x)
                 const osc4 = ctx.createOscillator();
                 const g4 = ctx.createGain();
-                osc4.type = 'triangle'; // metallic timbre
+                osc4.type = 'triangle';
                 osc4.frequency.setValueAtTime(f0 * 5.404, ctx.currentTime);
                 g4.gain.setValueAtTime(0.25, ctx.currentTime);
-                g4.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2); // decays very fast
+                g4.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
                 osc4.connect(g4); g4.connect(masterGain);
 
                 osc1.start(); osc2.start(); osc3.start(); osc4.start();
@@ -580,7 +577,6 @@
                 osc3.stop(ctx.currentTime + decayTime);
                 osc4.stop(ctx.currentTime + decayTime);
 
-                // If end gong, add a secondary resonance strike after 700ms for a rich double-gong effect
                 if (isEnd) {
                     setTimeout(() => {
                         try {
@@ -606,7 +602,6 @@
             playBell(false);
         }
 
-        // Wake Lock API
         async function requestWakeLock() {
             try {
                 if ('wakeLock' in navigator) {
@@ -623,23 +618,22 @@
             }
         }
 
-        // UI Handlers
         function setTimePerStep(mins) {
             if (isRunning) return;
             timePerStepMinutes = mins;
             
             document.querySelectorAll('.time-btn').forEach(btn => {
                 if (btn.textContent.trim() === `${mins} Min`) {
-                    btn.className = "time-btn py-2.5 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs sm:text-sm font-bold shadow-sm";
+                    btn.className = "time-btn py-2 rounded-xl border-2 border-rose-600 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-bold";
                 } else {
-                    btn.className = "time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700";
+                    btn.className = "time-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-800";
                 }
             });
             const totalMins = mins * activeStages.length;
             document.getElementById('total-time-display').textContent = totalMins;
             const labelEl = document.getElementById('total-time-display').parentElement;
             if (labelEl) {
-                labelEl.innerHTML = `<i class="fa-solid fa-hourglass-half mr-1"></i> အဆင့် (${activeStages.length}) ဆင့်လုံးအတွက် စုစုပေါင်း <strong id="total-time-display" class="font-bold underline text-sm">${totalMins}</strong> မိနစ် ကြာမြင့်ပါမည်။`;
+                labelEl.innerHTML = `အဆင့်များအားလုံးအတွက် စုစုပေါင်း <strong id="total-time-display" class="font-bold underline text-sm text-slate-900 dark:text-slate-100">${totalMins}</strong> မိနစ် ကြာမြင့်ပါမည်။`;
             }
         }
 
@@ -647,11 +641,11 @@
             const container = document.getElementById('steps-indicator-container');
             if (!container) return;
             
-            let html = '<div class="flex items-center justify-between gap-1 sm:gap-2 px-1 overflow-x-auto py-1">';
+            let html = '<div class="flex items-center justify-between gap-1.5 px-1 overflow-x-auto py-1">';
             activeStages.forEach((st, i) => {
-                html += `<div id="ind-${i}" onclick="previewStage(${i})" class="step-indicator ${i === 0 ? 'step-active' : 'step-pending'} w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 cursor-pointer transition-transform hover:scale-105" title="${st.title}">${i + 1}</div>`;
+                html += `<div id="ind-${i}" onclick="previewStage(${i})" class="step-indicator ${i === 0 ? 'step-active' : 'step-pending'} w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer" title="${st.title}">${i + 1}</div>`;
                 if (i < activeStages.length - 1) {
-                    html += '<div class="h-0.5 bg-slate-200 dark:bg-slate-700 flex-1 min-w-[4px]"></div>';
+                    html += '<div class="h-px bg-slate-200 dark:bg-slate-800 flex-1 min-w-[4px]"></div>';
                 }
             });
             html += '</div>';
@@ -664,8 +658,8 @@
                     <span>မုန်းတီးသူ</span>
                 </div>`;
             } else {
-                html += `<div class="text-center text-[11px] text-amber-600 dark:text-amber-400 mt-1 font-medium">
-                    <i class="fa-solid fa-scroll mr-1"></i> ကရဏီယမေတ္တာသုတ် ဂါထာ (၁) မှ (၁၀) အထိ အစဉ်လိုက် ရွတ်ဖတ်ပွားများရန်
+                html += `<div class="text-center text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 font-medium">
+                    ကရဏီယမေတ္တာသုတ် ဂါထာ (၁) မှ (၁၀) အထိ ရွတ်ဖတ်ပွားများရန်
                 </div>`;
             }
             container.innerHTML = html;
@@ -680,11 +674,11 @@
             const btnSutta = document.getElementById('mode-btn-sutta');
             if (btnStandard && btnSutta) {
                 if (mode === 'standard') {
-                    btnStandard.className = "py-3 px-4 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition";
-                    btnSutta.className = "py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition";
+                    btnStandard.className = "py-3 px-4 rounded-xl border-2 border-rose-600 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition";
+                    btnSutta.className = "py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 font-medium text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center justify-center gap-2 transition";
                 } else {
-                    btnSutta.className = "py-3 px-4 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition";
-                    btnStandard.className = "py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition";
+                    btnSutta.className = "py-3 px-4 rounded-xl border-2 border-rose-600 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition";
+                    btnStandard.className = "py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 font-medium text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center justify-center gap-2 transition";
                 }
             }
             
@@ -700,9 +694,9 @@
             document.querySelectorAll('.interval-btn').forEach(btn => {
                 const text = mins === 0 ? "မလိုပါ" : `${mins} Min`;
                 if (btn.textContent.trim() === text) {
-                    btn.className = "interval-btn py-2 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-bold shadow-sm";
+                    btn.className = "interval-btn py-2 rounded-xl border-2 border-rose-600 bg-rose-50/80 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-bold";
                 } else {
-                    btn.className = "interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700";
+                    btn.className = "interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-200 dark:hover:bg-slate-800";
                 }
             });
         }
@@ -712,10 +706,10 @@
                 const btn = document.getElementById(`tab-${t}`);
                 const content = document.getElementById(`content-${t}`);
                 if (t === tabName) {
-                    btn.className = "tab-btn tab-active flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-1.5";
+                    btn.className = "tab-btn tab-active flex-1 py-2 px-2 rounded-lg text-xs sm:text-sm flex items-center justify-center gap-1.5 whitespace-nowrap";
                     content.classList.remove('hidden');
                 } else {
-                    btn.className = "tab-btn tab-inactive flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-1.5";
+                    btn.className = "tab-btn tab-inactive flex-1 py-2 px-2 rounded-lg text-xs sm:text-sm flex items-center justify-center gap-1.5 whitespace-nowrap";
                     content.classList.add('hidden');
                 }
             });
@@ -725,15 +719,14 @@
             for (let i = 0; i < activeStages.length; i++) {
                 const ind = document.getElementById(`ind-${i}`);
                 if (!ind) continue;
-                ind.className = "step-indicator w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 cursor-pointer transition-transform hover:scale-105";
                 if (i < currentStageIndex) {
-                    ind.classList.add("step-completed");
-                    ind.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    ind.className = "step-indicator step-completed w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer";
+                    ind.innerHTML = '<i class="fa-solid fa-check text-[10px]"></i>';
                 } else if (i === currentStageIndex) {
-                    ind.classList.add("step-active");
+                    ind.className = "step-indicator step-active w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer";
                     ind.innerHTML = (i + 1).toString();
                 } else {
-                    ind.classList.add("step-pending");
+                    ind.className = "step-indicator step-pending w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer";
                     ind.innerHTML = (i + 1).toString();
                 }
             }
@@ -751,7 +744,7 @@
         }
 
         function previewStage(index) {
-            if (isRunning && !isPaused) return; // Do not switch card mid-timer unless paused/stopped
+            if (isRunning && !isPaused) return;
             previewIndex = index;
             displayStageCard(index);
             if (!isRunning) {
@@ -762,9 +755,9 @@
                     const ind = document.getElementById(`ind-${i}`);
                     if (!ind) continue;
                     if (i === index) {
-                        ind.className = "step-indicator step-active w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 cursor-pointer transition-transform hover:scale-105";
+                        ind.className = "step-indicator step-active w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer";
                     } else {
-                        ind.className = "step-indicator step-pending w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 cursor-pointer transition-transform hover:scale-105";
+                        ind.className = "step-indicator step-pending w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer";
                     }
                 }
             }
@@ -830,7 +823,7 @@
             progressContainer.classList.remove('hidden');
             containerEl.classList.add('timer-active');
             
-            bodyEl.classList.remove('bg-slate-50', 'dark:bg-slate-900');
+            bodyEl.classList.remove('bg-slate-50', 'dark:bg-slate-950');
             bodyEl.classList.add('bg-slate-900', 'dark:bg-black');
             
             setStage(0);
@@ -845,7 +838,6 @@
                 timeDisplay.textContent = formatTime(timeLeftInStage);
                 updateProgressUI();
                 
-                // Interval bell check
                 if (intervalMinutes > 0 && timeSinceLastBell >= intervalMinutes * 60 && timeLeftInStage > 0) {
                     playBell(false);
                     timeSinceLastBell = 0;
@@ -865,12 +857,12 @@
             const pauseText = document.getElementById('pause-text');
             
             if (isPaused) {
-                pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold shadow-md shadow-emerald-500/20 transition-all active:scale-95 flex items-center justify-center gap-2";
+                pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs sm:text-sm transition-all active:scale-95 flex items-center justify-center gap-2";
                 pauseIcon.className = "fa-solid fa-play";
                 pauseText.textContent = "ဆက်လက်ပွားမည်";
                 containerEl.classList.remove('timer-active');
             } else {
-                pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold shadow-md shadow-amber-500/20 transition-all active:scale-95 flex items-center justify-center gap-2";
+                pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200 text-white dark:text-slate-900 font-semibold text-xs sm:text-sm transition-all active:scale-95 flex items-center justify-center gap-2";
                 pauseIcon.className = "fa-solid fa-pause";
                 pauseText.textContent = "ရပ်နားမည်";
                 containerEl.classList.add('timer-active');
@@ -899,7 +891,7 @@
             progressContainer.classList.add('hidden');
             containerEl.classList.remove('timer-active');
             
-            bodyEl.classList.add('bg-slate-50', 'dark:bg-slate-900');
+            bodyEl.classList.add('bg-slate-50', 'dark:bg-slate-950');
             bodyEl.classList.remove('bg-slate-900', 'dark:bg-black');
             
             currentStageIndex = 0;
@@ -909,7 +901,7 @@
             
             const pauseBtn = document.getElementById('btn-pause');
             if (pauseBtn) {
-                pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold shadow-md shadow-amber-500/20 transition-all active:scale-95 flex items-center justify-center gap-2";
+                pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200 text-white dark:text-slate-900 font-semibold text-xs sm:text-sm transition-all active:scale-95 flex items-center justify-center gap-2";
                 document.getElementById('pause-icon').className = "fa-solid fa-pause";
                 document.getElementById('pause-text').textContent = "ရပ်နားမည်";
             }
@@ -955,14 +947,12 @@
             stopPrompter();
         }
 
-        // Initialize on page load
         window.addEventListener('DOMContentLoaded', () => {
             renderIndicators();
             displayStageCard(0);
             setTimePerStep(3);
         });
 
-        // Handle page visibility (if user minimizes browser)
         document.addEventListener('visibilitychange', () => {
             if (wakeLock !== null && document.visibilityState === 'visible' && isRunning) {
                 requestWakeLock();
