@@ -95,9 +95,9 @@
                 </h1>
                 <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">မေတ္တာပို့ အဆင့် (၄) ဆင့် ရွတ်ဖတ်ပွားများရန် လမ်းညွှန် Timer</p>
             </div>
-            <button onclick="toggleVoiceGuide()" id="btn-voice-header" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-rose-100 dark:hover:bg-rose-900/30 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0" title="အသံဖြင့် လမ်းညွှန်မှု ဖွင့်/ပိတ်">
-                <i class="fa-solid fa-volume-high" id="voice-icon"></i>
-            </button>
+            <a href="citta_cetasikas_visual_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0" title="ပင်မစာမျက်နှာသို့">
+                <i class="fa-solid fa-house"></i>
+            </a>
         </div>
     </header>
 
@@ -265,12 +265,8 @@
             </div>
 
             <!-- Additional Options & Test Bell -->
-            <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
-                <label class="flex items-center gap-2 cursor-pointer text-slate-700 dark:text-slate-300 select-none">
-                    <input type="checkbox" id="check-voice" checked onchange="updateVoiceSetting()" class="w-4 h-4 rounded text-rose-500 focus:ring-rose-400">
-                    <span><i class="fa-solid fa-headset text-rose-500 mr-1"></i> အသံဖြင့် လမ်းညွှန်မှု ဖွင့်မည် (Voice Guide)</span>
-                </label>
-                <button onclick="testBellSound()" type="button" class="px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5 text-xs">
+            <div class="flex items-center justify-end pt-2 border-t border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
+                <button onclick="testBellSound()" type="button" class="px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
                     <i class="fa-solid fa-bell text-amber-500"></i> ခေါင်းလောင်းသံ စမ်းမည်
                 </button>
             </div>
@@ -386,7 +382,6 @@
         let timerInterval = null;
         let isRunning = false;
         let isPaused = false;
-        let isVoiceEnabled = true;
         let wakeLock = null;
 
         // DOM elements
@@ -510,67 +505,6 @@
 
         function testBellSound() {
             playBell(false);
-        }
-
-        // Helper to safely find true Myanmar/Burmese voice without colliding with Malaysia (-MY)
-        function getMyanmarVoice() {
-            if (!('speechSynthesis' in window)) return null;
-            const voices = window.speechSynthesis.getVoices();
-            return voices.find(v => 
-                v.lang === 'my-MM' || v.lang === 'my_MM' || v.lang === 'my' ||
-                v.lang.toLowerCase().startsWith('my-') || v.lang.toLowerCase().startsWith('my_') ||
-                v.name.toLowerCase().includes('myanmar') || v.name.toLowerCase().includes('burmese')
-            ) || null;
-        }
-
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
-        }
-
-        // Voice Guidance (Web Speech API)
-        function speakGuidance(text) {
-            if (!isVoiceEnabled || !('speechSynthesis' in window)) return;
-            try {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'my-MM';
-                utterance.rate = 0.9; // natural calm rate
-                utterance.pitch = 1.0;
-                
-                // Assign true Myanmar voice if installed
-                const myVoice = getMyanmarVoice();
-                if (myVoice) {
-                    utterance.voice = myVoice;
-                }
-
-                window.speechSynthesis.speak(utterance);
-            } catch(e) {
-                console.log("Speech synthesis error:", e);
-            }
-        }
-
-        function toggleVoiceGuide() {
-            isVoiceEnabled = !isVoiceEnabled;
-            const icon = document.getElementById('voice-icon');
-            const checkbox = document.getElementById('check-voice');
-            if (checkbox) checkbox.checked = isVoiceEnabled;
-            
-            if (isVoiceEnabled) {
-                icon.className = "fa-solid fa-volume-high text-rose-500";
-                speakGuidance("အသံဖြင့် လမ်းညွှန်မှု ဖွင့်ပါပြီ");
-            } else {
-                icon.className = "fa-solid fa-volume-xmark text-slate-400";
-                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-            }
-        }
-
-        function updateVoiceSetting() {
-            const checkbox = document.getElementById('check-voice');
-            isVoiceEnabled = checkbox.checked;
-            const icon = document.getElementById('voice-icon');
-            if (icon) {
-                icon.className = isVoiceEnabled ? "fa-solid fa-volume-high text-rose-500" : "fa-solid fa-volume-xmark text-slate-400";
-            }
         }
 
         // Wake Lock API
@@ -710,11 +644,6 @@
             playBell(false);
             
             const st = stages[index];
-            if (isVoiceEnabled) {
-                setTimeout(() => {
-                    speakGuidance(`${st.title}။ ${st.desc}`);
-                }, 800);
-            }
             
             stageContent.style.opacity = 0;
             setTimeout(() => {
@@ -783,7 +712,6 @@
                 pauseIcon.className = "fa-solid fa-play";
                 pauseText.textContent = "ဆက်လက်ပွားမည်";
                 containerEl.classList.remove('timer-active');
-                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             } else {
                 pauseBtn.className = "flex-1 min-w-[120px] py-3 px-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold shadow-md shadow-amber-500/20 transition-all active:scale-95 flex items-center justify-center gap-2";
                 pauseIcon.className = "fa-solid fa-pause";
@@ -808,7 +736,6 @@
             isRunning = false;
             isPaused = false;
             releaseWakeLock();
-            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             
             setupPanel.classList.remove('hidden');
             runControls.classList.add('hidden');
@@ -850,12 +777,6 @@
                 timeDisplay.textContent = "Done";
                 stageContent.style.opacity = 1;
             }, 300);
-
-            if (isVoiceEnabled) {
-                setTimeout(() => {
-                    speakGuidance("မေတ္တာပို့ အဆင့် ၄ ဆင့် အောင်မြင်စွာ ပြီးဆုံးပါပြီ။ သာဓု သာဓု သာဓု။");
-                }, 1000);
-            }
 
             const totalMinsMeditated = Math.round(totalElapsedSeconds / 60) || (timePerStepMinutes * 4);
             document.getElementById('modal-total-time').textContent = `${totalMinsMeditated} မိနစ် (${formatTime(totalElapsedSeconds)})`;

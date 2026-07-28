@@ -139,9 +139,6 @@
                 <button onclick="toggleAmbientSound()" id="btn-ambient" class="px-2.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 text-xs font-semibold transition flex items-center gap-1.5 border border-slate-200 dark:border-slate-700" title="အေးချမ်းသော နောက်ခံအသံလှိုင်း ဖွင့်/ပိတ်">
                     <i class="fa-solid fa-water" id="ambient-icon"></i> <span class="hidden sm:inline">နောက်ခံအသံ</span>
                 </button>
-                <button onclick="toggleVoiceGuide()" id="btn-voice" class="px-2.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-emerald-600 dark:text-emerald-400 text-xs font-semibold transition flex items-center gap-1.5 border border-slate-200 dark:border-slate-700" title="အလိုအလျောက် အသံလမ်းညွှန် (Voice TTS) ဖွင့်/ပိတ်">
-                    <i class="fa-solid fa-volume-high" id="voice-icon"></i> <span class="hidden sm:inline">အသံလမ်းညွှန်</span>
-                </button>
                 <button onclick="toggleFullScreen()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 transition shrink-0 border border-slate-200 dark:border-slate-700" title="ဖန်သားပြင် အပြည့် (Fullscreen)">
                     <i class="fa-solid fa-expand"></i>
                 </button>
@@ -330,19 +327,6 @@
                 <div class="space-y-2.5">
                     <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition">
                         <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                                <i class="fa-solid fa-volume-high"></i>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-700 dark:text-slate-200 block">အလိုအလျောက် အသံလမ်းညွှန် (Voice TTS)</span>
-                                <span class="text-[11px] text-slate-500 dark:text-slate-400">ရှူသွင်း၊ ရှူထုတ် နှင့် ဂဏနာ ရေတွက်မှုကို မြန်မာအသံဖြင့် ညွှန်ပြရန်</span>
-                            </div>
-                        </div>
-                        <input type="checkbox" id="check-voice" checked onchange="toggleVoiceGuide()" class="w-5 h-5 rounded accent-emerald-500">
-                    </label>
-
-                    <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition">
-                        <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-600 dark:text-sky-400 flex items-center justify-center">
                                 <i class="fa-solid fa-water"></i>
                             </div>
@@ -445,7 +429,6 @@
         // State Variables
         let currentPreset = 'ganana';
         let isRunning = false;
-        let isVoice = true;
         let isAmbient = false;
         let isChime = false;
         let timerMinutes = 0;
@@ -554,58 +537,69 @@
             });
         }
 
-        // Audio and Speech TTS
-        function getMyanmarVoice() {
-            if (!('speechSynthesis' in window)) return null;
-            const voices = window.speechSynthesis.getVoices();
-            return voices.find(v => 
-                v.lang === 'my-MM' || v.lang === 'my_MM' || v.lang === 'my' ||
-                v.lang.toLowerCase().startsWith('my-') || v.lang.toLowerCase().startsWith('my_') ||
-                v.name.toLowerCase().includes('myanmar') || v.name.toLowerCase().includes('burmese')
-            ) || null;
-        }
-
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
-        }
-
-        function speakText(text) {
-            if (!isVoice || !('speechSynthesis' in window)) return;
-            try {
-                window.speechSynthesis.cancel();
-                const utt = new SpeechSynthesisUtterance(text);
-                utt.lang = 'my-MM';
-                utt.rate = 0.9;
-                const myVoice = getMyanmarVoice();
-                if (myVoice) utt.voice = myVoice;
-                window.speechSynthesis.speak(utt);
-            } catch(e) { console.log(e); }
-        }
-
-        function toggleVoiceGuide() {
-            const chk = document.getElementById('check-voice');
-            isVoice = chk.checked;
-            const icon = document.getElementById('voice-icon');
-            if (icon) icon.className = isVoice ? "fa-solid fa-volume-high" : "fa-solid fa-volume-xmark";
-            if (isVoice && !isRunning) speakText("အသံလမ်းညွှန် ဖွင့်ပါပြီ");
-        }
-
+        // Audio (Advanced Singing Bowl Synthesis)
         function playBell(freq = 528, dur = 3) {
             try {
                 const AC = window.AudioContext || window.webkitAudioContext;
                 if (!AC) return;
-                if (!audioCtx) audioCtx = new AC();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0, audioCtx.currentTime);
-                gain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.05);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + dur);
+                if (!audioCtx || audioCtx.state === 'closed') audioCtx = new AC();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                const masterGain = audioCtx.createGain();
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(3000, audioCtx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(350, audioCtx.currentTime + dur);
+                filter.Q.value = 1.2;
+
+                masterGain.connect(filter);
+                filter.connect(audioCtx.destination);
+
+                masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                masterGain.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 0.04);
+                masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+
+                const f0 = freq;
+
+                // 1. Fundamental
+                const osc1 = audioCtx.createOscillator();
+                const g1 = audioCtx.createGain();
+                osc1.type = 'sine';
+                osc1.frequency.setValueAtTime(f0, audioCtx.currentTime);
+                g1.gain.value = 1.0;
+                osc1.connect(g1); g1.connect(masterGain);
+
+                // 2. Detuned fundamental for acoustic beating
+                const osc2 = audioCtx.createOscillator();
+                const g2 = audioCtx.createGain();
+                osc2.type = 'sine';
+                osc2.frequency.setValueAtTime(f0 + 3.5, audioCtx.currentTime);
+                g2.gain.value = 0.5;
+                osc2.connect(g2); g2.connect(masterGain);
+
+                // 3. Second harmonic
+                const osc3 = audioCtx.createOscillator();
+                const g3 = audioCtx.createGain();
+                osc3.type = 'sine';
+                osc3.frequency.setValueAtTime(f0 * 2.756, audioCtx.currentTime);
+                g3.gain.setValueAtTime(0.35, audioCtx.currentTime);
+                g3.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (dur * 0.6));
+                osc3.connect(g3); g3.connect(masterGain);
+
+                // 4. High strike shimmer
+                const osc4 = audioCtx.createOscillator();
+                const g4 = audioCtx.createGain();
+                osc4.type = 'triangle';
+                osc4.frequency.setValueAtTime(f0 * 5.404, audioCtx.currentTime);
+                g4.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                g4.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + Math.min(dur, 1.0));
+                osc4.connect(g4); g4.connect(masterGain);
+
+                osc1.start(); osc2.start(); osc3.start(); osc4.start();
+                osc1.stop(audioCtx.currentTime + dur);
+                osc2.stop(audioCtx.currentTime + dur);
+                osc3.stop(audioCtx.currentTime + dur);
+                osc4.stop(audioCtx.currentTime + dur);
             } catch(e) { console.log(e); }
         }
 
@@ -738,21 +732,18 @@
                 instText.textContent = "ဖြည်းညှင်းစွာ လေကို ရှူသွင်းပါ";
                 instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-sky-600 dark:text-sky-400 tracking-wide transition-all duration-300";
                 if (isChime) playBell(528, 1.5);
-                speakText("ရှူသွင်း");
             } else if (phase === 'hold') {
                 durationSec = holdSec;
                 circleAction.textContent = "ခေတ္တထိန်း...";
                 instText.textContent = "ထွက်သက်ဝင်သက်ကို ခေတ္တ ငြိမ်သက်ထားပါ";
                 instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400 tracking-wide transition-all duration-300";
                 if (isChime) playBell(432, 1.5);
-                speakText("ငြိမ်သက်");
             } else if (phase === 'exhale') {
                 durationSec = outSec;
                 circleAction.textContent = "ရှူထုတ်...";
                 instText.textContent = "လေကို ဖြည်းညှင်းစွာ ပြန်ရှူထုတ်ပါ";
                 instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 tracking-wide transition-all duration-300";
                 if (isChime) playBell(396, 1.5);
-                speakText("ရှူထုတ်");
             }
 
             // Countdown timer inside circle
@@ -784,7 +775,6 @@
                         breathCounter++;
                         if (breathCounter > 10) breathCounter = 1;
                         counterNum.textContent = breathCounter;
-                        if (isVoice) speakText(breathCounter.toString());
                     }
 
                     runPhase('inhale');
@@ -798,7 +788,6 @@
             clearInterval(timerInterval);
             clearInterval(countInterval);
             clearTimeout(phaseTimeout);
-            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             if (isAmbient) stopAmbientDrone();
             
             visWrapper.className = "visualizer-container";
