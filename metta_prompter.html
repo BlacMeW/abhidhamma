@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="မေတ္တာပို့ အဆင့် (၄) ဆင့် Timer (Metta Prompter)">
+    <title>Metta Prompter</title>
+    <link rel="stylesheet" href="output.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', system-ui, sans-serif; transition: background-color 1s ease; }
+        
+        .timer-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+            transition: all 0.5s ease;
+            margin: 0 auto;
+        }
+        
+        .dark .timer-circle {
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            background: radial-gradient(circle, #331622 0%, #0f172a 100%);
+        }
+        
+        .timer-circle::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: #f43f5e; /* Rose 500 */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .timer-active .timer-circle::before {
+            opacity: 1;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-indicator { transition: all 0.3s ease; }
+        .step-active { background-color: #f43f5e; color: white; border-color: #f43f5e; transform: scale(1.1); box-shadow: 0 4px 12px rgba(244, 63, 94, 0.4); }
+        .step-pending { background-color: transparent; color: #94a3b8; border-color: #cbd5e1; }
+        .dark .step-pending { color: #64748b; border-color: #334155; }
+        .step-completed { background-color: #10b981; color: white; border-color: #10b981; }
+
+        .fade-transition { transition: opacity 0.5s ease; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200" id="app-body">
+
+    <header class="border-b border-transparent sticky top-0 z-40 transition-all duration-300 backdrop-blur-md">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="metta_bhavana_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1 class="font-bold text-rose-700 dark:text-rose-400">Metta <span class="font-normal text-slate-500">Prompter</span></h1>
+            <div class="w-10"></div> <!-- Spacer -->
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 py-4 flex-1 w-full flex flex-col gap-6 relative z-10">
+        
+        <!-- Steps Indicator -->
+        <div class="flex justify-between items-center px-4 mb-2">
+            <div id="ind-0" class="step-indicator step-pending w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold">၁</div>
+            <div class="h-0.5 bg-slate-200 dark:bg-slate-700 flex-1 mx-2"></div>
+            <div id="ind-1" class="step-indicator step-pending w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold">၂</div>
+            <div class="h-0.5 bg-slate-200 dark:bg-slate-700 flex-1 mx-2"></div>
+            <div id="ind-2" class="step-indicator step-pending w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold">၃</div>
+            <div class="h-0.5 bg-slate-200 dark:bg-slate-700 flex-1 mx-2"></div>
+            <div id="ind-3" class="step-indicator step-pending w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold">၄</div>
+        </div>
+
+        <!-- Timer Display -->
+        <div class="timer-circle bg-white dark:bg-slate-800" id="timer-container">
+            <div class="text-center z-10 fade-transition" id="stage-content">
+                <div id="stage-title" class="text-rose-600 dark:text-rose-400 font-bold mb-1">အသင့်ပြင်ပါ</div>
+                <div id="time-display" class="text-5xl font-light tracking-wider text-slate-800 dark:text-slate-100 font-mono my-2">00:00</div>
+                <div id="stage-desc" class="text-sm text-slate-500 dark:text-slate-400 mt-2 px-6">အချိန်ရွေးချယ်ပြီး စတင်ပါ</div>
+            </div>
+        </div>
+
+        <!-- Setup Panel -->
+        <div class="w-full space-y-6 glass-panel p-6 rounded-3xl" id="setup-panel">
+            <div>
+                <label class="block text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 text-center">တစ်ဆင့်လျှင် အချိန်မည်မျှ ယူမည်နည်း?</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="setTimePerStep(1)" class="time-btn px-2 py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">1 Min</button>
+                    <button onclick="setTimePerStep(3)" class="time-btn px-2 py-2 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-bold">3 Min</button>
+                    <button onclick="setTimePerStep(5)" class="time-btn px-2 py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
+                </div>
+                <p class="text-[11px] text-center text-slate-500 mt-3">အဆင့် ၄ ဆင့်အတွက် စုစုပေါင်း <span id="total-time-display">12</span> မိနစ် ကြာမြင့်ပါမည်။</p>
+            </div>
+            
+            <button id="btn-start" onclick="startPrompter()" class="w-full py-3 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-bold shadow-lg shadow-rose-500/30 transition-transform active:scale-95">
+                <i class="fa-solid fa-play mr-2"></i> စတင်မည်
+            </button>
+        </div>
+
+        <!-- Controls (Hidden initially) -->
+        <div id="run-controls" class="hidden flex justify-center gap-4 w-full">
+            <button onclick="skipStage()" class="px-6 py-3 rounded-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold transition-transform active:scale-95 flex items-center gap-2">
+                ကျော်မည် <i class="fa-solid fa-forward-step"></i>
+            </button>
+            <button onclick="stopPrompter()" class="px-6 py-3 rounded-full bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/50 dark:hover:bg-rose-800/50 text-rose-700 dark:text-rose-300 font-bold transition-transform active:scale-95 flex items-center gap-2">
+                <i class="fa-solid fa-stop"></i> ရပ်မည်
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        const stages = [
+            { title: "၁။ မိမိကိုယ်ကို အရင်ပို့ပါ", desc: "အဟံ အဝေရော ဟောမိ... မိမိကိုယ်ကို သက်သေထား၍ မေတ္တာပွားပါ။" },
+            { title: "၂။ ချစ်ခင်လေးစားရသူများ", desc: "မိဘ၊ ဆရာသမား စသော မိမိ အလွန်ချစ်ခင် လေးစားရသူများကို အာရုံပြုပါ။" },
+            { title: "၃။ အလယ်အလတ်ပုဂ္ဂိုလ်", desc: "မုန်းလည်းမမုန်း၊ ချစ်လည်းမချစ်သော အလယ်အလတ် ပုဂ္ဂိုလ်များကို အာရုံပြုပါ။" },
+            { title: "၄။ ရန်သူ / မုန်းတီးသူ", desc: "မိမိအပေါ် မကောင်းကျင့်ဖူးသူ၊ မုန်းတီးသူများကိုပါ မေတ္တာ အာရုံပြုပါ။ (သီမသမ္ဘေဒ)" }
+        ];
+
+        let timePerStepMinutes = 3;
+        let currentStageIndex = -1;
+        let timeLeftInStage = 0;
+        let timerInterval = null;
+        let isRunning = false;
+
+        const timeDisplay = document.getElementById('time-display');
+        const stageTitle = document.getElementById('stage-title');
+        const stageDesc = document.getElementById('stage-desc');
+        const containerEl = document.getElementById('timer-container');
+        const setupPanel = document.getElementById('setup-panel');
+        const runControls = document.getElementById('run-controls');
+        const bodyEl = document.getElementById('app-body');
+        const stageContent = document.getElementById('stage-content');
+
+        // Audio setup (Singing Bowl)
+        function playBell(isEnd = false) {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                
+                const mainOsc = ctx.createOscillator();
+                const masterGain = ctx.createGain();
+                
+                masterGain.gain.setValueAtTime(0, ctx.currentTime);
+                masterGain.gain.linearRampToValueAtTime(1, ctx.currentTime + 0.05);
+                masterGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (isEnd ? 7 : 4));
+                
+                mainOsc.type = 'sine';
+                mainOsc.frequency.setValueAtTime(isEnd ? 432 : 528, ctx.currentTime); // 528Hz love frequency for changes
+                
+                mainOsc.connect(masterGain);
+                masterGain.connect(ctx.destination);
+                
+                mainOsc.start();
+                mainOsc.stop(ctx.currentTime + (isEnd ? 7 : 4));
+            } catch(e) {}
+        }
+
+        function setTimePerStep(mins) {
+            if (isRunning) return;
+            timePerStepMinutes = mins;
+            
+            document.querySelectorAll('.time-btn').forEach(btn => {
+                if (btn.textContent.includes(mins)) {
+                    btn.className = "time-btn px-2 py-2 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-bold";
+                } else {
+                    btn.className = "time-btn px-2 py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                }
+            });
+            document.getElementById('total-time-display').textContent = mins * 4;
+        }
+
+        function updateIndicators() {
+            for (let i = 0; i < 4; i++) {
+                const ind = document.getElementById(`ind-${i}`);
+                ind.className = "step-indicator w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold";
+                if (i < currentStageIndex) {
+                    ind.classList.add("step-completed");
+                    ind.innerHTML = '<i class="fa-solid fa-check"></i>';
+                } else if (i === currentStageIndex) {
+                    ind.classList.add("step-active");
+                    ind.innerHTML = (i + 1).toString();
+                } else {
+                    ind.classList.add("step-pending");
+                    ind.innerHTML = (i + 1).toString();
+                }
+            }
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function setStage(index) {
+            currentStageIndex = index;
+            if (index >= 4) {
+                finishPrompter();
+                return;
+            }
+            
+            playBell(false);
+            
+            stageContent.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                stageTitle.textContent = stages[index].title;
+                stageDesc.textContent = stages[index].desc;
+                timeLeftInStage = timePerStepMinutes * 60;
+                timeDisplay.textContent = formatTime(timeLeftInStage);
+                updateIndicators();
+                stageContent.style.opacity = 1; // Fade in
+            }, 300);
+        }
+
+        function startPrompter() {
+            isRunning = true;
+            setupPanel.classList.add('hidden');
+            runControls.classList.remove('hidden');
+            containerEl.classList.add('timer-active');
+            
+            // Dim background
+            bodyEl.classList.remove('bg-slate-50', 'dark:bg-slate-900');
+            bodyEl.classList.add('bg-slate-900', 'dark:bg-black');
+            
+            setStage(0);
+            
+            timerInterval = setInterval(() => {
+                timeLeftInStage--;
+                timeDisplay.textContent = formatTime(timeLeftInStage);
+                
+                if (timeLeftInStage <= 0) {
+                    setStage(currentStageIndex + 1);
+                }
+            }, 1000);
+        }
+
+        function skipStage() {
+            setStage(currentStageIndex + 1);
+        }
+
+        function stopPrompter() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            
+            setupPanel.classList.remove('hidden');
+            runControls.classList.add('hidden');
+            containerEl.classList.remove('timer-active');
+            
+            bodyEl.classList.add('bg-slate-50', 'dark:bg-slate-900');
+            bodyEl.classList.remove('bg-slate-900', 'dark:bg-black');
+            
+            currentStageIndex = -1;
+            updateIndicators();
+            stageTitle.textContent = "အသင့်ပြင်ပါ";
+            stageDesc.textContent = "အချိန်ရွေးချယ်ပြီး စတင်ပါ";
+            timeDisplay.textContent = "00:00";
+        }
+
+        function finishPrompter() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            playBell(true);
+            
+            runControls.classList.add('hidden');
+            containerEl.classList.remove('timer-active');
+            
+            stageContent.style.opacity = 0;
+            setTimeout(() => {
+                stageTitle.textContent = "ပြီးမြောက်ပါပြီ";
+                stageDesc.textContent = "မေတ္တာပို့ အဆင့် (၄) ဆင့် အောင်မြင်စွာ ပြီးဆုံးပါပြီ။ သာဓု သာဓု သာဓု။";
+                timeDisplay.textContent = "Done";
+                stageContent.style.opacity = 1;
+            }, 300);
+
+            setTimeout(() => {
+                stopPrompter();
+            }, 5000);
+        }
+    </script>
+    <script src="accessibility.js"></script>
+</body>
+</html>

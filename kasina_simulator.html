@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="ကသိုဏ်းဝန်း (Virtual Kasina Simulator)">
+    <title>ကသိုဏ်းဝန်း Simulator</title>
+    <link rel="stylesheet" href="output.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', system-ui, sans-serif; background-color: #000; color: #fff; margin: 0; overflow: hidden; }
+        
+        #kasina-disk {
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: width 0.3s, height 0.3s, background-color 0.5s;
+        }
+
+        /* Controls Panel */
+        #controls-panel {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 90%;
+            max-width: 500px;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 100;
+        }
+
+        #controls-panel.hidden-controls {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, 20px);
+        }
+
+        /* Top Bar */
+        #top-bar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            transition: opacity 0.5s;
+        }
+        
+        .hidden-controls #top-bar { opacity: 0; pointer-events: none; }
+        
+        #btn-reveal {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 50; /* Below controls but above Kasina */
+            display: none;
+        }
+
+        /* Colors for Kasinas */
+        .k-red { background-color: #dc2626; } /* Lohita */
+        .k-blue { background-color: #1e3a8a; } /* Nila - Deep Blue/Bronze */
+        .k-yellow { background-color: #fbbf24; } /* Pita */
+        .k-white { background-color: #f8fafc; } /* Odata */
+        .k-earth { background-color: #b45309; } /* Pathavi - reddish brown */
+        .k-light { background-color: #ffffff; box-shadow: 0 0 100px #ffffff; } /* Aloka */
+
+        .color-btn {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.2s;
+        }
+        .color-btn:hover { transform: scale(1.1); border-color: white; }
+        .color-btn.active { transform: scale(1.2); border-color: white; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    </style>
+</head>
+<body>
+
+    <div id="top-bar">
+        <a href="kasina_guide.html" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+    </div>
+
+    <!-- The Kasina Object -->
+    <div id="kasina-disk" class="k-red" style="width: 250px; height: 250px;"></div>
+
+    <!-- Invisible overlay to reveal controls when clicked -->
+    <div id="btn-reveal" onclick="showControls()"></div>
+
+    <!-- Controls -->
+    <div id="controls-panel">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="font-bold text-slate-200">ကသိုဏ်းဝန်း ရွေးချယ်ရန်</h2>
+            <button onclick="toggleFullScreen()" class="text-slate-400 hover:text-white" title="Full Screen">
+                <i class="fa-solid fa-expand text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Color Selection -->
+        <div class="flex justify-around mb-6">
+            <button onclick="setKasina('k-earth', 'ပထဝီ (မြေ)')" class="color-btn k-earth" title="မြေကသိုဏ်း"></button>
+            <button onclick="setKasina('k-red', 'လောဟိတ (အနီ)')" class="color-btn k-red active" title="အနီကသိုဏ်း"></button>
+            <button onclick="setKasina('k-blue', 'နီလ (အပြာ/ညို)')" class="color-btn k-blue" title="အပြာကသိုဏ်း"></button>
+            <button onclick="setKasina('k-yellow', 'ပီတ (အဝါ)')" class="color-btn k-yellow" title="အဝါကသိုဏ်း"></button>
+            <button onclick="setKasina('k-white', 'ဩဒါတ (အဖြူ)')" class="color-btn k-white" title="အဖြူကသိုဏ်း"></button>
+            <button onclick="setKasina('k-light', 'အာလောက (အလင်း)')" class="color-btn k-light" title="အလင်းကသိုဏ်း"></button>
+        </div>
+
+        <div class="text-center text-sm text-slate-400 mb-4 font-bold" id="kasina-name">လောဟိတ (အနီ)</div>
+
+        <!-- Size Slider -->
+        <div class="mb-6">
+            <label class="block text-xs text-slate-400 mb-2">အရွယ်အစား (Size)</label>
+            <input type="range" id="size-slider" min="100" max="600" value="250" class="w-full accent-emerald-500">
+        </div>
+
+        <!-- Start Button -->
+        <button onclick="hideControls()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-500/20">
+            စတင်ရှုမှတ်မည် (ဖျောက်ထားရန်)
+        </button>
+        <p class="text-[10px] text-center text-slate-500 mt-3">ဆက်တင်များကို ပြန်ခေါ်ရန် မျက်နှာပြင်ပေါ်တွင် နှိပ်ပါ။</p>
+    </div>
+
+    <script>
+        const disk = document.getElementById('kasina-disk');
+        const slider = document.getElementById('size-slider');
+        const controls = document.getElementById('controls-panel');
+        const topBar = document.getElementById('top-bar');
+        const revealBtn = document.getElementById('btn-reveal');
+        const kasinaName = document.getElementById('kasina-name');
+
+        // Size adjustment
+        slider.addEventListener('input', (e) => {
+            const size = e.target.value;
+            disk.style.width = `${size}px`;
+            disk.style.height = `${size}px`;
+        });
+
+        function setKasina(colorClass, name) {
+            // Remove old colors
+            disk.className = '';
+            disk.classList.add(colorClass);
+            kasinaName.textContent = name;
+            
+            // Update active state on buttons
+            document.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function hideControls() {
+            controls.classList.add('hidden-controls');
+            revealBtn.style.display = 'block';
+        }
+
+        function showControls() {
+            controls.classList.remove('hidden-controls');
+            revealBtn.style.display = 'none';
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
