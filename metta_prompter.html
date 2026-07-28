@@ -415,58 +415,93 @@
         const elapsedTimeDisplay = document.getElementById('elapsed-time-display');
         const totalLeftDisplay = document.getElementById('total-left-display');
 
-        // Audio setup (Singing Bowl effect - 432Hz main tone + 216Hz sub tone)
+        // Audio setup (Authentic Tibetan Singing Bowl & Burmese Temple Gong Synthesizer)
         function playBell(isEnd = false) {
             try {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
                 if (!AudioContext) return;
-                const ctx = new AudioContext();
+                if (!window.bellAudioCtx || window.bellAudioCtx.state === 'closed') {
+                    window.bellAudioCtx = new AudioContext();
+                }
+                const ctx = window.bellAudioCtx;
+                if (ctx.state === 'suspended') ctx.resume();
                 
-                const mainOsc = ctx.createOscillator();
-                const subOsc = ctx.createOscillator();
-                const mainGain = ctx.createGain();
-                const subGain = ctx.createGain();
+                // Master gain and Lowpass filter for warm metallic acoustics
                 const masterGain = ctx.createGain();
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(isEnd ? 2600 : 3000, ctx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + (isEnd ? 11 : 6));
+                filter.Q.value = 1.2;
 
-                const decayTime = isEnd ? 7 : 4;
+                masterGain.connect(filter);
+                filter.connect(ctx.destination);
 
-                masterGain.gain.setValueAtTime(0, ctx.currentTime);
-                masterGain.gain.linearRampToValueAtTime(isEnd ? 0.9 : 0.7, ctx.currentTime + 0.05);
-                masterGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + decayTime);
-                
-                mainOsc.type = 'sine';
-                mainOsc.frequency.setValueAtTime(isEnd ? 432 : 528, ctx.currentTime); // 528Hz love/healing frequency
-                mainGain.gain.value = 1;
+                const decayTime = isEnd ? 11 : 6;
 
-                subOsc.type = 'sine';
-                subOsc.frequency.setValueAtTime(isEnd ? 216 : 264, ctx.currentTime);
-                subGain.gain.value = 0.4;
-                
-                mainOsc.connect(mainGain);
-                subOsc.connect(subGain);
-                mainGain.connect(masterGain);
-                subGain.connect(masterGain);
-                masterGain.connect(ctx.destination);
-                
-                mainOsc.start();
-                subOsc.start();
-                mainOsc.stop(ctx.currentTime + decayTime);
-                subOsc.stop(ctx.currentTime + decayTime);
+                masterGain.gain.setValueAtTime(0.001, ctx.currentTime);
+                masterGain.gain.linearRampToValueAtTime(isEnd ? 0.95 : 0.85, ctx.currentTime + 0.04); // soft mallet strike
+                masterGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + decayTime);
 
+                // Fundamental pitch (216Hz for regular chime, 144Hz for final deep gong)
+                const f0 = isEnd ? 144 : 216;
+
+                // 1. Fundamental
+                const osc1 = ctx.createOscillator();
+                const g1 = ctx.createGain();
+                osc1.type = 'sine';
+                osc1.frequency.setValueAtTime(f0, ctx.currentTime);
+                g1.gain.value = 1.0;
+                osc1.connect(g1); g1.connect(masterGain);
+
+                // 2. Detuned fundamental for acoustic beating (singing bowl throbbing: 3.5Hz)
+                const osc2 = ctx.createOscillator();
+                const g2 = ctx.createGain();
+                osc2.type = 'sine';
+                osc2.frequency.setValueAtTime(f0 + 3.5, ctx.currentTime);
+                g2.gain.value = 0.6;
+                osc2.connect(g2); g2.connect(masterGain);
+
+                // 3. Second harmonic (approx 2.76x for bell anharmonic overtone)
+                const osc3 = ctx.createOscillator();
+                const g3 = ctx.createGain();
+                osc3.type = 'sine';
+                osc3.frequency.setValueAtTime(f0 * 2.756, ctx.currentTime);
+                g3.gain.setValueAtTime(0.4, ctx.currentTime);
+                g3.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (decayTime * 0.5));
+                osc3.connect(g3); g3.connect(masterGain);
+
+                // 4. High strike shimmer (approx 5.4x)
+                const osc4 = ctx.createOscillator();
+                const g4 = ctx.createGain();
+                osc4.type = 'triangle'; // metallic timbre
+                osc4.frequency.setValueAtTime(f0 * 5.404, ctx.currentTime);
+                g4.gain.setValueAtTime(0.25, ctx.currentTime);
+                g4.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2); // decays very fast
+                osc4.connect(g4); g4.connect(masterGain);
+
+                osc1.start(); osc2.start(); osc3.start(); osc4.start();
+                osc1.stop(ctx.currentTime + decayTime);
+                osc2.stop(ctx.currentTime + decayTime);
+                osc3.stop(ctx.currentTime + decayTime);
+                osc4.stop(ctx.currentTime + decayTime);
+
+                // If end gong, add a secondary resonance strike after 700ms for a rich double-gong effect
                 if (isEnd) {
                     setTimeout(() => {
-                        const osc2 = ctx.createOscillator();
-                        const gain2 = ctx.createGain();
-                        osc2.type = 'sine';
-                        osc2.frequency.setValueAtTime(432, ctx.currentTime);
-                        gain2.gain.setValueAtTime(0, ctx.currentTime);
-                        gain2.gain.linearRampToValueAtTime(0.6, ctx.currentTime + 0.05);
-                        gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 6);
-                        osc2.connect(gain2);
-                        gain2.connect(ctx.destination);
-                        osc2.start();
-                        osc2.stop(ctx.currentTime + 6);
-                    }, 600);
+                        try {
+                            const oscEnd = ctx.createOscillator();
+                            const gEnd = ctx.createGain();
+                            oscEnd.type = 'sine';
+                            oscEnd.frequency.setValueAtTime(144 + 1.8, ctx.currentTime);
+                            gEnd.gain.setValueAtTime(0.001, ctx.currentTime);
+                            gEnd.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.08);
+                            gEnd.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 8);
+                            oscEnd.connect(filter);
+                            oscEnd.start();
+                            oscEnd.stop(ctx.currentTime + 8);
+                        } catch(e) {}
+                    }, 700);
                 }
             } catch(e) {
                 console.log("AudioContext error:", e);
@@ -477,6 +512,21 @@
             playBell(false);
         }
 
+        // Helper to safely find true Myanmar/Burmese voice without colliding with Malaysia (-MY)
+        function getMyanmarVoice() {
+            if (!('speechSynthesis' in window)) return null;
+            const voices = window.speechSynthesis.getVoices();
+            return voices.find(v => 
+                v.lang === 'my-MM' || v.lang === 'my_MM' || v.lang === 'my' ||
+                v.lang.toLowerCase().startsWith('my-') || v.lang.toLowerCase().startsWith('my_') ||
+                v.name.toLowerCase().includes('myanmar') || v.name.toLowerCase().includes('burmese')
+            ) || null;
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+        }
+
         // Voice Guidance (Web Speech API)
         function speakGuidance(text) {
             if (!isVoiceEnabled || !('speechSynthesis' in window)) return;
@@ -484,13 +534,14 @@
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'my-MM';
-                utterance.rate = 0.85; // slightly slower for calm meditation
+                utterance.rate = 0.9; // natural calm rate
                 utterance.pitch = 1.0;
                 
-                // Fallback if Myanmar voice is unavailable
-                const voices = window.speechSynthesis.getVoices();
-                const myVoice = voices.find(v => v.lang.includes('my') || v.lang.includes('mm'));
-                if (myVoice) utterance.voice = myVoice;
+                // Assign true Myanmar voice if installed
+                const myVoice = getMyanmarVoice();
+                if (myVoice) {
+                    utterance.voice = myVoice;
+                }
 
                 window.speechSynthesis.speak(utterance);
             } catch(e) {

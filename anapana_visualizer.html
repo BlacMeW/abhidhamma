@@ -555,13 +555,29 @@
         }
 
         // Audio and Speech TTS
+        function getMyanmarVoice() {
+            if (!('speechSynthesis' in window)) return null;
+            const voices = window.speechSynthesis.getVoices();
+            return voices.find(v => 
+                v.lang === 'my-MM' || v.lang === 'my_MM' || v.lang === 'my' ||
+                v.lang.toLowerCase().startsWith('my-') || v.lang.toLowerCase().startsWith('my_') ||
+                v.name.toLowerCase().includes('myanmar') || v.name.toLowerCase().includes('burmese')
+            ) || null;
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+        }
+
         function speakText(text) {
             if (!isVoice || !('speechSynthesis' in window)) return;
             try {
                 window.speechSynthesis.cancel();
                 const utt = new SpeechSynthesisUtterance(text);
                 utt.lang = 'my-MM';
-                utt.rate = 0.85;
+                utt.rate = 0.9;
+                const myVoice = getMyanmarVoice();
+                if (myVoice) utt.voice = myVoice;
                 window.speechSynthesis.speak(utt);
             } catch(e) { console.log(e); }
         }

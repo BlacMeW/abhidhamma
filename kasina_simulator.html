@@ -581,6 +581,20 @@
 
         function testBell() { playBell(false); }
 
+        function getMyanmarVoice() {
+            if (!('speechSynthesis' in window)) return null;
+            const voices = window.speechSynthesis.getVoices();
+            return voices.find(v => 
+                v.lang === 'my-MM' || v.lang === 'my_MM' || v.lang === 'my' ||
+                v.lang.toLowerCase().startsWith('my-') || v.lang.toLowerCase().startsWith('my_') ||
+                v.name.toLowerCase().includes('myanmar') || v.name.toLowerCase().includes('burmese')
+            ) || null;
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+        }
+
         // Speech Synthesis
         function speakMantra(text) {
             if (!isAutoChant || !('speechSynthesis' in window)) return;
@@ -588,7 +602,9 @@
                 window.speechSynthesis.cancel();
                 const utt = new SpeechSynthesisUtterance(text);
                 utt.lang = 'my-MM';
-                utt.rate = 0.8;
+                utt.rate = 0.85;
+                const myVoice = getMyanmarVoice();
+                if (myVoice) utt.voice = myVoice;
                 window.speechSynthesis.speak(utt);
             } catch(e) { console.log(e); }
         }
