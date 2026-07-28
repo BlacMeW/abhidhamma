@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မာ စိတ်အခြေအနေ သရုပ်ခွဲစက် - Emotion Analyzer">
+    <title>စိတ်အခြေအနေ သရုပ်ခွဲစက် - Emotion Analyzer</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        /* Filter Button Active State */
+        .filter-btn.active {
+            background-color: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+        }
+        .dark .filter-btn.active {
+            background-color: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
+
+    <!-- Sticky Navigation Header -->
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div>
+                    <h1 class="text-lg font-bold text-amber-700 dark:text-amber-300">စိတ်အခြေအနေ သရုပ်ခွဲစက်</h1>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400">Emotion Analyzer (Abhidhamma Perspective)</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full flex flex-col gap-6">
+        
+        <!-- Introduction -->
+        <div class="text-center space-y-3 mb-2">
+            <h2 class="text-2xl md:text-3xl font-bold">မိမိစိတ်ကို သရုပ်ခွဲလေ့လာပါ</h2>
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+                နေ့စဉ်ဖြစ်ပေါ်နေသော စိတ်အခြေအနေများကို ရွေးချယ်၍ ယင်းစိတ်များတွင် ပါဝင်သော အဘိဓမ္မာသဘောတရား (စိတ်၊ စေတသိက်) များနှင့် <strong>ကုစားရန် နည်းလမ်းများကို</strong> လေ့လာနိုင်ပါသည်။
+            </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex justify-center gap-2 mb-2 flex-wrap">
+            <button onclick="filterEmotions('all')" id="filter-all" class="filter-btn active px-4 py-1.5 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-medium transition-all hover:bg-slate-200 dark:hover:bg-slate-700">အားလုံး (All)</button>
+            <button onclick="filterEmotions('akusala')" id="filter-akusala" class="filter-btn px-4 py-1.5 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-medium transition-all hover:bg-slate-200 dark:hover:bg-slate-700 text-rose-600 dark:text-rose-400">အကုသိုလ် (Problems)</button>
+            <button onclick="filterEmotions('kusala')" id="filter-kusala" class="filter-btn px-4 py-1.5 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-medium transition-all hover:bg-slate-200 dark:hover:bg-slate-700 text-emerald-600 dark:text-emerald-400">ကုသိုလ် (Positive)</button>
+        </div>
+
+        <!-- Emotion Selectors -->
+        <div class="flex flex-wrap justify-center gap-3" id="emotion-buttons">
+            <!-- Buttons will be generated by JS -->
+        </div>
+
+        <!-- Analysis Result Area -->
+        <div id="analysis-result" class="hidden glass-card rounded-3xl p-6 md:p-8 border shadow-sm mt-4">
+            
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-4 mb-6">
+                <h3 id="result-title" class="text-xl font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-microscope text-amber-500"></i>
+                    <span id="emotion-name" class="text-2xl"></span>
+                </h3>
+                <span id="citta-type-badge" class="px-3 py-1 rounded-full text-sm font-semibold whitespace-nowrap"></span>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Description -->
+                <div>
+                    <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">အကျဉ်းချုပ် ရှင်းလင်းချက်</h4>
+                    <p id="emotion-desc" class="text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <!-- Remedy Section (NEW) -->
+                <div id="remedy-section" class="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-5 border border-indigo-200 dark:border-indigo-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-indigo-500/10 dark:text-indigo-400/10 text-6xl pointer-events-none">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h4 class="text-sm font-bold text-indigo-700 dark:text-indigo-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-leaf"></i> အဘိဓမ္မာ ဖြေရှင်းနည်း (Practice & Remedy)
+                    </h4>
+                    <p id="emotion-remedy" class="text-slate-800 dark:text-slate-200 leading-relaxed font-medium relative z-10"></p>
+                </div>
+
+                <!-- Citta -->
+                <div class="bg-white/50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+                    <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> အဓိက စိတ် (Citta)
+                    </h4>
+                    <div id="citta-name" class="text-lg font-bold text-slate-900 dark:text-slate-100"></div>
+                </div>
+
+                <!-- Cetasikas -->
+                <div>
+                    <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-cubes"></i> ယှဉ်တွဲနေသော အဓိက စေတသိက်များ (Cetasikas)
+                    </h4>
+                    <div id="cetasika-container" class="flex flex-col gap-2">
+                        <!-- Badges go here -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Empty State -->
+        <div id="empty-state" class="text-center py-16 text-slate-500">
+            <i class="fa-regular fa-face-smile text-4xl mb-3 opacity-50"></i>
+            <p>အထက်ပါ စိတ်အခြေအနေ တစ်ခုခုကို ရွေးချယ်ပါ</p>
+        </div>
+
+    </main>
+
+    <script>
+        const emotionData = {
+            "insecure": {
+                id: "insecure",
+                name: "မလုံခြုံမှု / ကြောက်ရွံ့မှု (Insecurity / Fear)",
+                icon: "fa-shield-halved", color: "indigo", type: "akusala",
+                cittaName: "ဒေါသမُولစိတ် (၂) ပါး",
+                desc: "ဘဝရပ်တည်မှု၊ ပိုင်ဆိုင်မှု သို့မဟုတ် အနာဂတ်အတွက် စိုးရိမ်ကြောက်ရွံ့ခြင်းနှင့် မလုံခြုံဟု ခံစားရခြင်း ဖြစ်ပါသည်။ အဘိဓမ္မာအရ ဒေါသ (ပဋိဃ) ၏ သဘောတရားပင် ဖြစ်ပါသည်။",
+                remedy: "သတ္တဝါတို့၏ ခိုင်မြဲသော ကိုးကွယ်ရာအစစ်သည် ကုသိုလ်ကံသာဖြစ်ကြောင်း (ကမ္မဿကတာဉာဏ်) ဆင်ခြင်ပါ။ မေတ္တာဘာဝနာ ပွားများခြင်းသည် ကြောက်ရွံ့မလုံခြုံမှုကို ပယ်ဖျောက်ပေးနိုင်သော အကောင်းဆုံး လက်နက်ဖြစ်ပါသည်။",
+                cetasikaCount: "၁၈ ပါး မှ ၂၀ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "ဒေါသ (Dosa)", desc: "မကျေနပ်ခြင်း၊ ကြောက်ရွံ့ခြင်း (အဓိက)" }, { name: "ဥဒ္ဓစ္စ (Uddhacca)", desc: "စိတ်ပျံ့လွင့်ခြင်း" }, {name: "မောဟစတုက္က (၄)", desc: "မောဟ စသည်"} ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "ဝေဒနာ (Domanassa)", desc: "စိတ်ဆင်းရဲခြင်း" }, { name: "အခြား", desc: "ဖဿ၊ သညာ စသည်" } ]}
+                ]
+            },
+            "dissatisfied": {
+                id: "dissatisfied",
+                name: "မသာယာမှု / မကျေနပ်မှု (Dissatisfaction)",
+                icon: "fa-face-frown-open", color: "orange", type: "akusala",
+                cittaName: "ဒေါသမُولစိတ် (၂) ပါး",
+                desc: "မိမိ၏ လက်ရှိအခြေအနေ၊ ပတ်ဝန်းကျင် သို့မဟုတ် လူပုဂ္ဂိုလ်များအပေါ် မကျေနပ်ခြင်း၊ ငြီးငွေ့ခြင်း၊ မသာယာခြင်း (အရတိ) ဖြစ်ပါသည်။ ၎င်းသည်လည်း ဒေါသပင် ဖြစ်ပါသည်။",
+                remedy: "ရှိပြီးသားအရာများဖြင့် ရောင့်ရဲတင်းတိမ်မှု (သန္တုဋ္ဌိ) ကို မွေးမြူပါ။ အရာရာတိုင်းသည် အလိုကျမဖြစ်နိုင်ဘဲ အကြောင်းတရားကြောင့်သာ ဖြစ်ပေါ်ရကြောင်း ဆင်ခြင်ပါ။",
+                cetasikaCount: "၁၈ ပါး မှ ၂၀ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "ဒေါသ (Dosa)", desc: "မကျေနပ်ခြင်း (အဓိက)" }, { name: "မောဟ (Moha)", desc: "တွေဝေခြင်း" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "ဝေဒနာ (Domanassa)", desc: "စိတ်မချမ်းသာခြင်း" } ]}
+                ]
+            },
+            "incomplete": {
+                id: "incomplete",
+                name: "မပြည့်စုံမှု / အလိုမကျမှု (Feeling Incomplete)",
+                icon: "fa-battery-quarter", color: "rose", type: "akusala",
+                cittaName: "လောဘမူစိတ် (၈) ပါး",
+                desc: "မိမိဘဝတွင် တစ်ခုခု လိုအပ်နေသည်ဟု အမြဲခံစားရပြီး ထပ်မံရယူလိုသော တဏှာလောဘ ဖြစ်ပါသည်။ လိုချင်သလောက် မရသောအခါ ဒေါသနှင့်လည်း တွဲဖက်ဖြစ်ပေါ်တတ်ပါသည်။",
+                remedy: "ဘဝ၏ အနှစ်သာရသည် ပြင်ပပိုင်ဆိုင်မှုများပေါ်တွင် မတည်ဘဲ အတွင်းစိတ်ငြိမ်းချမ်းမှုအပေါ်တွင်သာ တည်ကြောင်း ဆင်ခြင်ပါ။ စွန့်လွှတ်ခြင်း (ဒါန) နှင့် နိက္ခမ (ကာမဂုဏ်မှ ခွာခြင်း) တို့ကို လေ့ကျင့်ပါ။",
+                cetasikaCount: "၁၉ ပါး မှ ၂၂ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "လောဘ (Lobha)", desc: "လိုချင်တပ်မက်ခြင်း (အဓိက)" }, { name: "မောဟ (Moha)", desc: "အမှန်ကို မသိခြင်း" }, { name: "ဥဒ္ဓစ္စ (Uddhacca)", desc: "ပျံ့လွင့်ခြင်း" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၃)", desc: "ဖဿ၊ ဝေဒနာ စသည်" } ]}
+                ]
+            },
+            "soka": {
+                id: "soka",
+                name: "သောက / စိုးရိမ်ပူပန်ခြင်း (Anxiety / Worry)",
+                icon: "fa-cloud-rain", color: "purple", type: "akusala",
+                cittaName: "ဒေါသမُولစိတ် (၂) ပါး (ဒေါမနဿ ဝေဒနာ)",
+                desc: "ဆုံးရှုံးမှု၊ ပျက်စီးမှု သို့မဟုတ် အနာဂတ်အတွက် ကြိုတင်တွေးတော၍ စိတ်ပူပန်ခြင်း၊ ဝမ်းနည်းခြင်း ဖြစ်ပါသည်။ အဘိဓမ္မာအရ ဒေါသ၏ အစိတ်အပိုင်းဖြစ်ပါသည်။",
+                remedy: "အရာခပ်သိမ်းသည် မမြဲပါတကား (အနိစ္စ) ဟူသော သဘောတရားကို ဆင်ခြင်ပါ။ ယခုလက်ရှိ ပစ္စုပ္ပန်တည့်တည့်၌သာ သတိ (Mindfulness) ထား၍ အနာဂတ်အတွက် ပူပန်မှုများကို ဖြတ်တောက်ပါ။",
+                cetasikaCount: "၁၈ ပါး မှ ၂၀ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "ဒေါသ (Dosa)", desc: "ကြမ်းတမ်းခြင်း (သောကသည် ဒေါသပင်ဖြစ်သည်)" }, { name: "ဥဒ္ဓစ္စ (Uddhacca)", desc: "စိတ်ပျံ့လွင့်ခြင်း" }, {name: "မောဟစတုက္က (၄)", desc: "မောဟ၊ အဟိရိက၊ အနောတ္တပ္ပ"} ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "ဝေဒနာ (Domanassa)", desc: "စိတ်ဆင်းရဲခြင်း ဝေဒနာ" }, { name: "အခြား အညသမာန်းများ", desc: "ဖဿ၊ သညာ စသည်" } ]}
+                ]
+            },
+            "thina": {
+                id: "thina",
+                name: "ပျင်းရိခြင်း (Laziness / Sloth)",
+                icon: "fa-bed", color: "slate", type: "akusala",
+                cittaName: "အကုသိုလ် သသင်္ခါရိက စိတ်များ (၅) ပါး",
+                desc: "စိတ်နှင့် စေတသိက်များ၏ ထိုင်းမှိုင်းခြင်း၊ မတက်ကြွခြင်း၊ ပျင်းရိခြင်း အခြေအနေဖြစ်ပါသည်။ အာရုံကို ယူရန် ဝန်လေးနေတတ်ပါသည်။",
+                remedy: "သေခြင်းတရား (မရဏာနုဿတိ) ကို ဆင်ခြင်၍ သံဝေဂယူပါ။ လူ့ဘဝရခဲကြောင်း ဆင်ခြင်ပြီး ဝီရိယ (လုံ့လ) ကို တင်ပါ။ လမ်းလျှောက်ခြင်း (စင်္ကြံကြွခြင်း) ဖြင့်လည်း အိပ်ချင်ပျင်းရိမှုကို ပယ်ဖျောက်နိုင်ပါသည်။",
+                cetasikaCount: "စိတ်ပေါ်မူတည်၍ ကွဲပြားသည်",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "ထိန (Thina)", desc: "စိတ်၏ ထိုင်းမှိုင်းခြင်း" }, { name: "မိဒ္ဓ (Middha)", desc: "စေတသိက်တို့၏ ထိုင်းမှိုင်းခြင်း" }, { name: "မောဟ (Moha)", desc: "အမှန်ကို မသိခြင်း" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "ဝီရိယ (Viriya)", desc: "အားနည်းနေသော ဝီရိယ" }, { name: "အခြား အညသမာန်းများ", desc: "ဖဿ၊ ဝေဒနာ စသည်" } ]}
+                ]
+            },
+            "issa": {
+                id: "issa",
+                name: "မနာလိုခြင်း (Jealousy / Envy)",
+                icon: "fa-eye-slash", color: "red", type: "akusala",
+                cittaName: "ဒေါသမُولစိတ် (၂) ပါး",
+                desc: "သူတစ်ပါး၏ အောင်မြင်မှု၊ ကြီးပွားချမ်းသာမှုကို မရှုဆိတ်ခြင်း၊ မနာလိုခြင်း ဖြစ်ပါသည်။ ဒေါသအုပ်စုဝင် ဖြစ်သည်။",
+                remedy: "မုဒိတာ (သူတစ်ပါး ကြီးပွားသည်ကို ဝမ်းမြောက်ခြင်း) ကို ပွားများရပါမည်။ သူတစ်ပါး၏ ကံအကျိုးပေးကို နားလည်လက်ခံပေးပါ။",
+                cetasikaCount: "၁၉ ပါး မှ ၂၁ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "ဣဿာ (Issa)", desc: "မနာလိုခြင်း (အဓိက)" }, { name: "ဒေါသ (Dosa)", desc: "စိတ်မချမ်းသာခြင်း၊ ကြမ်းတမ်းခြင်း" }, { name: "မောဟစတုက္က (၄)", desc: "မောဟ စသည်" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၂)", desc: "ပီတိကြဉ်သော အညသမာန်းများ" } ]}
+                ]
+            },
+            "mana": {
+                id: "mana",
+                name: "မာန / ထောင်လွှားခြင်း (Pride)",
+                icon: "fa-chess-king", color: "orange", type: "akusala",
+                cittaName: "လောဘမူ ဒိဋ္ဌိဂတဝိပ္ပယုတ်စိတ် (၄) ပါး",
+                desc: "မိမိကိုယ်ကို အထင်ကြီးခြင်း၊ သူတစ်ပါးထက် သာသည်၊ တန်းတူသည်၊ နိမ့်ကျသည်ဟု နှိုင်းယှဉ်၍ ထောင်လွှားခြင်း ဖြစ်ပါသည်။",
+                remedy: "သတ္တဝါအားလုံးသည် ကံသာလျှင် အမိ၊ ကံသာလျှင် အဖ ရှိသည် (ကမ္မဿကတာဉာဏ်) ကို ဆင်ခြင်ပါ။ နှိမ့်ချသောစိတ် (နိဝါတ) နှင့် ရိုသေခြင်း (အပစာယန) ကို လေ့ကျင့်ပါ။",
+                cetasikaCount: "၁၉ ပါး မှ ၂၁ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "မာန (Mana)", desc: "ထောင်လွှားခြင်း (အဓိက)" }, { name: "လောဘ (Lobha)", desc: "မိမိဘဝကို တပ်မက်ခြင်း" }, { name: "မောဟစတုက္က (၄)", desc: "မောဟ စသည်" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၃)", desc: "ဖဿ၊ ဝေဒနာ စသည့် (၁၃) ပါး" } ]}
+                ]
+            },
+            "lobha": {
+                id: "lobha",
+                name: "လောဘ (Greed / Attachment)",
+                icon: "fa-magnet", color: "amber", type: "akusala",
+                cittaName: "လောဘမူစိတ် (၈) ပါး",
+                desc: "လိုချင်တပ်မက်မှု၊ စွဲလမ်းမှု၊ တွယ်တာမှုများ ဖြစ်ပေါ်နေသော အခြေအနေဖြစ်ပါသည်။ အာရုံကို စွဲလမ်းဖက်တွယ်တတ်သော သဘောရှိပါသည်။",
+                remedy: "ဒါန (ပေးကမ်းလှူဒါန်းခြင်း) နှင့် အသုဘဘာဝနာ (မတင့်တယ်ကြောင်း ဆင်ခြင်ခြင်း) တို့ကို ပွားများခြင်းဖြင့် လောဘကို လျှော့ချနိုင်ပါသည်။ ရှိပြီးသားအရာများဖြင့် ရောင့်ရဲတင်းတိမ်မှု (သန္တုဋ္ဌိ) ကို မွေးမြူပါ။",
+                cetasikaCount: "၁၉ ပါး မှ ၂၂ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "လောဘ (Lobha)", desc: "တပ်မက်ခြင်း (မူလ)" }, { name: "ဒိဋ္ဌိ (Ditthi)", desc: "မှားယွင်းစွာ အယူရှိခြင်း" }, { name: "မာန (Mana)", desc: "ထောင်လွှားခြင်း" }, { name: "မောဟစတုက္က", desc: "မောဟ၊ အဟိရိက၊ အနောတ္တပ္ပ၊ ဥဒ္ဓစ္စ" }, { name: "ထိန, မိဒ္ဓ", desc: "ထိုင်းမှိုင်းခြင်း" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၃)", desc: "ဖဿ၊ ဝေဒနာ စသည်" } ]}
+                ]
+            },
+            "dosa": {
+                id: "dosa",
+                name: "ဒေါသ / မုန်းတီးခြင်း (Anger / Hatred)",
+                icon: "fa-fire", color: "red", type: "akusala",
+                cittaName: "ဒေါသမُولစိတ် (၂) ပါး",
+                desc: "မကျေနပ်မှု၊ စိတ်ဆိုးမှု၊ မုန်းတီးမှု၊ ပူလောင်မှုများ ဖြစ်ပေါ်နေသော အခြေအနေဖြစ်ပါသည်။ အာရုံကို ကြမ်းတမ်းစွာ ဖျက်ဆီးတတ်သော သဘောရှိပါသည်။",
+                remedy: "မေတ္တာဘာဝနာ (ချစ်ခင်ကြင်နာမှု) ကို ပွားများခြင်းဖြင့် ဒေါသကို ငြိမ်းအေးစေနိုင်ပါသည်။ ဒေါသဖြစ်ချိန်တွင် မိမိ၏ ဝင်လေထွက်လေ (အာနာပါန) သို့မဟုတ် ရုပ်နာမ်ဖြစ်စဉ်အပေါ် သတိထားစောင့်ကြည့်ပါ။",
+                cetasikaCount: "၁၈ ပါး မှ ၂၀ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "ဒေါသ (Dosa)", desc: "ကြမ်းတမ်းခြင်း (မူလ)" }, { name: "ကုက္ကုစ္စ (Kukkucca)", desc: "နောင်တပူပန်ခြင်း" }, { name: "မောဟစတုက္က", desc: "မောဟ စသည်" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၂)", desc: "ပီတိကြဉ်သော အညသမာန်းများ" } ]}
+                ]
+            },
+            "moha": {
+                id: "moha",
+                name: "မောဟ (Delusion / Ignorance)",
+                icon: "fa-cloud", color: "slate", type: "akusala",
+                cittaName: "မောဟမူစိတ် (၂) ပါး",
+                desc: "အမှန်တရားကို မသိမြင်ဘဲ တွေဝေမိုက်မဲနေသော၊ ယုံမှားသံသယဖြစ်နေသော သို့မဟုတ် ပျံ့လွင့်နေသော အခြေအနေဖြစ်ပါသည်။",
+                remedy: "တရားဓမ္မ နာကြားခြင်း၊ ဆွေးနွေးခြင်းနှင့် ဝိပဿနာဉာဏ် ပွားများခြင်းဖြင့် မောဟ (အဝိဇ္ဇာ) ကို ပယ်ခွာနိုင်ပါသည်။ အရာရာကို အကြောင်းအကျိုး (ပဋိစ္စသမုပ္ပါဒ်) အတိုင်း မှန်ကန်စွာ ရှုမြင်ပါ။",
+                cetasikaCount: "၁၅ ပါး",
+                cetasikasGroups: [
+                    { groupName: "အကုသိုလ် စေတသိက်များ", items: [ { name: "မောဟ (Moha)", desc: "အမှန်ကို မသိခြင်း (မူလ)" }, { name: "အဟိရိက၊ အနောတ္တပ္ပ", desc: "မရှက်၊ မကြောက်ခြင်း" }, { name: "ဥဒ္ဓစ္စ၊ ဝိစိကိစ္ဆာ", desc: "ပျံ့လွင့်ခြင်း၊ ယုံမှားခြင်း" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၁/၁၀)", desc: "ဖဿ၊ ဝေဒနာ စသည်" } ]}
+                ]
+            },
+            "karuna": {
+                id: "karuna",
+                name: "ကရုဏာ / သနားခြင်း (Compassion)",
+                icon: "fa-hand-holding-heart", color: "emerald", type: "kusala",
+                cittaName: "မဟာကုသိုလ်စိတ် (၈) ပါး",
+                desc: "ဆင်းရဲဒုက္ခ ရောက်နေသူများကို မြင်တွေ့ရသောအခါ သနားကြင်နာ၍ ကယ်တင်လိုသော စိတ်အခြေအနေ ဖြစ်ပါသည်။",
+                remedy: "ကရုဏာသည် မွန်မြတ်သော ကုသိုလ်ဖြစ်၍ ဆက်လက်ပွားများပါ။ သို့သော် ကရုဏာလွန်ကဲ၍ သောက (ဒေါသ) မဖြစ်စေရန် ဥပေက္ခာ (ကံတရားကို ဆင်ခြင်မှု) ဖြင့် ထိန်းကျောင်းပေးရန် လိုအပ်ပါသည်။",
+                cetasikaCount: "၃၄ ပါး မှ ၃၇ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "သောဘဏ စေတသိက်များ", items: [ { name: "ကရုဏာ (Karuna)", desc: "သနားကြင်နာခြင်း (အဓိက)" }, { name: "အဒေါသ (Adosa)", desc: "မကြမ်းတမ်းခြင်း" }, { name: "သောဘဏသာဓာရဏ (၁၉)", desc: "သဒ္ဓါ၊ သတိ စသည်" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၃)", desc: "ဖဿ၊ ဝေဒနာ စသည်" } ]}
+                ]
+            },
+            "mudita": {
+                id: "mudita",
+                name: "မုဒိတာ (Sympathetic Joy)",
+                icon: "fa-face-smile-beam", color: "sky", type: "kusala",
+                cittaName: "မဟာကုသိုလ်စိတ် (၈) ပါး",
+                desc: "သူတစ်ပါး၏ အောင်မြင်မှု၊ ကြီးပွားချမ်းသာမှုကို တွေ့မြင်ကြားသိရသောအခါ မိမိပါထပ်တူ ဝမ်းမြောက်ဝမ်းသာ ဖြစ်သော စိတ်ဖြစ်ပါသည်။",
+                remedy: "မုဒိတာသည် မနာလိုခြင်း (ဣဿာ) ကို ပယ်ဖျောက်နိုင်သော မွန်မြတ်သော ကုသိုလ်ဖြစ်၍ အမြဲမပြတ် ပွားများသင့်ပါသည်။",
+                cetasikaCount: "၃၄ ပါး မှ ၃၇ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "သောဘဏ စေတသိက်များ", items: [ { name: "မုဒိတာ (Mudita)", desc: "ဝမ်းမြောက်ခြင်း (အဓိက)" }, { name: "အဒေါသ (Adosa)", desc: "မကြမ်းတမ်းခြင်း" }, { name: "သောဘဏသာဓာရဏ (၁၉)", desc: "သဒ္ဓါ၊ သတိ စသည်" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၃)", desc: "ဖဿ၊ ဝေဒနာ စသည်" } ]}
+                ]
+            },
+            "metta": {
+                id: "metta",
+                name: "မေတ္တာ / ချစ်ခင်ခြင်း (Loving-kindness)",
+                icon: "fa-heart", color: "teal", type: "kusala",
+                cittaName: "မဟာကုသိုလ်စိတ် (၈) ပါး",
+                desc: "သူတစ်ပါးအပေါ် အကျိုးလိုလားသော၊ ချစ်ခင်ကြင်နာသော စိတ်အခြေအနေဖြစ်ပါသည်။ အဒေါသ စေတသိက်၏ အစွမ်းဖြစ်ပါသည်။",
+                remedy: "မေတ္တာစိတ်သည် ကုသိုလ်ဖြစ်၍ ဆက်လက်ပွားများသင့်ပါသည်။ မိမိအပါအဝင် သတ္တဝါအားလုံး ဘေးရန်ကင်းရန်၊ ကိုယ်စိတ်ချမ်းသာရန် အမြဲမပြတ် ဆင်ခြင်ပွားများပါ။",
+                cetasikaCount: "၃၃ ပါး မှ ၃၈ ပါး အထိ",
+                cetasikasGroups: [
+                    { groupName: "သောဘဏ စေတသိက်များ", items: [ { name: "အဒေါသ / မေတ္တာ", desc: "မကြမ်းတမ်းခြင်း (အဓိက)" }, { name: "အလောဘ (Alobha)", desc: "မတပ်မက်ခြင်း" }, { name: "အမောဟ (Amoha)", desc: "ပညာ" }, { name: "သောဘဏသာဓာရဏ (၁၉)", desc: "သဒ္ဓါ၊ သတိ စသည်" } ]},
+                    { groupName: "အညသမာန်း စေတသိက်များ", items: [ { name: "အညသမာန်း (၁၃)", desc: "ဖဿ၊ ဝေဒနာ စသည်" } ]}
+                ]
+            }
+        };
+
+        const buttonContainer = document.getElementById('emotion-buttons');
+        const resultContainer = document.getElementById('analysis-result');
+        const emptyState = document.getElementById('empty-state');
+        
+        let currentActiveBtn = null;
+        let currentFilter = 'all';
+
+        // Render Buttons
+        function renderButtons() {
+            buttonContainer.innerHTML = '';
+            Object.values(emotionData).forEach(data => {
+                if (currentFilter !== 'all' && data.type !== currentFilter) return;
+
+                const btn = document.createElement('button');
+                btn.className = `px-5 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold transition-all hover:border-${data.color}-400 hover:bg-${data.color}-50 dark:hover:bg-${data.color}-900/20 flex items-center gap-2 stagger-item`;
+                
+                // Keep active state if it's the currently selected one
+                if (currentActiveBtn && currentActiveBtn.dataset.id === data.id) {
+                    btn.classList.add('ring-2', 'ring-offset-2', 'ring-offset-slate-50', 'dark:ring-offset-slate-900', `ring-${data.color}-500`, 'border-transparent');
+                    currentActiveBtn = btn; // update reference
+                }
+
+                btn.dataset.id = data.id;
+                btn.innerHTML = `<i class="fa-solid ${data.icon} text-${data.color}-500"></i> ${data.name}`;
+                btn.onclick = () => selectEmotion(data.id, btn);
+                buttonContainer.appendChild(btn);
+            });
+        }
+
+        // Filter Logic
+        function filterEmotions(type) {
+            currentFilter = type;
+            // Update Tab Active Classes
+            ['all', 'akusala', 'kusala'].forEach(t => {
+                const tab = document.getElementById(`filter-${t}`);
+                if (t === type) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            renderButtons();
+        }
+
+        function selectEmotion(id, btnElement) {
+            const data = emotionData[id];
+            if (!data) return;
+
+            // Update active button state
+            if (currentActiveBtn) {
+                currentActiveBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-offset-slate-50', 'dark:ring-offset-slate-900', 'border-transparent');
+                // clear previous color ring classes
+                currentActiveBtn.className = currentActiveBtn.className.replace(/ring-\w+-500/g, '');
+            }
+            btnElement.classList.add('ring-2', 'ring-offset-2', 'ring-offset-slate-50', 'dark:ring-offset-slate-900', `ring-${data.color}-500`, 'border-transparent');
+            currentActiveBtn = btnElement;
+
+            // Hide empty state, show result
+            emptyState.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            
+            // Re-trigger animation
+            resultContainer.classList.remove('fade-in');
+            void resultContainer.offsetWidth; // trigger reflow
+            resultContainer.classList.add('fade-in');
+
+            // Populate Data
+            document.getElementById('emotion-name').textContent = data.name;
+            document.getElementById('emotion-desc').textContent = data.desc;
+            document.getElementById('emotion-remedy').textContent = data.remedy;
+            document.getElementById('citta-name').textContent = data.cittaName;
+
+            const badge = document.getElementById('citta-type-badge');
+            if (data.type === 'akusala') {
+                badge.textContent = 'အကုသိုလ် (Akusala)';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 border border-red-200 dark:border-red-800';
+            } else {
+                badge.textContent = 'ကုသိုလ် (Kusala)';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800';
+            }
+
+            // Populate Cetasikas
+            const cetasikaContainer = document.getElementById('cetasika-container');
+            cetasikaContainer.innerHTML = ''; // clear
+
+            if (data.cetasikaCount) {
+                const countDiv = document.createElement('div');
+                countDiv.className = "text-sm text-slate-600 dark:text-slate-400 mb-2 w-full bg-slate-100 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700 font-medium flex items-center gap-2 stagger-item";
+                countDiv.innerHTML = `<i class="fa-solid fa-layer-group text-slate-400"></i> ယှဉ်တွဲသော စေတသိက် စုစုပေါင်း - <span class="text-slate-900 dark:text-slate-100 font-bold">${data.cetasikaCount}</span>`;
+                cetasikaContainer.appendChild(countDiv);
+            }
+
+            let animDelay = 0.1;
+            data.cetasikasGroups.forEach(group => {
+                const groupWrapper = document.createElement('div');
+                groupWrapper.className = "stagger-item";
+                groupWrapper.style.animationDelay = `${animDelay}s`;
+
+                const groupTitle = document.createElement('div');
+                groupTitle.className = "w-full text-[11px] font-bold text-slate-500 mt-2 mb-2 uppercase tracking-wider pl-1";
+                groupTitle.textContent = group.groupName;
+                groupWrapper.appendChild(groupTitle);
+
+                const groupContainer = document.createElement('div');
+                groupContainer.className = "flex flex-wrap gap-2 w-full mb-1";
+
+                group.items.forEach(cet => {
+                    const badgeColor = data.type === 'akusala' && group.groupName.includes("အကုသိုလ်")
+                        ? 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/20 dark:text-rose-300 dark:border-rose-800' 
+                        : (data.type === 'kusala' && group.groupName.includes("သောဘဏ")
+                            ? 'bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-900/20 dark:text-teal-300 dark:border-teal-800'
+                            : 'bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-800/80 dark:text-slate-300 dark:border-slate-700');
+                    
+                    const cBadge = document.createElement('div');
+                    cBadge.className = `px-3 py-2 rounded-lg border text-sm flex flex-col ${badgeColor}`;
+                    cBadge.innerHTML = `<span class="font-bold">${cet.name}</span><span class="text-[11px] opacity-80 mt-0.5 leading-tight">${cet.desc}</span>`;
+                    groupContainer.appendChild(cBadge);
+                });
+                groupWrapper.appendChild(groupContainer);
+                cetasikaContainer.appendChild(groupWrapper);
+                animDelay += 0.1;
+            });
+        }
+
+        // Init
+        renderButtons();
+    </script>
+    <script src="accessibility.js"></script>
+</body>
+</html>

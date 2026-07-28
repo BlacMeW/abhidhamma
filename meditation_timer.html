@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="တရားထိုင် အချိန်မှတ်စနစ် - Meditation Timer">
+    <title>တရားထိုင် အချိန်မှတ်စနစ် - Meditation Timer</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', system-ui, sans-serif;
+            transition: background-color 1s ease;
+        }
+        
+        .timer-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+            transition: all 0.5s ease;
+        }
+        
+        .dark .timer-circle {
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
+        }
+        
+        .timer-circle::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: #0ea5e9;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .timer-active .timer-circle::before {
+            opacity: 1;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Calm UI adjustments */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200" id="app-body">
+
+    <!-- Header -->
+    <header class="border-b border-transparent sticky top-0 z-40 transition-all duration-300" id="main-header">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer backdrop-blur-md">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <button onclick="testBell()" class="text-sm text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition flex items-center gap-2">
+                <i class="fa-solid fa-bell"></i> အသံစမ်းရန်
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 py-6 flex-1 w-full flex flex-col items-center justify-center gap-8 relative z-10 fade-in">
+        
+        <!-- Timer Display -->
+        <div class="timer-circle bg-white dark:bg-slate-800" id="timer-container">
+            <div class="text-center z-10">
+                <div id="time-display" class="text-6xl font-light tracking-wider text-slate-800 dark:text-slate-100 font-mono">15:00</div>
+                <div id="status-display" class="text-sm text-slate-500 dark:text-slate-400 mt-2 tracking-widest uppercase opacity-0 transition-opacity">တရားထိုင်နေသည်</div>
+            </div>
+            
+            <!-- Ripple effect when running -->
+            <div id="ripple-1" class="absolute inset-0 rounded-full border border-sky-400/30 opacity-0 scale-100 transition-all"></div>
+            <div id="ripple-2" class="absolute inset-0 rounded-full border border-sky-400/20 opacity-0 scale-100 transition-all"></div>
+        </div>
+
+        <!-- Controls Area -->
+        <div class="w-full space-y-6 glass-panel p-6 rounded-3xl" id="setup-panel">
+            
+            <!-- Duration Setting -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 text-center">
+                    <i class="fa-regular fa-hourglass-half"></i> တရားထိုင်မည့် အချိန် (Duration)
+                </label>
+                <div class="flex justify-center gap-2 flex-wrap">
+                    <button onclick="setDuration(15)" class="duration-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">15 Min</button>
+                    <button onclick="setDuration(30)" class="duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">30 Min</button>
+                    <button onclick="setDuration(45)" class="duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">45 Min</button>
+                    <button onclick="setDuration(60)" class="duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">60 Min</button>
+                </div>
+            </div>
+
+            <hr class="border-slate-200 dark:border-slate-700">
+
+            <!-- Interval Setting -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 text-center">
+                    <i class="fa-solid fa-stopwatch"></i> သတိပေး ခေါင်းလောင်းသံ (Interval Bell)
+                </label>
+                <div class="flex justify-center gap-2 flex-wrap">
+                    <button onclick="setIntervalTime(0)" class="interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">မလိုပါ</button>
+                    <button onclick="setIntervalTime(5)" class="interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
+                    <button onclick="setIntervalTime(10)" class="interval-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">10 Min</button>
+                    <button onclick="setIntervalTime(15)" class="interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">15 Min</button>
+                </div>
+                <p class="text-[11px] text-center text-slate-500 mt-2">သတ်မှတ်ထားသော အချိန်အပိုင်းအခြားရောက်တိုင်း ခေါင်းလောင်းသံ မြည်ပေးပါမည်။</p>
+            </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-center gap-4 w-full">
+            <button id="btn-start" onclick="startTimer()" class="w-16 h-16 rounded-full bg-sky-500 hover:bg-sky-600 text-white shadow-lg shadow-sky-500/30 flex items-center justify-center text-xl transition-transform hover:scale-105">
+                <i class="fa-solid fa-play ml-1"></i>
+            </button>
+            
+            <button id="btn-pause" onclick="pauseTimer()" class="hidden w-16 h-16 rounded-full bg-amber-500 hover:bg-amber-600 text-white shadow-lg shadow-amber-500/30 flex items-center justify-center text-xl transition-transform hover:scale-105">
+                <i class="fa-solid fa-pause"></i>
+            </button>
+            
+            <button id="btn-stop" onclick="stopTimer()" class="hidden w-16 h-16 rounded-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xl transition-transform hover:scale-105">
+                <i class="fa-solid fa-stop"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        // State
+        let durationMinutes = 15;
+        let intervalMinutes = 10;
+        
+        let timeLeft = durationMinutes * 60; // in seconds
+        let timePassedSinceLastBell = 0;
+        
+        let timerInterval = null;
+        let isRunning = false;
+        
+        // Wake Lock
+        let wakeLock = null;
+
+        async function requestWakeLock() {
+            try {
+                if ('wakeLock' in navigator) {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                }
+            } catch (err) {
+                console.log('Wake Lock error: ', err);
+            }
+        }
+
+        function releaseWakeLock() {
+            if (wakeLock !== null) {
+                wakeLock.release().then(() => { wakeLock = null; });
+            }
+        }
+
+        // Elements
+        const displayEl = document.getElementById('time-display');
+        const statusEl = document.getElementById('status-display');
+        const setupPanel = document.getElementById('setup-panel');
+        const containerEl = document.getElementById('timer-container');
+        const bodyEl = document.getElementById('app-body');
+        
+        const btnStart = document.getElementById('btn-start');
+        const btnPause = document.getElementById('btn-pause');
+        const btnStop = document.getElementById('btn-stop');
+
+        // Web Audio API Bell Synthesizer (Singing Bowl effect)
+        function playBell(isEnd = false) {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return; // Browser doesn't support
+                const ctx = new AudioContext();
+                
+                const mainOsc = ctx.createOscillator();
+                const subOsc = ctx.createOscillator();
+                const mainGain = ctx.createGain();
+                const subGain = ctx.createGain();
+                const masterGain = ctx.createGain();
+
+                // Decay length
+                const decayTime = isEnd ? 8 : 5; // End bell rings longer
+
+                // Envelope
+                masterGain.gain.setValueAtTime(0, ctx.currentTime);
+                masterGain.gain.linearRampToValueAtTime(isEnd ? 1 : 0.8, ctx.currentTime + 0.05); // Attack
+                masterGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + decayTime); // Decay
+                
+                // Main tone (432Hz - perceived as healing/calm)
+                mainOsc.type = 'sine';
+                mainOsc.frequency.setValueAtTime(432, ctx.currentTime); 
+                mainGain.gain.value = 1;
+                
+                // Sub tone for resonance (216Hz - one octave down)
+                subOsc.type = 'sine';
+                subOsc.frequency.setValueAtTime(216, ctx.currentTime);
+                subGain.gain.value = 0.5;
+
+                // Routing
+                mainOsc.connect(mainGain);
+                subOsc.connect(subGain);
+                mainGain.connect(masterGain);
+                subGain.connect(masterGain);
+                masterGain.connect(ctx.destination);
+
+                // Play
+                mainOsc.start();
+                subOsc.start();
+                mainOsc.stop(ctx.currentTime + decayTime);
+                subOsc.stop(ctx.currentTime + decayTime);
+
+                // If end, play a second strike slightly delayed for a richer "gong" effect
+                if (isEnd) {
+                    setTimeout(() => {
+                        const osc2 = ctx.createOscillator();
+                        const gain2 = ctx.createGain();
+                        osc2.type = 'sine';
+                        osc2.frequency.setValueAtTime(432, ctx.currentTime);
+                        gain2.gain.setValueAtTime(0, ctx.currentTime);
+                        gain2.gain.linearRampToValueAtTime(0.6, ctx.currentTime + 0.05);
+                        gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 6);
+                        osc2.connect(gain2);
+                        gain2.connect(ctx.destination);
+                        osc2.start();
+                        osc2.stop(ctx.currentTime + 6);
+                    }, 500);
+                }
+            } catch (e) {
+                console.log("Audio API not supported or user hasn't interacted yet.");
+            }
+        }
+
+        // Test Bell (must be triggered by user click to unlock AudioContext)
+        function testBell() {
+            playBell(false);
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function updateDisplay() {
+            displayEl.textContent = formatTime(timeLeft);
+        }
+
+        function setDuration(mins) {
+            if (isRunning) return;
+            durationMinutes = mins;
+            timeLeft = mins * 60;
+            updateDisplay();
+            
+            // Update UI buttons
+            document.querySelectorAll('.duration-btn').forEach(btn => {
+                if (btn.textContent.includes(mins)) {
+                    btn.className = "duration-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
+                } else {
+                    btn.className = "duration-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                }
+            });
+        }
+
+        function setIntervalTime(mins) {
+            if (isRunning) return;
+            intervalMinutes = mins;
+            
+            // Update UI buttons
+            document.querySelectorAll('.interval-btn').forEach(btn => {
+                if (btn.textContent.includes(mins) || (mins === 0 && btn.textContent === "မလိုပါ")) {
+                    btn.className = "interval-btn px-4 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
+                } else {
+                    btn.className = "interval-btn px-4 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                }
+            });
+        }
+
+        function startTimer() {
+            if (isRunning) return;
+            
+            // If starting fresh, play starting bell
+            if (timeLeft === durationMinutes * 60) {
+                playBell(false);
+            }
+
+            isRunning = true;
+            requestWakeLock();
+            
+            // UI Changes
+            setupPanel.classList.add('opacity-50', 'pointer-events-none');
+            btnStart.classList.add('hidden');
+            btnPause.classList.remove('hidden');
+            btnStop.classList.remove('hidden');
+            containerEl.classList.add('timer-active');
+            statusEl.style.opacity = 1;
+            statusEl.textContent = 'တရားထိုင်နေသည် (Meditating)';
+
+            // Dim background for focus
+            bodyEl.classList.remove('bg-slate-50', 'dark:bg-slate-900');
+            bodyEl.classList.add('bg-slate-900', 'dark:bg-black');
+            displayEl.classList.add('text-white');
+            displayEl.classList.remove('text-slate-800');
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timePassedSinceLastBell++;
+
+                updateDisplay();
+
+                // Check Interval
+                if (intervalMinutes > 0 && timePassedSinceLastBell >= (intervalMinutes * 60) && timeLeft > 0) {
+                    playBell(false);
+                    timePassedSinceLastBell = 0; // Reset counter
+                }
+
+                // End Timer
+                if (timeLeft <= 0) {
+                    endTimer();
+                }
+
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            if (!isRunning) return;
+            isRunning = false;
+            clearInterval(timerInterval);
+            releaseWakeLock();
+            
+            btnPause.classList.add('hidden');
+            btnStart.classList.remove('hidden');
+            containerEl.classList.remove('timer-active');
+            statusEl.textContent = 'ခေတ္တရပ်နားထားသည် (Paused)';
+            
+            // Restore background
+            bodyEl.classList.add('bg-slate-50', 'dark:bg-slate-900');
+            bodyEl.classList.remove('bg-slate-900', 'dark:bg-black');
+            displayEl.classList.remove('text-white');
+            displayEl.classList.add('text-slate-800');
+        }
+
+        function stopTimer() {
+            pauseTimer();
+            // Reset
+            timeLeft = durationMinutes * 60;
+            timePassedSinceLastBell = 0;
+            updateDisplay();
+            
+            setupPanel.classList.remove('opacity-50', 'pointer-events-none');
+            btnStop.classList.add('hidden');
+            statusEl.style.opacity = 0;
+        }
+
+        function endTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            releaseWakeLock();
+            playBell(true); // End bell
+            
+            btnPause.classList.add('hidden');
+            btnStart.classList.remove('hidden');
+            containerEl.classList.remove('timer-active');
+            statusEl.textContent = 'ပြီးမြောက်ပါပြီ (Completed)';
+            
+            // Restore background
+            bodyEl.classList.add('bg-slate-50', 'dark:bg-slate-900');
+            bodyEl.classList.remove('bg-slate-900', 'dark:bg-black');
+            displayEl.classList.remove('text-white');
+            displayEl.classList.add('text-slate-800');
+
+            setupPanel.classList.remove('opacity-50', 'pointer-events-none');
+        }
+
+        // Init Display
+        updateDisplay();
+    </script>
+    <script src="accessibility.js"></script>
+</body>
+</html>
