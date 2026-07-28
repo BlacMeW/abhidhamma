@@ -269,6 +269,9 @@
                 <a href="glossary" class="text-xs font-semibold bg-emerald-100 dark:bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-spell-check"></i> <span class="hidden sm:inline">အဘိဓာန်</span>
                 </a>
+                <button onclick="openAboutModal()" class="text-xs font-semibold bg-violet-100 dark:bg-violet-500/20 hover:bg-violet-500/30 text-violet-700 dark:text-violet-300 border border-violet-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-info"></i> <span class="hidden sm:inline">အကြောင်း</span>
+                </button>
             </div>
         </div>
     </header>
@@ -1251,6 +1254,79 @@
         </div>
     </div>
 
+    <!-- About Modal -->
+    <div id="about-modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4" onclick="if(event.target===this) closeAboutModal()">
+        <div class="glass-card bg-white dark:bg-slate-900 border border-amber-400 dark:border-amber-500/30 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
+            <div class="flex items-start justify-between gap-3 p-6 pb-4 border-b border-slate-200 dark:border-slate-800 flex-shrink-0">
+                <div>
+                    <div class="text-[11px] font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-400">About this app</div>
+                    <div class="text-lg font-bold text-slate-900 dark:text-slate-100">Citta & Cetasika Visual Guide</div>
+                </div>
+                <button onclick="closeAboutModal()" class="w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition flex-shrink-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 pt-4 space-y-5 overflow-y-auto">
+                <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                    <img class="w-full h-60 object-cover" src="assets/images/about/about-dedication.jpg" alt="Dedication image">
+                </div>
+
+                <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-relaxed">
+                    အဘိဓမ္မာလာ စိတ်၊ စေတသိက်၊ ရုပ်တရားများကို visual diagram များဖြင့် လေ့လာနိုင်ရန် ရည်ရွယ်၍ ချစ်ခြင်းမေတ္တာဖြင့် တည်ဆောက်ထားသော app လေးတစ်ခု ဖြစ်ပါသည်။
+                </p>
+
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-amber-700 dark:text-amber-400 mb-2">Features</div>
+                    <div class="space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                        <div>• စိတ် (၈၉ / ၁၂၁) ပါးလုံး အဆင့်လိုက် Interactive Diagram</div>
+                        <div>• စေတသိက် (၅၂) ပါး အုပ်စုအလိုက် ယှဉ်ပြိုင်ကြည့်ရှုနိုင်ခြင်း</div>
+                        <div>• ဝေဒနာ၊ ဟေတု၊ ဒွါရ၊ ဝတ္ထု စသော ပကိဏ္ဏကသင်္ဂဟ ခွဲခြမ်းစိတ်ဖြာမှု</div>
+                        <div>• ဝီထိစိတ်ဖြစ်စဉ် Live Simulator</div>
+                        <div>• Light / Dark mode နှင့် Offline PWA Support</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-amber-700 dark:text-amber-400 mb-2">About the App</div>
+                    <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <code>citta_cetasikas_visual_guide</code> သည် အရှင်အနုရုဒ္ဓါမဟာထေရ် စီရင်တော်မူသော အဘိဓမ္မတ္ထသင်္ဂဟကျမ်းလာ နာမ်တရားများကို ခေတ်မီ Interactive Visual Guide တစ်ခုအဖြစ် ဖော်ပြထားသော static web app ဖြစ်ပါသည်။
+                    </p>
+                </div>
+
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-amber-700 dark:text-amber-400 mb-2">Gallery</div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <img class="w-full h-20 object-cover rounded-lg border border-slate-200 dark:border-slate-700" src="assets/images/about/photo_2025-04-21_09-30-38 (5).jpg" alt="Gallery image one">
+                        <img class="w-full h-20 object-cover rounded-lg border border-slate-200 dark:border-slate-700" src="assets/images/about/photo_2025-04-21_19-35-33.jpg" alt="Gallery image two">
+                        <img class="w-full h-20 object-cover rounded-lg border border-slate-200 dark:border-slate-700" src="assets/images/about/lollipop.png" alt="Gallery image three">
+                        <img class="w-full h-20 object-cover rounded-lg border border-slate-200 dark:border-slate-700 col-span-3" src="assets/images/about/suprtboy.jpg" alt="Gallery image four">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-amber-700 dark:text-amber-400 mb-2">Dedication</div>
+                    <div class="space-y-2 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <p>ဤအက်ပ်ကို သားသားလေး၏ ကောင်းကျိုး၊ စိတ်ငြိမ်သက်မှု၊ ပညာထွန်းကားမှုနှင့် မေတ္တာတရား တိုးပွားမှုအတွက် ရိုသေစွာ ရည်စူးပါသည်။</p>
+                        <p>ဓမ္မလေ့လာသည့်အခါတိုင်း သတိပညာ ခိုင်မာစေပြီး၊ ရင်အေးသက်သာစေကာ၊ ဘဝလမ်းခရီးတွင် ကောင်းမွန်သည့် အားအင်နှင့် ငြိမ်းချမ်းမှုကို ပေးစွမ်းနိုင်သော နူးညံ့သည့် တရားအလှူတစ်ခုအဖြစ် ရှိနေစေလိုပါသည်။</p>
+                        <p class="italic font-semibold">For a beloved little son — always remembered, always loved.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-wide text-slate-500">App</div>
+                        <div class="text-xs font-semibold text-slate-800 dark:text-slate-200">Citta & Cetasika Visual Guide</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] uppercase tracking-wide text-slate-500">Source</div>
+                        <div class="text-xs font-semibold text-slate-800 dark:text-slate-200">monledhamma.org</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript Logic -->
     <script>
         // Cetasikas Data Structure
@@ -1724,6 +1800,28 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) {
                 closeModal();
+            }
+        });
+
+        // About Modal Handler
+        let lastFocusedAboutElement = null;
+        function openAboutModal() {
+            lastFocusedAboutElement = document.activeElement;
+            const modal = document.getElementById('about-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAboutModal() {
+            const modal = document.getElementById('about-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            if (lastFocusedAboutElement) lastFocusedAboutElement.focus();
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('about-modal').classList.contains('hidden')) {
+                closeAboutModal();
             }
         });
 
