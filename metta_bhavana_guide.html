@@ -616,25 +616,73 @@
 
             <!-- Sample Sentence Construction -->
             <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
-                <h4 class="font-bold text-indigo-800 dark:text-indigo-300 text-lg mb-4 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">၅။ နမူနာ ဝါကျ ဖွဲ့စည်းပုံ (Sample Sentence Construction)</h4>
+                <h4 class="font-bold text-indigo-800 dark:text-indigo-300 text-lg mb-4 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">၅။ ဝါကျ တည်ဆောက် ဖန်တီးကြည့်ရန် (Sentence Generator)</h4>
                 <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                    ဖော်ပြပါ (၅၂၈) သွယ်တို့သည် [<span class="text-indigo-600 dark:text-indigo-400 font-semibold">အရပ်</span> (ရှိလျှင်)] + [<span class="text-teal-600 dark:text-teal-400 font-semibold">အုပ်စု</span> (အနောဓိသ/ဩဓိသ)] + [<span class="text-amber-600 dark:text-amber-400 font-semibold">အာကာရ</span> (ဆန္ဒ ၄ ပါး)] ဟူသော ပုံစံအတိုင်း ဆက်စပ်တည်ဆောက်ထားခြင်း ဖြစ်သည်။ နမူနာ (၃) ခု -
+                    ဖော်ပြပါ (၅၂၈) သွယ်တို့သည် [<span class="text-indigo-600 dark:text-indigo-400 font-semibold">အရပ်</span> (ရှိလျှင်)] + [<span class="text-teal-600 dark:text-teal-400 font-semibold">အုပ်စု</span> (အနောဓိသ/ဩဓိသ)] + [<span class="text-amber-600 dark:text-amber-400 font-semibold">အာကာရ</span> (ဆန္ဒ ၄ ပါး)] ဟူသော ပုံစံအတိုင်း ဆက်စပ်တည်ဆောက်ထားခြင်း ဖြစ်သည်။ အောက်ပါ ရွေးစရာများကို ရွေးချယ်၍ (၅၂၈) သွယ်အနက် ကိုယ်ပိုင်ဝါကျ တစ်ခုကို ဖန်တီးကြည့်ပါ -
                 </p>
-                <div class="space-y-3">
-                    <div class="bg-white/70 dark:bg-slate-800/70 p-3.5 rounded-xl border border-teal-200/60 dark:border-teal-900/40">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">အနောဓိသ (မသတ်မှတ်) + အာကာရ (၁)</span>
-                        <p class="font-bold text-slate-800 dark:text-slate-200 text-sm mt-1">Sabbe sattā averā hontu.</p>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">သတ္တဝါ အားလုံးတို့သည် ဘေးရန် ကင်းကြပါစေ။</p>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/40 dark:to-purple-950/40 p-4 sm:p-5 rounded-2xl border border-indigo-200 dark:border-indigo-800/60 shadow-inner">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                        <div>
+                            <label class="block text-xs font-bold text-indigo-700 dark:text-indigo-300 mb-1.5">၁. အရပ် (Direction)</label>
+                            <select id="gen-direction" onchange="generateMettaSentence()" class="w-full px-3 py-2.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                                <option value="">— အရပ် မသတ်မှတ်ပါ —</option>
+                                <option value="Puratthimāya disāya|အရှေ့">အရှေ့ (Puratthima)</option>
+                                <option value="Pacchimāya disāya|အနောက်">အနောက် (Pacchima)</option>
+                                <option value="Uttarāya disāya|မြောက်">မြောက် (Uttara)</option>
+                                <option value="Dakkhināya disāya|တောင်">တောင် (Dakkhina)</option>
+                                <option value="Puratthimāya anudisāya|အရှေ့တောင်">အရှေ့တောင် (Puratthimānudisā)</option>
+                                <option value="Pacchimāya anudisāya|အနောက်မြောက်">အနောက်မြောက် (Pacchimānudisā)</option>
+                                <option value="Uttarāya anudisāya|အရှေ့မြောက်">အရှေ့မြောက် (Uttarānudisā)</option>
+                                <option value="Dakkhināya anudisāya|အနောက်တောင်">အနောက်တောင် (Dakkhinānudisā)</option>
+                                <option value="Heṭṭhimāya disāya|အောက်">အောက် (Hetthima)</option>
+                                <option value="Uparimāya disāya|အထက်">အထက် (Uparima)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-teal-700 dark:text-teal-400 mb-1.5">၂. အုပ်စု (Category)</label>
+                            <select id="gen-category" onchange="generateMettaSentence()" class="w-full px-3 py-2.5 rounded-xl border border-teal-200 dark:border-teal-800 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-teal-400">
+                                <optgroup label="အနောဓိသ (မသတ်မှတ်) — ၅ မျိုး">
+                                    <option value="Sabbe sattā|သတ္တဝါ အားလုံး">သဗ္ဗေ သတ္တာ</option>
+                                    <option value="Sabbe pāṇā|ထွက်သက်ဝင်သက်ရှိသူ အားလုံး">သဗ္ဗေ ပါဏာ</option>
+                                    <option value="Sabbe bhūtā|ထင်ရှားဖြစ်ပေါ်လာသူ အားလုံး">သဗ္ဗေ ဘူတာ</option>
+                                    <option value="Sabbe puggalā|ပုဂ္ဂိုလ် အားလုံး">သဗ္ဗေ ပုဂ္ဂလာ</option>
+                                    <option value="Sabbe attabhāva-pariyāpannā|ခန္ဓာကိုယ် အတ္တဘော အကျုံးဝင်သူ အားလုံး">သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ</option>
+                                </optgroup>
+                                <optgroup label="ဩဓိသ (သတ်မှတ်) — ၇ မျိုး">
+                                    <option value="Sabbā itthiyo|အမျိုးသမီး အားလုံး">သဗ္ဗာ ဣတ္ထိယော</option>
+                                    <option value="Sabbe purisā|အမျိုးသား အားလုံး">သဗ္ဗေ ပုရိသာ</option>
+                                    <option value="Sabbe ariyā|အရိယာ အားလုံး">သဗ္ဗေ အရိယာ</option>
+                                    <option value="Sabbe anariyā|ပုထုဇဉ် အားလုံး">သဗ္ဗေ အနရိယာ</option>
+                                    <option value="Sabbe devā|နတ်၊ ဗြဟ္မာ အားလုံး">သဗ္ဗေ ဒေဝါ</option>
+                                    <option value="Sabbe manussā|လူ အားလုံး">သဗ္ဗေ မနုဿာ</option>
+                                    <option value="Sabbe vinipātikā|အပါယ် (၄) ဘုံသား အားလုံး">သဗ္ဗေ ဝိနိပါတိကာ</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-amber-700 dark:text-amber-400 mb-1.5">၃. အာကာရ (Wish)</label>
+                            <select id="gen-wish" onchange="generateMettaSentence()" class="w-full px-3 py-2.5 rounded-xl border border-amber-200 dark:border-amber-800 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-amber-400">
+                                <option value="averā hontu|ဘေးရန် ကင်းကြပါစေ">အဝေရာ ဟောန္တု</option>
+                                <option value="abyāpajjā hontu|စိတ်ဆင်းရဲ ကင်းကြပါစေ">အဗျာပဇ္ဇာ ဟောန္တု</option>
+                                <option value="anīghā hontu|ကိုယ်ဆင်းရဲ ကင်းကြပါစေ">အနီဃာ ဟောန္တု</option>
+                                <option value="sukhī attānaṃ pariharantu|ချမ်းသာစွာ မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ">သုခီ အတ္တာနံ ပရိဟရန္တု</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="bg-white/70 dark:bg-slate-800/70 p-3.5 rounded-xl border border-rose-200/60 dark:border-rose-900/40">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">ဩဓိသ (သတ်မှတ်) + အာကာရ (၂)</span>
-                        <p class="font-bold text-slate-800 dark:text-slate-200 text-sm mt-1">Sabbā itthiyo abyāpajjā hontu.</p>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">အမျိုးသမီး အားလုံးတို့သည် စိတ်ဆင်းရဲ ကင်းကြပါစေ။</p>
+
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <button onclick="randomMettaSentence()" type="button" class="text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-dice"></i> ကျပန်း ထုတ်ပါ
+                        </button>
+                        <button onclick="copyMettaSentence()" type="button" class="text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-copy" id="gen-copy-icon"></i> <span id="gen-copy-text">ကူးယူမည်</span>
+                        </button>
                     </div>
-                    <div class="bg-white/70 dark:bg-slate-800/70 p-3.5 rounded-xl border border-indigo-200/60 dark:border-indigo-900/40">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">ဒိသာဖရဏ (အရပ်) + အနောဓိသ + အာကာရ (၁)</span>
-                        <p class="font-bold text-slate-800 dark:text-slate-200 text-sm mt-1">Puratthimāya disāya sabbe sattā averā hontu.</p>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">အရှေ့အရပ်ရှိ သတ္တဝါ အားလုံးတို့သည် ဘေးရန် ကင်းကြပါစေ။</p>
+
+                    <div class="bg-white/80 dark:bg-slate-900/60 p-4 sm:p-5 rounded-2xl border border-indigo-200/60 dark:border-indigo-800/60 shadow-sm">
+                        <p id="gen-pali-output" class="font-bold text-indigo-900 dark:text-indigo-300 text-base sm:text-lg leading-relaxed mb-2"></p>
+                        <p id="gen-meaning-output" class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-700/60"></p>
                     </div>
                 </div>
                 <div class="mt-4 text-xs text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/30 p-3 rounded-xl border border-amber-200/50 dark:border-amber-900/30 leading-relaxed">
@@ -883,6 +931,60 @@
 
     </main>
 
+    <script>
+        function generateMettaSentence() {
+            const dirSel = document.getElementById('gen-direction');
+            const catSel = document.getElementById('gen-category');
+            const wishSel = document.getElementById('gen-wish');
+            if (!dirSel || !catSel || !wishSel) return;
+
+            const [dirPali, dirMm] = dirSel.value ? dirSel.value.split('|') : ['', ''];
+            const [catPali, catMm] = catSel.value.split('|');
+            const [wishPali, wishMm] = wishSel.value.split('|');
+
+            const paliParts = [];
+            if (dirPali) paliParts.push(dirPali);
+            paliParts.push(catPali, wishPali);
+            const paliSentence = paliParts.join(' ') + '.';
+
+            const meaningSentence = (dirMm ? dirMm + 'အရပ်ရှိ ' : '') + catMm + 'တို့သည် ' + wishMm + '။';
+
+            document.getElementById('gen-pali-output').textContent = paliSentence;
+            document.getElementById('gen-meaning-output').textContent = meaningSentence;
+        }
+
+        function randomMettaSentence() {
+            const dirSel = document.getElementById('gen-direction');
+            const catSel = document.getElementById('gen-category');
+            const wishSel = document.getElementById('gen-wish');
+            if (!dirSel || !catSel || !wishSel) return;
+
+            dirSel.selectedIndex = Math.floor(Math.random() * dirSel.options.length);
+            catSel.selectedIndex = Math.floor(Math.random() * catSel.options.length);
+            wishSel.selectedIndex = Math.floor(Math.random() * wishSel.options.length);
+            generateMettaSentence();
+        }
+
+        function copyMettaSentence() {
+            const paliEl = document.getElementById('gen-pali-output');
+            const meaningEl = document.getElementById('gen-meaning-output');
+            if (!paliEl || !meaningEl) return;
+            const text = paliEl.textContent + '\n' + meaningEl.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const icon = document.getElementById('gen-copy-icon');
+                const label = document.getElementById('gen-copy-text');
+                icon.className = 'fa-solid fa-check';
+                label.textContent = 'ကူးယူပြီးပါပြီ';
+                setTimeout(() => {
+                    icon.className = 'fa-solid fa-copy';
+                    label.textContent = 'ကူးယူမည်';
+                }, 1500);
+            }).catch(() => {});
+        }
+
+        document.addEventListener('DOMContentLoaded', generateMettaSentence);
+    </script>
     <script src="accessibility.js"></script>
 </body>
 </html>
