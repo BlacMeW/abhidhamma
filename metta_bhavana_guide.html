@@ -16,14 +16,20 @@
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
         }
+        /* Left/right/bottom only — top is intentionally left uncontested so that
+           border-t-4 border-t-{color}-500 (used on the section cards below) always wins. */
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-left: 1px solid rgba(0, 0, 0, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         .dark .glass-card {
             background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left-color: rgba(255, 255, 255, 0.1);
+            border-right-color: rgba(255, 255, 255, 0.1);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
         }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
@@ -50,7 +56,7 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                <a href="index.html" class="text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-house"></i> <span>Dashboard</span>
                 </a>
                 <a href="kammatthana_sangaha.html" class="text-xs font-semibold bg-teal-100 dark:bg-teal-900/30 hover:bg-teal-200 dark:hover:bg-teal-800/40 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-700 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
@@ -66,7 +72,7 @@
         <div class="text-center max-w-4xl mx-auto space-y-4">
             <h2 class="text-2xl md:text-3xl font-bold text-rose-800 dark:text-rose-400">မေတ္တာ၏ သဘောတရားအမှန်</h2>
             <div class="glass-card p-4 sm:p-6 rounded-2xl border border-rose-200 dark:border-rose-900">
-                <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-4">
+                <p class="text-slate-900 dark:text-slate-300 text-base leading-relaxed mb-4">
                     မေတ္တာ ဆိုသည်မှာ <strong>"အဒေါသ" (ဒေါသမရှိခြင်း)</strong> စေတသိက်ပင် ဖြစ်သည်။ သူတစ်ပါး အကျိုးစီးပွားကို လိုလားခြင်း၊ ချမ်းသာစေချင်ခြင်း သဘောဖြစ်သည်။ အဘိဓမ္မာအရ မေတ္တာသည် သောဘဏစေတသိက် (ကောင်းမြတ်သောစိတ်) ဖြစ်ပြီး၊ လောဘ (တဏှာရာဂဖြင့် တွယ်တာသော ချစ်ခြင်း - Pema) နှင့် လုံးဝမတူညီပါ။ တဏှာရာဂဖြင့် ချစ်ခြင်းသည် သံယောဇဉ်ကို ဖြစ်စေပြီး၊ မေတ္တာစစ်သည် သန့်စင်သော အေးမြမှုကို ဖြစ်စေသည်။
                 </p>
                 <div class="grid md:grid-cols-2 gap-4 text-left">
@@ -101,10 +107,10 @@
 
                 <!-- Step 1 -->
                 <div class="flex gap-3 sm:gap-4 relative">
-                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-600 dark:text-rose-400">၁</div>
+                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-800 dark:text-rose-400">၁</div>
                     <div class="bg-white/60 dark:bg-slate-800/60 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 flex-1 shadow-sm">
                         <h4 class="font-bold text-rose-700 dark:text-rose-400 text-lg mb-2">မိမိကိုယ်ကို အရင်ပို့ပါ (Attā)</h4>
-                        <div class="mb-3 p-3 bg-rose-50 dark:bg-rose-900/30 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <div class="mb-3 p-3 bg-rose-50 dark:bg-rose-900/30 rounded-lg text-sm font-medium text-slate-900 dark:text-slate-300">
                             "အဟံ အဝေရော ဟောမိ၊ အဗျာပဇ္ဇော ဟောမိ၊ အနီဃော ဟောမိ၊ သုခီ အတ္တာနံ ပရိဟရာမိ"<br>
                             ငါသည် ဘေးရန်ကင်းပါစေ၊ စိတ်ဆင်းရဲကင်းပါစေ၊ ကိုယ်ဆင်းရဲကင်းပါစေ၊ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ပါစေ။
                         </div>
@@ -116,9 +122,13 @@
 
                 <!-- Step 2 -->
                 <div class="flex gap-3 sm:gap-4 relative">
-                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-600 dark:text-rose-400">၂</div>
+                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-800 dark:text-rose-400">၂</div>
                     <div class="bg-white/60 dark:bg-slate-800/60 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 flex-1 shadow-sm">
                         <h4 class="font-bold text-rose-700 dark:text-rose-400 text-lg mb-2">ချစ်ခင်လေးစားရသူများ (Piya puggala)</h4>
+                        <div class="mb-3 p-3 bg-rose-50 dark:bg-rose-900/30 rounded-lg text-sm font-medium text-slate-900 dark:text-slate-300">
+                            "အယံ သပ္ပုရိသော အဝေရော ဟောတု၊ အဗျာပဇ္ဇော ဟောတု၊ အနီဃော ဟောတု၊ သုခီ အတ္တာနံ ပရိဟရတု"<br>
+                            ဤကောင်းမြတ်သော ပုဂ္ဂိုလ်သည် ဘေးရန်ကင်းပါစေ၊ စိတ်ဆင်းရဲကင်းပါစေ၊ ကိုယ်ဆင်းရဲကင်းပါစေ၊ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ပါစေ။
+                        </div>
                         <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
                             မိဘ၊ ဆရာသမား စသော မိမိ အလွန်ချစ်ခင် လေးစားရသူများကို အာရုံပြု၍ ပို့ပါ။ ဤအဆင့်တွင် မေတ္တာစစ် ဖြစ်ရန် အလွယ်ဆုံး ဖြစ်ပြီး၊ အပ္ပနာဈာန် (ဈာန် ၃ ပါး) အထိ ရရှိနိုင်သည်။
                         </p>
@@ -131,9 +141,13 @@
 
                 <!-- Step 3 -->
                 <div class="flex gap-3 sm:gap-4 relative">
-                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-600 dark:text-rose-400">၃</div>
+                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-800 dark:text-rose-400">၃</div>
                     <div class="bg-white/60 dark:bg-slate-800/60 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 flex-1 shadow-sm">
                         <h4 class="font-bold text-rose-700 dark:text-rose-400 text-lg mb-2">ချစ်/မုန်း မရှိ အလယ်အလတ်ပုဂ္ဂိုလ် (Majjhatta puggala)</h4>
+                        <div class="mb-3 p-3 bg-rose-50 dark:bg-rose-900/30 rounded-lg text-sm font-medium text-slate-900 dark:text-slate-300">
+                            "အယံ မဇ္ဈတ္တပုဂ္ဂလော အဝေရော ဟောတု၊ အဗျာပဇ္ဇော ဟောတု၊ အနီဃော ဟောတု၊ သုခီ အတ္တာနံ ပရိဟရတု"<br>
+                            ဤအလယ်အလတ် ပုဂ္ဂိုလ်သည် ဘေးရန်ကင်းပါစေ၊ စိတ်ဆင်းရဲကင်းပါစေ၊ ကိုယ်ဆင်းရဲကင်းပါစေ၊ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ပါစေ။
+                        </div>
                         <p class="text-sm text-slate-600 dark:text-slate-400">
                             ချစ်ခင်သူများကို ပို့၍ မေတ္တာအားကောင်းလာသောအခါ၊ မိမိနှင့် အထူးတလည် မရင်းနှီးသူ၊ မုန်းလည်းမမုန်း၊ ချစ်လည်းမချစ်သော အလယ်အလတ် ပုဂ္ဂိုလ်များကို အာရုံပြု၍ ပို့ပါ။
                         </p>
@@ -142,12 +156,34 @@
 
                 <!-- Step 4 -->
                 <div class="flex gap-3 sm:gap-4 relative">
-                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-600 dark:text-rose-400">၄</div>
+                    <div class="step-circle bg-rose-100 dark:bg-rose-900 border-2 border-rose-500 text-rose-800 dark:text-rose-400">၄</div>
                     <div class="bg-white/60 dark:bg-slate-800/60 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 flex-1 shadow-sm">
                         <h4 class="font-bold text-rose-700 dark:text-rose-400 text-lg mb-2">ရန်သူ / မုန်းတီးသူ (Verī puggala) နှင့် သီမသမ္ဘေဒ</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            နောက်ဆုံးတွင် မိမိအပေါ် မကောင်းကျင့်ဖူးသူ၊ မုန်းတီးသူများကိုပါ မေတ္တာ အာရုံပြုပါ။ ဒေါသဖြစ်လာလျှင် ဗုဒ္ဓ၏ အဆုံးအမများကို ဆင်ခြင်၍ ဒေါသကို ပယ်ဖျောက်ပါ။
+                        <div class="mb-3 p-3 bg-rose-50 dark:bg-rose-900/30 rounded-lg text-sm font-medium text-slate-900 dark:text-slate-300">
+                            "အယံ ဝေရီပုဂ္ဂလော အဝေရော ဟောတု၊ အဗျာပဇ္ဇော ဟောတု၊ အနီဃော ဟောတု၊ သုခီ အတ္တာနံ ပရိဟရတု"<br>
+                            ဤရန်သူပုဂ္ဂိုလ်သည် ဘေးရန်ကင်းပါစေ၊ စိတ်ဆင်းရဲကင်းပါစေ၊ ကိုယ်ဆင်းရဲကင်းပါစေ၊ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ပါစေ။
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                            နောက်ဆုံးတွင် မိမိအပေါ် မကောင်းကျင့်ဖူးသူ၊ မုန်းတီးသူများကိုပါ မေတ္တာ အာရုံပြုပါ။ အကယ်၍ ဒေါသဖြစ်လာလျှင် အောက်ပါ ဝိသုဒ္ဓိမဂ်လာ နည်းလမ်းများဖြင့် ဒေါသကို ပယ်ဖျောက်ပါ။
                         </p>
+                        
+                        <details class="mb-5 group">
+                            <summary class="text-sm font-bold text-rose-800 dark:text-rose-400 cursor-pointer flex items-center gap-2 select-none hover:text-rose-700 dark:hover:text-rose-300 bg-rose-50 dark:bg-rose-900/20 px-3 py-2.5 rounded-lg border border-rose-200 dark:border-rose-800 transition">
+                                <i class="fa-solid fa-fire-extinguisher"></i> ဒေါသကို ပယ်ဖျောက်နည်း (၉) မျိုး (ဝိသုဒ္ဓိမဂ်)
+                            </summary>
+                            <div class="mt-2 p-4 bg-white dark:bg-slate-900/50 rounded-lg text-sm text-slate-900 dark:text-slate-300 border border-slate-200 dark:border-slate-700 border-l-4 border-l-rose-500 space-y-3 leading-relaxed shadow-sm">
+                                <p>၁။ <strong>ကကစူပမသုတ် ဆင်ခြင်ခြင်း:</strong> "လွှဖြင့် တိုက်ဖြတ်ခံရလျှင်ပင် ဒေါသမထွက်ရ" ဟူသော ဘုရားရှင်၏ အဆုံးအမကို သတိရပါ။</p>
+                                <p>၂။ <strong>ကောင်းကွက်ကို ရှာခြင်း:</strong> ရန်သူ၏ ကိုယ်အမူအရာ၊ နှုတ်အမူအရာ၊ စိတ်နေသဘောထား (၃) မျိုးအနက်မှ ကောင်းကွက် တစ်ခုခုကို ရှာဖွေ အာရုံပြုပါ။</p>
+                                <p>၃။ <strong>ကိုယ့်ကိုယ်ကို ဆုံးမခြင်း:</strong> "သူက နင့်ကို စိတ်ဆင်းရဲအောင်လုပ်တာ၊ နင်က ဘာလို့ ဒေါသထွက်ပြီး ကိုယ့်ကိုယ်ကို ထပ်ဆင်းရဲအောင် လုပ်နေတာလဲ" ဟု ဆုံးမပါ။</p>
+                                <p>၄။ <strong>ကမ္မဿကတာ ဆင်ခြင်ခြင်း:</strong> "မိမိ၏ ဒေါသကံသည် မိမိ၏ အမွေသာဖြစ်၍ အပါယ်သို့ ကျစေမည်။ သူ၏ မကောင်းမှုကံသည် သူ၏ အမွေသာဖြစ်သည်" ဟု ကံကိုသာ ပိုင်ဆိုင်ကြောင်း ဆင်ခြင်ပါ။</p>
+                                <p>၅။ <strong>ဘုရားရှင်၏ ကျင့်စဉ်ကို သတိရခြင်း:</strong> အလောင်းတော်ဘဝက ရန်သူများအပေါ်၌ပင် သည်းခံခဲ့ပုံ၊ မေတ္တာထားခဲ့ပုံ အတ္ထုပ္ပတ္တိများကို ပြန်လည် အောက်မေ့ပါ။</p>
+                                <p>၆။ <strong>သံသရာ၏ ရှည်လျားပုံကို ဆင်ခြင်ခြင်း:</strong> "အစမထင် သံသရာတစ်ကွေ့တွင် ဤသူသည် ငါ၏ အမိ၊ အဖ၊ ညီအစ်ကို မောင်နှမ မဖြစ်ခဲ့ဖူးသူဟူ၍ မရှိ" ဟု ဆင်ခြင်ပါ။</p>
+                                <p>၇။ <strong>မေတ္တာအကျိုး (၁၁) ပါးကို ဆင်ခြင်ခြင်း:</strong> ဒေါသထွက်နေပါက မေတ္တာ၏ အကျိုးကျေးဇူးများကို ဆုံးရှုံးရမည်ဟု သတိပြုပါ။</p>
+                                <p>၈။ <strong>ဓာတ်ခွဲ၍ ဆင်ခြင်ခြင်း:</strong> "သူ၏ ဆံပင်ကို စိတ်ဆိုးသလား၊ အသားကို စိတ်ဆိုးသလား၊ ရုပ်တရားကို စိတ်ဆိုးသလား" ဟု ဓာတ်သဘောသက်သက် ခွဲခြမ်းစိတ်ဖြာလိုက်လျှင် စိတ်ဆိုးစရာ ပုဂ္ဂိုလ် မတွေ့ရတော့ပါ။</p>
+                                <p>၉။ <strong>လက်ဆောင်ပေးခြင်း:</strong> အထက်ပါနည်းများဖြင့် မရပါက၊ ထိုသူအား မိမိပိုင်ဆိုင်သော ပစ္စည်းတစ်ခုခုကို ပေးကမ်းလိုက်ပါ။ (ဒါနဖြင့် ဒေါသကို ဖြိုခွဲခြင်း)</p>
+                            </div>
+                        </details>
+
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800">
                             <h5 class="font-bold text-emerald-800 dark:text-emerald-400 mb-1">သီမသမ္ဘေဒ (နယ်နိမိတ် ကျိုးပေါက်ခြင်း)</h5>
                             <p class="text-xs text-emerald-700 dark:text-emerald-300">
@@ -187,11 +223,11 @@
                             ကရဏီယမတ္ထကုသလေန၊ ယန္တံ သန္တံ ပဒံ အဘိသမစ္စ။<br>
                             သက္ကော ဥဇူ စ သုဟုဇူ စ၊ သုဝစော စဿ မုဒု အနတိမာနီ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             လောကီ လောကုတ္တရာ အကျိုးစီးပွား၌ လိမ္မာကျွမ်းကျင်သူသည် ငြိမ်သက်အေးမြသော နိဗ္ဗာန်ကို အာရုံပြု၍ ဤသို့ ကျင့်ကြံအပ်၏။ စွမ်းဆောင်နိုင်ရမည်၊ ကိုယ်နှုတ်နှစ်ပါး ဖြောင့်မတ်ရမည်၊ စိတ်သဘောထား အထူးဖြောင့်မတ်ရမည်၊ ဆုံးမလွယ်သူ ဖြစ်ရမည်၊ နူးညံ့သိမ်မွေ့ရမည်၊ မာနမကြီး နှိမ့်ချသော သဘောရှိရမည်။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>မေတ္တာပွားသူ၏ အခြေခံ အရည်အချင်းကောင်း (၁၅) ပါးအနက် ရှေးဦး (၆) ပါး
                     </div>
                 </div>
@@ -207,11 +243,11 @@
                             သန္တုဿကော စ သုဘရော စ၊ အပ္ပကိစ္စော စ သလ္လဟုကဝုတ္တိ။<br>
                             သန္တိန္ဒြိယော စ နိပကော စ၊ အပ္ပဂဗ္ဘော ကုလေသွနနုဂိဒ္ဓေါ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             ရောင့်ရဲလွယ်သူ ဖြစ်ရမည်၊ မွေးမြူလွယ်သူ ဖြစ်ရမည်၊ နည်းပါးသော ကိစ္စရှိရမည်၊ ပေါ့ပါးသော အသက်မွေးမှု ရှိရမည်၊ ငြိမ်သက်သော ဣန္ဒြေရှိရမည်၊ ရင့်ကျက်သော ပညာရှိရမည်၊ ကိုယ်နှုတ်အမူအရာ မကြမ်းတမ်းဘဲ ယဉ်ကျေးရမည်၊ ဆွေမျိုး ဒါယကာတို့အပေါ် တွယ်တာမက်မောမှု မရှိရ။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>မေတ္တာပွားသူ၏ အခြေခံ အရည်အချင်းကောင်း ကျန် (၉) ပါး ပြည့်စုံခြင်း
                     </div>
                 </div>
@@ -227,11 +263,11 @@
                             န စ ခုဒ္ဒမာစရေ ကိဉ္စိ၊ ယေန ဝိညူ ပရေ ဥပဝဒေယျုံ။<br>
                             သုခိနော ဝ ခေမိနော ဟောန္တု၊ သဗ္ဗသတ္တာ ဘဝန္တု သုခိတတ္တာ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             ပညာရှိတို့ ကဲ့ရဲ့ပြစ်တင်လောက်သည့် အသေးအဖွဲဖြစ်သော မကောင်းမှု ဒုစရိုက်ကိုမျှ မပြုလုပ်ရာ။ လောက၌ရှိသော သတ္တဝါအပေါင်းတို့သည် ကိုယ်၏ချမ်းသာခြင်း နှင့် ပြည့်စုံကြပါစေ၊ ဘေးရန်ကင်းလွတ်ကြပါစေ၊ စိတ်၏ချမ်းသာခြင်း နှင့် ပြည့်စုံကြပါစေ။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>သဗ္ဗသတ္တာ - အားလုံးသော သတ္တဝါတို့ ချမ်းသာစေရန် အနန္တစကြာဝဠာ ဖြန့်ကြက်ခြင်း
                     </div>
                 </div>
@@ -247,11 +283,11 @@
                             ယေ ကေစိ ပါဏဘူတတ္ထိ၊ တသာ ဝါ ထာဝရာ ဝါ အနဝသေသာ။<br>
                             ဒီဃာ ဝါ ယေ မဟန္တာ ဝါ၊ မဇ္ဈိမာ ရဿကာ အဏုကထူလာ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             ကြောက်တတ်သော (ပုထုဇဉ်၊ သေက္ခ) သတ္တဝါ၊ မကြောက်တတ်သော (ရဟန္တာ) သတ္တဝါ၊ ကြွင်းမဲ့ ဥဿုံ အလုံးစုံသော သတ္တဝါ၊ ခန္ဓာကိုယ် ရှည်သော သတ္တဝါ၊ ကြီးမားသော သတ္တဝါ၊ အလတ်စား သတ္တဝါ၊ တိုသော သတ္တဝါ၊ မြင်နိုင်ခဲလောက်အောင် သေးငယ်သော (အဏုမြူ) သတ္တဝါ၊ ဆူဖြိုး ဝ-ကြီးသော သတ္တဝါ။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>အရွယ်အစား နှင့် သဘောတရားအလိုက် သတ္တဝါအားလုံးကို ချွင်းချက်မရှိ အာရုံပြုခြင်း
                     </div>
                 </div>
@@ -267,11 +303,11 @@
                             ဒိဋ္ဌာ ဝါ ယေဝ အဒိဋ္ဌာ၊ ယေ စ ဒူရေ ဝသန္တိ အဝိဒူရေ။<br>
                             ဘူတာ ဝါ သမ္ဘဝေသီ ဝါ၊ သဗ္ဗသတ္တာ ဘဝန္တု သုခိတတ္တာ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             မျက်စိဖြင့် မြင်အပ်ဖူးသော သတ္တဝါ၊ မမြင်အပ်ဖူးသော သတ္တဝါ၊ အဝေး၌ နေထိုင်ကြသော သတ္တဝါ၊ အနီး၌ နေထိုင်ကြသော သတ္တဝါ၊ ထင်ရှားဖြစ်ပြီးသော (ရဟန္တာ) သတ္တဝါ၊ ဘဝသစ်ကို ရှာဖွေဆဲဖြစ်သော (ပုထုဇဉ်၊ သေက္ခ) သတ္တဝါ၊ အားလုံးသော သတ္တဝါအပေါင်းတို့သည် ချမ်းသာသော စိတ်နှလုံး ရှိကြပါစေ။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>အနီးအဝေး နှင့် မြင်ရ/မမြင်ရ သတ္တဝါ အားလုံးသို့ ချစ်မေတ္တာ စီးဆင်းစေခြင်း
                     </div>
                 </div>
@@ -287,11 +323,11 @@
                             န ပရော ပရံ နိကုဗ္ဗေထ၊ နာတိမညေထ ကတ္ထစိ နံ ကဉ္စိ။<br>
                             ဗျာရောသနာ ပဋိဃသညာ၊ နာညမညဿ ဒုက္ခမိစ္ဆေယျ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             တစ်ဦးက တစ်ဦးကို မကောက်ကျစ် မစဉ်းလဲရာ။ မည်သည့်နေရာ၌မျှ မည်သူ့ကိုမျှ မထီမဲ့မြင် မပြုရာ။ ကိုယ်လက်အမူအရာ နှုတ်အမူအရာဖြင့် ထိခိုက် နှောင့်ယှက်ခြင်းဖြင့် လည်းကောင်း၊ စိတ်နေသဘောထား အမျက်ထွက်ခြင်းဖြင့် လည်းကောင်း၊ အချင်းချင်း တစ်ဦး၏ ဆင်းရဲဒုက္ခကို တစ်ဦးက မလိုလား မနှစ်သက်ရာ။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>အချင်းချင်း မာယာကောက်ကျစ်မှု နှင့် မထီမဲ့မြင်ပြုမှုများ လုံးဝ ချုပ်ငြိမ်းရန် အဓိဋ္ဌာန်ပြုခြင်း
                     </div>
                 </div>
@@ -307,11 +343,11 @@
                             မာတာ ယထာ နိယံ ပုတ္တမာယုသာ၊ ဧကပုတ္တမနုရက္ခေ။<br>
                             ဧဝမ္ပိ သဗ္ဗဘူတေသု၊ မာနသံ ဘာဝယေ အပရိမာဏံ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             မိခင်သည် မိမိ၏ ရင်သွေးဖြစ်သော တစ်ဦးတည်းသော သားငယ်ကို အသက်နှင့် လဲ၍ စောင့်ရှောက် ကာကွယ်သကဲ့သို့၊ ထို့အတူ သတ္တဝါအပေါင်းတို့အပေါ်၌ အပိုင်းအခြား မရှိသော မေတ္တာစိတ်ကို ကြီးမား ကျယ်ပြန့်စွာ ပွားများရာ၏။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>အသက်နှင့်လဲ၍ စောင့်ရှောက်သော မိခင်၏ မေတ္တာကဲ့သို့ အတိုင်းအဆမရှိ ကြီးမားသော မေတ္တာပွားခြင်း
                     </div>
                 </div>
@@ -327,11 +363,11 @@
                             မေတ္တဉ္စ သဗ္ဗလောကသ္မိံ၊ မာနသံ ဘာဝယေ အပရိမာဏံ။<br>
                             ဥဒ္ဓံ အဓော စ တိရိယဉ္စ၊ အသမ္ဗာဓံ အဝေရမသပတ္တံ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             အထက် (ဘဝဂ်တိုင်အောင်)၊ အောက် (အဝီစိတိုင်အောင်)၊ ဖီလာ (ကန့်လန့် မျက်နှာပြင် အရပ်ဆယ်မျက်နှာရှိ) တစ်လောကလုံးအပေါ်၌ ကျဉ်းမြောင်းခြင်း မရှိသော၊ အတွင်းရန် ကင်းရှင်းသော၊ အပြင်ရန် ကင်းရှင်းသော အပိုင်းအခြား မရှိသည့် မေတ္တာစိတ်ကို ကြီးမား ကျယ်ပြန့်စွာ ပွားများရာ၏။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>အထက်၊ အောက်၊ ဖီလာ လောကသုံးပါးလုံးသို့ ကျဉ်းမြောင်းခြင်းမရှိသော အနန္တမေတ္တာ လွှတ်တင်ခြင်း
                     </div>
                 </div>
@@ -347,11 +383,11 @@
                             တိဋ္ဌံ စရံ နိသိန္နော ဝါ၊ သယာနော ဝါ ယာဝတဿ ဝိဂတမိဒ္ဓေါ။<br>
                             ဧတံ သတိံ အဓိဋ္ဌေယျ၊ ဗြဟ္မမေတံ ဝိဟာရမိဓမာဟု။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             ရပ်နေစဉ် ဖြစ်စေ၊ သွားလာနေစဉ် ဖြစ်စေ၊ ထိုင်နေစဉ် ဖြစ်စေ၊ လဲလျောင်းနေစဉ် ဖြစ်စေ၊ အိပ်မပျော်သေး၍ နိုးကြားနေသရွေ့ ကာလပတ်လုံး ဤမေတ္တာသတိကို စွဲမြဲစွာ ဆောက်တည် ကျင့်သုံးရာ၏။ ဤသို့ မေတ္တာဖြင့် နေထိုင်ခြင်းကို ဤသာသနာတော်၌ "ဗြဟ္မဝိဟာရ" (မြတ်သော နေထိုင်ခြင်း) ဟူ၍ မြတ်စွာဘုရား ဟောကြားတော်မူ၏။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>ဣရိယာပထ (၄) ပါးလုံး၌ မေတ္တာသတိဖြင့် နေထိုင်ခြင်းသည် မြတ်သော ဗြဟ္မာ့နေထိုင်ခြင်း မည်ပုံ
                     </div>
                 </div>
@@ -367,13 +403,361 @@
                             ဒိဋ္ဌိဉ္စ အနုပဂ္ဂမ္မ၊ သီလဝါ ဒဿနေန သမ္ပန္နော။<br>
                             ကာမေသု ဝိနယ ဂေဓံ၊ န ဟိ ဇာတု ဂဗ္ဘသေယျံ ပုနရေတီ။
                         </p>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
                             မေတ္တာကမ္မဋ္ဌာန်း ပွားများသူသည် အယူမှား (မိစ္ဆာဒိဋ္ဌိ) သို့ မကပ်ရောက်ဘဲ လောကုတ္တရာသီလ နှင့် ပြည့်စုံလျက်၊ သောတာပတ္တိမဂ်ဉာဏ် အမြင်နှင့် ပြည့်စုံပြီးလျှင်၊ ဝတ္ထုကာမ ကိလေသာကာမတို့၌ တပ်မက် မက်မောမှုကို ကင်းစင်စေပြီး (အနာဂါမ်မဂ်ဉာဏ်ဖြင့် ပယ်လျက်)၊ နောင်တစ်ဖန် အမိဝမ်းခေါင်း သန္ဓေတည်း-အိပ်စက်ခြင်း (ပဋိသန္ဓေနေခြင်း) သို့ လုံးဝ မရောက်တော့ပြီ (ရဟန္တာဖြစ်၍ ပရိနိဗ္ဗာန် စံရတော့၏)။
                         </p>
                     </div>
-                    <div class="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                    <div class="mt-3 text-xs font-semibold text-rose-800 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/30">
                         <i class="fa-solid fa-lightbulb mr-1.5"></i>မေတ္တာဈာန်မှ ဝိပဿနာ ကူးပြောင်း၍ သံသရာဝဋ်ဆင်းရဲမှ အပြီးတိုင် လွတ်မြောက်တော်မူပုံ
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 528 Metta -->
+        <div class="glass-card rounded-3xl p-4 sm:p-6 md:p-10 border-t-4 border-t-indigo-500 shadow-sm relative overflow-hidden max-w-5xl mx-auto mb-10">
+            <div class="absolute -right-10 -top-10 text-9xl text-indigo-500/5 dark:text-indigo-500/10 pointer-events-none"><i class="fa-solid fa-infinity"></i></div>
+            
+            <div class="flex items-center justify-between mb-8 flex-wrap gap-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-3">
+                        <i class="fa-solid fa-network-wired text-indigo-500"></i> မေတ္တာ ၅၂၈ သွယ် (The 528 Ways of Mettā)
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">ဝိသုဒ္ဓိမဂ်လာ နည်းစနစ်အတိုင်း မေတ္တာပွားများခြင်း အသေးစိတ်</p>
+                </div>
+            </div>
+
+            <!-- The 4 Core Wishes -->
+            <div class="mb-8">
+                <h4 class="font-bold text-indigo-800 dark:text-indigo-300 text-lg mb-4 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">၁။ အာကာရ ၄ ပါး (The 4 Core Wishes)</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 text-center">
+                        <div class="text-2xl mb-2 text-indigo-500"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h5 class="font-bold text-slate-800 dark:text-slate-200 text-sm">အဝေရာ ဟောန္တု</h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ဘေးရန် ကင်းကြပါစေ</p>
+                    </div>
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 text-center">
+                        <div class="text-2xl mb-2 text-indigo-500"><i class="fa-solid fa-face-smile"></i></div>
+                        <h5 class="font-bold text-slate-800 dark:text-slate-200 text-sm">အဗျာပဇ္ဇာ ဟောန္တု</h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">စိတ်ဆင်းရဲ ကင်းကြပါစေ</p>
+                    </div>
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 text-center">
+                        <div class="text-2xl mb-2 text-indigo-500"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h5 class="font-bold text-slate-800 dark:text-slate-200 text-sm">အနီဃာ ဟောန္တု</h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ကိုယ်ဆင်းရဲ ကင်းကြပါစေ</p>
+                    </div>
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 text-center">
+                        <div class="text-2xl mb-2 text-indigo-500"><i class="fa-solid fa-hands-holding-child"></i></div>
+                        <h5 class="font-bold text-slate-800 dark:text-slate-200 text-sm">သုခီ အတ္တာနံ ပရိဟရန္တု</h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ချမ်းသာစွာ မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Anodhisoka -->
+                <div>
+                    <h4 class="font-bold text-teal-700 dark:text-teal-400 text-lg mb-4 border-b border-teal-100 dark:border-teal-900/50 pb-2">၂။ အနောဓိသ (၅) မျိုး (Unspecified)</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0 mt-0.5">၁</div>
+                            <div>
+                                <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ သတ္တာ</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">သတ္တဝါ အားလုံး</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0 mt-0.5">၂</div>
+                            <div>
+                                <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ ပါဏာ</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">ထွက်သက်ဝင်သက်ရှိသူ အားလုံး</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0 mt-0.5">၃</div>
+                            <div>
+                                <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ ဘူတာ</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">ထင်ရှားဖြစ်ပေါ်လာသူ အားလုံး</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0 mt-0.5">၄</div>
+                            <div>
+                                <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ ပုဂ္ဂလာ</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">ပုဂ္ဂိုလ် အားလုံး</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0 mt-0.5">၅</div>
+                            <div>
+                                <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">ခန္ဓာကိုယ် အတ္တဘော အကျုံးဝင်သူ အားလုံး</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Odhisoka -->
+                <div>
+                    <h4 class="font-bold text-rose-700 dark:text-rose-400 text-lg mb-4 border-b border-rose-100 dark:border-rose-900/50 pb-2">၃။ ဩဓိသ (၇) မျိုး (Specified)</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0 mt-0.5">၁</div>
+                            <div><span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗာ ဣတ္ထိယော</span><p class="text-[11px] text-slate-600 dark:text-slate-400">အမျိုးသမီး အားလုံး</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0 mt-0.5">၂</div>
+                            <div><span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ ပုရိသာ</span><p class="text-[11px] text-slate-600 dark:text-slate-400">အမျိုးသား အားလုံး</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0 mt-0.5">၃</div>
+                            <div><span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ အရိယာ</span><p class="text-[11px] text-slate-600 dark:text-slate-400">အရိယာ အားလုံး</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0 mt-0.5">၄</div>
+                            <div><span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ အနရိယာ</span><p class="text-[11px] text-slate-600 dark:text-slate-400">ပုထုဇဉ် အားလုံး</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0 mt-0.5">၅</div>
+                            <div><span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ ဒေဝါ</span><p class="text-[11px] text-slate-600 dark:text-slate-400">နတ်, ဗြဟ္မာ အားလုံး</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0 mt-0.5">၆</div>
+                            <div><span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ မနုဿာ</span><p class="text-[11px] text-slate-600 dark:text-slate-400">လူ အားလုံး</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm sm:col-span-2">
+                            <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0 mt-0.5">၇</div>
+                            <div><span class="font-bold text-slate-800 dark:text-slate-200 text-sm">သဗ္ဗေ ဝိနိပါတိကာ</span><p class="text-[11px] text-slate-600 dark:text-slate-400">အပါယ် (၄) ဘုံသား အားလုံး</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculation and Directions -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-indigo-800 dark:text-indigo-300 text-lg mb-4 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">၄။ ဒိသာဖရဏ (၁၀) မျက်နှာ</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                        အထက်ပါ (၁၂) မျိုးသော အုပ်စုတို့ကို အရပ် (၁၀) မျက်နှာသို့ အာရုံပြု၍ ပို့လွှတ်ခြင်းကို ဒိသာဖရဏ ဟုခေါ်သည်။
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အရှေ့ (Puratthima)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အနောက် (Pacchima)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">မြောက် (Uttara)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">တောင် (Dakkhina)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အရှေ့တောင် (Puratthimānudisā)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အနောက်မြောက် (Pacchimānudisā)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အရှေ့မြောက် (Uttarānudisā)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အနောက်တောင် (Dakkhinānudisā)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အောက် (Hetthima)</span>
+                        <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">အထက် (Uparima)</span>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/40 dark:to-purple-950/40 p-5 rounded-2xl border border-indigo-200 dark:border-indigo-800/60 shadow-inner">
+                    <h4 class="font-bold text-indigo-900 dark:text-indigo-200 text-base mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-calculator text-indigo-500"></i> မေတ္တာ (၅၂၈) သွယ် တွက်ချက်ပုံ
+                    </h4>
+                    <div class="space-y-3 text-sm text-slate-900 dark:text-slate-300">
+                        <div class="flex justify-between items-center bg-white/50 dark:bg-slate-900/50 p-2.5 rounded border border-slate-100 dark:border-slate-700/50">
+                            <span>အရပ် မသတ်မှတ်သော မေတ္တာ</span>
+                            <span class="font-bold font-mono">(၅ + ၇) × ၄ = ၄၈ သွယ်</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white/50 dark:bg-slate-900/50 p-2.5 rounded border border-slate-100 dark:border-slate-700/50">
+                            <span>အရပ် (၁၀) မျက်နှာ ရည်စူးသော မေတ္တာ</span>
+                            <span class="font-bold font-mono">၁၂ × ၁၀ × ၄ = ၄၈၀ သွယ်</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-indigo-100 dark:bg-indigo-800 p-3 rounded border border-indigo-200 dark:border-indigo-600 font-bold text-indigo-900 dark:text-white text-base mt-2 shadow-sm">
+                            <span>စုစုပေါင်း မေတ္တာ</span>
+                            <span class="font-mono">၅၂၈ သွယ်</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- The Chant of Metta -->
+        <div class="glass-card rounded-3xl p-4 sm:p-6 md:p-10 border-t-4 border-t-violet-500 shadow-sm relative overflow-hidden max-w-5xl mx-auto mb-10">
+            <div class="absolute -right-20 -top-20 text-9xl text-violet-500/5 dark:text-violet-500/10 pointer-events-none"><i class="fa-solid fa-om"></i></div>
+            
+            <div class="flex items-center justify-between mb-8 flex-wrap gap-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-3">
+                        <i class="fa-solid fa-microphone-lines text-violet-500"></i> မေတ္တာပို့ ရွတ်စဉ် (The Chant of Mettā)
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">လက်တွေ့ မေတ္တာပွားများရာတွင် အစဉ်အလိုက် ရွတ်ဖတ်ပွားများရန် (၁၂) ဆင့်</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                <!-- Verse 1 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၁)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">မိမိကိုယ်ကို အရင်ပို့ခြင်း</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Ahaṃ avero homi,<br>abyāpajjho homi,<br>anīgho homi,<br>sukhī-attānaṃ pariharāmi
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        ငါသည် ဘေးရန်ကင်းပါစေ၊ စိတ်ဆင်းရဲကင်းပါစေ၊ ကိုယ်ဆင်းရဲကင်းပါစေ၊ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ပါစေ။
+                    </p>
+                </div>
+
+                <!-- Verse 2 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၂)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">ချစ်ခင်ရသူများ</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Mama mātāpitu, ācariya ca, ñātimitta ca<br>averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        ငါ၏ မိဘ၊ ဆရာသမား၊ ဆွေမျိုး မိတ္တဆွေအပေါင်းတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ။
+                    </p>
+                </div>
+
+                <!-- Verse 3 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၃)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">ကျောင်းတိုက်တွင်းရှိ ယောဂီများ</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Imasmiṃ ārāme sabbe yogino<br>averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        ဤကျောင်းတိုက်အတွင်းရှိ ယောဂီသူတော်စင်အပေါင်းတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ။
+                    </p>
+                </div>
+
+                <!-- Verse 4 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၄)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">အစောင့်အရှောက် နတ်ဒေဝါများ (အနီး)</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Amhākaṃ ārakkha devatā<br>Imasmiṃ āvāse, imasmiṃ ārāme<br>averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        ဤကျောင်းတိုက်၊ ဤနေရာကို စောင့်ရှောက်ကြကုန်သော အစောင့်အရှောက် နတ်ဒေဝါအပေါင်းတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ နေနိုင်ကြပါစေ။
+                    </p>
+                </div>
+
+                <!-- Verse 5 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၅)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">အစောင့်အရှောက် နတ်ဒေဝါများ (အဝေး)</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Sabbe ārakkha devatā<br>averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        အစောင့်အရှောက် နတ်ဒေဝါ အားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ နေနိုင်ကြပါစေ။
+                    </p>
+                </div>
+
+                <!-- Verse 6 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၆)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">၁၂ မျိုးသော သတ္တဝါများ</span>
+                    </div>
+                    <p class="text-[13px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Sabbe sattā, sabbe pāṇā, sabbe bhūtā<br>Sabbe puggalā, sabbe attabhāva-pariyāpannā<br>Sabbā itthiyo, sabbe purisā<br>Sabbe ariyā, sabbe anariyā<br>Sabbe devā, sabbe manussā, Sabbe vinipātikā<br>averā hontu... sukhī-attānaṃ pariharantu
+                    </p>
+                    <p class="text-xs text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        သတ္တဝါ၊ ထွက်သက်ဝင်သက်ရှိသူ၊ ထင်ရှားဖြစ်သူ၊ ပုဂ္ဂိုလ်၊ ခန္ဓာကိုယ်အကျုံးဝင်သူ၊ မိန်းမ၊ ယောက်ျား၊ အရိယာ၊ ပုထုဇဉ်၊ နတ်ဗြဟ္မာ၊ လူ၊ အပါယ်လေးဘုံသား အားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ...
+                    </p>
+                </div>
+
+                <!-- Verse 7 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၇)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">ကရုဏာ၊ မုဒိတာ နှင့် ကမ္မဿကတာ</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Dukkhā muccantu<br>Yathā-laddha-sampattito māvigacchantu<br>Anāgataṃ lābhaṃ āgacchantu samicchantu<br>Kammassakā
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        သတ္တဝါအားလုံး ဆင်းရဲဒုက္ခမှ ကင်းဝေးကြပါစေ။ ရရှိပြီးသော ချမ်းသာစည်းစိမ်မှ မကင်းကွာကြပါစေနှင့်။ မရသေးသော ချမ်းသာကို ရရှိကြပါစေ။ သတ္တဝါအားလုံးသည် ကံသာလျှင် ကိုယ်ပိုင်ဥစ္စာ ရှိကြသည်။
+                    </p>
+                </div>
+
+                <!-- Verse 8 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၈)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">ဒိသာဖရဏ (၁၀) မျက်နှာ</span>
+                    </div>
+                    <p class="text-[13px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Puratthimāya disāya, Pacchimāya disāya<br>Uttarāya disāya, Dakkhināya disāya<br>Puratthimāya anudisāya, Pacchimāya anudisāya<br>Uttarāya anudisāya, Dakkhināya anudisāya<br>Heṭṭhimāya disāya, Uparimāya disāya<br>Sabbe sattā... averā hontu...
+                    </p>
+                    <p class="text-xs text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        အရှေ့၊ အနောက်၊ မြောက်၊ တောင်၊ အရှေ့တောင်၊ အနောက်မြောက်၊ အရှေ့မြောက်၊ အနောက်တောင်၊ အောက်အရပ်၊ အထက်အရပ် (အရပ် ၁၀ မျက်နှာရှိ) သတ္တဝါအားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ...
+                    </p>
+                </div>
+
+                <!-- Verse 9 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၉)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">ကရုဏာ၊ မုဒိတာ နှင့် ကမ္မဿကတာ (ထပ်မံ)</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Dukkhā muccantu<br>Yathā-laddha-sampattito māvigaccantu<br>Anāgataṃ lābhaṃ āgacchantu samicchantu<br>Kammassakā
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        အရပ် ၁၀ မျက်နှာရှိ သတ္တဝါအားလုံး ဆင်းရဲဒုက္ခမှ ကင်းဝေးကြပါစေ။ ရရှိပြီးသော ချမ်းသာစည်းစိမ်မှ မကင်းကွာကြပါစေနှင့်။ မရသေးသော ချမ်းသာကို ရရှိကြပါစေ။ ကံသာလျှင် ကိုယ်ပိုင်ဥစ္စာ ရှိကြသည်။
+                    </p>
+                </div>
+
+                <!-- Verse 10 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၁၀)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">မြေပြင်နေ သတ္တဝါများ</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Uddhaṃ yāva bhavaggā ca, adho yāva aviccito<br>Samantā cakkavāḷesu, ye sattā paṭhavīcarā<br>abyāpajjhā niverā ca, nidukkhā ca nupaddavā
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        အထက် ဘဝဂ်တိုင်အောင်၊ အောက် အဝီစိတိုင်အောင်၊ စကြဝဠာ အနန္တတဝိုက်ရှိ မြေပြင်၌ သွားလာနေထိုင်ကြသော သတ္တဝါအားလုံးတို့သည် ရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်း၍ ဘေးဥပဒ်ကင်းကြပါစေ။
+                    </p>
+                </div>
+
+                <!-- Verse 11 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၁၁)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">ရေ၌နေ သတ္တဝါများ</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Uddhaṃ yāva bhavaggā ca, adho yāva aviccito<br>Samantā cakkavāḷesu, ye sattā udakecarā<br>abyāpajjhā niverā ca, nidukkhā ca nupaddavā
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        အထက် ဘဝဂ်တိုင်အောင်၊ အောက် အဝီစိတိုင်အောင်၊ စကြဝဠာ အနန္တတဝိုက်ရှိ ရေ၌ သွားလာနေထိုင်ကြသော သတ္တဝါအားလုံးတို့သည် ရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်း၍ ဘေးဥပဒ်ကင်းကြပါစေ။
+                    </p>
+                </div>
+
+                <!-- Verse 12 -->
+                <div class="bg-white/80 dark:bg-slate-800/80 p-5 rounded-2xl border border-violet-200/60 dark:border-violet-900/40 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900 text-violet-900 dark:text-violet-300 font-bold text-xs border border-violet-300 dark:border-violet-800">အဆင့် (၁၂)</span>
+                        <span class="text-xs text-slate-700 dark:text-slate-400 font-medium">ကောင်းကင်၌နေ သတ္တဝါများ</span>
+                    </div>
+                    <p class="text-[15px] font-bold text-violet-900 dark:text-violet-300 leading-relaxed mb-3">
+                        Uddhaṃ yāva bhavaggā ca, adho yāva aviccito<br>Samantā cakkavāḷesu, ye sattā ākāsecarā<br>abyāpajjhā niverā ca, nidukkhā ca nupaddavā
+                    </p>
+                    <p class="text-sm text-slate-900 dark:text-slate-200 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                        အထက် ဘဝဂ်တိုင်အောင်၊ အောက် အဝီစိတိုင်အောင်၊ စကြဝဠာ အနန္တတဝိုက်ရှိ ကောင်းကင်၌ သွားလာနေထိုင်ကြသော သတ္တဝါအားလုံးတို့သည် ရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်း၍ ဘေးဥပဒ်ကင်းကြပါစေ။
+                    </p>
                 </div>
             </div>
         </div>
@@ -386,47 +770,47 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၁</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">ချမ်းသာစွာ အိပ်ရခြင်း (သုခံ သုပတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">ချမ်းသာစွာ အိပ်ရခြင်း (သုခံ သုပတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၂</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">ချမ်းသာစွာ နိုးရခြင်း (သုခံ ပဋိဗုဇ္ဈတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">ချမ်းသာစွာ နိုးရခြင်း (သုခံ ပဋိဗုဇ္ဈတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၃</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">အိပ်မက်ဆိုး မမက်ခြင်း (ပါပကံ သုပိနံ န ပဿတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">အိပ်မက်ဆိုး မမက်ခြင်း (ပါပကံ သုပိနံ န ပဿတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၄</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">လူတို့ ချစ်ခင်မြတ်နိုးခြင်း (မနုဿာနံ ပိယော ဟောတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">လူတို့ ချစ်ခင်မြတ်နိုးခြင်း (မနုဿာနံ ပိယော ဟောတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၅</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">နတ်, ဘီလူးတို့ ချစ်ခင်ခြင်း (အမနုဿာနံ ပိယော ဟောတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">နတ်, ဘီလူးတို့ ချစ်ခင်ခြင်း (အမနုဿာနံ ပိယော ဟောတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၆</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">နတ်တို့ စောင့်ရှောက်ခြင်း (ဒေဝတာ ရက္ခန္တိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">နတ်တို့ စောင့်ရှောက်ခြင်း (ဒေဝတာ ရက္ခန္တိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၇</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">မီး၊ အဆိပ်၊ လက်နက် မသင့်ခြင်း (နာဿ အဂ္ဂိ ဝါ ဝိသံ ဝါ သတ္ထံ ဝါ ကမတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">မီး၊ အဆိပ်၊ လက်နက် မသင့်ခြင်း (နာဿ အဂ္ဂိ ဝါ ဝိသံ ဝါ သတ္ထံ ဝါ ကမတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၈</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">စိတ် အလွယ်တကူ တည်ကြည်ခြင်း (တုဝဋံ စိတ္တံ သမာဓိယတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">စိတ် အလွယ်တကူ တည်ကြည်ခြင်း (တုဝဋံ စိတ္တံ သမာဓိယတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၉</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">မျက်နှာအဆင်း ကြည်လင်ခြင်း (မုခဝဏ္ဏော ဝိပ္ပသီဒတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">မျက်နှာအဆင်း ကြည်လင်ခြင်း (မုခဝဏ္ဏော ဝိပ္ပသီဒတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၁၀</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">မတွေမဝေ သေရခြင်း (အသမ္မူဠှော ကာလံ ကရောတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">မတွေမဝေ သေရခြင်း (အသမ္မူဠှော ကာလံ ကရောတိ)</p>
                 </div>
                 <div class="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">၁၁</div>
-                    <p class="text-sm text-slate-700 dark:text-slate-300 pt-1">တရားထူးမရသေးလျှင် ဗြဟ္မာ့ဘုံသို့ ရောက်ရခြင်း (ဥတ္တရိံ အပ္ပဋိဝိဇ္ဈန္တော ဗြဟ္မလောကူပဂေါ ဟောတိ)</p>
+                    <p class="text-sm text-slate-900 dark:text-slate-300 pt-1">တရားထူးမရသေးလျှင် ဗြဟ္မာ့ဘုံသို့ ရောက်ရခြင်း (ဥတ္တရိံ အပ္ပဋိဝိဇ္ဈန္တော ဗြဟ္မလောကူပဂေါ ဟောတိ)</p>
                 </div>
             </div>
         </div>
