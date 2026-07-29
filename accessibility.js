@@ -47,11 +47,14 @@
                     <div class="pt-2 border-t border-slate-100 dark:border-slate-700">
                         <span class="text-xs text-slate-500 dark:text-slate-400 block mb-2 font-semibold uppercase tracking-wider">မေတ္တာရွတ်သံ (Background Audio)</span>
                         <div class="flex items-center gap-2">
-                            <button id="a11y-audio-playpause" class="flex-1 py-1.5 rounded-md text-sm font-medium flex items-center justify-center gap-2 transition-colors bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600">
+                            <button id="a11y-audio-playpause" class="flex-[2] py-1.5 rounded-md text-sm font-medium flex items-center justify-center gap-2 transition-colors bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600">
                                 <i class="fa-solid fa-play" id="a11y-audio-icon"></i> <span id="a11y-audio-label">ဖွင့်မည်</span>
                             </button>
-                            <button id="a11y-audio-stop" class="w-10 h-8 rounded-md bg-white dark:bg-slate-800 text-rose-500 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition" aria-label="Stop background audio" title="ရပ်မည်">
+                            <button id="a11y-audio-stop" class="flex-1 py-1.5 rounded-md bg-white dark:bg-slate-800 text-rose-500 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition" aria-label="Stop background audio" title="ရပ်မည်">
                                 <i class="fa-solid fa-stop"></i>
+                            </button>
+                            <button id="a11y-lyrics-btn" class="flex-1 py-1.5 rounded-md bg-white dark:bg-slate-800 text-sky-500 shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition" aria-label="View Lyrics" title="ရွတ်စဉ်ဖတ်မည်">
+                                <i class="fa-solid fa-music"></i>
                             </button>
                         </div>
                         <span class="text-[10px] text-slate-400 dark:text-slate-500 block mt-1.5"><i class="fa-solid fa-circle-info mr-1"></i> စာမျက်နှာ ပြောင်းလဲသည့်တိုင် ဆက်လက် ဖွင့်ထားနိုင်သည်</span>
@@ -300,6 +303,11 @@
         audioIcon.className = playing ? 'fa-solid fa-pause' : 'fa-solid fa-play';
         audioLabel.textContent = playing ? 'ခေတ္တရပ်မည်' : 'ဖွင့်မည်';
         audioBadge.classList.toggle('hidden', !playing);
+
+        const marqueeTextEl = document.querySelector('.a11y-marquee-text');
+        if (marqueeTextEl) {
+            marqueeTextEl.style.animationPlayState = playing ? 'running' : 'paused';
+        }
     }
 
     function playMettaAudio() {
@@ -358,6 +366,65 @@
         document.addEventListener('click', resumeOnInteraction, { once: true });
         document.addEventListener('touchstart', resumeOnInteraction, { once: true });
     }
+
+    const lyricsString = "အဟံ အဝေရော ဟောမိ ☸ အဗျာပဇ္ဇော ဟောမိ ☸ အနီဃော ဟောမိ ☸ သုခီ အတ္တာနံ ပရိဟရာမိ ☸ မမ မာတာပိတု ☸ အာစရိယ စ ဉာတိမိတ္တ စ ☸ သဗြဟ္မစာရိနော စ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဣမသ္မိံ အာရာမေ သဗ္ဗေ ယောဂိနော ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဣမသ္မိံ အာရာမေ သဗ္ဗေ ဘိက္ခူ ☸ သာမဏေရာ စ ☸ ဥပါသကာ ဥပါသိကာယ စ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ အမှာကံ စတုပစ္စယ ဒါယကာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ အမှာကံ အာရက္ခဒေဝတာ ☸ ဣမသ္မိံ ဝိဟာရေ ☸ ဣမသ္မိံ အာဝါသေ ☸ ဣမသ္မိံ အာရာမေ ☸ အာရက္ခဒေဝတာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ သဗ္ဗေ သတ္တာ ☸ သဗ္ဗေ ပါဏာ ☸ သဗ္ဗေ ဘူတာ ☸ သဗ္ဗေ ပုဂ္ဂလာ ☸ သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ ☸ သဗ္ဗာ ဣတ္ထိယော ☸ သဗ္ဗေ ပုရိသာ ☸ သဗ္ဗေ အရိယာ ☸ သဗ္ဗေ အနရိယာ ☸ သဗ္ဗေ ဒေဝါ ☸ သဗ္ဗေ မနုဿာ ☸ သဗ္ဗေ ဝိနိပါတိကာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဒုက္ခာ မုစ္စန္တု ☸ ယထာလဒ္ဓသမ္ပတ္တိတော မာ ဝိဂစ္ဆန္တု ☸ ကမ္မဿကာ ☸ ပုရတ္ထိမာယ ဒိသာယ ☸ ပစ္ဆိမာယ ဒိသာယ ☸ ဥတ္တရာယ ဒိသာယ ☸ ဒက္ခိဏာယ ဒိသာယ ☸ ပုရတ္ထိမာယ အနုဒိသာယ ☸ ပစ္ဆိမာယ အနုဒိသာယ ☸ ဥတ္တရာယ အနုဒိသာယ ☸ ဒက္ခိဏာယ အနုဒိသာယ ☸ ဟေဋ္ဌိမာယ ဒိသာယ ☸ ဥပရိမာယ ဒိသာယ ☸ သဗ္ဗေ သတ္တာ ☸ သဗ္ဗေ ပါဏာ ☸ သဗ္ဗေ ဘူတာ ☸ သဗ္ဗေ ပုဂ္ဂလာ ☸ သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ ☸ သဗ္ဗာ ဣတ္ထိယော ☸ သဗ္ဗေ ပုရိသာ ☸ သဗ္ဗေ အရိယာ ☸ သဗ္ဗေ အနရိယာ ☸ သဗ္ဗေ ဒေဝါ ☸ သဗ္ဗေ မနုဿာ ☸ သဗ္ဗေ ဝိနိပါတိကာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဒုက္ခာ မုစ္စန္တု ☸ ယထာလဒ္ဓသမ္ပတ္တိတော မာ ဝိဂစ္ဆန္တု ☸ ကမ္မဿကာ ☸ ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ ☸ အဓော ယာဝ အဝီစိတော ☸ သမန္တာ စက္ကဝါဠေသု ☸ ယေ သတ္တာ ပထဝီစရာ ☸ အဗျာပဇ္ဇာ နိဝေရာ စ ☸ နိဒုက္ခာ စ နုပဒ္ဒဝါ ☸ ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ ☸ အဓော ယာဝ အဝီစိတော ☸ သမန္တာ စက္ကဝါဠေသု ☸ ယေ သတ္တာ ဥဒကေစရာ ☸ အဗျာပဇ္ဇာ နိဝေရာ စ ☸ နိဒုက္ခာ စ နုပဒ္ဒဝါ ☸ ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ ☸ အဓော ယာဝ အဝီစိတော ☸ သမန္တာ စက္ကဝါဠေသု ☸ ယေ သတ္တာ အာကာသေစရာ ☸ အဗျာပဇ္ဇာ နိဝေရာ စ ☸ နိဒုက္ခာ စ နုပဒ္ဒဝါ";
+
+    const lyricsMarqueeHTML = `
+    <style>
+        @keyframes a11y-marquee-anim {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .a11y-marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100vw;
+            animation: a11y-marquee-anim 400s linear infinite;
+        }
+    </style>
+    <div id="a11y-marquee-container" class="fixed bottom-0 left-0 right-0 h-14 bg-slate-900/90 text-amber-400 text-lg sm:text-xl font-bold z-[60] hidden flex items-center overflow-hidden backdrop-blur-sm border-t border-amber-500/30 font-sans">
+        <div class="a11y-marquee-text tracking-wider shadow-black drop-shadow-md">
+            ${lyricsString}
+        </div>
+        <button id="a11y-marquee-close" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-slate-800 text-slate-300 hover:bg-rose-500 hover:text-white transition shadow-md z-[61] focus:outline-none ring-2 ring-slate-700/50">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', lyricsMarqueeHTML);
+
+    const a11yLyricsBtn = document.getElementById('a11y-lyrics-btn');
+    const a11yMarqueeContainer = document.getElementById('a11y-marquee-container');
+    const a11yMarqueeClose = document.getElementById('a11y-marquee-close');
+
+    function toggleMarquee() {
+        if (a11yMarqueeContainer.classList.contains('hidden')) {
+            a11yMarqueeContainer.classList.remove('hidden');
+            
+            // Sync animation duration and play state with audio
+            const audioEl = document.getElementById('a11y-metta-audio');
+            const marqueeTextEl = a11yMarqueeContainer.querySelector('.a11y-marquee-text');
+            if (audioEl && marqueeTextEl) {
+                marqueeTextEl.style.animationPlayState = audioEl.paused ? 'paused' : 'running';
+                
+                if (!isNaN(audioEl.duration) && audioEl.duration > 0) {
+                    marqueeTextEl.style.animationDuration = `${audioEl.duration}s`;
+                } else {
+                    audioEl.addEventListener('loadedmetadata', () => {
+                        marqueeTextEl.style.animationDuration = `${audioEl.duration}s`;
+                    }, { once: true });
+                }
+            }
+        } else {
+            a11yMarqueeContainer.classList.add('hidden');
+        }
+    }
+
+    if (a11yLyricsBtn) a11yLyricsBtn.addEventListener('click', toggleMarquee);
+    if (a11yMarqueeClose) a11yMarqueeClose.addEventListener('click', () => {
+        a11yMarqueeContainer.classList.add('hidden');
+    });
 
     // Exposed so other page scripts (e.g. metta_prompter.html's own guided timer) can
     // pause this background player instead of overlapping it with their own audio.
