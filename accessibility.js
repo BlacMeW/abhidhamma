@@ -369,7 +369,8 @@
         .a11y-marquee-text {
             display: inline-block;
             white-space: nowrap;
-            padding-left: 100vw;
+            padding-left: 50vw;
+            padding-right: 50vw;
             will-change: transform;
         }
     </style>
@@ -410,7 +411,7 @@
         }
         if (percentage > 1) percentage = 1;
         
-        marqueeTextEl.style.transform = `translateX(-${percentage * 100}%)`;
+        marqueeTextEl.style.transform = `translateX(calc(-${percentage * 100}% + ${percentage * 100}vw))`;
         
         if (!audioEl.paused && lyricsVisible) {
             marqueeAnimationFrame = requestAnimationFrame(updateMarqueePosition);
