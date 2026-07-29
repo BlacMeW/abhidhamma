@@ -405,7 +405,7 @@
             return;
         }
 
-        const introDelay = 29; // Wait 29s for intro music before scrolling
+        const introDelay = 39; // Wait 29s for intro music before scrolling
         const chantDuration = audioEl.duration - 7; // Tuned for perfect speed (between 0 and 29)
         let elapsed = audioEl.currentTime - introDelay;
         
