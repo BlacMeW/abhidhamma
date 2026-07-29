@@ -231,9 +231,17 @@
                         <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">သဘာဝအတိုင်း ပုံမှန် တိုတို ရှူသွင်း/ရှူထုတ်မှုကို သိလျက် ရှုမှတ်ရန်။</p>
                     </button>
 
-                    <button onclick="selectPreset('calming')" id="preset-calming" class="preset-card text-left p-3.5 rounded-2xl border-2 border-transparent bg-slate-100/80 dark:bg-slate-800/60 hover:border-slate-300 dark:hover:border-slate-600 transition">
+                    <button onclick="selectPreset('sabbakaya')" id="preset-sabbakaya" class="preset-card text-left p-3.5 rounded-2xl border-2 border-transparent bg-slate-100/80 dark:bg-slate-800/60 hover:border-slate-300 dark:hover:border-slate-600 transition">
                         <div class="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center justify-between">
-                            <span>၄။ ပဿမ္ဘယံ (ငြိမ်းအေးခြင်း)</span>
+                            <span>၄။ သဗ္ဗကာယ (တစ်ကိုယ်လုံး သိခြင်း)</span>
+                            <span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">4s - 1s - 4s</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ထွက်သက်ဝင်သက် တစ်ချက်စီ၏ အစ၊ အလယ်၊ အဆုံးကို ပြတ်တောက်မှုမရှိ ထင်ရှားစွာ သိလျက် ရှုမှတ်ရန်။</p>
+                    </button>
+
+                    <button onclick="selectPreset('calming')" id="preset-calming" class="preset-card text-left p-3.5 rounded-2xl border-2 border-transparent bg-slate-100/80 dark:bg-slate-800/60 hover:border-slate-300 dark:hover:border-slate-600 transition sm:col-span-2">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center justify-between">
+                            <span>၅။ ပဿမ္ဘယံ (ငြိမ်းအေးခြင်း)</span>
                             <span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">4s - 2s - 6s</span>
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ခေတ္တအောင့်၍ ရှည်လျားစွာ ထုတ်ကာ ကာယသင်္ခါရကို ငြိမ်းအေးစေရန်။</p>
@@ -274,6 +282,9 @@
 
             <!-- Tab 2: Visuddhimagga Guidance (Hidden by default) -->
             <div id="tab-content-guidance" class="space-y-3 hidden text-xs sm:text-sm">
+                <div class="bg-indigo-50/60 dark:bg-indigo-950/20 p-3.5 rounded-2xl border border-indigo-200/70 dark:border-indigo-900/40 text-[11px] sm:text-xs text-indigo-800 dark:text-indigo-300 leading-relaxed">
+                    <i class="fa-solid fa-circle-info mr-1"></i> <strong>မှတ်ချက်:</strong> အောက်ဖော်ပြပါ (၄) မျိုးသည် ဝိသုဒ္ဓိမဂ်ကျမ်းလာ သမာဓိ တဖြည်းဖြည်း ခိုင်မြဲအောင် လေ့ကျင့်ရာတွင် အသုံးပြုသည့် <strong>အဆင့် (၄) ဆင့်</strong> ဖြစ်သည် (ဂဏနာမှာ အစပထမ လိုအပ်မှသာ သုံးရန် ယာယီအကူအညီဖြစ်၍ စိတ်ငြိမ်လာသည်နှင့်တစ်ပြေးညီ စွန့်ရသည်)။ "လေ့ကျင့်ရေး မုဒ်များ" တက်ဘ်ရှိ ဒီဃ/ရဿ/သဗ္ဗကာယ/ပဿမ္ဘယံ တို့မှာမူ အာနာပါနဿတိသုတ် (မဇ္ဈိမနိကာယ်) ပထမစတုက္ကလာ မူရင်းအဆင့် (၄) ဆင့် ဖြစ်သည်။ ထွက်သက်ဝင်သက်ကို <strong>အတင်းအကျပ် မထိန်းချုပ်ဘဲ</strong> ရှည်လျှင်ရှည်၊ တိုလျှင်တို ရှိသည့်အတိုင်း သဘာဝကျကျ ရှုမှတ်ခြင်းသာ မူရင်း သွန်သင်ချက် ဖြစ်ပြီး၊ ဤ Timer ၏ အချိန်နှုန်းများသည် လေ့ကျင့်ရာ၌ အထောက်အကူ ပံ့ပိုးရုံမျှသာ ဖြစ်သည်။
+                </div>
                 <div class="bg-sky-50/70 dark:bg-slate-900/80 p-4 rounded-2xl border border-sky-200 dark:border-slate-700 space-y-2">
                     <h4 class="font-bold text-sky-800 dark:text-sky-300 flex items-center gap-2">
                         <i class="fa-solid fa-list-ol text-sky-500"></i> ၁။ ဂဏနာ (ရေတွက်ခြင်း နည်းစနစ်)
@@ -284,10 +295,10 @@
                 </div>
                 <div class="bg-slate-50 dark:bg-slate-900/80 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
                     <h4 class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
-                        <i class="fa-solid fa-shoe-prints text-emerald-500"></i> ၂။ အနုဗန္ဓနာ (အစဉ်လိုက်ခြင်း နည်းစနစ်)
+                        <i class="fa-solid fa-shoe-prints text-emerald-500"></i> ၂။ အနုဗန္ဓနာ (အဆက်မပြတ် လိုက်နာခြင်း နည်းစနစ်)
                     </h4>
                     <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-                        ရေတွက်မှုကို စွန့်၍ လေဝင်လာသည့် အစ (နှာသီးဖျား)၊ အလယ် (ရင်ဘတ်)၊ အဆုံး (ချက်) နှင့် လေထွက်သွားသည့် အစ၊ အလယ်၊ အဆုံးတို့ကို ဉာဏ်ဖြင့် အစဉ်လိုက် ကြည့်ရှုခြင်း ဖြစ်သည်။
+                        ရေတွက်မှုကို စွန့်ပြီးနောက် ထွက်သက်ဝင်သက်ကို အဆက်မပြတ် သတိထား၍ လိုက်နာခြင်း ဖြစ်သော်လည်း၊ လေ၏ သွားရာလမ်းကြောင်း (နှာသီး - ရင်ဘတ် - ချက်) အတိုင်း စိတ်ကို ကိုယ်ခန္ဓာအတွင်းသို့ လိုက်ပါသွားခြင်း <strong>မဟုတ်ပါ</strong> (ဤသို့ ရှုမှတ်ခြင်းကို ဝိသုဒ္ဓိမဂ်ကျမ်း၌ ရှင်းလင်းစွာ ပယ်ချထားသည်)။ 'တံခါးစောင့်' ဥပမာအတိုင်း - တံခါးစောင့်သည် အဝင်အထွက်သမျှကို တံခါးဝ၌သာ ကြည့်ရှု၍ သိသကဲ့သို့၊ နှာသီးဖျား (သို့) အထက်ခမ်း ထိတွေ့ရာ တစ်နေရာတည်း၌သာ သတိကို စွဲမြဲစွာ ထား၍ လေဝင်/လေထွက်ကို အဆက်မပြတ် သိနေခြင်းသာ ဖြစ်သည်။
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -300,7 +311,7 @@
                     <div class="bg-purple-50/60 dark:bg-purple-950/20 p-3.5 rounded-2xl border border-purple-200/80 dark:border-purple-900/40 space-y-1">
                         <h4 class="font-bold text-purple-800 dark:text-purple-300">၄။ ဌပနာ (ငြိမ်ဝပ်တည်ကြည်ခြင်း)</h4>
                         <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-                            ထိတွေ့ရာ၌ စိတ်ငြိမ်ဝပ်ပြီး ပဋိဘာဂနိမိတ် (ကြယ်၊ ပုလဲ၊ ဂွမ်းစကဲ့သို့ အလင်း) ပေါ်လာသည်အထိ သမာဓိ တည်ကြည်စွာ ထားခြင်း။
+                            ထိတွေ့ရာ၌ စိတ်ငြိမ်ဝပ်ပြီး ပဋိဘာဂနိမိတ် (ကြယ်၊ ပုလဲ၊ ဂွမ်းစကဲ့သို့ အလင်း) ပေါ်လာသည်အထိ သမာဓိ တည်ကြည်စွာ ထားခြင်း။ နိမိတ်ကို တမင်ရှာဖွေ/မြင်အောင် မကြိုးစားသင့်ပါ - ထိတွေ့ရာ၌ သတိမပြတ် ရှိနေရုံမျှဖြင့် သမာဓိ ရင့်ကျက်လာသည်နှင့်အမျှ ၎င်းသည် မိမိအလိုလို ပေါ်လာတတ်သည်။
                         </p>
                     </div>
                 </div>
@@ -406,21 +417,26 @@
             },
             digha: {
                 title: "၂။ ဒီဃ (ရှည်သော ထွက်သက်ဝင်သက်)",
-                pali: "ဒီဃံ ဝါ အဿသန္တော... ရှည်ရှည် ရှူသွင်းလျှင် ရှည်ရှည် ရှူသွင်းသည်ဟု ထင်ရှားစွာ သိ၏။",
+                pali: "ဒီဃံ ဝါ အဿသန္တော/ပဿသန္တော... ရှည်ရှည် ရှူသွင်း/ရှူထုတ်လျှင် ရှည်ရှည်ဟု ထင်ရှားစွာ သိ၏။",
                 inTime: 5, holdTime: 0, outTime: 5, isCounting: false
             },
             rassa: {
                 title: "၃။ ရဿ (တိုသော ထွက်သက်ဝင်သက်)",
-                pali: "ရဿံ ဝါ အဿသန္တော... တိုတို ရှူသွင်း/ရှူထုတ်လျှင် တိုတိုဟု သဘာဝအတိုင်း ထင်ရှားစွာ သိ၏။",
+                pali: "ရဿံ ဝါ အဿသန္တော/ပဿသန္တော... တိုတို ရှူသွင်း/ရှူထုတ်လျှင် တိုတိုဟု သဘာဝအတိုင်း ထင်ရှားစွာ သိ၏။",
                 inTime: 3, holdTime: 0, outTime: 3, isCounting: false
             },
+            sabbakaya: {
+                title: "၄။ သဗ္ဗကာယ (တစ်ကိုယ်လုံး ထင်ရှားစွာ သိခြင်း)",
+                pali: "'သဗ္ဗကာယပဋိသံဝေဒီ အဿသိဿာမိ/ပဿသိဿာမီ'တိ သိက္ခတိ... ထွက်သက်ဝင်သက် တစ်ခုလုံး၏ အစ၊ အလယ်၊ အဆုံးကို ထင်ရှားစွာ သိလျက် ရှုမှတ်အံ့ဟု အားထုတ်ကျင့်၏။",
+                inTime: 4, holdTime: 1, outTime: 4, isCounting: false
+            },
             calming: {
-                title: "၄။ ပဿမ္ဘယံ (ကာယသင်္ခါရ ငြိမ်းအေးခြင်း)",
+                title: "၅။ ပဿမ္ဘယံ (ကာယသင်္ခါရ ငြိမ်းအေးခြင်း)",
                 pali: "ပဿမ္ဘယံ ကာယသင်္ခါရံ... ရုန့်ရင်းသော ထွက်သက်ဝင်သက်ကို ဖြည်းညှင်းစွာ ငြိမ်းအေးစေလျက် ရှုမှတ်၏။",
                 inTime: 4, holdTime: 2, outTime: 6, isCounting: false
             },
             custom: {
-                title: "၅။ စိတ်ကြိုက် အချိန်နှုန်း ချိန်ညှိမှု (Custom Rhythm)",
+                title: "၆။ စိတ်ကြိုက် အချိန်နှုန်း ချိန်ညှိမှု (Custom Rhythm)",
                 pali: "မိမိ၏ လက်ရှိ အသက်ရှူနှုန်းနှင့် အကိုက်ညီဆုံး ဖြစ်စေရန် စိတ်ကြိုက် ချိန်ညှိထားသော လေ့ကျင့်မှု။",
                 inTime: 4, holdTime: 0, outTime: 4, isCounting: false
             }
