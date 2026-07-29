@@ -650,7 +650,7 @@
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid ${n.icon} text-amber-500 dark:text-amber-600 w-4"></i>
                                 <h4 class="font-bold text-amber-800 dark:text-amber-400 text-sm group-hover:text-amber-600 dark:group-hover:text-amber-300 transition">${n.name}</h4>
-                                <span class="text-[10px] text-slate-400 font-mono hidden sm:inline-block">${n.pali}</span>
+                                <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium font-mono hidden sm:inline-block">${n.pali}</span>
                             </div>
                             <i class="fa-solid fa-arrow-right text-slate-300 dark:text-slate-700 group-hover:text-amber-400 transition text-xs"></i>
                         </div>
@@ -763,7 +763,7 @@
                     <div>
                         <span class="text-xs text-slate-600 dark:text-slate-400 uppercase font-mono">${info.label} — အမှတ် ${mm(k.id)}/၄၀</span>
                         <h3 class="text-xl font-bold ${info.color} mt-1">${k.name}</h3>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-500 font-mono mt-1">${k.pali}</p>
+                        <p class="text-[13px] md:text-[14px] text-slate-600 dark:text-slate-400 font-mono font-medium mt-1">${k.pali}</p>
                     </div>
                     
                     ${badgesHtml ? `<div class="flex flex-wrap justify-center gap-2 mt-3 mb-1">${badgesHtml}</div>` : ''}
@@ -838,7 +838,7 @@
                     <div>
                         <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">${label}</span>
                         <h3 class="text-xl font-bold ${colorClass} mt-1">${item.name}</h3>
-                        ${item.pali ? `<p class="text-[11px] font-mono text-slate-500 mt-0.5">${item.pali}</p>` : ''}
+                        ${item.pali ? `<p class="text-[13px] md:text-[14px] font-mono font-medium text-slate-600 dark:text-slate-400 mt-0.5">${item.pali}</p>` : ''}
                     </div>
                 </div>
                 <div class="mt-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 text-sm shadow-inner">
