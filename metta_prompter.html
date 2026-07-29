@@ -93,7 +93,7 @@
                 <h1 class="text-base sm:text-lg font-bold text-rose-700 dark:text-rose-400 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-heart text-rose-500 animate-pulse"></i> Metta <span class="font-normal text-slate-500 dark:text-slate-400">Prompter</span>
                 </h1>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">မေတ္တာပို့ကျင့်စဉ် နှင့် ကရဏီယမေတ္တာသုတ် ရွတ်ဖတ်ပွားများရန် လမ်းညွှန် Timer</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">မေတ္တာပို့ကျင့်စဉ်၊ ကရဏီယမေတ္တာသုတ် နှင့် မေတ္တာပို့ ရွတ်စဉ် ရွတ်ဖတ်ပွားများရန် လမ်းညွှန် Timer</p>
             </div>
             <a href="citta_cetasikas_visual_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0" title="ပင်မစာမျက်နှာသို့">
                 <i class="fa-solid fa-house"></i>
@@ -233,12 +233,15 @@
                 <label class="block text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 mb-3 text-center">
                     <i class="fa-solid fa-scroll text-amber-500 mr-1.5"></i> ပွားများမည့် မေတ္တာကျင့်စဉ် ရွေးချယ်ပါ
                 </label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <button onclick="setPracticeMode('standard')" id="mode-btn-standard" type="button" class="py-3 px-4 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition">
                         <i class="fa-solid fa-heart text-rose-500"></i> (၄) ဆင့် မေတ္တာပို့ကျင့်စဉ်
                     </button>
                     <button onclick="setPracticeMode('sutta')" id="mode-btn-sutta" type="button" class="py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition">
                         <i class="fa-solid fa-book-open text-amber-500"></i> ကရဏီယမေတ္တာသုတ် (၁၀) ဂါထာ
+                    </button>
+                    <button onclick="setPracticeMode('chant')" id="mode-btn-chant" type="button" class="py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-microphone-lines text-violet-500"></i> မေတ္တာပို့ ရွတ်စဉ် (၁၂) ဆင့်
                     </button>
                 </div>
             </div>
@@ -491,6 +494,117 @@
             }
         ];
 
+        const mettaChantStages = [
+            {
+                badge: "အဆင့် (၁) - မိမိကိုယ်ကို အရင်ပို့ခြင်း",
+                title: "၁။ မိမိကိုယ်ကို အရင်ပို့ခြင်း",
+                pali: "Ahaṃ avero homi, abyāpajjho homi, anīgho homi, sukhī-attānaṃ pariharāmi.",
+                meaning: "ငါသည် ဘေးရန်ကင်းပါစေ၊ စိတ်ဆင်းရဲကင်းပါစေ၊ ကိုယ်ဆင်းရဲကင်းပါစေ၊ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ပါစေ။",
+                guide: "မိမိကိုယ်ကို အရင်ဆုံး မေတ္တာပို့ခြင်းဖြင့် စတင်ပါ။ 'ငါ ချမ်းသာချင်သလို သူတစ်ပါးလည်း ချမ်းသာချင်ကြောင်း' ကိုယ်ချင်းစာစိတ် အရင်ဖြစ်ပေါ်စေပါ။",
+                extraGuide: "မိမိကိုယ်ကို ပို့ခြင်းဖြင့် ဈာန်မရနိုင်သော်လည်း စိတ်ကို အေးချမ်းစေပြီး ဆက်လက်ပို့ရန် အခြေခံကောင်း ဖြစ်စေသည်။",
+                caution: "အတ္တစွဲကြီးစွာ တွယ်တာမှု မဟုတ်ဘဲ သန့်စင်သော ကိုယ်ချင်းစာစိတ်ဖြင့်သာ ပွားပါ။"
+            },
+            {
+                badge: "အဆင့် (၂) - ချစ်ခင်ရသူများ",
+                title: "၂။ ချစ်ခင်ရသူများ",
+                pali: "Mama mātāpitu, ācariya ca, ñātimitta ca, averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu.",
+                meaning: "ငါ၏ မိဘ၊ ဆရာသမား၊ ဆွေမျိုး မိတ်ဆွေအပေါင်းတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ။",
+                guide: "မိဘ၊ ဆရာသမား၊ ဆွေမျိုး မိတ်ဆွေတို့ကို အာရုံပြု၍ ပို့ပါ။ ကျေးဇူးရှင်များ ဖြစ်၍ မေတ္တာစစ် ဖြစ်ရန် အလွယ်ဆုံး အဆင့်ဖြစ်သည်။",
+                extraGuide: "မိမိနှင့် အရင်းနှီးဆုံး၊ အချစ်ဆုံးသူ တစ်ဦးကို စွဲမြဲစွာ အာရုံပြုခြင်းဖြင့် သမာဓိ ပိုမို အမြန်ရနိုင်သည်။",
+                caution: "မကြာသေးမီက ကွယ်လွန်သူများကို အာရုံမပြုသင့်ပါ (စိုးရိမ်စိတ် ဖြစ်တတ်၍)။"
+            },
+            {
+                badge: "အဆင့် (၃) - ကျောင်းတိုက်တွင်းရှိ ယောဂီများ",
+                title: "၃။ ကျောင်းတိုက်တွင်းရှိ ယောဂီများ",
+                pali: "Imasmiṃ ārāme sabbe yogino, averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu.",
+                meaning: "ဤကျောင်းတိုက်အတွင်းရှိ ယောဂီသူတော်စင်အပေါင်းတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ။",
+                guide: "ယခု ကျင့်ကြံနေသည့် နေရာ (ကျောင်းတိုက်/အိမ်) အတွင်းရှိ ယောဂီအားလုံးကို ရောက်ကြားစွာ အာရုံပြု၍ မေတ္တာပို့ပါ။",
+                extraGuide: "အနီးအနားရှိ လက်ရှိ ကျင့်ကြံနေသူများကို သတိရ၍ ပတ်ဝန်းကျင်တစ်ခုလုံးသို့ မေတ္တာချဲ့ထွင်ပါ။",
+                caution: "တစ်ဦးချင်းစီကို ခွဲခြား မတွေးဘဲ 'အားလုံး' ဟူ၍သာ ကျယ်ပြန့်စွာ အာရုံပြုပါ။"
+            },
+            {
+                badge: "အဆင့် (၄) - အစောင့်အရှောက် နတ်ဒေဝါများ (အနီး)",
+                title: "၄။ အစောင့်အရှောက် နတ်ဒေဝါများ (အနီး)",
+                pali: "Amhākaṃ ārakkha devatā, imasmiṃ āvāse, imasmiṃ ārāme, averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu.",
+                meaning: "ဤကျောင်းတိုက်၊ ဤနေရာကို စောင့်ရှောက်ကြကုန်သော အစောင့်အရှောက် နတ်ဒေဝါအပေါင်းတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ နေနိုင်ကြပါစေ။",
+                guide: "ဤနေရာကို စောင့်ရှောက်နေသော နီးစပ်ရာ နတ်ဒေဝါများကို အာရုံပြု၍ ပို့ပါ။",
+                extraGuide: "မျက်စိဖြင့် မမြင်ရသော်လည်း ရှိနိုင်ကြောင်း ယုံကြည်၍ ကျေးဇူးတင်စိတ်ဖြင့် မေတ္တာပို့ပါ။",
+                caution: "ရှိမရှိကို စိုးရိမ်စရာမလို၊ ရှင်းလင်းသော စေတနာဖြင့်သာ ပို့ပါ။"
+            },
+            {
+                badge: "အဆင့် (၅) - အစောင့်အရှောက် နတ်ဒေဝါများ (အဝေး)",
+                title: "၅။ အစောင့်အရှောက် နတ်ဒေဝါများ (အဝေး)",
+                pali: "Sabbe ārakkha devatā, averā hontu, abyāpajjhā hontu, anīghā hontu, sukhī-attānaṃ pariharantu.",
+                meaning: "အစောင့်အရှောက် နတ်ဒေဝါ အားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ချမ်းသာစွာ နေနိုင်ကြပါစေ။",
+                guide: "ဝေးလံသော နေရာများရှိ နတ်ဒေဝါအားလုံးကို ကျယ်ပြန့်စွာ အာရုံပြု၍ ပို့ပါ။",
+                extraGuide: "နီးစပ်ရာမှ စတင်၍ ဝေးရာသို့ တဖြည်းဖြည်း မေတ္တာစိတ်ကို ကျယ်ပြန့်စေပါ။",
+                caution: "နယ်နိမိတ် သတ်မှတ်ထားခြင်း မရှိစေဘဲ အကန့်အသတ်မရှိစွာ ဖြန့်ကြက်ပါ။"
+            },
+            {
+                badge: "အဆင့် (၆) - ၁၂ မျိုးသော သတ္တဝါများ",
+                title: "၆။ ၁၂ မျိုးသော သတ္တဝါများ",
+                pali: "Sabbe sattā, sabbe pāṇā, sabbe bhūtā, sabbe puggalā, sabbe attabhāva-pariyāpannā, sabbā itthiyo, sabbe purisā, sabbe ariyā, sabbe anariyā, sabbe devā, sabbe manussā, sabbe vinipātikā, averā hontu... sukhī-attānaṃ pariharantu.",
+                meaning: "သတ္တဝါ၊ ထွက်သက်ဝင်သက်ရှိသူ၊ ထင်ရှားဖြစ်သူ၊ ပုဂ္ဂိုလ်၊ ခန္ဓာကိုယ်အကျုံးဝင်သူ၊ မိန်းမ၊ ယောက်ျား၊ အရိယာ၊ ပုထုဇဉ်၊ နတ်ဗြဟ္မာ၊ လူ၊ အပါယ်လေးဘုံသား အားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ...",
+                guide: "အမျိုးအစား ၁၂ မျိုးသော သတ္တဝါအားလုံးကို ချွင်းချက်မရှိ ခြုံငုံ၍ အာရုံပြုပါ။",
+                extraGuide: "သတ္တဝါခွဲခြားမှု (ကျား/မ၊ အရိယာ/ပုထုဇဉ်၊ နတ်/လူ) ကို ကျော်လွှား၍ အားလုံးကို တန်းတူ ရှုမြင်ပါ။",
+                caution: "အနည်းငယ်မျှ ချန်လှပ်ထားခြင်း မရှိစေရန် တစ်ခုချင်းစီကို နှလုံးသွင်းပါ။"
+            },
+            {
+                badge: "အဆင့် (၇) - ကရုဏာ၊ မုဒိတာ နှင့် ကမ္မဿကတာ",
+                title: "၇။ ကရုဏာ၊ မုဒိတာ နှင့် ကမ္မဿကတာ",
+                pali: "Dukkhā muccantu, yathā-laddha-sampattito māvigacchantu, anāgataṃ lābhaṃ āgacchantu samicchantu. Kammassakā.",
+                meaning: "သတ္တဝါအားလုံး ဆင်းရဲဒုက္ခမှ ကင်းဝေးကြပါစေ။ ရရှိပြီးသော ချမ်းသာစည်းစိမ်မှ မကင်းကွာကြပါစေနှင့်။ မရသေးသော ချမ်းသာကို ရရှိကြပါစေ။ သတ္တဝါအားလုံးသည် ကံသာလျှင် ကိုယ်ပိုင်ဥစ္စာ ရှိကြသည်။",
+                guide: "သတ္တဝါများ ဆင်းရဲဒုက္ခမှ ကင်းဝေးကြပါစေ၊ ရရှိပြီးသော ချမ်းသာမှ မကင်းကွာကြပါစေ၊ မရသေးသော ချမ်းသာကို ရကြပါစေဟု ကရုဏာနှင့် မုဒိတာတို့ကို ရောနှော၍ ပို့ပါ။",
+                extraGuide: "'ကံသာလျှင် ကိုယ်ပိုင်ဥစ္စာ ဖြစ်သည်' ဟူသော ကမ္မဿကတာဉာဏ်ဖြင့် လက်ခံ၍ ဆင်ခြင်ပါ။",
+                caution: "ကရုဏာပို့ရာတွင် စိုးရိမ်စိတ်ဖြင့် မဟုတ်ဘဲ တည်ငြိမ်သော စေတနာဖြင့်သာ ပို့ပါ။"
+            },
+            {
+                badge: "အဆင့် (၈) - ဒိသာဖရဏ (၁၀) မျက်နှာ",
+                title: "၈။ ဒိသာဖရဏ (၁၀) မျက်နှာ",
+                pali: "Puratthimāya disāya, Pacchimāya disāya, Uttarāya disāya, Dakkhināya disāya, Puratthimāya anudisāya, Pacchimāya anudisāya, Uttarāya anudisāya, Dakkhināya anudisāya, Heṭṭhimāya disāya, Uparimāya disāya. Sabbe sattā... averā hontu...",
+                meaning: "အရှေ့၊ အနောက်၊ မြောက်၊ တောင်၊ အရှေ့တောင်၊ အနောက်မြောက်၊ အရှေ့မြောက်၊ အနောက်တောင်၊ အောက်အရပ်၊ အထက်အရပ် (အရပ် ၁၀ မျက်နှာရှိ) သတ္တဝါအားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ...",
+                guide: "အရပ် (၁၀) မျက်နှာသို့ တစ်ခုပြီးတစ်ခု အစဉ်လိုက် မေတ္တာစိတ်ကို ဦးတည်ပို့လွှတ်ပါ။",
+                extraGuide: "ဒိသာဖရဏ ပွားခြင်းဖြင့် မေတ္တာစိတ် ပိုမို ကျယ်ပြန့် အားကောင်းလာစေသည်။",
+                caution: "အရပ်တစ်ခုစီအလိုက် နှေးညင်းစွာ ပို့ပါ၊ လျင်မြန်စွာ ဖြတ်သန်းခြင်း မပြုပါနှင့်။"
+            },
+            {
+                badge: "အဆင့် (၉) - ကရုဏာ၊ မုဒိတာ နှင့် ကမ္မဿကတာ (ထပ်မံ)",
+                title: "၉။ ကရုဏာ၊ မုဒိတာ နှင့် ကမ္မဿကတာ (ထပ်မံ)",
+                pali: "Dukkhā muccantu, yathā-laddha-sampattito māvigaccantu, anāgataṃ lābhaṃ āgacchantu samicchantu. Kammassakā.",
+                meaning: "အရပ် ၁၀ မျက်နှာရှိ သတ္တဝါအားလုံး ဆင်းရဲဒုက္ခမှ ကင်းဝေးကြပါစေ။ ရရှိပြီးသော ချမ်းသာစည်းစိမ်မှ မကင်းကွာကြပါစေနှင့်။ မရသေးသော ချမ်းသာကို ရရှိကြပါစေ။ ကံသာလျှင် ကိုယ်ပိုင်ဥစ္စာ ရှိကြသည်။",
+                guide: "အရပ် (၁၀) မျက်နှာလုံးရှိ သတ္တဝါများကို ကရုဏာ၊ မုဒိတာနှင့် ထပ်မံ ပို့ပါ။",
+                extraGuide: "ဒုတိယအကြိမ် ပြန်လည်ပို့ခြင်းဖြင့် မေတ္တာစွမ်းအားကို ခိုင်မြဲစေသည်။",
+                caution: "ထပ်ခါထပ်ခါ ပို့ရာတွင် စိတ်ပျင်းစရာမဟုတ်ဘဲ အသစ်တစ်ဖန် ကြည်နူးသော စိတ်ဖြင့် ပို့ပါ။"
+            },
+            {
+                badge: "အဆင့် (၁၀) - မြေပြင်နေ သတ္တဝါများ",
+                title: "၁၀။ မြေပြင်နေ သတ္တဝါများ",
+                pali: "Uddhaṃ yāva bhavaggā ca, adho yāva aviccito, samantā cakkavāḷesu, ye sattā paṭhavīcarā, abyāpajjhā niverā ca, nidukkhā ca nupaddavā.",
+                meaning: "အထက် ဘဝဂ်တိုင်အောင်၊ အောက် အဝီစိတိုင်အောင်၊ စကြဝဠာ အနန္တတဝိုက်ရှိ မြေပြင်၌ သွားလာနေထိုင်ကြသော သတ္တဝါအားလုံးတို့သည် ရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်း၍ ဘေးဥပဒ်ကင်းကြပါစေ။",
+                guide: "မြေပြင်ပေါ်တွင် သွားလာနေထိုင်ကြသော သတ္တဝါအားလုံးကို အထက်အောက် အနန္တကမ္ဘာမှ ခြုံငုံ၍ အာရုံပြုပါ။",
+                extraGuide: "ဘဝဂ်မှ အဝီစိအထိ ကျယ်ပြန့်သော စကြဝဠာတစ်ခွင်လုံးကို စိတ်ဖြင့် မြင်ယောင်ပါ။",
+                caution: "ကြီး/သေး၊ အမျိုးအစား မခွဲခြားဘဲ မြေပြင်နေ သတ္တဝါအားလုံးကို ညီမျှစွာ ရှုမှတ်ပါ။"
+            },
+            {
+                badge: "အဆင့် (၁၁) - ရေ၌နေ သတ္တဝါများ",
+                title: "၁၁။ ရေ၌နေ သတ္တဝါများ",
+                pali: "Uddhaṃ yāva bhavaggā ca, adho yāva aviccito, samantā cakkavāḷesu, ye sattā udakecarā, abyāpajjhā niverā ca, nidukkhā ca nupaddavā.",
+                meaning: "အထက် ဘဝဂ်တိုင်အောင်၊ အောက် အဝီစိတိုင်အောင်၊ စကြဝဠာ အနန္တတဝိုက်ရှိ ရေ၌ သွားလာနေထိုင်ကြသော သတ္တဝါအားလုံးတို့သည် ရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်း၍ ဘေးဥပဒ်ကင်းကြပါစေ။",
+                guide: "ရေထဲတွင် နေထိုင်သော သတ္တဝါအားလုံး (ငါး၊ ရေသတ္တဝါ) ကို အာရုံပြု၍ မေတ္တာပို့ပါ။",
+                extraGuide: "မြင်ရ/မမြင်ရ ရေအောက်ရှိ သတ္တဝါများအထိ ကျယ်ပြန့်စွာ ဖြန့်ကြက်ပါ။",
+                caution: "ရေသတ္တဝါများကိုလည်း မြေပြင်သတ္တဝါများကဲ့သို့ တန်းတူ အကျိုးလိုလားပါ။"
+            },
+            {
+                badge: "အဆင့် (၁၂) - ကောင်းကင်၌နေ သတ္တဝါများ",
+                title: "၁၂။ ကောင်းကင်၌နေ သတ္တဝါများ",
+                pali: "Uddhaṃ yāva bhavaggā ca, adho yāva aviccito, samantā cakkavāḷesu, ye sattā ākāsecarā, abyāpajjhā niverā ca, nidukkhā ca nupaddavā.",
+                meaning: "အထက် ဘဝဂ်တိုင်အောင်၊ အောက် အဝီစိတိုင်အောင်၊ စကြဝဠာ အနန္တတဝိုက်ရှိ ကောင်းကင်၌ သွားလာနေထိုင်ကြသော သတ္တဝါအားလုံးတို့သည် ရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်း၍ ဘေးဥပဒ်ကင်းကြပါစေ။",
+                guide: "ကောင်းကင်၌ ပျံသန်းနေထိုင်ကြသော သတ္တဝါအားလုံး (ငှက်၊ နတ်) ကို နောက်ဆုံးအဆင့်အဖြစ် အာရုံပြုပါ။",
+                extraGuide: "ဤဂါထာဖြင့် မြေ၊ ရေ၊ ကောင်းကင် သုံးဌာနစလုံးရှိ သတ္တဝါအားလုံးကို လွှမ်းခြုံပြီးစီးအောင် ပို့ပြီးဖြစ်သည်။",
+                caution: "ရွတ်ဖတ်ပွားများမှု အဆုံးတွင် စိတ်ကို ကျယ်ပြန့်စွာ ငြိမ်သက်စေလျက် နိဂုံးချုပ်ပါ။"
+            }
+        ];
+
         let currentMode = 'standard';
         let activeStages = standardStages;
 
@@ -703,16 +817,20 @@
             });
             html += '</div>';
             
-            if (activeStages.length === 4) {
+            if (currentMode === 'standard') {
                 html += `<div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 mt-2 font-medium px-1">
                     <span>မိမိကိုယ်ကို</span>
                     <span>ချစ်ခင်သူ</span>
                     <span>အလယ်အလတ်</span>
                     <span>မုန်းတီးသူ</span>
                 </div>`;
-            } else {
+            } else if (currentMode === 'sutta') {
                 html += `<div class="text-center text-[11px] text-amber-600 dark:text-amber-400 mt-1 font-medium">
                     <i class="fa-solid fa-scroll mr-1"></i> ကရဏီယမေတ္တာသုတ် ဂါထာ (၁) မှ (၁၀) အထိ အစဉ်လိုက် ရွတ်ဖတ်ပွားများရန်
+                </div>`;
+            } else {
+                html += `<div class="text-center text-[11px] text-violet-600 dark:text-violet-400 mt-1 font-medium">
+                    <i class="fa-solid fa-microphone-lines mr-1"></i> မေတ္တာပို့ ရွတ်စဉ် အဆင့် (၁) မှ (၁၂) အထိ အစဉ်လိုက် ရွတ်ဖတ်ပွားများရန်
                 </div>`;
             }
             container.innerHTML = html;
@@ -721,20 +839,20 @@
         function setPracticeMode(mode) {
             if (isRunning) return;
             currentMode = mode;
-            activeStages = (mode === 'standard') ? standardStages : mettaSuttaStages;
-            
-            const btnStandard = document.getElementById('mode-btn-standard');
-            const btnSutta = document.getElementById('mode-btn-sutta');
-            if (btnStandard && btnSutta) {
-                if (mode === 'standard') {
-                    btnStandard.className = "py-3 px-4 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition";
-                    btnSutta.className = "py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition";
-                } else {
-                    btnSutta.className = "py-3 px-4 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition";
-                    btnStandard.className = "py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition";
-                }
-            }
-            
+            activeStages = (mode === 'standard') ? standardStages : (mode === 'sutta') ? mettaSuttaStages : mettaChantStages;
+
+            const INACTIVE_BTN = "py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition";
+            const ACTIVE_BTN = {
+                standard: "py-3 px-4 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition",
+                sutta: "py-3 px-4 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition",
+                chant: "py-3 px-4 rounded-xl border-2 border-violet-500 bg-violet-50 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition"
+            };
+
+            ['standard', 'sutta', 'chant'].forEach(m => {
+                const btn = document.getElementById('mode-btn-' + m);
+                if (btn) btn.className = (m === mode) ? ACTIVE_BTN[m] : INACTIVE_BTN;
+            });
+
             renderIndicators();
             setTimePerStep(timePerStepMinutes);
             previewStage(0);
