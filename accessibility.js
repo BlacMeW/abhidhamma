@@ -406,7 +406,7 @@
         }
 
         const introDelay = 29; // Wait 29s for intro music before scrolling
-        const chantDuration = audioEl.duration; // Use full duration to slow down the scroll speed
+        const chantDuration = audioEl.duration - 14; // Tuned for perfect speed (between 0 and 29)
         let elapsed = audioEl.currentTime - introDelay;
         
         let percentage = 0;
