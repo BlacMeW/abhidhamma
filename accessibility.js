@@ -405,8 +405,9 @@
             return;
         }
 
-        const introDelay = 29; // Wait 29s for intro music before scrolling
-        const chantDuration = audioEl.duration - 29; // Tuned for perfect speed (between 0 and 29)
+        const introDelay = 29; // စစချင်း တီးလုံးစောင့်မည့် အချိန် (စက္ကန့်)
+        const outroDelay = 20; // အဆုံးသတ် တီးလုံး/အသံတိတ် ချိန် (စာသားကို ပိုမြန်မြန် ပြီးစေရန် ချိန်ညှိနိုင်သည်)
+        const chantDuration = audioEl.duration - introDelay - outroDelay;
         let elapsed = audioEl.currentTime - introDelay;
         
         let percentage = 0;
