@@ -326,6 +326,10 @@
         mettaAudio.currentTime = 0;
         updateAudioUI(false);
         localStorage.removeItem(AUDIO_STATE_KEY);
+        const marqueeContainer = document.getElementById('a11y-marquee-container');
+        if (marqueeContainer) {
+            marqueeContainer.classList.add('hidden');
+        }
     }
 
     audioPlayPauseBtn.addEventListener('click', () => {
@@ -422,6 +426,7 @@
     if (bgAudioEl) {
         bgAudioEl.addEventListener('play', () => {
             if (lyricsVisible) {
+                a11yMarqueeContainer.classList.remove('hidden');
                 if (marqueeAnimationFrame) cancelAnimationFrame(marqueeAnimationFrame);
                 marqueeAnimationFrame = requestAnimationFrame(updateMarqueePosition);
             }
