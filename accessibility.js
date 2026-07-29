@@ -303,11 +303,6 @@
         audioIcon.className = playing ? 'fa-solid fa-pause' : 'fa-solid fa-play';
         audioLabel.textContent = playing ? 'ခေတ္တရပ်မည်' : 'ဖွင့်မည်';
         audioBadge.classList.toggle('hidden', !playing);
-
-        const marqueeTextEl = document.querySelector('.a11y-marquee-text');
-        if (marqueeTextEl) {
-            marqueeTextEl.style.animationPlayState = playing ? 'running' : 'paused';
-        }
     }
 
     function playMettaAudio() {
@@ -371,15 +366,11 @@
 
     const lyricsMarqueeHTML = `
     <style>
-        @keyframes a11y-marquee-anim {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
         .a11y-marquee-text {
             display: inline-block;
             white-space: nowrap;
             padding-left: 100vw;
-            animation: a11y-marquee-anim 400s linear infinite;
+            will-change: transform;
         }
     </style>
     <div id="a11y-marquee-container" class="fixed bottom-0 left-0 right-0 h-14 bg-slate-900/90 text-amber-400 text-lg sm:text-xl font-bold z-[60] hidden flex items-center overflow-hidden backdrop-blur-sm border-t border-amber-500/30 font-sans">
@@ -398,33 +389,82 @@
     const a11yMarqueeContainer = document.getElementById('a11y-marquee-container');
     const a11yMarqueeClose = document.getElementById('a11y-marquee-close');
 
-    function toggleMarquee() {
-        if (a11yMarqueeContainer.classList.contains('hidden')) {
+    let lyricsVisible = localStorage.getItem('abhidhamma_a11y_lyrics') !== 'false';
+    let marqueeAnimationFrame = null;
+
+    function updateMarqueePosition() {
+        const audioEl = document.getElementById('a11y-metta-audio');
+        const marqueeTextEl = a11yMarqueeContainer.querySelector('.a11y-marquee-text');
+        
+        if (!audioEl || !marqueeTextEl || isNaN(audioEl.duration) || audioEl.duration <= 0) {
+            return;
+        }
+
+        const introDelay = 29; // Wait 29s for intro music before scrolling
+        const chantDuration = audioEl.duration - introDelay;
+        let elapsed = audioEl.currentTime - introDelay;
+        
+        let percentage = 0;
+        if (elapsed > 0 && chantDuration > 0) {
+            percentage = elapsed / chantDuration;
+        }
+        if (percentage > 1) percentage = 1;
+        
+        marqueeTextEl.style.transform = `translateX(-${percentage * 100}%)`;
+        
+        if (!audioEl.paused && lyricsVisible) {
+            marqueeAnimationFrame = requestAnimationFrame(updateMarqueePosition);
+        }
+    }
+
+    const bgAudioEl = document.getElementById('a11y-metta-audio');
+    if (bgAudioEl) {
+        bgAudioEl.addEventListener('play', () => {
+            if (lyricsVisible) {
+                if (marqueeAnimationFrame) cancelAnimationFrame(marqueeAnimationFrame);
+                marqueeAnimationFrame = requestAnimationFrame(updateMarqueePosition);
+            }
+        });
+        bgAudioEl.addEventListener('pause', () => {
+            if (marqueeAnimationFrame) cancelAnimationFrame(marqueeAnimationFrame);
+            updateMarqueePosition();
+        });
+        bgAudioEl.addEventListener('seeked', updateMarqueePosition);
+        // Also update once metadata is loaded so it doesn't stay hidden or unset
+        bgAudioEl.addEventListener('loadedmetadata', updateMarqueePosition);
+    }
+
+    function applyLyricsVisibility() {
+        if (lyricsVisible) {
             a11yMarqueeContainer.classList.remove('hidden');
+            updateMarqueePosition();
             
-            // Sync animation duration and play state with audio
             const audioEl = document.getElementById('a11y-metta-audio');
-            const marqueeTextEl = a11yMarqueeContainer.querySelector('.a11y-marquee-text');
-            if (audioEl && marqueeTextEl) {
-                marqueeTextEl.style.animationPlayState = audioEl.paused ? 'paused' : 'running';
-                
-                if (!isNaN(audioEl.duration) && audioEl.duration > 0) {
-                    marqueeTextEl.style.animationDuration = `${audioEl.duration}s`;
-                } else {
-                    audioEl.addEventListener('loadedmetadata', () => {
-                        marqueeTextEl.style.animationDuration = `${audioEl.duration}s`;
-                    }, { once: true });
-                }
+            if (audioEl && !audioEl.paused) {
+                if (marqueeAnimationFrame) cancelAnimationFrame(marqueeAnimationFrame);
+                marqueeAnimationFrame = requestAnimationFrame(updateMarqueePosition);
             }
         } else {
             a11yMarqueeContainer.classList.add('hidden');
+            if (marqueeAnimationFrame) cancelAnimationFrame(marqueeAnimationFrame);
         }
+    }
+
+    function toggleMarquee() {
+        lyricsVisible = !lyricsVisible;
+        localStorage.setItem('abhidhamma_a11y_lyrics', lyricsVisible);
+        applyLyricsVisibility();
     }
 
     if (a11yLyricsBtn) a11yLyricsBtn.addEventListener('click', toggleMarquee);
     if (a11yMarqueeClose) a11yMarqueeClose.addEventListener('click', () => {
-        a11yMarqueeContainer.classList.add('hidden');
+        lyricsVisible = false;
+        localStorage.setItem('abhidhamma_a11y_lyrics', 'false');
+        applyLyricsVisibility();
     });
+
+    // Apply initial state
+    applyLyricsVisibility();
 
     // Exposed so other page scripts (e.g. metta_prompter.html's own guided timer) can
     // pause this background player instead of overlapping it with their own audio.

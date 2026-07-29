@@ -283,9 +283,7 @@
                 <button onclick="toggleChantAudio()" id="btn-chant-audio" type="button" class="px-3.5 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/40 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
                     <i class="fa-solid fa-volume-high" id="chant-audio-icon"></i> <span id="chant-audio-text">မေတ္တာရွတ်သံ ဖွင့်ထားမည်</span>
                 </button>
-                <button onclick="openLyricsModal()" type="button" class="px-3.5 py-1.5 rounded-lg bg-sky-100 hover:bg-sky-200 dark:bg-sky-900/40 dark:hover:bg-sky-900/60 text-sky-700 dark:text-sky-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
-                    <i class="fa-solid fa-music"></i> ရွတ်စဉ် (Pali)
-                </button>
+
                 <button onclick="testBellSound()" type="button" class="px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
                     <i class="fa-solid fa-bell text-amber-500"></i> ခေါင်းလောင်းသံ စမ်းမည်
                 </button>
@@ -348,36 +346,6 @@
         </div>
     </div>
 
-    <!-- Lyrics Modal -->
-    <div id="lyrics-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center shadow-2xl border border-sky-200 dark:border-slate-700 transform scale-95 transition-transform duration-300 flex flex-col max-h-[85vh]" id="lyrics-card">
-            <div class="flex justify-between items-center mb-4 border-b border-slate-100 dark:border-slate-700 pb-3">
-                <h2 class="text-xl sm:text-2xl font-bold text-sky-600 dark:text-sky-400">မေတ္တာပို့ ရွတ်စဉ်</h2>
-                <button onclick="closeLyricsModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xl"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <div class="overflow-y-auto pr-2 text-center sm:text-left space-y-4 text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300 leading-relaxed">
-                <p>အဟံ အဝေရော ဟောမိ<br>အဗျာပဇ္ဇော ဟောမိ<br>အနီဃော ဟောမိ<br>သုခီ အတ္တာနံ ပရိဟရာမိ</p>
-                <p>မမ မာတာပိတု<br>အာစရိယ စ ဉာတိမိတ္တ စ<br>သဗြဟ္မစာရိနော စ<br>အဝေရာ ဟောန္တု<br>အဗျာပဇ္ဇာ ဟောန္တု<br>အနီဃာ ဟောန္တု<br>သုခီ အတ္တာနံ ပရိဟရန္တု</p>
-                <p>ဣမသ္မိံ အာရာမေ သဗ္ဗေ ယောဂိနော<br>အဝေရာ ဟောန္တု<br>အဗျာပဇ္ဇာ ဟောန္တု<br>အနီဃာ ဟောန္တု<br>သုခီ အတ္တာနံ ပရိဟရန္တု</p>
-                <p>ဣမသ္မိံ အာရာမေ သဗ္ဗေ ဘိက္ခူ<br>သာမဏေရာ စ<br>ဥပါသကာ ဥပါသိကာယ စ<br>အဝေရာ ဟောန္တု<br>အဗျာပဇ္ဇာ ဟောန္တု<br>အနီဃာ ဟောန္တု<br>သုခီ အတ္တာနံ ပရိဟရန္တု</p>
-                <p>အမှာကံ စတုပစ္စယ ဒါယကာ<br>အဝေရာ ဟောန္တု<br>အဗျာပဇ္ဇာ ဟောန္တု<br>အနီဃာ ဟောန္တု<br>သုခီ အတ္တာနံ ပရိဟရန္တု</p>
-                <p>အမှာကံ အာရက္ခဒေဝတာ<br>ဣမသ္မိံ ဝိဟာရေ<br>ဣမသ္မိံ အာဝါသေ<br>ဣမသ္မိံ အာရာမေ<br>အာရက္ခဒေဝတာ<br>အဝေရာ ဟောန္တု<br>အဗျာပဇ္ဇာ ဟောန္တု<br>အနီဃာ ဟောန္တု<br>သုခီ အတ္တာနံ ပရိဟရန္တု</p>
-                <p>သဗ္ဗေ သတ္တာ<br>သဗ္ဗေ ပါဏာ<br>သဗ္ဗေ ဘူတာ<br>သဗ္ဗေ ပုဂ္ဂလာ<br>သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ<br>သဗ္ဗာ ဣတ္ထိယော<br>သဗ္ဗေ ပုရိသာ<br>သဗ္ဗေ အရိယာ<br>သဗ္ဗေ အနရိယာ<br>သဗ္ဗေ ဒေဝါ<br>သဗ္ဗေ မနုဿာ<br>သဗ္ဗေ ဝိနိပါတိကာ<br>အဝေရာ ဟောန္တု<br>အဗျာပဇ္ဇာ ဟောန္တု<br>အနီဃာ ဟောန္တု<br>သုခီ အတ္တာနံ ပရိဟရန္တု</p>
-                <p>ဒုက္ခာ မုစ္စန္တု<br>ယထာလဒ္ဓသမ္ပတ္တိတော မာ ဝိဂစ္ဆန္တု<br>ကမ္မဿကာ</p>
-                <p>ပုရတ္ထိမာယ ဒိသာယ<br>ပစ္ဆိမာယ ဒိသာယ<br>ဥတ္တရာယ ဒိသာယ<br>ဒက္ခိဏာယ ဒိသာယ<br>ပုရတ္ထိမာယ အနုဒိသာယ<br>ပစ္ဆိမာယ အနုဒိသာယ<br>ဥတ္တရာယ အနုဒိသာယ<br>ဒက္ခိဏာယ အနုဒိသာယ<br>ဟေဋ္ဌိမာယ ဒိသာယ<br>ဥပရိမာယ ဒိသာယ</p>
-                <p>သဗ္ဗေ သတ္တာ<br>သဗ္ဗေ ပါဏာ<br>သဗ္ဗေ ဘူတာ<br>သဗ္ဗေ ပုဂ္ဂလာ<br>သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ<br>သဗ္ဗာ ဣတ္ထိယော<br>သဗ္ဗေ ပုရိသာ<br>သဗ္ဗေ အရိယာ<br>သဗ္ဗေ အနရိယာ<br>သဗ္ဗေ ဒေဝါ<br>သဗ္ဗေ မနုဿာ<br>သဗ္ဗေ ဝိနိပါတိကာ<br>အဝေရာ ဟောန္တု<br>အဗျာပဇ္ဇာ ဟောန္တု<br>အနီဃာ ဟောန္တု<br>သုခီ အတ္တာနံ ပရိဟရန္တု</p>
-                <p>ဒုက္ခာ မုစ္စန္တု<br>ယထာလဒ္ဓသမ္ပတ္တိတော မာ ဝိဂစ္ဆန္တု<br>ကမ္မဿကာ</p>
-                <p>ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ<br>အဓော ယာဝ အဝီစိတော<br>သမန္တာ စက္ကဝါဠေသု<br>ယေ သတ္တာ ပထဝီစရာ<br>အဗျာပဇ္ဇာ နိဝေရာ စ<br>နိဒုက္ခာ စ နုပဒ္ဒဝါ</p>
-                <p>ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ<br>အဓော ယာဝ အဝီစိတော<br>သမန္တာ စက္ကဝါဠေသု<br>ယေ သတ္တာ ဥဒကေစရာ<br>အဗျာပဇ္ဇာ နိဝေရာ စ<br>နိဒုက္ခာ စ နုပဒ္ဒဝါ</p>
-                <p>ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ<br>အဓော ယာဝ အဝီစိတော<br>သမန္တာ စက္ကဝါဠေသု<br>ယေ သတ္တာ အာကာသေစရာ<br>အဗျာပဇ္ဇာ နိဝေရာ စ<br>နိဒုက္ခာ စ နုပဒ္ဒဝါ</p>
-            </div>
-            
-            <button onclick="closeLyricsModal()" class="w-full mt-4 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold text-sm shadow-sm transition">
-                ပိတ်မည်
-            </button>
-        </div>
-    </div>
 
     <audio id="metta-audio" src="assets/mp3/Metta.mp3" loop preload="none"></audio>
 
@@ -1175,25 +1143,7 @@
             }, 2500);
         }
 
-        function openLyricsModal() {
-            const modal = document.getElementById('lyrics-modal');
-            const card = document.getElementById('lyrics-card');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                card.classList.remove('scale-95');
-                card.classList.add('scale-100');
-            }, 10);
-        }
 
-        function closeLyricsModal() {
-            const modal = document.getElementById('lyrics-modal');
-            const card = document.getElementById('lyrics-card');
-            card.classList.remove('scale-100');
-            card.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
 
         function closeModal() {
             const modal = document.getElementById('completion-modal');
