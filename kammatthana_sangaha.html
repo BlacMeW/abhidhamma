@@ -563,10 +563,14 @@
                                 <p class="text-xs text-slate-600 dark:text-slate-400">${info.sub}</p>
                             </div>
                         </summary>
-                        <div class="flex flex-wrap gap-1.5 mt-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-3">
                             ${items.map(k => `
-                                <button onclick="openKmModal('${k.key}')" class="km-card text-xs font-semibold px-3 py-1.5 rounded-full border transition ${info.bg} ${info.border}/30 ${info.color} hover:brightness-125">
-                                    <i class="fa-solid ${k.icon} mr-1 text-[10px]"></i>${mm(k.id)}. ${k.name}
+                                <button onclick="openKmModal('${k.key}')" class="km-card flex flex-col text-left px-3 py-2 rounded-xl border transition ${info.bg} ${info.border}/30 ${info.color} hover:brightness-125 shadow-sm">
+                                    <div class="flex items-center gap-1.5 font-bold text-[13px]">
+                                        <i class="fa-solid ${k.icon} text-[11px] opacity-80"></i>
+                                        <span>${mm(k.id)}. ${k.pali}</span>
+                                    </div>
+                                    <span class="text-[11px] font-medium opacity-75 mt-0.5 ml-5">${k.name}</span>
                                 </button>
                             `).join('')}
                         </div>
@@ -647,10 +651,12 @@
                     </div>
                     <div onclick="openVipassanaModal('nana', ${n.id})" class="flex-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 shadow-sm hover:shadow-md hover:border-amber-400 transition group cursor-pointer">
                         <div class="flex items-center justify-between mb-1">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid ${n.icon} text-amber-500 dark:text-amber-600 w-4"></i>
-                                <h4 class="font-bold text-amber-800 dark:text-amber-400 text-sm group-hover:text-amber-600 dark:group-hover:text-amber-300 transition">${n.name}</h4>
-                                <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium font-mono hidden sm:inline-block">${n.pali}</span>
+                            <div class="flex flex-col">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid ${n.icon} text-amber-500 dark:text-amber-600 w-4"></i>
+                                    <h4 class="font-bold text-amber-800 dark:text-amber-400 text-sm group-hover:text-amber-600 dark:group-hover:text-amber-300 transition">${n.pali}</h4>
+                                </div>
+                                <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 font-medium ml-6 mt-0.5">${n.name}</span>
                             </div>
                             <i class="fa-solid fa-arrow-right text-slate-300 dark:text-slate-700 group-hover:text-amber-400 transition text-xs"></i>
                         </div>
@@ -670,9 +676,12 @@
             container.innerHTML = visuddhiData.map(v => `
                 <button onclick="openVipassanaModal('visuddhi', ${v.id})" class="pn-card text-left bg-fuchsia-50/50 dark:bg-fuchsia-900/10 border border-fuchsia-200 dark:border-fuchsia-800/50 p-3 rounded-xl hover:bg-fuchsia-100 dark:hover:bg-fuchsia-900/30 transition group flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center gap-2 mb-1.5">
-                            <span class="w-5 h-5 rounded-full bg-fuchsia-200 dark:bg-fuchsia-800 text-fuchsia-700 dark:text-fuchsia-300 flex items-center justify-center text-[10px] font-bold">${mm(v.id)}</span>
-                            <h4 class="font-bold text-fuchsia-800 dark:text-fuchsia-300 text-sm">${v.name}</h4>
+                        <div class="flex items-start gap-2 mb-1.5">
+                            <span class="w-5 h-5 rounded-full shrink-0 bg-fuchsia-200 dark:bg-fuchsia-800 text-fuchsia-700 dark:text-fuchsia-300 flex items-center justify-center text-[10px] font-bold mt-0.5">${mm(v.id)}</span>
+                            <div>
+                                <h4 class="font-bold text-fuchsia-800 dark:text-fuchsia-300 text-[13px] leading-tight">${v.pali}</h4>
+                                <span class="text-[11px] text-fuchsia-600 dark:text-fuchsia-400 font-medium mt-0.5 block">${v.name}</span>
+                            </div>
                         </div>
                         <p class="text-[11px] text-slate-600 dark:text-slate-400 ml-7">${v.desc}</p>
                     </div>
@@ -691,8 +700,9 @@
                     ${a.type === 'lokuttara' ? '<div class="absolute top-0 left-0 w-full h-1 bg-amber-400"></div>' : ''}
                     <i class="fa-solid ${a.icon} text-xl ${a.type === 'lokuttara' ? 'text-amber-500' : 'text-violet-500 dark:text-violet-400'} group-hover:scale-110 transition-transform"></i>
                     <div>
-                        <h4 class="font-bold ${a.type === 'lokuttara' ? 'text-amber-700 dark:text-amber-400' : 'text-violet-800 dark:text-violet-300'} text-xs">${a.name}</h4>
-                        <p class="text-[9px] text-slate-500 dark:text-slate-400 mt-0.5">${a.desc}</p>
+                        <h4 class="font-bold ${a.type === 'lokuttara' ? 'text-amber-700 dark:text-amber-400' : 'text-violet-800 dark:text-violet-300'} text-[13px]">${a.pali}</h4>
+                        <h5 class="text-[10px] font-medium ${a.type === 'lokuttara' ? 'text-amber-600 dark:text-amber-500' : 'text-violet-600 dark:text-violet-400'} mt-0.5">${a.name}</h5>
+                        <p class="text-[9px] text-slate-500 dark:text-slate-400 mt-1">${a.desc}</p>
                     </div>
                 </button>
             `).join('');
@@ -704,7 +714,8 @@
             container.innerHTML = anupassanaData.map(a => `
                 <button onclick="openVipassanaModal('anupassana', ${a.id})" class="pn-card bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 p-4 rounded-xl hover:shadow-md transition text-center group">
                     <i class="fa-solid ${a.icon} text-2xl text-emerald-500 dark:text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="font-bold text-emerald-800 dark:text-emerald-300 text-sm">${a.name}</h4>
+                    <h4 class="font-bold text-emerald-800 dark:text-emerald-300 text-[13px]">${a.pali}</h4>
+                    <h5 class="text-[11px] font-medium text-emerald-700 dark:text-emerald-500 mt-0.5">${a.name}</h5>
                     <p class="text-[10px] text-slate-600 dark:text-slate-400 mt-1">${a.desc}</p>
                 </button>
             `).join('');
@@ -717,7 +728,8 @@
                 <button onclick="openVipassanaModal('vimokkha', ${v.id})" class="pn-card bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 p-4 rounded-xl hover:shadow-md transition text-center group">
                     <span class="inline-block px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 rounded text-[10px] font-bold mb-2 w-max mx-auto">${anupassanaData[v.id-1].name.replace('ာနုပဿနာ','')} လက္ခဏာ</span>
                     <i class="fa-solid fa-arrow-down text-indigo-300 block mb-2"></i>
-                    <h4 class="font-bold text-indigo-700 dark:text-indigo-400 text-sm flex justify-center items-center gap-1.5"><i class="fa-solid ${v.icon} text-xs"></i> ${v.name}</h4>
+                    <h4 class="font-bold text-indigo-700 dark:text-indigo-400 text-[13px] flex justify-center items-center gap-1.5"><i class="fa-solid ${v.icon} text-xs"></i> ${v.pali}</h4>
+                    <h5 class="text-[11px] font-medium text-indigo-600 dark:text-indigo-400 mt-0.5">${v.name}</h5>
                     <p class="text-[10px] text-slate-600 dark:text-slate-400 mt-1">${v.desc}</p>
                 </button>
             `).join('');
