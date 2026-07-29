@@ -92,10 +92,10 @@ html_block = """
                         <span class="text-xs text-slate-400 font-medium">၁၂ မျိုးသော သတ္တဝါများ</span>
                     </div>
                     <p class="text-[13px] font-bold text-violet-800 dark:text-violet-300 leading-relaxed mb-3">
-                        Sabbe sattā, sabbe pāṇā, sabbe bhūtā<br>Sabbe puggalā, sabbe attabhāva-pariyāpannā<br>Sabbā itthiyo, sabbe purisā<br>Sabbe ariyā, sabbe anariyā<br>Sabbe devā, sabbe manussā, Sabbe vinipātikā<br>averā hontu... sukhī-attānaṃ pariharantu
+                        Sabbe sattā, sabbe pāṇā, sabbe bhūtā<br>Sabbe puggalā, sabbe attabhāva-pariyāpannā<br>Sabbā itthiyo, sabbe purisā<br>Sabbe ariyā, sabbe anariyā<br>Sabbe devā, sabbe manussā, Sabbe vinipātikā<br>averā hontu, abyāpajjā hontu, anīghā hontu, sukhī-attānaṃ pariharantu
                     </p>
                     <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
-                        သတ္တဝါ၊ ထွက်သက်ဝင်သက်ရှိသူ၊ ထင်ရှားဖြစ်သူ၊ ပုဂ္ဂိုလ်၊ ခန္ဓာကိုယ်အကျုံးဝင်သူ၊ မိန်းမ၊ ယောက်ျား၊ အရိယာ၊ ပုထုဇဉ်၊ နတ်ဗြဟ္မာ၊ လူ၊ အပါယ်လေးဘုံသား အားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ...
+                        သတ္တဝါ၊ ထွက်သက်ဝင်သက်ရှိသူ၊ ထင်ရှားဖြစ်သူ၊ ပုဂ္ဂိုလ်၊ ခန္ဓာကိုယ်အကျုံးဝင်သူ၊ မိန်းမ၊ ယောက်ျား၊ အရိယာ၊ ပုထုဇဉ်၊ နတ်ဗြဟ္မာ၊ လူ၊ အပါယ်လေးဘုံသား အားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်စိတ်နှစ်ဖြာ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ။
                     </p>
                 </div>
 
@@ -120,10 +120,10 @@ html_block = """
                         <span class="text-xs text-slate-400 font-medium">ဒိသာဖရဏ (၁၀) မျက်နှာ</span>
                     </div>
                     <p class="text-[13px] font-bold text-violet-800 dark:text-violet-300 leading-relaxed mb-3">
-                        Puratthimāya disāya, Pacchimāya disāya<br>Uttarāya disāya, Dakkhināya disāya<br>Puratthimāya anudisāya, Pacchimāya anudisāya<br>Uttarāya anudisāya, Dakkhināya anudisāya<br>Heṭṭhimāya disāya, Uparimāya disāya<br>Sabbe sattā... averā hontu...
+                        Puratthimāya disāya, Pacchimāya disāya<br>Uttarāya disāya, Dakkhināya disāya<br>Puratthimāya anudisāya, Pacchimāya anudisāya<br>Uttarāya anudisāya, Dakkhināya anudisāya<br>Heṭṭhimāya disāya, Uparimāya disāya<br>Sabbe sattā averā hontu, abyāpajjā hontu, anīghā hontu, sukhī-attānaṃ pariharantu
                     </p>
                     <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed pt-3 border-t border-slate-100 dark:border-slate-700/60">
-                        အရှေ့၊ အနောက်၊ မြောက်၊ တောင်၊ အရှေ့တောင်၊ အနောက်မြောက်၊ အရှေ့မြောက်၊ အနောက်တောင်၊ အောက်အရပ်၊ အထက်အရပ် (အရပ် ၁၀ မျက်နှာရှိ) သတ္တဝါအားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ...
+                        အရှေ့၊ အနောက်၊ မြောက်၊ တောင်၊ အရှေ့တောင်၊ အနောက်မြောက်၊ အရှေ့မြောက်၊ အနောက်တောင်၊ အောက်အရပ်၊ အထက်အရပ် (အရပ် ၁၀ မျက်နှာရှိ) သတ္တဝါအားလုံးတို့သည် ဘေးရန်ကင်းကြပါစေ၊ စိတ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်ဆင်းရဲကင်းကြပါစေ၊ ကိုယ်စိတ်နှစ်ဖြာ ချမ်းသာစွာဖြင့် မိမိခန္ဓာဝန်ကို ရွက်ဆောင်နိုင်ကြပါစေ။
                     </p>
                 </div>
 

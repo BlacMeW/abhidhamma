@@ -208,7 +208,7 @@
                 </div>
                 <button onclick="closeGlobalSearch()" class="text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 text-sm px-3 py-2 rounded-lg bg-slate-800 min-h-[40px]">Esc</button>
             </div>
-            <input type="text" id="search-input" oninput="handleSearch()" placeholder="ဥပမာ- လောဘ၊ စိတ်၊ စေတသိက်၊ ရုပ်၊ ပဋ္ဌာန်း၊ ဘုံ..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-400">
+            <input type="text" id="search-input" oninput="handleSearch()" placeholder="ဥပမာ- လောဘ၊ စိတ်၊ စေတသိက်၊ ရုပ်၊ ပဋ္ဌာန်း၊ ဘုံ" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-400">
             <div id="search-results" class="max-h-80 overflow-y-auto space-y-2 text-xs"></div>
         </div>
     </div>
@@ -411,7 +411,7 @@
             const query = document.getElementById('search-input').value.trim().toLowerCase();
             const resultsContainer = document.getElementById('search-results');
             if (!query) {
-                resultsContainer.innerHTML = '<p class="text-slate-500 dark:text-slate-500 text-center py-4">ရှာဖွေလိုသော တရားအမည် ရိုက်ထည့်ပါ...</p>';
+                resultsContainer.innerHTML = '<p class="text-slate-500 dark:text-slate-500 text-center py-4">ရှာဖွေလိုသော တရားအမည် ရိုက်ထည့်ပါ</p>';
                 return;
             }
             const filtered = searchDatabase.filter(item => item.name.toLowerCase().includes(query) || item.category.toLowerCase().includes(query));

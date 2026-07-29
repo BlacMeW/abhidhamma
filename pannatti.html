@@ -379,7 +379,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const atthaContainer = document.getElementById('attha-container');
             atthaPannatti.forEach(item => {
-                const exString = item.ex.slice(0, 2).join('၊ ') + (item.ex.length > 2 ? ' ...' : '');
+                const exString = item.ex.slice(0, 2).join('၊ ') + (item.ex.length > 2 ? ' စသည်' : '');
                 atthaContainer.innerHTML += `
                     <button onclick="openPannattiModal('attha', '${item.id}')" class="pn-card bg-sky-50/50 dark:bg-sky-950/20 border border-sky-500/20 rounded-xl p-4 flex flex-col h-full w-full group">
                         <div class="flex items-center justify-between mb-3 w-full">
@@ -402,7 +402,7 @@
 
             const extraContainer = document.getElementById('extra-container');
             extraPannatti.forEach(item => {
-                const exString = item.ex.slice(0, 2).join('၊ ') + (item.ex.length > 2 ? ' ...' : '');
+                const exString = item.ex.slice(0, 2).join('၊ ') + (item.ex.length > 2 ? ' စသည်' : '');
                 extraContainer.innerHTML += `
                     <button onclick="openPannattiModal('extra', '${item.id}')" class="pn-card bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 flex flex-col h-full w-full group">
                         <div class="flex items-center justify-between mb-3 w-full">

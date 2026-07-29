@@ -191,7 +191,7 @@
 
     <!-- Floating Mantra Overlay -->
     <div id="floating-mantra" class="show-on-run">
-        <span id="floating-mantra-text">အနီ ... အနီ ... (လောဟိတ)</span>
+        <span id="floating-mantra-text">အနီ အနီ (လောဟိတ)</span>
     </div>
 
     <!-- Active Meditation Timer Display -->
@@ -234,7 +234,7 @@
         <!-- Selected Kasina Info Card -->
         <div class="bg-slate-800/80 rounded-2xl p-3 sm:p-3.5 mb-4 border border-slate-700/60 text-center space-y-1">
             <div class="text-sm sm:text-base font-bold text-emerald-400" id="kasina-name">၇။ လောဟိတကသိုဏ်း (အနီ)</div>
-            <div class="text-xs sm:text-sm font-semibold text-amber-300 font-serif" id="kasina-mantra">ရှုမှတ်ရန် - "အနီ ... အနီ ..." (သို့) "လောဟိတ ... လောဟိတ ..."</div>
+            <div class="text-xs sm:text-sm font-semibold text-amber-300 font-serif" id="kasina-mantra">ရှုမှတ်ရန် - "အနီ အနီ" (သို့) "လောဟိတ လောဟိတ"</div>
             <p class="text-[11px] text-slate-300 leading-relaxed pt-1" id="kasina-desc">
                 အနီရောင် ရှိသော နှင်းဆီ၊ ခေါင်ရမ်းပန်း သို့မဟုတ် ဆေးနီခြယ်ထားသော အဝိုင်းကို အာရုံပြုခြင်း။
             </p>
@@ -342,8 +342,8 @@
         const kasinaData = {
             earth: {
                 name: "၁။ ပထဝီကသိုဏ်း (မြေ)",
-                mantra: "မြေ ... မြေ ... (သို့) ပထဝီ ... ပထဝီ ...",
-                shortMantra: "ပထဝီ ... ပထဝီ ...",
+                mantra: "မြေ မြေ (သို့) ပထဝီ ပထဝီ",
+                shortMantra: "ပထဝီ ပထဝီ",
                 desc: "အရောင်အဆင်း မပါသော အရုဏ်တက်အရောင် မြေစစ်စစ်ကို ယူ၍ တစ်ထွာတစ်မိုက်ခန့် ပြုလုပ်ထားသည့် အဝိုင်း။",
                 parikamma: "background: radial-gradient(circle, #a52a2a 0%, #8b4513 70%, #5c2b0b 100%); box-shadow: 0 0 25px rgba(0,0,0,0.7); border: none;",
                 uggaha: "background: radial-gradient(circle, #b83d27 0%, #964b18 85%); box-shadow: 0 0 45px rgba(184, 61, 39, 0.5); border: 2px solid rgba(255,255,255,0.2);",
@@ -351,8 +351,8 @@
             },
             water: {
                 name: "၂။ အာပေါကသိုဏ်း (ရေ)",
-                mantra: "ရေ ... ရေ ... (သို့) အာပေါ ... အာပေါ ...",
-                shortMantra: "အာပေါ ... အာပေါ ...",
+                mantra: "ရေ ရေ (သို့) အာပေါ အာပေါ",
+                shortMantra: "အာပေါ အာပေါ",
                 desc: "အရောင်အဆင်း မပါသော ကြည်လင်သည့် ရေပြင် သို့မဟုတ် ခွက်/ကန်တွင်းရှိ ရေအပြည့်ကို အာရုံပြုခြင်း။",
                 parikamma: "background: radial-gradient(circle, #38bdf8 0%, #0284c7 75%, #0369a1 100%); box-shadow: 0 0 30px rgba(2, 132, 199, 0.6); border: none;",
                 uggaha: "background: radial-gradient(circle, #7dd3fc 0%, #0284c7 90%); box-shadow: 0 0 50px rgba(56, 189, 248, 0.7); border: 2px solid rgba(255,255,255,0.3);",
@@ -360,8 +360,8 @@
             },
             fire: {
                 name: "၃။ တေဇောကသိုဏ်း (မီး)",
-                mantra: "မီး ... မီး ... (သို့) တေဇော ... တေဇော ...",
-                shortMantra: "တေဇော ... တေဇော ...",
+                mantra: "မီး မီး (သို့) တေဇော တေဇော",
+                shortMantra: "တေဇော တေဇော",
                 desc: "အောက်ကထင်းနှင့် မီးခိုးကို မကြည့်ဘဲ တောက်လောင်နေသော ဂျုံစေ့ရောင် မီးတောက်အလယ်ဗဟိုကို အာရုံပြုခြင်း။",
                 parikamma: "background: radial-gradient(circle, #fef08a 0%, #f97316 60%, #dc2626 100%); box-shadow: 0 0 40px rgba(249, 115, 22, 0.7); border: none;",
                 uggaha: "background: radial-gradient(circle, #ffffff 0%, #facc15 50%, #ea580c 90%); box-shadow: 0 0 60px rgba(250, 204, 21, 0.8); border: 2px solid rgba(255,255,255,0.4);",
@@ -369,8 +369,8 @@
             },
             air: {
                 name: "၄။ ဝါယောကသိုဏ်း (လေ)",
-                mantra: "လေ ... လေ ... (သို့) ဝါယော ... ဝါယော ...",
-                shortMantra: "ဝါယော ... ဝါယော ...",
+                mantra: "လေ လေ (သို့) ဝါယော ဝါယော",
+                shortMantra: "ဝါယော ဝါယော",
                 desc: "လေတိုက်၍ လှုပ်ရှားနေသော သစ်ကိုင်းသစ်ရွက် သို့မဟုတ် မိမိကိုယ်ကို လာထိတွေ့သော လေကို အာရုံပြုခြင်း။",
                 parikamma: "background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(148,163,184,0.3) 70%, rgba(100,116,139,0.5) 100%); border: 3px dashed rgba(255,255,255,0.6); box-shadow: 0 0 30px rgba(255,255,255,0.25);",
                 uggaha: "background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(203,213,225,0.5) 85%); border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 0 55px rgba(255,255,255,0.5);",
@@ -378,8 +378,8 @@
             },
             blue: {
                 name: "၅။ နီလကသိုဏ်း (အညို/အပြာ/အမည်း)",
-                mantra: "အညို ... အညို ... (သို့) နီလ ... နီလ ...",
-                shortMantra: "နီလ ... နီလ ...",
+                mantra: "အညို အညို (သို့) နီလ နီလ",
+                shortMantra: "နီလ နီလ",
                 desc: "အပြာရောင်၊ အညိုရောင်၊ အမည်းရောင် ရှိသော ပန်းပွင့်များ၊ အဝတ်အထည် သို့မဟုတ် ဆေးခြယ်ထားသော အဝိုင်း။",
                 parikamma: "background: radial-gradient(circle, #1e3a8a 0%, #172554 80%, #080f26 100%); box-shadow: 0 0 30px rgba(30, 58, 138, 0.7); border: none;",
                 uggaha: "background: radial-gradient(circle, #2563eb 0%, #1e3a8a 85%); box-shadow: 0 0 50px rgba(37, 99, 235, 0.7); border: 2px solid rgba(255,255,255,0.3);",
@@ -387,8 +387,8 @@
             },
             yellow: {
                 name: "၆။ ပီတကသိုဏ်း (အဝါ)",
-                mantra: "အဝါ ... အဝါ ... (သို့) ပီတ ... ပီတ ...",
-                shortMantra: "ပီတ ... ပီတ ...",
+                mantra: "အဝါ အဝါ (သို့) ပီတ ပီတ",
+                shortMantra: "ပီတ ပီတ",
                 desc: "မယ်ဇယ်ပန်း စသော အဝါရောင်ပန်း၊ အဝါရောင် အဝတ် သို့မဟုတ် ဆေးဝါခြယ်ထားသော အဝိုင်း။",
                 parikamma: "background: radial-gradient(circle, #fbbf24 0%, #d97706 80%, #92400e 100%); box-shadow: 0 0 30px rgba(251, 191, 36, 0.6); border: none;",
                 uggaha: "background: radial-gradient(circle, #fcd34d 0%, #eab308 85%); box-shadow: 0 0 50px rgba(250, 204, 21, 0.75); border: 2px solid rgba(255,255,255,0.4);",
@@ -396,8 +396,8 @@
             },
             red: {
                 name: "၇။ လောဟိတကသိုဏ်း (အနီ)",
-                mantra: "အနီ ... အနီ ... (သို့) လောဟိတ ... လောဟိတ ...",
-                shortMantra: "လောဟိတ ... လောဟိတ ...",
+                mantra: "အနီ အနီ (သို့) လောဟိတ လောဟိတ",
+                shortMantra: "လောဟိတ လောဟိတ",
                 desc: "နှင်းဆီပန်း၊ ခေါင်ရမ်းပန်း စသော အနီရောင်ပန်း၊ အနီရောင် အဝတ် သို့မဟုတ် ဆေးနီခြယ်ထားသော အဝိုင်း။",
                 parikamma: "background: radial-gradient(circle, #ef4444 0%, #b91c1c 80%, #7f1d1d 100%); box-shadow: 0 0 30px rgba(239, 68, 68, 0.6); border: none;",
                 uggaha: "background: radial-gradient(circle, #f87171 0%, #dc2626 85%); box-shadow: 0 0 50px rgba(248, 113, 113, 0.75); border: 2px solid rgba(255,255,255,0.4);",
@@ -405,8 +405,8 @@
             },
             white: {
                 name: "၈။ ဩဒါတကသိုဏ်း (အဖြူ)",
-                mantra: "အဖြူ ... အဖြူ ... (သို့) ဩဒါတ ... ဩဒါတ ...",
-                shortMantra: "ဩဒါတ ... ဩဒါတ ...",
+                mantra: "အဖြူ အဖြူ (သို့) ဩဒါတ ဩဒါတ",
+                shortMantra: "ဩဒါတ ဩဒါတ",
                 desc: "စံပယ်ပန်း၊ မုလေးပန်း၊ အဖြူရောင်အဝတ်၊ ဆေးဖြူခြယ်ထားသော အဝိုင်း သို့မဟုတ် ခဲဖြူပြား။",
                 parikamma: "background: radial-gradient(circle, #ffffff 0%, #f1f5f9 75%, #cbd5e1 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 30px rgba(255,255,255,0.4);",
                 uggaha: "background: radial-gradient(circle, #ffffff 0%, #e2e8f0 90%); box-shadow: 0 0 60px rgba(255,255,255,0.8); border: 2px solid #ffffff;",
@@ -414,8 +414,8 @@
             },
             light: {
                 name: "၉။ အာလောကကသိုဏ်း (အလင်း)",
-                mantra: "အလင်း ... အလင်း ... (သို့) အာလောက ... အာလောက ...",
-                shortMantra: "အာလောက ... အာလောက ...",
+                mantra: "အလင်း အလင်း (သို့) အာလောက အာလောက",
+                shortMantra: "အာလောက အာလောက",
                 desc: "အမိုးပေါက်၊ နံရံပေါက်မှ ကျလာသော နေရောင်၊ လရောင် အလင်းကွက် သို့မဟုတ် ဖယောင်းတိုင် မီးရောင်။",
                 parikamma: "background: radial-gradient(circle, #ffffff 25%, #fef08a 65%, rgba(250,204,21,0.6) 100%); box-shadow: 0 0 50px rgba(250,204,21,0.7); border: none;",
                 uggaha: "background: radial-gradient(circle, #ffffff 45%, #fef08a 85%, rgba(250,204,21,0.8) 100%); box-shadow: 0 0 80px rgba(254,240,138,0.9); border: 2px solid rgba(255,255,255,0.5);",
@@ -423,8 +423,8 @@
             },
             space: {
                 name: "၁၀။ အာကာသကသိုဏ်း (ကောင်းကင်)",
-                mantra: "ကောင်းကင် ... ကောင်းကင် ... (သို့) အာကာသ ... အာကာသ ...",
-                shortMantra: "အာကာသ ... အာကာသ ...",
+                mantra: "ကောင်းကင် ကောင်းကင် (သို့) အာကာသ အာကာသ",
+                shortMantra: "အာကာသ အာကာသ",
                 desc: "နံရံပေါက်၊ ပြတင်းပေါက်မှ တဆင့် မြင်ရသော ကောင်းကင် အပိုင်းအခြား (ပရိစ္ဆိန္နာကာသ)။",
                 parikamma: "background: radial-gradient(circle, #38bdf8 0%, #0284c7 75%, #075985 100%); border: 10px solid #1e293b; box-shadow: inset 0 0 25px rgba(0,0,0,0.6), 0 0 30px rgba(56,189,248,0.5);",
                 uggaha: "background: radial-gradient(circle, #7dd3fc 0%, #0369a1 90%); border: 6px solid #334155; box-shadow: inset 0 0 35px rgba(255,255,255,0.4), 0 0 55px rgba(56,189,248,0.7);",

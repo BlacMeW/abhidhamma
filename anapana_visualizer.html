@@ -170,7 +170,7 @@
             <div class="aura-ring"></div>
             <div class="pulse-ring"></div>
             <div class="breathe-circle" id="circle">
-                <span id="circle-action" class="font-bold text-base sm:text-lg">အသင့်...</span>
+                <span id="circle-action" class="font-bold text-base sm:text-lg">အသင့်</span>
                 <span id="circle-timer" class="text-xs font-mono opacity-85 mt-0.5">0.0s</span>
             </div>
             <!-- Floating Counter Badge for Ganana (Counting Mode) -->
@@ -420,22 +420,22 @@
             },
             digha: {
                 title: "၂။ ဒီဃ (ရှည်သော ထွက်သက်ဝင်သက်)",
-                pali: "ဒီဃံ ဝါ အဿသန္တော/ပဿသန္တော... ရှည်ရှည် ရှူသွင်း/ရှူထုတ်လျှင် ရှည်ရှည်ဟု ထင်ရှားစွာ သိ၏။",
+                pali: "ဒီဃံ ဝါ အဿသန္တော 'ဒီဃံ အဿသာမီ'တိ ပဇာနာတိ၊ ဒီဃံ ဝါ ပဿသန္တော 'ဒီဃံ ပဿသာမီ'တိ ပဇာနာတိ။",
                 inTime: 5, holdTime: 0, outTime: 5, isCounting: false
             },
             rassa: {
                 title: "၃။ ရဿ (တိုသော ထွက်သက်ဝင်သက်)",
-                pali: "ရဿံ ဝါ အဿသန္တော/ပဿသန္တော... တိုတို ရှူသွင်း/ရှူထုတ်လျှင် တိုတိုဟု သဘာဝအတိုင်း ထင်ရှားစွာ သိ၏။",
+                pali: "ရဿံ ဝါ အဿသန္တော 'ရဿံ အဿသာမီ'တိ ပဇာနာတိ၊ ရဿံ ဝါ ပဿသန္တော 'ရဿံ ပဿသာမီ'တိ ပဇာနာတိ။",
                 inTime: 3, holdTime: 0, outTime: 3, isCounting: false
             },
             sabbakaya: {
                 title: "၄။ သဗ္ဗကာယ (တစ်ကိုယ်လုံး ထင်ရှားစွာ သိခြင်း)",
-                pali: "'သဗ္ဗကာယပဋိသံဝေဒီ အဿသိဿာမိ/ပဿသိဿာမီ'တိ သိက္ခတိ... ထွက်သက်ဝင်သက် တစ်ခုလုံး၏ အစ၊ အလယ်၊ အဆုံးကို ထင်ရှားစွာ သိလျက် ရှုမှတ်အံ့ဟု အားထုတ်ကျင့်၏။",
+                pali: "'သဗ္ဗကာယပဋိသံဝေဒီ အဿသိဿာမီ'တိ သိက္ခတိ၊ 'သဗ္ဗကာယပဋိသံဝေဒီ ပဿသိဿာမီ'တိ သိက္ခတိ။",
                 inTime: 4, holdTime: 1, outTime: 4, isCounting: false
             },
             calming: {
                 title: "၅။ ပဿမ္ဘယံ (ကာယသင်္ခါရ ငြိမ်းအေးခြင်း)",
-                pali: "ပဿမ္ဘယံ ကာယသင်္ခါရံ... ရုန့်ရင်းသော ထွက်သက်ဝင်သက်ကို ဖြည်းညှင်းစွာ ငြိမ်းအေးစေလျက် ရှုမှတ်၏။",
+                pali: "'ပဿမ္ဘယံ ကာယသင်္ခါရံ အဿသိဿာမီ'တိ သိက္ခတိ၊ 'ပဿမ္ဘယံ ကာယသင်္ခါရံ ပဿသိဿာမီ'တိ သိက္ခတိ။",
                 inTime: 4, holdTime: 2, outTime: 6, isCounting: false
             },
             custom: {
@@ -747,19 +747,19 @@
             let durationSec = 0;
             if (phase === 'inhale') {
                 durationSec = inSec;
-                circleAction.textContent = "ရှူသွင်း...";
+                circleAction.textContent = "ရှူသွင်း";
                 instText.textContent = "ဖြည်းညှင်းစွာ လေကို ရှူသွင်းပါ";
                 instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-sky-600 dark:text-sky-400 tracking-wide transition-all duration-300";
                 if (isChime) playBell(528, 1.5);
             } else if (phase === 'hold') {
                 durationSec = holdSec;
-                circleAction.textContent = "ခေတ္တထိန်း...";
+                circleAction.textContent = "ခေတ္တထိန်း";
                 instText.textContent = "ထွက်သက်ဝင်သက်ကို ခေတ္တ ငြိမ်သက်ထားပါ";
                 instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400 tracking-wide transition-all duration-300";
                 if (isChime) playBell(432, 1.5);
             } else if (phase === 'exhale') {
                 durationSec = outSec;
-                circleAction.textContent = "ရှူထုတ်...";
+                circleAction.textContent = "ရှူထုတ်";
                 instText.textContent = "လေကို ဖြည်းညှင်းစွာ ပြန်ရှူထုတ်ပါ";
                 instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 tracking-wide transition-all duration-300";
                 if (isChime) playBell(396, 1.5);
@@ -810,7 +810,7 @@
             if (isAmbient) stopAmbientDrone();
             
             visWrapper.className = "visualizer-container";
-            circleAction.textContent = "အသင့်...";
+            circleAction.textContent = "အသင့်";
             circleTimer.textContent = "0.0s";
             instText.textContent = "အသင့်ပြင်ပါ";
             instText.className = "text-xl sm:text-2xl md:text-3xl font-bold text-slate-700 dark:text-slate-200 tracking-wide transition-all duration-300";

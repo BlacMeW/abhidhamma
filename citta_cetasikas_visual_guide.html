@@ -959,7 +959,7 @@
             <div class="max-w-2xl mx-auto space-y-4">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-500 text-sm"></i>
-                    <input id="cetasika-search" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" oninput="debouncedCetasikaSearch()" placeholder="အမည် (ဥပမာ- ဝေဒနာ) သို့ ပါဠိစာလုံးဖြင့် ရှာဖွေပါ..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-10 py-2.5 text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:border-amber-500 placeholder:text-slate-600">
+                    <input id="cetasika-search" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" oninput="debouncedCetasikaSearch()" placeholder="အမည် (ဥပမာ- ဝေဒနာ) သို့ ပါဠိစာလုံးဖြင့် ရှာဖွေပါ" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-10 py-2.5 text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:border-amber-500 placeholder:text-slate-600">
                     <button id="cetasika-search-clear" onclick="clearCetasikaSearch()" aria-label="ရှာဖွေမှု ရှင်းရန်" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-600 text-slate-700 dark:text-slate-300 flex items-center justify-center text-xs">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -2559,7 +2559,7 @@
             // only that one side. Anchored on the "or" word itself (သို့) rather than just
             // co-occurrence of both substrings — "အကုသိုလ်" itself literally contains
             // "ကုသိုလ်" as a substring, so a plain .includes('ကုသိုလ်') would wrongly fire on
-            // every akusala-only line too (e.g. "အကုသိုလ်သာဓာရဏ (၄)...").
+            // every akusala-only line too (e.g. "အကုသိုလ်သာဓာရဏ (၄)").
             if (text.includes('သို့') && text.includes('အကုသိုလ်') && text.includes('သောဘဏ')) {
                 return 'text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-700/40 border border-slate-500/40';
             }
