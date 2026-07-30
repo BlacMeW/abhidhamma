@@ -330,6 +330,10 @@
             <i class="fa-solid fa-flask-vial text-base lg:text-lg"></i>
             <span class="text-[10px] lg:text-xs font-semibold leading-tight">စမ်းကြည့်ရန်</span>
         </button>
+        <button onclick="switchTab('search')" id="tabm-search" role="tab" aria-selected="false" aria-controls="sec-search" class="tab-btn-mobile flex-1 flex flex-col items-center justify-center gap-0.5 py-2 lg:py-2.5 text-slate-400 hover:text-amber-300">
+            <i class="fa-solid fa-magnifying-glass text-base lg:text-lg"></i>
+            <span class="text-[10px] lg:text-xs font-semibold leading-tight">ရှာဖွေရန်</span>
+        </button>
         </div>
     </nav>
 
@@ -1230,6 +1234,77 @@
                     <!-- Dynamic compare cards populated here -->
                 </div>
             </div>
+        </section>
+
+        <!-- SECTION 6.5: SEARCH AND TABLE VIEW -->
+        <section id="sec-search" role="tabpanel" aria-labelledby="tab-search" class="hidden space-y-6">
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <span class="text-amber-700 dark:text-amber-400 font-semibold text-sm tracking-wider uppercase">ရှာဖွေရန်</span>
+            <h2 class="text-2xl md:text-3xl font-bold">စိတ်နှင့် စေတသိက် ဇယား</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">မိမိလေ့လာလိုသော စိတ်နှင့် စေတသိက်များကို စစ်ထုတ် ရှာဖွေကြည့်ရှုနိုင်ပါသည်။</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="glass-card rounded-2xl p-4 max-w-4xl mx-auto border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row gap-4 items-center">
+            <div class="flex-1 w-full flex flex-col gap-1">
+                <label for="search-cat" class="text-xs font-semibold text-slate-600 dark:text-slate-400">အမျိုးအစား</label>
+                <select id="search-cat" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-amber-500">
+                    <option value="all">အားလုံး (စိတ် + စေတသိက်)</option>
+                    <option value="citta">စိတ် (Citta)</option>
+                    <option value="cetasika">စေတသိက် (Cetasika)</option>
+                </select>
+            </div>
+            <div class="flex-1 w-full flex flex-col gap-1">
+                <label for="search-group" class="text-xs font-semibold text-slate-600 dark:text-slate-400">အုပ်စု</label>
+                <select id="search-group" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-amber-500">
+                    <option value="all">အားလုံး</option>
+                    <!-- Options generated dynamically -->
+                </select>
+            </div>
+            <div class="flex-1 w-full flex flex-col gap-1">
+                <label for="search-text" class="text-xs font-semibold text-slate-600 dark:text-slate-400">အမည် (သို့) ပါဠိဖြင့် ရှာရန်</label>
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="search-text" placeholder="ဥပမာ - လောဘ / Lobha" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg pl-9 pr-8 py-2 text-sm focus:outline-none focus:border-amber-500">
+                    <button type="button" id="search-clear-text" onclick="document.getElementById('search-text').value=''; document.getElementById('search-text').dispatchEvent(new Event('input')); document.getElementById('search-text').focus();" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-rose-500" aria-label="ရှာဖွေမှု ရှင်းရန်">
+                        <i class="fa-solid fa-circle-xmark text-sm"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="button" onclick="resetSearchFilters()" class="self-end md:self-auto flex-shrink-0 text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+                <i class="fa-solid fa-rotate-left"></i> <span>ရှင်းရန်</span>
+            </button>
+        </div>
+
+        <!-- Result count -->
+        <div class="max-w-5xl mx-auto px-1 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+            <span id="search-result-count">−</span>
+            <span class="hidden sm:inline text-slate-400 dark:text-slate-500"><i class="fa-solid fa-hand-pointer mr-1"></i>အသေးစိတ် ကြည့်ရန် အတန်းကို နှိပ်ပါ</span>
+        </div>
+
+        <!-- Table -->
+        <div class="max-w-5xl mx-auto glass-card rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm min-w-[600px]">
+                    <thead>
+                        <tr class="bg-slate-100/80 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                            <th class="py-3 px-4 font-semibold whitespace-nowrap">အမှတ်</th>
+                            <th class="py-3 px-4 font-semibold w-1/3">အမည်</th>
+                            <th class="py-3 px-4 font-semibold whitespace-nowrap">အုပ်စု</th>
+                            <th class="py-3 px-4 font-semibold">အဓိပ္ပာယ် / သဘော</th>
+                        </tr>
+                    </thead>
+                    <tbody id="search-results-body" class="divide-y divide-slate-100 dark:divide-slate-800/50">
+                        <!-- Rows go here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="search-no-results" class="hidden p-8 text-center text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-ghost text-4xl mb-3 opacity-50"></i>
+                <p>ရှာဖွေမှုနှင့် ကိုက်ညီသော အချက်အလက် မရှိပါ။</p>
+                <button type="button" onclick="resetSearchFilters()" class="mt-3 text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline">စစ်ထုတ်မှုများ ရှင်းရန်</button>
+            </div>
+        </div>
         </section>
 
         <!-- SECTION 7: CONCLUSION -->
@@ -3093,8 +3168,204 @@ function mm(num) {
             }
         });
 
+        // ================= SEARCH FUNCTIONALITY =================
+        const CETASIKA_CAT_LABELS = { anya: 'အညသမာန', akusala: 'အကုသိုလ်', sobhana: 'သောဘဏ' };
+        function cetasikaCatLabel(cat) { return CETASIKA_CAT_LABELS[cat] || cat; }
+
+        function resetSearchFilters() {
+            const catSelect = document.getElementById('search-cat');
+            const searchInput = document.getElementById('search-text');
+            if (!catSelect || !searchInput) return;
+            catSelect.value = 'all';
+            searchInput.value = '';
+            catSelect.dispatchEvent(new Event('change'));
+        }
+
+        function initSearchTab() {
+            const catSelect = document.getElementById('search-cat');
+            const groupSelect = document.getElementById('search-group');
+            const searchInput = document.getElementById('search-text');
+            const clearTextBtn = document.getElementById('search-clear-text');
+            const tbody = document.getElementById('search-results-body');
+            const noResults = document.getElementById('search-no-results');
+            const resultCountEl = document.getElementById('search-result-count');
+
+            // Builds <optgroup>/<option> markup from an ordered Map of broadLabel -> Set(subLabels)
+            function buildOptgroups(map, valuePrefix, prefixLabelWithType) {
+                let html = '';
+                map.forEach((subs, broadLabel) => {
+                    html += `<optgroup label="${prefixLabelWithType ? prefixLabelWithType + ' - ' : ''}${broadLabel}">`;
+                    subs.forEach(sub => { html += `<option value="${valuePrefix}|${sub}">${sub}</option>`; });
+                    html += '</optgroup>';
+                });
+                return html;
+            }
+
+            function populateGroups() {
+                const cat = catSelect.value;
+                let html = '<option value="all">အားလုံး</option>';
+
+                if (cat === 'all' || cat === 'citta') {
+                    // Group citta's finer sub-categories (e.g. "လောဘမူ (၈)") under their broad groupLabel
+                    const cittaMap = new Map();
+                    cittaData.forEach(c => {
+                        if (!cittaMap.has(c.groupLabel)) cittaMap.set(c.groupLabel, new Set());
+                        cittaMap.get(c.groupLabel).add(c.sub);
+                    });
+                    html += buildOptgroups(cittaMap, 'citta', cat === 'all' ? 'စိတ်' : null);
+                }
+                if (cat === 'all' || cat === 'cetasika') {
+                    // Group cetasika's finer sub-categories (e.g. "မောစတုက (၄)") under their broad cat label
+                    const cetasikaMap = new Map();
+                    cetasikaData.forEach(c => {
+                        const broad = cetasikaCatLabel(c.cat);
+                        if (!cetasikaMap.has(broad)) cetasikaMap.set(broad, new Set());
+                        cetasikaMap.get(broad).add(c.sub);
+                    });
+                    html += buildOptgroups(cetasikaMap, 'cetasika', cat === 'all' ? 'စေတသိက်' : null);
+                }
+
+                groupSelect.innerHTML = html;
+            }
+
+            function renderTable() {
+                const cat = catSelect.value;
+                const groupVal = groupSelect.value;
+                const rawText = searchInput.value.trim();
+                const text = rawText.toLowerCase();
+
+                if (clearTextBtn) clearTextBtn.classList.toggle('hidden', !rawText);
+
+                let results = [];
+
+                // Add Citta
+                if (cat === 'all' || cat === 'citta') {
+                    const filterSub = groupVal.startsWith('citta|') ? groupVal.slice('citta|'.length) : null;
+                    const cittas = cittaData.filter(c => {
+                        if (filterSub && c.sub !== filterSub) return false;
+                        if (text && !(c.name.toLowerCase().includes(text) || c.pali.toLowerCase().includes(text) || c.desc.toLowerCase().includes(text))) return false;
+                        return true;
+                    }).map(c => ({
+                        id: c.id,
+                        type: 'citta',
+                        typeLabel: 'စိတ်',
+                        name: c.name,
+                        pali: c.pali,
+                        group: c.groupLabel,
+                        sub: c.sub,
+                        desc: c.desc,
+                        icon: c.icon,
+                        color: c.color
+                    }));
+                    results = results.concat(cittas);
+                }
+
+                // Add Cetasika
+                if (cat === 'all' || cat === 'cetasika') {
+                    const filterSub = groupVal.startsWith('cetasika|') ? groupVal.slice('cetasika|'.length) : null;
+                    const cetasikas = cetasikaData.filter(c => {
+                        if (filterSub && c.sub !== filterSub) return false;
+                        if (text && !(c.name.toLowerCase().includes(text) || c.pali.toLowerCase().includes(text) || c.desc.toLowerCase().includes(text))) return false;
+                        return true;
+                    }).map(c => ({
+                        id: c.id,
+                        type: 'cetasika',
+                        typeLabel: 'စေတသိက်',
+                        name: c.name,
+                        pali: c.pali,
+                        group: cetasikaCatLabel(c.cat),
+                        sub: c.sub,
+                        desc: c.desc,
+                        icon: c.icon,
+                        color: c.color
+                    }));
+                    results = results.concat(cetasikas);
+                }
+
+                if (resultCountEl) {
+                    const cittaCount = results.filter(r => r.type === 'citta').length;
+                    const cetasikaCount = results.filter(r => r.type === 'cetasika').length;
+                    resultCountEl.textContent = cat === 'all'
+                        ? `${mm(results.length)} ခု တွေ့ရှိသည် (စိတ် ${mm(cittaCount)} + စေတသိက် ${mm(cetasikaCount)})`
+                        : `${mm(results.length)} ခု တွေ့ရှိသည်`;
+                }
+
+                if (results.length === 0) {
+                    tbody.innerHTML = '';
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                    let html = '';
+                    results.forEach((r) => {
+                        const iconColor = r.color === 'amber' ? 'text-amber-500 bg-amber-500/10 border-amber-500/20' :
+                                         (r.color === 'rose' || r.color === 'red') ? 'text-rose-500 bg-rose-500/10 border-rose-500/20' :
+                                         r.color === 'cyan' ? 'text-cyan-500 bg-cyan-500/10 border-cyan-500/20' :
+                                         r.color === 'emerald' || r.color === 'teal' ? 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20' :
+                                         'text-slate-500 bg-slate-500/10 border-slate-500/20';
+
+                        html += `
+                            <tr class="hover:bg-amber-50 dark:hover:bg-slate-800/50 cursor-pointer transition focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500" data-type="${r.type}" data-id="${r.id}" tabindex="0" role="button" aria-label="${r.name} အသေးစိတ် ကြည့်ရန်">
+                                <td class="py-3 px-4 text-slate-500 font-mono whitespace-nowrap">#${mm(r.id)}</td>
+                                <td class="py-3 px-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center border ${iconColor} flex-shrink-0">
+                                            <i class="fa-solid ${r.icon} text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-slate-800 dark:text-slate-200">${r.name}</div>
+                                            <div class="text-[11px] text-slate-500 font-serif italic">${r.pali}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <span class="block text-xs font-semibold text-slate-700 dark:text-slate-300">${r.typeLabel} - ${r.group}</span>
+                                    <span class="block text-[10px] text-slate-500 mt-0.5">${r.sub}</span>
+                                </td>
+                                <td class="py-3 px-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed min-w-[200px]">
+                                    ${r.desc}
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    tbody.innerHTML = html;
+                }
+            }
+
+            // Clicking (or Enter/Space on) a row opens the same detail modal used elsewhere in the app
+            tbody.addEventListener('click', (e) => {
+                const row = e.target.closest('tr[data-id]');
+                if (!row) return;
+                const id = parseInt(row.dataset.id, 10);
+                if (row.dataset.type === 'citta') {
+                    openCittaModal(id);
+                } else {
+                    const item = cetasikaData.find(c => c.id === id);
+                    if (item) openModal(item);
+                }
+            });
+            tbody.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const row = e.target.closest('tr[data-id]');
+                if (!row) return;
+                e.preventDefault();
+                row.click();
+            });
+
+            catSelect.addEventListener('change', () => {
+                populateGroups();
+                renderTable();
+            });
+            groupSelect.addEventListener('change', renderTable);
+            searchInput.addEventListener('input', renderTable);
+
+            // Init
+            populateGroups();
+            renderTable();
+        }
+
         // Initialize App
         document.addEventListener('DOMContentLoaded', () => {
+            initSearchTab();
             renderCetasikaGrid('all');
             renderCittaGroups();
             updateSimulator('lobha');
@@ -3104,7 +3375,7 @@ function mm(num) {
             setLiveVithiPreset('panca_atimahanta');
 
             // Deep-link routing: #vithi, #citta89, #citta89:hetu-sangaha, etc. (used by paccaya_sangaha.html cross-links)
-            const validTabs = ['def', 'sampayoga', 'citta89', 'cetasika', 'vithi', 'simulator'];
+            const validTabs = ['def', 'sampayoga', 'citta89', 'cetasika', 'vithi', 'simulator', 'search'];
             const [hashTab, hashAcc] = location.hash.replace('#', '').split(':');
             if (hashAcc) {
                 jumpToSangahaAccordion('acc-' + hashAcc);
