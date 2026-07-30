@@ -1552,10 +1552,65 @@
             if (group === 'ဝိပါက်') return `ရှေးကျင့်ခဲ့သော ကုသိုလ်ကံ၏ အကျိုးဆက်အနေဖြင့် ${feel} ပဋိသန္ဓေ၊ ဘဝင် သို့မဟုတ် စုတိအဖြစ် ဆောင်ရွက်နေသော ဝိပါက်စိတ်။`;
             return `ရဟန္တာပုဂ္ဂိုလ်တစ်ပါးက ${trigger} ကုသိုလ်လုပ်ငန်း ဆောင်ရွက်စဉ် ${feel} ဖြစ်ပေါ်သော်လည်း နောင်အကျိုး အသစ် မဖြစ်စေတော့သည့် ကြိယာစိတ်။`;
         }
+        function calculateCetasikasForCitta(citta) {
+            const result = ["ဖဿ", "ဝေဒနာ", "သညာ", "စေတနာ", "ဧကဂ္ဂတာ", "ဇီဝိတိန္ဒြေ", "မနသိကာရ"];
+            const isPancavinnana = citta.vatthuType && ['cakkhu', 'sota', 'ghana', 'jivha', 'kaya'].includes(citta.vatthuType);
+
+            if (!isPancavinnana && (!citta.jhana || citta.jhana === 1)) result.push("ဝိတက်");
+            if (!isPancavinnana && (!citta.jhana || citta.jhana <= 2)) result.push("ဝိစာရ");
+            if (!isPancavinnana && !(citta.group === 'akusala' && citta.sub === 'မောဟမူ (၂)' && citta.name.includes('ဝိစိကိစ္ဆာ'))) result.push("အဓိမောက္ခ");
+            
+            const noViriya = isPancavinnana || citta.name.includes('သမ္ပဋိစ္ဆန') || citta.name.includes('သန္တီရဏ') || citta.name.includes('ပဉ္စဒွါရာဝဇ္ဇန်း');
+            if (!noViriya) result.push("ဝီရိယ");
+
+            if (citta.vedanaType === 'somanassa' && (!citta.jhana || citta.jhana < 4)) result.push("ပီတိ");
+            if (citta.group !== 'ahetuka' && !(citta.group === 'akusala' && citta.sub === 'မောဟမူ (၂)')) result.push("ဆန္ဒ");
+
+            if (citta.group === 'akusala') {
+                result.push("မောဟ", "အဟိရိက", "အနောတ္တပ္ပ", "ဥဒ္ဓစ္စ");
+                if (citta.sub === 'လောဘမူ (၈)') {
+                    result.push("လောဘ");
+                    if (citta.name.includes('ဒိဋ္ဌိဂတသမ္ပယုတ်')) result.push("ဒိဋ္ဌိ");
+                    else result.push("မာန");
+                } else if (citta.sub === 'ဒေါသမူ (၂)') {
+                    result.push("ဒေါသ", "ဣဿာ", "မစ္ဆရိယ", "ကုက္ကုစ္စ");
+                } else if (citta.sub === 'မောဟမူ (၂)' && citta.name.includes('ဝိစိကိစ္ဆာ')) {
+                    result.push("ဝိစိကိစ္ဆာ");
+                }
+                if (citta.name.includes('သသင်္ခါရိက')) result.push("ထိန", "မိဒ္ဓ");
+            }
+
+            if (citta.group !== 'akusala' && citta.group !== 'ahetuka') {
+                result.push("သဒ္ဓါ", "သတိ", "ဟိရီ", "ဩတ္တပ္ပ", "အလောဘ", "အဒေါသ", "တတြမဇ္ဈတ္တတာ", "ကာယပဿဒ္ဓိ", "စိတ္တပဿဒ္ဓိ", "ကာယလဟုတာ", "စိတ္တလဟုတာ", "ကာယမုဒုတာ", "စိတ္တမုဒုတာ", "ကာယကမ္မညတာ", "စိတ္တကမ္မညတာ", "ကာယပါဂုညတာ", "စိတ္တပါဂုညတာ", "ကာယုဇုကတာ", "စိတ္တုဇုကတာ");
+                
+                if (citta.name.includes('ဉာဏသမ္ပယုတ်') || citta.jhana || citta.group === 'lokuttara') {
+                    result.push("ပညိန္ဒြေ (ပညာ)");
+                }
+
+                if (citta.group === 'lokuttara') {
+                    result.push("သမ္မာဝါစာ", "သမ္မာကမ္မန္တ", "သမ္မာအာဇီဝ"); 
+                } else {
+                    if (citta.sub === 'မဟာကုသိုလ် (၈)') {
+                        result.push("သမ္မာဝါစာ", "သမ္မာကမ္မန္တ", "သမ္မာအာဇီဝ"); 
+                        result.push("ကရုဏာ", "မုဒိတာ"); 
+                    } else if (citta.sub === 'မဟာကြိယာ (၈)') {
+                        result.push("ကရုဏာ", "မုဒိတာ"); 
+                    } else if (citta.jhana && citta.jhana < 5 && citta.group === 'rupa') {
+                        result.push("ကရုဏာ", "မုဒိတာ");
+                    }
+                }
+            }
+
+            return result;
+        }
+
         let cittaData = [];
 (function buildCittaData() {
     let uid = 1;
-    const push = (obj) => { cittaData.push(Object.assign({ id: uid++ }, obj)); };
+    const push = (obj) => { 
+        obj.cetasikas = calculateCetasikasForCitta(obj);
+        cittaData.push(Object.assign({ id: uid++ }, obj)); 
+    };
 
     // --- Akusala (12): Lobha-mūla (8) ---
     ['သောမနဿ', 'ဥပေက္ခာ'].forEach(vedana => {
@@ -1942,6 +1997,8 @@ function mm(num) {
             if (item.cat === 'akusala') colorHex = "text-rose-700 dark:text-rose-400";
             if (item.cat === 'sobhana') colorHex = "text-emerald-700 dark:text-emerald-400";
 
+            const assocCittas = cittaData.filter(c => c.cetasikas && c.cetasikas.includes(item.name));
+
             content.innerHTML = `
                 <div class="text-center space-y-3">
                     <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center ${colorHex} text-3xl border border-slate-200 dark:border-slate-700">
@@ -1963,14 +2020,29 @@ function mm(num) {
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>နေ့စဉ်ဘဝ ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${item.example}</p>
                     </div>` : ''}
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase"><i class="fa-solid fa-sitemap mr-1"></i>ယှဉ်တွဲသော စိတ်များ (${mm(assocCittas.length)} ပါး)</span>
+                            <button onclick="toggleAssocCittasView()" id="assoc-cittas-toggle-btn" class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 border border-amber-300/50 dark:border-amber-700/50 hover:bg-amber-200 dark:hover:bg-amber-800/60 transition-colors">
+                                အသေးစိတ်ပြရန်
+                            </button>
+                        </div>
+                        <div id="assoc-cittas-group-view" class="mt-3 text-center">
+                            <button onclick="jumpToCittaGroup('${item.cat}')" class="w-full text-xs font-semibold bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-amber-700 dark:text-amber-400 border border-slate-200 dark:border-slate-700 py-2.5 rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-table-cells-large"></i> အုပ်စုလိုက် ဇယားတွင် ကြည့်ရန်
+                            </button>
+                        </div>
+                        <div id="assoc-cittas-detail-view" class="hidden mt-3 flex-wrap gap-1.5 max-h-48 overflow-y-auto custom-scrollbar">
+                            ${assocCittas.map(c => `
+                                <span class="inline-block px-2 py-0.5 rounded text-[11px] font-medium bg-${c.color}-100 dark:bg-${c.color}-900/40 text-${c.color}-700 dark:text-${c.color}-300 border border-${c.color}-200 dark:border-${c.color}-800 cursor-pointer hover:bg-${c.color}-200 dark:hover:bg-${c.color}-800" onclick="openCittaModal(${c.id})">${c.shortName}</span>
+                            `).join('')}
+                        </div>
+                    </div>
                     <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between text-xs text-slate-600 dark:text-slate-400">
                         <span>စေတသိက် အမှတ်: #${mm(item.id)}</span>
                         <span>အုပ်စု: ${item.cat === 'anya' ? 'အညသမာန' : item.cat === 'akusala' ? 'အကုသိုလ်' : 'သောဘဏ'}</span>
                     </div>
                 </div>
-                <button onclick="jumpToCittaGroup('${item.cat}')" class="mt-2 w-full text-xs font-semibold bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-amber-700 dark:text-amber-300 py-2.5 rounded-lg transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-sitemap"></i> ဤစေတသိက် ပါဝင်တတ်သော စိတ်အုပ်စုများ ကြည့်ရန်
-                </button>
             `;
 
             showModal();
@@ -1985,6 +2057,44 @@ function mm(num) {
             document.getElementById('modal').classList.add('hidden');
             document.body.style.overflow = '';
             if (lastFocusedElement) lastFocusedElement.focus();
+        }
+
+        function toggleCetasikaView() {
+            const groupView = document.getElementById('cetasika-group-view');
+            const detailView = document.getElementById('cetasika-detail-view');
+            const btn = document.getElementById('cetasika-toggle-btn');
+            if (!detailView || !groupView || !btn) return;
+            
+            if (detailView.classList.contains('hidden')) {
+                detailView.classList.remove('hidden');
+                detailView.classList.add('flex');
+                groupView.classList.add('hidden');
+                btn.innerText = 'အုပ်စုလိုက်ပြရန်';
+            } else {
+                detailView.classList.add('hidden');
+                detailView.classList.remove('flex');
+                groupView.classList.remove('hidden');
+                btn.innerText = 'အသေးစိတ်ပြရန်';
+            }
+        }
+
+        function toggleAssocCittasView() {
+            const groupView = document.getElementById('assoc-cittas-group-view');
+            const detailView = document.getElementById('assoc-cittas-detail-view');
+            const btn = document.getElementById('assoc-cittas-toggle-btn');
+            if (!detailView || !groupView || !btn) return;
+            
+            if (detailView.classList.contains('hidden')) {
+                detailView.classList.remove('hidden');
+                detailView.classList.add('flex');
+                groupView.classList.add('hidden');
+                btn.innerText = 'အုပ်စုလိုက်ပြရန်';
+            } else {
+                detailView.classList.add('hidden');
+                detailView.classList.remove('flex');
+                groupView.classList.remove('hidden');
+                btn.innerText = 'အသေးစိတ်ပြရန်';
+            }
         }
 
         document.getElementById('modal').addEventListener('click', (e) => {
@@ -2211,8 +2321,19 @@ function mm(num) {
                         <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${item.desc}</p>
                     </div>
                     <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
-                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase"><i class="fa-solid fa-cubes mr-1"></i>ယှဉ်တွဲသော စေတသိက်များ (နှိပ်ကြည့်နိုင်သည်)</span>
-                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${linkify(item.cetasikaNote)}</p>
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase"><i class="fa-solid fa-cubes mr-1"></i>ယှဉ်တွဲသော စေတသိက်များ</span>
+                            <button onclick="toggleCetasikaView()" id="cetasika-toggle-btn" class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 border border-amber-300/50 dark:border-amber-700/50 hover:bg-amber-200 dark:hover:bg-amber-800/60 transition-colors">
+                                အသေးစိတ်ပြရန်
+                            </button>
+                        </div>
+                        <div id="cetasika-group-view" class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">${linkify(item.cetasikaNote)}</div>
+                        <div id="cetasika-detail-view" class="hidden mt-2 flex-wrap gap-1.5">
+                            ${item.cetasikas.map(cName => {
+                                const cet = cetasikaData.find(c => c.name === cName) || { color: 'slate' };
+                                return `<span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-${cet.color}-100 dark:bg-${cet.color}-900/40 text-${cet.color}-700 dark:text-${cet.color}-300 border border-${cet.color}-200 dark:border-${cet.color}-800 cursor-pointer hover:bg-${cet.color}-200 dark:hover:bg-${cet.color}-800" onclick="openModalByName('${cName.replace(/'/g, "\\'")}')">${cName}</span>`;
+                            }).join('')}
+                        </div>
                     </div>
                     <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>ဥပမာ</span>
