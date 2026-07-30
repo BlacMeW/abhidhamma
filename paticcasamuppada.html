@@ -48,16 +48,6 @@
             50% { transform: rotate(180deg) scale(1.05); filter: brightness(1.2); }
             100% { transform: rotate(360deg) scale(1); filter: brightness(1); }
         }
-        
-        .momentary-mode .nidana-card {
-            animation: momentary-flash 1s infinite;
-            animation-delay: var(--delay);
-        }
-        
-        @keyframes momentary-flash {
-            0%, 100% { box-shadow: none; filter: brightness(1); transform: scale(1); }
-            50% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.6); filter: brightness(1.15); transform: scale(1.05); z-index: 10; }
-        }
 
         :focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
         summary { cursor: pointer; list-style: none; }
@@ -272,6 +262,20 @@
                 </div>
                 <span id="nirodha-label" class="font-bold text-slate-400 dark:text-slate-500 text-[11px] uppercase tracking-wider transition-colors duration-300">ချုပ်စဉ် (Nirodha)</span>
             </div>
+        </div>
+
+        <!-- Momentary Explanation Box -->
+        <div id="momentary-explanation" class="hidden glass-card rounded-2xl p-5 max-w-3xl mx-auto mt-6 border-l-4 border-amber-500 bg-amber-50/50 dark:bg-amber-900/10 text-slate-700 dark:text-slate-300 shadow-sm animate-fade-in">
+            <h4 class="font-bold text-amber-600 dark:text-amber-400 mb-2 flex items-center"><i class="fa-solid fa-bolt mr-2 text-lg"></i> ခဏိကပဋိစ္စသမုပ္ပါဒ် (Momentary Interpretation)</h4>
+            <p class="text-[13px] md:text-sm leading-relaxed mb-2 text-justify">
+                ဤအယူအဆသည် အကြောင်းအကျိုး ဆက်စပ်ဖြစ်ပေါ်မှု (၁၂) ပါးစလုံးကို ဘဝသုံးပါး (အတိတ်၊ ပစ္စုပ္ပန်၊ အနာဂတ်) သို့ ခွဲခြားမထားဘဲ၊ <strong>'လက်ရှိ ပစ္စုပ္ပန် စိတ်တစ်ခဏအတွင်းမှာပင်'</strong> အဝိဇ္ဇာမှစ၍ ဇရာမရဏ (ဆင်းရဲဒုက္ခ) အထိ လျင်မြန်စွာ အဆက်မပြတ် ဖြစ်ပေါ်သွားပုံကို ဖော်ပြခြင်း ဖြစ်ပါသည်။
+            </p>
+            <p class="text-[12px] md:text-xs text-slate-500 dark:text-slate-400 italic mb-2">
+                (ဥပမာ - မျက်စိဖြင့် အဆင်းကို မြင်၍ သာယာမိရာမှ တဏှာ၊ ဥပါဒါန် ဖြစ်ကာ လိုချင်တပ်မက်မှု ဒုက္ခ (ဇရာမရဏ) သို့ ချက်ချင်း ရောက်ရှိသွားခြင်း။)
+            </p>
+            <p class="text-[12px] mt-3 font-semibold text-sky-600 dark:text-sky-400">
+                <i class="fa-solid fa-info-circle mr-1"></i> အောက်ပါ ကတ်တစ်ခုချင်းစီကို နှိပ်၍ ခဏိက အယူအဆအလိုက် ရှင်းလင်းချက်များကို ဖတ်ရှုနိုင်ပါသည်။
+            </p>
         </div>
 
         <!-- 12 Nidana Views -->
@@ -540,6 +544,21 @@
             const order = ['atita', 'paccuppanna', 'anagata'];
             let delayIndex = 0; // For Nirodha mode staggered animation
             
+            const shortMomMap = {
+                'avijja': 'မသိမှု',
+                'sankhara': 'တုံ့ပြန်မှု',
+                'vinnana': 'အာရုံသိမှု',
+                'namarupa': 'စိတ်နှင့်ရုပ်',
+                'salayatana': 'အာရုံခံ',
+                'phassa': 'ထိတွေ့မှု',
+                'vedana': 'ခံစားမှု',
+                'tanha': 'တပ်မက်မှု',
+                'upadana': 'စွဲလမ်းမှု',
+                'bhava': 'ဖြစ်တည်မှု',
+                'jati': 'ဖြစ်ပေါ်မှု',
+                'jaramarana': 'ဆင်းရဲဒုက္ခ'
+            };
+
             // Render Linear View
             container.innerHTML = order.map((kalaKey, kIdx) => {
                 const info = kalaInfo[kalaKey];
@@ -551,9 +570,9 @@
                     const prevItems = nidanaData.filter(n => n.kala === order[kIdx - 1]);
                     const lastNidana = prevItems[prevItems.length - 1];
                     blockTransitionHtml = `
-                        <div class="flex flex-col items-center my-1.5 transition-all duration-500" style="transition-delay: ${delayIndex * 0.4}s">
-                            <span class="text-[10px] mb-1 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-500 font-mono shadow-sm z-10">${lastNidana.paccaya}</span>
-                            <i class="fa-solid fa-arrow-down text-lg nidana-arrow-icon text-slate-300 dark:text-slate-600"></i>
+                        <div class="flex flex-col items-center my-1.5 transition-all duration-500 hover:scale-110 cursor-help" style="transition-delay: ${delayIndex * 0.4}s" title="${lastNidana.paccaya}">
+                            <span class="text-[10px] mb-1 px-2 py-0.5 rounded border border-amber-300/50 dark:border-amber-700/50 bg-amber-100/90 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 font-mono shadow-sm z-10 font-bold transition-colors">${lastNidana.paccaya}</span>
+                            <i class="fa-solid fa-arrow-down text-lg nidana-arrow-icon text-amber-400 dark:text-amber-500 drop-shadow-sm"></i>
                         </div>
                     `;
                 }
@@ -571,11 +590,12 @@
                                         <span class="absolute -top-2.5 bg-white dark:bg-slate-800 text-[9px] px-2 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
                                         <i class="fa-solid ${n.icon} text-xl mt-1"></i>
                                         <span class="text-[12px] md:text-[13px] font-bold mt-0.5 whitespace-nowrap">${mm(n.id)}. ${n.name}</span>
+                                        ${currentInterpretation === 'momentary' ? `<span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1.5 py-0.5 rounded-md mt-0.5 whitespace-nowrap shadow-sm"><i class="fa-solid fa-bolt mr-0.5"></i> ${shortMomMap[n.key]}</span>` : ''}
                                     </button>
                                     ${!isLast ? `
-                                    <div class="grid-arrow absolute top-1/2 -right-1 sm:-right-2 transform -translate-y-1/2 translate-x-1/2 flex flex-col items-center z-10 transition-all duration-500" style="transition-delay: ${(delayIndex * 0.4) + 0.2}s">
-                                        <i class="fa-solid fa-arrow-right nidana-arrow-icon text-slate-300 dark:text-slate-600 text-[11px] lg:text-sm"></i>
-                                        <span class="text-[8px] lg:text-[9px] text-slate-400 font-mono mt-0.5 bg-slate-50/90 dark:bg-slate-800/90 px-1 rounded whitespace-nowrap overflow-hidden text-ellipsis cursor-help" style="max-width: 55px;" title="${n.paccaya}">${n.paccaya}</span>
+                                    <div class="grid-arrow absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-help" style="right: -0.5rem; transform: translate(50%, -50%); transition-delay: ${(delayIndex * 0.4) + 0.2}s" title="${n.paccaya}">
+                                        <i class="fa-solid fa-arrow-right nidana-arrow-icon text-amber-400 dark:text-amber-500 text-sm lg:text-base drop-shadow-sm"></i>
+                                        <span class="text-[8px] lg:text-[9px] text-amber-700 dark:text-amber-300 font-bold font-mono mt-0.5 bg-amber-100/95 dark:bg-amber-900/80 border border-amber-300/50 dark:border-amber-700/50 px-1 py-0.5 rounded shadow-sm whitespace-normal text-center leading-[1.2] transition-colors" style="width: max-content; max-width: 75px;">${n.paccaya}</span>
                                     </div>` : ''}
                                 </div>
                                 `;
@@ -590,9 +610,9 @@
             
             // Add loop back to Avijja in Linear View
             container.innerHTML += `
-                <div class="flex flex-col items-center my-2 text-slate-400 dark:text-slate-600 transition-all duration-500 nidana-arrow" style="transition-delay: ${delayIndex * 0.4}s">
-                    <span class="text-[10px] mb-1 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-500 font-mono shadow-sm z-10">အာသဝ (Taints)</span>
-                    <i class="fa-solid fa-arrow-rotate-left text-xl nidana-arrow-icon text-slate-400 dark:text-slate-500"></i>
+                <div class="flex flex-col items-center my-2 text-amber-400 dark:text-amber-500 transition-all duration-500 nidana-arrow hover:scale-110 cursor-help" style="transition-delay: ${delayIndex * 0.4}s" title="အာသဝ (Taints)">
+                    <span class="text-[10px] mb-1 px-2 py-0.5 rounded border border-amber-300/50 dark:border-amber-700/50 bg-amber-100/90 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 font-mono shadow-sm z-10 font-bold transition-colors">အာသဝ (Taints)</span>
+                    <i class="fa-solid fa-arrow-rotate-left text-xl nidana-arrow-icon drop-shadow-sm"></i>
                 </div>
                 <div onclick="restartLoop()" class="glass-card rounded-2xl p-4 max-w-sm mx-auto border border-slate-300 dark:border-slate-700 text-center bg-slate-50 dark:bg-slate-800/50 transition-all duration-500 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 shadow-sm hover:shadow" style="transition-delay: ${(delayIndex * 0.4) + 0.2}s">
                     <p class="text-sm text-slate-600 dark:text-slate-300"><i class="fa-solid fa-rotate mr-1 text-slate-400"></i> <b>အဝိဇ္ဇာ</b> သို့ ပြန်လည်အစပြုကာ သံသရာစက်ဝန်း ဆက်လက်လည်ပတ်သည်။ <br/><span class="text-[10px] text-sky-600 dark:text-sky-400 mt-2 inline-block">(အစသို့ ပြန်သွားရန် နှိပ်ပါ)</span></p>
@@ -628,6 +648,7 @@
                             <span class="text-[9px] font-bold opacity-75">${mm(n.id)}</span>
                             <i class="fa-solid ${n.icon} text-xl"></i>
                             <span class="text-[11px] font-bold mt-1">${n.name}</span>
+                            ${currentInterpretation === 'momentary' ? `<span class="text-[8px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1 py-[1px] rounded mt-0.5"><i class="fa-solid fa-bolt mr-0.5"></i>${shortMomMap[n.key]}</span>` : ''}
                         </div>
                         <span class="absolute -bottom-3 bg-white dark:bg-slate-800 text-[8px] px-1.5 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
                     </div>
@@ -644,15 +665,18 @@
             currentInterpretation = interp;
             const btnTrad = document.getElementById('btn-interp-trad');
             const btnMom = document.getElementById('btn-interp-mom');
+            const momExp = document.getElementById('momentary-explanation');
             
             if (interp === 'traditional') {
                 btnTrad.className = 'px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-600 text-slate-800 dark:text-white shadow-sm transition';
                 btnMom.className = 'px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition';
                 document.body.classList.remove('momentary-mode');
+                if (momExp) momExp.classList.add('hidden');
             } else {
                 btnMom.className = 'px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-600 text-slate-800 dark:text-white shadow-sm transition';
                 btnTrad.className = 'px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition';
                 document.body.classList.add('momentary-mode');
+                if (momExp) momExp.classList.remove('hidden');
             }
             
             // Re-render
@@ -748,7 +772,7 @@
                 <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
                     <div>
                         <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase">အနက်အဓိပ္ပာယ်</span>
-                        <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${n.desc}</p>
+                        <p class="text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">${desc}</p>
                     </div>
                     <div class="grid sm:grid-cols-2 gap-2 text-xs pt-1">
                         <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-500/20">
@@ -766,7 +790,7 @@
                     </div>
                     <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>လက်တွေ့ သရုပ်ပြ ဥပမာ</span>
-                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed text-xs">${n.example}</p>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed text-xs">${example}</p>
                     </div>
                 </div>
             `;
