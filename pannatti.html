@@ -314,76 +314,188 @@
                 </div>
             </div>
 
-            <!-- Ayatana / Dhatu Visual Chart -->
+            <!-- Ayatana Visual Chart -->
             <div class="mt-4 bg-slate-50/50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200/60 dark:border-slate-700/60 shadow-sm">
-                <h4 class="font-bold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2"><i class="fa-solid fa-link text-indigo-500"></i> အာယတန နှင့် ဓာတု ပညတ် (Āyatana & Dhātu) <span class="font-normal text-[11px] text-slate-500 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 ml-2">၁၂ ပါး / ၁၈ ပါး</span></h4>
+                <h4 class="font-bold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2"><i class="fa-solid fa-link text-indigo-500"></i> အာယတနပညတ် (Āyatana Paññatti) <span class="font-normal text-[11px] text-slate-500 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 ml-2">၁၂ ပါး</span></h4>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <!-- Internal -->
-                    <div class="relative bg-teal-50/50 dark:bg-slate-800/80 rounded-xl p-4 border border-teal-200/50 dark:border-teal-800/50">
-                        <h5 class="font-bold text-teal-700 dark:text-teal-400 mb-3 border-b border-teal-200/50 dark:border-teal-800/50 pb-2 text-sm">အဇ္ဈတ္တ (အတွင်း ၆ ပါး)</h5>
+                    <div class="relative bg-sky-50/50 dark:bg-slate-800/80 rounded-xl p-4 border border-sky-200/50 dark:border-sky-800/50">
+                        <h5 class="font-bold text-sky-700 dark:text-sky-400 mb-3 border-b border-sky-200/50 dark:border-sky-800/50 pb-2 text-sm">အဇ္ဈတ္တ (အတွင်း ၆ ပါး)</h5>
                         <div class="grid grid-cols-2 lg:grid-cols-3 gap-2">
-                            <button onclick="openPannattiModal('ayatana', 'cakkhu')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-teal-100 dark:border-teal-800/60 text-center shadow-sm hover:ring-2 hover:ring-teal-400 transition-all cursor-pointer">
-                                <div class="font-bold text-teal-600 dark:text-teal-300 text-[11px] mb-0.5">စက္ခာယတန</div>
-                                <div class="text-[9px] text-slate-500">မျက်စိ (Eye)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_cakkhu')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-sky-100 dark:border-sky-800/60 text-center shadow-sm hover:ring-2 hover:ring-sky-400 transition-all cursor-pointer">
+                                <div class="font-bold text-sky-600 dark:text-sky-300 text-[11px] mb-0.5">စက္ခာယတန</div>
+                                <div class="text-[9px] text-slate-500">မျက်စိ</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'sota')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-teal-100 dark:border-teal-800/60 text-center shadow-sm hover:ring-2 hover:ring-teal-400 transition-all cursor-pointer">
-                                <div class="font-bold text-teal-600 dark:text-teal-300 text-[11px] mb-0.5">သောတာယတန</div>
-                                <div class="text-[9px] text-slate-500">နား (Ear)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_sota')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-sky-100 dark:border-sky-800/60 text-center shadow-sm hover:ring-2 hover:ring-sky-400 transition-all cursor-pointer">
+                                <div class="font-bold text-sky-600 dark:text-sky-300 text-[11px] mb-0.5">သောတာယတန</div>
+                                <div class="text-[9px] text-slate-500">နား</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'ghana')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-teal-100 dark:border-teal-800/60 text-center shadow-sm hover:ring-2 hover:ring-teal-400 transition-all cursor-pointer">
-                                <div class="font-bold text-teal-600 dark:text-teal-300 text-[11px] mb-0.5">ဃာနာယတန</div>
-                                <div class="text-[9px] text-slate-500">နှာခေါင်း (Nose)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_ghana')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-sky-100 dark:border-sky-800/60 text-center shadow-sm hover:ring-2 hover:ring-sky-400 transition-all cursor-pointer">
+                                <div class="font-bold text-sky-600 dark:text-sky-300 text-[11px] mb-0.5">ဃာနာယတန</div>
+                                <div class="text-[9px] text-slate-500">နှာခေါင်း</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'jivha')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-teal-100 dark:border-teal-800/60 text-center shadow-sm hover:ring-2 hover:ring-teal-400 transition-all cursor-pointer">
-                                <div class="font-bold text-teal-600 dark:text-teal-300 text-[11px] mb-0.5">ဇိဝှာယတန</div>
-                                <div class="text-[9px] text-slate-500">လျှာ (Tongue)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_jivha')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-sky-100 dark:border-sky-800/60 text-center shadow-sm hover:ring-2 hover:ring-sky-400 transition-all cursor-pointer">
+                                <div class="font-bold text-sky-600 dark:text-sky-300 text-[11px] mb-0.5">ဇိဝှာယတန</div>
+                                <div class="text-[9px] text-slate-500">လျှာ</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'kaya')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-teal-100 dark:border-teal-800/60 text-center shadow-sm hover:ring-2 hover:ring-teal-400 transition-all cursor-pointer">
-                                <div class="font-bold text-teal-600 dark:text-teal-300 text-[11px] mb-0.5">ကာယာယတန</div>
-                                <div class="text-[9px] text-slate-500">ကိုယ် (Body)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_kaya')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-sky-100 dark:border-sky-800/60 text-center shadow-sm hover:ring-2 hover:ring-sky-400 transition-all cursor-pointer">
+                                <div class="font-bold text-sky-600 dark:text-sky-300 text-[11px] mb-0.5">ကာယာယတန</div>
+                                <div class="text-[9px] text-slate-500">ကိုယ်</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'mana')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-teal-200 dark:border-teal-700 text-center shadow-sm hover:ring-2 hover:ring-teal-400 transition-all cursor-pointer bg-teal-50/30">
-                                <div class="font-bold text-teal-700 dark:text-teal-400 text-[11px] mb-0.5">မနာယတန</div>
-                                <div class="text-[9px] text-slate-500">စိတ် (Mind)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_mana')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-sky-200 dark:border-sky-700 text-center shadow-sm hover:ring-2 hover:ring-sky-400 transition-all cursor-pointer">
+                                <div class="font-bold text-sky-700 dark:text-sky-400 text-[11px] mb-0.5">မနာယတန</div>
+                                <div class="text-[9px] text-slate-500">စိတ်</div>
                             </button>
                         </div>
                     </div>
                     <!-- External -->
-                    <div class="relative bg-orange-50/50 dark:bg-slate-800/80 rounded-xl p-4 border border-orange-200/50 dark:border-orange-800/50">
-                        <h5 class="font-bold text-orange-700 dark:text-orange-400 mb-3 border-b border-orange-200/50 dark:border-orange-800/50 pb-2 text-sm">ဗဟိဒ္ဓ (အပြင် ၆ ပါး)</h5>
+                    <div class="relative bg-rose-50/50 dark:bg-slate-800/80 rounded-xl p-4 border border-rose-200/50 dark:border-rose-800/50">
+                        <h5 class="font-bold text-rose-700 dark:text-rose-400 mb-3 border-b border-rose-200/50 dark:border-rose-800/50 pb-2 text-sm">ဗဟိဒ္ဓ (အပြင် ၆ ပါး)</h5>
                         <div class="grid grid-cols-2 lg:grid-cols-3 gap-2">
-                            <button onclick="openPannattiModal('ayatana', 'rupa_a')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-orange-100 dark:border-orange-800/60 text-center shadow-sm hover:ring-2 hover:ring-orange-400 transition-all cursor-pointer">
-                                <div class="font-bold text-orange-600 dark:text-orange-300 text-[11px] mb-0.5">ရူပါယတန</div>
-                                <div class="text-[9px] text-slate-500">အဆင်း (Sight)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_rupa')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-rose-100 dark:border-rose-800/60 text-center shadow-sm hover:ring-2 hover:ring-rose-400 transition-all cursor-pointer">
+                                <div class="font-bold text-rose-600 dark:text-rose-300 text-[11px] mb-0.5">ရူပါယတန</div>
+                                <div class="text-[9px] text-slate-500">အဆင်း</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'sadda')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-orange-100 dark:border-orange-800/60 text-center shadow-sm hover:ring-2 hover:ring-orange-400 transition-all cursor-pointer">
-                                <div class="font-bold text-orange-600 dark:text-orange-300 text-[11px] mb-0.5">သဒ္ဒါယတန</div>
-                                <div class="text-[9px] text-slate-500">အသံ (Sound)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_sadda')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-rose-100 dark:border-rose-800/60 text-center shadow-sm hover:ring-2 hover:ring-rose-400 transition-all cursor-pointer">
+                                <div class="font-bold text-rose-600 dark:text-rose-300 text-[11px] mb-0.5">သဒ္ဒါယတန</div>
+                                <div class="text-[9px] text-slate-500">အသံ</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'gandha')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-orange-100 dark:border-orange-800/60 text-center shadow-sm hover:ring-2 hover:ring-orange-400 transition-all cursor-pointer">
-                                <div class="font-bold text-orange-600 dark:text-orange-300 text-[11px] mb-0.5">ဂန္ဓာယတန</div>
-                                <div class="text-[9px] text-slate-500">အနံ့ (Smell)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_gandha')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-rose-100 dark:border-rose-800/60 text-center shadow-sm hover:ring-2 hover:ring-rose-400 transition-all cursor-pointer">
+                                <div class="font-bold text-rose-600 dark:text-rose-300 text-[11px] mb-0.5">ဂန္ဓာယတန</div>
+                                <div class="text-[9px] text-slate-500">အနံ့</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'rasa')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-orange-100 dark:border-orange-800/60 text-center shadow-sm hover:ring-2 hover:ring-orange-400 transition-all cursor-pointer">
-                                <div class="font-bold text-orange-600 dark:text-orange-300 text-[11px] mb-0.5">ရသာယတန</div>
-                                <div class="text-[9px] text-slate-500">အရသာ (Taste)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_rasa')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-rose-100 dark:border-rose-800/60 text-center shadow-sm hover:ring-2 hover:ring-rose-400 transition-all cursor-pointer">
+                                <div class="font-bold text-rose-600 dark:text-rose-300 text-[11px] mb-0.5">ရသာယတန</div>
+                                <div class="text-[9px] text-slate-500">အရသာ</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'photthabba')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-orange-100 dark:border-orange-800/60 text-center shadow-sm hover:ring-2 hover:ring-orange-400 transition-all cursor-pointer">
-                                <div class="font-bold text-orange-600 dark:text-orange-300 text-[11px] mb-0.5">ဖေါဋ္ဌဗ္ဗာယတန</div>
-                                <div class="text-[9px] text-slate-500">အတွေ့အထိ (Touch)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_photthabba')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-rose-100 dark:border-rose-800/60 text-center shadow-sm hover:ring-2 hover:ring-rose-400 transition-all cursor-pointer">
+                                <div class="font-bold text-rose-600 dark:text-rose-300 text-[11px] mb-0.5">ဖေါဋ္ဌဗ္ဗာယတန</div>
+                                <div class="text-[9px] text-slate-500">အတွေ့အထိ</div>
                             </button>
-                            <button onclick="openPannattiModal('ayatana', 'dhamma')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-orange-200 dark:border-orange-700 text-center shadow-sm hover:ring-2 hover:ring-orange-400 transition-all cursor-pointer bg-orange-50/30">
-                                <div class="font-bold text-orange-700 dark:text-orange-400 text-[11px] mb-0.5">ဓမ္မာယတန</div>
-                                <div class="text-[9px] text-slate-500">တရားအာရုံ (Mental)</div>
+                            <button onclick="openPannattiModal('ayatana', 'a_dhamma')" class="bg-white dark:bg-slate-900 p-2 rounded-lg border border-rose-200 dark:border-rose-700 text-center shadow-sm hover:ring-2 hover:ring-rose-400 transition-all cursor-pointer">
+                                <div class="font-bold text-rose-700 dark:text-rose-400 text-[11px] mb-0.5">ဓမ္မာယတန</div>
+                                <div class="text-[9px] text-slate-500">တရားအာရုံ</div>
                             </button>
                         </div>
                     </div>
                 </div>
-                <p class="text-[10px] text-slate-500 mt-3 text-center w-full"><i class="fa-solid fa-info-circle mr-1 text-indigo-400"></i> အထက်ပါ အာယတန ၁၂ ပါးကို အခြေခံ၍ ဝိညာဉ်ဓာတ် ၆ ပါးကို ပေါင်းထည့်လိုက်လျှင် <strong>ဓာတ် ၁၈ ပါး</strong> ဖြစ်သွားပါသည်။</p>
             </div>
 
-        <!-- 2. Nama Pannatti Group -->
+            <!-- Dhatu Visual Chart -->
+            <div class="mt-5 bg-slate-50/50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200/60 dark:border-slate-700/60 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-5 gap-2">
+                    <h4 class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2"><i class="fa-solid fa-gem text-amber-500"></i> ဓာတုပညတ် (Dhātu Paññatti) <span class="font-normal text-[11px] text-slate-500 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 ml-2">၁၈ ပါး</span></h4>
+                    <p class="text-[11px] text-slate-500 bg-slate-100 dark:bg-slate-700/50 px-3 py-1 rounded-lg">ဒွါရ (Base) + အာရုံ (Object) = ဝိညာဉ် (Consciousness)</p>
+                </div>
+                
+                <!-- Desktop Headers -->
+                <div class="hidden md:grid grid-cols-3 gap-4 mb-3 px-4 font-bold text-sm text-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <div class="text-emerald-700 dark:text-emerald-400">မှီရာ (Base)</div>
+                    <div class="text-amber-700 dark:text-amber-400">အာရုံ (Object)</div>
+                    <div class="text-indigo-700 dark:text-indigo-400">ဝိညာဉ် (Consciousness)</div>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <!-- Triad 1: Eye -->
+                    <div class="bg-white dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 md:hidden">၁။ မျက်စိအုပ်စု (Eye)</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+                            <button onclick="openPannattiModal('dhatu', 'd_cakkhu')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 bg-emerald-50/50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 hover:ring-2 hover:ring-emerald-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">စက္ခုဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_rupa')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-amber-100 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 hover:ring-2 hover:ring-amber-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ရူပဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_cakkhu_v')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-indigo-100 dark:border-indigo-800/60 bg-indigo-50/50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:ring-2 hover:ring-indigo-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">စက္ခုဝိညာဏဓာတု</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Triad 2: Ear -->
+                    <div class="bg-white dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 md:hidden">၂။ နားအုပ်စု (Ear)</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+                            <button onclick="openPannattiModal('dhatu', 'd_sota')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 bg-emerald-50/50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 hover:ring-2 hover:ring-emerald-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">သောတဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_sadda')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-amber-100 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 hover:ring-2 hover:ring-amber-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">သဒ္ဒဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_sota_v')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-indigo-100 dark:border-indigo-800/60 bg-indigo-50/50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:ring-2 hover:ring-indigo-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">သောတဝိညာဏဓာတု</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Triad 3: Nose -->
+                    <div class="bg-white dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 md:hidden">၃။ နှာခေါင်းအုပ်စု (Nose)</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+                            <button onclick="openPannattiModal('dhatu', 'd_ghana')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 bg-emerald-50/50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 hover:ring-2 hover:ring-emerald-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ဃာနဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_gandha')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-amber-100 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 hover:ring-2 hover:ring-amber-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ဂန္ဓဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_ghana_v')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-indigo-100 dark:border-indigo-800/60 bg-indigo-50/50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:ring-2 hover:ring-indigo-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ဃာနဝိညာဏဓာတု</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Triad 4: Tongue -->
+                    <div class="bg-white dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 md:hidden">၄။ လျှာအုပ်စု (Tongue)</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+                            <button onclick="openPannattiModal('dhatu', 'd_jivha')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 bg-emerald-50/50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 hover:ring-2 hover:ring-emerald-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ဇိဝှာဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_rasa')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-amber-100 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 hover:ring-2 hover:ring-amber-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ရသဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_jivha_v')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-indigo-100 dark:border-indigo-800/60 bg-indigo-50/50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:ring-2 hover:ring-indigo-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ဇိဝှာဝိညာဏဓာတု</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Triad 5: Body -->
+                    <div class="bg-white dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 md:hidden">၅။ ကိုယ်အုပ်စု (Body)</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+                            <button onclick="openPannattiModal('dhatu', 'd_kaya')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 bg-emerald-50/50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 hover:ring-2 hover:ring-emerald-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ကာယဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_photthabba')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-amber-100 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 hover:ring-2 hover:ring-amber-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ဖေါဋ္ဌဗ္ဗဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_kaya_v')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-indigo-100 dark:border-indigo-800/60 bg-indigo-50/50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:ring-2 hover:ring-indigo-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ကာယဝိညာဏဓာတု</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Triad 6: Mind -->
+                    <div class="bg-white dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 md:hidden">၆။ စိတ်အုပ်စု (Mind)</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+                            <button onclick="openPannattiModal('dhatu', 'd_mano')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 bg-emerald-50/50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 hover:ring-2 hover:ring-emerald-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">မနောဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_dhamma')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-amber-100 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 hover:ring-2 hover:ring-amber-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">ဓမ္မဓာတု</span>
+                            </button>
+                            <button onclick="openPannattiModal('dhatu', 'd_mano_v')" class="w-full flex items-center justify-center p-2.5 rounded-lg border border-indigo-100 dark:border-indigo-800/60 bg-indigo-50/50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:ring-2 hover:ring-indigo-400 transition-all cursor-pointer shadow-sm">
+                                <span class="text-xs font-bold">မနောဝိညာဏဓာတု</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 2. Nama Pannatti Group -->
         <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-rose-500 space-y-4 shadow-sm">
             <div class="flex items-center gap-3 pb-2 border-b border-slate-100 dark:border-slate-800">
                 <div class="w-11 h-11 rounded-xl bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 flex items-center justify-center text-xl border border-rose-500/30"><i class="fa-solid fa-font"></i></div>
@@ -710,18 +822,39 @@
         ];
 
         const ayatanaTypes = [
-            { id: 'cakkhu', name: 'စက္ခာယတန / စက္ခုဓာတု', pali: 'Cakkhāyatana', desc: 'မျက်စိအကြည်', deepDesc: 'အဆင်း (ရူပါရုံ) ကို မြင်သိနိုင်ရန် အကြောင်းခံဖြစ်သော မျက်စိအကြည်ဖြစ်သည်။ စက္ခာယတနဟုလည်းခေါ်သည်၊ စက္ခုဓာတုဟုလည်းခေါ်သည်။ ထိုအကြည်ကို မှီ၍ စက္ခုဝိညာဏဓာတု (မြင်သိစိတ်) ဖြစ်ပေါ်သည်။', ex: ['မျက်စိ'], paramatthaLink: 'စက္ခုပသာဒရုပ်', icon: 'fa-eye' },
-            { id: 'sota', name: 'သောတာယတန / သောတဓာတု', pali: 'Sotāyatana', desc: 'နားအကြည်', deepDesc: 'အသံ (သဒ္ဒါရုံ) ကို ကြားသိနိုင်ရန် အကြောင်းခံဖြစ်သော နားအကြည်ဖြစ်သည်။ သောတာယတနဟုလည်းခေါ်သည်၊ သောတဓာတုဟုလည်းခေါ်သည်။ ထိုအကြည်ကို မှီ၍ သောတဝိညာဏဓာတု (ကြားသိစိတ်) ဖြစ်ပေါ်သည်။', ex: ['နား'], paramatthaLink: 'သောတပသာဒရုပ်', icon: 'fa-ear-listen' },
-            { id: 'ghana', name: 'ဃာနာယတန / ဃာနဓာတု', pali: 'Ghānāyatana', desc: 'နှာခေါင်းအကြည်', deepDesc: 'အနံ့ (ဂန္ဓာရုံ) ကို နံသိနိုင်ရန် အကြောင်းခံဖြစ်သော နှာခေါင်းအကြည်ဖြစ်သည်။ ထိုအကြည်ကို မှီ၍ ဃာနဝိညာဏဓာတု (နံသိစိတ်) ဖြစ်ပေါ်သည်။', ex: ['နှာခေါင်း'], paramatthaLink: 'ဃာနပသာဒရုပ်', icon: 'fa-smog' },
-            { id: 'jivha', name: 'ဇိဝှာယတန / ဇိဝှာဓာတု', pali: 'Jivhāyatana', desc: 'လျှာအကြည်', deepDesc: 'အရသာ (ရသာရုံ) ကို လျက်သိနိုင်ရန် အကြောင်းခံဖြစ်သော လျှာအကြည်ဖြစ်သည်။ ထိုအကြည်ကို မှီ၍ ဇိဝှာဝိညာဏဓာတု (လျက်သိစိတ်) ဖြစ်ပေါ်သည်။', ex: ['လျှာ'], paramatthaLink: 'ဇိဝှာပသာဒရုပ်', icon: 'fa-utensils' },
-            { id: 'kaya', name: 'ကာယာယတန / ကာယဓာတု', pali: 'Kāyāyatana', desc: 'ကိုယ်အကြည်', deepDesc: 'အတွေ့အထိ (ဖေါဋ္ဌဗ္ဗာရုံ) ကို ထိသိနိုင်ရန် အကြောင်းခံဖြစ်သော ကိုယ်အကြည်ဖြစ်သည်။ ထိုအကြည်ကို မှီ၍ ကာယဝိညာဏဓာတု (ထိသိစိတ်) ဖြစ်ပေါ်သည်။', ex: ['ခန္ဓာကိုယ် အရေပြား'], paramatthaLink: 'ကာယပသာဒရုပ်', icon: 'fa-hand-pointer' },
-            { id: 'mana', name: 'မနာယတန / ဝိညာဏဓာတု ၇ ပါး', pali: 'Manāyatana', desc: 'စိတ်အမျိုးမျိုး', deepDesc: 'အာရုံတို့ကို သိတတ်သော စိတ်အားလုံးကို အာယတနအနေဖြင့် "မနာယတန" (၁) ပါးတည်း သတ်မှတ်ပြီး၊ ဓာတ်အနေဖြင့် ဝိညာဉ်ဓာတ် ၇ ပါး (စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှာ၊ ကာယ၊ မနော၊ မနောဝိညာဏ) ဟု ခွဲခြားသတ်မှတ်သည်။', ex: ['စိတ်'], paramatthaLink: 'စိတ် ၈၉ ပါး (ဝိညာဉ်ဓာတ် ၇ ပါး)', icon: 'fa-brain' },
-            { id: 'rupa_a', name: 'ရူပါယတန / ရူပဓာတု', pali: 'Rūpāyatana', desc: 'အဆင်းအာရုံ', deepDesc: 'မျက်စိဖြင့် မြင်အပ်သော အဆင်းအရောင်အမျိုးမျိုး ဖြစ်သည်။ စက္ခုဝိညာဉ်၏ ကျက်စားရာ အာရုံဖြစ်သည်။', ex: ['အရောင်', 'အလင်း', 'ပုံသဏ္ဌာန်'], paramatthaLink: 'ရူပါရုံ', icon: 'fa-palette' },
-            { id: 'sadda', name: 'သဒ္ဒါယတန / သဒ္ဒဓာတု', pali: 'Saddāyatana', desc: 'အသံအာရုံ', deepDesc: 'နားဖြင့် ကြားအပ်သော အသံအမျိုးမျိုး ဖြစ်သည်။ သောတဝိညာဉ်၏ ကျက်စားရာ အာရုံဖြစ်သည်။', ex: ['စကားသံ', 'တေးဂီတ', 'ဆူညံသံ'], paramatthaLink: 'သဒ္ဒါရုံ', icon: 'fa-music' },
-            { id: 'gandha', name: 'ဂန္ဓာယတန / ဂန္ဓဓာတု', pali: 'Gandhāyatana', desc: 'အနံ့အာရုံ', deepDesc: 'နှာခေါင်းဖြင့် နံသိအပ်သော အနံ့အမျိုးမျိုး ဖြစ်သည်။ ဃာနဝိညာဉ်၏ ကျက်စားရာ အာရုံဖြစ်သည်။', ex: ['အမွှေးနံ့', 'အနံဆိုး'], paramatthaLink: 'ဂန္ဓာရုံ', icon: 'fa-wind' },
-            { id: 'rasa', name: 'ရသာယတန / ရသဓာတု', pali: 'Rasāyatana', desc: 'အရသာအာရုံ', deepDesc: 'လျှာဖြင့် လျက်သိအပ်သော အရသာအမျိုးမျိုး ဖြစ်သည်။ ဇိဝှာဝိညာဉ်၏ ကျက်စားရာ အာရုံဖြစ်သည်။', ex: ['ချို', 'ချဉ်', 'ဖန်', 'ခါး'], paramatthaLink: 'ရသာရုံ', icon: 'fa-utensils' },
-            { id: 'photthabba', name: 'ဖေါဋ္ဌဗ္ဗာယတန / ဖေါဋ္ဌဗ္ဗဓာတု', pali: 'Phoṭṭhabbāyatana', desc: 'အတွေ့အထိအာရုံ', deepDesc: 'ကိုယ်ဖြင့် ထိသိအပ်သော အတွေ့အထိအမျိုးမျိုး ဖြစ်သည်။ ပထဝီ(မာ/ပျော့)၊ တေဇော(ပူ/အေး)၊ ဝါယော(တွန်းကန်/လှုပ်ရှား) ဓာတ်သုံးပါးဖြစ်သည်။', ex: ['ပူခြင်း', 'အေးခြင်း', 'မာခြင်း'], paramatthaLink: 'ပထဝီ၊ တေဇော၊ ဝါယော (ရုပ် ၃ ပါး)', icon: 'fa-hand' },
-            { id: 'dhamma', name: 'ဓမ္မာယတန / ဓမ္မဓာတု', pali: 'Dhammāyatana', desc: 'တရားအာရုံ', deepDesc: 'စိတ်ဖြင့်သာ သိအပ်သော အာရုံများဖြစ်သည်။ မျက်စိ၊ နား စသော ဒွါရ ၅ ပါးဖြင့် မယူနိုင်သော အာရုံများဖြစ်သည်။', ex: ['စိတ်ကူးများ', 'သဘောတရားများ', 'နိဗ္ဗာန်'], paramatthaLink: 'စေတသိက် ၅၂၊ သုခုမရုပ် ၁၆၊ နိဗ္ဗာန်', icon: 'fa-om' }
+            { id: 'a_cakkhu', name: 'စက္ခာယတန', pali: 'Cakkhāyatana', desc: 'မျက်စိအကြည်', deepDesc: 'အဆင်းကို မြင်သိနိုင်ရန် အကြောင်းခံဖြစ်သော မျက်စိအကြည်ဖြစ်သည်။', ex: ['မျက်စိ'], paramatthaLink: 'စက္ခုပသာဒရုပ်', icon: 'fa-eye' },
+            { id: 'a_sota', name: 'သောတာယတန', pali: 'Sotāyatana', desc: 'နားအကြည်', deepDesc: 'အသံကို ကြားသိနိုင်ရန် အကြောင်းခံဖြစ်သော နားအကြည်ဖြစ်သည်။', ex: ['နား'], paramatthaLink: 'သောတပသာဒရုပ်', icon: 'fa-ear-listen' },
+            { id: 'a_ghana', name: 'ဃာနာယတန', pali: 'Ghānāyatana', desc: 'နှာခေါင်းအကြည်', deepDesc: 'အနံ့ကို နံသိနိုင်ရန် အကြောင်းခံဖြစ်သော နှာခေါင်းအကြည်ဖြစ်သည်။', ex: ['နှာခေါင်း'], paramatthaLink: 'ဃာနပသာဒရုပ်', icon: 'fa-smog' },
+            { id: 'a_jivha', name: 'ဇိဝှာယတန', pali: 'Jivhāyatana', desc: 'လျှာအကြည်', deepDesc: 'အရသာကို လျက်သိနိုင်ရန် အကြောင်းခံဖြစ်သော လျှာအကြည်ဖြစ်သည်။', ex: ['လျှာ'], paramatthaLink: 'ဇိဝှာပသာဒရုပ်', icon: 'fa-utensils' },
+            { id: 'a_kaya', name: 'ကာယာယတန', pali: 'Kāyāyatana', desc: 'ကိုယ်အကြည်', deepDesc: 'အတွေ့အထိကို ထိသိနိုင်ရန် အကြောင်းခံဖြစ်သော ကိုယ်အကြည်ဖြစ်သည်။', ex: ['ခန္ဓာကိုယ်'], paramatthaLink: 'ကာယပသာဒရုပ်', icon: 'fa-hand-pointer' },
+            { id: 'a_mana', name: 'မနာယတန', pali: 'Manāyatana', desc: 'စိတ်အမျိုးမျိုး', deepDesc: 'အာရုံတို့ကို သိတတ်သော စိတ်အားလုံးကို အာယတနအနေဖြင့် "မနာယတန" (၁) ပါးတည်း သတ်မှတ်သည်။', ex: ['စိတ်'], paramatthaLink: 'စိတ် ၈၉ ပါး', icon: 'fa-brain' },
+            { id: 'a_rupa', name: 'ရူပါယတန', pali: 'Rūpāyatana', desc: 'အဆင်းအာရုံ', deepDesc: 'မျက်စိဖြင့် မြင်အပ်သော အဆင်းအရောင်အမျိုးမျိုး ဖြစ်သည်။', ex: ['အရောင်', 'အလင်း'], paramatthaLink: 'ရူပါရုံ', icon: 'fa-palette' },
+            { id: 'a_sadda', name: 'သဒ္ဒါယတန', pali: 'Saddāyatana', desc: 'အသံအာရုံ', deepDesc: 'နားဖြင့် ကြားအပ်သော အသံအမျိုးမျိုး ဖြစ်သည်။', ex: ['စကားသံ', 'တေးဂီတ'], paramatthaLink: 'သဒ္ဒါရုံ', icon: 'fa-music' },
+            { id: 'a_gandha', name: 'ဂန္ဓာယတန', pali: 'Gandhāyatana', desc: 'အနံ့အာရုံ', deepDesc: 'နှာခေါင်းဖြင့် နံသိအပ်သော အနံ့အမျိုးမျိုး ဖြစ်သည်။', ex: ['အမွှေးနံ့'], paramatthaLink: 'ဂန္ဓာရုံ', icon: 'fa-wind' },
+            { id: 'a_rasa', name: 'ရသာယတန', pali: 'Rasāyatana', desc: 'အရသာအာရုံ', deepDesc: 'လျှာဖြင့် လျက်သိအပ်သော အရသာအမျိုးမျိုး ဖြစ်သည်။', ex: ['ချို', 'ချဉ်'], paramatthaLink: 'ရသာရုံ', icon: 'fa-utensils' },
+            { id: 'a_photthabba', name: 'ဖေါဋ္ဌဗ္ဗာယတန', pali: 'Phoṭṭhabbāyatana', desc: 'အတွေ့အထိအာရုံ', deepDesc: 'ကိုယ်ဖြင့် ထိသိအပ်သော အတွေ့အထိအမျိုးမျိုး ဖြစ်သည်။', ex: ['ပူခြင်း', 'မာခြင်း'], paramatthaLink: 'ပထဝီ၊ တေဇော၊ ဝါယော (ရုပ် ၃ ပါး)', icon: 'fa-hand' },
+            { id: 'a_dhamma', name: 'ဓမ္မာယတန', pali: 'Dhammāyatana', desc: 'တရားအာရုံ', deepDesc: 'စိတ်ဖြင့်သာ သိအပ်သော အာရုံများဖြစ်သည်။', ex: ['စိတ်ကူးများ'], paramatthaLink: 'စေတသိက် ၅၂၊ သုခုမရုပ် ၁၆၊ နိဗ္ဗာန်', icon: 'fa-om' }
+        ];
+
+        const dhatuTypes = [
+            { id: 'd_cakkhu', name: 'စက္ခုဓာတု', pali: 'Cakkhudhātu', desc: 'မျက်စိအကြည်ဓာတ်', deepDesc: 'အဆင်းကို မြင်သိနိုင်ရန် အကြောင်းခံဖြစ်သော မျက်စိအကြည်ဓာတ်ဖြစ်သည်။', ex: ['မျက်စိ'], paramatthaLink: 'စက္ခုပသာဒရုပ်', icon: 'fa-eye' },
+            { id: 'd_sota', name: 'သောတဓာတု', pali: 'Sotadhātu', desc: 'နားအကြည်ဓာတ်', deepDesc: 'အသံကို ကြားသိနိုင်ရန် အကြောင်းခံဖြစ်သော နားအကြည်ဓာတ်ဖြစ်သည်။', ex: ['နား'], paramatthaLink: 'သောတပသာဒရုပ်', icon: 'fa-ear-listen' },
+            { id: 'd_ghana', name: 'ဃာနဓာတု', pali: 'Ghānadhātu', desc: 'နှာခေါင်းအကြည်ဓာတ်', deepDesc: 'အနံ့ကို နံသိနိုင်ရန် အကြောင်းခံဖြစ်သော နှာခေါင်းအကြည်ဓာတ်ဖြစ်သည်။', ex: ['နှာခေါင်း'], paramatthaLink: 'ဃာနပသာဒရုပ်', icon: 'fa-smog' },
+            { id: 'd_jivha', name: 'ဇိဝှာဓာတု', pali: 'Jivhādhātu', desc: 'လျှာအကြည်ဓာတ်', deepDesc: 'အရသာကို လျက်သိနိုင်ရန် အကြောင်းခံဖြစ်သော လျှာအကြည်ဓာတ်ဖြစ်သည်။', ex: ['လျှာ'], paramatthaLink: 'ဇိဝှာပသာဒရုပ်', icon: 'fa-utensils' },
+            { id: 'd_kaya', name: 'ကာယဓာတု', pali: 'Kāyadhātu', desc: 'ကိုယ်အကြည်ဓာတ်', deepDesc: 'အတွေ့အထိကို ထိသိနိုင်ရန် အကြောင်းခံဖြစ်သော ကိုယ်အကြည်ဓာတ်ဖြစ်သည်။', ex: ['ခန္ဓာကိုယ်'], paramatthaLink: 'ကာယပသာဒရုပ်', icon: 'fa-hand-pointer' },
+            { id: 'd_rupa', name: 'ရူပဓာတု', pali: 'Rūpadhātu', desc: 'အဆင်းအာရုံဓာတ်', deepDesc: 'မျက်စိဖြင့် မြင်အပ်သော အဆင်းအရောင်အမျိုးမျိုး ဖြစ်သည်။', ex: ['အရောင်', 'အလင်း'], paramatthaLink: 'ရူပါရုံ', icon: 'fa-palette' },
+            { id: 'd_sadda', name: 'သဒ္ဒဓာတု', pali: 'Saddadhātu', desc: 'အသံအာရုံဓာတ်', deepDesc: 'နားဖြင့် ကြားအပ်သော အသံအမျိုးမျိုး ဖြစ်သည်။', ex: ['စကားသံ', 'တေးဂီတ'], paramatthaLink: 'သဒ္ဒါရုံ', icon: 'fa-music' },
+            { id: 'd_gandha', name: 'ဂန္ဓဓာတု', pali: 'Gandhadhātu', desc: 'အနံ့အာရုံဓာတ်', deepDesc: 'နှာခေါင်းဖြင့် နံသိအပ်သော အနံ့အမျိုးမျိုး ဖြစ်သည်။', ex: ['အမွှေးနံ့'], paramatthaLink: 'ဂန္ဓာရုံ', icon: 'fa-wind' },
+            { id: 'd_rasa', name: 'ရသဓာတု', pali: 'Rasadhātu', desc: 'အရသာအာရုံဓာတ်', deepDesc: 'လျှာဖြင့် လျက်သိအပ်သော အရသာအမျိုးမျိုး ဖြစ်သည်။', ex: ['ချို', 'ချဉ်'], paramatthaLink: 'ရသာရုံ', icon: 'fa-utensils' },
+            { id: 'd_photthabba', name: 'ဖေါဋ္ဌဗ္ဗဓာတု', pali: 'Phoṭṭhabbadhātu', desc: 'အတွေ့အထိအာရုံဓာတ်', deepDesc: 'ကိုယ်ဖြင့် ထိသိအပ်သော အတွေ့အထိအမျိုးမျိုး ဖြစ်သည်။', ex: ['ပူခြင်း', 'မာခြင်း'], paramatthaLink: 'ပထဝီ၊ တေဇော၊ ဝါယော (ရုပ် ၃ ပါး)', icon: 'fa-hand' },
+            { id: 'd_dhamma', name: 'ဓမ္မဓာတု', pali: 'Dhammadhātu', desc: 'တရားအာရုံဓာတ်', deepDesc: 'စိတ်ဖြင့်သာ သိအပ်သော အာရုံများဖြစ်သည်။', ex: ['စိတ်ကူးများ'], paramatthaLink: 'စေတသိက် ၅၂၊ သုခုမရုပ် ၁၆၊ နိဗ္ဗာန်', icon: 'fa-om' },
+            { id: 'd_cakkhu_v', name: 'စက္ခုဝိညာဏဓာတု', pali: 'Cakkhuviññāṇadhātu', desc: 'မြင်သိစိတ်ဓာတ်', deepDesc: 'အဆင်းကို မြင်သိသော စိတ်ဖြစ်သည်။', ex: ['မြင်သိစိတ်'], paramatthaLink: 'စက္ခုဝိညာဉ်စိတ် ၂ ပါး', icon: 'fa-eye' },
+            { id: 'd_sota_v', name: 'သောတဝိညာဏဓာတု', pali: 'Sotaviññāṇadhātu', desc: 'ကြားသိစိတ်ဓာတ်', deepDesc: 'အသံကို ကြားသိသော စိတ်ဖြစ်သည်။', ex: ['ကြားသိစိတ်'], paramatthaLink: 'သောတဝိညာဉ်စိတ် ၂ ပါး', icon: 'fa-ear-listen' },
+            { id: 'd_ghana_v', name: 'ဃာနဝိညာဏဓာတု', pali: 'Ghānaviññāṇadhātu', desc: 'နံသိစိတ်ဓာတ်', deepDesc: 'အနံ့ကို နံသိသော စိတ်ဖြစ်သည်။', ex: ['နံသိစိတ်'], paramatthaLink: 'ဃာနဝိညာဉ်စိတ် ၂ ပါး', icon: 'fa-smog' },
+            { id: 'd_jivha_v', name: 'ဇိဝှာဝိညာဏဓာတု', pali: 'Jivhāviññāṇadhātu', desc: 'လျက်သိစိတ်ဓာတ်', deepDesc: 'အရသာကို လျက်သိသော စိတ်ဖြစ်သည်။', ex: ['လျက်သိစိတ်'], paramatthaLink: 'ဇိဝှာဝိညာဉ်စိတ် ၂ ပါး', icon: 'fa-utensils' },
+            { id: 'd_kaya_v', name: 'ကာယဝိညာဏဓာတု', pali: 'Kāyaviññāṇadhātu', desc: 'ထိသိစိတ်ဓာတ်', deepDesc: 'အတွေ့အထိကို ထိသိသော စိတ်ဖြစ်သည်။', ex: ['ထိသိစိတ်'], paramatthaLink: 'ကာယဝိညာဉ်စိတ် ၂ ပါး', icon: 'fa-hand-pointer' },
+            { id: 'd_mano', name: 'မနောဓာတု', pali: 'Manodhātu', desc: 'ဆင်ခြင်/လက်ခံစိတ်ဓာတ်', deepDesc: 'အာရုံငါးပါးကို လက်ခံသော၊ ဆင်ခြင်သော စိတ်ဖြစ်သည်။', ex: ['ပဉ္စဒွါရာဝဇ္ဇန်း', 'သမ္ပဋိစ္ဆိုန်း'], paramatthaLink: 'မနောဓာတ်စိတ် ၃ ပါး', icon: 'fa-brain' },
+            { id: 'd_mano_v', name: 'မနောဝိညာဏဓာတု', pali: 'Manoviññāṇadhātu', desc: 'ကြွင်းသောစိတ်ဓာတ်များ', deepDesc: 'ဝိညာဉ်ဓာတ် ၆ ပါးမှ ကြွင်းသော စိတ်အားလုံးဖြစ်သည်။', ex: ['တွေးတောသိစိတ်'], paramatthaLink: 'မနောဝိညာဏဓာတ်စိတ် ၇၆ ပါး', icon: 'fa-brain' }
         ];
 
         const puggalaTypes = [
@@ -1138,8 +1271,13 @@
                 else theme = 'indigo';
             } else if (type === 'ayatana') {
                 data = ayatanaTypes.find(x => x.id === id);
-                if (['cakkhu','sota','ghana','jivha','kaya','mana'].includes(id)) theme = 'teal';
-                else theme = 'orange';
+                if (['a_cakkhu','a_sota','a_ghana','a_jivha','a_kaya','a_mana'].includes(id)) theme = 'sky';
+                else theme = 'rose';
+            } else if (type === 'dhatu') {
+                data = dhatuTypes.find(x => x.id === id);
+                if (['d_cakkhu','d_sota','d_ghana','d_jivha','d_kaya'].includes(id)) theme = 'emerald';
+                else if (['d_rupa','d_sadda','d_gandha','d_rasa','d_photthabba','d_dhamma'].includes(id)) theme = 'amber';
+                else theme = 'indigo';
             } else {
                 data = namaPannatti.find(x => x.id === id);
                 theme = 'rose';
@@ -1148,54 +1286,54 @@
 
             const tc = {
                 'sky': {
-                    title: 'text-sky-800 dark:text-sky-200',
-                    pali: 'text-sky-600 dark:text-sky-400',
-                    header: 'border-sky-200 dark:border-sky-800 bg-sky-50 dark:bg-sky-900/30',
-                    icon: 'bg-sky-100 dark:bg-sky-800 text-sky-600 dark:text-sky-300 border-sky-300 dark:border-sky-600'
+                    title: 'text-sky-800 dark:text-sky-400',
+                    pali: 'text-sky-600 dark:text-sky-300',
+                    header: 'border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800',
+                    icon: 'bg-sky-100 dark:bg-slate-700 text-sky-600 dark:text-sky-400 border-sky-300 dark:border-slate-600'
                 },
                 'indigo': {
-                    title: 'text-indigo-800 dark:text-indigo-200',
-                    pali: 'text-indigo-600 dark:text-indigo-400',
-                    header: 'border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-900/30',
-                    icon: 'bg-indigo-100 dark:bg-indigo-800 text-indigo-600 dark:text-indigo-300 border-indigo-300 dark:border-indigo-600'
+                    title: 'text-indigo-800 dark:text-indigo-400',
+                    pali: 'text-indigo-600 dark:text-indigo-300',
+                    header: 'border-indigo-200 dark:border-slate-700 bg-indigo-50 dark:bg-slate-800',
+                    icon: 'bg-indigo-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 border-indigo-300 dark:border-slate-600'
                 },
                 'rose': {
-                    title: 'text-rose-800 dark:text-rose-200',
-                    pali: 'text-rose-600 dark:text-rose-400',
-                    header: 'border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/30',
-                    icon: 'bg-rose-100 dark:bg-rose-800 text-rose-600 dark:text-rose-300 border-rose-300 dark:border-rose-600'
+                    title: 'text-rose-800 dark:text-rose-400',
+                    pali: 'text-rose-600 dark:text-rose-300',
+                    header: 'border-rose-200 dark:border-slate-700 bg-rose-50 dark:bg-slate-800',
+                    icon: 'bg-rose-100 dark:bg-slate-700 text-rose-600 dark:text-rose-400 border-rose-300 dark:border-slate-600'
                 },
-                                                'amber': {
-                    title: 'text-amber-800 dark:text-amber-200',
-                    pali: 'text-amber-600 dark:text-amber-400',
-                    header: 'border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/30',
-                    icon: 'bg-amber-100 dark:bg-amber-800 text-amber-600 dark:text-amber-300 border-amber-300 dark:border-amber-600'
+                'amber': {
+                    title: 'text-amber-800 dark:text-amber-400',
+                    pali: 'text-amber-600 dark:text-amber-300',
+                    header: 'border-amber-200 dark:border-slate-700 bg-amber-50 dark:bg-slate-800',
+                    icon: 'bg-amber-100 dark:bg-slate-700 text-amber-600 dark:text-amber-400 border-amber-300 dark:border-slate-600'
                 },
                 'teal': {
-                    title: 'text-teal-800 dark:text-teal-200',
-                    pali: 'text-teal-600 dark:text-teal-400',
-                    header: 'border-teal-200 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/30',
-                    icon: 'bg-teal-100 dark:bg-teal-800 text-teal-600 dark:text-teal-300 border-teal-300 dark:border-teal-600'
+                    title: 'text-teal-800 dark:text-teal-400',
+                    pali: 'text-teal-600 dark:text-teal-300',
+                    header: 'border-teal-200 dark:border-slate-700 bg-teal-50 dark:bg-slate-800',
+                    icon: 'bg-teal-100 dark:bg-slate-700 text-teal-600 dark:text-teal-400 border-teal-300 dark:border-slate-600'
                 },
                 'orange': {
-                    title: 'text-orange-800 dark:text-orange-200',
-                    pali: 'text-orange-600 dark:text-orange-400',
-                    header: 'border-orange-200 dark:border-orange-800 bg-orange-50 dark:bg-orange-900/30',
-                    icon: 'bg-orange-100 dark:bg-orange-800 text-orange-600 dark:text-orange-300 border-orange-300 dark:border-orange-600'
+                    title: 'text-orange-800 dark:text-orange-400',
+                    pali: 'text-orange-600 dark:text-orange-300',
+                    header: 'border-orange-200 dark:border-slate-700 bg-orange-50 dark:bg-slate-800',
+                    icon: 'bg-orange-100 dark:bg-slate-700 text-orange-600 dark:text-orange-400 border-orange-300 dark:border-slate-600'
                 },
                 'emerald': {
-                    title: 'text-emerald-800 dark:text-emerald-200',
-                    pali: 'text-emerald-600 dark:text-emerald-400',
-                    header: 'border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/30',
-                    icon: 'bg-emerald-100 dark:bg-emerald-800 text-emerald-600 dark:text-emerald-300 border-emerald-300 dark:border-emerald-600'
+                    title: 'text-emerald-800 dark:text-emerald-400',
+                    pali: 'text-emerald-600 dark:text-emerald-300',
+                    header: 'border-emerald-200 dark:border-slate-700 bg-emerald-50 dark:bg-slate-800',
+                    icon: 'bg-emerald-100 dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 border-emerald-300 dark:border-slate-600'
                 },
                 'violet': {
-                    title: 'text-violet-800 dark:text-violet-200',
-                    pali: 'text-violet-600 dark:text-violet-400',
-                    header: 'border-violet-200 dark:border-violet-800 bg-violet-50 dark:bg-violet-900/30',
-                    icon: 'bg-violet-100 dark:bg-violet-800 text-violet-600 dark:text-violet-300 border-violet-300 dark:border-violet-600'
+                    title: 'text-violet-800 dark:text-violet-400',
+                    pali: 'text-violet-600 dark:text-violet-300',
+                    header: 'border-violet-200 dark:border-slate-700 bg-violet-50 dark:bg-slate-800',
+                    icon: 'bg-violet-100 dark:bg-slate-700 text-violet-600 dark:text-violet-400 border-violet-300 dark:border-slate-600'
                 }
-            }[theme];
+            };
 
             const modal = document.getElementById('pannatti-modal');
             
@@ -1219,7 +1357,7 @@
             
             header.className = `flex items-center justify-between px-5 py-4 border-b ${tc.header}`;
             
-            if (type === 'attha' || type === 'extra' || type === 'special' || type === 'puggala' || type === 'khandha' || type === 'ayatana') {
+            if (type === 'attha' || type === 'extra' || type === 'special' || type === 'puggala' || type === 'khandha' || type === 'ayatana' || type === 'dhatu') {
                 icon.className = `w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 border ${tc.icon}`;
                 icon.innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
                 document.getElementById('modal-logic-section').classList.add('hidden');
