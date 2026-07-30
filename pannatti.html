@@ -207,6 +207,76 @@
             </div>
         </div>
 
+        <!-- 1.2 Special Abhidhamma Concepts -->
+        <div class="glass-card rounded-2xl p-5 md:p-8 max-w-4xl mx-auto border-t-4 border-violet-500 space-y-6 shadow-sm mt-8">
+            <div class="flex items-center gap-3 pb-2 border-b border-slate-100 dark:border-slate-800">
+                <div class="w-11 h-11 rounded-xl bg-violet-100 dark:bg-violet-500/15 text-violet-700 dark:text-violet-400 flex items-center justify-center text-xl border border-violet-500/30"><i class="fa-solid fa-crown"></i></div>
+                <div>
+                    <h3 class="font-bold text-violet-700 dark:text-violet-300 text-lg">အဘိဓမ္မာလာ အထူးပညတ်များ <span class="text-sm font-normal text-slate-500">(Abhidhamma Paññatti)</span></h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">ခန္ဓာ၊ အာယတန၊ ဓာတ် နှင့် ပုဂ္ဂိုလ်များကို အုပ်စုဖွဲ့ ပညတ်ထားခြင်း</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="special-container">
+                <!-- Rendered via JS -->
+            </div>
+
+            <!-- Puggala Pannatti Visual Chart -->
+            <div class="mt-8 bg-slate-50/50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200/60 dark:border-slate-700/60 shadow-sm">
+                <h4 class="font-bold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2"><i class="fa-solid fa-ranking-star text-amber-500"></i> ပုဂ္ဂလပညတ် (Types of Individuals) <span class="font-normal text-[11px] text-slate-500 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 ml-2">၁၂ မျိုး</span></h4>
+                
+                <div class="space-y-4 text-sm">
+                    <!-- Ariya (8) -->
+                    <div class="relative bg-emerald-50 dark:bg-slate-800 rounded-xl p-4 border border-emerald-200/50 dark:border-emerald-800/50 overflow-hidden">
+                        <div class="absolute right-0 top-0 w-24 h-24 bg-emerald-500/5 rounded-bl-full"></div>
+                        <h5 class="font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b border-emerald-200/50 dark:border-emerald-800/50 pb-2">အရိယာ ပုဂ္ဂိုလ် (၈) ယောက်</h5>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 relative z-10">
+                            <button onclick="openPannattiModal('puggala', 'sotapanna')" class="w-full h-full flex flex-col justify-center items-center hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-emerald-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 text-center shadow-sm focus:outline-none cursor-pointer">
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 mb-1">၁။ သောတာပတ္တိ</div>
+                                <div class="font-bold text-emerald-600 dark:text-emerald-300 text-xs mt-1">မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်</div>
+                            </button>
+                            <button onclick="openPannattiModal('puggala', 'sakadagami')" class="w-full h-full flex flex-col justify-center items-center hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-emerald-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 text-center shadow-sm focus:outline-none cursor-pointer">
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 mb-1">၂။ သကဒါဂါမိ</div>
+                                <div class="font-bold text-emerald-600 dark:text-emerald-300 text-xs mt-1">မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်</div>
+                            </button>
+                            <button onclick="openPannattiModal('puggala', 'anagami')" class="w-full h-full flex flex-col justify-center items-center hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-emerald-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-emerald-100 dark:border-emerald-800/60 text-center shadow-sm focus:outline-none cursor-pointer">
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 mb-1">၃။ အနာဂါမိ</div>
+                                <div class="font-bold text-emerald-600 dark:text-emerald-300 text-xs mt-1">မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်</div>
+                            </button>
+                            <button onclick="openPannattiModal('puggala', 'arahatta')" class="w-full h-full flex flex-col justify-center items-center hover:-translate-y-1 hover:shadow-lg hover:ring-2 hover:ring-emerald-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-emerald-200 dark:border-emerald-700 text-center shadow-md ring-1 ring-emerald-500/20 focus:outline-none cursor-pointer">
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 mb-1">၄။ အရဟတ္တ</div>
+                                <div class="font-bold text-emerald-700 dark:text-emerald-400 text-xs mt-1">မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်</div>
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-emerald-600/80 dark:text-emerald-400/70 mt-3 text-center w-full"><i class="fa-solid fa-info-circle mr-1"></i> မဂ်စိတ်၊ ဖိုလ်စိတ် ဖြစ်ပေါ်နေသော ခဏကို အစွဲပြု၍ ခေါ်ဝေါ်သော ပညတ်များဖြစ်သည်။</p>
+                    </div>
+
+                    <!-- Puthujjana (4) -->
+                    <div class="relative bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700 overflow-hidden">
+                        <h5 class="font-bold text-slate-700 dark:text-slate-300 mb-3 border-b border-slate-200 dark:border-slate-700 pb-2">ပုထုဇဉ် ပုဂ္ဂိုလ် (၄) ယောက်</h5>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 relative z-10">
+                            <button onclick="openPannattiModal('puggala', 'duggati')" class="w-full h-full flex flex-col justify-start items-center hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-rose-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-rose-200 dark:border-rose-900/50 text-center shadow-sm focus:outline-none cursor-pointer">
+                                <div class="font-bold text-rose-600 dark:text-rose-400 text-xs mb-1">ဒုဂ္ဂတိ အဟိတ်</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">အကုသိုလ်ကံကြောင့်ဖြစ်သော အပါယ်လေးဘုံသားများ</div>
+                            </button>
+                            <button onclick="openPannattiModal('puggala', 'sugati')" class="w-full h-full flex flex-col justify-start items-center hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-sky-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-sky-200 dark:border-sky-900/50 text-center shadow-sm focus:outline-none cursor-pointer">
+                                <div class="font-bold text-sky-600 dark:text-sky-400 text-xs mb-1">သုဂတိ အဟိတ်</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">ကုသိုလ်ကံကြောင့်ဖြစ်သော်လည်း ဉာဏ်/အဟိတ်ချို့တဲ့သူများ</div>
+                            </button>
+                            <button onclick="openPannattiModal('puggala', 'dvihetuka')" class="w-full h-full flex flex-col justify-start items-center hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-sky-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-sky-300 dark:border-sky-800 text-center shadow-sm focus:outline-none cursor-pointer">
+                                <div class="font-bold text-sky-700 dark:text-sky-300 text-xs mb-1">ဒွိဟိတ်</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">အလောဘ၊ အဒေါသ ဟိတ် ၂ ပါးသာ ပါရှိသူများ</div>
+                            </button>
+                            <button onclick="openPannattiModal('puggala', 'tihetuka')" class="w-full h-full flex flex-col justify-start items-center hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-indigo-400 transition-all bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-indigo-300 dark:border-indigo-800 text-center shadow-sm focus:outline-none cursor-pointer">
+                                <div class="font-bold text-indigo-600 dark:text-indigo-400 text-xs mb-1">တိဟိတ်</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">အလောဘ၊ အဒေါသ၊ အမောဟ ဟိတ် ၃ ပါးစလုံး ပါရှိသူများ</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 2. Nama Pannatti Group -->
         <div class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 border-rose-500 space-y-4 shadow-sm">
             <div class="flex items-center gap-3 pb-2 border-b border-slate-100 dark:border-slate-800">
@@ -414,7 +484,7 @@
                 desc: 'ရုပ်/နာမ် အစိတ်အပိုင်းများကို စုပေါင်းဖွဲ့စည်းထားမှုကို စွဲ၍ ခေါ်ဝေါ်သော အစုအဝေးပညတ်။', 
                 ex: ['လူ၊ နတ်၊ ဗြဟ္မာ (ပုဂ္ဂလပညတ်)', 'ရထား၊ ကား', 'ရွာ၊ မြို့၊ တပ်မတော်', 'သစ်ပင်'], 
                 icon: 'fa-users',
-                deepDesc: 'အစိတ်အပိုင်းလေးများစွာ စုပေါင်းထားသည့်အခါ စိတ်ထဲ၌ တစ်ခုတည်းသော အရာဝတ္ထု သို့မဟုတ် အကောင်အထည်အဖြစ် ထင်မြင်လာခြင်းဖြစ်သည်။ ဥပမာ - ဘီး၊ ဝင်ရိုး၊ ထမ်းပိုး၊ ယာဉ်အုံ တို့ကို စုပေါင်းလိုက်သောအခါ "ရထား" ဟူသော ပညတ်ဖြစ်လာသည်။ ထို့အတူ ခန္ဓာငါးပါး (ရုပ်၊ နာမ်) စုပေါင်းလိုက်သောအခါ "ပုဂ္ဂိုလ်၊ သတ္တဝါ" (ပုဂ္ဂလပညတ်) ဟူ၍ ဖြစ်လာသည်။',
+                deepDesc: 'အစိတ်အပိုင်းလေးများစွာ စုပေါင်းထားသည့်အခါ စိတ်ထဲ၌ တစ်ခုတည်းသော အရာဝတ္ထု သို့မဟုတ် အကောင်အထည်အဖြစ် ထင်မြင်လာခြင်းဖြစ်သည်။ ဥပမာ - ဘီး၊ ဝင်ရိုး၊ ထမ်းပိုး၊ ယာဉ်အုံ တို့ကို စုပေါင်းလိုက်သောအခါ "ရထား" ဟူသော ပညတ်ဖြစ်လာသည်။ ထို့အတူ ခန္ဓာငါးပါး (ရုပ်၊ နာမ်) စုပေါင်းလိုက်သောအခါ "ပုဂ္ဂိုလ်၊ သတ္တဝါ" (ပုဂ္ဂလပညတ်) ဟူ၍ ဖြစ်လာသည်။ <br><br><span class="text-[11px] font-semibold text-sky-600 dark:text-sky-400"><i class="fa-solid fa-info-circle"></i> မှတ်ချက် - ပုဂ္ဂလပညတ်သည် သမုဟပညတ်၏ အစိတ်အပိုင်းတစ်ခု ဖြစ်သည်။</span>',
                 paramatthaLink: 'ရုပ်နာမ် အစိတ်အပိုင်း အမြောက်အမြား (ခန္ဓာ ၅ ပါး) စုပေါင်းဖြစ်ပေါ်မှုကို အခြေခံ၍ ပညတ်ထားသည်။'
             },
             { 
@@ -494,6 +564,47 @@
             }
         ];
 
+        const specialPannatti = [
+            {
+                id: 'puggala',
+                name: 'ပုဂ္ဂလပညတ်', pali: 'Puggala-paññatti',
+                desc: 'ရုပ်နာမ်(ခန္ဓာ ၅ ပါး) အစုအဝေးကို အကြောင်းပြု၍ အရိယာ၊ ပုထုဇဉ် စသည်ဖြင့် သတ်မှတ်ခေါ်ဝေါ်သော ပညတ်။',
+                ex: ['အရိယာ (သောတာပန်၊ သကဒါဂါမ်၊ အနာဂါမ်၊ ရဟန္တာ)', 'ပုထုဇဉ် (ဒုဂ္ဂတိအဟိတ်၊ သုဂတိအဟိတ်၊ ဒွိဟိတ်၊ တိဟိတ်)'],
+                icon: 'fa-user-tie',
+                deepDesc: 'အဘိဓမ္မာ ၇ ကျမ်းတွင် တစ်ကျမ်းအပါအဝင်ဖြစ်သော ပုဂ္ဂလပညတ်ကျမ်းလာ ဖွင့်ဆိုချက်ဖြစ်သည်။ "ပုဂ္ဂိုလ်၊ သတ္တဝါ" ဟူသည် ပရမတ်အားဖြင့် အမှန်တကယ်မရှိဘဲ ခန္ဓာ ၅ ပါးမျှသာဖြစ်သည်။ သို့သော် ထိုခန္ဓာ ၅ ပါးအပေါ်၌ ဖြစ်ပေါ်နေသော ကိလေသာ ကင်းစင်မှု အဆင့်အတန်း (မဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ်) ကို လိုက်၍ ပုထုဇဉ် ၄ မျိုး၊ အရိယာ ၄ မျိုး (မဂ် ၄ ပါး၊ ဖိုလ် ၄ ပါး) ဟု ခွဲခြားပညတ်ထားခြင်းဖြစ်သည်။ သမုဟပညတ်၏ အစိတ်အပိုင်းတစ်ခုဖြစ်သည်။',
+                paramatthaLink: 'ခန္ဓာ ၅ ပါး (ရုပ်၊ နာမ်) နှင့် ယင်းတို့တွင် ယှဉ်သော ကိလေသာ (သို့မဟုတ်) မဂ်ဉာဏ်/ဖိုလ်ဉာဏ် (နာမ်တရား) တို့ကို အခြေခံသည်။'
+            },
+            {
+                id: 'khandha',
+                name: 'ခန္ဓပညတ်', pali: 'Khandha-paññatti',
+                desc: 'ရုပ်၊ ဝေဒနာ၊ သညာ၊ သင်္ခါရ၊ ဝိညာဉ် ဟူသော တရားအစုအဝေးကြီး ၅ ခု အဖြစ် ပညတ်ထားခြင်း။',
+                ex: ['ရူပက္ခန္ဓာ (ရုပ်အစုအဝေး)', 'ဝေဒနက္ခန္ဓာ (ခံစားမှုအစုအဝေး)', 'ဝိညာဏက္ခန္ဓာ (သိစိတ်အစုအဝေး)'],
+                icon: 'fa-layer-group',
+                deepDesc: 'အမှန်တကယ်အားဖြင့် ရုပ် ၂၈ ပါး၊ စိတ် ၈၉ ပါး၊ စေတသိက် ၅၂ ပါး ဟူသော ပရမတ်တရားများသာရှိသည်။ ထိုတရားတို့ကို သဘောတူရာအလိုက် အစုအဝေးကြီး ၅ စု (Groups) ဖြင့် "ခန္ဓာ ၅ ပါး" ဟု ခွဲခြားပညတ်ထားခြင်းဖြစ်သည်။',
+                paramatthaLink: 'ရုပ် ၂၈၊ စိတ် ၈၉ နှင့် စေတသိက် ၅၂ ပါး ဟူသော ပရမတ္ထတရားများကို အစုဖွဲ့ထားခြင်းဖြစ်သည်။'
+            },
+            {
+                id: 'ayatana',
+                name: 'အာယတန / ဓာတု ပညတ်', pali: 'Āyatana & Dhātu',
+                desc: 'အာရုံနှင့် ဒွါရ တိုက်ဆိုင်မှုနယ်ပယ် (၁၂ ပါး) နှင့် အခြေခံ ဓာတ်သဘောတရား (၁၈ ပါး) အဖြစ် ပညတ်ထားခြင်း။',
+                ex: ['စက္ခာယတန (မျက်စိ)', 'ရူပါယတန (အဆင်း)', 'စက္ခုဓာတု', 'စက္ခုဝိညာဏဓာတု'],
+                icon: 'fa-link',
+                deepDesc: 'နားလည်ရ လွယ်ကူစေရန်နှင့် တရားတို့၏ ဆက်စပ်ဖြစ်ပေါ်ပုံကို သိစေရန် ပရမတ်တရားများကို အာယတန ၁၂ ပါး၊ ဓာတ် ၁၈ ပါး အဖြစ် ခွဲခြားပြသထားသော ပညတ်ချက်များဖြစ်သည်။',
+                paramatthaLink: 'ရုပ်၊ စိတ်၊ စေတသိက် ပရမတ်တရားများ၏ ဆက်စပ်ဖြစ်ပေါ်မှုကို ခွဲခြားပြထားခြင်းဖြစ်သည်။'
+            }
+        ];
+
+        
+        const puggalaTypes = [
+            { id: 'sotapanna', name: 'သောတာပတ္တိ မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်', pali: 'Sotāpanna', desc: 'သောတာပတ္တိမဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိသော အရိယာပုဂ္ဂိုလ်', deepDesc: 'သောတာပတ္တိမဂ်ဉာဏ်ဖြင့် ဒိဋ္ဌိ (အယူမှား) နှင့် ဝိစိကိစ္ဆာ (ယုံမှားသံသယ) တို့ကို အကြွင်းမဲ့ ပယ်သတ်ပြီးသော ပုဂ္ဂိုလ်ဖြစ်သည်။ အပါယ်လေးဘုံသို့ လုံးဝ မကျရောက်တော့ဘဲ၊ အများဆုံး ခုနစ်ဘဝသာ ပဋိသန္ဓေနေမည်ဖြစ်သည်။', ex: ['သောတာပတ္တိမဂ်ဋ္ဌာန်ပုဂ္ဂိုလ်', 'သောတာပတ္တိဖလဋ္ဌာန်ပုဂ္ဂိုလ်'], paramatthaLink: 'သောတာပတ္တိမဂ်စိတ် ၁ ပါး၊ သောတာပတ္တိဖိုလ်စိတ် ၁ ပါး နှင့် ယှဉ်ဖက်စေတသိက်များ', icon: 'fa-user-check' },
+            { id: 'sakadagami', name: 'သကဒါဂါမိ မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်', pali: 'Sakadāgāmi', desc: 'သကဒါဂါမိမဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိသော အရိယာပုဂ္ဂိုလ်', deepDesc: 'သောတာပန်ပုဂ္ဂိုလ်ထက် ကိလေသာ ပိုမိုခေါင်းပါးသွားသော ပုဂ္ဂိုလ်ဖြစ်သည်။ ကာမရာဂနှင့် ဗျာပါဒ (ဒေါသ) ကို အကြမ်းစားပယ်နိုင်ပြီး၊ ကာမဘုံသို့ တစ်ကြိမ်သာ ပြန်လည်လာရောက်မည်ဖြစ်သည်။', ex: ['သကဒါဂါမိမဂ်ဋ္ဌာန်ပုဂ္ဂိုလ်', 'သကဒါဂါမိဖလဋ္ဌာန်ပုဂ္ဂိုလ်'], paramatthaLink: 'သကဒါဂါမိမဂ်စိတ် ၁ ပါး၊ သကဒါဂါမိဖိုလ်စိတ် ၁ ပါး နှင့် ယှဉ်ဖက်စေတသိက်များ', icon: 'fa-user-check' },
+            { id: 'anagami', name: 'အနာဂါမိ မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်', pali: 'Anāgāmi', desc: 'အနာဂါမိမဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိသော အရိယာပုဂ္ဂိုလ်', deepDesc: 'ကာမရာဂ (ကာမဂုဏ်၌ တပ်မက်ခြင်း) နှင့် ဗျာပါဒ (ဒေါသ) ကို အကြွင်းမဲ့ ပယ်သတ်ပြီးသော ပုဂ္ဂိုလ်ဖြစ်သည်။ ကာမဘုံသို့ လုံးဝပြန်မလာတော့ဘဲ၊ သုဒ္ဓါဝါသဗြဟ္မာ့ဘုံ၌သာ ပဋိသန္ဓေနေ၍ ထိုဘုံ၌ပင် ပရိနိဗ္ဗာန်စံမည်ဖြစ်သည်။', ex: ['အနာဂါမိမဂ်ဋ္ဌာန်ပုဂ္ဂိုလ်', 'အနာဂါမိဖလဋ္ဌာန်ပုဂ္ဂိုလ်'], paramatthaLink: 'အနာဂါမိမဂ်စိတ် ၁ ပါး၊ အနာဂါမိဖိုလ်စိတ် ၁ ပါး နှင့် ယှဉ်ဖက်စေတသိက်များ', icon: 'fa-user-check' },
+            { id: 'arahatta', name: 'အရဟတ္တ မဂ်ဋ္ဌာန် / ဖလဋ္ဌာန်', pali: 'Arahatta', desc: 'အရဟတ္တမဂ်ဉာဏ်၊ ဖိုလ်ဉာဏ် ရရှိသော ရဟန္တာပုဂ္ဂိုလ်', deepDesc: 'ကိလေသာအညစ်အကြေးအားလုံးကို အကြွင်းမဲ့ ပယ်သတ်ပြီးသော ပုဂ္ဂိုလ်မြတ် (ရဟန္တာ) ဖြစ်သည်။ နောက်ထပ် ပဋိသန္ဓေနေခြင်း (ဘဝသစ်) မရှိတော့ဘဲ ခန္ဓာပရိနိဗ္ဗာန်စံမည်ဖြစ်သည်။', ex: ['အရဟတ္တမဂ်ဋ္ဌာန်ပုဂ္ဂိုလ်', 'အရဟတ္တဖလဋ္ဌာန်ပုဂ္ဂိုလ်'], paramatthaLink: 'အရဟတ္တမဂ်စိတ် ၁ ပါး၊ အရဟတ္တဖိုလ်စိတ် ၁ ပါး နှင့် ယှဉ်ဖက်စေတသိက်များ', icon: 'fa-user-check' },
+            { id: 'duggati', name: 'ဒုဂ္ဂတိ အဟိတ်', pali: 'Duggati Ahetuka', desc: 'အကုသိုလ်ကံကြောင့်ဖြစ်သော အပါယ်လေးဘုံသားများ', deepDesc: 'အကုသိုလ်ကံကြောင့် ဒုဂ္ဂတိဘုံ (ငရဲ၊ တိရစ္ဆာန်၊ ပြိတ္တာ၊ အသူရကာယ်) သို့ ရောက်ရှိနေသော ပုဂ္ဂိုလ်များဖြစ်သည်။ ၎င်းတို့၏ ပဋိသန္ဓေစိတ်တွင် အလောဘ၊ အဒေါသ၊ အမောဟ ဟူသော ဟိတ် (၃) ပါးလုံး မပါဝင်ပါ။', ex: ['ငရဲသား', 'တိရစ္ဆာန်', 'ပြိတ္တာ', 'အသူရကာယ်'], paramatthaLink: 'အကုသလဝိပါက် ဥပေက္ခာသန္တီရဏစိတ် (ပဋိသန္ဓေစိတ်) ၁ ပါး နှင့် စေတသိက်များ', icon: 'fa-user-xmark' },
+            { id: 'sugati', name: 'သုဂတိ အဟိတ်', pali: 'Sugati Ahetuka', desc: 'ကုသိုလ်ကံကြောင့်ဖြစ်သော်လည်း ဟိတ်ချို့တဲ့သူများ', deepDesc: 'ကုသိုလ်ကံ (အဆင့်နိမ့်ကုသိုလ်ကံ) ကြောင့် လူ့ဘုံ၊ နတ်ဘုံသို့ ရောက်ရှိသော်လည်း ပဋိသန္ဓေစိတ်တွင် ဟိတ်မပါသောကြောင့် မွေးရာပါ မျက်မမြင်၊ နားမကြား၊ စိတ်ကျန်းမာရေးချို့တဲ့သူများ၊ အထောက်အပံ့နည်းသော ဘုမ္မစိုး၊ ရုက္ခစိုး စသည်တို့ ဖြစ်သည်။', ex: ['မွေးရာပါ အင်္ဂါချို့တဲ့သူများ', 'အောက်တန်းစားနတ်များ'], paramatthaLink: 'ကုသလဝိပါက် ဥပေက္ခာသန္တီရဏစိတ် (ပဋိသန္ဓေစိတ်) ၁ ပါး နှင့် စေတသိက်များ', icon: 'fa-user-large' },
+            { id: 'dvihetuka', name: 'ဒွိဟိတ် ပုဂ္ဂိုလ်', pali: 'Dvihetuka', desc: 'အလောဘ၊ အဒေါသ ဟိတ် (၂) ပါးသာ ပါရှိသူများ', deepDesc: 'ပဋိသန္ဓေစိတ်တွင် အလောဘ (မလောဘ) နှင့် အဒေါသ (မဒေါသ) ဟိတ် ၂ ပါးသာ ပါဝင်ပြီး၊ အမောဟ (ပညာ) ဟိတ် မပါဝင်သော ပုဂ္ဂိုလ်များဖြစ်သည်။ ဤဘဝတွင် တရားထူး (ဈာန်၊ မဂ်၊ ဖိုလ်) မရနိုင်ပါ။', ex: ['ပညာမပါဘဲ ကုသိုလ်ပြုခဲ့သော လူ၊ နတ်များ'], paramatthaLink: 'ဉာဏဝိပ္ပယုတ် မဟာဝိပါက်စိတ် ၄ ပါး (ပဋိသန္ဓေစိတ်) နှင့် စေတသိက်များ', icon: 'fa-user-large' },
+            { id: 'tihetuka', name: 'တိဟိတ် ပုဂ္ဂိုလ်', pali: 'Tihetuka', desc: 'အလောဘ၊ အဒေါသ၊ အမောဟ ဟိတ် (၃) ပါးစလုံး ပါရှိသူများ', deepDesc: 'ပဋိသန္ဓေစိတ်တွင် အလောဘ၊ အဒေါသ၊ အမောဟ (ပညာ) ဟိတ် (၃) ပါးစလုံး ပါဝင်သော ပုဂ္ဂိုလ်များဖြစ်သည်။ ပညာပြည့်စုံသဖြင့် ယခုဘဝတွင် ဝိပဿနာအားထုတ်လျှင် ဈာန်၊ မဂ်၊ ဖိုလ် တရားထူးများ ရနိုင်စွမ်းရှိသည်။', ex: ['ပညာပါသော ကုသိုလ်ပြုခဲ့သော လူ၊ နတ်များ'], paramatthaLink: 'ဉာဏသမ္ပယုတ် မဟာဝိပါက်စိတ် ၄ ပါး (ပဋိသန္ဓေစိတ်) နှင့် စေတသိက်များ', icon: 'fa-user-large' }
+        ];
         const namaPannatti = [
             { 
                 id: 'vijjamana',
@@ -603,6 +714,29 @@
                 `;
             });
 
+            const specialContainer = document.getElementById('special-container');
+            specialPannatti.forEach(item => {
+                const exString = item.ex.slice(0, 2).join('၊ ') + (item.ex.length > 2 ? ' စသည်' : '');
+                specialContainer.innerHTML += `
+                    <button onclick="openPannattiModal('special', '${item.id}')" class="pn-card bg-violet-50/50 dark:bg-slate-800 border border-violet-500/20 rounded-xl p-4 flex flex-col h-full w-full group">
+                        <div class="flex items-center justify-between mb-3 w-full">
+                            <div class="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-500/20 text-violet-600 dark:text-violet-400 flex items-center justify-center text-lg border border-violet-500/10 group-hover:bg-violet-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-violet-500/30 text-[10px] group-hover:text-violet-500 transition-colors"></i>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="font-bold text-violet-800 dark:text-violet-200 text-sm group-hover:text-violet-600 transition-colors">${item.name}</h4>
+                            <div class="text-[11px] sm:text-xs text-violet-700/80 dark:text-violet-300/80 font-medium font-mono mb-2">${item.pali}</div>
+                        </div>
+                        <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed grow line-clamp-3 w-full">${item.desc}</p>
+                        <div class="w-full text-[10px] font-semibold text-violet-700/80 dark:text-violet-300/80 mt-3 pt-3 border-t border-violet-500/10">
+                            ဥပမာ — ${exString}
+                        </div>
+                    </button>
+                `;
+            });
+
             const namaContainer = document.getElementById('nama-container');
             namaPannatti.forEach((item, idx) => {
                 const partsHtml = item.parts.map(p => {
@@ -659,6 +793,26 @@
                 nama: 'အဝိဇ္ဇမာန ပညတ် (ပရမတ်အားဖြင့် တကယ်မရှိသော အမည်)',
                 paramattha: 'ရုပ်တရား နှင့် နာမ်တရား (ခန္ဓာ ၅ ပါးသာ ရှိသည်)',
                 desc: 'ခန္ဓာ ၅ ပါး စုပေါင်းထားသော လူသားတစ်ဦးသည် ဆေးကုသခြင်းအလုပ်ကို လုပ်သောအခါ "ဆရာဝန်" ဟု ပညတ်လိုက်ခြင်းဖြစ်သည်။'
+            },
+            {
+                id: 'sotapanna',
+                category: 'paramattha_based',
+                term: 'သောတာပန် (Sotāpanna)',
+                icon: 'fa-person-rays',
+                attha: ['ပုဂ္ဂလပညတ် (အရိယာပုဂ္ဂိုလ်)', 'သမုဟပညတ် (ခန္ဓာ ၅ ပါး)'],
+                nama: 'အဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ် (သို့) အဝိဇ္ဇမာန ပညတ်',
+                paramattha: 'သောတာပတ္တိမဂ်/ဖိုလ် စိတ်နှင့် ယှဉ်သော စေတသိက်များ (ဒိဋ္ဌိ၊ ဝိစိကိစ္ဆာ ကင်းစင်သော ခန္ဓာ ၅ ပါး)',
+                desc: 'ပုဂ္ဂိုလ်ဟူ၍ မရှိသော်လည်း၊ အပါယ်သို့ကျစေတတ်သော ကိလေသာများ ကင်းစင်သွားသည့် ခန္ဓာအစဉ်ကို သောတာပန်ဟု ပညတ်ခြင်းဖြစ်သည်။'
+            },
+            {
+                id: 'arahant',
+                category: 'paramattha_based',
+                term: 'ရဟန္တာ (Arahant)',
+                icon: 'fa-hands-praying',
+                attha: ['ပုဂ္ဂလပညတ် (အရိယာပုဂ္ဂိုလ်)', 'သမုဟပညတ် (ခန္ဓာ ၅ ပါး)'],
+                nama: 'အဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ် (သို့) အဝိဇ္ဇမာန ပညတ်',
+                paramattha: 'အရဟတ္တမဂ်/ဖိုလ် စိတ်နှင့် ယှဉ်သော စေတသိက်များ (ကိလေသာအကြွင်းမဲ့ ကင်းစင်သော ခန္ဓာ ၅ ပါး)',
+                desc: 'ကိလေသာအားလုံး အကြွင်းမဲ့ချုပ်ငြိမ်းသွားသော ရုပ်နာမ်ခန္ဓာအစဉ်ကို ရဟန္တာဟု ပညတ်ခြင်းဖြစ်သည်။'
             },
             {
                 id: 'east',
@@ -832,6 +986,20 @@
             } else if (type === 'extra') {
                 data = extraPannatti.find(x => x.id === id);
                 theme = 'indigo';
+            } else if (type === 'special') {
+                data = specialPannatti.find(x => x.id === id);
+                theme = 'violet';
+            } else if (type === 'puggala') {
+                data = puggalaTypes.find(x => x.id === id);
+                if (['sotapanna', 'sakadagami', 'anagami', 'arahatta'].includes(id)) {
+                    theme = 'emerald';
+                } else if (id === 'duggati') {
+                    theme = 'rose';
+                } else if (id === 'tihetuka') {
+                    theme = 'indigo';
+                } else {
+                    theme = 'sky';
+                }
             } else {
                 data = namaPannatti.find(x => x.id === id);
                 theme = 'rose';
@@ -856,6 +1024,18 @@
                     pali: 'text-rose-600 dark:text-rose-400',
                     header: 'border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/30',
                     icon: 'bg-rose-100 dark:bg-rose-800 text-rose-600 dark:text-rose-300 border-rose-300 dark:border-rose-600'
+                },
+                                'emerald': {
+                    title: 'text-emerald-800 dark:text-emerald-200',
+                    pali: 'text-emerald-600 dark:text-emerald-400',
+                    header: 'border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/30',
+                    icon: 'bg-emerald-100 dark:bg-emerald-800 text-emerald-600 dark:text-emerald-300 border-emerald-300 dark:border-emerald-600'
+                },
+                'violet': {
+                    title: 'text-violet-800 dark:text-violet-200',
+                    pali: 'text-violet-600 dark:text-violet-400',
+                    header: 'border-violet-200 dark:border-violet-800 bg-violet-50 dark:bg-violet-900/30',
+                    icon: 'bg-violet-100 dark:bg-violet-800 text-violet-600 dark:text-violet-300 border-violet-300 dark:border-violet-600'
                 }
             }[theme];
 
@@ -881,7 +1061,7 @@
             
             header.className = `flex items-center justify-between px-5 py-4 border-b ${tc.header}`;
             
-            if (type === 'attha' || type === 'extra') {
+            if (type === 'attha' || type === 'extra' || type === 'special' || type === 'puggala') {
                 icon.className = `w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 border ${tc.icon}`;
                 icon.innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
                 document.getElementById('modal-logic-section').classList.add('hidden');
