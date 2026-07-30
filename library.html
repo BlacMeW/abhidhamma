@@ -17,6 +17,9 @@
         body {
             font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
             margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow: hidden; /* App-like layout */
         }
         .glass-header {
@@ -28,11 +31,7 @@
             background: rgba(15, 23, 42, 0.85);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .pdf-container {
-            height: calc(100vh - 64px); /* Adjust based on header height */
-        }
         .book-list {
-            height: calc(100vh - 64px);
             overflow-y: auto;
         }
         ::-webkit-scrollbar { width: 6px; }
@@ -50,7 +49,7 @@
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
     <!-- Header -->
-    <header class="glass-header sticky top-0 z-50 h-16 flex items-center justify-between px-4 sm:px-6">
+    <header class="glass-header shrink-0 z-50 h-16 flex items-center justify-between px-4 sm:px-6">
         <div class="flex items-center gap-3">
             <a href="index.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                 <i class="fa-solid fa-arrow-left"></i>
@@ -66,9 +65,9 @@
     </header>
 
     <!-- Main Content -->
-    <div class="flex flex-col md:flex-row w-full bg-slate-50 dark:bg-slate-900">
+    <div class="flex-1 min-h-0 flex flex-col md:flex-row w-full bg-slate-50 dark:bg-slate-900" id="mainContainer">
         <!-- Sidebar Book List -->
-        <div class="w-full md:w-1/3 lg:w-1/4 border-r border-slate-200 dark:border-slate-800 book-list bg-white dark:bg-slate-900 p-4 shrink-0 flex flex-col gap-3">
+        <div id="sidebar" class="w-full md:w-[350px] shrink-0 h-[35vh] md:h-full border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 book-list bg-white dark:bg-slate-900 p-4 flex flex-col gap-3 relative">
             <h2 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">ရရှိနိုင်သော စာအုပ်များ</h2>
             
             <button onclick="loadPDF('Abhidhamma_Sangaha-2025_AShin_Garudhamma.pdf', this)" class="book-item active-book text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition group flex items-start gap-3">
@@ -122,8 +121,14 @@
             </button>
         </div>
 
+        <!-- Resizer Handle (Desktop only) -->
+        <div id="resizer" class="hidden md:block w-1.5 cursor-col-resize bg-slate-200 dark:bg-slate-800 hover:bg-sky-400 dark:hover:bg-sky-500 active:bg-sky-500 transition-colors z-10 shrink-0 relative">
+            <!-- Visual indicator -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-8 w-0.5 bg-slate-400 dark:bg-slate-600 rounded-full"></div>
+        </div>
+
         <!-- PDF Viewer -->
-        <div class="w-full md:w-2/3 lg:w-3/4 pdf-container bg-slate-200 dark:bg-slate-950 flex flex-col relative">
+        <div class="flex-1 min-w-0 min-h-0 bg-slate-200 dark:bg-slate-950 flex flex-col relative h-full">
             <!-- Loading Indicator -->
             <div id="pdfLoading" class="absolute inset-0 flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 backdrop-blur-sm z-10 hidden">
                 <div class="flex flex-col items-center gap-3">
@@ -208,6 +213,35 @@
         document.getElementById('pdfFrame').onload = function() {
             document.getElementById('pdfLoading').classList.add('hidden');
         };
+
+        // Resizable Sidebar Logic
+        const resizer = document.getElementById('resizer');
+        const sidebar = document.getElementById('sidebar');
+        
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.body.style.cursor = 'col-resize';
+            document.body.style.userSelect = 'none'; // Prevent text selection
+            document.getElementById('pdfFrame').style.pointerEvents = 'none'; // Prevent iframe capturing mouse
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            // Limit sidebar width between 250px and 50vw
+            const newWidth = Math.max(250, Math.min(e.clientX, window.innerWidth / 2));
+            sidebar.style.width = newWidth + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                isResizing = false;
+                document.body.style.cursor = '';
+                document.body.style.userSelect = '';
+                document.getElementById('pdfFrame').style.pointerEvents = 'auto';
+            }
+        });
     </script>
 </body>
 </html>
