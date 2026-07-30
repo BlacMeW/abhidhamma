@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="အဘိဓမ္မတ္ထသင်္ဂဟ ကျမ်းကိုးစာအုပ်များ - PDF Library">
+    <title>အဘိဓမ္မတ္ထသင်္ဂဟ ကျမ်းကိုးစာအုပ်များ</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="output.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Padauk', 'Pyidaungsu', 'Myanmar Text', 'Noto Sans Myanmar', system-ui, sans-serif;
+            margin: 0;
+            overflow: hidden; /* App-like layout */
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pdf-container {
+            height: calc(100vh - 64px); /* Adjust based on header height */
+        }
+        .book-list {
+            height: calc(100vh - 64px);
+            overflow-y: auto;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        .active-book {
+            border-color: #38bdf8 !important;
+            background-color: rgba(56, 189, 248, 0.1) !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="glass-header sticky top-0 z-50 h-16 flex items-center justify-between px-4 sm:px-6">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1 class="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400">
+                ကျမ်းကိုးစာအုပ်များ (Library)
+            </h1>
+        </div>
+        <button id="themeToggleBtn" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 transition" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:block"></i>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-col md:flex-row w-full bg-slate-50 dark:bg-slate-900">
+        <!-- Sidebar Book List -->
+        <div class="w-full md:w-1/3 lg:w-1/4 border-r border-slate-200 dark:border-slate-800 book-list bg-white dark:bg-slate-900 p-4 shrink-0 flex flex-col gap-3">
+            <h2 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">ရရှိနိုင်သော စာအုပ်များ</h2>
+            
+            <button onclick="loadPDF('Abhidhamma_Sangaha-2025_AShin_Garudhamma.pdf', this)" class="book-item active-book text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition group flex items-start gap-3">
+                <div class="w-10 h-10 rounded-lg bg-sky-100 dark:bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0 mt-1">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm leading-tight group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">အဘိဓမ္မတ္ထသင်္ဂဟ (၂၀၂၅)</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">အရှင်ဂရုဓမ္မ</p>
+                </div>
+            </button>
+
+            <button onclick="loadPDF('ThiHoKyoonAshinAhNuYokeDarMaHtay-AbhidhammatHtaThingahapart-v2.pdf', this)" class="book-item text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition group flex items-start gap-3">
+                <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-1">
+                    <i class="fa-solid fa-book-journal-whills"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">အဘိဓမ္မတ္ထသင်္ဂဟပါဌ် (မူရင်း)</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">သီဟိုဠ်ကျွန်း အရှင်အနုရုဒ္ဓါမထေရ်</p>
+                </div>
+            </button>
+
+            <button onclick="loadPDF('သင်္ဂြိုဟ်ဘာသာဋီကာ (အရှင်ဇနကာဘိဝံသ).pdf', this)" class="book-item text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition group flex items-start gap-3">
+                <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-1">
+                    <i class="fa-solid fa-scroll"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm leading-tight group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">သင်္ဂြိုဟ်ဘာသာဋီကာ</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">အရှင်ဇနကာဘိဝံသ</p>
+                </div>
+            </button>
+
+            <button onclick="loadPDF('AshinNyannatharmi-AbhidhamatathigahapakNhitThayokwel.pdf', this)" class="book-item text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition group flex items-start gap-3">
+                <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 mt-1">
+                    <i class="fa-solid fa-list-ol"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">အဘိဓမ္မတ္ထသင်္ဂဟပါဌ်နှင့် သရုပ်ခွဲ</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">အရှင်ဉာဏသာမိ (မစိုးရိမ်)</p>
+                </div>
+            </button>
+            
+            <button onclick="loadPDF('အဘိဓမ္မတ္ထသင်္ဂဟနိဿယ (ဗားကရာဆရာတော်).pdf', this)" class="book-item text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition group flex items-start gap-3">
+                <div class="w-10 h-10 rounded-lg bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-1">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm leading-tight group-hover:text-rose-600 dark:group-hover:text-rose-400 transition">အဘိဓမ္မတ္ထသင်္ဂဟနိဿယ</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">ဗားကရာဆရာတော်</p>
+                </div>
+            </button>
+        </div>
+
+        <!-- PDF Viewer -->
+        <div class="w-full md:w-2/3 lg:w-3/4 pdf-container bg-slate-200 dark:bg-slate-950 flex flex-col relative">
+            <!-- Loading Indicator -->
+            <div id="pdfLoading" class="absolute inset-0 flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 backdrop-blur-sm z-10 hidden">
+                <div class="flex flex-col items-center gap-3">
+                    <i class="fa-solid fa-circle-notch fa-spin text-3xl text-sky-500"></i>
+                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">စာအုပ် ဖွင့်နေပါသည်...</p>
+                </div>
+            </div>
+            
+            <!-- Note for mobile users -->
+            <div class="md:hidden bg-sky-50 dark:bg-sky-900/30 p-2 text-center text-xs text-sky-700 dark:text-sky-300 border-b border-sky-100 dark:border-sky-800/50 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-circle-info"></i> စာအုပ်များ ဖတ်ရန် အပေါ်မှ ရွေးချယ်ပါ။ ဖုန်းများတွင် Download ဆွဲပြီး ဖတ်ရနိုင်ပါသည်။
+            </div>
+
+            <iframe id="pdfFrame" src="assets/docs/Abhidhamma_Sangaha-2025_AShin_Garudhamma.pdf" class="w-full h-full border-0" title="PDF Reader"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Theme switching logic
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Initialize theme
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+
+        // PDF Loading Logic
+        function loadPDF(filename, btnElement) {
+            // Update active state
+            document.querySelectorAll('.book-item').forEach(el => {
+                el.classList.remove('active-book');
+                el.classList.remove('border-sky-400');
+                el.classList.add('border-slate-200', 'dark:border-slate-800');
+            });
+            
+            btnElement.classList.add('active-book');
+            
+            // Show loading
+            const loader = document.getElementById('pdfLoading');
+            const frame = document.getElementById('pdfFrame');
+            
+            loader.classList.remove('hidden');
+            
+            // Load PDF
+            // Using encodeURIComponent for Myanmar filenames
+            frame.src = `assets/docs/${encodeURIComponent(filename)}`;
+            
+            // Hide loading after a delay (iframe onload is unreliable for PDFs across browsers)
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+            
+            // On mobile, scroll to iframe
+            if (window.innerWidth < 768) {
+                setTimeout(() => {
+                    frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+        
+        // Handle iframe load event as fallback
+        document.getElementById('pdfFrame').onload = function() {
+            document.getElementById('pdfLoading').classList.add('hidden');
+        };
+    </script>
+</body>
+</html>
