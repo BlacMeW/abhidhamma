@@ -58,10 +58,6 @@
                 ကျမ်းကိုးစာအုပ်များ (Library)
             </h1>
         </div>
-        <button id="themeToggleBtn" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 transition" aria-label="Toggle Theme">
-            <i class="fa-solid fa-moon dark:hidden"></i>
-            <i class="fa-solid fa-sun hidden dark:block"></i>
-        </button>
     </header>
 
     <!-- Main Content -->
@@ -147,34 +143,6 @@
     </div>
 
     <script>
-        // Theme switching logic
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        
-        function setTheme(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        // Initialize theme
-        const storedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-            setTheme(true);
-        } else {
-            setTheme(false);
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(!isDark);
-        });
-
         // PDF Loading Logic
         function loadPDF(filename, btnElement) {
             // Update active state
@@ -243,5 +211,6 @@
             }
         });
     </script>
+    <script src="accessibility.js"></script>
 </body>
 </html>
