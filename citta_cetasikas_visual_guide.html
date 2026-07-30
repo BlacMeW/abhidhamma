@@ -984,13 +984,13 @@
                         အားလုံး (၅၂)
                     </button>
                     <button onclick="filterCetasika('anya', event)" class="c-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-50 dark:bg-slate-800 text-amber-700 dark:text-amber-300 hover:bg-slate-700">
-                        အညသမာန (၁၃) ပါး
+                        အညသမာန (Aññasamāna) ၁၃ ပါး
                     </button>
                     <button onclick="filterCetasika('akusala', event)" class="c-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-50 dark:bg-slate-800 text-rose-700 dark:text-rose-400 hover:bg-slate-700">
-                        အကုသိုလ် (၁၄) ပါး
+                        အကုသိုလ် (Akusala) ၁၄ ပါး
                     </button>
                     <button onclick="filterCetasika('sobhana', event)" class="c-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-50 dark:bg-slate-800 text-emerald-700 dark:text-emerald-400 hover:bg-slate-700">
-                        သောဘဏ (၂၅) ပါး
+                        သောဘဏ (Sobhana) ၂၅ ပါး
                     </button>
                 </div>
             </div>
@@ -1931,17 +1931,17 @@
         // Named cetasika sub-groups referenced in prose (citta descriptions, simulator notes, etc.)
         // — derived directly from cetasikaData.sub so membership always stays accurate/in-sync.
         const cetasikaGroupAliases = {
-            'သဗ္ဗစိတ္တသာဓာရဏ (၇)': { label: 'သဗ္ဗစိတ္တသာဓာရဏ (၇)', filter: c => c.sub === 'သဗ္ဗစိတ္တသာဓာရဏ (၇)' },
-            'ပကိဏ္ဏက (၆)': { label: 'ပကိဏ္ဏက (၆)', filter: c => c.sub === 'ပကိဏ္ဏက (၆)' },
-            'အညသမာန (၁၃)': { label: 'အညသမာန (၁၃) — သဗ္ဗစိတ္တသာဓာရဏ (၇) + ပကိဏ္ဏက (၆)', filter: c => c.sub === 'သဗ္ဗစိတ္တသာဓာရဏ (၇)' || c.sub === 'ပကိဏ္ဏက (၆)' },
-            'မောစတုက (၄)': { label: 'မောစတုက (၄)', filter: c => c.sub === 'မောစတုက (၄)' },
-            'အကုသိုလ်သာဓာရဏ (၄)': { label: 'အကုသိုလ်သာဓာရဏ (၄) — မောစတုက', filter: c => c.sub === 'မောစတုက (၄)' },
-            'လောတိက (၃)': { label: 'လောတိက (၃)', filter: c => c.sub === 'လောတိက (၃)' },
-            'ဒေါစတုက (၄)': { label: 'ဒေါစတုက (၄)', filter: c => c.sub === 'ဒေါစတုက (၄)' },
-            'သောဘဏသာဓာရဏ (၁၉)': { label: 'သောဘဏသာဓာရဏ (၁၉)', filter: c => c.sub === 'သောဘဏသာဓာရဏ (၁၉)' },
-            'ဝိရတီ (၃)': { label: 'ဝိရတီ (၃)', filter: c => c.sub === 'ဝိရတီ (၃)' },
-            'အပ္ပမညာ (၂)': { label: 'အပ္ပမညာ (၂)', filter: c => c.sub === 'အပ္ပမညာ (၂)' },
-            'သင်္ခါရက္ခန္ဓာ': { label: 'သင်္ခါရက္ခန္ဓာ (၅၀) — ဝေဒနာ၊ သညာမှလွဲ၍ ကျန်စေတသိက်အားလုံး', filter: c => c.name !== 'ဝေဒနာ' && c.name !== 'သညာ' }
+            'သဗ္ဗစိတ္တသာဓာရဏ (၇)': { label: 'သဗ္ဗစိတ္တသာဓာရဏ (Sabbacittasādhāraṇa) ၇ ပါး', filter: c => c.sub === 'သဗ္ဗစိတ္တသာဓာရဏ (၇)' },
+            'ပကိဏ္ဏက (၆)': { label: 'ပကိဏ္ဏက (Pakiṇṇaka) ၆ ပါး', filter: c => c.sub === 'ပကိဏ္ဏက (၆)' },
+            'အညသမာန (၁၃)': { label: 'အညသမာန (Aññasamāna) ၁၃ ပါး — သဗ္ဗစိတ္တသာဓာရဏ (၇) + ပကိဏ္ဏက (၆)', filter: c => c.sub === 'သဗ္ဗစိတ္တသာဓာရဏ (၇)' || c.sub === 'ပကိဏ္ဏက (၆)' },
+            'မောစတုက (၄)': { label: 'မောစတုက (Mocatuka) ၄ ပါး', filter: c => c.sub === 'မောစတုက (၄)' },
+            'အကုသိုလ်သာဓာရဏ (၄)': { label: 'အကုသိုလ်သာဓာရဏ (Akusalasādhāraṇa) ၄ ပါး — မောစတုက', filter: c => c.sub === 'မောစတုက (၄)' },
+            'လောတိက (၃)': { label: 'လောတိက (Lotika) ၃ ပါး', filter: c => c.sub === 'လောတိက (၃)' },
+            'ဒေါစတုက (၄)': { label: 'ဒေါစတုက (Docatuka) ၄ ပါး', filter: c => c.sub === 'ဒေါစတုက (၄)' },
+            'သောဘဏသာဓာရဏ (၁၉)': { label: 'သောဘဏသာဓာရဏ (Sobhaṇasādhāraṇa) ၁၉ ပါး', filter: c => c.sub === 'သောဘဏသာဓာရဏ (၁၉)' },
+            'ဝိရတီ (၃)': { label: 'ဝိရတီ (Viratī) ၃ ပါး', filter: c => c.sub === 'ဝိရတီ (၃)' },
+            'အပ္ပမညာ (၂)': { label: 'အပ္ပမညာ (Appamaññā) ၂ ပါး', filter: c => c.sub === 'အပ္ပမညာ (၂)' },
+            'သင်္ခါရက္ခန္ဓာ': { label: 'သင်္ခါရက္ခန္ဓာ (Saṅkhārakkhandhā) ၅၀ ပါး — ဝေဒနာ၊ သညာမှလွဲ၍ ကျန်စေတသိက်အားလုံး', filter: c => c.name !== 'ဝေဒနာ' && c.name !== 'သညာ' }
         };
 
         // Bare/short-form group words that appear without their "(N)" count suffix in some
