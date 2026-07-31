@@ -473,6 +473,47 @@
             </table>
         </div>
 
+
+        <!-- Synthesis of Paticcasamuppada and Patthana Matrix Section -->
+        <div class="mt-20 mb-8 text-center max-w-5xl mx-auto space-y-2">
+            <h2 class="text-2xl md:text-3xl font-bold"><i class="fa-solid fa-code-merge text-purple-500 mr-2"></i> ပဋိစ္စသမုပ္ပါဒ် နှင့် ပဋ္ဌာန်း ဆက်စပ်မှု ဇယားကြီး</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+                ပဋိစ္စသမုပ္ပါဒ် အင်္ဂါတစ်ပါးမှ နောက်တစ်ပါးသို့ ကျေးဇူးပြုရာတွင် မည်သည့် ပဋ္ဌာန်းပစ္စည်းအုပ်စုကြီးများ ပါဝင်ပတ်သက်နေကြောင်း ခြုံငုံပြသထားသော အထွတ်အထိပ်ဇယားကြီး ဖြစ်ပါသည်။
+            </p>
+        </div>
+
+        <div class="glass-card rounded-2xl border border-slate-200 dark:border-slate-700 overflow-x-auto shadow-sm mb-16 max-w-6xl mx-auto">
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 text-purple-700 dark:text-purple-400 text-center font-bold">
+                        <th class="p-4 w-56 border-r border-slate-200 dark:border-slate-700 text-left text-slate-700 dark:text-slate-300">ပဋိစ္စသမုပ္ပါဒ် အဆက် (၁၁) ဆက်</th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">သဟဇာတ</div></th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">အာရမ္မဏ</div></th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">အနန္တရ</div></th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">ဥပနိဿယ</div></th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">ပုရေဇာတ</div></th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">ပစ္ဆာဇာတ</div></th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">အာဟာရ</div></th>
+                        <th class="p-2 border-r border-slate-200 dark:border-slate-700"><div class="writing-vertical mx-auto h-24">ဣန္ဒြိယ</div></th>
+                        <th class="p-2"><div class="writing-vertical mx-auto h-24">ကမ္မ</div></th>
+                    </tr>
+                </thead>
+                <tbody id="synthesis-matrix-tbody" class="divide-y divide-slate-100 dark:divide-slate-800/50">
+                    <!-- Rows injected by JS -->
+                </tbody>
+            </table>
+        </div>
+        <style>
+            .writing-vertical {
+                writing-mode: vertical-rl; 
+                text-orientation: mixed; 
+                transform: rotate(180deg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+
     </main>
 
     <!-- Modal -->
@@ -942,6 +983,49 @@
             </p>
         </div>
     </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const synthesisData = [
+                { name: '၁။ အဝိဇ္ဇာ <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> သင်္ခါရ', groups: ['arammana', 'upanissaya'] },
+                { name: '၂။ သင်္ခါရ <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> ဝိညာဏ်', groups: ['upanissaya', 'kamma'] },
+                { name: '၃။ ဝိညာဏ် <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> နာမ်ရုပ်', groups: ['sahajata', 'anantara', 'upanissaya', 'ahara', 'indriya', 'kamma'] },
+                { name: '၄။ နာမ်ရုပ် <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> သဠာယတန', groups: ['sahajata', 'purejata', 'pacchajata', 'ahara', 'indriya'] },
+                { name: '၅။ သဠာယတန <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> ဖဿ', groups: ['sahajata', 'purejata', 'upanissaya', 'indriya'] },
+                { name: '၆။ ဖဿ <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> ဝေဒနာ', groups: ['sahajata', 'purejata', 'pacchajata', 'ahara', 'indriya'] },
+                { name: '၇။ ဝေဒနာ <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> တဏှာ', groups: ['arammana', 'upanissaya', 'sahajata'] },
+                { name: '၈။ တဏှာ <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> ဥပါဒါန်', groups: ['sahajata', 'arammana', 'upanissaya'] },
+                { name: '၉။ ဥပါဒါန် <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> ဘဝ', groups: ['sahajata', 'upanissaya'] },
+                { name: '၁၀။ ဘဝ <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> ဇာတိ', groups: ['upanissaya', 'kamma'] },
+                { name: '၁၁။ ဇာတိ <i class="fa-solid fa-arrow-right text-xs mx-1 text-slate-400"></i> ဇရာ၊ မရဏ', groups: ['upanissaya'] }
+            ];
+
+            const tbody = document.getElementById('synthesis-matrix-tbody');
+            if(tbody) {
+                const check = '<div class="w-5 h-5 mx-auto rounded bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>';
+                const dash = '<span class="text-slate-200 dark:text-slate-700/50">-</span>';
+
+                let html = '';
+                synthesisData.forEach((item, index) => {
+                    const isEven = index % 2 === 1;
+                    html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors ${isEven ? 'bg-slate-50/30 dark:bg-slate-800/20' : ''}">
+                        <td class="p-3 font-bold text-slate-800 dark:text-slate-200 border-r border-slate-100 dark:border-slate-800">${item.name}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('sahajata') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('arammana') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('anantara') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('upanissaya') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('purejata') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('pacchajata') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('ahara') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${item.groups.includes('indriya') ? check : dash}</td>
+                        <td class="p-2 text-center align-middle">${item.groups.includes('kamma') ? check : dash}</td>
+                    </tr>`;
+                });
+                tbody.innerHTML = html;
+            }
+        });
+    </script>
 
 </body>
 </html>
