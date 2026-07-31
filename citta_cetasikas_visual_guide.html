@@ -1359,7 +1359,7 @@
             <!-- Section Title -->
             <div class="text-center mb-12 space-y-4">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-slate-100 flex justify-center items-center gap-3">
-                    <i class="fa-solid fa-table-cells-large text-amber-500"></i>
+                    <i class="fa-solid fa-table-cells-large text-amber-600 dark:text-amber-500"></i>
                     စိတ် နှင့် စေတသိက် အကျဉ်းချုပ် ဇယားကြီးများ
                 </h2>
                 <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-3xl mx-auto">
@@ -3613,9 +3613,9 @@ function mm(num) {
                     noResults.classList.add('hidden');
                     let html = '';
                     results.forEach((r) => {
-                        const iconColor = r.color === 'amber' ? 'text-amber-500 bg-amber-500/10 border-amber-500/20' :
+                        const iconColor = r.color === 'amber' ? 'text-amber-600 dark:text-amber-500 bg-amber-500/10 border-amber-500/20' :
                                          (r.color === 'rose' || r.color === 'red') ? 'text-rose-500 bg-rose-500/10 border-rose-500/20' :
-                                         r.color === 'cyan' ? 'text-cyan-500 bg-cyan-500/10 border-cyan-500/20' :
+                                         r.color === 'cyan' ? 'text-cyan-600 dark:text-cyan-500 bg-cyan-500/10 border-cyan-500/20' :
                                          r.color === 'emerald' || r.color === 'teal' ? 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20' :
                                          'text-slate-500 bg-slate-500/10 border-slate-500/20';
 
@@ -3718,9 +3718,9 @@ function mm(num) {
     <footer class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-center transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4">
             <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base font-medium flex items-center justify-center gap-2">
-                <i class="fa-solid fa-dharmachakra text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
+                <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
                 မောင်ဝဏ္ဏကို (၀၅ ဇွန် ၂၀၁၀ - ၁၂ နိုဝင်ဘာ ၂၀၂၄) အားရည်စူးသော ဓမ္မဒါန တရားအလှူ
-                <i class="fa-solid fa-dharmachakra text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
+                <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
             </p>
         </div>
     </footer>

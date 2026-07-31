@@ -225,7 +225,7 @@
                 <!-- Categories -->
                 <div class="flex items-center gap-2 overflow-x-auto pb-2 hide-scrollbar" id="categoryFilters">
                     <button class="filter-btn active" data-cat="all">All</button>
-                    <button class="filter-btn text-amber-500" data-cat="favorites"><i class="fa-solid fa-star"></i> Favorites</button>
+                    <button class="filter-btn text-amber-600 dark:text-amber-500" data-cat="favorites"><i class="fa-solid fa-star"></i> Favorites</button>
                     <button class="filter-btn" data-cat="citta">စိတ် (Citta)</button>
                     <button class="filter-btn" data-cat="cetasika">စေတသိက် (Cetasika)</button>
                     <button class="filter-btn" data-cat="rupa">ရုပ် (Rupa)</button>
@@ -545,11 +545,11 @@
             }
             
             const isBookmarked = bookmarks.includes(t.id);
-            const bkmIcon = isBookmarked ? 'fa-solid text-amber-500' : 'fa-regular text-slate-300 dark:text-slate-600';
+            const bkmIcon = isBookmarked ? 'fa-solid text-amber-600 dark:text-amber-500' : 'fa-regular text-slate-300 dark:text-slate-600';
             
             return `
                 <div class="glass-card animate-stagger p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col md:flex-row md:items-start gap-2 md:gap-4 relative group" style="animation-delay: ${Math.min(index * 0.05, 0.5)}s">
-                    <button onclick="toggleBookmark('${t.id}', event)" class="bookmark-btn absolute top-4 right-4 text-lg ${bkmIcon} hover:text-amber-500 z-10" title="Bookmark">
+                    <button onclick="toggleBookmark('${t.id}', event)" class="bookmark-btn absolute top-4 right-4 text-lg ${bkmIcon} hover:text-amber-600 dark:text-amber-500 z-10" title="Bookmark">
                         <i class="fa-star"></i>
                     </button>
                     <div class="md:w-1/3 pt-1 pr-6">
@@ -579,7 +579,7 @@
             
             const t = filteredTerms[flashcardIndex];
             const isBookmarked = bookmarks.includes(t.id);
-            const bkmIcon = isBookmarked ? 'fa-solid text-amber-500' : 'fa-regular text-slate-300 dark:text-slate-600';
+            const bkmIcon = isBookmarked ? 'fa-solid text-amber-600 dark:text-amber-500' : 'fa-regular text-slate-300 dark:text-slate-600';
             
             listEl.innerHTML = `
                 <div class="flex flex-col items-center">
@@ -589,7 +589,7 @@
                         <div class="flashcard shadow-lg rounded-2xl">
                             <!-- Front -->
                             <div class="flashcard-face">
-                                <button onclick="toggleBookmark('${t.id}', event)" class="bookmark-btn absolute top-6 right-6 text-2xl ${bkmIcon} hover:text-amber-500 z-10" title="Bookmark">
+                                <button onclick="toggleBookmark('${t.id}', event)" class="bookmark-btn absolute top-6 right-6 text-2xl ${bkmIcon} hover:text-amber-600 dark:text-amber-500 z-10" title="Bookmark">
                                     <i class="fa-star"></i>
                                 </button>
                                 <span class="absolute top-6 left-6 text-xs uppercase tracking-widest font-bold text-emerald-600/50 dark:text-emerald-400/50 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1 rounded-full">${t.category}</span>
@@ -808,9 +808,9 @@
     <footer class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-center transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4">
             <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base font-medium flex items-center justify-center gap-2">
-                <i class="fa-solid fa-dharmachakra text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
+                <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
                 မောင်ဝဏ္ဏကို (၀၅ ဇွန် ၂၀၁၀ - ၁၂ နိုဝင်ဘာ ၂၀၂၄) အားရည်စူးသော ဓမ္မဒါန တရားအလှူ
-                <i class="fa-solid fa-dharmachakra text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
+                <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
             </p>
         </div>
     </footer>

@@ -199,14 +199,14 @@
                         <p id="guide-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
                     </div>
                     <div class="bg-rose-50/70 dark:bg-rose-950/30 p-3 rounded-xl border border-rose-200/50 dark:border-rose-900/30 text-xs text-rose-800 dark:text-rose-300 leading-relaxed">
-                        <i class="fa-solid fa-lightbulb text-amber-500 mr-1.5"></i> <span id="extra-guide-text"></span>
+                        <i class="fa-solid fa-lightbulb text-amber-600 dark:text-amber-500 mr-1.5"></i> <span id="extra-guide-text"></span>
                     </div>
                 </div>
 
                 <!-- 3. Caution Tab -->
                 <div id="content-caution" class="hidden space-y-3 text-left">
                     <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-1 shrink-0"></i>
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 dark:text-amber-500 mt-1 shrink-0"></i>
                         <p id="caution-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
                     </div>
                     <div class="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-xl border border-amber-200/50 dark:border-amber-900/30">
@@ -231,14 +231,14 @@
             <!-- Practice Mode Selector -->
             <div>
                 <label class="block text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 mb-3 text-center">
-                    <i class="fa-solid fa-scroll text-amber-500 mr-1.5"></i> ပွားများမည့် မေတ္တာကျင့်စဉ် ရွေးချယ်ပါ
+                    <i class="fa-solid fa-scroll text-amber-600 dark:text-amber-500 mr-1.5"></i> ပွားများမည့် မေတ္တာကျင့်စဉ် ရွေးချယ်ပါ
                 </label>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <button onclick="setPracticeMode('standard')" id="mode-btn-standard" type="button" class="py-3 px-4 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition">
                         <i class="fa-solid fa-heart text-rose-500"></i> (၄) ဆင့် မေတ္တာပို့ကျင့်စဉ်
                     </button>
                     <button onclick="setPracticeMode('sutta')" id="mode-btn-sutta" type="button" class="py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition">
-                        <i class="fa-solid fa-book-open text-amber-500"></i> ကရဏီယမေတ္တာသုတ် (၁၀) ဂါထာ
+                        <i class="fa-solid fa-book-open text-amber-600 dark:text-amber-500"></i> ကရဏီယမေတ္တာသုတ် (၁၀) ဂါထာ
                     </button>
                     <button onclick="setPracticeMode('chant')" id="mode-btn-chant" type="button" class="py-3 px-4 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2 transition">
                         <i class="fa-solid fa-microphone-lines text-violet-500"></i> မေတ္တာပို့ ရွတ်စဉ် (၁၂) ဆင့်
@@ -268,7 +268,7 @@
             <!-- Interval Bell Option -->
             <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
                 <label class="block text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 mb-2.5 text-center">
-                    <i class="fa-solid fa-bell text-amber-500 mr-1.5"></i> အဆင့်တွင်း သတိပေး ခေါင်းလောင်းသံ (Interval Bell)
+                    <i class="fa-solid fa-bell text-amber-600 dark:text-amber-500 mr-1.5"></i> အဆင့်တွင်း သတိပေး ခေါင်းလောင်းသံ (Interval Bell)
                 </label>
                 <div class="grid grid-cols-4 gap-2">
                     <button onclick="setIntervalTime(0)" class="interval-btn py-2 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-bold shadow-sm">မလိုပါ</button>
@@ -285,7 +285,7 @@
                 </button>
 
                 <button onclick="testBellSound()" type="button" class="px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5 text-xs shadow-sm">
-                    <i class="fa-solid fa-bell text-amber-500"></i> ခေါင်းလောင်းသံ စမ်းမည်
+                    <i class="fa-solid fa-bell text-amber-600 dark:text-amber-500"></i> ခေါင်းလောင်းသံ စမ်းမည်
                 </button>
             </div>
 
@@ -1171,9 +1171,9 @@
     <footer class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-center transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4">
             <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base font-medium flex items-center justify-center gap-2">
-                <i class="fa-solid fa-dharmachakra text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
+                <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
                 မောင်ဝဏ္ဏကို (၀၅ ဇွန် ၂၀၁၀ - ၁၂ နိုဝင်ဘာ ၂၀၂၄) အားရည်စူးသော ဓမ္မဒါန တရားအလှူ
-                <i class="fa-solid fa-dharmachakra text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
+                <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
             </p>
         </div>
     </footer>
