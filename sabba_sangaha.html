@@ -129,17 +129,80 @@
             </div>
         </div>
 
-        <!-- Khandha link-out -->
-        <a href="citta_cetasikas_visual_guide.html#citta89" class="block glass-card rounded-2xl p-4 max-w-3xl mx-auto border border-indigo-400 dark:border-indigo-500/30 hover:border-indigo-400 transition flex items-center justify-between gap-3">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-layer-group"></i></div>
-                <div class="text-left">
-                    <span class="font-semibold text-indigo-700 dark:text-indigo-300 text-sm block">ခန္ဓာ (၅) ပါး — ရုပ်/ဝေဒနာ/သညာ/သင်္ခါရ/ဝိညာဏ</span>
-                    <span class="text-slate-600 dark:text-slate-400 text-[11px]">Citta & Cetasika Guide ၏ Khandha card တွင် အသေးစိတ် ဖော်ပြထားပြီး ဖြစ်သည်</span>
+        <!-- Khandha Section Heading -->
+        <div class="text-center mt-12 mb-5 max-w-3xl mx-auto px-4">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 mb-3 border border-indigo-200 dark:border-indigo-500/50 shadow-sm"><i class="fa-solid fa-layer-group"></i></div>
+            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-base md:text-lg">ခန္ဓာ (၅) နှင့် ဥပါဒါနက္ခန္ဓာ (၅)</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                <b>ခန္ဓာ</b> ဆိုသည်မှာ "အစုအဝေး" (Aggregate) ဟု အဓိပ္ပါယ်ရသည်။ လောကီ လောကုတ္တရာ တရားအားလုံးကို ရုပ်နှင့် နာမ်အစု (၅) စုဖြင့် ခွဲခြားပြထားခြင်း ဖြစ်သည်။
+                <span class="text-xs text-slate-500 block mt-1.5 border-t border-slate-200 dark:border-slate-700 pt-1.5 w-fit mx-auto">နာမ်တရားအပေါ် အစွဲကြီးသူများအတွက် ခွဲခြားဟောကြားထားခြင်း ဖြစ်သည်။ <b>ဥပါဒါနက္ခန္ဓာ</b> မှာမူ အစွဲအလမ်းဖြစ်စေတတ်သော လောကီတရားသက်သက်ကို ခေါ်သည်။</span>
+            </p>
+        </div>
+
+        <!-- Khandha verification bar -->
+        <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
+            <button onclick="openGroupModal('khandha')" title="ခန္ဓာ (၅) ပါး အသေးစိတ်ကြည့်ရန်" class="px-3 py-1.5 rounded-lg bg-indigo-100 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 border border-indigo-400 dark:border-indigo-500/50 hover:bg-indigo-200 dark:hover:bg-slate-700 hover:border-indigo-400 transition font-bold">ခန္ဓာ (၅) ပါး</button>
+            <span class="text-slate-600">|</span>
+            <button onclick="openGroupModal('upadanakkhandha')" title="ဥပါဒါနက္ခန္ဓာ (၅) ပါး အသေးစိတ်ကြည့်ရန်" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-slate-800 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/50 hover:bg-rose-200 dark:hover:bg-slate-700 hover:border-rose-400 transition font-bold">ဥပါဒါနက္ခန္ဓာ (၅) ပါး</button>
+        </div>
+
+        <!-- Khandha Comparison Matrix -->
+        <div class="glass-card rounded-2xl border border-slate-200 dark:border-slate-700 overflow-x-auto shadow-sm max-w-4xl mx-auto mt-8 mb-6">
+            <div class="bg-indigo-500/10 dark:bg-indigo-500/20 p-4 border-b border-indigo-100 dark:border-indigo-900/30 flex items-center justify-center gap-3">
+                <i class="fa-solid fa-scale-balanced text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                <h3 class="text-base md:text-lg font-bold text-indigo-700 dark:text-indigo-300">ခန္ဓာ နှင့် ဥပါဒါနက္ခန္ဓာ နှိုင်းယှဉ်ချက်</h3>
+            </div>
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 font-bold text-slate-700 dark:text-slate-300">
+                        <th class="p-4 border-r border-slate-200 dark:border-slate-700 w-1/4 text-center">အမည်</th>
+                        <th class="p-4 border-r border-slate-200 dark:border-slate-700 w-3/8 text-center text-indigo-600 dark:text-indigo-400">ခန္ဓာ (၅) ပါး<br><span class="text-xs font-normal text-slate-500">(တရားအားလုံး)</span></th>
+                        <th class="p-4 w-3/8 text-center text-rose-600 dark:text-rose-400">ဥပါဒါနက္ခန္ဓာ (၅) ပါး<br><span class="text-xs font-normal text-slate-500">(လောကီတရားသက်သက်)</span></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800/50">
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 font-semibold text-center">ရူပ / ရူပုပါဒါန</td>
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 text-center"><span class="font-bold text-indigo-600 dark:text-indigo-400">ရုပ် ၂၈ ပါး</span></td>
+                        <td class="p-4 text-center"><span class="font-bold text-rose-600 dark:text-rose-400">ရုပ် ၂၈ ပါး</span><br><span class="text-[11px] text-slate-500">(တူညီသည် - ရုပ်အားလုံးမှာ လောကီချည်းဖြစ်၍)</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 font-semibold text-center">ဝေဒနာ / ဝေဒနုပါဒါန</td>
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 text-center">ဝေဒနာစေတသိက်<br><span class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400">(စိတ် ၈၉ ပါးလုံး၌ ယှဉ်သော)</span></td>
+                        <td class="p-4 text-center">လောကီဝေဒနာ<br><span class="text-[11px] font-bold text-rose-600 dark:text-rose-400">(လောကီစိတ် ၈၁ ပါး၌သာ ယှဉ်သော)</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 font-semibold text-center">သညာ / သညုပါဒါန</td>
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 text-center">သညာစေတသိက်<br><span class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400">(စိတ် ၈၉ ပါးလုံး၌ ယှဉ်သော)</span></td>
+                        <td class="p-4 text-center">လောကီသညာ<br><span class="text-[11px] font-bold text-rose-600 dark:text-rose-400">(လောကီစိတ် ၈၁ ပါး၌သာ ယှဉ်သော)</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 font-semibold text-center">သင်္ခါရ / သင်္ခါရုပါဒါန</td>
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 text-center">စေတသိက် ၅၀<br><span class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400">(စိတ် ၈၉ ပါးလုံး၌ ယှဉ်သော)</span></td>
+                        <td class="p-4 text-center">လောကီစေတသိက် ၅၀<br><span class="text-[11px] font-bold text-rose-600 dark:text-rose-400">(လောကီစိတ် ၈၁ ပါး၌သာ ယှဉ်သော)</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 font-semibold text-center">ဝိညာဏ / ဝိညာဏုပါဒါန</td>
+                        <td class="p-4 border-r border-slate-100 dark:border-slate-800 text-center">စိတ်အားလုံး<br><span class="font-bold text-indigo-600 dark:text-indigo-400">စိတ် ၈၉ ပါး</span></td>
+                        <td class="p-4 text-center">လောကီစိတ်များသာ<br><span class="font-bold text-rose-600 dark:text-rose-400">လောကီစိတ် ၈၁ ပါး</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="bg-amber-50/50 dark:bg-amber-900/10 p-4 border-t border-amber-100 dark:border-amber-900/30">
+                <div class="flex items-start gap-3">
+                    <div class="mt-0.5 text-amber-600 dark:text-amber-500"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <span class="font-bold text-amber-800 dark:text-amber-400">မှတ်ချက်။ ။</span> 
+                        ဥပါဒါန် (တဏှာ၊ ဒိဋ္ဌိ အစွဲအလမ်း) တို့၏ အာရုံဖြစ်နိုင်သော တရားများကိုသာ "ဥပါဒါနက္ခန္ဓာ" ဟု ခေါ်ပါသည်။ 
+                        <b>လောကုတ္တရာစိတ် (၈) ပါး နှင့် ၎င်းတို့၌ ယှဉ်သော စေတသိက် (၃၆) ပါး</b> တို့သည် အစွဲအလမ်းကို ပယ်သတ်တတ်သော တရားများ ဖြစ်ပြီး အစွဲအလမ်း၏ အာရုံမဖြစ်နိုင်သောကြောင့် ဥပါဒါနက္ခန္ဓာတွင် မပါဝင်ပါ။ ၎င်းတို့ကို <b>ခန္ဓဝိမုတ်</b> ဟု မဆိုသော်လည်း (ခန္ဓာတွင် ပါဝင်သော်လည်း) ဥပါဒါနက္ခန္ဓာအစုမှမူ ကင်းလွတ်ပါသည်။
+                    </div>
                 </div>
             </div>
-            <i class="fa-solid fa-arrow-right text-indigo-700 dark:text-indigo-400 flex-shrink-0"></i>
-        </a>
+        </div>
+
+        <!-- Khandha groups -->
+        <div id="khandha-groups" class="space-y-4 mt-6"></div>
 
         <!-- Ayatana Section Heading -->
         <div class="text-center mt-12 mb-5 max-w-3xl mx-auto px-4">
@@ -548,6 +611,7 @@
             const content = document.getElementById('modal-content');
             
             const superGroups = {
+                'khandha-groups': ['khandha', 'upadanakkhandha'],
                 'ayatana-groups': ['ayatana-internal', 'ayatana-external'],
                 'dhatu-groups': ['dhatu-pasada', 'dhatu-visaya', 'dhatu-vinnana', 'dhatu-mano'],
                 'sacca-groups': ['sacca']
