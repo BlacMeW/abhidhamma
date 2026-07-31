@@ -105,21 +105,7 @@
                 အရှင်အနုရုဒ္ဓါမဟာထေရ် စီရင်တော်မူသော <strong>အဘိဓမ္မတ္ထသင်္ဂဟကျမ်း</strong> လာ ပရိစ္ဆေဒ (၉) ခန်းလုံး၏ ဓမ္မသဘာဝများ (စိတ်၊ စေတသိက်၊ ရုပ်၊ နိဗ္ဗာန်၊ ဝီထိ၊ ဘုံ၊ ပဋ္ဌာန်း ပစ္စယသင်္ဂဟ စသည်) ကို ခေတ်မှီ Dynamic Visual Guides များဖြင့် သီးခြားစီ စုစည်းဖော်ပြထားသော ပင်မစာမျက်နှာ ဖြစ်ပါသည်။
             </p>
 
-            
-            <!-- Live Tracker Badges -->
-            <div class="flex flex-wrap justify-center gap-4 mt-2">
-                <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 shadow-sm">
-                    <span class="relative flex h-3 w-3">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                    </span>
-                    <span class="text-sm font-semibold text-emerald-800 dark:text-emerald-300">Online: <span id="online-users-count">...</span></span>
-                </div>
-                <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-800 shadow-sm">
-                    <i class="fa-solid fa-users text-indigo-500"></i>
-                    <span class="text-sm font-semibold text-indigo-800 dark:text-indigo-300">Total Visits: <span id="total-visitors-count">...</span></span>
-                </div>
-            </div>
+
             
             <!-- Quick Overview Stats Counter -->
             <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto">
@@ -538,12 +524,27 @@
 
     <!-- Footer Dedication -->
     <footer class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-center transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
             <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base font-medium flex items-center justify-center gap-2">
                 <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
                 မောင်ဝဏ္ဏကို (၀၅ ဇွန် ၂၀၁၀ - ၁၂ နိုဝင်ဘာ ၂၀၂၄) အားရည်စူးသော ဓမ္မဒါန တရားအလှူ
                 <i class="fa-solid fa-dharmachakra text-amber-600 dark:text-amber-500 animate-spin-slow" style="animation-duration: 10s;"></i>
             </p>
+            
+            <!-- Live Tracker Badges -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 shadow-sm">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-sm font-semibold text-emerald-800 dark:text-emerald-300">Online: <span id="online-users-count">...</span></span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-800 shadow-sm">
+                    <i class="fa-solid fa-users text-indigo-500"></i>
+                    <span class="text-sm font-semibold text-indigo-800 dark:text-indigo-300">Total Visits: <span id="total-visitors-count">...</span></span>
+                </div>
+            </div>
         </div>
     </footer>
 
