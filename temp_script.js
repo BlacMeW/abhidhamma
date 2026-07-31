@@ -1,147 +1,153 @@
 
         // Load Terms
         const originalTerms = [
-            { term: 'Abhidhamma (အဘိဓမ္မာ)', meaning: 'လွန်ကဲထူးမြတ်သော တရား (အကြောင်းအကျိုး သက်သက်ကိုသာ ဟောကြားထားသော ဒေသနာ)' },
-            { term: 'Adhikāra (အဓိကာရ)', meaning: 'အုပ်စိုးခြင်း၊ လွှမ်းမိုးခြင်း၊ အဓိကဖြစ်ခြင်း' },
-            { term: 'Adhimokkha (အဓိမောက္ခ)', meaning: 'အာရုံကို ဆုံးဖြတ်ခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Adosa (အဒေါသ)', meaning: 'မကြမ်းတမ်းခြင်း၊ မေတ္တာထားခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Ahetuka (အဟေတုက)', meaning: 'ဟေတု (လောဘ၊ ဒေါသ စသည့် အမြစ်) မပါဝင်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Ahirika (အဟိရိက)', meaning: 'ဒုစရိုက်ပြုရမည်ကို မရှက်ခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }, { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Ajjava (အဇ္ဇဝ)', meaning: 'ဖြောင့်မတ်ခြင်း' },
-            { term: 'Akaṭṭhī (အကဋ္ဌီ)', meaning: 'အရိုးမရှိသော' },
-            { term: 'Akusala (အကုသလ)', meaning: 'အပြစ်ရှိ၍ ဆင်းရဲသောအကျိုးကို ပေးတတ်သော သဘော (အကုသိုလ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }, { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Alobha (အလောဘ)', meaning: 'မလိုချင်ခြင်း၊ မတပ်မက်ခြင်း၊ စွန့်လွှတ်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Amoha (အမောဟ)', meaning: 'အမှန်အတိုင်း သိမြင်ခြင်း (ပညာ)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Anattā (အနတ္တ)', meaning: 'အစိုးမရခြင်း၊ အတ္တမဟုတ်ခြင်း' },
-            { term: 'Aniccatā (အနိစ္စ)', meaning: 'မမြဲခြင်း' },
-            { term: 'Anottappa (အနောတ္တပ္ပ)', meaning: 'ဒုစရိုက်ပြုရမည်ကို မကြောက်ခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }, { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Apariccāga (အပရိစ္စာဂ)', meaning: 'မစွန့်လွှတ်ခြင်း (မစ္ဆရိယ)' },
-            { term: 'Ariya (အရိယ)', meaning: 'မြတ်သောသူ (သောတာပန်စသော ပုဂ္ဂိုလ်များ)' },
-            { term: 'Arūpa (အရူပ)', meaning: 'ရုပ်မရှိသော၊ နာမ်တရား' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Asaṅkhārika (အသင်္ခါရိက)', meaning: 'တိုက်တွန်းမှု မပါဘဲ မိမိအလိုအလျောက် ထက်မြက်စွာ ဖြစ်ပေါ်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Asurakāya (အသုရကာယ)', meaning: 'အသုရာဘုံ (နတ်တို့နှင့် ဆန့်ကျင်ဘက်ဖြစ်သော သတ္တဝါများ)' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
-            { term: 'Avijjā (အဝိဇ္ဇာ)', meaning: 'သစ္စာလေးပါးကို မသိခြင်း (မောဟ)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }, { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Ayoge yogo (အယောဂေ ယောဂေါ)', meaning: 'မယှဉ်အပ်သည်၌ ယှဉ်ခြင်း (မိစ္ဆာဒိဋ္ဌိ)' },
-            { term: 'Aññasamānā (အညသမာန)', meaning: 'အခြား (ကုသိုလ်/အကုသိုလ်) နှင့် တူသော စေတသိက် (၁၃) ပါး' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Bala (ဗလ)', meaning: 'ဆန့်ကျင်ဘက်တရားတို့ကို မတုန်လှုပ်စေသော အစွမ်းခွန်အား (သဒ္ဓါ၊ ဝီရိယ၊ သတိ၊ သမာဓိ၊ ပညာ)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
-            { term: 'Bhava (ဘဝ)', meaning: 'ဖြစ်တည်မှု (ကမ္မဘဝ၊ ဥပပတ္တိဘဝ)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Bhavaṅga (ဘဝင်)', meaning: 'ဘဝ၏ အင်္ဂါ၊ ဘဝကို ဆက်စပ်ပေးသော၊ ဝီထိစိတ် မဖြစ်ပေါ်ချိန်တွင် ဖြစ်ပေါ်နေသော စိတ်' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
-            { term: 'Bhāvanā (ဘာဝနာ)', meaning: 'ပွားများအားထုတ်ခြင်း (သမထ နှင့် ဝိပဿနာ)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Bhaṅga (ဘင်)', meaning: 'ချုပ်ပျောက်ခြင်း ခဏ' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Bhūmi (ဘူမိ / ဘုံ)', meaning: 'သတ္တဝါတို့ ဖြစ်တည်ရာ အရပ်၊ နေရာ (ဥပမာ - ကာမဘုံ၊ ရူပဘုံ၊ အရူပဘုံ)' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
-            { term: 'Bojjhaṅga (ဗောဇ္ဈင်္ဂ / ဗောဇ္ဈင်)', meaning: 'သစ္စာလေးပါးကို သိရန် အထောက်အကူပြုသော အင်္ဂါ' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
-            { term: 'Cetanā (စေတနာ)', meaning: 'တိုက်တွန်းနှိုးဆော်တတ်သော သဘော (ကံကို ဖြစ်စေသော အဓိက စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Cetasika (စေတသိက)', meaning: 'စိတ်နှင့် ယှဉ်တွဲ၍ ဖြစ်ပေါ်သော၊ စိတ်ကို ခြယ်လှယ်တတ်သော သဘောတရားများ (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Chanda (ဆန္ဒ)', meaning: 'ပြုလိုသော သဘော (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Citta (စိတ္တ)', meaning: 'အာရုံကို သိတတ်သော သဘော (စိတ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Cuti (စုတိ)', meaning: 'ဘဝတစ်ခု၏ နောက်ဆုံး ပြတ်စဲသွားသော စိတ်' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
-            { term: 'Dassana (ဒဿန)', meaning: 'မြင်ခြင်း (သောတာပတ္တိမဂ်)' },
-            { term: 'Dhātu (ဓာတု / ဓာတ်)', meaning: 'သတ္တဝါ၊ ဇီဝ မဟုတ်ဘဲ မိမိသဘောကို ဆောင်သော တရား (ဥပမာ - ပထဝီဓာတ်၊ စက္ခုဓာတ် စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
-            { term: 'Diṭṭhi (ဒိဋ္ဌိ)', meaning: 'မှားယွင်းစွာ ယူဆခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Domanassa (ဒေါမနဿ)', meaning: 'စိတ်ဆင်းရဲခြင်း (ဝေဒနာ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Dosa (ဒေါသ)', meaning: 'ကြမ်းတမ်းခြင်း၊ အမျက်ထွက်ခြင်း၊ မကျေနပ်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Dukka (ဒုက္ခ)', meaning: 'ဆင်းရဲခြင်း' },
-            { term: 'Dvāra (ဒွါရ)', meaning: 'စိတ်ဖြစ်ပေါ်ရန် ဝင်ပေါက်/ထွက်ပေါက် (တံခါး ၆ ပေါက်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Ekaggatā (ဧကဂ္ဂတာ)', meaning: 'အာရုံတစ်ခုတည်း၌ စိတ်တည်ငြိမ်ခြင်း (သမာဓိ)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Gati (ဂတိ)', meaning: 'လားရာ (ဥပမာ - သုဂတိ၊ ဒုဂ္ဂတိ)' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
-            { term: 'Hetu (ဟေတု / ဟိတ်)', meaning: 'အမြစ်သဖွယ်ဖြစ်သော အကြောင်းတရား (ဥပမာ - လောဘ၊ ဒေါသ၊ မောဟ၊ အလောဘ၊ အဒေါသ၊ အမောဟ)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
-            { term: 'Hiri (ဟိရီ)', meaning: 'ဒုစရိုက်ပြုရမည်ကို ရှက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Iddhipāda (ဣဒ္ဓိပါဒ / ဣဒ္ဓိပါဒ်)', meaning: 'ပြီးပြည့်စုံခြင်း၏ အခြေခံ (ဆန္ဒ၊ ဝီရိယ၊ စိတ္တ၊ ဝီမံသ)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
-            { term: 'Indriya (ဣန္ဒြိယ / ဣန္ဒြေ)', meaning: 'မိမိဆိုင်ရာ ကိစ္စ၌ အစိုးရသော၊ လွှမ်းမိုးနိုင်သော သဘော (ဥပမာ - စက္ခုန္ဒြေ၊ သဒ္ဓိန္ဒြေ စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
-            { term: 'Issā (ဣဿာ)', meaning: 'သူတစ်ပါး ကြီးပွားချမ်းသာသည်ကို ငြူစူခြင်း (မနာလိုခြင်း)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Jarā (ဇရာ)', meaning: 'အိုမင်း ရင့်ရော်ခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Javana (ဇောန / ဇော)', meaning: 'အာရုံ၏ အရသာကို လျင်မြန်စွာ ခံစားသော၊ ကံမြောက်စေသော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Jhāna (ဈာန / ဈာန်)', meaning: 'အာရုံကို စူးစိုက်စွာ ရှုတတ်သော၊ ဆန့်ကျင်ဘက် နီဝရဏတရားများကို လောင်ကျွမ်းစေတတ်သော သဘော' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Jīvitindriya (ဇီဝိတိန္ဒြိယ)', meaning: 'ရုပ်၊ နာမ်တို့၏ အသက် (အသက်ရှင်စေသော သဘော)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }, { name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
-            { term: 'Jāti (ဇာတိ)', meaning: 'ပဋိသန္ဓေတည်နေခြင်း၊ ပထမဆုံး ဖြစ်ပေါ်လာခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Kalyāṇa (ကလျာဏ)', meaning: 'ကောင်းမွန်သော (ဥပမာ - ကလျာဏမိတ္တ = မိတ်ဆွေကောင်း)' },
-            { term: 'Kamma (ကမ္မ / ကံ)', meaning: 'ပြုလုပ်ခြင်း၊ စီမံခြင်း (ကိုယ်၊ နှုတ်၊ စိတ်ဖြင့် ပြုလုပ်သော အကြောင်းတရား)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
-            { term: 'Kammaṭṭhāna (ကမ္မဋ္ဌာန)', meaning: 'ဘာဝနာအလုပ်၏ တည်ရာ အာရုံ' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Karunā (ကရုဏာ)', meaning: 'ဆင်းရဲဒုက္ခရောက်နေသူများအပေါ် သနားကြင်နာခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Khandha (ခန္ဓာ)', meaning: 'အစုအဝေး (ဥပမာ - ရူပက္ခန္ဓာ၊ ဝေဒနာက္ခန္ဓာ စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
-            { term: 'Kicca (ကိစ္စ)', meaning: 'စိတ်၏ လုပ်ငန်းဆောင်တာ (၁၄ မျိုး ရှိသည်)' , links: [{ name: 'ပကိဏ္ဏကပိုင်း (Pakiṇṇaka)', url: 'pakinnaka_sangaha.html' }] },
-            { term: 'Kilesā (ကိလေသာ)', meaning: 'စိတ်ကို ပူလောင် ညစ်နွမ်းစေတတ်သော သဘော' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Kiriya / Kriyā (ကြိယာ)', meaning: 'အကျိုး မပေးတော့သော၊ ပြုကာမတ္တမျှသာဖြစ်သော သဘော (ရဟန္တာများ၏ စိတ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Kukkucca (ကုက္ကုစ္စ)', meaning: 'ပြုခဲ့မိသော အမှား၊ မပြုခဲ့မိသော အကောင်းများအတွက် နောင်တရ ပူပန်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Kusala (ကုသလ)', meaning: 'အပြစ်ကင်း၍ ကောင်းသောအကျိုးကို ပေးတတ်သော သဘော (ကုသိုလ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Lobha (လောဘ)', meaning: 'လိုချင်တပ်မက်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Lokiya (လောကီ)', meaning: 'လောက၌ အကျုံးဝင်သော (ကာမ၊ ရူပ၊ အရူပ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Lokuttarā (လောကုတ္တရာ)', meaning: 'လောကမှ လွတ်မြောက်သော (မဂ်၊ ဖိုလ်၊ နိဗ္ဗာန်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Macchariya (မစ္ဆရိယ)', meaning: 'မိမိစည်းစိမ်ချမ်းသာကို သူတစ်ပါးနှင့် မဆက်ဆံလိုခြင်း (ဝန်တိုခြင်း)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Magga (မဂ္ဂ / မဂ်)', meaning: 'နိဗ္ဗာန်သို့ သွားရာလမ်း၊ ကိလေသာများကို ပယ်သတ်တတ်သော သဘော' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
-            { term: 'Mahābhūta (မဟာဘူတ)', meaning: 'ကြီးမား ထင်ရှားသော ရုပ်တရား (ပထဝီ၊ အာပေါ၊ တေဇော၊ ဝါယော)' , links: [{ name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
-            { term: 'Manasikāra (မနသိကာရ)', meaning: 'အာရုံကို နှလုံးသွင်းခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Maraṇa (မရဏ)', meaning: 'သေဆုံးခြင်း၊ ပျက်စီးခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Middha (မိဒ္ဓ)', meaning: 'စေတသိက်တို့၏ ထိုင်းမှိုင်းခြင်း၊ ငိုက်မျဉ်းခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Moha (မောဟ)', meaning: 'တွေဝေခြင်း၊ အမှန်ကို မသိခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Muditā (မုဒိတာ)', meaning: 'သူတစ်ပါး ကြီးပွားချမ်းသာသည်ကို ဝမ်းမြောက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Māna (မာန)', meaning: 'ထောင်လွှားခြင်း၊ မိမိကိုယ်ကို အထင်ကြီးခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Nibbāna (နိဗ္ဗာန)', meaning: 'တဏှာမှ ကင်းလွတ်ရာ၊ ဒုက္ခငြိမ်းရာ (နိဗ္ဗာန်)' },
-            { term: 'Nimitta (နိမိတ္တ / နိမိတ်)', meaning: 'အာရုံ၏ အမှတ်အသား (ဥပမာ - ပရိကမ္မနိမိတ်၊ ဥဂ္ဂဟနိမိတ်၊ ပဋိဘာဂနိမိတ်)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Nāma (နာမ / နာမ်)', meaning: 'အာရုံသို့ ညွတ်တတ်သော သဘော (စိတ် နှင့် စေတသိက်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Nāmarūpa (နာမရူပ / နာမ်ရုပ်)', meaning: 'စိတ်၊ စေတသိက် (နာမ်) နှင့် ဖောက်ပြန်တတ်သော သဘော (ရုပ်)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Ogha (ဩဃ)', meaning: 'သံသရာဝဲဩဃ၊ နစ်မြုပ်စေတတ်သော တရား ၄ ပါး' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Ottappa (ဩတ္တပ္ပ)', meaning: 'ဒုစရိုက်ပြုရမည်ကို ကြောက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Paccaya (ပစ္စယ)', meaning: 'တစ်ခုက တစ်ခုကို ထောက်ပံ့ ကျေးဇူးပြုတတ်သော အခြေအနေ' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
-            { term: 'Paññatti (ပညတ္တိ / ပညတ်)', meaning: 'အမှန်တကယ် မရှိသော်လည်း ခေါ်ဝေါ်သမုတ်ထားသော အမည်နာမ သို့မဟုတ် အရာဝတ္ထု' , links: [{ name: 'ပညတ် (Paññatti)', url: 'pannatti.html' }] },
-            { term: 'Paññā (ပညာ)', meaning: 'အမှန်အတိုင်း ထိုးထွင်းသိမြင်သော သဘော (အမောဟ)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Paramattha (ပရမတ္ထ / ပရမတ်)', meaning: 'ဖောက်ပြန်လွဲမှားခြင်း မရှိသော၊ အမှန်တကယ် ရှိသော တရား (စိတ်၊ စေတသိက်၊ ရုပ်၊ နိဗ္ဗာန်)' },
-            { term: 'Paṭiccasamuppāda (ပဋိစ္စသမုပ္ပါဒ)', meaning: 'အကြောင်းတရားများအပေါ် အမှီသဟဲပြု၍ အကျိုးတရားများ ဆက်စပ်ဖြစ်ပေါ်လာခြင်း သဘော' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Paṭisandhi (ပဋိသန္ဓေ)', meaning: 'ဘဝဟောင်းနှင့် ဘဝသစ်ကို ဆက်စပ်ပေးသော၊ ဘဝသစ်၏ ပထမဆုံး စိတ်' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
-            { term: 'Paṭṭhāna (ပဋ္ဌာန / ပဋ္ဌာန်း)', meaning: 'အကြောင်းအကျိုး ဆက်စပ်မှုတို့ကို အထူး၊ အပြားအားဖြင့် ပြဆိုထားသော ကျမ်း (ပစ္စည်း ၂၄ ပါး)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
-            { term: 'Phala (ဖလ / ဖိုလ်)', meaning: 'မဂ်၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
-            { term: 'Phassa (ဖဿ)', meaning: 'အာရုံနှင့် ဒွါရ တွေ့ဆုံထိခိုက်ခြင်း (စေတသိက်)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }, { name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Pīti (ပီတိ)', meaning: 'အာရုံကို နှစ်သက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Rūpa (ရူပ)', meaning: 'ဖောက်ပြန်တတ်သော သဘော (ရုပ်တရား)' , links: [{ name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
-            { term: 'Sabba-cittasādhāraṇa (သဗ္ဗစိတ္တသာဓာရဏ)', meaning: 'စိတ်အားလုံးနှင့် ဆက်ဆံသော စေတသိက် (၇) ပါး' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Sacca (သစ္စ / သစ္စာ)', meaning: 'ဖောက်ပြန်လွဲမှားမှု မရှိသော အမှန်တရား (ဥပမာ - ဒုက္ခသစ္စာ၊ သမုဒယသစ္စာ စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
-            { term: 'Saddhā (သဒ္ဓါ)', meaning: 'ယုံကြည်သင့်သည်ကို ယုံကြည်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Sahetuka (သဟေတုက)', meaning: 'ဟေတု ပါဝင်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Samatha (သမထ)', meaning: 'စိတ်ကို ငြိမ်းအေး တည်ငြိမ်စေသော အကျင့်' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Sammappadhāna (သမ္မပ္ပဓာန)', meaning: 'ကောင်းစွာ အားထုတ်ခြင်း (ဝီရိယ ၄ မျိုး)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
-            { term: 'Sampayutta (သမ္ပယုတ္တ)', meaning: 'ယှဉ်တွဲခြင်း၊ အတူတကွ ဖြစ်ပေါ်ခြင်း (ဥပမာ - ဉာဏသမ္ပယုတ်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Sasaṅkhārika (သသင်္ခါရိက)', meaning: 'မိမိ/သူတစ်ပါး၏ တိုက်တွန်းမှုကြောင့် နှေးကွေးစွာ ဖြစ်ပေါ်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Sati (သတိ)', meaning: 'အာရုံကို မမေ့လျော့ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Satipaṭṭhāna (သတိပဋ္ဌာန / သတိပဋ္ဌာန်)', meaning: 'သတိကို စွဲမြဲစွာ တည်ထားခြင်း (ကာယ၊ ဝေဒနာ၊ စိတ္တ၊ ဓမ္မ)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
-            { term: 'Saḷāyatana (သဠာယတန)', meaning: 'အာယတန ၆ ပါး (စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှာ၊ ကာယ၊ မန)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Saṅkhāra (သင်္ခါရ)', meaning: 'အကြောင်းတရားတို့က ပြုပြင်စီရင်ထားသော တရား၊ ပြုပြင်တတ်သော စေတနာ' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Sobhana (သောဘဏ)', meaning: 'တင့်တယ်ကောင်းမွန်သော (ကုသိုလ်၊ ဝိပါက်၊ ကြိယာ တချို့)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Somanassa (သောမနဿ)', meaning: 'စိတ်ချမ်းသာခြင်း (ဝေဒနာ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Taṇhā (တဏှာ)', meaning: 'အာရုံကို တပ်မက်ခြင်း၊ လိုချင်ခြင်း (လောဘ)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }, { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Thīna (ထိန)', meaning: 'စိတ်၏ ထိုင်းမှိုင်းခြင်း၊ လေးလံခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Uddhacca (ဥဒ္ဓစ္စ)', meaning: 'စိတ် ပျံ့လွင့်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Uppāda (ဥပါဒ်)', meaning: 'စတင်ဖြစ်ပေါ်ခြင်း ခဏ' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Upādāna (ဥပါဒါန / ဥပါဒါန်)', meaning: 'အာရုံကို ပြင်းစွာ စွဲလမ်းခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
-            { term: 'Upādārūpa (ဥပါဒါရူပ / ဥပါဒါရုပ်)', meaning: 'မဟာဘုတ် ၄ ပါးကို မှီ၍ ဖြစ်သော ရုပ် (၂၄ ပါး)' , links: [{ name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
-            { term: 'Upekkhā (ဥပေက္ခာ)', meaning: 'အလယ်အလတ် ခံစားမှု၊ လျစ်လျူရှုခြင်း (ဝေဒနာ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Vatthu (ဝတ္ထု)', meaning: 'စိတ် မှီရာ ရုပ်အခြေခံ (ဝတ္ထုရုပ် ၆ ပါး)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Vedanā (ဝေဒနာ)', meaning: 'အာရုံ၏ အရသာကို ခံစားခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }, { name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Vicāra (ဝိစာရ)', meaning: 'အာရုံကို ထပ်ခါထပ်ခါ သုံးသပ်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Vicikicchā (ဝိစိကိစ္ဆာ)', meaning: 'ယုံမှား သံသယဖြစ်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Vipassanā (ဝိပဿနာ)', meaning: 'ရုပ်နာမ်တို့၏ အနိစ္စ၊ ဒုက္ခ၊ အနတ္တ သဘောကို အထူး သိမြင်အောင် ရှုပွားသော အကျင့်' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Vippayutta (ဝိပ္ပယုတ္တ)', meaning: 'မယှဉ်တွဲခြင်း၊ ကင်းကွာခြင်း (ဥပမာ - ဉာဏဝိပ္ပယုတ်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Vipāka (ဝိပါက)', meaning: 'ကံ၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော (ဝိပါက်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Viriya (ဝီရိယ)', meaning: 'အားထုတ်ခြင်း၊ ကြိုးစားခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Vitakka (ဝိတက္က)', meaning: 'အာရုံသို့ စိတ်ကို တင်ပေးခြင်း (ကြံစည်ခြင်း)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
-            { term: 'Vīthi (ဝီထိ)', class: 'text-sky-700 dark:text-sky-300', meaning: 'အာရုံကို သိရှိရန် အစဉ်အတိုင်း ဖြစ်ပေါ်သော စိတ်အစဉ်' , links: [{ name: 'ဝီထိပိုင်း (Vīthi)', url: 'vithi_sangaha.html' }] },
-            { term: 'Ārammaṇa (အာရမ္မဏ)', meaning: 'စိတ်၏ မှီတွယ်ရာ/သိစရာ (အာရုံ ၆ ပါး)' , links: [{ name: 'ပကိဏ္ဏကပိုင်း (Pakiṇṇaka)', url: 'pakinnaka_sangaha.html' }] },
-            { term: 'Āsava (အာသဝ / အာသဝေါ)', meaning: 'ယိုစီးတတ်သော၊ ယစ်မူးစေတတ်သော တရား ၄ ပါး (ကာမ၊ ဘဝ၊ ဒိဋ္ဌိ၊ အဝိဇ္ဇာ)' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Āyatana (အာယတန)', meaning: 'စိတ်နှင့် စေတသိက်တို့ ဖြစ်ပေါ်ကျယ်ပြန့်ရာ အကြောင်း (ဥပမာ - စက္ခာယတန၊ ရူပါယတန စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
-            { term: 'Ṭhiti (ဌီ)', meaning: 'တည်နေခြင်း ခဏ' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
-
-            { term: 'Asubha (အသုဘ)', meaning: 'မတင့်တယ်ခြင်း၊ စက်ဆုပ်ဖွယ် (ကမ္မဋ္ဌာန်း ၄၀ တွင် ပါဝင်သည်)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Adhipati (အဓိပတိ)', meaning: 'အကြီးအမှူးဖြစ်သော အကြောင်းတရား (ဆန္ဒ၊ ဝီရိယ၊ စိတ္တ၊ ဝီမံသ)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
-            { term: 'Anantaram (အနန္တရ)', meaning: 'ခြားနားမှုမရှိဘဲ အကျိုးပေးသော ပစ္စည်း' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
-            { term: 'Anussati (အနုဿတိ)', meaning: 'အဖန်ဖန် အောက်မေ့ခြင်း (ဗုဒ္ဓါနုဿတိ စသော ကမ္မဋ္ဌာန်းများ)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Brahmavihāra (ဗြဟ္မဝိဟာရ)', meaning: 'မြတ်သော နေထိုင်ခြင်း (မေတ္တာ၊ ကရုဏာ၊ မုဒိတာ၊ ဥပေက္ခာ)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Carita (စရိုက်)', meaning: 'လေ့လာကျက်စားလေ့ရှိသော အမူအကျင့် (ရာဂစရိုက် စသည်)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Gantha (ဂန္ထ)', meaning: 'ခန္ဓာကိုယ်နှင့် အာရုံကို နှောင်ဖွဲ့တတ်သော တရား' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Kasiṇa (ကသိုဏ်း)', meaning: 'အလုံးစုံကို ဖြန့်ကြက်၍ ရှုရသော အာရုံ (ဥပမာ - ပထဝီကသိုဏ်း)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
-            { term: 'Nīvaraṇa (နီဝရဏ)', meaning: 'ကုသိုလ်တရားတို့ကို တားဆီးပိတ်ပင်တတ်သော တရား' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
-            { term: 'Paccuppanna (ပစ္စုပ္ပန်)', meaning: 'ယခုဖြစ်ဆဲ အချိန် (ပစ္စုပ္ပန်အာရုံ)' , links: [{ name: 'ပကိဏ္ဏကပိုင်း (Pakiṇṇaka)', url: 'pakinnaka_sangaha.html' }] },
-            { term: 'Sahajāta (သဟဇာတ)', meaning: 'အတူတကွ ဖြစ်ပေါ်လာသော ပစ္စည်း' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
-            { term: 'Yoga (ယောဂ)', meaning: 'ယှဉ်စေတတ်သော၊ ဆက်စပ်ပေးတတ်သော တရား ၄ ပါး' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] }
-
+    { term: 'Abhidhamma (အဘိဓမ္မာ)', term_my: 'အဘိဓမ္မာ', pali_eng: 'Abhidhamma', nissaya: 'အဘိ - လွန်ကဲထူးမြတ်သော၊ ဓမ္မ - တရား', meaning: 'လွန်ကဲထူးမြတ်သော တရား (အကြောင်းအကျိုး သက်သက်ကိုသာ ဟောကြားထားသော ဒေသနာ)' },
+        { term: 'Adhikāra (အဓိကာရ)', term_my: 'အဓိကာရ', pali_eng: 'Adhikāra', nissaya: 'အဓိကာရော - အုပ်စိုးခြင်း၊ လွှမ်းမိုးခြင်း၊ အဓိကဖြစ်ခြင်း', meaning: 'အုပ်စိုးခြင်း၊ လွှမ်းမိုးခြင်း၊ အဓိကဖြစ်ခြင်း' },
+        { term: 'Adhimokkha (အဓိမောက္ခ)', term_my: 'အဓိမောက္ခ', pali_eng: 'Adhimokkha', nissaya: 'အဓိမောက္ခော - အာရုံကို ဆုံးဖြတ်ခြင်း သဘောတရား', meaning: 'အာရုံကို ဆုံးဖြတ်ခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Adosa (အဒေါသ)', term_my: 'အဒေါသ', pali_eng: 'Adosa', nissaya: 'အဒေါသော - မကြမ်းတမ်းခြင်း၊ မေတ္တာထားခြင်း သဘောတရား', meaning: 'မကြမ်းတမ်းခြင်း၊ မေတ္တာထားခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Ahetuka (အဟေတုက)', term_my: 'အဟေတုက', pali_eng: 'Ahetuka', nissaya: 'အဟေတုကံ - ဟေတု (လောဘ၊ ဒေါသ စသည့် အမြစ်) မပါဝင်သော (စိတ်)', meaning: 'ဟေတု (လောဘ၊ ဒေါသ စသည့် အမြစ်) မပါဝင်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Ahirika (အဟိရိက)', term_my: 'အဟိရိက', pali_eng: 'Ahirika', nissaya: 'အဟိရိကံ - ဒုစရိုက်ပြုရမည်ကို မရှက်ခြင်း သဘောတရား', meaning: 'ဒုစရိုက်ပြုရမည်ကို မရှက်ခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' },
+        { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Ajjava (အဇ္ဇဝ)', term_my: 'အဇ္ဇဝ', pali_eng: 'Ajjava', nissaya: 'အဇ္ဇဝံ - ဖြောင့်မတ်ခြင်း', meaning: 'ဖြောင့်မတ်ခြင်း' },
+        { term: 'Akaṭṭhī (အကဋ္ဌီ)', term_my: 'အကဋ္ဌီ', pali_eng: 'Akaṭṭhī', nissaya: 'အကဋ္ဌီံ - အရိုးမရှိသော', meaning: 'အရိုးမရှိသော' },
+        { term: 'Akusala (အကုသလ)', term_my: 'အကုသလ', pali_eng: 'Akusala', nissaya: 'အကုသလံ - အပြစ်ရှိ၍ ဆင်းရဲသောအကျိုးကို ပေးတတ်သော (တရား)', meaning: 'အပြစ်ရှိ၍ ဆင်းရဲသောအကျိုးကို ပေးတတ်သော သဘော (အကုသိုလ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' },
+        { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Alobha (အလောဘ)', term_my: 'အလောဘ', pali_eng: 'Alobha', nissaya: 'အလောဘော - မလိုချင်ခြင်း၊ မတပ်မက်ခြင်း၊ စွန့်လွှတ်ခြင်း သဘောတရား', meaning: 'မလိုချင်ခြင်း၊ မတပ်မက်ခြင်း၊ စွန့်လွှတ်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Amoha (အမောဟ)', term_my: 'အမောဟ', pali_eng: 'Amoha', nissaya: 'အမောဟော - အမှန်အတိုင်း သိမြင်ခြင်း သဘောတရား', meaning: 'အမှန်အတိုင်း သိမြင်ခြင်း (ပညာ)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Anattā (အနတ္တ)', term_my: 'အနတ္တ', pali_eng: 'Anattā', nissaya: 'အနတ္တာ - အစိုးမရခြင်း၊ အတ္တမဟုတ်ခြင်း', meaning: 'အစိုးမရခြင်း၊ အတ္တမဟုတ်ခြင်း' },
+        { term: 'Aniccatā (အနိစ္စ)', term_my: 'အနိစ္စ', pali_eng: 'Aniccatā', nissaya: 'အနိစ္စတာ - မမြဲခြင်း သဘော', meaning: 'မမြဲခြင်း' },
+        { term: 'Anottappa (အနောတ္တပ္ပ)', term_my: 'အနောတ္တပ္ပ', pali_eng: 'Anottappa', nissaya: 'အနောတ္တပ္ပံ - ဒုစရိုက်ပြုရမည်ကို မကြောက်ခြင်း', meaning: 'ဒုစရိုက်ပြုရမည်ကို မကြောက်ခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' },
+        { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Apariccāga (အပရိစ္စာဂ)', term_my: 'အပရိစ္စာဂ', pali_eng: 'Apariccāga', nissaya: 'အပရိစ္စာဂော - မစွန့်လွှတ်ခြင်း', meaning: 'မစွန့်လွှတ်ခြင်း (မစ္ဆရိယ)' },
+        { term: 'Ariya (အရိယ)', term_my: 'အရိယ', pali_eng: 'Ariya', nissaya: 'အရိယံ - မြတ်သောသူ', meaning: 'မြတ်သောသူ (သောတာပန်စသော ပုဂ္ဂိုလ်များ)' },
+        { term: 'Arūpa (အရူပ)', term_my: 'အရူပ', pali_eng: 'Arūpa', nissaya: 'အရူပံ - ရုပ်မရှိသော (နာမ်တရား)', meaning: 'ရုပ်မရှိသော၊ နာမ်တရား' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Asaṅkhārika (အသင်္ခါရိက)', term_my: 'အသင်္ခါရိက', pali_eng: 'Asaṅkhārika', nissaya: 'အသင်္ခါရိကံ - တိုက်တွန်းမှု မပါဘဲ မိမိအလိုအလျောက် ထက်မြက်စွာ ဖြစ်ပေါ်သော (စိတ်)', meaning: 'တိုက်တွန်းမှု မပါဘဲ မိမိအလိုအလျောက် ထက်မြက်စွာ ဖြစ်ပေါ်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Asurakāya (အသုရကာယ)', term_my: 'အသုရကာယ', pali_eng: 'Asurakāya', nissaya: 'အသုရကာယံ - အသုရာဘုံ', meaning: 'အသုရာဘုံ (နတ်တို့နှင့် ဆန့်ကျင်ဘက်ဖြစ်သော သတ္တဝါများ)' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
+        { term: 'Avijjā (အဝိဇ္ဇာ)', term_my: 'အဝိဇ္ဇာ', pali_eng: 'Avijjā', nissaya: 'အဝိဇ္ဇာ - သစ္စာလေးပါးကို မသိခြင်း (မောဟ)', meaning: 'သစ္စာလေးပါးကို မသိခြင်း (မောဟ)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' },
+        { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Ayoge yogo (အယောဂေ ယောဂေါ)', term_my: 'အယောဂေ ယောဂေါ', pali_eng: 'Ayoge yogo', nissaya: 'အယောဂေ ယောဂေါံ - မယှဉ်အပ်သည်၌ ယှဉ်ခြင်း', meaning: 'မယှဉ်အပ်သည်၌ ယှဉ်ခြင်း (မိစ္ဆာဒိဋ္ဌိ)' },
+        { term: 'Aññasamānā (အညသမာန)', term_my: 'အညသမာန', pali_eng: 'Aññasamānā', nissaya: 'အညသမာနံ - အခြား  နှင့် တူသော စေတသိက်  ပါး', meaning: 'အခြား (ကုသိုလ်/အကုသိုလ်) နှင့် တူသော စေတသိက် (၁၃) ပါး' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Bala (ဗလ)', term_my: 'ဗလ', pali_eng: 'Bala', nissaya: 'ဗလံ - ဆန့်ကျင်ဘက်တရားတို့ကို မတုန်လှုပ်စေသော အစွမ်းခွန်အား', meaning: 'ဆန့်ကျင်ဘက်တရားတို့ကို မတုန်လှုပ်စေသော အစွမ်းခွန်အား (သဒ္ဓါ၊ ဝီရိယ၊ သတိ၊ သမာဓိ၊ ပညာ)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
+        { term: 'Bhava (ဘဝ)', term_my: 'ဘဝ', pali_eng: 'Bhava', nissaya: 'ဘဝေါ - ဖြစ်တည်မှု', meaning: 'ဖြစ်တည်မှု (ကမ္မဘဝ၊ ဥပပတ္တိဘဝ)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Bhavaṅga (ဘဝင်)', term_my: 'ဘဝင်', pali_eng: 'Bhavaṅga', nissaya: 'ဘဝင်္ဂံ - ဘဝ၏ အင်္ဂါ၊ ဘဝကို ဆက်စပ်ပေးသော (စိတ်)', meaning: 'ဘဝ၏ အင်္ဂါ၊ ဘဝကို ဆက်စပ်ပေးသော၊ ဝီထိစိတ် မဖြစ်ပေါ်ချိန်တွင် ဖြစ်ပေါ်နေသော စိတ်' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
+        { term: 'Bhāvanā (ဘာဝနာ)', term_my: 'ဘာဝနာ', pali_eng: 'Bhāvanā', nissaya: 'ဘာဝနာ - ပွားများအားထုတ်ခြင်း', meaning: 'ပွားများအားထုတ်ခြင်း (သမထ နှင့် ဝိပဿနာ)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Bhaṅga (ဘင်)', term_my: 'ဘင်', pali_eng: 'Bhaṅga', nissaya: 'ဘင်ံ - ချုပ်ပျောက်ခြင်း ခဏ', meaning: 'ချုပ်ပျောက်ခြင်း ခဏ' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Bhūmi (ဘူမိ / ဘုံ)', term_my: 'ဘူမိ / ဘုံ', pali_eng: 'Bhūmi', nissaya: 'ဘူမိ / ဘုံံ - သတ္တဝါတို့ ဖြစ်တည်ရာ အရပ်၊ နေရာ', meaning: 'သတ္တဝါတို့ ဖြစ်တည်ရာ အရပ်၊ နေရာ (ဥပမာ - ကာမဘုံ၊ ရူပဘုံ၊ အရူပဘုံ)' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
+        { term: 'Bojjhaṅga (ဗောဇ္ဈင်္ဂ / ဗောဇ္ဈင်)', term_my: 'ဗောဇ္ဈင်္ဂ / ဗောဇ္ဈင်', pali_eng: 'Bojjhaṅga', nissaya: 'ဗောဇ္ဈင်္ဂံ - သစ္စာလေးပါးကို သိရန် အထောက်အကူပြုသော အင်္ဂါ', meaning: 'သစ္စာလေးပါးကို သိရန် အထောက်အကူပြုသော အင်္ဂါ' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
+        { term: 'Cetanā (စေတနာ)', term_my: 'စေတနာ', pali_eng: 'Cetanā', nissaya: 'စေတနာ - တိုက်တွန်းနှိုးဆော်တတ်သော သဘောတရား', meaning: 'တိုက်တွန်းနှိုးဆော်တတ်သော သဘော (ကံကို ဖြစ်စေသော အဓိက စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Cetasika (စေတသိက)', term_my: 'စေတသိက', pali_eng: 'Cetasika', nissaya: 'စေတသိက - စိတ်၌ မှီ၍ဖြစ်သော (တရား)', meaning: 'စိတ်နှင့် ယှဉ်တွဲ၍ ဖြစ်ပေါ်သော၊ စိတ်ကို ခြယ်လှယ်တတ်သော သဘောတရားများ (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Chanda (ဆန္ဒ)', term_my: 'ဆန္ဒ', pali_eng: 'Chanda', nissaya: 'ဆန္ဒံ - ပြုလိုသော သဘော', meaning: 'ပြုလိုသော သဘော (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Citta (စိတ္တ)', term_my: 'စိတ္တ', pali_eng: 'Citta', nissaya: 'စိတ္တံ - အာရုံကို သိတတ်သော (တရား)', meaning: 'အာရုံကို သိတတ်သော သဘော (စိတ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Cuti (စုတိ)', term_my: 'စုတိ', pali_eng: 'Cuti', nissaya: 'စုတိံ - ဘဝတစ်ခု၏ နောက်ဆုံး ပြတ်စဲသွားသော စိတ်', meaning: 'ဘဝတစ်ခု၏ နောက်ဆုံး ပြတ်စဲသွားသော စိတ်' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
+        { term: 'Dassana (ဒဿန)', term_my: 'ဒဿန', pali_eng: 'Dassana', nissaya: 'ဒဿနံ - မြင်ခြင်း', meaning: 'မြင်ခြင်း (သောတာပတ္တိမဂ်)' },
+        { term: 'Dhātu (ဓာတု / ဓာတ်)', term_my: 'ဓာတု / ဓာတ်', pali_eng: 'Dhātu', nissaya: 'ဓာတု / ဓာတ်ံ - သတ္တဝါ၊ ဇီဝ မဟုတ်ဘဲ မိမိသဘောကို ဆောင်သော တရား', meaning: 'သတ္တဝါ၊ ဇီဝ မဟုတ်ဘဲ မိမိသဘောကို ဆောင်သော တရား (ဥပမာ - ပထဝီဓာတ်၊ စက္ခုဓာတ် စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
+        { term: 'Diṭṭhi (ဒိဋ္ဌိ)', term_my: 'ဒိဋ္ဌိ', pali_eng: 'Diṭṭhi', nissaya: 'ဒိဋ္ဌိံ - မှားယွင်းစွာ ယူဆခြင်း', meaning: 'မှားယွင်းစွာ ယူဆခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Domanassa (ဒေါမနဿ)', term_my: 'ဒေါမနဿ', pali_eng: 'Domanassa', nissaya: 'ဒေါမနဿံ - စိတ်ဆင်းရဲခြင်း', meaning: 'စိတ်ဆင်းရဲခြင်း (ဝေဒနာ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Dosa (ဒေါသ)', term_my: 'ဒေါသ', pali_eng: 'Dosa', nissaya: 'ဒေါသော - ကြမ်းတမ်းခြင်း၊ စိတ်ဆိုးခြင်း၊ ဖျက်ဆီးလိုခြင်း သဘောတရား', meaning: 'ကြမ်းတမ်းခြင်း၊ အမျက်ထွက်ခြင်း၊ မကျေနပ်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Dukka (ဒုက္ခ)', term_my: 'ဒုက္ခ', pali_eng: 'Dukka', nissaya: 'ဒုက္ခံ - ဆင်းရဲခြင်း', meaning: 'ဆင်းရဲခြင်း' },
+        { term: 'Dvāra (ဒွါရ)', term_my: 'ဒွါရ', pali_eng: 'Dvāra', nissaya: 'ဒွါရော - စိတ်ဖြစ်ပေါ်ရန် ဝင်ပေါက်/ထွက်ပေါက်', meaning: 'စိတ်ဖြစ်ပေါ်ရန် ဝင်ပေါက်/ထွက်ပေါက် (တံခါး ၆ ပေါက်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Ekaggatā (ဧကဂ္ဂတာ)', term_my: 'ဧကဂ္ဂတာ', pali_eng: 'Ekaggatā', nissaya: 'ဧကဂ္ဂတာ - အာရုံတစ်ခုတည်း၌ စိတ်တည်ငြိမ်ခြင်း', meaning: 'အာရုံတစ်ခုတည်း၌ စိတ်တည်ငြိမ်ခြင်း (သမာဓိ)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Gati (ဂတိ)', term_my: 'ဂတိ', pali_eng: 'Gati', nissaya: 'ဂတိံ - လားရာ', meaning: 'လားရာ (ဥပမာ - သုဂတိ၊ ဒုဂ္ဂတိ)' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
+        { term: 'Hetu (ဟေတု / ဟိတ်)', term_my: 'ဟေတု / ဟိတ်', pali_eng: 'Hetu', nissaya: 'ဟေတု / ဟိတ်ံ - အမြစ်သဖွယ်ဖြစ်သော အကြောင်းတရား', meaning: 'အမြစ်သဖွယ်ဖြစ်သော အကြောင်းတရား (ဥပမာ - လောဘ၊ ဒေါသ၊ မောဟ၊ အလောဘ၊ အဒေါသ၊ အမောဟ)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
+        { term: 'Hiri (ဟိရီ)', term_my: 'ဟိရီ', pali_eng: 'Hiri', nissaya: 'ဟိရီံ - ဒုစရိုက်ပြုရမည်ကို ရှက်ခြင်း', meaning: 'ဒုစရိုက်ပြုရမည်ကို ရှက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Iddhipāda (ဣဒ္ဓိပါဒ / ဣဒ္ဓိပါဒ်)', term_my: 'ဣဒ္ဓိပါဒ / ဣဒ္ဓိပါဒ်', pali_eng: 'Iddhipāda', nissaya: 'ဣဒ္ဓိပါဒ / ဣဒ္ဓိပါဒ်ံ - ပြီးပြည့်စုံခြင်း၏ အခြေခံ', meaning: 'ပြီးပြည့်စုံခြင်း၏ အခြေခံ (ဆန္ဒ၊ ဝီရိယ၊ စိတ္တ၊ ဝီမံသ)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
+        { term: 'Indriya (ဣန္ဒြိယ / ဣန္ဒြေ)', term_my: 'ဣန္ဒြိယ / ဣန္ဒြေ', pali_eng: 'Indriya', nissaya: 'ဣန္ဒြိယ / ဣန္ဒြေံ - မိမိဆိုင်ရာ ကိစ္စ၌ အစိုးရသော၊ လွှမ်းမိုးနိုင်သော သဘော', meaning: 'မိမိဆိုင်ရာ ကိစ္စ၌ အစိုးရသော၊ လွှမ်းမိုးနိုင်သော သဘော (ဥပမာ - စက္ခုန္ဒြေ၊ သဒ္ဓိန္ဒြေ စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
+        { term: 'Issā (ဣဿာ)', term_my: 'ဣဿာ', pali_eng: 'Issā', nissaya: 'ဣဿာ - သူတစ်ပါး ကြီးပွားချမ်းသာသည်ကို ငြူစူခြင်း', meaning: 'သူတစ်ပါး ကြီးပွားချမ်းသာသည်ကို ငြူစူခြင်း (မနာလိုခြင်း)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Jarā (ဇရာ)', term_my: 'ဇရာ', pali_eng: 'Jarā', nissaya: 'ဇရာ - အိုမင်း ရင့်ရော်ခြင်း', meaning: 'အိုမင်း ရင့်ရော်ခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Javana (ဇောန / ဇော)', term_my: 'ဇောန / ဇော', pali_eng: 'Javana', nissaya: 'ဇောန / ဇော - အာရုံ၏ အရသာကို လျင်မြန်စွာ ခံစားသော၊ ကံမြောက်စေသော စိတ်', meaning: 'အာရုံ၏ အရသာကို လျင်မြန်စွာ ခံစားသော၊ ကံမြောက်စေသော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Jhāna (ဈာန / ဈာန်)', term_my: 'ဈာန / ဈာန်', pali_eng: 'Jhāna', nissaya: 'ဈာန / ဈာန်ံ - အာရုံကို စူးစိုက်စွာ ရှုတတ်သော၊ ဆန့်ကျင်ဘက် နီဝရဏတရားများကို လောင်ကျွမ်းစေတတ်သော သဘော', meaning: 'အာရုံကို စူးစိုက်စွာ ရှုတတ်သော၊ ဆန့်ကျင်ဘက် နီဝရဏတရားများကို လောင်ကျွမ်းစေတတ်သော သဘော' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Jīvitindriya (ဇီဝိတိန္ဒြိယ)', term_my: 'ဇီဝိတိန္ဒြိယ', pali_eng: 'Jīvitindriya', nissaya: 'ဇီဝိတိန္ဒြိယံ - ရုပ်၊ နာမ်တို့၏ အသက်', meaning: 'ရုပ်၊ နာမ်တို့၏ အသက် (အသက်ရှင်စေသော သဘော)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' },
+        { name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
+        { term: 'Jāti (ဇာတိ)', term_my: 'ဇာတိ', pali_eng: 'Jāti', nissaya: 'ဇာတိံ - ပဋိသန္ဓေတည်နေခြင်း၊ ပထမဆုံး ဖြစ်ပေါ်လာခြင်း', meaning: 'ပဋိသန္ဓေတည်နေခြင်း၊ ပထမဆုံး ဖြစ်ပေါ်လာခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Kalyāṇa (ကလျာဏ)', term_my: 'ကလျာဏ', pali_eng: 'Kalyāṇa', nissaya: 'ကလျာဏံ - ကောင်းမွန်သော', meaning: 'ကောင်းမွန်သော (ဥပမာ - ကလျာဏမိတ္တ = မိတ်ဆွေကောင်း)' },
+        { term: 'Kamma (ကမ္မ / ကံ)', term_my: 'ကမ္မ / ကံ', pali_eng: 'Kamma', nissaya: 'ကမ္မ / ကံံ - ပြုလုပ်ခြင်း၊ စီမံခြင်း', meaning: 'ပြုလုပ်ခြင်း၊ စီမံခြင်း (ကိုယ်၊ နှုတ်၊ စိတ်ဖြင့် ပြုလုပ်သော အကြောင်းတရား)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
+        { term: 'Kammaṭṭhāna (ကမ္မဋ္ဌာန)', term_my: 'ကမ္မဋ္ဌာန', pali_eng: 'Kammaṭṭhāna', nissaya: 'ကမ္မဋ္ဌာနံ - ဘာဝနာအလုပ်၏ တည်ရာ အာရုံ', meaning: 'ဘာဝနာအလုပ်၏ တည်ရာ အာရုံ' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Karunā (ကရုဏာ)', term_my: 'ကရုဏာ', pali_eng: 'Karunā', nissaya: 'ကရုဏာ - ဆင်းရဲဒုက္ခရောက်နေသူများအပေါ် သနားကြင်နာခြင်း', meaning: 'ဆင်းရဲဒုက္ခရောက်နေသူများအပေါ် သနားကြင်နာခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Khandha (ခန္ဓာ)', term_my: 'ခန္ဓာ', pali_eng: 'Khandha', nissaya: 'ခန္ဓာ - အစုအဝေး', meaning: 'အစုအဝေး (ဥပမာ - ရူပက္ခန္ဓာ၊ ဝေဒနာက္ခန္ဓာ စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
+        { term: 'Kicca (ကိစ္စ)', term_my: 'ကိစ္စ', pali_eng: 'Kicca', nissaya: 'ကိစ္စံ - စိတ်၏ လုပ်ငန်းဆောင်တာ', meaning: 'စိတ်၏ လုပ်ငန်းဆောင်တာ (၁၄ မျိုး ရှိသည်)' , links: [{ name: 'ပကိဏ္ဏကပိုင်း (Pakiṇṇaka)', url: 'pakinnaka_sangaha.html' }] },
+        { term: 'Kilesā (ကိလေသာ)', term_my: 'ကိလေသာ', pali_eng: 'Kilesā', nissaya: 'ကိလေသာ - စိတ်ကို ပူလောင် ညစ်နွမ်းစေတတ်သော သဘော', meaning: 'စိတ်ကို ပူလောင် ညစ်နွမ်းစေတတ်သော သဘော' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Kiriya / Kriyā (ကြိယာ)', term_my: 'ကြိယာ', pali_eng: 'Kiriya / Kriyā', nissaya: 'ကြိယာ - အကျိုး မပေးတော့သော၊ ပြုကာမတ္တမျှသာဖြစ်သော သဘော', meaning: 'အကျိုး မပေးတော့သော၊ ပြုကာမတ္တမျှသာဖြစ်သော သဘော (ရဟန္တာများ၏ စိတ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Kukkucca (ကုက္ကုစ္စ)', term_my: 'ကုက္ကုစ္စ', pali_eng: 'Kukkucca', nissaya: 'ကုက္ကုစ္စံ - ပြုခဲ့မိသော အမှား၊ မပြုခဲ့မိသော အကောင်းများအတွက် နောင်တရ ပူပန်ခြင်း', meaning: 'ပြုခဲ့မိသော အမှား၊ မပြုခဲ့မိသော အကောင်းများအတွက် နောင်တရ ပူပန်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Kusala (ကုသလ)', term_my: 'ကုသလ', pali_eng: 'Kusala', nissaya: 'ကုသလံ - အပြစ်ကင်း၍ ကောင်းမြတ်သော အကျိုးကိုပေးတတ်သော (တရား)', meaning: 'အပြစ်ကင်း၍ ကောင်းသောအကျိုးကို ပေးတတ်သော သဘော (ကုသိုလ်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Lobha (လောဘ)', term_my: 'လောဘ', pali_eng: 'Lobha', nissaya: 'လောဘော - လိုချင်တပ်မက်ခြင်း သဘောတရား', meaning: 'လိုချင်တပ်မက်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Lokiya (လောကီ)', term_my: 'လောကီ', pali_eng: 'Lokiya', nissaya: 'လောကီံ - လောက၌ အကျုံးဝင်သော', meaning: 'လောက၌ အကျုံးဝင်သော (ကာမ၊ ရူပ၊ အရူပ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Lokuttarā (လောကုတ္တရာ)', term_my: 'လောကုတ္တရာ', pali_eng: 'Lokuttarā', nissaya: 'လောကုတ္တရာ - လောကမှ လွတ်မြောက်သော', meaning: 'လောကမှ လွတ်မြောက်သော (မဂ်၊ ဖိုလ်၊ နိဗ္ဗာန်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Macchariya (မစ္ဆရိယ)', term_my: 'မစ္ဆရိယ', pali_eng: 'Macchariya', nissaya: 'မစ္ဆရိယံ - မိမိစည်းစိမ်ချမ်းသာကို သူတစ်ပါးနှင့် မဆက်ဆံလိုခြင်း', meaning: 'မိမိစည်းစိမ်ချမ်းသာကို သူတစ်ပါးနှင့် မဆက်ဆံလိုခြင်း (ဝန်တိုခြင်း)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Magga (မဂ္ဂ / မဂ်)', term_my: 'မဂ္ဂ / မဂ်', pali_eng: 'Magga', nissaya: 'မဂ္ဂ / မဂ်ံ - နိဗ္ဗာန်သို့ သွားရာလမ်း၊ ကိလေသာများကို ပယ်သတ်တတ်သော သဘော', meaning: 'နိဗ္ဗာန်သို့ သွားရာလမ်း၊ ကိလေသာများကို ပယ်သတ်တတ်သော သဘော' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
+        { term: 'Mahābhūta (မဟာဘူတ)', term_my: 'မဟာဘူတ', pali_eng: 'Mahābhūta', nissaya: 'မဟာဘူတံ - ကြီးမား ထင်ရှားသော ရုပ်တရား', meaning: 'ကြီးမား ထင်ရှားသော ရုပ်တရား (ပထဝီ၊ အာပေါ၊ တေဇော၊ ဝါယော)' , links: [{ name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
+        { term: 'Manasikāra (မနသိကာရ)', term_my: 'မနသိကာရ', pali_eng: 'Manasikāra', nissaya: 'မနသိကာရော - အာရုံကို နှလုံးသွင်းခြင်း', meaning: 'အာရုံကို နှလုံးသွင်းခြင်း (စေတသိက်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Maraṇa (မရဏ)', term_my: 'မရဏ', pali_eng: 'Maraṇa', nissaya: 'မရဏံ - သေဆုံးခြင်း၊ ပျက်စီးခြင်း', meaning: 'သေဆုံးခြင်း၊ ပျက်စီးခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Middha (မိဒ္ဓ)', term_my: 'မိဒ္ဓ', pali_eng: 'Middha', nissaya: 'မိဒ္ဓံ - စေတသိက်တို့၏ ထိုင်းမှိုင်းခြင်း၊ ငိုက်မျဉ်းခြင်း', meaning: 'စေတသိက်တို့၏ ထိုင်းမှိုင်းခြင်း၊ ငိုက်မျဉ်းခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Moha (မောဟ)', term_my: 'မောဟ', pali_eng: 'Moha', nissaya: 'မောဟော - အာရုံ၏ သဘောမှန်ကို မသိခြင်း၊ တွေဝေခြင်း', meaning: 'တွေဝေခြင်း၊ အမှန်ကို မသိခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Muditā (မုဒိတာ)', term_my: 'မုဒိတာ', pali_eng: 'Muditā', nissaya: 'မုဒိတာ - သူတစ်ပါး ကြီးပွားချမ်းသာသည်ကို ဝမ်းမြောက်ခြင်း', meaning: 'သူတစ်ပါး ကြီးပွားချမ်းသာသည်ကို ဝမ်းမြောက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Māna (မာန)', term_my: 'မာန', pali_eng: 'Māna', nissaya: 'မာနံ - ထောင်လွှားခြင်း၊ မိမိကိုယ်ကို အထင်ကြီးခြင်း', meaning: 'ထောင်လွှားခြင်း၊ မိမိကိုယ်ကို အထင်ကြီးခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Nibbāna (နိဗ္ဗာန)', term_my: 'နိဗ္ဗာန', pali_eng: 'Nibbāna', nissaya: 'နိဗ္ဗာနံ - တဏှာမှ ထွက်မြောက်ရာ (နိဗ္ဗာန်)', meaning: 'တဏှာမှ ကင်းလွတ်ရာ၊ ဒုက္ခငြိမ်းရာ (နိဗ္ဗာန်)' },
+        { term: 'Nimitta (နိမိတ္တ / နိမိတ်)', term_my: 'နိမိတ္တ / နိမိတ်', pali_eng: 'Nimitta', nissaya: 'နိမိတ္တ / နိမိတ်ံ - အာရုံ၏ အမှတ်အသား', meaning: 'အာရုံ၏ အမှတ်အသား (ဥပမာ - ပရိကမ္မနိမိတ်၊ ဥဂ္ဂဟနိမိတ်၊ ပဋိဘာဂနိမိတ်)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Nāma (နာမ / နာမ်)', term_my: 'နာမ / နာမ်', pali_eng: 'Nāma', nissaya: 'နာမ / နာမ်ံ - အာရုံသို့ ညွတ်တတ်သော သဘော', meaning: 'အာရုံသို့ ညွတ်တတ်သော သဘော (စိတ် နှင့် စေတသိက်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Nāmarūpa (နာမရူပ / နာမ်ရုပ်)', term_my: 'နာမရူပ / နာမ်ရုပ်', pali_eng: 'Nāmarūpa', nissaya: 'နာမရူပ / နာမ်ရုပ်ံ - စိတ်၊ စေတသိက်  နှင့် ဖောက်ပြန်တတ်သော သဘော', meaning: 'စိတ်၊ စေတသိက် (နာမ်) နှင့် ဖောက်ပြန်တတ်သော သဘော (ရုပ်)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Ogha (ဩဃ)', term_my: 'ဩဃ', pali_eng: 'Ogha', nissaya: 'ဩဃံ - သံသရာဝဲဩဃ၊ နစ်မြုပ်စေတတ်သော တရား ၄ ပါး', meaning: 'သံသရာဝဲဩဃ၊ နစ်မြုပ်စေတတ်သော တရား ၄ ပါး' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Ottappa (ဩတ္တပ္ပ)', term_my: 'ဩတ္တပ္ပ', pali_eng: 'Ottappa', nissaya: 'ဩတ္တပ္ပံ - ဒုစရိုက်ပြုရမည်ကို ကြောက်ခြင်း', meaning: 'ဒုစရိုက်ပြုရမည်ကို ကြောက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Paccaya (ပစ္စယ)', term_my: 'ပစ္စယ', pali_eng: 'Paccaya', nissaya: 'ပစ္စယံ - တစ်ခုက တစ်ခုကို ထောက်ပံ့ ကျေးဇူးပြုတတ်သော အခြေအနေ', meaning: 'တစ်ခုက တစ်ခုကို ထောက်ပံ့ ကျေးဇူးပြုတတ်သော အခြေအနေ' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
+        { term: 'Paññatti (ပညတ္တိ / ပညတ်)', term_my: 'ပညတ္တိ / ပညတ်', pali_eng: 'Paññatti', nissaya: 'ပညတ္တိ / ပညတ်ံ - အမှန်တကယ် မရှိသော်လည်း ခေါ်ဝေါ်သမုတ်ထားသော အမည်နာမ သို့မဟုတ် အရာဝတ္ထု', meaning: 'အမှန်တကယ် မရှိသော်လည်း ခေါ်ဝေါ်သမုတ်ထားသော အမည်နာမ သို့မဟုတ် အရာဝတ္ထု' , links: [{ name: 'ပညတ် (Paññatti)', url: 'pannatti.html' }] },
+        { term: 'Paññā (ပညာ)', term_my: 'ပညာ', pali_eng: 'Paññā', nissaya: 'ပညာ - အမှန်အတိုင်း ထိုးထွင်းသိမြင်သော သဘော', meaning: 'အမှန်အတိုင်း ထိုးထွင်းသိမြင်သော သဘော (အမောဟ)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Paramattha (ပရမတ္ထ / ပရမတ်)', term_my: 'ပရမတ္ထ / ပရမတ်', pali_eng: 'Paramattha', nissaya: 'ပရမတ္ထ / ပရမတ်ံ - ဖောက်ပြန်လွဲမှားခြင်း မရှိသော၊ အမှန်တကယ် ရှိသော တရား', meaning: 'ဖောက်ပြန်လွဲမှားခြင်း မရှိသော၊ အမှန်တကယ် ရှိသော တရား (စိတ်၊ စေတသိက်၊ ရုပ်၊ နိဗ္ဗာန်)' },
+        { term: 'Paṭiccasamuppāda (ပဋိစ္စသမုပ္ပါဒ)', term_my: 'ပဋိစ္စသမုပ္ပါဒ', pali_eng: 'Paṭiccasamuppāda', nissaya: 'ပဋိစ္စသမုပ္ပါဒံ - အကြောင်းတရားများအပေါ် အမှီသဟဲပြု၍ အကျိုးတရားများ ဆက်စပ်ဖြစ်ပေါ်လာခြင်း သဘော', meaning: 'အကြောင်းတရားများအပေါ် အမှီသဟဲပြု၍ အကျိုးတရားများ ဆက်စပ်ဖြစ်ပေါ်လာခြင်း သဘော' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Paṭisandhi (ပဋိသန္ဓေ)', term_my: 'ပဋိသန္ဓေ', pali_eng: 'Paṭisandhi', nissaya: 'ပဋိသန္ဓေံ - ဘဝဟောင်းနှင့် ဘဝသစ်ကို ဆက်စပ်ပေးသော၊ ဘဝသစ်၏ ပထမဆုံး စိတ်', meaning: 'ဘဝဟောင်းနှင့် ဘဝသစ်ကို ဆက်စပ်ပေးသော၊ ဘဝသစ်၏ ပထမဆုံး စိတ်' , links: [{ name: 'ဝီထိမုတ်ပိုင်း (Vīthimutta)', url: 'vithimutta_sangaha.html' }] },
+        { term: 'Paṭṭhāna (ပဋ္ဌာန / ပဋ္ဌာန်း)', term_my: 'ပဋ္ဌာန / ပဋ္ဌာန်း', pali_eng: 'Paṭṭhāna', nissaya: 'ပဋ္ဌာန / ပဋ္ဌာန်းံ - အကြောင်းအကျိုး ဆက်စပ်မှုတို့ကို အထူး၊ အပြားအားဖြင့် ပြဆိုထားသော ကျမ်း', meaning: 'အကြောင်းအကျိုး ဆက်စပ်မှုတို့ကို အထူး၊ အပြားအားဖြင့် ပြဆိုထားသော ကျမ်း (ပစ္စည်း ၂၄ ပါး)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
+        { term: 'Phala (ဖလ / ဖိုလ်)', term_my: 'ဖလ / ဖိုလ်', pali_eng: 'Phala', nissaya: 'ဖလ / ဖိုလ်ံ - မဂ်၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော', meaning: 'မဂ်၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
+        { term: 'Phassa (ဖဿ)', term_my: 'ဖဿ', pali_eng: 'Phassa', nissaya: 'ဖဿံ - အာရုံနှင့် ဒွါရ တွေ့ဆုံထိခိုက်ခြင်း', meaning: 'အာရုံနှင့် ဒွါရ တွေ့ဆုံထိခိုက်ခြင်း (စေတသိက်)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' },
+        { name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Pīti (ပီတိ)', term_my: 'ပီတိ', pali_eng: 'Pīti', nissaya: 'ပီတိံ - အာရုံကို နှစ်သက်ခြင်း', meaning: 'အာရုံကို နှစ်သက်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Rūpa (ရူပ)', term_my: 'ရူပ', pali_eng: 'Rūpa', nissaya: 'ရူပံ - ဖောက်ပြန်တတ်သော သဘောတရား (ရုပ်)', meaning: 'ဖောက်ပြန်တတ်သော သဘော (ရုပ်တရား)' , links: [{ name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
+        { term: 'Sabba-cittasādhāraṇa (သဗ္ဗစိတ္တသာဓာရဏ)', term_my: 'သဗ္ဗစိတ္တသာဓာရဏ', pali_eng: 'Sabba-cittasādhāraṇa', nissaya: 'သဗ္ဗစိတ္တသာဓာရဏံ - စိတ်အားလုံးနှင့် ဆက်ဆံသော စေတသိက်  ပါး', meaning: 'စိတ်အားလုံးနှင့် ဆက်ဆံသော စေတသိက် (၇) ပါး' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Sacca (သစ္စ / သစ္စာ)', term_my: 'သစ္စ / သစ္စာ', pali_eng: 'Sacca', nissaya: 'သစ္စ / သစ္စာ - ဖောက်ပြန်လွဲမှားမှု မရှိသော အမှန်တရား', meaning: 'ဖောက်ပြန်လွဲမှားမှု မရှိသော အမှန်တရား (ဥပမာ - ဒုက္ခသစ္စာ၊ သမုဒယသစ္စာ စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
+        { term: 'Saddhā (သဒ္ဓါ)', term_my: 'သဒ္ဓါ', pali_eng: 'Saddhā', nissaya: 'သဒ္ဓါံ - ယုံကြည်သင့်သည်ကို ယုံကြည်ခြင်း', meaning: 'ယုံကြည်သင့်သည်ကို ယုံကြည်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Sahetuka (သဟေတုက)', term_my: 'သဟေတုက', pali_eng: 'Sahetuka', nissaya: 'သဟေတုကော - ဟေတု ပါဝင်သော စိတ်', meaning: 'ဟေတု ပါဝင်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Samatha (သမထ)', term_my: 'သမထ', pali_eng: 'Samatha', nissaya: 'သမထံ - စိတ်ကို ငြိမ်းအေး တည်ငြိမ်စေသော အကျင့်', meaning: 'စိတ်ကို ငြိမ်းအေး တည်ငြိမ်စေသော အကျင့်' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Sammappadhāna (သမ္မပ္ပဓာန)', term_my: 'သမ္မပ္ပဓာန', pali_eng: 'Sammappadhāna', nissaya: 'သမ္မပ္ပဓာနံ - ကောင်းစွာ အားထုတ်ခြင်း', meaning: 'ကောင်းစွာ အားထုတ်ခြင်း (ဝီရိယ ၄ မျိုး)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
+        { term: 'Sampayutta (သမ္ပယုတ္တ)', term_my: 'သမ္ပယုတ္တ', pali_eng: 'Sampayutta', nissaya: 'သမ္ပယုတ္တံ - ယှဉ်တွဲခြင်း၊ အတူတကွ ဖြစ်ပေါ်ခြင်း', meaning: 'ယှဉ်တွဲခြင်း၊ အတူတကွ ဖြစ်ပေါ်ခြင်း (ဥပမာ - ဉာဏသမ္ပယုတ်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Sasaṅkhārika (သသင်္ခါရိက)', term_my: 'သသင်္ခါရိက', pali_eng: 'Sasaṅkhārika', nissaya: 'သသင်္ခါရိကော - မိမိ/သူတစ်ပါး၏ တိုက်တွန်းမှုကြောင့် နှေးကွေးစွာ ဖြစ်ပေါ်သော စိတ်', meaning: 'မိမိ/သူတစ်ပါး၏ တိုက်တွန်းမှုကြောင့် နှေးကွေးစွာ ဖြစ်ပေါ်သော စိတ်' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Sati (သတိ)', term_my: 'သတိ', pali_eng: 'Sati', nissaya: 'သတိံ - အာရုံကို မမေ့လျော့ခြင်း', meaning: 'အာရုံကို မမေ့လျော့ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Satipaṭṭhāna (သတိပဋ္ဌာန / သတိပဋ္ဌာန်)', term_my: 'သတိပဋ္ဌာန / သတိပဋ္ဌာန်', pali_eng: 'Satipaṭṭhāna', nissaya: 'သတိပဋ္ဌာန / သတိပဋ္ဌာန်ံ - သတိကို စွဲမြဲစွာ တည်ထားခြင်း', meaning: 'သတိကို စွဲမြဲစွာ တည်ထားခြင်း (ကာယ၊ ဝေဒနာ၊ စိတ္တ၊ ဓမ္မ)' , links: [{ name: 'ဗောဓိပက္ခိယ (Bodhipakkhiya)', url: 'bodhipakkhiya_dhamma.html' }] },
+        { term: 'Saḷāyatana (သဠာယတန)', term_my: 'သဠာယတန', pali_eng: 'Saḷāyatana', nissaya: 'သဠာယတနံ - အာယတန ၆ ပါး', meaning: 'အာယတန ၆ ပါး (စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှာ၊ ကာယ၊ မန)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Saṅkhāra (သင်္ခါရ)', term_my: 'သင်္ခါရ', pali_eng: 'Saṅkhāra', nissaya: 'သင်္ခါရော - အကြောင်းတရားတို့က ပြုပြင်စီရင်ထားသော တရား၊ ပြုပြင်တတ်သော စေတနာ', meaning: 'အကြောင်းတရားတို့က ပြုပြင်စီရင်ထားသော တရား၊ ပြုပြင်တတ်သော စေတနာ' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Sobhana (သောဘဏ)', term_my: 'သောဘဏ', pali_eng: 'Sobhana', nissaya: 'သောဘဏံ - တင့်တယ်ကောင်းမွန်သော', meaning: 'တင့်တယ်ကောင်းမွန်သော (ကုသိုလ်၊ ဝိပါက်၊ ကြိယာ တချို့)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Somanassa (သောမနဿ)', term_my: 'သောမနဿ', pali_eng: 'Somanassa', nissaya: 'သောမနဿံ - စိတ်ချမ်းသာခြင်း', meaning: 'စိတ်ချမ်းသာခြင်း (ဝေဒနာ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Taṇhā (တဏှာ)', term_my: 'တဏှာ', pali_eng: 'Taṇhā', nissaya: 'တဏှာ - အာရုံကို တပ်မက်ခြင်း၊ လိုချင်ခြင်း', meaning: 'အာရုံကို တပ်မက်ခြင်း၊ လိုချင်ခြင်း (လောဘ)' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' },
+        { name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Thīna (ထိန)', term_my: 'ထိန', pali_eng: 'Thīna', nissaya: 'ထိနံ - စိတ်၏ ထိုင်းမှိုင်းခြင်း၊ လေးလံခြင်း', meaning: 'စိတ်၏ ထိုင်းမှိုင်းခြင်း၊ လေးလံခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Uddhacca (ဥဒ္ဓစ္စ)', term_my: 'ဥဒ္ဓစ္စ', pali_eng: 'Uddhacca', nissaya: 'ဥဒ္ဓစ္စံ - စိတ် ပျံ့လွင့်ခြင်း', meaning: 'စိတ် ပျံ့လွင့်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Uppāda (ဥပါဒ်)', term_my: 'ဥပါဒ်', pali_eng: 'Uppāda', nissaya: 'ဥပါဒ်ံ - စတင်ဖြစ်ပေါ်ခြင်း ခဏ', meaning: 'စတင်ဖြစ်ပေါ်ခြင်း ခဏ' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Upādāna (ဥပါဒါန / ဥပါဒါန်)', term_my: 'ဥပါဒါန / ဥပါဒါန်', pali_eng: 'Upādāna', nissaya: 'ဥပါဒါန / ဥပါဒါန်ံ - အာရုံကို ပြင်းစွာ စွဲလမ်းခြင်း', meaning: 'အာရုံကို ပြင်းစွာ စွဲလမ်းခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' }] },
+        { term: 'Upādārūpa (ဥပါဒါရူပ / ဥပါဒါရုပ်)', term_my: 'ဥပါဒါရူပ / ဥပါဒါရုပ်', pali_eng: 'Upādārūpa', nissaya: 'ဥပါဒါရူပ / ဥပါဒါရုပ်ံ - မဟာဘုတ် ၄ ပါးကို မှီ၍ ဖြစ်သော ရုပ်', meaning: 'မဟာဘုတ် ၄ ပါးကို မှီ၍ ဖြစ်သော ရုပ် (၂၄ ပါး)' , links: [{ name: 'ရုပ်ပိုင်း (Rūpa)', url: 'rupa_sangaha.html' }] },
+        { term: 'Upekkhā (ဥပေက္ခာ)', term_my: 'ဥပေက္ခာ', pali_eng: 'Upekkhā', nissaya: 'ဥပေက္ခာ - အလယ်အလတ် ခံစားမှု၊ လျစ်လျူရှုခြင်း', meaning: 'အလယ်အလတ် ခံစားမှု၊ လျစ်လျူရှုခြင်း (ဝေဒနာ)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Vatthu (ဝတ္ထု)', term_my: 'ဝတ္ထု', pali_eng: 'Vatthu', nissaya: 'ဝတ္ထုံ - စိတ် မှီရာ ရုပ်အခြေခံ', meaning: 'စိတ် မှီရာ ရုပ်အခြေခံ (ဝတ္ထုရုပ် ၆ ပါး)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Vedanā (ဝေဒနာ)', term_my: 'ဝေဒနာ', pali_eng: 'Vedanā', nissaya: 'ဝေဒနာ - အာရုံ၏ အရသာကို ခံစားခြင်း', meaning: 'အာရုံ၏ အရသာကို ခံစားခြင်း' , links: [{ name: 'ပဋိစ္စသမုပ္ပါဒ် (Paṭiccasamuppāda)', url: 'paticcasamuppada.html' },
+        { name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Vicāra (ဝိစာရ)', term_my: 'ဝိစာရ', pali_eng: 'Vicāra', nissaya: 'ဝိစာရော - အာရုံကို ထပ်ခါထပ်ခါ သုံးသပ်ခြင်း', meaning: 'အာရုံကို ထပ်ခါထပ်ခါ သုံးသပ်ခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Vicikicchā (ဝိစိကိစ္ဆာ)', term_my: 'ဝိစိကိစ္ဆာ', pali_eng: 'Vicikicchā', nissaya: 'ဝိစိကိစ္ဆာ - ယုံမှား သံသယဖြစ်ခြင်း', meaning: 'ယုံမှား သံသယဖြစ်ခြင်း' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Vipassanā (ဝိပဿနာ)', term_my: 'ဝိပဿနာ', pali_eng: 'Vipassanā', nissaya: 'ဝိပဿနာ - ရုပ်နာမ်တို့၏ အနိစ္စ၊ ဒုက္ခ၊ အနတ္တ သဘောကို အထူး သိမြင်အောင် ရှုပွားသော အကျင့်', meaning: 'ရုပ်နာမ်တို့၏ အနိစ္စ၊ ဒုက္ခ၊ အနတ္တ သဘောကို အထူး သိမြင်အောင် ရှုပွားသော အကျင့်' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Vippayutta (ဝိပ္ပယုတ္တ)', term_my: 'ဝိပ္ပယုတ္တ', pali_eng: 'Vippayutta', nissaya: 'ဝိပ္ပယုတ္တံ - မယှဉ်တွဲခြင်း၊ ကင်းကွာခြင်း', meaning: 'မယှဉ်တွဲခြင်း၊ ကင်းကွာခြင်း (ဥပမာ - ဉာဏဝိပ္ပယုတ်)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Vipāka (ဝိပါက)', term_my: 'ဝိပါက', pali_eng: 'Vipāka', nissaya: 'ဝိပါကော - ကံ၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော', meaning: 'ကံ၏ အကျိုးဆက်အဖြစ် ဖြစ်ပေါ်လာသော သဘော (ဝိပါက်)' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Viriya (ဝီရိယ)', term_my: 'ဝီရိယ', pali_eng: 'Viriya', nissaya: 'ဝီရိယံ - အားထုတ်ခြင်း၊ ကြိုးစားခြင်း', meaning: 'အားထုတ်ခြင်း၊ ကြိုးစားခြင်း' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Vitakka (ဝိတက္က)', term_my: 'ဝိတက္က', pali_eng: 'Vitakka', nissaya: 'ဝိတက္ကော - အာရုံသို့ စိတ်ကို တင်ပေးခြင်း', meaning: 'အာရုံသို့ စိတ်ကို တင်ပေးခြင်း (ကြံစည်ခြင်း)' , links: [{ name: 'စေတသိက်ပိုင်း (Cetasika)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Vīthi (ဝီထိ)', term_my: 'ဝီထိ', pali_eng: 'Vīthi', nissaya: 'ဝီထိံ - အာရုံကို သိရှိရန် အစဉ်အတိုင်း ဖြစ်ပေါ်သော စိတ်အစဉ်', class: 'text-sky-700 dark:text-sky-300', meaning: 'အာရုံကို သိရှိရန် အစဉ်အတိုင်း ဖြစ်ပေါ်သော စိတ်အစဉ်' , links: [{ name: 'ဝီထိပိုင်း (Vīthi)', url: 'vithi_sangaha.html' }] },
+        { term: 'Ārammaṇa (အာရမ္မဏ)', term_my: 'အာရမ္မဏ', pali_eng: 'Ārammaṇa', nissaya: 'အာရမ္မဏံ - စိတ်၏ မှီတွယ်ရာ/သိစရာ', meaning: 'စိတ်၏ မှီတွယ်ရာ/သိစရာ (အာရုံ ၆ ပါး)' , links: [{ name: 'ပကိဏ္ဏကပိုင်း (Pakiṇṇaka)', url: 'pakinnaka_sangaha.html' }] },
+        { term: 'Āsava (အာသဝ / အာသဝေါ)', term_my: 'အာသဝ / အာသဝေါ', pali_eng: 'Āsava', nissaya: 'အာသဝ / အာသဝေါံ - ယိုစီးတတ်သော၊ ယစ်မူးစေတတ်သော တရား ၄ ပါး', meaning: 'ယိုစီးတတ်သော၊ ယစ်မူးစေတတ်သော တရား ၄ ပါး (ကာမ၊ ဘဝ၊ ဒိဋ္ဌိ၊ အဝိဇ္ဇာ)' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Āyatana (အာယတန)', term_my: 'အာယတန', pali_eng: 'Āyatana', nissaya: 'အာယတနံ - စိတ်နှင့် စေတသိက်တို့ ဖြစ်ပေါ်ကျယ်ပြန့်ရာ အကြောင်း', meaning: 'စိတ်နှင့် စေတသိက်တို့ ဖြစ်ပေါ်ကျယ်ပြန့်ရာ အကြောင်း (ဥပမာ - စက္ခာယတန၊ ရူပါယတန စသည်)' , links: [{ name: 'သဗ္ဗသင်္ဂဟ (Sabba Saṅgaha)', url: 'sabba_sangaha.html' }] },
+        { term: 'Ṭhiti (ဌီ)', term_my: 'ဌီ', pali_eng: 'Ṭhiti', nissaya: 'ဌီံ - တည်နေခြင်း ခဏ', meaning: 'တည်နေခြင်း ခဏ' , links: [{ name: 'စိတ်ပိုင်း (Citta)', url: 'citta_cetasikas_visual_guide.html' }] },
+        { term: 'Asubha (အသုဘ)', term_my: 'အသုဘ', pali_eng: 'Asubha', nissaya: 'အသုဘံ - မတင့်တယ်ခြင်း၊ စက်ဆုပ်ဖွယ်', meaning: 'မတင့်တယ်ခြင်း၊ စက်ဆုပ်ဖွယ် (ကမ္မဋ္ဌာန်း ၄၀ တွင် ပါဝင်သည်)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Adhipati (အဓိပတိ)', term_my: 'အဓိပတိ', pali_eng: 'Adhipati', nissaya: 'အဓိပတိံ - အကြီးအမှူးဖြစ်သော အကြောင်းတရား', meaning: 'အကြီးအမှူးဖြစ်သော အကြောင်းတရား (ဆန္ဒ၊ ဝီရိယ၊ စိတ္တ၊ ဝီမံသ)' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
+        { term: 'Anantaram (အနန္တရ)', term_my: 'အနန္တရ', pali_eng: 'Anantaram', nissaya: 'အနန္တရော - ခြားနားမှုမရှိဘဲ အကျိုးပေးသော ပစ္စည်း', meaning: 'ခြားနားမှုမရှိဘဲ အကျိုးပေးသော ပစ္စည်း' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
+        { term: 'Anussati (အနုဿတိ)', term_my: 'အနုဿတိ', pali_eng: 'Anussati', nissaya: 'အနုဿတိံ - အဖန်ဖန် အောက်မေ့ခြင်း', meaning: 'အဖန်ဖန် အောက်မေ့ခြင်း (ဗုဒ္ဓါနုဿတိ စသော ကမ္မဋ္ဌာန်းများ)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Brahmavihāra (ဗြဟ္မဝိဟာရ)', term_my: 'ဗြဟ္မဝိဟာရ', pali_eng: 'Brahmavihāra', nissaya: 'ဗြဟ္မဝိဟာရော - မြတ်သော နေထိုင်ခြင်း', meaning: 'မြတ်သော နေထိုင်ခြင်း (မေတ္တာ၊ ကရုဏာ၊ မုဒိတာ၊ ဥပေက္ခာ)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Carita (စရိုက်)', term_my: 'စရိုက်', pali_eng: 'Carita', nissaya: 'စရိုက်ံ - လေ့လာကျက်စားလေ့ရှိသော အမူအကျင့်', meaning: 'လေ့လာကျက်စားလေ့ရှိသော အမူအကျင့် (ရာဂစရိုက် စသည်)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Gantha (ဂန္ထ)', term_my: 'ဂန္ထ', pali_eng: 'Gantha', nissaya: 'ဂန္ထံ - ခန္ဓာကိုယ်နှင့် အာရုံကို နှောင်ဖွဲ့တတ်သော တရား', meaning: 'ခန္ဓာကိုယ်နှင့် အာရုံကို နှောင်ဖွဲ့တတ်သော တရား' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Kasiṇa (ကသိုဏ်း)', term_my: 'ကသိုဏ်း', pali_eng: 'Kasiṇa', nissaya: 'ကသိုဏ်းံ - အလုံးစုံကို ဖြန့်ကြက်၍ ရှုရသော အာရုံ', meaning: 'အလုံးစုံကို ဖြန့်ကြက်၍ ရှုရသော အာရုံ (ဥပမာ - ပထဝီကသိုဏ်း)' , links: [{ name: 'ကမ္မဋ္ဌာန်းပိုင်း (Kammaṭṭhāna)', url: 'kammatthana_sangaha.html' }] },
+        { term: 'Nīvaraṇa (နီဝရဏ)', term_my: 'နီဝရဏ', pali_eng: 'Nīvaraṇa', nissaya: 'နီဝရဏံ - ကုသိုလ်တရားတို့ကို တားဆီးပိတ်ပင်တတ်သော တရား', meaning: 'ကုသိုလ်တရားတို့ကို တားဆီးပိတ်ပင်တတ်သော တရား' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] },
+        { term: 'Paccuppanna (ပစ္စုပ္ပန်)', term_my: 'ပစ္စုပ္ပန်', pali_eng: 'Paccuppanna', nissaya: 'ပစ္စုပ္ပန်ံ - ယခုဖြစ်ဆဲ အချိန်', meaning: 'ယခုဖြစ်ဆဲ အချိန် (ပစ္စုပ္ပန်အာရုံ)' , links: [{ name: 'ပကိဏ္ဏကပိုင်း (Pakiṇṇaka)', url: 'pakinnaka_sangaha.html' }] },
+        { term: 'Sahajāta (သဟဇာတ)', term_my: 'သဟဇာတ', pali_eng: 'Sahajāta', nissaya: 'သဟဇာတံ - အတူတကွ ဖြစ်ပေါ်လာသော ပစ္စည်း', meaning: 'အတူတကွ ဖြစ်ပေါ်လာသော ပစ္စည်း' , links: [{ name: 'ပစ္စည်းပိုင်း (Paccaya)', url: 'paccaya_sangaha.html' }] },
+        { term: 'Yoga (ယောဂ)', term_my: 'ယောဂ', pali_eng: 'Yoga', nissaya: 'ယောဂော - ယှဉ်စေတတ်သော၊ ဆက်စပ်ပေးတတ်သော တရား ၄ ပါး', meaning: 'ယှဉ်စေတတ်သော၊ ဆက်စပ်ပေးတတ်သော တရား ၄ ပါး' , links: [{ name: 'ကိလေသာပိုင်း (Kilesa)', url: 'kilesa_sangaha.html' }] }
 ];
         
         // Add ID and Categories
@@ -204,7 +210,34 @@
                 bookmarks.push(id);
             }
             localStorage.setItem('abhidhamma_bookmarks', JSON.stringify(bookmarks));
-            render(); // Re-render to update UI
+            
+        // Sticky Header & Back to Top logic
+        const stickyControls = document.getElementById('stickyControls');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                if(stickyControls) stickyControls.classList.add('sticky-scrolled');
+                if(backToTopBtn) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100');
+                }
+            } else {
+                if(stickyControls) stickyControls.classList.remove('sticky-scrolled');
+                if(backToTopBtn) {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100');
+                }
+            }
+        });
+
+        if(backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        render(); // Re-render to update UI
         }
 
         function getBaseLetter(str) {
@@ -239,7 +272,7 @@
             return text.replace(regex, '<mark>$1</mark>');
         }
 
-        function renderCard(t, q) {
+        function renderCard(t, q, index = 0) {
             let linksHtml = '';
             if (t.links && t.links.length > 0) {
                 linksHtml = '<div class="mt-3 flex flex-wrap gap-2">' + t.links.map(l => 
@@ -251,14 +284,14 @@
             if (t.related && t.related.length > 0) {
                 const relTerms = t.related.map(rid => terms.find(x => x.id === rid)).filter(Boolean);
                 relatedHtml = '<div class="mt-3 flex flex-wrap gap-1.5 items-center"><span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Related:</span> ' + 
-                    relTerms.map(rt => `<span class="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 cursor-help" title="${rt.meaning}">${rt.term.split(' ')[0]}</span>`).join('') + '</div>';
+                    relTerms.map(rt => `<span class="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 cursor-help hover:-translate-y-0.5 hover:shadow-sm hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-200" title="${rt.meaning}">${rt.term.split(' ')[0]}</span>`).join('') + '</div>';
             }
             
             const isBookmarked = bookmarks.includes(t.id);
             const bkmIcon = isBookmarked ? 'fa-solid text-amber-500' : 'fa-regular text-slate-300 dark:text-slate-600';
             
             return `
-                <div class="glass-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:border-emerald-500/30 transition flex flex-col md:flex-row md:items-start gap-2 md:gap-4 relative group">
+                <div class="glass-card animate-stagger p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col md:flex-row md:items-start gap-2 md:gap-4 relative group" style="animation-delay: ${Math.min(index * 0.05, 0.5)}s">
                     <button onclick="toggleBookmark('${t.id}', event)" class="bookmark-btn absolute top-4 right-4 text-lg ${bkmIcon} hover:text-amber-500 z-10" title="Bookmark">
                         <i class="fa-star"></i>
                     </button>
@@ -307,9 +340,18 @@
                             </div>
                             
                             <!-- Back -->
-                            <div class="flashcard-face flashcard-back">
-                                <h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 leading-relaxed px-4">${t.meaning}</h3>
-                                <div class="w-12 h-1 bg-emerald-500/30 rounded-full mx-auto mb-6"></div>
+                            <div class="flashcard-face flashcard-back overflow-y-auto hide-scrollbar">
+                                <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-300 mb-2">${t.term_my || t.term}</h3>
+                                ${t.pali_eng ? `<p class="text-sm text-slate-500 font-serif italic mb-4">${t.pali_eng}</p>` : ''}
+                                <div class="w-12 h-1 bg-emerald-500/30 rounded-full mx-auto mb-4"></div>
+                                
+                                ${t.nissaya ? `<div class="w-full text-left bg-amber-50 dark:bg-amber-500/10 border border-amber-200/50 dark:border-amber-500/20 p-3 rounded-lg mb-4 text-sm text-amber-800 dark:text-amber-300"><span class="font-bold">နိဿယ -</span><br/>${t.nissaya}</div>` : ''}
+                                
+                                <div class="text-left w-full text-slate-700 dark:text-slate-200 text-base leading-relaxed">
+                                    <span class="font-bold text-slate-900 dark:text-white">အဓိပ္ပာယ် -</span><br/>
+                                    ${t.meaning}
+                                </div>
+                                <div class="mt-6"></div>
                                 <p class="text-sm text-slate-400"><i class="fa-solid fa-hand-pointer animate-pulse"></i> Click to flip back</p>
                             </div>
                         </div>
@@ -350,7 +392,7 @@
                 renderFlashcard();
             } else {
                 if (filteredTerms.length === 0) {
-                    listEl.innerHTML = `<div class="text-center text-slate-500 dark:text-slate-500 py-12 flex flex-col items-center"><i class="fa-solid fa-ghost text-4xl mb-4 opacity-50"></i><span>ရှာဖွေမှု ရလဒ် မတွေ့ရှိပါ</span></div>`;
+                    listEl.innerHTML = `<div class="text-center text-slate-500 dark:text-slate-500 py-12 flex flex-col items-center"><i class="fa-solid fa-ghost text-4xl mb-4 opacity-50 animate-pulse text-emerald-500/50"></i><span>ရှာဖွေမှု ရလဒ် မတွေ့ရှိပါ</span></div>`;
                     if(alphabetIndexEl) alphabetIndexEl.innerHTML = '';
                 } else {
                     let html = `<div class="${currentView === 'grid' ? 'layout-grid' : 'space-y-4'} w-full">`;
@@ -376,12 +418,12 @@
                         sortedLetters.forEach(letter => {
                             html += `<h3 id="letter-${letter}" class="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-10 mb-4 border-b-2 border-emerald-500/20 dark:border-emerald-500/10 pb-2 scroll-mt-24 pl-2">${letter}</h3>`;
                             html += '<div class="space-y-4">';
-                            html += groups[letter].map(t => renderCard(t, searchQuery)).join('');
+                            html += groups[letter].map((t, idx) => renderCard(t, searchQuery, idx)).join('');
                             html += '</div>';
                         });
                     } else {
                         if(alphabetIndexEl) alphabetIndexEl.innerHTML = '';
-                        html += filteredTerms.map(t => renderCard(t, searchQuery)).join('');
+                        html += filteredTerms.map((t, idx) => renderCard(t, searchQuery, idx)).join('');
                     }
                     html += `</div>`;
                     listEl.innerHTML = html;
@@ -413,7 +455,34 @@
                 e.currentTarget.classList.add('active');
                 currentCategory = e.currentTarget.dataset.cat;
                 flashcardIndex = 0; // reset
-                render();
+                
+        // Sticky Header & Back to Top logic
+        const stickyControls = document.getElementById('stickyControls');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                if(stickyControls) stickyControls.classList.add('sticky-scrolled');
+                if(backToTopBtn) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100');
+                }
+            } else {
+                if(stickyControls) stickyControls.classList.remove('sticky-scrolled');
+                if(backToTopBtn) {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100');
+                }
+            }
+        });
+
+        if(backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        render();
             });
         });
 
@@ -441,5 +510,32 @@
         }
 
         // Init
+        
+        // Sticky Header & Back to Top logic
+        const stickyControls = document.getElementById('stickyControls');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                if(stickyControls) stickyControls.classList.add('sticky-scrolled');
+                if(backToTopBtn) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100');
+                }
+            } else {
+                if(stickyControls) stickyControls.classList.remove('sticky-scrolled');
+                if(backToTopBtn) {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100');
+                }
+            }
+        });
+
+        if(backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
         render();
     
