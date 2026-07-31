@@ -624,6 +624,39 @@
                 <i class="fa-solid fa-arrow-left"></i> ပစ္စယသင်္ဂဟ သို့ ပြန်သွားရန်
             </a>
         </section>
+
+        <!-- Pannatti Matrix Table Section -->
+        <div class="mt-16 mb-8 text-center max-w-4xl mx-auto space-y-2">
+            <h2 class="text-2xl md:text-3xl font-bold"><i class="fa-solid fa-layer-group text-fuchsia-500 mr-2"></i> နာမပညတ် ၆ မျိုး ခွဲခြမ်းစိတ်ဖြာမှု ဇယားကြီး</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+                သဒ္ဒပညတ် (နာမပညတ်) ၆ မျိုးကို ပရမတ္ထတရား (အရှိတရား) ဟုတ်၊ မဟုတ် ပေါ်မူတည်၍ ခွဲခြားပြသထားသော ဇယားဖြစ်ပါသည်။
+            </p>
+        </div>
+
+        <div class="glass-card rounded-2xl border border-slate-200 dark:border-slate-700 overflow-x-auto shadow-sm mb-12">
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
+                        <th rowspan="2" class="p-4 font-bold text-slate-700 dark:text-slate-300 w-64 border-r border-slate-200 dark:border-slate-700">နာမပညတ် ၆ မျိုး</th>
+                        <th colspan="2" class="p-2 font-bold text-center text-fuchsia-700 dark:text-fuchsia-400 border-r border-slate-200 dark:border-slate-700 border-b">ပထမ စကားလုံး (Prefix)</th>
+                        <th colspan="2" class="p-2 font-bold text-center text-teal-700 dark:text-teal-400 border-r border-slate-200 dark:border-slate-700 border-b">ဒုတိယ စကားလုံး (Suffix)</th>
+                        <th rowspan="2" class="p-4 font-bold text-center text-slate-700 dark:text-slate-300">ဥပမာ (Examples)</th>
+                    </tr>
+                    <tr class="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 text-xs font-semibold">
+                        <!-- Prefix -->
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">ရှိ (Real)</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700">မရှိ (Unreal)</th>
+                        <!-- Suffix -->
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">ရှိ (Real)</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700">မရှိ (Unreal)</th>
+                    </tr>
+                </thead>
+                <tbody id="pannatti-matrix-tbody" class="divide-y divide-slate-100 dark:divide-slate-800/50">
+                    <!-- Rows injected by JS -->
+                </tbody>
+            </table>
+        </div>
+
     </main>
 
     <!-- Generic Pannatti Modal -->
@@ -1411,5 +1444,73 @@
         }
     </script>
     <script src="accessibility.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pannattiData = [
+                { 
+                    name: '၁။ ဝိဇ္ဇမာန ပညတ်', 
+                    prefix: 'V', suffix: null, 
+                    example: '<span class="text-fuchsia-600 dark:text-fuchsia-400">ရုပ်</span> (ရုပ်တရားသည် အမှန်တကယ် ရှိသည်)'
+                },
+                { 
+                    name: '၂။ အဝိဇ္ဇမာန ပညတ်', 
+                    prefix: 'A', suffix: null, 
+                    example: '<span class="text-teal-600 dark:text-teal-400">ယောက်ျား</span> (ယောက်ျားဟူသော ပရမတ် အမှန်တကယ် မရှိပါ)'
+                },
+                { 
+                    name: '၃။ ဝိဇ္ဇမာနေန အဝိဇ္ဇမာန ပညတ်', 
+                    prefix: 'V', suffix: 'A', 
+                    example: '<span class="text-fuchsia-600 dark:text-fuchsia-400">ဆဠာဘိည</span><span class="text-teal-600 dark:text-teal-400">ပုဂ္ဂိုလ်</span> (အဘိညာဉ် ၆ ပါးသည် အမှန်ရှိသည်၊ ပုဂ္ဂိုလ်သည် အမှန်မရှိပါ)'
+                },
+                { 
+                    name: '၄။ အဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ်', 
+                    prefix: 'A', suffix: 'V', 
+                    example: '<span class="text-teal-600 dark:text-teal-400">မိန်းမ</span><span class="text-fuchsia-600 dark:text-fuchsia-400">အသံ</span> (မိန်းမဟူသည် အမှန်မရှိပါ၊ အသံသည် အမှန်ရှိသည်)'
+                },
+                { 
+                    name: '၅။ ဝိဇ္ဇမာနေန ဝိဇ္ဇမာန ပညတ်', 
+                    prefix: 'V', suffix: 'V', 
+                    example: '<span class="text-fuchsia-600 dark:text-fuchsia-400">စက္ခု</span><span class="text-fuchsia-600 dark:text-fuchsia-400">ဝိညာဏ်</span> (စက္ခုပသာဒသည် အမှန်ရှိသည်၊ ဝိညာဏ်သည် အမှန်ရှိသည်)'
+                },
+                { 
+                    name: '၆။ အဝိဇ္ဇမာနေန အဝိဇ္ဇမာန ပညတ်', 
+                    prefix: 'A', suffix: 'A', 
+                    example: '<span class="text-teal-600 dark:text-teal-400">ဘုရင်၏</span><span class="text-teal-600 dark:text-teal-400">သားတော်</span> (ဘုရင်ဟူသည် အမှန်မရှိပါ၊ သားတော်ဟူသည် အမှန်မရှိပါ)'
+                }
+            ];
+
+            const tbody = document.getElementById('pannatti-matrix-tbody');
+            if(tbody) {
+                const checks = {
+                    V: '<div class="w-5 h-5 mx-auto rounded bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-600 dark:text-fuchsia-400 flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>',
+                    A: '<div class="w-5 h-5 mx-auto rounded bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400 flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>'
+                };
+                const dash = '<span class="text-slate-200 dark:text-slate-700/50">-</span>';
+
+                let html = '';
+                
+                pannattiData.forEach(item => {
+                    html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">`;
+                    html += `<td class="p-3 font-bold text-slate-800 dark:text-slate-200 border-r border-slate-100 dark:border-slate-800">${item.name}</td>`;
+                    
+                    // Prefix
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.prefix === 'V' ? 'bg-fuchsia-50/30 dark:bg-fuchsia-900/10' : ''}">${item.prefix === 'V' ? checks.V : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-200 dark:border-slate-800 ${item.prefix === 'A' ? 'bg-teal-50/30 dark:bg-teal-900/10' : ''}">${item.prefix === 'A' ? checks.A : dash}</td>`;
+                    
+                    // Suffix
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.suffix === 'V' ? 'bg-fuchsia-50/30 dark:bg-fuchsia-900/10' : ''}">${item.suffix === 'V' ? checks.V : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-200 dark:border-slate-800 ${item.suffix === 'A' ? 'bg-teal-50/30 dark:bg-teal-900/10' : ''}">${item.suffix === 'A' ? checks.A : dash}</td>`;
+                    
+                    // Example
+                    html += `<td class="p-3 align-middle text-slate-700 dark:text-slate-300">${item.example}</td>`;
+
+                    html += `</tr>`;
+                });
+                tbody.innerHTML = html;
+            }
+        });
+    </script>
+
 </body>
 </html>

@@ -431,6 +431,48 @@
                 <i class="fa-solid fa-arrow-left"></i> Citta & Cetasika Visual Guide သို့ ပြန်သွားရန်
             </a>
         </section>
+
+        <!-- Paticcasamuppada Matrix Table Section -->
+        <div class="mt-16 mb-8 text-center max-w-5xl mx-auto space-y-2">
+            <h2 class="text-2xl md:text-3xl font-bold"><i class="fa-solid fa-arrows-spin text-rose-500 mr-2"></i> ပဋိစ္စသမုပ္ပါဒ် အင်္ဂါ (၁၂) ပါး ခွဲခြမ်းစိတ်ဖြာမှု ဇယားကြီး</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+                အင်္ဂါ (၁၂) ပါးကို ကာလ (၃) ပါး၊ ဝဋ် (၃) ပါး၊ အလွှာ (၄) လွှာ နှင့် မူလ (၂) ပါး အလိုက် အတိအကျ ချိန်ထိုးပြသထားသော ဇယားဖြစ်ပါသည်။
+            </p>
+        </div>
+
+        <div class="glass-card rounded-2xl border border-slate-200 dark:border-slate-700 overflow-x-auto shadow-sm mb-12">
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
+                        <th rowspan="2" class="p-4 font-bold text-slate-700 dark:text-slate-300 w-48 border-r border-slate-200 dark:border-slate-700">အင်္ဂါ (၁၂) ပါး</th>
+                        <th colspan="3" class="p-2 font-bold text-center text-indigo-700 dark:text-indigo-400 border-r border-slate-200 dark:border-slate-700 border-b">ကာလ (၃) ပါး</th>
+                        <th colspan="3" class="p-2 font-bold text-center text-rose-700 dark:text-rose-400 border-r border-slate-200 dark:border-slate-700 border-b">ဝဋ် (၃) ပါး</th>
+                        <th colspan="2" class="p-2 font-bold text-center text-emerald-700 dark:text-emerald-400 border-r border-slate-200 dark:border-slate-700 border-b">အလွှာ (၄) လွှာ</th>
+                        <th colspan="2" class="p-2 font-bold text-center text-amber-700 dark:text-amber-400 border-b border-slate-200 dark:border-slate-700">မူလ (၂) ပါး</th>
+                    </tr>
+                    <tr class="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 text-[11px] font-semibold">
+                        <!-- Kala -->
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">အတိတ်</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">ပစ္စုပ္ပန်</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700">အနာဂတ်</th>
+                        <!-- Vatta -->
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">ကိလေသ</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">ကမ္မ</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700">ဝိပါက</th>
+                        <!-- Lwa -->
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">အကြောင်း</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700">အကျိုး</th>
+                        <!-- Mula -->
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">အဝိဇ္ဇာ</th>
+                        <th class="p-2 text-center text-slate-600 dark:text-slate-400">တဏှာ</th>
+                    </tr>
+                </thead>
+                <tbody id="paticca-matrix-tbody" class="divide-y divide-slate-100 dark:divide-slate-800/50">
+                    <!-- Rows injected by JS -->
+                </tbody>
+            </table>
+        </div>
+
     </main>
 
     <!-- Modal -->
@@ -828,5 +870,66 @@
     </script>
 
     <script src="accessibility.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const paticcaData = [
+                { name: '၁။ အဝိဇ္ဇာ', kala: 'past', vatta: 'kilesa', lwa: 'cause', mula: 'avijja' },
+                { name: '၂။ သင်္ခါရ', kala: 'past', vatta: 'kamma', lwa: 'cause', mula: null },
+                { name: '၃။ ဝိညာဏ်', kala: 'present', vatta: 'vipaka', lwa: 'effect', mula: null },
+                { name: '၄။ နာမ်ရုပ်', kala: 'present', vatta: 'vipaka', lwa: 'effect', mula: null },
+                { name: '၅။ သဠာယတန', kala: 'present', vatta: 'vipaka', lwa: 'effect', mula: null },
+                { name: '၆။ ဖဿ', kala: 'present', vatta: 'vipaka', lwa: 'effect', mula: null },
+                { name: '၇။ ဝေဒနာ', kala: 'present', vatta: 'vipaka', lwa: 'effect', mula: null },
+                { name: '၈။ တဏှာ', kala: 'present', vatta: 'kilesa', lwa: 'cause', mula: 'tanha' },
+                { name: '၉။ ဥပါဒါန်', kala: 'present', vatta: 'kilesa', lwa: 'cause', mula: null },
+                { name: '၁၀။ ဘဝ', kala: 'present', vatta: 'kamma', lwa: 'cause', mula: null, note: '(ကမ္မဘဝ)' },
+                { name: '၁၁။ ဇာတိ', kala: 'future', vatta: 'vipaka', lwa: 'effect', mula: null },
+                { name: '၁၂။ ဇရာ၊ မရဏ', kala: 'future', vatta: 'vipaka', lwa: 'effect', mula: null }
+            ];
+
+            const tbody = document.getElementById('paticca-matrix-tbody');
+            if(tbody) {
+                const checks = {
+                    indigo: '<div class="w-5 h-5 mx-auto rounded bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>',
+                    rose: '<div class="w-5 h-5 mx-auto rounded bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>',
+                    emerald: '<div class="w-5 h-5 mx-auto rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>',
+                    amber: '<div class="w-5 h-5 mx-auto rounded bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>'
+                };
+                const dash = '<span class="text-slate-200 dark:text-slate-700/50">-</span>';
+
+                let html = '';
+                
+                paticcaData.forEach(item => {
+                    html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">`;
+                    html += `<td class="p-3 font-bold text-slate-800 dark:text-slate-200 border-r border-slate-100 dark:border-slate-800">
+                        ${item.name} ${item.note ? `<span class="text-xs font-normal text-slate-500"><br>${item.note}</span>` : ''}
+                    </td>`;
+                    
+                    // Kala
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.kala === 'past' ? 'bg-indigo-50/30 dark:bg-indigo-900/10' : ''}">${item.kala === 'past' ? checks.indigo : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.kala === 'present' ? 'bg-indigo-50/30 dark:bg-indigo-900/10' : ''}">${item.kala === 'present' ? checks.indigo : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-200 dark:border-slate-800 ${item.kala === 'future' ? 'bg-indigo-50/30 dark:bg-indigo-900/10' : ''}">${item.kala === 'future' ? checks.indigo : dash}</td>`;
+                    
+                    // Vatta
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.vatta === 'kilesa' ? 'bg-rose-50/30 dark:bg-rose-900/10' : ''}">${item.vatta === 'kilesa' ? checks.rose : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.vatta === 'kamma' ? 'bg-rose-50/30 dark:bg-rose-900/10' : ''}">${item.vatta === 'kamma' ? checks.rose : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-200 dark:border-slate-800 ${item.vatta === 'vipaka' ? 'bg-rose-50/30 dark:bg-rose-900/10' : ''}">${item.vatta === 'vipaka' ? checks.rose : dash}</td>`;
+                    
+                    // Lwa
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.lwa === 'cause' ? 'bg-emerald-50/30 dark:bg-emerald-900/10' : ''}">${item.lwa === 'cause' ? checks.emerald : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-200 dark:border-slate-800 ${item.lwa === 'effect' ? 'bg-emerald-50/30 dark:bg-emerald-900/10' : ''}">${item.lwa === 'effect' ? checks.emerald : dash}</td>`;
+
+                    // Mula
+                    html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${item.mula === 'avijja' ? 'bg-amber-50/30 dark:bg-amber-900/10' : ''}">${item.mula === 'avijja' ? checks.amber : dash}</td>`;
+                    html += `<td class="p-2 text-center align-middle ${item.mula === 'tanha' ? 'bg-amber-50/30 dark:bg-amber-900/10' : ''}">${item.mula === 'tanha' ? checks.amber : dash}</td>`;
+
+                    html += `</tr>`;
+                });
+                tbody.innerHTML = html;
+            }
+        });
+    </script>
+
 </body>
 </html>
