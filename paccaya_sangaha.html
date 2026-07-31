@@ -217,6 +217,34 @@
                 <i class="fa-solid fa-house"></i> ပင်မ Dashboard သို့ ပြန်သွားရန်
             </a>
         </section>
+
+        <!-- Patthana Matrix Table Section -->
+        <div class="mt-16 mb-8 text-center max-w-4xl mx-auto space-y-2">
+            <h2 class="text-2xl md:text-3xl font-bold"><i class="fa-solid fa-link text-amber-500 mr-2"></i> ပစ္စည်း (၂၄) ပါး အုပ်စုခွဲ ဇယားကြီး</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+                ပဋ္ဌာန်းပစ္စည်း (၂၄) ပါးကို ကျေးဇူးပြုတတ်သော အကြောင်းတရား နှင့် ကျေးဇူးခံ အကျိုးတရား (နာမ်၊ ရုပ်) ဆက်သွယ်မှုအရ အုပ်စု (၆) စု ခွဲခြားပြသထားသော ဇယားဖြစ်ပါသည်။
+            </p>
+        </div>
+
+        <div class="glass-card rounded-2xl border border-slate-200 dark:border-slate-700 overflow-x-auto shadow-sm mb-12">
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
+                        <th class="p-4 font-bold text-slate-700 dark:text-slate-300 w-32 sticky left-0 bg-slate-50 dark:bg-slate-800/90 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] dark:shadow-[2px_0_5px_-2px_rgba(0,0,0,0.5)] border-r border-slate-200 dark:border-slate-700">ပဋ္ဌာန်း ပစ္စည်းများ</th>
+                        <th class="p-4 font-bold text-center text-indigo-700 dark:text-indigo-400 border-r border-slate-200 dark:border-slate-700">၁။ နာမ် မှ<br>နာမ် သို့</th>
+                        <th class="p-4 font-bold text-center text-blue-700 dark:text-blue-400 border-r border-slate-200 dark:border-slate-700">၂။ နာမ် မှ<br>နာမ်, ရုပ် သို့</th>
+                        <th class="p-4 font-bold text-center text-sky-700 dark:text-sky-400 border-r border-slate-200 dark:border-slate-700">၃။ နာမ် မှ<br>ရုပ် သို့</th>
+                        <th class="p-4 font-bold text-center text-emerald-700 dark:text-emerald-400 border-r border-slate-200 dark:border-slate-700">၄။ ရုပ် မှ<br>နာမ် သို့</th>
+                        <th class="p-4 font-bold text-center text-amber-700 dark:text-amber-400 border-r border-slate-200 dark:border-slate-700">၅။ ပညတ်,နာမ်,ရုပ် မှ<br>နာမ် သို့</th>
+                        <th class="p-4 font-bold text-center text-rose-700 dark:text-rose-400">၆။ နာမ်, ရုပ် မှ<br>နာမ်, ရုပ် သို့</th>
+                    </tr>
+                </thead>
+                <tbody id="patthana-matrix-tbody" class="divide-y divide-slate-100 dark:divide-slate-800/50">
+                    <!-- Rows injected by JS -->
+                </tbody>
+            </table>
+        </div>
+
     </main>
 
     <!-- Modal -->
@@ -622,5 +650,110 @@
         });
     </script>
     <script src="accessibility.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const patthanaData = [
+                {
+                    group: 'အုပ်စု (၁) နာမ်တရားက နာမ်တရားအား ကျေးဇူးပြုသော ပစ္စည်း ၆-ပါး',
+                    items: [
+                        { name: 'အနန္တရ', cat: 1 },
+                        { name: 'သမနန္တရ', cat: 1 },
+                        { name: 'အာသေဝန', cat: 1 },
+                        { name: 'သမ္ပယုတ္တ', cat: 1 },
+                        { name: 'နတ္ထိ', cat: 1 },
+                        { name: 'ဝိဂတ', cat: 1 }
+                    ]
+                },
+                {
+                    group: 'အုပ်စု (၂) နာမ်တရားက နာမ်, ရုပ်တို့အား ကျေးဇူးပြုသော ပစ္စည်း ၅-ပါး',
+                    items: [
+                        { name: 'ဟေတု', cat: 2 },
+                        { name: 'ဈာန', cat: 2 },
+                        { name: 'မဂ္ဂ', cat: 2 },
+                        { name: 'ကမ္မ', cat: 2 },
+                        { name: 'ဝိပါက', cat: 2 }
+                    ]
+                },
+                {
+                    group: 'အုပ်စု (၃) နာမ်တရားက ရုပ်တရားအား ကျေးဇူးပြုသော ပစ္စည်း ၁-ပါး',
+                    items: [
+                        { name: 'ပစ္ဆာဇာတ', cat: 3 }
+                    ]
+                },
+                {
+                    group: 'အုပ်စု (၄) ရုပ်တရားက နာမ်တရားအား ကျေးဇူးပြုသော ပစ္စည်း ၁-ပါး',
+                    items: [
+                        { name: 'ပုရေဇာတ', cat: 4 }
+                    ]
+                },
+                {
+                    group: 'အုပ်စု (၅) ပညတ်,နာမ်,ရုပ်တို့က နာမ်တရားအား ကျေးဇူးပြုသော ပစ္စည်း ၂-ပါး',
+                    items: [
+                        { name: 'အာရမ္မဏ', cat: 5 },
+                        { name: 'ဥပနိဿယ', cat: 5 }
+                    ]
+                },
+                {
+                    group: 'အုပ်စု (၆) နာမ်,ရုပ်တို့က နာမ်,ရုပ်တို့အား ကျေးဇူးပြုသော ပစ္စည်း ၉-ပါး',
+                    items: [
+                        { name: 'အဓိပတိ', cat: 6 },
+                        { name: 'သဟဇာတ', cat: 6 },
+                        { name: 'အညမည', cat: 6 },
+                        { name: 'နိဿယ', cat: 6 },
+                        { name: 'အာဟာရ', cat: 6 },
+                        { name: 'ဣန္ဒြိယ', cat: 6 },
+                        { name: 'ဝိပ္ပယုတ္တ', cat: 6 },
+                        { name: 'အတ္ထိ', cat: 6 },
+                        { name: 'အဝိဂတ', cat: 6 }
+                    ]
+                }
+            ];
+
+            const tbody = document.getElementById('patthana-matrix-tbody');
+            if(tbody) {
+                const checks = {
+                    1: '<div class="w-6 h-6 mx-auto rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></div>',
+                    2: '<div class="w-6 h-6 mx-auto rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></div>',
+                    3: '<div class="w-6 h-6 mx-auto rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></div>',
+                    4: '<div class="w-6 h-6 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></div>',
+                    5: '<div class="w-6 h-6 mx-auto rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></div>',
+                    6: '<div class="w-6 h-6 mx-auto rounded-full bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></div>'
+                };
+                const bgColors = {
+                    1: 'bg-indigo-50/30 dark:bg-indigo-900/10',
+                    2: 'bg-blue-50/30 dark:bg-blue-900/10',
+                    3: 'bg-sky-50/30 dark:bg-sky-900/10',
+                    4: 'bg-emerald-50/30 dark:bg-emerald-900/10',
+                    5: 'bg-amber-50/30 dark:bg-amber-900/10',
+                    6: 'bg-rose-50/30 dark:bg-rose-900/10'
+                };
+                const dash = '<span class="text-slate-200 dark:text-slate-700/50">-</span>';
+
+                let html = '';
+                patthanaData.forEach(g => {
+                    html += `<tr class="bg-slate-100/50 dark:bg-slate-800/30">
+                        <td colspan="7" class="p-3 font-bold text-slate-600 dark:text-slate-400 text-xs tracking-wider ">${g.group}</td>
+                    </tr>`;
+                    
+                    g.items.forEach(item => {
+                        html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">`;
+                        html += `<td class="p-3 font-bold text-slate-800 dark:text-slate-200 sticky left-0 bg-white dark:bg-slate-900 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] dark:shadow-[2px_0_5px_-2px_rgba(0,0,0,0.3)] border-r border-slate-100 dark:border-slate-800 z-10">${item.name}</td>`;
+                        
+                        for(let i=1; i<=6; i++) {
+                            if (item.cat === i) {
+                                html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50 ${bgColors[i]}">${checks[i]}</td>`;
+                            } else {
+                                html += `<td class="p-2 text-center align-middle border-r border-slate-100 dark:border-slate-800/50">${dash}</td>`;
+                            }
+                        }
+                        html += `</tr>`;
+                    });
+                });
+                tbody.innerHTML = html;
+            }
+        });
+    </script>
+
 </body>
 </html>
