@@ -1,18 +1,19 @@
 const fs = require('fs');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const html = fs.readFileSync('glossary.html', 'utf8');
+const html = fs.readFileSync('citta_cetasikas_visual_guide.html', 'utf8');
 
-const virtualConsole = new jsdom.VirtualConsole();
-virtualConsole.on("jsdomError", (error) => {
-  console.error("JSDOM Error:", error.message, error.detail);
-});
-virtualConsole.on("error", (error) => {
-  console.error("Console Error:", error);
-});
+const dom = new JSDOM(html, { runScripts: "dangerously" });
+const window = dom.window;
 
-const dom = new JSDOM(html, { runScripts: "dangerously", virtualConsole });
+// Wait for DOMContentLoaded equivalent
 setTimeout(() => {
-    console.log("GlossaryList HTML length:", dom.window.document.getElementById('glossaryList').innerHTML.length);
-    console.log("Count element:", dom.window.document.getElementById('resultCount').textContent);
+    try {
+        console.log("cittaData length:", window.cittaData ? window.cittaData.length : "undefined");
+        window.toggleCittaView('grid');
+        console.log("citta-grid innerHTML length:", window.document.getElementById('citta-grid').innerHTML.length);
+        console.log("citta-grid child count:", window.document.getElementById('citta-grid').children.length);
+    } catch(e) {
+        console.error(e);
+    }
 }, 1000);
