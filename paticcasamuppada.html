@@ -687,7 +687,7 @@
                 const htmlContent = `
                     <div id="kala-${kalaKey}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-4 scroll-mt-24">
                         <h3 class="font-bold ${info.color} text-lg text-center md:text-left">${displayLabel} ${currentInterpretation !== 'momentary' ? `(${mm(items.length)})` : ''}</h3>
-                        <div class="nidana-grid grid grid-cols-2 lg:grid-cols-4 pt-8 pb-10 w-fit mx-auto justify-items-center px-16 sm:px-20 md:px-24 lg:px-24" style="row-gap: 4.5rem; column-gap: 5.5rem;">
+                        <div class="nidana-grid grid grid-cols-2 lg:grid-cols-4 pt-8 pb-10 w-fit mx-auto justify-items-center px-4 sm:px-8 md:px-12 lg:px-16" style="row-gap: 4.5rem; column-gap: 6.5rem;">
                             ${items.map((n, i) => {
                                 const vInfo = vattaInfo[n.vatta];
                                 
@@ -695,20 +695,22 @@
                                 let incomingArrowHtml = '';
                                 if (i > 0) {
                                     const prevN = items[i - 1];
+                                    const formattedPaccaya = prevN.paccaya ? prevN.paccaya.replace(/၊ /g, '၊<br/>') : '';
                                     incomingArrowHtml = `
-                                    <div onclick="openPaccayaModal('${prevN.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="left: -2.75rem; transform: translate(-50%, -50%); transition-delay: ${(delayIndex * 0.4) - 0.2}s" title="${prevN.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
+                                    <div onclick="openPaccayaModal('${prevN.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="left: -3.25rem; transform: translate(-50%, -50%); transition-delay: ${(delayIndex * 0.4) - 0.2}s" title="${prevN.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
                                         <i class="fa-solid fa-arrow-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-sm lg:text-base drop-shadow-sm group-hover:text-sky-500"></i>
-                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm whitespace-normal text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700" style="width: max-content; max-width: 85px;">${prevN.paccaya}</span>
+                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700 w-max max-w-[100px]">${formattedPaccaya}</span>
                                     </div>`;
                                 }
 
                                 const isLast = i === items.length - 1;
                                 let outgoingArrowHtml = '';
                                 if (isLast && n.key === 'jaramarana') {
+                                    const formattedPaccaya = n.paccaya ? n.paccaya.replace(/၊ /g, '၊<br/>') : '';
                                     outgoingArrowHtml = `
-                                    <div onclick="openPaccayaModal('${n.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="right: -2.75rem; transform: translate(50%, -50%); transition-delay: ${(delayIndex * 0.4) + 0.2}s" title="${n.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
+                                    <div onclick="openPaccayaModal('${n.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="right: -3.25rem; transform: translate(50%, -50%); transition-delay: ${(delayIndex * 0.4) + 0.2}s" title="${n.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
                                         <i class="fa-solid fa-arrow-rotate-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-sm lg:text-base drop-shadow-sm group-hover:text-sky-500"></i>
-                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm whitespace-normal text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700" style="width: max-content; max-width: 85px;">${n.paccaya}</span>
+                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700 w-max max-w-[100px]">${formattedPaccaya}</span>
                                     </div>`;
                                 }
 
