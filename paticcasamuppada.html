@@ -81,18 +81,33 @@
             background-color: #68D391;
         }
 
-        /* Grid Arrow Hiding Logic for Linear View */
-        .nidana-grid.grid-cols-2 > div:nth-child(2n) .grid-arrow { display: none !important; }
-        .nidana-grid > div:last-child .grid-arrow { display: none !important; }
-        @media (min-width: 640px) {
-            .nidana-grid.sm\:grid-cols-3 > div:nth-child(n) .grid-arrow { display: flex !important; }
-            .nidana-grid.sm\:grid-cols-3 > div:nth-child(3n) .grid-arrow { display: none !important; }
-            .nidana-grid.sm\:grid-cols-3 > div:last-child .grid-arrow { display: none !important; }
+        /* Arrow & Paccaya Badge Styling for Linear View */
+        .inline-arrow {
+            cursor: pointer;
+            z-index: 25;
         }
-        @media (min-width: 1024px) {
-            .nidana-grid.lg\:grid-cols-4 > div:nth-child(n) .grid-arrow { display: flex !important; }
-            .nidana-grid.lg\:grid-cols-4 > div:nth-child(4n) .grid-arrow { display: none !important; }
-            .nidana-grid.lg\:grid-cols-4 > div:last-child .grid-arrow { display: none !important; }
+        .inline-arrow:hover .nidana-arrow-icon {
+            transform: scale(1.2);
+            color: #f59e0b !important;
+        }
+
+        /* Custom Horizontal Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.1); 
+            border-radius: 4px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(71, 85, 105, 0.5); 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(71, 85, 105, 0.8);
         }
         
         /* Circular View CSS */
@@ -530,78 +545,78 @@
         let currentInterpretation = 'traditional';
         // ===== Paticcasamuppada (12 Nidana) — Abhidhammattha Sangaha Ch.8, Paticcasamuppada-naya =====
         const nidanaData = [
-            { id: 1, key: 'avijja', pali: 'Avijjā (Avijjāpaccayā saṅkhārā)', name: 'အဝိဇ္ဇာ', kala: 'atita', icon: 'fa-eye-slash', vatta: 'kilesa', paccaya: 'ဥပနိဿယ၊ အာရမ္မဏ',
+            { id: 1, key: 'avijja', pali: 'Avijjā (Avijjāpaccayā saṅkhārā)', name: 'အဝိဇ္ဇာ', kala: 'atita', icon: 'fa-eye-slash', vatta: 'kilesa', paccaya: 'ဥပနိဿယ၊ အာရမ္မဏ', paccayaFull: 'အနန္တရူပနိဿယ (အတိတ်အဝိဇ္ဇာသည် ပစ္စုပ္ပန် သင်္ခါရအား အလွန်အားကြီးသော အကြောင်းအဖြစ်)၊ အာရမ္မဏ (အဝိဇ္ဇာကို အာရုံပြု၍ သင်္ခါရဖြစ်ခြင်း)',
               desc: '<b>အဝိဇ္ဇာပစ္စယာ</b> - သစ္စာလေးပါး (ဒုက္ခ၊ သမုဒယ၊ နိရောဓ၊ မဂ်) ကို အမှန်အတိုင်း မသိခြင်း "အဝိဇ္ဇာ" ဟူသော အကြောင်းကြောင့်၊ <b>သင်္ခါရာ</b> - ကံဖြစ်စေသော (ပုညာဘိသင်္ခါရ, အပုညာဘိသင်္ခါရ, အာနေဉ္ဇာဘိသင်္ခါရ ဟူသော) သင်္ခါရတရားတို့သည် (ဖြစ်ပေါ်လာကုန်၏)။',
               hetuText: '<b>အာသဝသမုဒယာ အဝိဇ္ဇာသမုဒယော</b> - အာသဝတရားတို့ ဖြစ်ပေါ်ခြင်းကြောင့် အဝိဇ္ဇာ ဖြစ်ပေါ်လာ၏',
               phalaText: 'သင်္ခါရ (ကုသိုလ်/အကုသိုလ် စေတနာ ကံပြုမူမှုများ)',
               nirodhaText: '<b>အာသဝနိရောဓာ အဝိဇ္ဇာနိရောဓော</b> - အာသဝတရားတို့ ချုပ်ခြင်းကြောင့် အဝိဇ္ဇာ ချုပ်၏။ ဝိဇ္ဇာ/မဂ်ဉာဏ် ဖြင့် သစ္စာ ၄ ပါးကို ထိုးထွင်းသိမြင်ပါက အဝိဇ္ဇာ လုံးဝ ချုပ်ငြိမ်းသည်။',
               example: 'ခန္ဓာငါးပါးသည် အမြဲတည်တံ့သည်၊ ချမ်းသာမှုသာ ရှိသည်ဟု အမှန်တရားကို လုံးဝ နားမလည်ဘဲ အထင်မှား နေထိုင်ခြင်း — ဤအထင်မှားမှုကပင် နောက်ဆက်တွဲ ပြုမူမှုများအားလုံး၏ မူလ ဖြစ်လာသည်။', descMomentary: '<b>အဝိဇ္ဇာ (Momentary)</b> - မျက်မှောက်ကြုံတွေ့နေရသော အာရုံအပေါ်တွင် အမှန်အတိုင်း (အနိစ္စ, ဒုက္ခ, အနတ္တ ဟု) မသိမြင်ဘဲ တွေဝေမိခြင်း။', exampleMomentary: 'ဥပမာ - လှပသော ပစ္စည်းတစ်ခုကို မြင်လိုက်သောအခါ၊ ထိုအရာသည် အမြဲမတည်မြဲသော သဘောမျှသာဟု မသိဘဲ တကယ်အစစ်အမှန် ကောင်းမွန်သောအရာဟု ထင်မှတ်မိလိုက်ခြင်း။' },
-            { id: 2, key: 'sankhara', pali: 'Saṅkhārā (Saṅkhārapaccayā viññāṇaṃ)', name: 'သင်္ခါရ', kala: 'atita', icon: 'fa-hammer', vatta: 'kamma', paccaya: 'ကမ္မ၊ ဥပနိဿယ',
+            { id: 2, key: 'sankhara', pali: 'Saṅkhārā (Saṅkhārapaccayā viññāṇaṃ)', name: 'သင်္ခါရ', kala: 'atita', icon: 'fa-hammer', vatta: 'kamma', paccaya: 'ကမ္မ၊ ဥပနိဿယ', paccayaFull: 'နိက္ခေပ ကမ္မပစ္စည်း (အတိတ်ကံ စေတနာသည် ပဋိသန္ဓေ ဝိညာဉ်အား ကျေးဇူးပြုခြင်း)၊ အနန္တရူပနိဿယ (ဥပနိဿယပစ္စည်း)',
               desc: '<b>သင်္ခါရပစ္စယာ</b> - ကံဖြစ်စေသော သင်္ခါရ ဟူသော အကြောင်းကြောင့်၊ <b>ဝိညာဏံ</b> - (ပဋိသန္ဓေဝိပါက်) ဝိညာဉ်သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'အဝိဇ္ဇာ (သစ္စာလေးပါးကို မသိနားမလည်မှု)',
               phalaText: 'ဝိညာဉ် (ပဋိသန္ဓေဝိညာဉ် နှင့် ပဝတ္တိဝိပါက်ဝိညာဉ်)',
               nirodhaText: '<b>အဝိဇ္ဇာယ တွေဝ အသေသဝိရာဂနိရောဓာ သင်္ခါရနိရောဓော</b> - အဝိဇ္ဇာ၏သာလျှင် အကြွင်းမဲ့ ချုပ်ခြင်းကြောင့် သင်္ခါရ ချုပ်၏။',
               example: 'ဒါနပေးလှူခြင်း (ပုညာဘိသင်္ခါရ)၊ သူတစ်ပါးကို နှောင့်ယှက်ခြင်း (အပုညာဘိသင်္ခါရ)၊ အရူပဈာန် ဝင်စားခြင်း (အာနေဉ္ဇာဘိသင်္ခါရ) — ဤအားလုံးသည် နောင်ဘဝတွင် အကျိုးပေးမည့် ကံဖြစ်စေသော ပြုမူမှုများ ဖြစ်ကြသည်။', descMomentary: '<b>သင်္ခါရ (Momentary)</b> - အဝိဇ္ဇာကြောင့် စိတ်အတွင်း၌ "လိုချင်စရာ, မလိုချင်စရာ" ဟူ၍ တုံ့ပြန်မှု (Mental Formations) များ ချက်ချင်း ပေါ်ပေါက်လာခြင်း။', exampleMomentary: 'ဥပမာ - "ဒီပစ္စည်းလေး သိပ်လှတာပဲ၊ ငါ့အတွက် ကောင်းမှာပဲ" ဟူ၍ စိတ်ထဲတွင် အတွေးများ၊ ခံစားချက်များ စတင် ပုံဖော်လာခြင်း။' },
-            { id: 3, key: 'vinnana', pali: 'Viññāṇa (Viññāṇapaccayā nāmarūpaṃ)', name: 'ဝိညာဉ်', kala: 'paccuppanna', icon: 'fa-brain', vatta: 'vipaka', paccaya: 'သဟဇာတ၊ အညမည',
+            { id: 3, key: 'vinnana', pali: 'Viññāṇa (Viññāṇapaccayā nāmarūpaṃ)', name: 'ဝိညာဉ်', kala: 'paccuppanna', icon: 'fa-brain', vatta: 'vipaka', paccaya: 'သဟဇာတ၊ အညမည၊ ဥပနိဿယ', paccayaFull: 'သဟဇာတ၊ အညမည (ပဋိသန္ဓေ စိတ်နှင့် ဟဒယဝတ္ထု/စေတသိက်တို့ အပြန်အလှန် ကျေးဇူးပြုခြင်း)၊ ဥပနိဿယ၊ အာဟာရ၊ ဣန္ဒြိယ',
               desc: '<b>ဝိညာဏပစ္စယာ</b> - ဝိပါက်ဝိညာဉ် ဟူသော အကြောင်းကြောင့်၊ <b>နာမရူပံ</b> - နာမ်တရား (ယှဉ်ဖက်စေတသိက်) နှင့် ရုပ်တရား (ကမ္မဇရုပ်) သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'သင်္ခါရ (အတိတ် ကံစေတနာ ပြုမူမှု)',
               phalaText: 'နာမ်ရုပ် (ယှဉ်ဖက်စေတသိက် နှင့် ကမ္မဇရုပ်)',
               nirodhaText: '<b>သင်္ခါရနိရောဓာ ဝိညာဏနိရောဓော</b> - သင်္ခါရ ချုပ်ခြင်းကြောင့် ပဋိသန္ဓေဝိညာဉ် ချုပ်၏။',
               example: 'ပဋိသန္ဓေဝိညာဉ်သည် အတိတ်ဘဝက ကံတစ်ခု၏ တိုက်ရိုက် အကျိုးဆက် ဖြစ်ပြီး၊ ဘဝသစ်တစ်ခု၏ ပထမဆုံး စိတ်ခဏ ဖြစ်သည် — <a href="citta_cetasikas_visual_guide.html#citta89" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-700 dark:text-sky-200">စိတ် (၈၉) tab</a> တွင် ဆက်လက် လေ့လာနိုင်သည်။', descMomentary: '<b>ဝိညာဉ် (Momentary)</b> - ထိုအာရုံအပေါ်တွင် အာရုံစိုက်မှု၊ သိရှိမှု (Consciousness) သည် ထိုသင်္ခါရများဖြင့် ပြည့်နှက်သွားခြင်း။', exampleMomentary: 'ဥပမာ - ထိုလှပသော ပစ္စည်းအပေါ်သို့သာ စိတ်အာရုံ အပြည့်အဝ ရောက်ရှိသွားပြီး အခြားအရာများကို သတိမထားမိတော့ခြင်း။' },
-            { id: 4, key: 'namarupa', pali: 'Nāma-rūpa (Nāmarūpapaccayā saḷāyatanaṃ)', name: 'နာမ်ရုပ်', kala: 'paccuppanna', icon: 'fa-yin-yang', vatta: 'vipaka', paccaya: 'သဟဇာတ၊ ပုရေဇာတ',
+            { id: 4, key: 'namarupa', pali: 'Nāma-rūpa (Nāmarūpapaccayā saḷāyatanaṃ)', name: 'နာမ်ရုပ်', kala: 'paccuppanna', icon: 'fa-yin-yang', vatta: 'vipaka', paccaya: 'သဟဇာတ၊ ပုရေဇာတ၊ ဣန္ဒြိယ', paccayaFull: 'သဟဇာတ (နာမ်စေတသိက်များက မနာယတနအား ကျေးဇူးပြုခြင်း)၊ ပုရေဇာတ/ဣန္ဒြိယ (မဟာဘုတ်ရုပ်များက ပသာဒရုပ် သဠာယတနအား ကျေးဇူးပြုခြင်း)',
               desc: '<b>နာမရူပပစ္စယာ</b> - (ဝိညာဉ်နှင့် အတူဖြစ်သော) နာမ်ရုပ် ဟူသော အကြောင်းကြောင့်၊ <b>သဠာယတနံ</b> - အာယတနခြောက်ပါးတို့သည် (ဖြစ်ပေါ်လာကုန်၏)။',
               hetuText: 'ဝိညာဉ် (ပဋိသန္ဓေဝိညာဉ်)',
               phalaText: 'သဠာယတန (ဒွါရ ၆ ပါး - စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ မန)',
               nirodhaText: '<b>ဝိညာဏနိရောဓာ နာမရူပနိရောဓော</b> - ဝိညာဉ် ချုပ်ခြင်းကြောင့် နာမ်ရုပ် ချုပ်၏။',
               example: 'ပဋိသန္ဓေဝိညာဉ် ဖြစ်ပေါ်ချိန်၌ပင် ယှဉ်ဖက်စေတသိက်များ (နာမ်) နှင့် <a href="rupa_sangaha.html?open=hadayavatthu" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-700 dark:text-sky-200">ဟဒယဝတ္ထု</a> ကဲ့သို့ ကမ္မဇရုပ် (ရုပ်) တို့ တစ်ပြိုင်နက် ဖြစ်ပေါ်လာခြင်း။', descMomentary: '<b>နာမ်ရုပ် (Momentary)</b> - စိတ် (နာမ်) နှင့် ရုပ် (ခန္ဓာကိုယ်) သည် ထိုအာရုံနှင့် အပြည့်အဝ ချိတ်ဆက်သွားပြီး တုံ့ပြန်ရန် အသင့်ဖြစ်နေခြင်း။', exampleMomentary: 'ဥပမာ - စိတ်လှုပ်ရှားလာခြင်း၊ မျက်လုံးပြူးလာခြင်း၊ နှလုံးခုန်မြန်လာခြင်း စသည့် ရုပ်ပိုင်းဆိုင်ရာနှင့် စိတ်ပိုင်းဆိုင်ရာ ပြောင်းလဲမှုများ တစ်ပြိုင်နက် ဖြစ်ပေါ်လာခြင်း။' },
-            { id: 5, key: 'salayatana', pali: 'Saḷāyatana (Saḷāyatanapaccayā phasso)', name: 'သဠာယတန', kala: 'paccuppanna', icon: 'fa-eye', vatta: 'vipaka', paccaya: 'သဟဇာတ၊ ပုရေဇာတ',
+            { id: 5, key: 'salayatana', pali: 'Saḷāyatana (Saḷāyatanapaccayā phasso)', name: 'သဠာယတန', kala: 'paccuppanna', icon: 'fa-eye', vatta: 'vipaka', paccaya: 'သဟဇာတ၊ ပုရေဇာတ၊ ဣန္ဒြိယ', paccayaFull: 'သဟဇာတ (မနာယတန ဝိညာဏ်က ဖဿအား)၊ ပုရေဇာတ/ဣန္ဒြိယ (စက္ခာယတန စသော ပသာဒရုပ် ၅ ပါးက စက္ခုသမ္ဖဿ စသည်အား ကျေးဇူးပြုခြင်း)',
               desc: '<b>သဠာယတနပစ္စယာ</b> - အာယတနခြောက်ပါး ဟူသော အကြောင်းကြောင့်၊ <b>ဖဿော</b> - ဖဿ (အာရုံ၊ ဣန္ဒြေ၊ ဝိညာဉ် ဆုံစည်းမှု) သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'နာမ်ရုပ် (ယှဉ်ဖက်စေတသိက်နှင့် ကမ္မဇရုပ်များ)',
               phalaText: 'ဖဿ (အာရုံနှင့် ဣန္ဒြေ ထိတွေ့မှု)',
               nirodhaText: '<b>နာမရူပနိရောဓာ သဠာယတနနိရောဓော</b> - နာမ်ရုပ် ချုပ်ခြင်းကြောင့် သဠာယတန ချုပ်၏။',
               example: 'ကိုယ်ဝန်ရှိစဉ် ခန္ဓာကိုယ်တွင်း မျက်စိ၊ နား စသော ဣန္ဒြေအင်္ဂါများ တဖြည်းဖြည်း ပြည့်စုံ ဖွံ့ဖြိုးလာခြင်း။', descMomentary: '<b>သဠာယတန (Momentary)</b> - အာရုံခံ အင်္ဂါများ (မျက်စိ၊ နား၊ စသည်) သည် ထိုအာရုံကို ဖမ်းယူရန် အပြည့်အဝ ပွင့်ဟလာခြင်း။', exampleMomentary: 'ဥပမာ - ထိုပစ္စည်းကို ပိုမို သေချာစွာ ကြည့်ရှုခြင်း (စက္ခုဒွါရ)၊ ထိုပစ္စည်းနှင့် ပတ်သက်သည့် အသံများကို နားစွင့်ခြင်း။' },
-            { id: 6, key: 'phassa', pali: 'Phassa (Phassapaccayā vedanā)', name: 'ဖဿ', kala: 'paccuppanna', icon: 'fa-hand-pointer', vatta: 'vipaka', paccaya: 'သဟဇာတ',
+            { id: 6, key: 'phassa', pali: 'Phassa (Phassapaccayā vedanā)', name: 'ဖဿ', kala: 'paccuppanna', icon: 'fa-hand-pointer', vatta: 'vipaka', paccaya: 'သဟဇာတ၊ ဥပနိဿယ', paccayaFull: 'သဟဇာတ (ဖဿ စေတသိက်သည် အတူဖြစ်သော ဝေဒနာအား)၊ ဥပနိဿယ၊ အာဟာရ၊ ဣန္ဒြိယ',
               desc: '<b>ဖဿပစ္စယာ</b> - ဖဿ (တွေ့ထိမှု) ဟူသော အကြောင်းကြောင့်၊ <b>ဝေဒနာ</b> - ဝေဒနာ (ခံစားမှု) သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'သဠာယတန (အာယတန ၆ ပါး)',
               phalaText: 'ဝေဒနာ (သုခ၊ ဒုက္ခ၊ ဥပေက္ခာ ခံစားမှု)',
               nirodhaText: '<b>သဠာယတနနိရောဓာ ဖဿနိရောဓော</b> - သဠာယတန ချုပ်ခြင်းကြောင့် ဖဿ ချုပ်၏။',
               example: 'မျက်စိ + အဆင်း + စက္ခုဝိညာဉ် (၃) ခု တွေ့ဆုံသောအခါ "မြင်ခြင်း ထိတွေ့မှု" ဖြစ်ပေါ်လာခြင်း — <a href="citta_cetasikas_visual_guide.html#cetasika" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-700 dark:text-sky-200">စေတသိက် tab</a> ရှိ "ဖဿ" ကို ကြည့်ပါ။', descMomentary: '<b>ဖဿ (Momentary)</b> - အာရုံ၊ အာရုံခံအင်္ဂါ၊ နှင့် ဝိညာဉ်တို့ အပြည့်အဝ ထိတွေ့ဆုံစည်းမိခြင်း။', exampleMomentary: 'ဥပမာ - ပစ္စည်းကို လက်ဖြင့် ကိုင်တွယ်ကြည့်လိုက်သောအခါ သို့မဟုတ် မျက်စိဖြင့် သေချာစွာ မြင်တွေ့လိုက်သောအခါ ဖြစ်ပေါ်လာသော အပြည့်အဝ ထိတွေ့မှု။' },
-            { id: 7, key: 'vedana', pali: 'Vedanā (Vedanāpaccayā taṇhā)', name: 'ဝေဒနာ', kala: 'paccuppanna', icon: 'fa-heart-pulse', vatta: 'vipaka', paccaya: 'ဥပနိဿယ',
+            { id: 7, key: 'vedana', pali: 'Vedanā (Vedanāpaccayā taṇhā)', name: 'ဝေဒနာ', kala: 'paccuppanna', icon: 'fa-heart-pulse', vatta: 'vipaka', paccaya: 'ဥပနိဿယ၊ အာရမ္မဏ', paccayaFull: 'အနန္တရူပနိဿယ / ဥပနိဿယ (ဝေဒနာ ခံစားမှုကို အခြေခံ၍ တဏှာ လိုချင်မှု ဖြစ်ခြင်း)၊ အာရမ္မဏ (ဝေဒနာ သုခကို အာရုံပြု၍ တပ်မက်ခြင်း)',
               desc: '<b>ဝေဒနာပစ္စယာ</b> - ဝေဒနာ ဟူသော အကြောင်းကြောင့်၊ <b>တဏှာ</b> - တဏှာ (တပ်မက်မှု) သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'ဖဿ (ထိတွေ့မှု)',
               phalaText: 'တဏှာ (လောဘ - ကာမ၊ ဘဝ၊ ဝိဘဝ)',
               nirodhaText: '<b>ဖဿနိရောဓာ ဝေဒနာနိရောဓော</b> - ဖဿ ချုပ်ခြင်းကြောင့် ဝေဒနာ ချုပ်၏။',
               example: 'နှစ်သက်ဖွယ် အဆင်းကို မြင်ရသောအခါ ဖြစ်ပေါ်လာသော ချမ်းသာသည့် ခံစားမှု (သောမနဿဝေဒနာ) — <a href="citta_cetasikas_visual_guide.html#citta89:vedana-sangaha" class="text-sky-700 dark:text-sky-300 underline decoration-dotted hover:text-sky-700 dark:text-sky-200">ဝေဒနာသင်္ဂဟ</a> တွင် ဆက်လက် လေ့လာနိုင်သည်။', descMomentary: '<b>ဝေဒနာ (Momentary)</b> - ထိတွေ့မှုကြောင့် သာယာဖွယ် (သုခ)၊ မသာယာဖွယ် (ဒုက္ခ) စသည့် ခံစားမှု ချက်ချင်း ဖြစ်ပေါ်လာခြင်း။', exampleMomentary: 'ဥပမာ - ပစ္စည်းကို ကိုင်တွယ်ရသည့်အတွက် "အို... ကောင်းလိုက်တာ" ဟူ၍ သာယာကျေနပ်သော ခံစားမှု (သောမနဿ) ဖြစ်ပေါ်လာခြင်း။' },
-            { id: 8, key: 'tanha', pali: 'Taṇhā (Taṇhāpaccayā upādānaṃ)', name: 'တဏှာ', kala: 'paccuppanna', icon: 'fa-fire', vatta: 'kilesa', paccaya: 'ဥပနိဿယ',
+            { id: 8, key: 'tanha', pali: 'Taṇhā (Taṇhāpaccayā upādānaṃ)', name: 'တဏှာ', kala: 'paccuppanna', icon: 'fa-fire', vatta: 'kilesa', paccaya: 'ဥပနိဿယ၊ သဟဇာတ၊ အာရမ္မဏ', paccayaFull: 'ဥပနိဿယ (တဏှာ လိုချင်မှုမှ အားကြီးသော ဥပါဒါန် စွဲလမ်းမှုသို့)၊ သဟဇာတ (တဏှာနှင့် ဥပါဒါန် အတူဖြစ်ခြင်း)၊ အာရမ္မဏ',
               desc: '<b>တဏှာပစ္စယာ</b> - တဏှာ ဟူသော အကြောင်းကြောင့်၊ <b>ဥပါဒါနံ</b> - ဥပါဒါန် (ပြင်းထန်စွာ စွဲလမ်းမှု) သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'ဝေဒနာ (ခံစားမှု)',
               phalaText: 'ဥပါဒါန် (ကာမ၊ ဒိဋ္ဌိ၊ သီလဗ္ဗတ၊ အတ္တဝါဒ)',
               nirodhaText: '<b>ဝေဒနာနိရောဓာ တဏှာနိရောဓော</b> - ဝေဒနာ ချုပ်ခြင်းကြောင့် တဏှာ ချုပ်၏။',
               example: 'ချမ်းသာသော ခံစားမှုကို ခံစားရပြီးနောက် ထိုအရာကို ထပ်မံ ရလိုစိတ် ပြင်းထန်စွာ ဖြစ်ပေါ်လာခြင်း။', descMomentary: '<b>တဏှာ (Momentary)</b> - ထိုခံစားမှုကို သာယာပြီး "လိုချင်သည်၊ ရချင်သည်" ဟူသော တပ်မက်မှု (Craving) ချက်ချင်း ဖြစ်ပေါ်လာခြင်း။', exampleMomentary: 'ဥပမာ - "ဒီပစ္စည်းကို ငါ ပိုင်ချင်တယ်၊ အခုချက်ချင်း ဝယ်မှ ဖြစ်မယ်" ဟူသော လိုချင်တပ်မက်စိတ် ပြင်းထန်လာခြင်း။' },
-            { id: 9, key: 'upadana', pali: 'Upādāna (Upādānapaccayā bhavo)', name: 'ဥပါဒါန်', kala: 'paccuppanna', icon: 'fa-hand-fist', vatta: 'kilesa', paccaya: 'ဥပနိဿယ',
+            { id: 9, key: 'upadana', pali: 'Upādāna (Upādānapaccayā bhavo)', name: 'ဥပါဒါန်', kala: 'paccuppanna', icon: 'fa-hand-fist', vatta: 'kilesa', paccaya: 'ဥပနိဿယ၊ သဟဇာတ', paccayaFull: 'ဥပနိဿယ (စွဲလမ်းမှုကြောင့် ကံမြောက် ဘဝဖြစ်ပေါ်ရန် အားပေးခြင်း)၊ သဟဇာတ (ယှဉ်ဖက်စေတသိက်များအား ကျေးဇူးပြုခြင်း)',
               desc: '<b>ဥပါဒါနပစ္စယာ</b> - ဥပါဒါန် ဟူသော အကြောင်းကြောင့်၊ <b>ဘဝေါ</b> - ဘဝ (ကမ္မဘဝ, ဥပပတ္တိဘဝ) သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'တဏှာ (တပ်မက်မှု)',
               phalaText: 'ဘဝ (ကံပြုမူမှု နှင့် ဘဝသစ်)',
               nirodhaText: '<b>တဏှာနိရောဓာ ဥပါဒါနနိရောဓော</b> - တဏှာ ချုပ်ခြင်းကြောင့် ဥပါဒါန် ချုပ်၏။',
               example: '"ငါ့အရာဖြစ်ရမည်" ဟု ခိုင်မြဲစွာ ဆုပ်ကိုင် တွယ်တာနေခြင်း (ကာမုပါဒါန်)၊ သို့မဟုတ် အလွဲအမှား အယူအဆကို စွဲမြဲစွာ ကိုင်ထားခြင်း (ဒိဋ္ဌုပါဒါန်) — <a href="kilesa_sangaha.html?open=kamupadana" class="text-emerald-700 dark:text-emerald-300 underline decoration-dotted hover:text-emerald-700 dark:text-emerald-200">အကုသလသင်္ဂဟ</a> တွင် ဥပါဒါန် (၄) မျိုးလုံးကို အသေးစိတ် လေ့လာနိုင်သည်။', descMomentary: '<b>ဥပါဒါန် (Momentary)</b> - တပ်မက်မှုမှ တစ်ဆင့် "ငါ့ဟာ၊ ငါ့အတွက်" ဟူ၍ စွဲလမ်းမှု (Attachment/Clinging) အဖြစ် ခိုင်မာသွားခြင်း။', exampleMomentary: 'ဥပမာ - "ဒါ ငါ့ပစ္စည်းပဲ၊ ဘယ်သူမှ လုလို့မရဘူး" သို့မဟုတ် "ဒီဟာမရှိရင် ငါ မနေနိုင်ဘူး" ဟု စိတ်ထဲတွင် ခိုင်မြဲစွာ စွဲလမ်းသွားခြင်း။' },
-            { id: 10, key: 'bhava', pali: 'Bhava (Bhavapaccayā jāti)', name: 'ဘဝ', kala: 'paccuppanna', icon: 'fa-seedling', vatta: 'kamma', paccaya: 'ကမ္မ',
+            { id: 10, key: 'bhava', pali: 'Bhava (Bhavapaccayā jāti)', name: 'ဘဝ', kala: 'paccuppanna', icon: 'fa-seedling', vatta: 'kamma', paccaya: 'ကမ္မ၊ ဥပနိဿယ', paccayaFull: 'နိက္ခေပ ကမ္မပစ္စည်း (ကမ္မဘဝ ကံစေတနာသည် ဇာတိပဋိသန္ဓေအား)၊ ဥပနိဿယပစ္စည်း',
               desc: '<b>ဘဝပစ္စယာ</b> - ဘဝ (ကမ္မဘဝ) ဟူသော အကြောင်းကြောင့်၊ <b>ဇာတိ</b> - ဇာတိ (ဘဝသစ်၌ ပဋိသန္ဓေနေရခြင်း) သည် (ဖြစ်ပေါ်လာ၏)။',
               hetuText: 'ဥပါဒါန် (စွဲလမ်းမှု)',
               phalaText: 'ဇာတိ (ဘဝသစ် မွေးဖွားခြင်း)',
               nirodhaText: '<b>ဥပါဒါနနိရောဓာ ဘဝနိရောဓော</b> - ဥပါဒါန် ချုပ်ခြင်းကြောင့် ဘဝ ချုပ်၏။',
               example: 'ဆုပ်ကိုင်ထားသော ဆန္ဒကို ရရှိရန် ကြိုးပမ်းမှု (ကမ္မဘဝ) — ဤကြိုးပမ်းမှုကပင် နောင်ဘဝသစ် ဖြစ်ပေါ်ရန် တွန်းအား ဖြစ်လာသည်။', descMomentary: '<b>ဘဝ (Momentary)</b> - စွဲလမ်းမှုကြောင့် "ငါ" ဟူသော အတ္တဘော (Process of Becoming) ဖြစ်တည်လာပြီး၊ ထိုအရာကို ရယူရန် အားထုတ်မှု (ကမ္မဘဝ) ပြုခြင်း။', exampleMomentary: 'ဥပမာ - ပစ္စည်းကို ရယူရန်အတွက် "ငါ" ဝယ်မည် ဟူသော ဆုံးဖြတ်ချက်ချကာ ကိုယ်အမူအရာ၊ နှုတ်အမူအရာဖြင့် စတင် လှုပ်ရှားလာခြင်း။' },
-            { id: 11, key: 'jati', pali: 'Jāti (Jātipaccayā jarāmaraṇaṃ)', name: 'ဇာတိ', kala: 'anagata', icon: 'fa-baby', vatta: 'vipaka', paccaya: 'ဥပနိဿယ',
+            { id: 11, key: 'jati', pali: 'Jāti (Jātipaccayā jarāmaraṇaṃ)', name: 'ဇာတိ', kala: 'anagata', icon: 'fa-baby', vatta: 'vipaka', paccaya: 'ဥပနိဿယ', paccayaFull: 'ဥပနိဿယပစ္စည်း (ဇာတိမွေးဖွားမှု ရှိမှသာ အိုခြင်း သေခြင်း ဒုက္ခအပေါင်း အလွန်အားကြီးသော အကြောင်းဖြင့် ဖြစ်ပေါ်နိုင်ခြင်း)',
               desc: '<b>ဇာတိပစ္စယာ</b> - ဇာတိ ဟူသော အကြောင်းကြောင့်၊ <b>ဇရာမရဏံ</b> - ဇရာ, မရဏ (အိုခြင်း, သေခြင်း) တို့သည် လည်းကောင်း၊ <b>သောကပရိဒေဝဒုက္ခဒေါမနဿုပါယာသာ</b> - သောက, ပရိဒေဝ, ဒုက္ခ, ဒေါမနဿ, ဥပါယာသ တို့သည် လည်းကောင်း၊ <b>သမ္ဘဝန္တိ</b> - ထင်ရှားဖြစ်ပေါ်လာကုန်၏။',
               hetuText: 'ဘဝ (ကမ္မဘဝ ကံစေတနာ)',
               phalaText: 'ဇရာ၊ မရဏ (အိုခြင်း၊ သေခြင်း)',
               nirodhaText: '<b>ဘဝနိရောဓာ ဇာတိနိရောဓော</b> - ဘဝ ချုပ်ခြင်းကြောင့် ဇာတိ ချုပ်၏။',
               example: 'ယခုဘဝ၏ ကံအရ၊ နောင်ဘဝ၌ လူ/နတ်/တိရစ္ဆာန် စသည့် ဘုံတစ်ခုခုတွင် ပဋိသန္ဓေယူ၍ မွေးဖွားလာခြင်း — ဘုံ (၃၁) ဘုံအားလုံးကို <a href="vithimutta_sangaha.html" class="text-indigo-700 dark:text-indigo-300 underline decoration-dotted hover:text-indigo-700 dark:text-indigo-200">ဝီထိမုတ္တသင်္ဂဟ</a> တွင် အသေးစိတ် ကြည့်နိုင်သည်။', descMomentary: '<b>ဇာတိ (Momentary)</b> - ထိုအခြေအနေတွင် "ငါ (Ego)" ဟူသော အသိစိတ်သည် အပြည့်အဝ မွေးဖွားလာခြင်း (Birth of the Ego-concept)။', exampleMomentary: 'ဥပမာ - "ဒီပစ္စည်းကို ပိုင်ဆိုင်တဲ့ \\\'ငါ\\\'" ဟူ၍ မိမိကိုယ်ကို ပုံဖော်လိုက်ခြင်း။ (ဤနေရာတွင် ဇာတိဆိုသည်မှာ အမိဝမ်းခေါင်းမှ မွေးဖွားခြင်းမဟုတ်ဘဲ \\\'ငါ\\\' ဟူသော အသိစိတ် မွေးဖွားခြင်းဖြစ်သည်။)' },
-            { id: 12, key: 'jaramarana', pali: 'Jarāmaraṇa (Sokaparidevadukkhadomanassupāyāsā sambhavanti)', name: 'ဇရာမရဏ', kala: 'anagata', icon: 'fa-hourglass-end', vatta: 'vipaka', paccaya: '',
+            { id: 12, key: 'jaramarana', pali: 'Jarāmaraṇa (Sokaparidevadukkhadomanassupāyāsā sambhavanti)', name: 'ဇရာမရဏ', kala: 'anagata', icon: 'fa-hourglass-end', vatta: 'vipaka', paccaya: 'ဥပနိဿယ၊ အာရမ္မဏ', paccayaFull: 'ဥပနိဿယ (အားကြီးသော ဒုက္ခအကြောင်းကြောင့် တွေဝေမှု အဝိဇ္ဇာသို့)၊ အာရမ္မဏ',
               desc: '<b>ဧဝမေတဿ ကေဝလဿ ဒုက္ခက္ခန္ဓဿ သမုဒယော ဟောတိ</b> - ဤသို့လျှင် အဖော်အပေါင်း ကင်းသော အစစ်အမှန် ဆင်းရဲဒုက္ခအစု၏ ဖြစ်ပေါ်ခြင်းသည် ဖြစ်၏။',
               hetuText: 'ဇာတိ (မွေးဖွားခြင်း)',
               phalaText: 'သောက၊ ပရိဒေဝ၊ ဒုက္ခ၊ ဒေါမနဿ၊ ဥပါယာသ (ဆင်းရဲဒုက္ခ အစဉ်အဆက်)',
               nirodhaText: '<b>ဇာတိနိရောဓာ ဇရာမရဏံ သောကပရိဒေဝဒုက္ခဒေါမနဿုပါယာသာ နိရုဇ္ဈန္တိ။ ဧဝမေတဿ ကေဝလဿ ဒုက္ခက္ခန္ဓဿ နိရောဓော ဟောတိ။</b> - ဇာတိ ချုပ်ခြင်းကြောင့် ဇရာ, မရဏ, သောက, ပရိဒေဝ, ဒုက္ခ, ဒေါမနဿ, ဥပါယာသ တို့သည် ချုပ်ကုန်၏။ ဤသို့လျှင် ဤဆင်းရဲဒုက္ခအစု၏ ချုပ်ငြိမ်းခြင်းသည် ဖြစ်၏။',
-              example: 'အသက်ကြီးလာသည်နှင့်အမျှ ခန္ဓာကိုယ် ချည့်နဲ့ ဟောင်းနွမ်းလာခြင်း၊ နောက်ဆုံးတွင် စုတိစိတ်ဖြင့် ဘဝတစ်ခု အဆုံးသတ်ခြင်း — ထို့နောက် ချက်ချင်းဆက်တိုက် ပဋိသန္ဓေ (ဝိညာဉ်) ပြန်လည် ဖြစ်ပေါ်၍ စက်ဝန်း ဆက်လည်နေသည်။ သေခါနီး ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ် ပေါ်ပေါက်ပုံကို <a href="vithimutta_sangaha.html" class="text-indigo-700 dark:text-indigo-300 underline decoration-dotted hover:text-indigo-700 dark:text-indigo-200">ဝီထိမုတ္တသင်္ဂဟ</a> တွင် အသေးစိတ် ဖော်ပြထားသည်။', descMomentary: '<b>ဇရာမရဏ (Momentary)</b> - ဖြစ်ပေါ်လာသော "ငါ" သည် မတည်မြဲသောကြောင့် အနှေးနှင့်အမြန် ပျက်စီးရမည်ဖြစ်ရာ၊ ထိုပျက်စီးမှုကြောင့် သောက၊ ပရိဒေဝ၊ ဒုက္ခ (ဆင်းရဲခြင်း) များ ခံစားရခြင်း။', exampleMomentary: 'ဥပမာ - လိုချင်သော ပစ္စည်းကို မရလိုက်သည့်အခါ၊ သို့မဟုတ် ရပြီးနောက် ပျက်စီးသွားသည့်အခါ "ငါ့ပစ္စည်းလေး ပျက်သွားပြီ" ဟု စိတ်ဆင်းရဲခြင်း၊ ဝမ်းနည်းခြင်း၊ ပူဆွေးခြင်းများ ဖြစ်ပေါ်လာခြင်း။' }
+              example: 'အသက်ကြီးလာသည်နှင့်အမျှ ခန္ဓာကိုယ် ချည့်နဲ့ ဟောင်းနွမ်းလာခြင်း၊ နောက်ဆုံးတွင် စုတိစိတ်ဖြင့် ဘဝတစ်ခု အဆုံးသတ်ခြင်း — ထို့နောက် ချက်ချင်းဆက်တိုက် ပဋိသန္ဓေ (ဝိညာဉ်) ပြန်လည် ဖြစ်ပေါ်၍ စက်ဝန်း ဆက်လည်နေသည်။ သေခါနီး ကံ/ကမ္မနိမိတ်/ဂတိနိမိတ် ပေါ်ပေါက်ပုံကို <a href="vithimutta_sangaha.html" class="text-indigo-700 dark:text-indigo-300 underline decoration-dotted hover:text-indigo-700 dark:text-indigo-200">ဝီထိမုတ္တသင်္ဂဟ</a> တွင် အသေးစိတ် ဖော်ပြထားသည်။', descMomentary: '<b>ဇရာမရဏ (Momentary)</b> - ဖြစ်ပေါ်လာသော "ငါ" သည် မတည်မြဲသောကြောင့် အနှေးနှင့်အမြန် ပျက်စီးရမည်ဖြစ်ရာ၊ ထိုပျက်စီးမှုကြောင့် သောက၊ ပရိဒေဝ၊ ဒုက္ခ (ဆင်းရဲခြင်း) များ ขံစားရခြင်း။', exampleMomentary: 'ဥပမာ - လိုချင်သော ပစ္စည်းကို မရလိုက်သည့်အခါ၊ သို့မဟုတ် ရပြီးနောက် ပျက်စီးသွားသည့်အခါ "ငါ့ပစ္စည်းလေး ပျက်သွားပြီ" ဟု စိတ်ဆင်းရဲခြင်း၊ ဝမ်းနည်းခြင်း၊ ပူဆွေးခြင်းများ ဖြစ်ပေါ်လာခြင်း။' }
         ];
 
         const kalaInfo = {
@@ -653,9 +668,11 @@
                     const prevItems = nidanaData.filter(n => n.kala === order[kIdx - 1]);
                     const lastNidana = prevItems[prevItems.length - 1];
                     blockTransitionHtml = `
-                        <div class="flex flex-col items-center my-1.5 transition-all duration-500 hover:scale-110 cursor-help" style="transition-delay: ${delayIndex * 0.4}s" title="${lastNidana.paccaya}">
-                            <span class="text-[10px] mb-1 px-2 py-0.5 rounded border border-amber-300/50 dark:border-amber-700/50 bg-amber-100/90 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 font-mono shadow-sm z-10 font-bold transition-colors">${lastNidana.paccaya}</span>
-                            <i class="fa-solid fa-arrow-down text-lg nidana-arrow-icon text-amber-600 dark:text-amber-500 drop-shadow-sm"></i>
+                        <div onclick="openPaccayaModal('${lastNidana.key}')" class="flex flex-col items-center my-2 transition-all duration-500 hover:scale-110 cursor-pointer group" style="transition-delay: ${delayIndex * 0.4}s" title="${lastNidana.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
+                            <span class="text-[10px] mb-1 px-2.5 py-1 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono shadow-sm z-10 font-bold group-hover:bg-slate-100 dark:group-hover:bg-slate-700 transition-colors flex items-center gap-1">
+                                <i class="fa-solid fa-link text-[9px]"></i> ${lastNidana.paccaya}
+                            </span>
+                            <i class="fa-solid fa-arrow-down text-lg nidana-arrow-icon text-slate-400 dark:text-slate-500 drop-shadow-sm group-hover:text-sky-500"></i>
                         </div>
                     `;
                 }
@@ -663,23 +680,41 @@
                 const htmlContent = `
                     <div id="kala-${kalaKey}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-4 scroll-mt-24">
                         <h3 class="font-bold ${info.color} text-lg text-center md:text-left">${displayLabel} ${currentInterpretation !== 'momentary' ? `(${mm(items.length)})` : ''}</h3>
-                        <div class="nidana-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 pt-6 pb-6 w-full justify-items-center" style="row-gap: 3rem; column-gap: 1rem;">
+                        <div class="nidana-grid grid grid-cols-2 lg:grid-cols-4 pt-8 pb-10 w-fit mx-auto justify-items-center px-16 sm:px-20 md:px-24 lg:px-24" style="row-gap: 4.5rem; column-gap: 5.5rem;">
                             ${items.map((n, i) => {
                                 const vInfo = vattaInfo[n.vatta];
+                                
+                                // Generate Incoming Arrow instead of Outgoing Arrow
+                                let incomingArrowHtml = '';
+                                if (i > 0) {
+                                    const prevN = items[i - 1];
+                                    incomingArrowHtml = `
+                                    <div onclick="openPaccayaModal('${prevN.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="left: -2.75rem; transform: translate(-50%, -50%); transition-delay: ${(delayIndex * 0.4) - 0.2}s" title="${prevN.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
+                                        <i class="fa-solid fa-arrow-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-sm lg:text-base drop-shadow-sm group-hover:text-sky-500"></i>
+                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm whitespace-normal text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700" style="width: max-content; max-width: 85px;">${prevN.paccaya}</span>
+                                    </div>`;
+                                }
+
                                 const isLast = i === items.length - 1;
+                                let outgoingArrowHtml = '';
+                                if (isLast && n.key === 'jaramarana') {
+                                    outgoingArrowHtml = `
+                                    <div onclick="openPaccayaModal('${n.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="right: -2.75rem; transform: translate(50%, -50%); transition-delay: ${(delayIndex * 0.4) + 0.2}s" title="${n.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
+                                        <i class="fa-solid fa-arrow-rotate-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-sm lg:text-base drop-shadow-sm group-hover:text-sky-500"></i>
+                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm whitespace-normal text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700" style="width: max-content; max-width: 85px;">${n.paccaya}</span>
+                                    </div>`;
+                                }
+
                                 const html = `
-                                <div class="relative flex justify-center w-full">
-                                    <button onclick="openNidanaModal('${n.key}')" class="nidana-card relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl border transition-all duration-700 ${vInfo.bg} ${vInfo.border} ${vInfo.color} hover:brightness-110 shadow-sm hover:shadow-md" style="width: 105px; max-width: 100%; transition-delay: ${delayIndex * 0.4}s; --delay: ${delayIndex * 0.08}s;">
+                                <div class="relative flex flex-col items-center justify-center w-full">
+                                    ${incomingArrowHtml}
+                                    ${outgoingArrowHtml}
+                                    <button onclick="openNidanaModal('${n.key}')" class="nidana-card relative flex flex-col items-center gap-1.5 px-1 py-2.5 rounded-xl border transition-all duration-700 ${vInfo.bg} ${vInfo.border} ${vInfo.color} hover:brightness-110 shadow-sm hover:shadow-md flex-shrink-0" style="width: 85px; max-width: 100%; transition-delay: ${delayIndex * 0.4}s; --delay: ${delayIndex * 0.08}s;">
                                         <span class="absolute -top-2.5 bg-white dark:bg-slate-800 text-[9px] px-2 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
                                         <i class="fa-solid ${n.icon} text-xl mt-1"></i>
-                                        <span class="text-[12px] md:text-[13px] font-bold mt-0.5 whitespace-nowrap">${mm(n.id)}. ${n.name}</span>
-                                        ${currentInterpretation === 'momentary' ? `<span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1.5 py-0.5 rounded-md mt-0.5 whitespace-nowrap shadow-sm"><i class="fa-solid fa-bolt mr-0.5"></i> ${shortMomMap[n.key]}</span>` : ''}
+                                        <span class="text-[12px] font-bold mt-0.5 whitespace-nowrap text-center">${mm(n.id)}. ${n.name}</span>
+                                        ${currentInterpretation === 'momentary' ? `<span class="text-[8px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1 py-0.5 rounded-md mt-0.5 whitespace-nowrap shadow-sm"><i class="fa-solid fa-bolt mr-0.5"></i> ${shortMomMap[n.key]}</span>` : ''}
                                     </button>
-                                    ${!isLast ? `
-                                    <div class="grid-arrow absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-help" style="right: -0.5rem; transform: translate(50%, -50%); transition-delay: ${(delayIndex * 0.4) + 0.2}s" title="${n.paccaya}">
-                                        <i class="fa-solid fa-arrow-right nidana-arrow-icon text-amber-600 dark:text-amber-500 text-sm lg:text-base drop-shadow-sm"></i>
-                                        <span class="text-[8px] lg:text-[9px] text-amber-700 dark:text-amber-300 font-bold font-mono mt-0.5 bg-amber-100/95 dark:bg-amber-900/80 border border-amber-300/50 dark:border-amber-700/50 px-1 py-0.5 rounded shadow-sm whitespace-normal text-center leading-[1.2] transition-colors" style="width: max-content; max-width: 75px;">${n.paccaya}</span>
-                                    </div>` : ''}
                                 </div>
                                 `;
                                 delayIndex++;
@@ -693,9 +728,9 @@
             
             // Add loop back to Avijja in Linear View
             container.innerHTML += `
-                <div class="flex flex-col items-center my-2 text-amber-600 dark:text-amber-500 transition-all duration-500 nidana-arrow hover:scale-110 cursor-help" style="transition-delay: ${delayIndex * 0.4}s" title="အာသဝ (Taints)">
-                    <span class="text-[10px] mb-1 px-2 py-0.5 rounded border border-amber-300/50 dark:border-amber-700/50 bg-amber-100/90 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 font-mono shadow-sm z-10 font-bold transition-colors">အာသဝ (Taints)</span>
-                    <i class="fa-solid fa-arrow-rotate-left text-xl nidana-arrow-icon drop-shadow-sm"></i>
+                <div onclick="openPaccayaModal('jaramarana')" class="flex flex-col items-center my-2 text-slate-400 dark:text-slate-500 transition-all duration-500 nidana-arrow hover:scale-110 cursor-pointer group" style="transition-delay: ${delayIndex * 0.4}s" title="အာသဝ တရားများ ကြောင့် အဝိဇ္ဇာ သို့ ပြန်လည် ပတ်ပတ်လည်သည်">
+                    <span class="text-[10px] mb-1 px-2.5 py-1 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono shadow-sm z-10 font-bold transition-colors group-hover:bg-slate-100 dark:group-hover:bg-slate-700">အာသဝ (Taints)</span>
+                    <i class="fa-solid fa-arrow-rotate-left text-xl nidana-arrow-icon drop-shadow-sm group-hover:text-sky-500"></i>
                 </div>
                 <div onclick="restartLoop()" class="glass-card rounded-2xl p-4 max-w-sm mx-auto border border-slate-300 dark:border-slate-700 text-center bg-slate-50 dark:bg-slate-800/50 transition-all duration-500 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 shadow-sm hover:shadow" style="transition-delay: ${(delayIndex * 0.4) + 0.2}s">
                     <p class="text-sm text-slate-600 dark:text-slate-300"><i class="fa-solid fa-rotate mr-1 text-slate-400"></i> <b>အဝိဇ္ဇာ</b> သို့ ပြန်လည်အစပြုကာ သံသရာစက်ဝန်း ဆက်လက်လည်ပတ်သည်။ <br/><span class="text-[10px] text-sky-600 dark:text-sky-400 mt-2 inline-block">(အစသို့ ပြန်သွားရန် နှိပ်ပါ)</span></p>
@@ -735,8 +770,9 @@
                         </div>
                         <span class="absolute -bottom-3 bg-white dark:bg-slate-800 text-[8px] px-1.5 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
                     </div>
-                    <div class="circle-arrow text-slate-300 dark:text-slate-600 flex items-center justify-center text-lg" style="top: ${arrowTop}%; left: ${arrowLeft}%; transform: translate(-50%, -50%) rotate(${arrowRotation}deg); transition-delay: ${(circleDelayIndex * 0.4) + 0.2}s">
-                        <i class="fa-solid fa-chevron-right" style="--idx: ${i}"></i>
+                    <div onclick="openPaccayaModal('${n.key}'); event.stopPropagation();" class="circle-arrow text-slate-300 dark:text-slate-600 flex flex-col items-center justify-center text-xs cursor-pointer group" style="top: ${arrowTop}%; left: ${arrowLeft}%; transform: translate(-50%, -50%) rotate(${arrowRotation}deg); transition-delay: ${(circleDelayIndex * 0.4) + 0.2}s" title="${n.paccaya || 'အာသဝ'} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
+                        <i class="fa-solid fa-chevron-right text-slate-400 dark:text-slate-500 group-hover:text-sky-500 group-hover:scale-125 transition-all" style="--idx: ${i}"></i>
+                        ${n.paccaya ? `<span class="text-[7px] bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono font-bold px-1 rounded border border-slate-300 dark:border-slate-600 shadow-sm whitespace-nowrap group-hover:bg-slate-100 dark:group-hover:bg-slate-700" style="transform: rotate(-${arrowRotation}deg);">${n.paccaya}</span>` : ''}
                     </div>
                 `;
                 circleDelayIndex++;
@@ -874,6 +910,46 @@
                     <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>လက်တွေ့ သရုပ်ပြ ဥပမာ</span>
                         <p class="text-slate-700 dark:text-slate-300 mt-1 leading-relaxed text-xs">${example}</p>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function openPaccayaModal(fromKey) {
+            const fromData = nidanaData.find(n => n.key === fromKey);
+            if (!fromData) return;
+            const toIndex = (fromData.id % 12);
+            const toData = nidanaData[toIndex];
+            
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center text-amber-600 dark:text-amber-400 text-2xl border border-amber-400/40 shadow-sm">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-amber-600 dark:text-amber-400 font-mono font-bold uppercase">ပဋ္ဌာန်း ပစ္စယတရား ဆက်စပ်မှု</span>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">
+                            ${fromData.name} <i class="fa-solid fa-arrow-right text-xs mx-1 text-amber-500"></i> ${toData.name}
+                        </h3>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-800 dark:text-amber-200 font-bold text-xs font-mono shadow-sm">
+                        <i class="fa-solid fa-tags text-[10px]"></i> ${fromData.paccaya || 'အာသဝ'}
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 block uppercase mb-1"><i class="fa-solid fa-book-open mr-1"></i>ကျေးဇူးပြုသော ပစ္စည်းများ နှင့် ရှင်းလင်းချက်</span>
+                        <p class="text-slate-800 dark:text-slate-200 leading-relaxed text-xs md:text-sm font-medium">
+                            ${fromData.paccayaFull || (fromData.paccaya + ' ပစ္စည်းများဖြင့် ကျေးဇူးပြုထောက်ပံ့ပါသည်။')}
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-800 text-center">
+                        <a href="paccaya_sangaha.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-violet-700 dark:text-violet-300 hover:text-violet-900 dark:hover:text-violet-100 bg-violet-50 dark:bg-violet-950/40 border border-violet-300 dark:border-violet-700/50 px-3.5 py-2 rounded-lg transition">
+                            <i class="fa-solid fa-diagram-project"></i> ပစ္စယသင်္ဂဟ (၂၄ ပစ္စည်း) အသေးစိတ် သို့ သွားရန် <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
                     </div>
                 </div>
             `;
