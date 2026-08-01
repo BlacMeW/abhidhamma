@@ -132,6 +132,14 @@
                 </details>
 
                 <div id="bhumi-groups" class="space-y-4"></div>
+                
+                <!-- Excel-like Table for 31 Realms -->
+                <details class="glass-card rounded-xl p-4 md:p-6 border border-indigo-500/30" open>
+                    <summary class="flex items-center justify-between font-bold text-indigo-700 dark:text-indigo-300 text-sm md:text-base">
+                        <span><i class="fa-solid fa-table tree-chevron mr-2 text-xs"></i>ဘုံ (၃၁) ပါး အကျဉ်းချုပ် ဇယား (Matrix Table)</span>
+                    </summary>
+                    <div id="bhumi-matrix-container" class="mt-4 w-full overflow-x-auto pb-2"></div>
+                </details>
             </div>
         </section>
 
@@ -460,6 +468,47 @@
             }).join('');
         }
 
+        function renderBhumiMatrix() {
+            const container = document.getElementById('bhumi-matrix-container');
+            if (!container) return;
+
+            let html = `<table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead>
+                    <tr class="bg-indigo-100 dark:bg-indigo-900/50 border-b-2 border-slate-300 dark:border-slate-600">
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-indigo-800 dark:text-indigo-200 w-12 text-center">စဉ်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-indigo-800 dark:text-indigo-200">ဘုံအမည်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-indigo-800 dark:text-indigo-200">ပါဠိအမည်</th>
+                        <th class="p-2.5 font-bold text-indigo-800 dark:text-indigo-200">အဓိပ္ပာယ် / မှတ်ချက်</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            const groupOrder = ['kamabhumi', 'rupabhumi', 'arupabhumi'];
+            groupOrder.forEach(gk => {
+                const items = bhumiData.filter(b => b.group === gk);
+                const info = groupInfo[gk];
+                
+                // Group Header Row
+                html += `<tr class="${info.bg} border-y border-slate-300 dark:border-slate-700">
+                    <td colspan="4" class="p-2 font-bold ${info.color} text-center">${info.label} ${info.sub}</td>
+                </tr>`;
+
+                // Item Rows
+                items.forEach((b, i) => {
+                    const rowBg = i % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800/50';
+                    html += `<tr class="${rowBg} border-b border-slate-200 dark:border-slate-700/70 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition cursor-pointer" onclick="openBhumiModal('${b.key}')">
+                        <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-center font-mono text-slate-500">${mm(b.id)}</td>
+                        <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 font-semibold ${info.color}">${b.name}</td>
+                        <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-slate-700 dark:text-slate-300">${b.pali}</td>
+                        <td class="p-2.5 text-slate-600 dark:text-slate-400 max-w-xs truncate" title="${b.desc.replace(/<[^>]+>/g, '')}">${b.example}</td>
+                    </tr>`;
+                });
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
         function renderPatisandhiGrid() {
             document.getElementById('patisandhi-grid').innerHTML = patisandhiData.map((p, i) => `
                 <button onclick="openPatisandhiModal(${i})" class="vm-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${p.color}-500/50 flex flex-col justify-between text-left h-full group">
@@ -587,8 +636,9 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderBhumiGroups();
             renderInteractiveMap();
+            renderBhumiGroups();
+            renderBhumiMatrix();
             renderPatisandhiGrid();
             renderYoniChips();
             renderKammaTetrads();

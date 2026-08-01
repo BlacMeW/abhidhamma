@@ -123,6 +123,14 @@
         <!-- Kammatthana groups -->
         <div id="km-groups" class="space-y-4"></div>
 
+        <!-- Excel-like Table for 40 Kammatthana -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20" open>
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
+                <span><i class="fa-solid fa-table tree-chevron mr-2 text-sm"></i>ကမ္မဋ္ဌာန်း (၄၀) ပါး အကျဉ်းချုပ် ဇယား (Matrix Table)</span>
+            </summary>
+            <div id="km-matrix-container" class="mt-4 w-full overflow-x-auto pb-2"></div>
+        </details>
+
         <!-- Carita matching -->
         <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/20" open>
             <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-base">
@@ -594,6 +602,49 @@
             }).join('');
         }
 
+        function renderKmMatrix() {
+            const container = document.getElementById('km-matrix-container');
+            if (!container) return;
+
+            let html = `<table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead>
+                    <tr class="bg-violet-100 dark:bg-violet-900/50 border-b-2 border-slate-300 dark:border-slate-600">
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200 w-12 text-center">စဉ်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200">ကမ္မဋ္ဌာန်းအမည်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200">လိုက်ဖက်သော စရိုက်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200">ရရှိနိုင်သော ဈာန်</th>
+                        <th class="p-2.5 font-bold text-violet-800 dark:text-violet-200">နိမိတ်</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            const groupOrder = ['kasina', 'asubha', 'anussati', 'brahmavihara', 'aruppa', 'misc'];
+            groupOrder.forEach(gk => {
+                const items = kmData.filter(k => k.group === gk);
+                const info = groupInfo[gk];
+                
+                // Group Header Row
+                html += `<tr class="${info.bg} border-y border-slate-300 dark:border-slate-700">
+                    <td colspan="5" class="p-2 font-bold ${info.color} text-center">${info.label} ${info.sub}</td>
+                </tr>`;
+
+                // Item Rows
+                items.forEach((k, i) => {
+                    const rowBg = i % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800/50';
+                    html += `<tr class="${rowBg} border-b border-slate-200 dark:border-slate-700/70 hover:bg-violet-50 dark:hover:bg-violet-900/20 transition cursor-pointer" onclick="openKmModal('${k.key}')">
+                        <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-center font-mono text-slate-500">${mm(k.id)}</td>
+                        <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 font-semibold ${info.color}">${k.name}</td>
+                        <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-slate-700 dark:text-slate-300">${k.carita || '-'}</td>
+                        <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-slate-700 dark:text-slate-300">${k.jhana || '-'}</td>
+                        <td class="p-2.5 text-slate-600 dark:text-slate-400">${k.nimitta || '-'}</td>
+                    </tr>`;
+                });
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
         function renderCarita() {
             document.getElementById('carita-list').innerHTML = caritaData.map(c => `
                 <div class="bg-slate-100 dark:bg-slate-950/60 rounded-lg p-4 border ${c.cls} space-y-2">
@@ -904,6 +955,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderKmGroups();
+            renderKmMatrix();
             renderCarita();
             renderLakkhana();
             renderAbhinna();
