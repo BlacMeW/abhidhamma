@@ -317,8 +317,15 @@
             </div>
         </div>
 
+        <!-- Excel-like Table for 12 Links -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-sky-500/30" open>
+            <summary class="flex items-center justify-between font-bold text-sky-700 dark:text-sky-300 text-sm md:text-base cursor-pointer">
+                <span><i class="fa-solid fa-table tree-chevron mr-2 text-xs"></i>ပဋိစ္စသမုပ္ပါဒ် (၁၂) ပါး အကျဉ်းချုပ် ဇယား (Matrix Table)</span>
+            </summary>
+            <div id="nidana-matrix-container" class="mt-4 w-full overflow-x-auto pb-2"></div>
+        </details>
         
-        <div class="grid gap-5 max-w-5xl mx-auto">
+        <div class="grid gap-5 max-w-5xl mx-auto mt-4">
             <!-- Classification Header -->
             <div class="bg-amber-50/80 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/50 p-4 rounded-xl shadow-sm text-center">
                 <h3 class="text-amber-800 dark:text-amber-300 font-bold text-[15px] leading-loose font-serif">
@@ -780,6 +787,39 @@
             circleContainer.innerHTML = circleHtml;
         }
 
+        function renderNidanaMatrix() {
+            const container = document.getElementById('nidana-matrix-container');
+            if (!container) return;
+
+            let html = `<table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead>
+                    <tr class="bg-sky-100 dark:bg-sky-900/50 border-b-2 border-slate-300 dark:border-slate-600">
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-sky-800 dark:text-sky-200 w-12 text-center">စဉ်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-sky-800 dark:text-sky-200">အင်္ဂါအမည်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-sky-800 dark:text-sky-200">ပါဠိအမည်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-sky-800 dark:text-sky-200">ပစ္စယ (အကြောင်းခံ)</th>
+                        <th class="p-2.5 font-bold text-sky-800 dark:text-sky-200">အဓိပ္ပာယ်</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            nidanaData.forEach((n, i) => {
+                const kInfo = kalaInfo[n.kala];
+                const rowBg = i % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800/50';
+                
+                html += `<tr class="${rowBg} border-b border-slate-200 dark:border-slate-700/70 hover:bg-sky-50 dark:hover:bg-sky-900/20 transition cursor-pointer" onclick="openNidanaModal('${n.key}')">
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-center font-mono text-slate-500">${mm(n.id)}</td>
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 font-semibold ${kInfo.color} whitespace-nowrap"><i class="fa-solid ${n.icon} mr-1.5 opacity-70"></i>${n.name}</td>
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-slate-700 dark:text-slate-300">${n.pali}</td>
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-amber-700 dark:text-amber-400 font-medium">${n.paccaya || '-'}</td>
+                    <td class="p-2.5 text-slate-600 dark:text-slate-400 max-w-xs truncate" title="${n.desc.replace(/<[^>]+>/g, '')}">${n.desc}</td>
+                </tr>`;
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
         function switchInterpretation(interp) {
             currentInterpretation = interp;
             const btnTrad = document.getElementById('btn-interp-trad');
@@ -968,6 +1008,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderChain();
+            renderNidanaMatrix();
             const openKey = new URLSearchParams(location.search).get('open');
             if (openKey && nidanaData.some(n => n.key === openKey)) {
                 setTimeout(() => openNidanaModal(openKey), 80);

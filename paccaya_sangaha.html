@@ -122,6 +122,14 @@
             </div>
         </section>
 
+        <!-- Excel-like Table for 24 Conditions -->
+        <details class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border border-violet-500/30" open>
+            <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-sm md:text-base cursor-pointer">
+                <span><i class="fa-solid fa-table tree-chevron mr-2 text-xs"></i>ပစ္စည်း (၂၄) ပါး အကျဉ်းချုပ် ဇယား (Matrix Table)</span>
+            </summary>
+            <div id="paccaya24-matrix-container" class="mt-4 w-full overflow-x-auto pb-2"></div>
+        </details>
+
         <!-- 2. PACCAYA TRIPLET SECTION -->
         <section id="sec-triplet" class="glass-card rounded-2xl p-5 md:p-6 border border-sky-500/30 space-y-4">
             <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 flex-wrap gap-2">
@@ -619,6 +627,38 @@
             `).join('');
         }
 
+        function renderPaccaya24Matrix() {
+            const container = document.getElementById('paccaya24-matrix-container');
+            if (!container) return;
+
+            let html = `<table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead>
+                    <tr class="bg-violet-100 dark:bg-violet-900/50 border-b-2 border-slate-300 dark:border-slate-600">
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200 w-12 text-center">စဉ်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200">ပစ္စည်းအမည်</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200">ပစ္စယ (အကြောင်းခံ)</th>
+                        <th class="p-2.5 border-r border-slate-300 dark:border-slate-600 font-bold text-violet-800 dark:text-violet-200">ပစ္စယုပ္ပန် (အကျိုး)</th>
+                        <th class="p-2.5 font-bold text-violet-800 dark:text-violet-200">ဥပမာ</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            paccayaData.forEach((p, i) => {
+                const rowBg = i % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800/50';
+                
+                html += `<tr class="${rowBg} border-b border-slate-200 dark:border-slate-700/70 hover:bg-violet-50 dark:hover:bg-violet-900/20 transition cursor-pointer" onclick="openPaccayaModal('${p.key}')">
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-center font-mono text-slate-500">${mm(p.id)}</td>
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 font-semibold text-${p.color}-700 dark:text-${p.color}-400 whitespace-nowrap"><i class="fa-solid ${p.icon} mr-1.5 opacity-70"></i>${p.name}</td>
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-slate-700 dark:text-slate-300 font-medium">${p.paccayaText}</td>
+                    <td class="p-2.5 border-r border-slate-200 dark:border-slate-700/70 text-slate-700 dark:text-slate-300 font-medium">${p.paccayuppannaText}</td>
+                    <td class="p-2.5 text-slate-600 dark:text-slate-400 max-w-xs truncate" title="${p.example.replace(/<[^>]+>/g, '')}">${p.example}</td>
+                </tr>`;
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
         function openPaccayaModal(key) {
             const p = paccayaData.find(x => x.key === key);
             if (!p) return;
@@ -708,6 +748,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderGrids();
+            renderPaccaya24Matrix();
             const openKey = new URLSearchParams(location.search).get('open');
             if (openKey && paccayaData.some(p => p.key === openKey)) {
                 setTimeout(() => openPaccayaModal(openKey), 80);
