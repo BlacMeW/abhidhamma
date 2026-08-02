@@ -342,23 +342,58 @@
 
     audioStopBtn.addEventListener('click', stopMettaAudio);
 
+    let lastSaveTime = 0;
     mettaAudio.addEventListener('timeupdate', () => {
-        if (!mettaAudio.paused) saveAudioState(true);
+        if (!mettaAudio.paused) {
+            const now = Date.now();
+            if (now - lastSaveTime > 1000) { // save every 1 second to avoid performance issues
+                saveAudioState(true);
+                lastSaveTime = now;
+            }
+        }
     });
 
     window.addEventListener('pagehide', () => {
         if (!mettaAudio.paused) saveAudioState(true);
     });
+    
+    // Also use visibilitychange for better iOS support
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden' && !mettaAudio.paused) {
+            saveAudioState(true);
+        }
+    });
 
     // Resume playback (and position) left over from the previous page
     const initialAudioState = getAudioState();
     if (initialAudioState.playing) {
-        mettaAudio.currentTime = initialAudioState.time || 0;
+        // Change preload to metadata so Safari allows seeking
+        mettaAudio.preload = "metadata";
+        
+        // Wait for loadedmetadata to set currentTime reliably on Safari
+        const setTimeHandler = () => {
+            mettaAudio.currentTime = initialAudioState.time || 0;
+        };
+        
+        if (mettaAudio.readyState >= 1) { // HAVE_METADATA
+            mettaAudio.currentTime = initialAudioState.time || 0;
+        } else {
+            mettaAudio.addEventListener('loadedmetadata', setTimeHandler, { once: true });
+        }
+
         playMettaAudio();
 
         // If the browser blocked autoplay, resume on the first user interaction with the new page
         const resumeOnInteraction = () => {
             if (mettaAudio.paused && getAudioState().playing) {
+                // Ensure time is set correctly again before playing just in case
+                if (mettaAudio.readyState >= 1) {
+                    mettaAudio.currentTime = initialAudioState.time || 0;
+                } else {
+                    mettaAudio.addEventListener('loadedmetadata', () => {
+                        mettaAudio.currentTime = initialAudioState.time || 0;
+                    }, { once: true });
+                }
                 mettaAudio.play().then(() => updateAudioUI(true)).catch(() => {});
             }
         };
@@ -367,6 +402,7 @@
     }
 
     const lyricsString = "အဟံ အဝေရော ဟောမိ ☸ အဗျာပဇ္ဇော ဟောမိ ☸ အနီဃော ဟောမိ ☸ သုခီ အတ္တာနံ ပရိဟရာမိ ☸ မမ မာတာပိတု ☸ အာစရိယ စ ဉာတိမိတ္တ စ ☸ သဗြဟ္မစာရိနော စ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဣမသ္မိံ အာရာမေ သဗ္ဗေ ယောဂိနော ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဣမသ္မိံ အာရာမေ သဗ္ဗေ ဘိက္ခူ ☸ သာမဏေရာ စ ☸ ဥပါသကာ ဥပါသိကာယ စ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ အမှာကံ စတုပစ္စယ ဒါယကာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ အမှာကံ အာရက္ခဒေဝတာ ☸ ဣမသ္မိံ ဝိဟာရေ ☸ ဣမသ္မိံ အာဝါသေ ☸ ဣမသ္မိံ အာရာမေ ☸ အာရက္ခဒေဝတာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ သဗ္ဗေ သတ္တာ ☸ သဗ္ဗေ ပါဏာ ☸ သဗ္ဗေ ဘူတာ ☸ သဗ္ဗေ ပုဂ္ဂလာ ☸ သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ ☸ သဗ္ဗာ ဣတ္ထိယော ☸ သဗ္ဗေ ပုရိသာ ☸ သဗ္ဗေ အရိယာ ☸ သဗ္ဗေ အနရိယာ ☸ သဗ္ဗေ ဒေဝါ ☸ သဗ္ဗေ မနုဿာ ☸ သဗ္ဗေ ဝိနိပါတိကာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဒုက္ခာ မုစ္စန္တု ☸ ယထာလဒ္ဓသမ္ပတ္တိတော မာ ဝိဂစ္ဆန္တု ☸ ကမ္မဿကာ ☸ ပုရတ္ထိမာယ ဒိသာယ ☸ ပစ္ဆိမာယ ဒိသာယ ☸ ဥတ္တရာယ ဒိသာယ ☸ ဒက္ခိဏာယ ဒိသာယ ☸ ပုရတ္ထိမာယ အနုဒိသာယ ☸ ပစ္ဆိမာယ အနုဒိသာယ ☸ ဥတ္တရာယ အနုဒိသာယ ☸ ဒက္ခိဏာယ အနုဒိသာယ ☸ ဟေဋ္ဌိမာယ ဒိသာယ ☸ ဥပရိမာယ ဒိသာယ ☸ သဗ္ဗေ သတ္တာ ☸ သဗ္ဗေ ပါဏာ ☸ သဗ္ဗေ ဘူတာ ☸ သဗ္ဗေ ပုဂ္ဂလာ ☸ သဗ္ဗေ အတ္တဘာဝ ပရိယာပန္နာ ☸ သဗ္ဗာ ဣတ္ထိယော ☸ သဗ္ဗေ ပုရိသာ ☸ သဗ္ဗေ အရိယာ ☸ သဗ္ဗေ အနရိယာ ☸ သဗ္ဗေ ဒေဝါ ☸ သဗ္ဗေ မနုဿာ ☸ သဗ္ဗေ ဝိနိပါတိကာ ☸ အဝေရာ ဟောန္တု ☸ အဗျာပဇ္ဇာ ဟောန္တု ☸ အနီဃာ ဟောန္တု ☸ သုခီ အတ္တာနံ ပရိဟရန္တု ☸ ဒုက္ခာ မုစ္စန္တု ☸ ယထာလဒ္ဓသမ္ပတ္တိတော မာ ဝိဂစ္ဆန္တု ☸ ကမ္မဿကာ ☸ ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ ☸ အဓော ယာဝ အဝီစိတော ☸ သမန္တာ စက္ကဝါဠေသု ☸ ယေ သတ္တာ ပထဝီစရာ ☸ အဗျာပဇ္ဇာ နိဝေရာ စ ☸ နိဒုက္ခာ စ နုပဒ္ဒဝါ ☸ ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ ☸ အဓော ယာဝ အဝီစိတော ☸ သမန္တာ စက္ကဝါဠေသု ☸ ယေ သတ္တာ ဥဒကေစရာ ☸ အဗျာပဇ္ဇာ နိဝေရာ စ ☸ နိဒုက္ခာ စ နုပဒ္ဒဝါ ☸ ဥဒ္ဓံ ယာဝ ဘဝဂ္ဂါ စ ☸ အဓော ယာဝ အဝီစိတော ☸ သမန္တာ စက္ကဝါဠေသု ☸ ယေ သတ္တာ အာကာသေစရာ ☸ အဗျာပဇ္ဇာ နိဝေရာ စ ☸ နိဒုက္ခာ စ နုပဒ္ဒဝါ";
+
 
     const lyricsMarqueeHTML = `
     <style>
