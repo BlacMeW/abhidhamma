@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://monledhamma.org/citta_cetasikas_visual_guide/sitemap.xml
