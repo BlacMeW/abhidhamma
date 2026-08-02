@@ -65,61 +65,32 @@ def process_file(filepath, filename):
     </script>
 </head>"""
 
-    # First, try to remove the previously injected block
-    # The previous block started with "    <!-- SEO & Open Graph Meta Tags -->" and ended before "</head>"
-    # Let's use regex to replace from "<!-- SEO & Open Graph Meta Tags -->" up to "</head>"
-    new_html = re.sub(r'<!-- SEO & Open Graph Meta Tags -->.*?</head>', seo_block, html, flags=re.IGNORECASE | re.DOTALL)
+    # First, strip out ALL instances of the SEO block (including </head> if they were stacked)
+    # We remove anything from <!-- SEO & Open Graph Meta Tags --> up to the next </head>
+    # Actually, it's safer to remove <!-- SEO ... to </script>\n (or similar) to preserve </head>
+    cleaned_html = re.sub(r'<!-- SEO & Open Graph Meta Tags -->.*?</script>\s*', '', html, flags=re.IGNORECASE | re.DOTALL)
     
-    if new_html == html:
-        # If it didn't find the block, just inject it before </head>
-        new_html = re.sub(r'</head>', seo_block, html, flags=re.IGNORECASE)
+    # We might have removed </head> if we matched it in a previous bug, so let's make sure it's removed and we add exactly one
+    cleaned_html = re.sub(r'</head>\s*', '', cleaned_html, flags=re.IGNORECASE)
+    
+    # Now inject exactly one seo_block (which ends with </head>)
+    new_html = cleaned_html + "\n" + seo_block
+    # But wait! We need to inject it where </head> was, which is before <body>.
+    # If we removed </head>, let's just find <body> and insert the seo_block before it.
+    
+    # Actually, a better approach:
+    # 1. Strip the blocks.
+    html_no_blocks = re.sub(r'<!-- SEO & Open Graph Meta Tags -->.*?</script>\s*', '', html, flags=re.IGNORECASE | re.DOTALL)
+    # 2. Make sure </head> exists. If the previous bug left multiple </head>s, clean them up.
+    # Let's just find </head> and replace it with seo_block (which contains </head>).
+    # Since html_no_blocks still has </head>, we can do:
+    new_html = re.sub(r'</head>', seo_block, html_no_blocks, count=1, flags=re.IGNORECASE)
     
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(new_html)
-    print(f"Updated SEO tags in {filename}")
-
-def generate_sitemap(html_files):
-    sitemap_path = "sitemap.xml"
-    urls = []
-    
-    if "index.html" in html_files:
-        html_files.remove("index.html")
-        html_files.insert(0, "index.html")
-
-    for f in html_files:
-        url = f"{BASE_URL}/{f}" if f != "index.html" else f"{BASE_URL}/"
-        priority = "1.0" if f == "index.html" else "0.8"
-        urls.append(f"""  <url>
-    <loc>{url}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>{priority}</priority>
-  </url>""")
-        
-    sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{chr(10).join(urls)}
-</urlset>"""
-
-    with open(sitemap_path, "w", encoding="utf-8") as f:
-        f.write(sitemap_content)
-    print(f"Generated {sitemap_path} with new URL")
-
-def generate_robots():
-    robots_path = "robots.txt"
-    robots_content = f"""User-agent: *
-Allow: /
-
-Sitemap: {BASE_URL}/sitemap.xml
-"""
-    with open(robots_path, "w", encoding="utf-8") as f:
-        f.write(robots_content)
-    print(f"Generated {robots_path} with new URL")
+    print(f"Cleaned and updated SEO tags in {filename}")
 
 if __name__ == "__main__":
     html_files = [f for f in os.listdir('.') if f.endswith('.html') and os.path.isfile(f)]
-    
     for f in html_files:
         process_file(f, f)
-        
-    generate_sitemap(html_files)
-    generate_robots()
