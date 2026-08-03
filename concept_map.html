@@ -138,11 +138,7 @@
             fill: #ffffff !important;
         }
         
-        /* Fix Burmese Font Vertical Clipping for Safari */
-        #markmap foreignObject {
-            padding-bottom: 5px; /* Alternative to overflow visible */
-            overflow: hidden; /* Safari might need this */
-        }
+        /* Removed Safari-breaking foreignObject styles */
         #markmap .markmap-node div {
             /* Minimal line-height so layout matches calculation */
             line-height: 1.2 !important; 
