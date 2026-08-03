@@ -151,10 +151,10 @@
         
         .map-controls {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            top: 20px;
+            left: 20px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 10px;
             z-index: 10;
         }
@@ -175,6 +175,37 @@
         .dark .map-btn { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.1); }
         .light .map-btn { background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 0, 0, 0.1); }
         .map-btn:hover { background: rgba(99, 102, 241, 0.8); color: white; border-color: transparent; }
+        .map-btn.active { background: rgba(99, 102, 241, 1); color: white; border-color: transparent; }
+
+        .info-box {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #334155;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .dark .info-box {
+            background: rgba(30, 41, 59, 0.95);
+            color: #cbd5e1;
+            border-color: rgba(255,255,255,0.1);
+        }
+        .info-box h4 { margin: 0 0 8px 0; font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 6px; color: #6366f1; }
+        .info-box ul { margin: 0; padding-left: 20px; list-style-type: disc; }
+        .info-box li { margin-bottom: 4px; }
+        
+        /* Tool Modes */
+        #markmap.select-mode { cursor: auto !important; }
+        #markmap.select-mode * { cursor: auto !important; user-select: text !important; }
+        
+        #markmap.pan-mode { cursor: grab !important; }
+        #markmap.pan-mode * { user-select: none !important; }
+        #markmap.pan-mode:active { cursor: grabbing !important; }
         
         .highlight-match text, .highlight-match tspan, .highlight-match div, .highlight-match span {
             color: #ef4444 !important;
@@ -226,25 +257,30 @@
     <!-- Interactive Map Section -->
     <main id="markmap-container" class="bg-slate-50 dark:bg-slate-900 overflow-hidden" style="flex: 1 1 auto; position: relative; width: 100%; height: 100%; min-height: 0;">
         
-        <!-- Instruction Overlay -->
-        <div class="absolute top-2 right-2 md:top-4 md:right-4 z-10 pointer-events-none text-right opacity-80 md:opacity-100">
-            <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur px-2 py-1.5 md:px-4 md:py-3 rounded-lg md:rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg inline-block text-left scale-[0.8] md:scale-100 origin-top-right">
-                <h3 class="font-bold text-xs md:text-sm text-indigo-600 dark:text-indigo-400 mb-0.5 md:mb-1"><i class="fa-solid fa-hand-pointer mr-1"></i> Interactive Map</h3>
-                <p class="text-[10px] md:text-xs text-slate-600 dark:text-slate-300 leading-tight md:leading-relaxed">
-                    • <b>Click</b> to expand/collapse.<br>
-                    • <b>Drag</b> to move.<br>
-                    • <b>Pinch/Scroll</b> to zoom.
-                </p>
-            </div>
-        </div>
 
         <svg id="markmap" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></svg>
         
         <!-- Controls -->
         <div class="map-controls">
+            <button id="btn-select" class="map-btn shadow-md" onclick="setMode('select')" title="Select Tool"><i class="fa-solid fa-arrow-pointer"></i></button>
+            <button id="btn-pan" class="map-btn shadow-md active" onclick="setMode('pan')" title="Hand Tool"><i class="fa-solid fa-hand"></i></button>
+            
+            <div style="width: 1px; background: rgba(150,150,150,0.3); margin: 0 5px;"></div>
+            
+            <button class="map-btn shadow-md" onclick="expandAll()" title="Expand All"><i class="fa-solid fa-angles-down"></i></button>
+            <button class="map-btn shadow-md" onclick="collapseAll()" title="Collapse All"><i class="fa-solid fa-angles-up"></i></button>
             <button class="map-btn shadow-md" onclick="zoomIn()" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
             <button class="map-btn shadow-md" onclick="zoomOut()" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
             <button class="map-btn shadow-md" onclick="fitMap()" title="Fit to screen"><i class="fa-solid fa-expand"></i></button>
+        </div>
+        
+        <div class="info-box shadow-lg">
+            <h4><i class="fa-solid fa-hand-pointer"></i> Interactive Map</h4>
+            <ul>
+                <li><b>Click</b> to expand/collapse.</li>
+                <li><b>Drag</b> to move.</li>
+                <li><b>Scroll/Pinch</b> to zoom.</li>
+            </ul>
         </div>
     </main>
 
@@ -1690,6 +1726,7 @@
 `;
 
         let mm;
+        let mapRoot;
         
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -1698,6 +1735,7 @@
 
                 const transformer = new Transformer();
                 const { root } = transformer.transform(markdown);
+                mapRoot = root;
                 
                 // Set high contrast bright colors for branches in dark mode, and darker for light mode
                 const isDark = document.documentElement.classList.contains('dark');
@@ -1875,6 +1913,47 @@
         function zoomIn() { if(mm) mm.rescale(1.2); }
         function zoomOut() { if(mm) mm.rescale(0.8); }
         function fitMap() { if(mm) mm.fit(); }
+        
+        let currentMode = 'pan';
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('btn-select').classList.toggle('active', mode === 'select');
+            document.getElementById('btn-pan').classList.toggle('active', mode === 'pan');
+            
+            const svg = document.getElementById('markmap');
+            if (mode === 'select') {
+                svg.classList.add('select-mode');
+                svg.classList.remove('pan-mode');
+            } else {
+                svg.classList.add('pan-mode');
+                svg.classList.remove('select-mode');
+            }
+        }
+        
+        function expandAll() {
+            if (!mm || !mapRoot) return;
+            function setFold(node) {
+                if (!node.payload) node.payload = {};
+                node.payload.fold = 0;
+                if (node.children) node.children.forEach(setFold);
+            }
+            setFold(mapRoot);
+            mm.setData(mapRoot);
+            mm.fit();
+        }
+
+        function collapseAll() {
+            if (!mm || !mapRoot) return;
+            function setFold(node, depth) {
+                if (!node.payload) node.payload = {};
+                if (depth >= 1) node.payload.fold = 1;
+                else node.payload.fold = 0;
+                if (node.children) node.children.forEach(c => setFold(c, depth + 1));
+            }
+            setFold(mapRoot, 0);
+            mm.setData(mapRoot);
+            mm.fit();
+        }
     </script>
     <script type="module" src="firebase_tracker.js"></script>
 </body>
