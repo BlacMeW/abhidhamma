@@ -179,6 +179,14 @@
 
             <!-- Hetu Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="hetu-grid"></div>
+            
+            <!-- Master Vedana and Hetu Table -->
+            <details class="glass-card rounded-xl p-4 md:p-6 border border-emerald-500/30 mt-4" open>
+                <summary class="flex items-center justify-between font-bold text-emerald-700 dark:text-emerald-300 text-sm md:text-base">
+                    <span><i class="fa-solid fa-table tree-chevron mr-2 text-xs"></i>ဝေဒနာ၊ ဟိတ် နှင့် စိတ် (၈၉) ပါး ဆက်စပ်မှု ဇယားကြီး</span>
+                </summary>
+                <div id="vedana-hetu-matrix" class="mt-4 w-full overflow-x-auto pb-2"></div>
+            </details>
         </section>
 
         <!-- 3. Kicca Sangaha -->
@@ -272,6 +280,14 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="vatthu-grid"></div>
+            
+            <!-- Master Dvara, Arammana, Vatthu Table -->
+            <details class="glass-card rounded-xl p-4 md:p-6 border border-violet-500/30 mt-4" open>
+                <summary class="flex items-center justify-between font-bold text-violet-700 dark:text-violet-300 text-sm md:text-base">
+                    <span><i class="fa-solid fa-table tree-chevron mr-2 text-xs"></i>ဒွါရ၊ အာရုံ၊ ဝတ္ထု သရုပ်ခွဲ အကျဉ်းချုပ် ဇယားကြီး</span>
+                </summary>
+                <div id="dvara-arammana-vatthu-matrix" class="mt-4 w-full overflow-x-auto pb-2"></div>
+            </details>
         </section>
 
 
@@ -455,6 +471,8 @@
 
         // Rendering Functions
         function renderGrids() {
+            renderVedanaHetuMasterTable();
+            renderDvaraArammanaVatthuMasterTable();
             // Vedana Grid
             document.getElementById('vedana-grid').innerHTML = vedanaData.map((d, i) => `
                 <button onclick="openPkModal('vedana', ${i})" class="pk-card p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:border-${d.color}-500/50 flex flex-col justify-between text-left h-full group">
@@ -545,6 +563,114 @@
                     </div>
                 </button>
             `).join('');
+        }
+
+
+        function renderVedanaHetuMasterTable() {
+            const container = document.getElementById('vedana-hetu-matrix');
+            if (!container) return;
+            
+            let html = `<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">`;
+            
+            // Vedana Table
+            html += `<div>
+                <h4 class="font-bold text-rose-700 dark:text-rose-300 mb-2 flex items-center gap-2"><i class="fa-solid fa-face-smile"></i> ဝေဒနာ (၅) ပါး ခွဲခြားမှု</h4>
+                <table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead class="bg-rose-50 dark:bg-rose-900/40">
+                    <tr><th class="p-2 border border-slate-300 dark:border-slate-700 w-32">ဝေဒနာ</th><th class="p-2 border border-slate-300 dark:border-slate-700 w-24 text-center">အရေအတွက်</th><th class="p-2 border border-slate-300 dark:border-slate-700">ပါဝင်သော စိတ်များ</th></tr>
+                </thead>
+                <tbody class="bg-white dark:bg-slate-900">`;
+            vedanaData.forEach(d => {
+                html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-${d.color}-600 dark:text-${d.color}-400">${d.name}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-center">${d.count}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 leading-relaxed">${d.cittas}</td>
+                </tr>`;
+            });
+            html += `</tbody></table></div>`;
+            
+            // Hetu Table
+            html += `<div>
+                <h4 class="font-bold text-emerald-700 dark:text-emerald-300 mb-2 flex items-center gap-2"><i class="fa-solid fa-seedling"></i> ဟိတ် (၄) မျိုး ခွဲခြားမှု</h4>
+                <table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead class="bg-emerald-50 dark:bg-emerald-900/40">
+                    <tr><th class="p-2 border border-slate-300 dark:border-slate-700 w-32">အုပ်စု</th><th class="p-2 border border-slate-300 dark:border-slate-700 w-24 text-center">အရေအတွက်</th><th class="p-2 border border-slate-300 dark:border-slate-700">ပါဝင်သော စိတ်များ</th></tr>
+                </thead>
+                <tbody class="bg-white dark:bg-slate-900">`;
+            hetuData.forEach(d => {
+                html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-${d.color}-600 dark:text-${d.color}-400">${d.name}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-center">${d.count}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 leading-relaxed">${d.cittas}</td>
+                </tr>`;
+            });
+            html += `</tbody></table></div>`;
+            
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function renderDvaraArammanaVatthuMasterTable() {
+            const container = document.getElementById('dvara-arammana-vatthu-matrix');
+            if (!container) return;
+            
+            let html = `<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">`;
+            
+            // Dvara
+            html += `<div>
+                <h4 class="font-bold text-amber-700 dark:text-amber-300 mb-2 flex items-center gap-2"><i class="fa-solid fa-door-open"></i> ဒွါရ (၅) မျိုး ခွဲခြားမှု</h4>
+                <table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead class="bg-amber-50 dark:bg-amber-900/40">
+                    <tr><th class="p-2 border border-slate-300 dark:border-slate-700 w-28">အုပ်စု</th><th class="p-2 border border-slate-300 dark:border-slate-700 w-16 text-center">ပေါင်း</th><th class="p-2 border border-slate-300 dark:border-slate-700">ပါဝင်သော စိတ်များ</th></tr>
+                </thead>
+                <tbody class="bg-white dark:bg-slate-900">`;
+            dvaradata.forEach(d => {
+                html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-${d.color}-600 dark:text-${d.color}-400">${d.name}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-center">${d.count.replace(' ပါး', '')}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[11px] leading-relaxed">${d.desc}</td>
+                </tr>`;
+            });
+            html += `</tbody></table></div>`;
+            
+            // Arammana
+            html += `<div>
+                <h4 class="font-bold text-indigo-700 dark:text-indigo-300 mb-2 flex items-center gap-2"><i class="fa-solid fa-eye"></i> အာရုံ (၇) မျိုး ခွဲခြားမှု</h4>
+                <table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead class="bg-indigo-50 dark:bg-indigo-900/40">
+                    <tr><th class="p-2 border border-slate-300 dark:border-slate-700 w-28">အုပ်စု</th><th class="p-2 border border-slate-300 dark:border-slate-700 w-16 text-center">ပေါင်း</th><th class="p-2 border border-slate-300 dark:border-slate-700">ပါဝင်သော စိတ်များ</th></tr>
+                </thead>
+                <tbody class="bg-white dark:bg-slate-900">`;
+            arammanaData.forEach(d => {
+                let safeName = d.name.includes('။') ? d.name.split('။ ')[1] : d.name;
+                html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-${d.color}-600 dark:text-${d.color}-400">${safeName}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-center">${d.count.replace(' ပါး', '')}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[11px] leading-relaxed">${d.desc}</td>
+                </tr>`;
+            });
+            html += `</tbody></table></div>`;
+            
+            // Vatthu
+            html += `<div>
+                <h4 class="font-bold text-violet-700 dark:text-violet-300 mb-2 flex items-center gap-2"><i class="fa-solid fa-building"></i> ဝတ္ထု (၃) မျိုး ခွဲခြားမှု</h4>
+                <table class="w-full text-xs text-left border-collapse border border-slate-300 dark:border-slate-700">
+                <thead class="bg-violet-50 dark:bg-violet-900/40">
+                    <tr><th class="p-2 border border-slate-300 dark:border-slate-700 w-28">အုပ်စု</th><th class="p-2 border border-slate-300 dark:border-slate-700 w-16 text-center">ပေါင်း</th><th class="p-2 border border-slate-300 dark:border-slate-700">ပါဝင်သော စိတ်များ</th></tr>
+                </thead>
+                <tbody class="bg-white dark:bg-slate-900">`;
+            vatthuData.forEach(d => {
+                let safeName = d.name.includes('။') ? d.name.split('။ ')[1] : d.name;
+                html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-${d.color}-600 dark:text-${d.color}-400">${safeName}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 font-bold text-center">${d.count.replace(' ပါး', '')}</td>
+                    <td class="p-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[11px] leading-relaxed">${d.desc}</td>
+                </tr>`;
+            });
+            html += `</tbody></table></div>`;
+            
+            html += `</div>`;
+            container.innerHTML = html;
         }
 
         function openPkModal(type, index) {
