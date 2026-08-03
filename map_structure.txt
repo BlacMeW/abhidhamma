@@ -1,262 +1,3 @@
-<!DOCTYPE html>
-<html lang="my" class="scroll-smooth dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>အဘိဓမ္မာ ဆက်စပ်မှု မြေပုံကြီး (Mind Map) - Visual Guide</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Pyidaungsu"', '"Myanmar Text"', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif; overflow: hidden; margin: 0; padding: 0; }
-        .glass-nav {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .light .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        #markmap-container {
-            width: 100vw;
-            height: calc(100vh - 64px);
-            position: relative;
-            background: transparent;
-        }
-        
-        /* Force SVG to fill container */
-        #markmap {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        
-        /* EXTREME SPECIFICITY OVERRIDES FOR MARKMAP TEXT & HTML (FOREIGN OBJECT) */
-        /* Apply text styles globally to all markmap nodes to ensure perfect measurement and alignment */
-        .markmap-node {
-            font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif !important;
-        }
-        
-        .markmap-node text,
-        .markmap-node tspan,
-        .markmap-node div,
-        .markmap-node span,
-        #markmap text,
-        #markmap tspan,
-        #markmap div,
-        #markmap span {
-            font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif !important;
-            font-size: 16px !important;
-            font-weight: 700 !important;
-            white-space: nowrap !important;
-            line-height: 1 !important; /* Force tight line-height for vertical centering */
-            margin: 80 !important;
-            padding: 80 !important;
-            display: inline-block !important;
-            transform: translateY(8px) !important; /* Shift text down slightly to perfectly center Myanmar fonts */
-        }
-        
-        /* Dark Mode Text Colors */
-        html.dark .markmap-node text,
-        html.dark .markmap-node tspan,
-        html.dark .markmap-node div,
-        html.dark .markmap-node span,
-        html.dark body #markmap text,
-        html.dark body #markmap tspan,
-        html.dark body #markmap div,
-        html.dark body #markmap span {
-            fill: #ffffff !important; 
-            color: #ffffff !important;
-            text-shadow: 0px 1px 4px rgba(0,0,0,1) !important;
-        }
-        
-        /* Light Mode Text Colors */
-        html.light .markmap-node text,
-        html.light .markmap-node tspan,
-        html.light .markmap-node div,
-        html.light .markmap-node span,
-        html.light body #markmap text,
-        html.light body #markmap tspan,
-        html.light body #markmap div,
-        html.light body #markmap span {
-            fill: #0f172a !important; 
-            color: #0f172a !important;
-            text-shadow: none !important;
-        }
-        
-        /* Fix Burmese Font Vertical Clipping */
-        #markmap foreignObject {
-            overflow: visible !important;
-        }
-        
-        /* High Visibility Lines */
-        html.dark path.markmap-link,
-        html.dark .markmap-link,
-        html.dark body #markmap path {
-            stroke: #fbbf24 !important; /* Bright Amber for dark mode lines */
-            stroke-width: 2.5px !important;
-            opacity: 1 !important;
-        }
-        html.light path.markmap-link,
-        html.light .markmap-link,
-        html.light body #markmap path {
-            stroke: #d97706 !important; /* Dark Amber for light mode lines */
-            stroke-width: 2.5px !important;
-            opacity: 1 !important;
-        }
-        
-        /* High Visibility Circles */
-        html.dark .markmap-node circle,
-        html.dark body #markmap circle {
-            r: 7 !important;
-            stroke-width: 3px !important;
-            stroke: #fbbf24 !important; /* Bright Amber stroke */
-            fill: #0f172a !important;
-        }
-        html.light .markmap-node circle,
-        html.light body #markmap circle {
-            r: 7 !important;
-            stroke-width: 3px !important;
-            stroke: #d97706 !important; /* Dark Amber stroke */
-            fill: #ffffff !important;
-        }
-        
-        /* Fix Burmese Font Vertical Clipping without breaking layout */
-        #markmap foreignObject {
-            overflow: visible !important;
-        }
-        #markmap .markmap-node div {
-            /* Minimal line-height so layout matches calculation */
-            line-height: 1.2 !important; 
-        }
-        
-        .map-controls {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 10;
-        }
-        .map-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .dark .map-btn { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.1); }
-        .light .map-btn { background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 0, 0, 0.1); }
-        .map-btn:hover { background: rgba(99, 102, 241, 0.8); color: white; border-color: transparent; }
-    </style>
-</head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col">
-
-    <!-- Navigation -->
-    <nav class="glass-nav sticky top-0 z-50 transition-colors duration-300 h-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <div class="flex items-center justify-between h-full">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center shadow-lg">
-                        <i class="fa-solid fa-project-diagram text-white text-sm"></i>
-                    </div>
-                    <a href="index.html" class="font-bold text-lg md:text-xl tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400">
-                        Concept Map (Interactive)
-                    </a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="index.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition flex items-center gap-2">
-                        <i class="fa-solid fa-home"></i> <span class="hidden md:inline">ပင်မစာမျက်နှာ
-                    </a>
-                    <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-                        <i class="fa-solid fa-moon dark:hidden text-lg"></i>
-                        <i class="fa-solid fa-sun hidden dark:block text-lg"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Interactive Map Section -->
-    <main id="markmap-container" class="bg-slate-50 dark:bg-slate-900">
-        
-        <!-- Instruction Overlay -->
-        <div class="absolute top-4 right-4 z-10 pointer-events-none text-right">
-            <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg inline-block text-left">
-                <h3 class="font-bold text-sm text-indigo-600 dark:text-indigo-400 mb-1"><i class="fa-solid fa-hand-pointer mr-1"></i> Interactive Map</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                    • <b>Click</b> on nodes to expand/collapse them.<br>
-                    • <b>Drag</b> anywhere to move the map.<br>
-                    • <b>Scroll</b> or pinch to zoom in/out.
-                </p>
-            </div>
-        </div>
-
-        <svg id="markmap"></svg>
-        
-        <!-- Controls -->
-        <div class="map-controls">
-            <button class="map-btn shadow-md" onclick="zoomIn()" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
-            <button class="map-btn shadow-md" onclick="zoomOut()" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
-            <button class="map-btn shadow-md" onclick="fitMap()" title="Fit to screen"><i class="fa-solid fa-expand"></i></button>
-        </div>
-    </main>
-
-    <!-- Markmap Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0"></script>
-
-    <script>
-        // Theme Toggle Logic
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
-        
-        if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.remove('dark');
-            htmlElement.classList.add('light');
-        } else {
-            htmlElement.classList.add('dark');
-            htmlElement.classList.remove('light');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = htmlElement.classList.contains('dark');
-            htmlElement.classList.toggle('dark', !isDark);
-            htmlElement.classList.toggle('light', isDark);
-            localStorage.setItem('theme', !isDark ? 'dark' : 'light');
-            // Hard reload map to reflect new colors if needed, but CSS handles text. 
-            // The branches colors are static once drawn, so we might need to recreate map, but CSS !important solves most of it.
-            location.reload();
-        });
-
-        // Markdown Data for Mind Map
-                                const markdown = `
 # အဘိဓမ္မာ ၉ ပိုင်း
 ## စိတ် (၈၉ / ၁၂၁)
 ### ကာမစိတ် (၅၄)
@@ -308,7 +49,6 @@
 - မဟာကြိယာ (၈)
   - ဉာဏသမ္ပယုတ် ၄
   - ဉာဏဝိပ္ပယုတ် ၄
-
 ### မဟဂ္ဂုတ်စိတ် (၂၇)
 #### ရူပစိတ် (၁၅)
 - ရူပကုသိုလ် (၅)
@@ -345,7 +85,6 @@
   - ဝိညာဏဉ္စာယတန ကြိယာ
   - အာကိဉ္စညာယတန ကြိယာ
   - နေဝသညာနာသညာယတန ကြိယာ
-
 ### လောကုတ္တရာစိတ် (၈ / ၄၀)
 #### မဂ်စိတ် (၄ / ၂၀)
 - သောတာပတ္တိမဂ်
@@ -357,7 +96,6 @@
 - သကဒါဂါမိဖိုလ်
 - အနာဂါမိဖိုလ်
 - အရဟတ္တဖိုလ်
-
 ## စေတသိက် (၅၂)
 ### အညသမာန်း (၁၃)
 #### သဗ္ဗစိတ္တက (၇) 
@@ -377,28 +115,38 @@
   - လုံ့လ
 - ပီတိ (အာရုံကို နှစ်သက်မှု)
 - ဆန္ဒ (ပြုလုပ်လိုမှု)
-
 ### အကုသိုလ် (၁၄)
 #### မောစတုက္က (၄)
-- မောဟ (အမှန်ကို မသိမှု)
+- မောဟ
+  - အဝိဇ္ဇာ
+  - အမှန်ကို မသိမှု
 - အဟိရိက (မကောင်းမှုပြုရမည်ကို မရှက်မှု)
 - အနောတ္တပ္ပ (မကောင်းမှုပြုရမည်ကို မကြောက်မှု)
 - ဥဒ္ဓစ္စ (စိတ်ပျံ့လွင့်မှု)
 #### လောတိက (၃)
-- လောဘ (တပ်မက်မှု၊ လိုချင်မှု)
+- လောဘ
+  - တပ်မက်မှု
+  - လိုချင်မှု
 - ဒိဋ္ဌိ (မှားယွင်းစွာ ယူဆမှု)
 - မာန (ထောင်လွှားမှု)
 #### ဒေါစတုက္က (၄)
-- ဒေါသ (ကြမ်းတမ်းမှု၊ ဖျက်ဆီးလိုမှု)
+- ဒေါသ
+  - ကြမ်းတမ်းမှု
+  - ဖျက်ဆီးလိုမှု
 - ဣဿာ (သူတစ်ပါးကြီးပွားချမ်းသာသည်ကို ငြူစူမှု)
-- မစ္ဆရိယ (မိမိစည်းစိမ်ကို ဝှက်ထားလိုမှု၊ နှမြောမှု)
-- ကုက္ကုစ္စ (ပြုခဲ့၊ မပြုခဲ့သည်ကို နောင်တရမှု)
+- မစ္ဆရိယ
+  - မိမိစည်းစိမ်ကို ဝှက်ထားလိုမှု
+  - နှမြောမှု
+- ကုက္ကုစ္စ
+  - ပြုခဲ့
+  - မပြုခဲ့သည်ကို နောင်တရမှု
 #### ထီသိတ် (၂)
 - ထိန (စိတ်၏ လေးလံထိုင်းမှိုင်းမှု)
 - မိဒ္ဓ (စေတသိက်တို့၏ လေးလံထိုင်းမှိုင်းမှု)
 #### ဝိစိကိစ္ဆာ (၁)
-- ဝိစိကိစ္ဆာ (ယုံမှားသံသယဖြစ်မှု၊ မဆုံးဖြတ်နိုင်မှု)
-
+- ဝိစိကိစ္ဆာ
+  - ယုံမှားသံသယဖြစ်မှု
+  - မဆုံးဖြတ်နိုင်မှု
 ### သောဘဏ (၂၅)
 #### သောဘဏသာဓာရဏ (၁၉)
 - သဒ္ဓါ (ယုံကြည်မှု)
@@ -431,64 +179,6 @@
 - မုဒိတာ (သူတစ်ပါးချမ်းသာသည်ကို ဝမ်းမြောက်မှု)
 #### ပညိန္ဒြေ (၁)
 - ပညာ (အမှန်အတိုင်း ထိုးထွင်းသိမြင်မှု)
-
-## ပကိဏ္ဏက သင်္ဂဟ (၆)
-### ဝေဒနာ သင်္ဂဟ (၃ / ၅)
-- ဝေဒနာ (၃) ပါး
-  - သုခ (ချမ်းသာခြင်း)
-  - ဒုက္ခ (ဆင်းရဲခြင်း)
-  - အဒုက္ခမသုခ / ဥပေက္ခာ (ချမ်းသာလည်းမဟုတ် ဆင်းရဲလည်းမဟုတ်)
-- ဝေဒနာ (၅) ပါး
-  - သုခ (ကိုယ်ချမ်းသာ)
-  - ဒုက္ခ (ကိုယ်ဆင်းရဲ)
-  - သောမနဿ (စိတ်ချမ်းသာ)
-  - ဒေါမနဿ (စိတ်ဆင်းရဲ)
-  - ဥပေက္ခာ (လျစ်လျူရှုမှု)
-### ဟေတု သင်္ဂဟ (၆)
-- အကုသိုလ်ဟိတ် (၃) ပါး
-  - လောဘ
-  - ဒေါသ
-  - မောဟ
-- ကုသိုလ်/အဗျာကတဟိတ် (၃) ပါး
-  - အလောဘ
-  - အဒေါသ
-  - အမောဟ
-### ကိစ္စ သင်္ဂဟ (၁၄)
-- ပဋိသန္ဓေ (ဘဝသစ်၌ အစပြုခြင်း)
-- ဘဝင် (ဘဝကို စောင့်ရှောက်ခြင်း)
-- အာဝဇ္ဇန်း (အာရုံကို ဆင်ခြင်ခြင်း)
-- ဒဿန (မြင်ခြင်း)
-- သဝန (ကြားခြင်း)
-- ဃာယန (နံခြင်း)
-- သာယန (အရသာသိခြင်း)
-- ဖုသန (တွေ့ထိခြင်း)
-- သမ္ပဋိစ္ဆိုင်း (အာရုံကို လက်ခံခြင်း)
-- သန္တီရဏ (အာရုံကို စူးစမ်းခြင်း)
-- ဝုဋ္ဌော (အာရုံကို ဆုံးဖြတ်ခြင်း)
-- ဇော (အာရုံကို ခံစားခြင်း/အားထုတ်ခြင်း)
-- တဒါရုံ (ဇော၏ အာရုံကို ဆက်လက်ခံစားခြင်း)
-- စုတိ (ဘဝမှ ရွေ့လျောခြင်း/သေခြင်း)
-### ဒွါရ သင်္ဂဟ (၆)
-- စက္ခုဒွါရ (မျက်စိတံခါး)
-- သောတဒွါရ (နားတံခါး)
-- ဃာနဒွါရ (နှာခေါင်းတံခါး)
-- ဇိဝှာဒွါရ (လျှာတံခါး)
-- ကာယဒွါရ (ကိုယ်တံခါး)
-- မနောဒွါရ (စိတ်တံခါး)
-### အာရမ္မဏ သင်္ဂဟ (၆)
-- ရူပါရုံ (အဆင်းအာရုံ)
-- သဒ္ဒါရုံ (အသံအာရုံ)
-- ဂန္ဓာရုံ (အနံ့အာရုံ)
-- ရသာရုံ (အရသာအာရုံ)
-- ဖောဋ္ဌဗ္ဗာရုံ (အတွေ့အထိအာရုံ)
-- ဓမ္မာရုံ (သဘောတရားအာရုံ)
-### ဝတ္ထု သင်္ဂဟ (၆)
-- စက္ခုဝတ္ထု (မျက်စိအကြည်)
-- သောတဝတ္ထု (နားအကြည်)
-- ဃာနဝတ္ထု (နှာခေါင်းအကြည်)
-- ဇိဝှာဝတ္ထု (လျှာအကြည်)
-- ကာယဝတ္ထု (ကိုယ်အကြည်)
-- ဟဒယဝတ္ထု (နှလုံးအိမ်)
 ## ရုပ် (၂၈)
 ### မဟာဘုတ် (၄)
 - ပထဝီ
@@ -526,11 +216,9 @@
   - ဝိညတ် ၂
   - ဝိကာရ ၃
   - လက္ခဏ ၄
-
 ## နိဗ္ဗာန်
 - သဥပါဒိသေသ နိဗ္ဗာန် (ခန္ဓာကြွင်းကျန်လျက် ငြိမ်းအေးခြင်း)
 - အနုပါဒိသေသ နိဗ္ဗာန် (ခန္ဓာမကြွင်းဘဲ ငြိမ်းအေးခြင်း)
-
 ## ဝီထိ (ဖြစ်စဉ်)
 - ပဉ္စဒွါရဝီထိ 
   - ဥပမာ - စက္ခုဒွါရဝီထိ
@@ -556,7 +244,6 @@
   - အနုလုံ
   - ဂေါတြဘူ
   - ဈာန်/မဂ် (ဇော ၁ ကြိမ်)
-
 ## ဝီထိမုတ္တ
 ### ဘုံ (၃၁) 
 - အပါယ် (၄) ဘုံ
@@ -654,7 +341,6 @@
 - ကမ္မက္ခယ (ကံကုန်၍သေခြင်း)
 - ဥဘယက္ခယ (နှစ်ပါးလုံးကုန်၍သေခြင်း)
 - ဥပစ္ဆေဒက (အခြားကံက ဖြတ်၍သေခြင်း)
-
 ## သမုစ္စည်း
 ### အကုသလ သင်္ဂဟ (၉) 
 - အာသဝ (၄)
@@ -719,7 +405,6 @@
   - ဥဒ္ဓစ္စ
   - အဟိရိက
   - အနောတ္တပ္ပ
-
 ### ဗောဓိပက္ခိယ (၇) (တရား ၃၇ ပါး)
 - သတိပဋ္ဌာန် (၄)
   - ကာယာနုပဿနာ (ရုပ်အစုကို ရှုမှတ်မှု)
@@ -765,7 +450,6 @@
   - သမ္မာဝါယာမ (မှန်ကန်သော အားထုတ်မှု)
   - သမ္မာသတိ (မှန်ကန်သော အောက်မေ့မှု)
   - သမ္မာသမာဓိ (မှန်ကန်သော တည်ကြည်မှု)
-
 ### သဗ္ဗ သင်္ဂဟ (၅) 
 - ခန္ဓာ (၅)
   - ရူပက္ခန္ဓာ (ရုပ်အစု)
@@ -821,7 +505,6 @@
   - သမုဒယသစ္စာ (ဆင်းရဲဖြစ်ကြောင်း အမှန်တရား)
   - နိရောဓသစ္စာ (ဆင်းရဲချုပ်ငြိမ်းရာ အမှန်တရား)
   - မဂ္ဂသစ္စာ (ဆင်းရဲချုပ်ငြိမ်းရာသို့ သွားရာလမ်းစဉ် အမှန်တရား)
-
 ### မိဿက သင်္ဂဟ (၇) 
 - ဟိတ် (၆)
   - လောဘ (အကုသိုလ်ဟိတ်)
@@ -901,7 +584,6 @@
   - ဖဿာဟာရ (အတွေ့အထိ အာဟာရ)
   - မနောသဉ္စေတနာဟာရ (တိုက်တွန်းမှု အာဟာရ)
   - ဝိညာဏာဟာရ (သိမှု အာဟာရ)
-
 ## ပစ္စည်း
 ### ပဋိစ္စသမုပ္ပါဒ် (အင်္ဂါ ၁၂ ပါး)
 - အဝိဇ္ဇာ
@@ -916,18 +598,6 @@
 - ဘဝ
 - ဇာတိ
 - ဇရာ-မရဏ
-- ကာလ (၃) ပါး
-  - အတိတ်ကာလ (အဝိဇ္ဇာ၊ သင်္ခါရ)
-  - ပစ္စုပ္ပန်ကာလ (ဝိညာဏ် မှ ဘဝ အထိ ၈ ပါး)
-  - အနာဂတ်ကာလ (ဇာတိ၊ ဇရာ-မရဏ)
-- အစပ် (၃) စပ်
-  - အတိတ် နှင့် ပစ္စုပ္ပန် အစပ် (သင်္ခါရ နှင့် ဝိညာဏ်)
-  - ပစ္စုပ္ပန် အကြောင်း နှင့် အကျိုး အစပ် (ဝေဒနာ နှင့် တဏှာ)
-  - ပစ္စုပ္ပန် နှင့် အနာဂတ် အစပ် (ဘဝ နှင့် ဇာတိ)
-- ဝဋ် (၃) ပါး
-  - ကိလေသဝဋ် (အဝိဇ္ဇာ၊ တဏှာ၊ ဥပါဒါန်)
-  - ကမ္မဝဋ် (သင်္ခါရ၊ ကမ္မဘဝ)
-  - ဝိပါကဝဋ် (ဝိညာဏ်၊ နာမ်ရုပ်၊ သဠာယတန၊ ဖဿ၊ ဝေဒနာ၊ ဥပပတ္တိဘဝ၊ ဇာတိ၊ ဇရာ-မရဏ)
 ### ပဋ္ဌာန်း (ပစ္စည်း ၂၄ ပါး)
 - ဟေတု ပစ္စည်း
 - အာရမ္မဏ ပစ္စည်း
@@ -953,7 +623,6 @@
 - နတ္ထိ ပစ္စည်း
 - ဝိဂတ ပစ္စည်း
 - အဝိဂတ ပစ္စည်း
-
 ## ကမ္မဋ္ဌာန်း
 ### သမထ (၄၀) 
 - ကသိုဏ်း (၁၀)
@@ -1004,18 +673,6 @@
 - ဝဝတ္ထာန် (၁) 
   - စတုဓာတုဝဝတ္ထာန် (ဓာတ်ကြီး ၄ ပါးကို ပိုင်းခြားမှတ်သားခြင်း)
 ### ဝိပဿနာ 
-- လက္ခဏာ (၃) ပါး
-  - အနိစ္စ (မမြဲခြင်း)
-  - ဒုက္ခ (ဆင်းရဲခြင်း)
-  - အနတ္တ (အစိုးမရ ကိုယ်ပိုင်အနှစ်သာရမရှိခြင်း)
-- အနုပဿနာ (၃) ပါး
-  - အနိစ္စာနုပဿနာ (မမြဲဟု ရှုခြင်း)
-  - ဒုက္ခာနုပဿနာ (ဆင်းရဲဟု ရှုခြင်း)
-  - အနတ္တာနုပဿနာ (အစိုးမရဟု ရှုခြင်း)
-- ဝိမောက္ခ (၃) ပါး
-  - သုညတ (အနတ္တကို ရှု၍ လွတ်မြောက်ခြင်း)
-  - အနိမိတ္တ (အနိစ္စကို ရှု၍ လွတ်မြောက်ခြင်း)
-  - အပ္ပဏိဟိတ (ဒုက္ခကို ရှု၍ လွတ်မြောက်ခြင်း)
 - ဝိသုဒ္ဓိ (၇) ပါး
   - သီလ ဝိသုဒ္ဓိ
   - စိတ္တ ဝိသုဒ္ဓိ
@@ -1035,54 +692,3 @@
   - ပဋိသင်္ခါဉာဏ်
   - သင်္ခါရုပေက္ခာဉာဏ်
   - အနုလောမဉာဏ်
-`;
-
-        let mm;
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const { Transformer } = window.markmap;
-                const { Markmap } = window.markmap;
-
-                const transformer = new Transformer();
-                const { root } = transformer.transform(markdown);
-                
-                // Set high contrast bright colors for branches in dark mode, and darker for light mode
-                const isDark = document.documentElement.classList.contains('dark');
-                const darkColors = ['#60a5fa', '#34d399', '#fbbf24', '#f87171', '#c084fc', '#2dd4bf', '#fb923c'];
-                const lightColors = ['#2563eb', '#059669', '#d97706', '#dc2626', '#7c3aed', '#0d9488', '#ea580c'];
-                
-                
-                // Collapse nodes deeper than level 1 (0-indexed) so it doesn't shrink to microscopic size
-                function collapseNodes(node, currentLevel = 0, maxLevel = 1) {
-                    if (currentLevel >= maxLevel) {
-                        if (!node.payload) node.payload = {};
-                        node.payload.fold = 1; // 1 means folded
-                    }
-                    if (node.children) {
-                        node.children.forEach(child => collapseNodes(child, currentLevel + 1, maxLevel));
-                    }
-                }
-                collapseNodes(root);
-                
-                mm = Markmap.create('#markmap', {
-                    autoFit: true,
-                    fitRatio: 0.9,
-                    duration: 500,
-                    paddingX: 8,
-                    spacingHorizontal: 80,
-                    color: (node) => {
-                        const colors = isDark ? darkColors : lightColors;
-                        return colors[node.depth % colors.length];
-                    }
-                }, root);
-            }, 100);
-        });
-
-        // Control functions
-        function zoomIn() { if(mm) mm.rescale(1.2); }
-        function zoomOut() { if(mm) mm.rescale(0.8); }
-        function fitMap() { if(mm) mm.fit(); }
-    </script>
-</body>
-</html>
