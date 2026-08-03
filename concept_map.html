@@ -178,10 +178,10 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300   fixed inset-0     overflow-hidden" style="width: 100vw; height: 100vh;">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300 overflow-hidden" style="display: flex; flex-direction: column; width: 100vw; height: 100vh; margin: 0; padding: 0; position: fixed; inset: 0;">
 
     <!-- Navigation -->
-    <nav id="site-nav" class="glass-nav absolute top-0 left-0 right-0 z-50 transition-colors duration-300">
+    <nav id="site-nav" class="glass-nav relative z-50 transition-colors duration-300" style="flex: 0 0 auto;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-3">
             <div class="flex flex-wrap items-center justify-between gap-y-3">
                 <div class="flex items-center gap-3">
@@ -219,7 +219,7 @@
     </nav>
 
     <!-- Interactive Map Section -->
-    <main id="markmap-container" class="bg-slate-50 dark:bg-slate-900 absolute left-0 right-0 bottom-0 overflow-hidden">
+    <main id="markmap-container" class="bg-slate-50 dark:bg-slate-900 overflow-hidden" style="flex: 1 1 auto; position: relative; width: 100%; height: 100%; min-height: 0;">
         
         <!-- Instruction Overlay -->
         <div class="hidden md:block absolute top-4 right-4 z-10 pointer-events-none text-right">
@@ -233,7 +233,7 @@
             </div>
         </div>
 
-        <svg id="markmap" class="w-full h-full absolute inset-0"></svg>
+        <svg id="markmap" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></svg>
         
         <!-- Controls -->
         <div class="map-controls">
