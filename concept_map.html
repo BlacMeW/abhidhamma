@@ -138,9 +138,10 @@
             fill: #ffffff !important;
         }
         
-        /* Fix Burmese Font Vertical Clipping without breaking layout */
+        /* Fix Burmese Font Vertical Clipping for Safari */
         #markmap foreignObject {
-            overflow: visible !important;
+            padding-bottom: 5px; /* Alternative to overflow visible */
+            overflow: hidden; /* Safari might need this */
         }
         #markmap .markmap-node div {
             /* Minimal line-height so layout matches calculation */
@@ -181,10 +182,10 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300  fixed inset-0  flex flex-col overflow-hidden">
 
     <!-- Navigation -->
-    <nav class="glass-nav sticky top-0 z-50 transition-colors duration-300">
+    <nav class="glass-nav sticky top-0 z-50 transition-colors duration-300 shrink-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-3">
             <div class="flex flex-wrap items-center justify-between gap-y-3">
                 <div class="flex items-center gap-3">
@@ -222,7 +223,7 @@
     </nav>
 
     <!-- Interactive Map Section -->
-    <main id="markmap-container" class="bg-slate-50 dark:bg-slate-900 flex-1 relative overflow-hidden">
+    <main id="markmap-container" class="bg-slate-50 dark:bg-slate-900 flex-1 relative overflow-hidden" style="min-height: 0;">
         
         <!-- Instruction Overlay -->
         <div class="hidden md:block absolute top-4 right-4 z-10 pointer-events-none text-right">
@@ -1684,6 +1685,18 @@
                         return colors[node.depth % colors.length];
                     }
                 }, root);
+                
+                // Fix for iOS/iPad Safari: ensure it fits when container resizes
+                const resizeObserver = new ResizeObserver(() => {
+                    if (mm) {
+                        setTimeout(() => mm.fit(), 50);
+                    }
+                });
+                resizeObserver.observe(document.getElementById('markmap-container'));
+                
+                // Extra fit call to catch delayed layout computation on iOS WebKit
+                setTimeout(() => mm.fit(), 300);
+                setTimeout(() => mm.fit(), 1000);
                 
                 // Search Functionality
                 const searchInput = document.getElementById('search-input');
