@@ -49,7 +49,11 @@
         }
         
         /* EXTREME SPECIFICITY OVERRIDES FOR MARKMAP TEXT & HTML (FOREIGN OBJECT) */
-        /* Apply text styles globally to all markmap nodes (including hidden measuring nodes) */
+        /* Apply text styles globally to all markmap nodes to ensure perfect measurement and alignment */
+        .markmap-node {
+            font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif !important;
+        }
+        
         .markmap-node text,
         .markmap-node tspan,
         .markmap-node div,
@@ -62,6 +66,11 @@
             font-size: 16px !important;
             font-weight: 700 !important;
             white-space: nowrap !important;
+            line-height: 1 !important; /* Force tight line-height for vertical centering */
+            margin: 0 !important;
+            padding: 0 !important;
+            display: inline-block !important;
+            transform: translateY(8px) !important; /* Shift text down slightly to perfectly center Myanmar fonts */
         }
         
         /* Dark Mode Text Colors */
@@ -90,6 +99,11 @@
             fill: #0f172a !important; 
             color: #0f172a !important;
             text-shadow: none !important;
+        }
+        
+        /* Fix Burmese Font Vertical Clipping */
+        #markmap foreignObject {
+            overflow: visible !important;
         }
         
         /* High Visibility Lines */
@@ -815,7 +829,8 @@
                     autoFit: true,
                     fitRatio: 0.9,
                     duration: 500,
-                    paddingX: 80,
+                    paddingX: 8,
+                    spacingHorizontal: 80,
                     color: (node) => {
                         const colors = isDark ? darkColors : lightColors;
                         return colors[node.depth % colors.length];
