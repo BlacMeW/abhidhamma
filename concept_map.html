@@ -110,6 +110,7 @@
             stroke: #fbbf24 !important; /* Bright Amber for dark mode lines */
             stroke-width: 2.5px !important;
             opacity: 1 !important;
+            transform: translateZ(0);
         }
         html.light path.markmap-link,
         html.light .markmap-link,
@@ -117,6 +118,13 @@
             stroke: #d97706 !important; /* Dark Amber for light mode lines */
             stroke-width: 2.5px !important;
             opacity: 1 !important;
+            transform: translateZ(0);
+        }
+        
+        #markmap {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
         
         /* High Visibility Circles */
@@ -1670,7 +1678,7 @@
                 mm = Markmap.create('#markmap', {
                     autoFit: true,
                     fitRatio: 0.9,
-                    duration: 500,
+                    duration: 250,
                     paddingX: 8,
                     spacingHorizontal: 80,
                     color: (node) => {
