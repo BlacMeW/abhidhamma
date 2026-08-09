@@ -572,12 +572,12 @@
                 </button>
 
                 <div class="flex justify-center items-center gap-2 mt-4 mb-2">
-                    <button onclick="toggleCittaView('list')" id="btn-citta-list" class="px-4 py-1.5 rounded-full text-xs font-bold transition bg-amber-500 text-white dark:bg-amber-600 shadow-sm"><i class="fa-solid fa-list-ul mr-1.5"></i> အုပ်စုလိုက် (List View)</button>
-                    <button onclick="toggleCittaView('grid')" id="btn-citta-grid" class="px-4 py-1.5 rounded-full text-xs font-bold transition bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600"><i class="fa-solid fa-border-all mr-1.5"></i> ကတ်များ (Grid View)</button>
+                    <button onclick="toggleCittaView('list')" id="btn-citta-list" class="px-4 py-1.5 rounded-full text-xs font-bold transition bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600"><i class="fa-solid fa-list-ul mr-1.5"></i> အုပ်စုလိုက် (List View)</button>
+                    <button onclick="toggleCittaView('grid')" id="btn-citta-grid" class="px-4 py-1.5 rounded-full text-xs font-bold transition bg-amber-500 text-white dark:bg-amber-600 shadow-sm"><i class="fa-solid fa-border-all mr-1.5"></i> ကတ်များ (Grid View)</button>
                 </div>
             </div>
 
-            <div id="citta-list-view" class="space-y-8">
+            <div id="citta-list-view" class="hidden space-y-8">
             <!-- Total verification bar (each badge jumps to its group below) -->
             <div class="glass-card rounded-2xl p-4 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm border border-slate-200 dark:border-slate-700">
                 <button onclick="scrollToCittaGroup('group-kamavacara')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-400 dark:border-rose-500/30 hover:bg-rose-500/25 hover:border-rose-400 transition">ကာမာဝစရ (၅၄)</button>
@@ -1012,7 +1012,7 @@
             </div>
 
             <!-- Citta Grid View -->
-            <div id="citta-grid-view" class="hidden mt-6">
+            <div id="citta-grid-view" class="mt-6">
                 <!-- Filters -->
                 <div class="flex flex-wrap gap-2 mb-6" role="group" aria-label="Citta Group Filters">
                     <button onclick="renderCittaGrid('all')" id="citta-filter-all" class="px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold transition bg-amber-500 text-white shadow-sm hover:bg-amber-600">အားလုံး (၈၉/၁၂၁)</button>
@@ -4275,6 +4275,7 @@ function mm(num) {
             initSearchTab();
             renderCetasikaGrid('all');
             renderCittaGroups();
+            renderCittaGrid('all');
             updateSimulator('lobha');
             setVithiIntensity('atimahanta');
             setManoJavanaType('lobha');
