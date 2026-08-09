@@ -42,7 +42,13 @@
         .animate-fade-in { animation: fade-in 0.2s ease-out; }
         .nidana-card { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
         .nidana-card:hover { transform: translateY(-2px); }
-        
+        /* Column count adapts to the number of nidana in a kala group so 2-item
+           groups stay centered instead of hugging the left edge. */
+        .nidana-grid { grid-template-columns: repeat(2, max-content); }
+        @media (min-width: 1024px) {
+            .nidana-grid { grid-template-columns: repeat(var(--cols, 4), max-content); }
+        }
+
         @keyframes pulse-spin {
             0% { transform: rotate(0deg) scale(1); filter: brightness(1); }
             50% { transform: rotate(180deg) scale(1.05); filter: brightness(1.2); }
@@ -726,41 +732,42 @@
             return String(n).replace(/[0-9]/g, d => map[d]);
         }
 
+        // Interpretation-specific short labels (shared by renderChain and openNidanaModal).
+        const shortMomMap = {
+            'avijja': 'မသိမှု',
+            'sankhara': 'တုံ့ပြန်မှု',
+            'vinnana': 'အာရုံသိမှု',
+            'namarupa': 'စိတ်နှင့်ရုပ်',
+            'salayatana': 'အာရုံခံ',
+            'phassa': 'ထိတွေ့မှု',
+            'vedana': 'ခံစားမှု',
+            'tanha': 'တပ်မက်မှု',
+            'upadana': 'စွဲလမ်းမှု',
+            'bhava': 'ဖြစ်တည်မှု',
+            'jati': 'ဖြစ်ပေါ်မှု',
+            'jaramarana': 'ဆင်းရဲဒုက္ခ'
+        };
+
+        const shortEkaMap = {
+            'avijja': 'မောဟ',
+            'sankhara': 'စေတနာ',
+            'vinnana': 'စိတ်',
+            'namarupa': 'နာမ်ရုပ်',
+            'salayatana': 'အာယတန',
+            'phassa': 'ဖဿ',
+            'vedana': 'ဝေဒနာ',
+            'tanha': 'လောဘ',
+            'upadana': 'ဒိဋ္ဌိ/လောဘ',
+            'bhava': 'စေတနာ',
+            'jati': 'ဥပါဒ်',
+            'jaramarana': 'ဌီ, ဘင်'
+        };
+
         function renderChain() {
             const container = document.getElementById('nidana-chain');
             const circleContainer = document.getElementById('circle-container-inner');
             const order = ['atita', 'paccuppanna', 'anagata'];
             let delayIndex = 0; // For Nirodha mode staggered animation
-            
-            const shortMomMap = {
-                'avijja': 'မသိမှု',
-                'sankhara': 'တုံ့ပြန်မှု',
-                'vinnana': 'အာရုံသိမှု',
-                'namarupa': 'စိတ်နှင့်ရုပ်',
-                'salayatana': 'အာရုံခံ',
-                'phassa': 'ထိတွေ့မှု',
-                'vedana': 'ခံစားမှု',
-                'tanha': 'တပ်မက်မှု',
-                'upadana': 'စွဲလမ်းမှု',
-                'bhava': 'ဖြစ်တည်မှု',
-                'jati': 'ဖြစ်ပေါ်မှု',
-                'jaramarana': 'ဆင်းရဲဒုက္ခ'
-            };
-
-            const shortEkaMap = {
-                'avijja': 'မောဟ',
-                'sankhara': 'စေတနာ',
-                'vinnana': 'စိတ်',
-                'namarupa': 'နာမ်ရုပ်',
-                'salayatana': 'အာယတန',
-                'phassa': 'ဖဿ',
-                'vedana': 'ဝေဒနာ',
-                'tanha': 'လောဘ',
-                'upadana': 'ဒိဋ္ဌိ/လောဘ',
-                'bhava': 'စေတနာ',
-                'jati': 'ဥပါဒ်',
-                'jaramarana': 'ဌီ, ဘင်'
-            };
 
             // Render Linear View
             container.innerHTML = order.map((kalaKey, kIdx) => {
@@ -774,10 +781,10 @@
                     const lastNidana = prevItems[prevItems.length - 1];
                     blockTransitionHtml = `
                         <div onclick="openPaccayaModal('${lastNidana.key}')" class="flex flex-col items-center my-2 transition-all duration-500 hover:scale-110 cursor-pointer group" style="transition-delay: ${delayIndex * 0.4}s" title="${lastNidana.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
-                            <span class="text-[10px] mb-1 px-2.5 py-1 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono shadow-sm z-10 font-bold group-hover:bg-slate-100 dark:group-hover:bg-slate-700 transition-colors flex items-center gap-1">
-                                <i class="fa-solid fa-link text-[9px]"></i> ${lastNidana.paccaya}
+                            <span class="text-[11.5px] mb-1 px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono shadow-sm z-10 font-bold group-hover:bg-slate-100 dark:group-hover:bg-slate-700 transition-colors flex items-center gap-1.5">
+                                <i class="fa-solid fa-link text-[10px]"></i> ${lastNidana.paccaya}
                             </span>
-                            <i class="fa-solid fa-arrow-down text-lg nidana-arrow-icon text-slate-400 dark:text-slate-500 drop-shadow-sm group-hover:text-sky-500"></i>
+                            <i class="fa-solid fa-arrow-down text-xl nidana-arrow-icon text-slate-400 dark:text-slate-500 drop-shadow-sm group-hover:text-sky-500"></i>
                         </div>
                     `;
                 }
@@ -785,7 +792,7 @@
                 const htmlContent = `
                     <div id="kala-${kalaKey}" class="glass-card rounded-2xl p-5 max-w-4xl mx-auto border-t-4 ${info.border} space-y-4 scroll-mt-24">
                         <h3 class="font-bold ${info.color} text-lg text-center md:text-left">${displayLabel} ${currentInterpretation === 'traditional' ? `(${mm(items.length)})` : ''}</h3>
-                        <div class="nidana-grid grid grid-cols-2 lg:grid-cols-4 pt-8 pb-10 w-fit mx-auto justify-items-center px-4 sm:px-8 md:px-12 lg:px-16" style="row-gap: 4.5rem; column-gap: 6.5rem;">
+                        <div class="nidana-grid grid pt-8 pb-10 w-fit mx-auto justify-items-center px-4 sm:px-8 md:px-12 lg:px-16" style="--cols: ${Math.min(items.length, 4)}; row-gap: 4.5rem; column-gap: 6.5rem;">
                             ${items.map((n, i) => {
                                 const vInfo = vattaInfo[n.vatta];
                                 
@@ -796,8 +803,8 @@
                                     const formattedPaccaya = prevN.paccaya ? prevN.paccaya.replace(/၊ /g, '၊<br/>') : '';
                                     incomingArrowHtml = `
                                     <div onclick="openPaccayaModal('${prevN.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="left: -3.25rem; transform: translate(-50%, -50%); transition-delay: ${(delayIndex * 0.4) - 0.2}s" title="${prevN.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
-                                        <i class="fa-solid fa-arrow-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-sm lg:text-base drop-shadow-sm group-hover:text-sky-500"></i>
-                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700 w-max max-w-[100px]">${formattedPaccaya}</span>
+                                        <i class="fa-solid fa-arrow-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-base lg:text-lg drop-shadow-sm group-hover:text-sky-500"></i>
+                                        <span class="text-[10px] lg:text-[11px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-2 py-1 rounded-md shadow-sm text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700 w-max max-w-[110px]">${formattedPaccaya}</span>
                                     </div>`;
                                 }
 
@@ -807,8 +814,8 @@
                                     const formattedPaccaya = n.paccaya ? n.paccaya.replace(/၊ /g, '၊<br/>') : '';
                                     outgoingArrowHtml = `
                                     <div onclick="openPaccayaModal('${n.key}')" class="absolute top-1/2 z-20 flex flex-col items-center justify-center transition-all duration-500 hover:scale-110 cursor-pointer group" style="right: -3.25rem; transform: translate(50%, -50%); transition-delay: ${(delayIndex * 0.4) + 0.2}s" title="${n.paccaya} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
-                                        <i class="fa-solid fa-arrow-rotate-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-sm lg:text-base drop-shadow-sm group-hover:text-sky-500"></i>
-                                        <span class="text-[8.5px] lg:text-[9px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-1.5 py-0.5 rounded-md shadow-sm text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700 w-max max-w-[100px]">${formattedPaccaya}</span>
+                                        <i class="fa-solid fa-arrow-rotate-right nidana-arrow-icon text-slate-400 dark:text-slate-500 text-base lg:text-lg drop-shadow-sm group-hover:text-sky-500"></i>
+                                        <span class="text-[10px] lg:text-[11px] text-slate-700 dark:text-slate-200 font-bold font-mono mt-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 px-2 py-1 rounded-md shadow-sm text-center leading-[1.3] transition-all group-hover:bg-slate-100 dark:group-hover:bg-slate-700 w-max max-w-[110px]">${formattedPaccaya}</span>
                                     </div>`;
                                 }
 
@@ -816,11 +823,11 @@
                                 <div class="relative flex flex-col items-center justify-center w-full">
                                     ${incomingArrowHtml}
                                     ${outgoingArrowHtml}
-                                    <button onclick="openNidanaModal('${n.key}')" class="nidana-card relative flex flex-col items-center gap-1.5 px-1 py-2.5 rounded-xl border transition-all duration-700 ${vInfo.bg} ${vInfo.border} ${vInfo.color} hover:brightness-110 shadow-sm hover:shadow-md flex-shrink-0" style="width: 85px; max-width: 100%; transition-delay: ${delayIndex * 0.4}s; --delay: ${delayIndex * 0.08}s;">
-                                        <span class="absolute -top-2.5 bg-white dark:bg-slate-800 text-[9px] px-2 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
-                                        <i class="fa-solid ${n.icon} text-xl mt-1"></i>
-                                        <span class="text-[12px] font-bold mt-0.5 whitespace-nowrap text-center">${mm(n.id)}. ${n.name}</span>
-                                        ${currentInterpretation === 'momentary' ? `<span class="text-[8px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1 py-0.5 rounded-md mt-0.5 whitespace-nowrap shadow-sm"><i class="fa-solid fa-bolt mr-0.5"></i> ${shortMomMap[n.key]}</span>` : (currentInterpretation === 'ekacittakkhanika' ? `<span class="text-[8px] text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50 dark:bg-indigo-900/40 border border-indigo-200 dark:border-indigo-700/60 px-1 py-0.5 rounded-md mt-0.5 whitespace-nowrap shadow-sm"><i class="fa-solid fa-microscope mr-0.5"></i> ${shortEkaMap[n.key]}</span>` : '')}
+                                    <button onclick="openNidanaModal('${n.key}')" class="nidana-card relative flex flex-col items-center gap-1.5 px-2 py-3.5 rounded-xl border transition-all duration-700 ${vInfo.bg} ${vInfo.border} ${vInfo.color} hover:brightness-110 shadow-sm hover:shadow-md flex-shrink-0" style="width: 124px; max-width: 100%; transition-delay: ${delayIndex * 0.4}s; --delay: ${delayIndex * 0.08}s;">
+                                        <span class="absolute -top-2.5 bg-white dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
+                                        <i class="fa-solid ${n.icon} text-2xl mt-1"></i>
+                                        <span class="text-[13.5px] font-bold mt-0.5 whitespace-nowrap text-center">${mm(n.id)}. ${n.name}</span>
+                                        ${currentInterpretation === 'momentary' ? `<span class="text-[9.5px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1.5 py-0.5 rounded-md mt-0.5 whitespace-nowrap shadow-sm"><i class="fa-solid fa-bolt mr-0.5"></i> ${shortMomMap[n.key]}</span>` : (currentInterpretation === 'ekacittakkhanika' ? `<span class="text-[9.5px] text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50 dark:bg-indigo-900/40 border border-indigo-200 dark:border-indigo-700/60 px-1.5 py-0.5 rounded-md mt-0.5 whitespace-nowrap shadow-sm"><i class="fa-solid fa-microscope mr-0.5"></i> ${shortEkaMap[n.key]}</span>` : '')}
                                     </button>
                                 </div>
                                 `;
@@ -1024,6 +1031,38 @@
             const desc = isMomentary && data.descMomentary ? data.descMomentary : (isEka && data.descEka ? data.descEka : data.desc);
             const example = isMomentary && data.exampleMomentary ? data.exampleMomentary : (isEka && data.exampleEka ? data.exampleEka : data.example);
 
+            // Adjacent links in the 12-fold chain (loops at both ends).
+            const idxCur = data.id - 1;
+            const prevLink = nidanaData[(idxCur + 11) % 12];
+            const nextLink = nidanaData[(idxCur + 1) % 12];
+
+            // hetu (cause) / phala (effect) / nirodha differ per interpretation,
+            // reusing the author's own short vocabulary maps for consistency.
+            let hetuHtml, phalaHtml, nirodhaHtml, hetuLabel, phalaLabel, modeInfo;
+            if (isMomentary) {
+                hetuLabel = 'ဖြစ်ပေါ်ကြောင်း (အကြောင်း)';
+                phalaLabel = 'နောက်ဆက်တွဲ (အကျိုး)';
+                hetuHtml = `${prevLink.name} — ${shortMomMap[prevLink.key]}`;
+                phalaHtml = `${nextLink.name} — ${shortMomMap[nextLink.key]}`;
+                nirodhaHtml = `ဤ <b>${data.name} (${shortMomMap[data.key]})</b> ဖြစ်စဉ်ကို သတိ/ပညာဖြင့် ရှုမှတ် အမှန်သိမြင်လိုက်ပါက နောက်ဆက်တွဲ <b>${nextLink.name} (${shortMomMap[nextLink.key]})</b> ဆက်မဖြစ်တော့ဘဲ ခဏိက စက်ဝန်းသည် ထိုနေရာ၌ ပြတ်တောက်သွားသည်။`;
+                modeInfo = { label: 'ခဏိက နည်း (Momentary)', icon: 'fa-bolt', cls: 'text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/40 border-amber-400/50' };
+            } else if (isEka) {
+                hetuLabel = 'ယှဉ်တွဲအင်္ဂါ (ရှေ့ / သဟဇာတ)';
+                phalaLabel = 'ယှဉ်တွဲအင်္ဂါ (နောက် / သဟဇာတ)';
+                hetuHtml = `${prevLink.name} — ${shortEkaMap[prevLink.key]}`;
+                phalaHtml = `${nextLink.name} — ${shortEkaMap[nextLink.key]}`;
+                nirodhaHtml = `<b>${data.name} (${shortEkaMap[data.key]})</b> အပါအဝင် ထိုစိတ်တစ်ခဏ၌ ယှဉ်ဖက်ဖြစ်ကြသော နာမ်ရုပ်တရားအားလုံးသည် စိတ်၏ ဘင်ခဏ (ပျက်ချိန်) ၌ တစ်ပြိုင်နက် ချုပ်ပျက်သွားသည်။`;
+                modeInfo = { label: 'ဧကစိတ္တက္ခဏိက နည်း (Vibhaṅga)', icon: 'fa-microscope', cls: 'text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/40 border-indigo-400/50' };
+            } else {
+                hetuLabel = 'ဖြစ်ပေါ်ကြောင်း (အကြောင်း)';
+                phalaLabel = 'နောက်ဆက်တွဲ (အကျိုး)';
+                hetuHtml = data.hetuText;
+                phalaHtml = data.phalaText;
+                nirodhaHtml = data.nirodhaText;
+                modeInfo = { label: 'ဘဝဆက်ဆက် နည်း (Traditional)', icon: 'fa-timeline', cls: 'text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-600' };
+            }
+            const modeBadge = `<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold font-mono shadow-sm ${modeInfo.cls}"><i class="fa-solid ${modeInfo.icon}"></i> ${modeInfo.label}</div>`;
+
             const n = nidanaData.find(x => x.key === key);
             if (!n) return;
             const info = kalaInfo[n.kala];
@@ -1039,6 +1078,7 @@
                         <h3 class="text-xl font-bold ${info.color}">${n.name}</h3>
                         <p class="text-[13px] md:text-[14px] text-slate-600 dark:text-slate-400 font-mono font-medium mt-1">${n.pali}</p>
                     </div>
+                    <div class="flex justify-center pt-1">${modeBadge}</div>
                 </div>
                 <div class="mt-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm">
                     <div>
@@ -1047,17 +1087,17 @@
                     </div>
                     <div class="grid sm:grid-cols-2 gap-2 text-xs pt-1">
                         <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-500/20">
-                            <span class="font-bold text-sky-700 dark:text-sky-300 block mb-0.5"><i class="fa-solid fa-arrow-right-to-bracket mr-1"></i>ဖြစ်ပေါ်ကြောင်း (အကြောင်း)</span>
-                            <span class="text-slate-700 dark:text-slate-300 text-[11px]">${n.hetuText}</span>
+                            <span class="font-bold text-sky-700 dark:text-sky-300 block mb-0.5"><i class="fa-solid fa-arrow-right-to-bracket mr-1"></i>${hetuLabel}</span>
+                            <span class="text-slate-700 dark:text-slate-300 text-[11px]">${hetuHtml}</span>
                         </div>
                         <div class="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500/20">
-                            <span class="font-bold text-emerald-700 dark:text-emerald-300 block mb-0.5"><i class="fa-solid fa-arrow-right-from-bracket mr-1"></i>နောက်ဆက်တွဲ (အကျိုး)</span>
-                            <span class="text-slate-700 dark:text-slate-300 text-[11px]">${n.phalaText}</span>
+                            <span class="font-bold text-emerald-700 dark:text-emerald-300 block mb-0.5"><i class="fa-solid fa-arrow-right-from-bracket mr-1"></i>${phalaLabel}</span>
+                            <span class="text-slate-700 dark:text-slate-300 text-[11px]">${phalaHtml}</span>
                         </div>
                     </div>
                     <div class="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-500/20 text-xs">
                         <span class="font-bold text-amber-700 dark:text-amber-300 block mb-0.5"><i class="fa-solid fa-circle-pause mr-1"></i>နိရောဓ (ရပ်တန့်/ချုပ်ငြိမ်းပုံ)</span>
-                        <span class="text-slate-700 dark:text-slate-300 text-[11px]">${n.nirodhaText}</span>
+                        <span class="text-slate-700 dark:text-slate-300 text-[11px]">${nirodhaHtml}</span>
                     </div>
                     <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-amber-700 dark:text-amber-400 block uppercase"><i class="fa-solid fa-lightbulb mr-1"></i>လက်တွေ့ သရုပ်ပြ ဥပမာ</span>
