@@ -120,11 +120,13 @@
         .circle-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 680px;
             aspect-ratio: 1;
             margin: 0 auto;
             border-radius: 50%;
             border: 2px dashed rgba(148, 163, 184, 0.3);
+            background:
+                radial-gradient(circle at center, rgba(148,163,184,0.06) 0%, rgba(148,163,184,0) 62%);
         }
         .dark .circle-container {
             border-color: rgba(71, 85, 105, 0.5);
@@ -853,7 +855,7 @@
             
             // Render Circular View
             const totalNodes = 12;
-            const radius = 42; // Percentage of container width
+            const radius = 43; // Percentage of container width
             let circleHtml = circleContainer.innerHTML; // Keep center hub
             let circleDelayIndex = 0;
             
@@ -878,15 +880,17 @@
                     <div class="circle-item" style="top: ${top}%; left: ${left}%; transition-delay: ${circleDelayIndex * 0.4}s" onclick="openNidanaModal('${n.key}')">
                         <div class="circle-item-inner border-2 ${kInfo.bg} ${kInfo.border} ${vInfo.color} shadow-lg hover:scale-110 transition cursor-pointer bg-white dark:bg-slate-800" style="--idx: ${i}">
                             <span class="text-[9px] font-bold opacity-75">${mm(n.id)}</span>
-                            <i class="fa-solid ${n.icon} text-xl"></i>
-                            <span class="text-[11px] font-bold mt-1">${n.name}</span>
-                            ${currentInterpretation === 'momentary' ? `<span class="text-[8px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1 py-[1px] rounded mt-0.5"><i class="fa-solid fa-bolt mr-0.5"></i>${shortMomMap[n.key]}</span>` : (currentInterpretation === 'ekacittakkhanika' ? `<span class="text-[8px] text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50 dark:bg-indigo-900/40 border border-indigo-200 dark:border-indigo-700/60 px-1 py-[1px] rounded mt-0.5"><i class="fa-solid fa-microscope mr-0.5"></i>${shortEkaMap[n.key]}</span>` : '')}
+                            <i class="fa-solid ${n.icon} text-2xl"></i>
+                            <span class="text-[12px] font-bold mt-1">${n.name}</span>
+                            ${currentInterpretation === 'momentary' ? `<span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700/60 px-1 py-[1px] rounded mt-0.5"><i class="fa-solid fa-bolt mr-0.5"></i>${shortMomMap[n.key]}</span>` : (currentInterpretation === 'ekacittakkhanika' ? `<span class="text-[9px] text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50 dark:bg-indigo-900/40 border border-indigo-200 dark:border-indigo-700/60 px-1 py-[1px] rounded mt-0.5"><i class="fa-solid fa-microscope mr-0.5"></i>${shortEkaMap[n.key]}</span>` : '')}
                         </div>
-                        <span class="absolute -bottom-3 bg-white dark:bg-slate-800 text-[8px] px-1.5 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
+                        <span class="absolute -bottom-3 bg-white dark:bg-slate-800 text-[9px] px-1.5 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
                     </div>
                     <div onclick="openPaccayaModal('${n.key}'); event.stopPropagation();" class="circle-arrow text-slate-300 dark:text-slate-600 flex flex-col items-center justify-center text-xs cursor-pointer group" style="top: ${arrowTop}%; left: ${arrowLeft}%; transform: translate(-50%, -50%) rotate(${arrowRotation}deg); transition-delay: ${(circleDelayIndex * 0.4) + 0.2}s" title="${n.paccaya || 'အာသဝ'} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
-                        <i class="fa-solid fa-chevron-right text-slate-400 dark:text-slate-500 group-hover:text-sky-500 group-hover:scale-125 transition-all" style="--idx: ${i}"></i>
-                        ${n.paccaya ? `<span class="text-[7px] bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono font-bold px-1 rounded border border-slate-300 dark:border-slate-600 shadow-sm whitespace-nowrap group-hover:bg-slate-100 dark:group-hover:bg-slate-700" style="transform: rotate(-${arrowRotation}deg);">${n.paccaya}</span>` : ''}
+                        <div class="flex flex-col items-center justify-center gap-0.5" style="transform: rotate(-${arrowRotation}deg);">
+                            <i class="fa-solid fa-chevron-right text-slate-400 dark:text-slate-500 text-sm group-hover:text-sky-500 group-hover:scale-125 transition-all" style="--idx: ${i}; transform: rotate(${arrowRotation}deg);"></i>
+                            ${n.paccaya ? `<span class="text-[9px] leading-[1.2] text-center bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono font-bold px-1.5 py-0.5 rounded-md border border-slate-300 dark:border-slate-600 shadow-sm max-w-[76px] group-hover:bg-slate-100 dark:group-hover:bg-slate-700">${n.paccaya.replace(/၊ /g, '၊<br/>')}</span>` : ''}
+                        </div>
                     </div>
                 `;
                 circleDelayIndex++;
