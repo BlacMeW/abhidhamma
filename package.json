@@ -4,7 +4,10 @@
   "main": "accessibility.js",
   "scripts": {
     "build": "tailwindcss -i ./input.css -o ./output.css --minify",
-    "watch": "tailwindcss -i ./input.css -o ./output.css --watch"
+    "watch": "tailwindcss -i ./input.css -o ./output.css --watch",
+    "seo": "node scripts/update_seo.js",
+    "seo:defer-fa": "node scripts/defer_fontawesome.js",
+    "og:image": "inkscape assets/og-image.svg --export-type=png --export-filename=assets/og-image.png -w 1200 -h 630 && magick assets/og-image.png -quality 88 -strip assets/og-image.jpg && rm -f assets/og-image.png"
   },
   "keywords": [],
   "author": "",
