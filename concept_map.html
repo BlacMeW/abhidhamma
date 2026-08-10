@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="အဘိဓမ္မာ သဘောတရားများ (စိတ်၊ စေတသိက်၊ ရုပ်၊ နိဗ္ဗာန်) အချင်းချင်း ဆက်စပ်ပုံကို interactive ဇယားဖြင့် မြင်သာအောင် ပြသထားသော Abhidhamma Concept Map — ပရိစ္ဆေဒ (၉) ခန်း ဆက်နွှယ်မှု။">
     <title>အဘိဓမ္မာ သဘောတရား ဆက်စပ်မှုပြ ဇယား (Concept Map) - Visual Guide</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
+    <!-- Apply saved/preferred theme before paint to avoid a light/dark flash (FOUC) -->
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Pyidaungsu"', '"Myanmar Text"', 'sans-serif'],
-                    },
-                }
-            }
-        }
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                var dark = t ? (t === 'dark') : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var el = document.documentElement;
+                el.classList.toggle('dark', dark);
+                el.classList.toggle('light', !dark);
+            } catch (e) { /* keep the default dark class from <html> */ }
+        })();
     </script>
+    <!-- Tailwind (precompiled, same build as the rest of the site) -->
+    <link rel="stylesheet" href="output.css?v=2">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
     <style>
         body { font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif; overflow: hidden; margin: 0; padding: 0; }
         .glass-nav {
@@ -35,18 +35,20 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
+        /* Height/width come from the flex layout on <main> (inline styles); keep only positioning. */
         #markmap-container {
-            width: 100vw;
-            height: calc(100vh - 64px);
             position: relative;
             background: transparent;
         }
-        
-        /* Force SVG to fill container */
+
+        /* Force SVG to fill container (consolidated with the rendering-perf hints below) */
         #markmap {
             width: 100%;
             height: 100%;
             display: block;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
         
         /* EXTREME SPECIFICITY OVERRIDES FOR MARKMAP TEXT & HTML (FOREIGN OBJECT) */
@@ -119,12 +121,6 @@
             stroke: #d97706 !important; /* Dark Amber for light mode lines */
             stroke-width: 2.5px !important;
             opacity: 1 !important;
-            transform: translateZ(0);
-        }
-        
-        #markmap {
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
             transform: translateZ(0);
         }
         
@@ -297,21 +293,21 @@
                     <a href="index.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition flex items-center gap-2">
                         <i class="fa-solid fa-home"></i> <span class="hidden md:inline">ပင်မစာမျက်နှာ</span>
                     </a>
-                    <button id="theme-toggle" class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-                        <i class="fa-solid fa-moon dark:hidden text-lg"></i>
-                        <i class="fa-solid fa-sun hidden dark:block text-lg"></i>
+                    <button id="theme-toggle" aria-label="အလင်း/အမှောင် အပြင်အဆင် ပြောင်းရန် (Toggle theme)" class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition">
+                        <i class="fa-solid fa-moon dark:hidden text-lg" aria-hidden="true"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-lg" aria-hidden="true"></i>
                     </button>
                 </div>
                 
                 <div class="w-full md:w-auto order-3 md:order-2 flex items-center gap-2">
                     <div class="relative flex-1 md:flex-none">
-                        <input type="text" id="search-input" placeholder="ရှာရန် (ဥပမာ- လောဘ)..." class="w-full md:w-64 px-4 py-1.5 md:py-2 pl-9 text-sm rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500 text-slate-700 dark:text-slate-300 transition-all">
-                        <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="search-input" aria-label="သဘောတရား ရှာဖွေရန်" placeholder="ရှာရန် (ဥပမာ- လောဘ)..." class="w-full md:w-64 px-4 py-1.5 md:py-2 pl-9 text-sm rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500 text-slate-700 dark:text-slate-300 transition-all">
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-xs" aria-hidden="true"></i>
                     </div>
                     <div id="search-controls" class="hidden items-center gap-1 text-sm text-slate-600 dark:text-slate-300">
-                        <span id="search-counter" class="text-xs font-bold px-1 whitespace-nowrap">0 / 0</span>
-                        <button id="search-prev" class="w-7 h-7 rounded bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 flex items-center justify-center transition"><i class="fa-solid fa-chevron-up text-xs"></i></button>
-                        <button id="search-next" class="w-7 h-7 rounded bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 flex items-center justify-center transition"><i class="fa-solid fa-chevron-down text-xs"></i></button>
+                        <span id="search-counter" class="text-xs font-bold px-1 whitespace-nowrap" aria-live="polite">0 / 0</span>
+                        <button id="search-prev" aria-label="ယခင် ရလဒ်" class="w-7 h-7 rounded bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 flex items-center justify-center transition"><i class="fa-solid fa-chevron-up text-xs" aria-hidden="true"></i></button>
+                        <button id="search-next" aria-label="နောက် ရလဒ်" class="w-7 h-7 rounded bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 flex items-center justify-center transition"><i class="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
@@ -324,56 +320,59 @@
 
         <svg id="markmap" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></svg>
         
-        <!-- Controls -->
-        <div class="map-controls">
-            <button id="btn-select" class="map-btn shadow-md" onclick="setMode('select')" title="Select Tool"><i class="fa-solid fa-arrow-pointer"></i></button>
-            <button id="btn-pan" class="map-btn shadow-md active" onclick="setMode('pan')" title="Hand Tool"><i class="fa-solid fa-hand"></i></button>
-            
-            <div style="width: 1px; background: rgba(150,150,150,0.3); margin: 0 5px;"></div>
-            
-            <button class="map-btn shadow-md" onclick="expandAll()" title="Expand All"><i class="fa-solid fa-angles-down"></i></button>
-            <button class="map-btn shadow-md" onclick="collapseAll()" title="Collapse All"><i class="fa-solid fa-angles-up"></i></button>
-            <button class="map-btn shadow-md" onclick="zoomIn()" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
-            <button class="map-btn shadow-md" onclick="zoomOut()" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
-            <button class="map-btn shadow-md" onclick="fitMap()" title="Fit to screen"><i class="fa-solid fa-expand"></i></button>
+        <!-- Loading / error overlay -->
+        <div id="map-loader" style="position:absolute; inset:0; z-index:20; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding:20px;">
+            <i class="fa-solid fa-circle-notch fa-spin text-3xl text-sky-500" aria-hidden="true"></i>
+            <p class="text-sm text-slate-500 dark:text-slate-400">ဆက်စပ်မှုဇယား ဆွဲနေသည် ...</p>
         </div>
-        
+        <div id="map-error" role="alert" style="position:absolute; inset:0; z-index:20; display:none; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; padding:24px;">
+            <i class="fa-solid fa-triangle-exclamation text-3xl text-amber-500" aria-hidden="true"></i>
+            <p class="text-sm text-slate-600 dark:text-slate-300 max-w-md">ဇယားဆွဲရန် လိုအပ်သော library များ ဆွဲယူမရပါ။ အင်တာနက် ချိတ်ဆက်မှုကို စစ်ဆေးပြီး စာမျက်နှာကို ပြန်လည်ဖွင့်ကြည့်ပါ။</p>
+            <button onclick="location.reload()" class="text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-lg transition"><i class="fa-solid fa-rotate mr-1" aria-hidden="true"></i> ပြန်လည်ဖွင့်ရန်</button>
+        </div>
+
+        <!-- Controls -->
+        <div class="map-controls" role="toolbar" aria-label="ဇယား ထိန်းချုပ်ကိရိယာများ">
+            <button id="btn-select" class="map-btn shadow-md" onclick="setMode('select')" title="Select Tool" aria-label="ရွေးချယ်/စာကူးရန် (Select)"><i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i></button>
+            <button id="btn-pan" class="map-btn shadow-md active" onclick="setMode('pan')" title="Hand Tool" aria-label="ဆွဲရွှေ့ရန် (Pan)"><i class="fa-solid fa-hand" aria-hidden="true"></i></button>
+
+            <div style="width: 1px; background: rgba(150,150,150,0.3); margin: 0 5px;"></div>
+
+            <button class="map-btn shadow-md" onclick="expandAll()" title="Expand All" aria-label="အားလုံး ဖြန့်ရန်"><i class="fa-solid fa-angles-down" aria-hidden="true"></i></button>
+            <button class="map-btn shadow-md" onclick="collapseAll()" title="Collapse All" aria-label="အားလုံး ခေါက်ရန်"><i class="fa-solid fa-angles-up" aria-hidden="true"></i></button>
+            <button class="map-btn shadow-md" onclick="zoomIn()" title="Zoom In" aria-label="ချဲ့ရန်"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+            <button class="map-btn shadow-md" onclick="zoomOut()" title="Zoom Out" aria-label="ချုံ့ရန်"><i class="fa-solid fa-minus" aria-hidden="true"></i></button>
+            <button class="map-btn shadow-md" onclick="fitMap()" title="Fit to screen" aria-label="မျက်နှာပြင်နှင့် ကိုက်ညီအောင်"><i class="fa-solid fa-expand" aria-hidden="true"></i></button>
+        </div>
+
         <div class="info-box shadow-lg">
-            <h4><i class="fa-solid fa-hand-pointer"></i> Interactive Map</h4>
+            <h4><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> အသုံးပြုနည်း</h4>
             <ul>
-                <li><b>Click</b> to expand/collapse.</li>
-                <li><b>Drag</b> to move.</li>
-                <li><b>Scroll/Pinch</b> to zoom.</li>
+                <li><b>နှိပ်</b> ၍ ဖြန့်/ခေါက်ရန်။</li>
+                <li><b>ဆွဲ</b> ၍ ရွှေ့ရန်။</li>
+                <li><b>Scroll/Pinch</b> ဖြင့် ချဲ့/ချုံ့ရန်။</li>
             </ul>
         </div>
     </main>
 
-    <!-- Markmap Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0"></script>
+    <!-- Markmap Libraries (pinned versions + Subresource Integrity) -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17.0" integrity="sha384-WOeif65ZZMVE4UfjGjpOmqNbsHaNxxYrzdc5wNZ86zlO+Ts+raEpCln86r82ZwnW" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0" integrity="sha384-z0RT2Vkn/EiTF/KJfDyuD8vnrdSYmI4zsKGqYKP/U0K2fMd4xCf6GlGn9tdxdgYn" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        // Theme Toggle Logic
+        // Theme Toggle Logic (initial theme already applied by the inline <head> script)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
-        
-        if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.remove('dark');
-            htmlElement.classList.add('light');
-        } else {
-            htmlElement.classList.add('dark');
-            htmlElement.classList.remove('light');
-        }
 
         themeToggleBtn.addEventListener('click', () => {
             const isDark = htmlElement.classList.contains('dark');
             htmlElement.classList.toggle('dark', !isDark);
             htmlElement.classList.toggle('light', isDark);
             localStorage.setItem('theme', !isDark ? 'dark' : 'light');
-            // Hard reload map to reflect new colors if needed, but CSS handles text. 
-            // The branches colors are static once drawn, so we might need to recreate map, but CSS !important solves most of it.
-            location.reload();
+            // Re-render the map with the new palette instead of reloading the whole page
+            // (keeps the user's current expand/collapse and zoom-ish state).
+            if (typeof renderMap === 'function' && window.markmap && mapRoot) renderMap();
         });
 
         // Markdown Data for Mind Map
@@ -2097,58 +2096,78 @@
 
         let mm;
         let mapRoot;
-        
+
+        // Branch palettes: bright for dark mode, darker for light mode.
+        const darkColors = ['#60a5fa', '#34d399', '#fbbf24', '#f87171', '#c084fc', '#2dd4bf', '#fb923c'];
+        const lightColors = ['#2563eb', '#059669', '#d97706', '#dc2626', '#7c3aed', '#0d9488', '#ea580c'];
+
+        // Collapse nodes deeper than level 1 so the initial view doesn't shrink to microscopic size.
+        function collapseNodes(node, currentLevel = 0, maxLevel = 1) {
+            if (currentLevel >= maxLevel) {
+                if (!node.payload) node.payload = {};
+                node.payload.fold = 1; // 1 means folded
+            }
+            if (node.children) {
+                node.children.forEach(child => collapseNodes(child, currentLevel + 1, maxLevel));
+            }
+        }
+
+        // (Re)create the Markmap from the current data using the active theme's palette.
+        function renderMap() {
+            if (!window.markmap || !mapRoot) return;
+            const { Markmap } = window.markmap;
+            const isDark = document.documentElement.classList.contains('dark');
+            const colors = isDark ? darkColors : lightColors;
+            const svg = document.getElementById('markmap');
+            if (svg) svg.innerHTML = ''; // clear any previous render before re-creating
+            mm = Markmap.create('#markmap', {
+                autoFit: true,
+                fitRatio: 0.9,
+                duration: 250,
+                paddingX: 8,
+                spacingHorizontal: 80,
+                color: (node) => colors[node.depth % colors.length]
+            }, mapRoot);
+            // Extra fit calls to catch delayed layout computation on iOS WebKit.
+            setTimeout(() => { if (mm) mm.fit(); }, 300);
+            setTimeout(() => { if (mm) mm.fit(); }, 1000);
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                const { Transformer } = window.markmap;
-                const { Markmap } = window.markmap;
+                const loader = document.getElementById('map-loader');
+                const errorBox = document.getElementById('map-error');
 
-                const transformer = new Transformer();
-                const { root } = transformer.transform(markdown);
-                mapRoot = root;
-                
-                // Set high contrast bright colors for branches in dark mode, and darker for light mode
-                const isDark = document.documentElement.classList.contains('dark');
-                const darkColors = ['#60a5fa', '#34d399', '#fbbf24', '#f87171', '#c084fc', '#2dd4bf', '#fb923c'];
-                const lightColors = ['#2563eb', '#059669', '#d97706', '#dc2626', '#7c3aed', '#0d9488', '#ea580c'];
-                
-                
-                // Collapse nodes deeper than level 1 (0-indexed) so it doesn't shrink to microscopic size
-                function collapseNodes(node, currentLevel = 0, maxLevel = 1) {
-                    if (currentLevel >= maxLevel) {
-                        if (!node.payload) node.payload = {};
-                        node.payload.fold = 1; // 1 means folded
-                    }
-                    if (node.children) {
-                        node.children.forEach(child => collapseNodes(child, currentLevel + 1, maxLevel));
-                    }
+                // Guard: the map libraries load from a CDN and may fail (offline / SRI mismatch / blocked).
+                if (!window.d3 || !window.markmap || !window.markmap.Transformer || !window.markmap.Markmap) {
+                    if (loader) loader.style.display = 'none';
+                    if (errorBox) errorBox.style.display = 'flex';
+                    return;
                 }
-                collapseNodes(root);
-                
-                mm = Markmap.create('#markmap', {
-                    autoFit: true,
-                    fitRatio: 0.9,
-                    duration: 250,
-                    paddingX: 8,
-                    spacingHorizontal: 80,
-                    color: (node) => {
-                        const colors = isDark ? darkColors : lightColors;
-                        return colors[node.depth % colors.length];
-                    }
-                }, root);
-                
-                // Fix for iOS/iPad Safari: ensure it fits when container resizes
-                const resizeObserver = new ResizeObserver(() => {
-                    if (mm) {
-                        setTimeout(() => mm.fit(), 50);
-                    }
-                });
-                resizeObserver.observe(document.getElementById('markmap-container'));
-                
-                // Extra fit call to catch delayed layout computation on iOS WebKit
-                setTimeout(() => mm.fit(), 300);
-                setTimeout(() => mm.fit(), 1000);
-                
+
+                let root;
+                try {
+                    const { Transformer } = window.markmap;
+                    const transformer = new Transformer();
+                    root = transformer.transform(markdown).root;
+                    mapRoot = root;
+                    collapseNodes(mapRoot);
+                    renderMap();
+
+                    // Fix for iOS/iPad Safari: ensure it fits when the container resizes.
+                    const resizeObserver = new ResizeObserver(() => {
+                        if (mm) setTimeout(() => mm.fit(), 50);
+                    });
+                    resizeObserver.observe(document.getElementById('markmap-container'));
+                } catch (err) {
+                    console.error('Concept map render failed:', err);
+                    if (loader) loader.style.display = 'none';
+                    if (errorBox) errorBox.style.display = 'flex';
+                    return;
+                }
+
+                if (loader) loader.style.display = 'none';
+
                 // Search Functionality
                 const searchInput = document.getElementById('search-input');
                 const searchControls = document.getElementById('search-controls');
