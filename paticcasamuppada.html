@@ -174,6 +174,18 @@
             pointer-events: none;
             transition: all 0.5s ease;
         }
+        /* Shrink circle nodes on small screens so they don't overlap on the ring. */
+        @media (max-width: 560px) {
+            .circle-item { width: 88px; height: 88px; margin-top: -44px; margin-left: -44px; }
+            .circle-item-inner i { font-size: 1.25rem; }
+            .circle-item-inner > span { font-size: 10px; }
+        }
+        @media (max-width: 430px) {
+            .circle-item { width: 68px; height: 68px; margin-top: -34px; margin-left: -34px; }
+            .circle-item-inner i { font-size: 1rem; }
+            .circle-item-inner > span { font-size: 8.5px; }
+            .circle-arrow .circle-kbd span { font-size: 7.5px; max-width: 58px; }
+        }
 
         /* Running Loop Animation */
         @keyframes pulse-ring {
@@ -301,7 +313,7 @@
         <div class="text-center max-w-3xl mx-auto space-y-2">
             <span class="text-emerald-700 dark:text-emerald-400 font-semibold text-sm tracking-wider uppercase">အဘိဓမ္မာဒေသနာလာ ၉ ပိုင်းအနက် ၈ ပိုင်းမြောက် (ဒုတိယပိုင်း)</span>
             <h2 class="text-2xl md:text-3xl font-bold">"ငါ" မပါဘဲ ဒုက္ခ ဖြစ်ပေါ်ပုံ — အကြောင်းနှင့်အကျိုး စက်ဝန်း</h2>
-            <p class="text-slate-600 dark:text-slate-400 text-sm"><a href="paccaya_sangaha" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-700 dark:text-violet-200">ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း)</a> က "အခြေအနေ (၂၄) မျိုးဖြင့် တစ်ခုက တစ်ခုကို ဘယ်လို ထောက်ပံ့သလဲ" ဟူသော နည်းလမ်းအသေးစိတ်ကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ပဋိစ္စသမုပ္ပါဒ်ကမူ "ဘဝတစ်ခုမှ တစ်ခုသို့ ဒုက္ခ ဆက်တိုက် ဖြစ်ပေါ်ရခြင်း အကြောင်းအစဉ်" ကို နိဒါန်း (၁၂) ပါးဖြင့် အစဉ်လိုက် ဖော်ပြသည် — ဤ (၂) ခုသည် "ပစ္စယနည်း" (Paṭṭhāna-naya) နှင့် "ပဋိစ္စသမုပ္ပါဒနည်း" ဟု ခေါ်သော အကြောင်းရင်းသဘောတရား တစ်ခုတည်း၏ ရှင်းပြချက် နည်းလမ်း (၂) မျိုးသာ ဖြစ်သည်။</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm"><a href="paccaya_sangaha.html" class="text-violet-700 dark:text-violet-300 underline decoration-dotted hover:text-violet-700 dark:text-violet-200">ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း)</a> က "အခြေအနေ (၂၄) မျိုးဖြင့် တစ်ခုက တစ်ခုကို ဘယ်လို ထောက်ပံ့သလဲ" ဟူသော နည်းလမ်းအသေးစိတ်ကို ရှင်းပြခဲ့ပြီး ဖြစ်သည်။ ပဋိစ္စသမုပ္ပါဒ်ကမူ "ဘဝတစ်ခုမှ တစ်ခုသို့ ဒုက္ခ ဆက်တိုက် ဖြစ်ပေါ်ရခြင်း အကြောင်းအစဉ်" ကို နိဒါန်း (၁၂) ပါးဖြင့် အစဉ်လိုက် ဖော်ပြသည် — ဤ (၂) ခုသည် "ပစ္စယနည်း" (Paṭṭhāna-naya) နှင့် "ပဋိစ္စသမုပ္ပါဒနည်း" ဟု ခေါ်သော အကြောင်းရင်းသဘောတရား တစ်ခုတည်း၏ ရှင်းပြချက် နည်းလမ်း (၂) မျိုးသာ ဖြစ်သည်။</p>
             
             <!-- Pali Gatha -->
             <div class="bg-amber-50/80 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/50 p-4 rounded-xl mt-6 mb-4 shadow-sm inline-block mx-auto text-center w-full">
@@ -324,11 +336,11 @@
             <!-- View Mode Select -->
             <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center">
                 <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-lg flex items-center border border-slate-200 dark:border-slate-700">
-                    <button id="btn-view-linear" onclick="switchView('linear')" class="px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-600 text-slate-800 dark:text-white shadow-sm transition">
-                        <i class="fa-solid fa-list-ol mr-1"></i> အစဉ်လိုက်
+                    <button id="btn-view-linear" onclick="switchView('linear')" aria-pressed="true" class="px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-600 text-slate-800 dark:text-white shadow-sm transition">
+                        <i class="fa-solid fa-list-ol mr-1" aria-hidden="true"></i> အစဉ်လိုက်
                     </button>
-                    <button id="btn-view-circle" onclick="switchView('circle')" class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition">
-                        <i class="fa-solid fa-dharmachakra mr-1"></i> စက်ဝန်းပုံ
+                    <button id="btn-view-circle" onclick="switchView('circle')" aria-pressed="false" class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition">
+                        <i class="fa-solid fa-dharmachakra mr-1" aria-hidden="true"></i> စက်ဝန်းပုံ
                     </button>
                 </div>
             </div>
@@ -336,14 +348,14 @@
             <!-- Interpretation Toggle -->
             <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center">
                 <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-lg flex items-center border border-slate-200 dark:border-slate-700">
-                    <button id="btn-interp-trad" onclick="switchInterpretation('traditional')" class="px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-600 text-slate-800 dark:text-white shadow-sm transition">
-                        <i class="fa-solid fa-infinity mr-1"></i> ဘဝအဆက်ဆက်
+                    <button id="btn-interp-trad" onclick="switchInterpretation('traditional')" aria-pressed="true" class="px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-600 text-slate-800 dark:text-white shadow-sm transition">
+                        <i class="fa-solid fa-infinity mr-1" aria-hidden="true"></i> ဘဝအဆက်ဆက်
                     </button>
-                    <button id="btn-interp-mom" onclick="switchInterpretation('momentary')" class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition">
-                        <i class="fa-solid fa-bolt mr-1"></i> ခဏိက (Buddhadasa)
+                    <button id="btn-interp-mom" onclick="switchInterpretation('momentary')" aria-pressed="false" class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition">
+                        <i class="fa-solid fa-bolt mr-1" aria-hidden="true"></i> ခဏိက (Buddhadasa)
                     </button>
-                    <button id="btn-interp-eka" onclick="switchInterpretation('ekacittakkhanika')" class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition">
-                        <i class="fa-solid fa-microscope mr-1"></i> ဧကစိတ္တက္ခဏိက (Vibhanga)
+                    <button id="btn-interp-eka" onclick="switchInterpretation('ekacittakkhanika')" aria-pressed="false" class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition">
+                        <i class="fa-solid fa-microscope mr-1" aria-hidden="true"></i> ဧကစိတ္တက္ခဏိက (Vibhanga)
                     </button>
                 </div>
             </div>
@@ -520,7 +532,7 @@
                         <p><b>တဏှာမူလ</b> - ပစ္စုပ္ပန်မှ အနာဂတ်သို့ ဆက်စပ်ရာ၌ ဒုတိယအပိုင်း၏ မူလအမြစ်။</p>
                         <p>ဝိပဿနာဉာဏ်ဖြင့် သစ္စာလေးပါးကို ထိုးထွင်းသိမြင်၍ အဝိဇ္ဇာ ကွယ်ပျောက်သွားပါက၊ တဏှာလည်း ဆက်လက် မဖြစ်ပေါ်နိုင်တော့ဘဲ၊ ကျန်နိဒါန်း (၁၀) ပါးလုံးလည်း အစဉ်လိုက် ရပ်တန့်သွားပြီး ဤသည်ပင် <span class="text-emerald-700 dark:text-emerald-300 font-semibold">နိဗ္ဗာန်</span> ဖြစ်သည်။</p>
                         <div class="mt-4 pt-2 border-t border-amber-500/20 text-center">
-                            <a href="bodhipakkhiya_dhamma" class="inline-flex items-center justify-center gap-2 text-sm font-semibold bg-amber-100 dark:bg-amber-500/20 hover:bg-amber-200 dark:hover:bg-amber-500/30 text-amber-700 dark:text-amber-300 border border-amber-500/40 px-4 py-2 rounded-lg transition">
+                            <a href="bodhipakkhiya_dhamma.html" class="inline-flex items-center justify-center gap-2 text-sm font-semibold bg-amber-100 dark:bg-amber-500/20 hover:bg-amber-200 dark:hover:bg-amber-500/30 text-amber-700 dark:text-amber-300 border border-amber-500/40 px-4 py-2 rounded-lg transition">
                                 <i class="fa-solid fa-arrow-right"></i> အမြစ်ဖြတ်မည့် ဗောဓိပက္ခိယဓမ္မာ (၃၇) ပါး သို့
                             </a>
                         </div>
@@ -529,7 +541,7 @@
             </div>
         </div>
 <!-- Cross-link to Paccaya -->
-        <a href="paccaya_sangaha" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
+        <a href="paccaya_sangaha.html" class="block glass-card rounded-2xl p-5 max-w-3xl mx-auto border border-violet-400 dark:border-violet-500/30 hover:border-violet-400 transition text-center space-y-1.5">
             <i class="fa-solid fa-link text-violet-700 dark:text-violet-400 text-xl"></i>
             <h4 class="font-bold text-violet-700 dark:text-violet-300 text-sm">နိဒါန်း (၁၂) ပါး တစ်ခုနှင့်တစ်ခု ဘယ်အခြေအနေဖြင့် ထောက်ပံ့ကြသလဲ — ပစ္စယသင်္ဂဟ (Paccaya-saṅgaha)</h4>
             <p class="text-[11px] text-slate-600 dark:text-slate-400">ဥပမာ — ဝေဒနာမှ တဏှာသို့ ဆက်စပ်မှုသည် ဥပနိဿယပစ္စည်းနှင့်၊ ဘဝမှ ဇာတိသို့ ဆက်စပ်မှုသည် ကမ္မပစ္စည်းနှင့် တွဲဖက် နားလည်နိုင်သည် →</p>
@@ -630,10 +642,10 @@
     </main>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-content" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
-                <i class="fa-solid fa-xmark"></i>
+            <button onclick="closeModal()" aria-label="ပိတ်ရန် (Close)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4 overflow-y-auto"></div>
         </div>
@@ -877,7 +889,7 @@
                 const arrowRotation = nextAngle + 90;
                 
                 circleHtml += `
-                    <div class="circle-item" style="top: ${top}%; left: ${left}%; transition-delay: ${circleDelayIndex * 0.4}s" onclick="openNidanaModal('${n.key}')">
+                    <div class="circle-item" role="button" tabindex="0" aria-label="${n.name} (${mm(n.id)}) — အသေးစိတ် ကြည့်ရန်" style="top: ${top}%; left: ${left}%; transition-delay: ${circleDelayIndex * 0.4}s" onclick="openNidanaModal('${n.key}')">
                         <div class="circle-item-inner border-2 ${kInfo.bg} ${kInfo.border} ${vInfo.color} shadow-lg hover:scale-110 transition cursor-pointer bg-white dark:bg-slate-800" style="--idx: ${i}">
                             <span class="text-[9px] font-bold opacity-75">${mm(n.id)}</span>
                             <i class="fa-solid ${n.icon} text-2xl"></i>
@@ -886,8 +898,8 @@
                         </div>
                         <span class="absolute -bottom-3 bg-white dark:bg-slate-800 text-[9px] px-1.5 py-0.5 rounded-full border ${vInfo.border} ${vInfo.color} font-bold shadow-sm whitespace-nowrap">${vInfo.name}</span>
                     </div>
-                    <div onclick="openPaccayaModal('${n.key}'); event.stopPropagation();" class="circle-arrow text-slate-300 dark:text-slate-600 flex flex-col items-center justify-center text-xs cursor-pointer group" style="top: ${arrowTop}%; left: ${arrowLeft}%; transform: translate(-50%, -50%) rotate(${arrowRotation}deg); transition-delay: ${(circleDelayIndex * 0.4) + 0.2}s" title="${n.paccaya || 'အာသဝ'} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)">
-                        <div class="flex flex-col items-center justify-center gap-0.5" style="transform: rotate(-${arrowRotation}deg);">
+                    <div class="circle-arrow text-slate-300 dark:text-slate-600 flex flex-col items-center justify-center text-xs group" style="top: ${arrowTop}%; left: ${arrowLeft}%; transform: translate(-50%, -50%) rotate(${arrowRotation}deg); transition-delay: ${(circleDelayIndex * 0.4) + 0.2}s">
+                        <div class="circle-kbd flex flex-col items-center justify-center gap-0.5 cursor-pointer" role="button" tabindex="0" aria-label="ပစ္စယ ${n.paccaya || 'အာသဝ'} — အသေးစိတ် ကြည့်ရန်" title="${n.paccaya || 'အာသဝ'} (အသေးစိတ်ကြည့်ရန် နှိပ်ပါ)" onclick="openPaccayaModal('${n.key}'); event.stopPropagation();" style="transform: rotate(-${arrowRotation}deg); pointer-events: auto;">
                             <i class="fa-solid fa-chevron-right text-slate-400 dark:text-slate-500 text-sm group-hover:text-sky-500 group-hover:scale-125 transition-all" style="--idx: ${i}; transform: rotate(${arrowRotation}deg);"></i>
                             ${n.paccaya ? `<span class="text-[9px] leading-[1.2] text-center bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-mono font-bold px-1.5 py-0.5 rounded-md border border-slate-300 dark:border-slate-600 shadow-sm max-w-[76px] group-hover:bg-slate-100 dark:group-hover:bg-slate-700">${n.paccaya.replace(/၊ /g, '၊<br/>')}</span>` : ''}
                         </div>
@@ -948,6 +960,11 @@
             if (momExp) momExp.classList.add('hidden');
             if (ekaExp) ekaExp.classList.add('hidden');
 
+            // Keep aria-pressed in sync with the active interpretation.
+            btnTrad.setAttribute('aria-pressed', String(interp === 'traditional'));
+            btnMom.setAttribute('aria-pressed', String(interp === 'momentary'));
+            if (btnEka) btnEka.setAttribute('aria-pressed', String(interp === 'ekacittakkhanika'));
+
             if (interp === 'traditional') {
                 btnTrad.className = 'px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-600 text-slate-800 dark:text-white shadow-sm transition';
             } else if (interp === 'momentary') {
@@ -981,6 +998,8 @@
                 circleView.classList.remove('hidden');
                 chainView.classList.add('hidden');
             }
+            btnLinear.setAttribute('aria-pressed', String(view === 'linear'));
+            btnCircle.setAttribute('aria-pressed', String(view !== 'linear'));
         }
 
         function toggleNirodha(isNirodha) {
@@ -1049,26 +1068,25 @@
                 hetuHtml = `${prevLink.name} — ${shortMomMap[prevLink.key]}`;
                 phalaHtml = `${nextLink.name} — ${shortMomMap[nextLink.key]}`;
                 nirodhaHtml = `ဤ <b>${data.name} (${shortMomMap[data.key]})</b> ဖြစ်စဉ်ကို သတိ/ပညာဖြင့် ရှုမှတ် အမှန်သိမြင်လိုက်ပါက နောက်ဆက်တွဲ <b>${nextLink.name} (${shortMomMap[nextLink.key]})</b> ဆက်မဖြစ်တော့ဘဲ ခဏိက စက်ဝန်းသည် ထိုနေရာ၌ ပြတ်တောက်သွားသည်။`;
-                modeInfo = { label: 'ခဏိက နည်း (Momentary)', icon: 'fa-bolt', cls: 'text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/40 border-amber-400/50' };
+                modeInfo = { label: 'ခဏိက (Buddhadasa)', icon: 'fa-bolt', cls: 'text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/40 border-amber-400/50' };
             } else if (isEka) {
                 hetuLabel = 'ယှဉ်တွဲအင်္ဂါ (ရှေ့ / သဟဇာတ)';
                 phalaLabel = 'ယှဉ်တွဲအင်္ဂါ (နောက် / သဟဇာတ)';
                 hetuHtml = `${prevLink.name} — ${shortEkaMap[prevLink.key]}`;
                 phalaHtml = `${nextLink.name} — ${shortEkaMap[nextLink.key]}`;
                 nirodhaHtml = `<b>${data.name} (${shortEkaMap[data.key]})</b> အပါအဝင် ထိုစိတ်တစ်ခဏ၌ ယှဉ်ဖက်ဖြစ်ကြသော နာမ်ရုပ်တရားအားလုံးသည် စိတ်၏ ဘင်ခဏ (ပျက်ချိန်) ၌ တစ်ပြိုင်နက် ချုပ်ပျက်သွားသည်။`;
-                modeInfo = { label: 'ဧကစိတ္တက္ခဏိက နည်း (Vibhaṅga)', icon: 'fa-microscope', cls: 'text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/40 border-indigo-400/50' };
+                modeInfo = { label: 'ဧကစိတ္တက္ခဏိက (Vibhanga)', icon: 'fa-microscope', cls: 'text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/40 border-indigo-400/50' };
             } else {
                 hetuLabel = 'ဖြစ်ပေါ်ကြောင်း (အကြောင်း)';
                 phalaLabel = 'နောက်ဆက်တွဲ (အကျိုး)';
                 hetuHtml = data.hetuText;
                 phalaHtml = data.phalaText;
                 nirodhaHtml = data.nirodhaText;
-                modeInfo = { label: 'ဘဝဆက်ဆက် နည်း (Traditional)', icon: 'fa-timeline', cls: 'text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-600' };
+                modeInfo = { label: 'ဘဝအဆက်ဆက် (Traditional)', icon: 'fa-infinity', cls: 'text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-600' };
             }
             const modeBadge = `<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold font-mono shadow-sm ${modeInfo.cls}"><i class="fa-solid ${modeInfo.icon}"></i> ${modeInfo.label}</div>`;
 
-            const n = nidanaData.find(x => x.key === key);
-            if (!n) return;
+            const n = data; // same record as `data`; alias kept for template readability
             const info = kalaInfo[n.kala];
             const modal = document.getElementById('modal');
             const content = document.getElementById('modal-content');
@@ -1109,7 +1127,7 @@
                     </div>
                 </div>
             `;
-            modal.classList.remove('hidden');
+            showModal();
         }
 
         function openPaccayaModal(fromKey) {
@@ -1149,17 +1167,53 @@
                     </div>
                 </div>
             `;
-            modal.classList.remove('hidden');
+            showModal();
         }
 
+        let lastFocusedEl = null;
+        function showModal() {
+            const modal = document.getElementById('modal');
+            lastFocusedEl = document.activeElement;
+            modal.classList.remove('hidden');
+            // Move focus into the dialog (close button) for keyboard/screen-reader users.
+            const focusable = modal.querySelector('button, a[href], [tabindex]:not([tabindex="-1"])');
+            if (focusable) focusable.focus();
+        }
         function closeModal() {
             document.getElementById('modal').classList.add('hidden');
+            // Restore focus to the element that opened the dialog.
+            if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
+                lastFocusedEl.focus();
+                lastFocusedEl = null;
+            }
         }
         document.getElementById('modal').addEventListener('click', (e) => {
             if (e.target.id === 'modal') closeModal();
         });
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+            const modal = document.getElementById('modal');
+            if (modal.classList.contains('hidden')) return;
+            if (e.key === 'Escape') { closeModal(); return; }
+            // Trap focus within the dialog while it is open.
+            if (e.key === 'Tab') {
+                const focusables = Array.from(modal.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (focusables.length === 0) return;
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+        });
+        // Enter/Space activation for non-native role="button" circle elements.
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+            const el = e.target;
+            if (el && el.getAttribute && el.getAttribute('role') === 'button' &&
+                (el.classList.contains('circle-item') || el.classList.contains('circle-kbd'))) {
+                e.preventDefault();
+                el.click();
+            }
         });
 
         document.addEventListener('DOMContentLoaded', () => {
