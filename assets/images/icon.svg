@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0f172a"/>
+  <g transform="translate(256,256)" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="round">
+    <circle r="150"/>
+    <circle r="120"/>
+    <circle r="34" fill="#f59e0b" stroke="none"/>
+    <g id="spokes">
+      <line x1="0" y1="-118" x2="0" y2="-34"/>
+    </g>
+    <use href="#spokes" transform="rotate(45)"/>
+    <use href="#spokes" transform="rotate(90)"/>
+    <use href="#spokes" transform="rotate(135)"/>
+    <use href="#spokes" transform="rotate(180)"/>
+    <use href="#spokes" transform="rotate(225)"/>
+    <use href="#spokes" transform="rotate(270)"/>
+    <use href="#spokes" transform="rotate(315)"/>
+  </g>
+</svg>

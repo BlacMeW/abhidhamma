@@ -8,6 +8,13 @@
     <meta name="description" content="အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide — ပရိစ္ဆေဒ (၉) ခန်းလုံး၏ ပင်မ Dashboard နှင့် visual guides စုစည်းမှု">
     <title>အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide — Main Dashboard</title>
     <link rel="manifest" href="manifest.json">
+    <!-- iOS / Apple PWA support (beforeinstallprompt does not fire on Safari) -->
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="အဘိဓမ္မာ Guide">
     <link rel="stylesheet" href="output.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,6 +134,10 @@
                 </a>
                 <button onclick="openAboutModal()" class="text-xs font-semibold bg-violet-100 dark:bg-violet-500/20 hover:bg-violet-500/30 text-violet-700 dark:text-violet-300 border border-violet-500/40 px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
                     <i class="fa-solid fa-circle-info"></i> <span class="hidden sm:inline">အကြောင်း</span>
+                </button>
+                <!-- Install App Button -->
+                <button id="install-app-btn" class="hidden text-xs font-semibold bg-fuchsia-100 dark:bg-fuchsia-500/20 hover:bg-fuchsia-500/30 text-fuchsia-700 dark:text-fuchsia-300 border border-fuchsia-500/40 px-3.5 py-2 rounded-full transition items-center gap-1.5">
+                    <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Install App</span>
                 </button>
             </div>
         </div>
@@ -577,17 +588,101 @@
         });
     </script>
     <script>
-        // Offline/PWA support (sw.js) is temporarily disabled — unregister any
-        // previously installed service worker and clear its caches so every page
-        // always loads fresh from the network. Re-enable by restoring the
-        // navigator.serviceWorker.register('./sw.js') call this replaced.
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+        // PWA Install Prompt Logic
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-app-btn');
+
+        // Detect iOS (iPhone/iPad/iPod, incl. iPadOS reporting as Mac with touch).
+        const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        // Already running as an installed standalone app?
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+            window.navigator.standalone === true;
+
+        function showInstallBtn() {
+            installBtn.classList.remove('hidden');
+            installBtn.classList.add('flex');
         }
-        if (window.caches) {
-            caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+        function hideInstallBtn() {
+            installBtn.classList.add('hidden');
+            installBtn.classList.remove('flex');
+        }
+
+        // Chrome / Android: capture the native prompt.
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallBtn();
+        });
+
+        // iOS Safari never fires beforeinstallprompt — show the button ourselves
+        // (unless already installed) so we can display manual instructions.
+        if (isIOS && !isStandalone) {
+            showInstallBtn();
+        }
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') hideInstallBtn();
+                deferredPrompt = null;
+            } else if (isIOS) {
+                document.getElementById('ios-install-modal')?.classList.remove('hidden');
+            }
+        });
+
+        function closeIosInstallModal() {
+            document.getElementById('ios-install-modal')?.classList.add('hidden');
+        }
+
+        window.addEventListener('appinstalled', () => {
+            console.log('INSTALL: Success');
+            hideInstallBtn();
+        });
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
         }
     </script>
+
+    <!-- iOS "Add to Home Screen" instructions modal -->
+    <div id="ios-install-modal" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" onclick="if(event.target===this)closeIosInstallModal()">
+        <div class="w-full max-w-sm bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 p-6 space-y-5">
+            <div class="flex items-center gap-3">
+                <img src="assets/images/icon-192.png" alt="App icon" class="w-12 h-12 rounded-xl">
+                <div>
+                    <h3 class="font-bold text-slate-900 dark:text-slate-100">App အဖြစ် ထည့်သွင်းရန်</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">iPhone / iPad — Safari</p>
+                </div>
+                <button onclick="closeIosInstallModal()" class="ml-auto text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" aria-label="ပိတ်ရန်">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <ol class="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+                <li class="flex items-start gap-3">
+                    <span class="flex-none w-6 h-6 rounded-full bg-fuchsia-100 dark:bg-fuchsia-500/20 text-fuchsia-700 dark:text-fuchsia-300 font-bold text-xs flex items-center justify-center">1</span>
+                    <span>အောက်ခြေ (သို့) အပေါ်က <i class="fa-solid fa-arrow-up-from-bracket text-blue-500 mx-0.5"></i> <b>Share</b> ခလုတ်ကို နှိပ်ပါ။</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="flex-none w-6 h-6 rounded-full bg-fuchsia-100 dark:bg-fuchsia-500/20 text-fuchsia-700 dark:text-fuchsia-300 font-bold text-xs flex items-center justify-center">2</span>
+                    <span><i class="fa-solid fa-plus-square text-slate-500 mx-0.5"></i> <b>Add to Home Screen</b> (Home Screen သို့ ထည့်ရန်) ကို ရွေးပါ။</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="flex-none w-6 h-6 rounded-full bg-fuchsia-100 dark:bg-fuchsia-500/20 text-fuchsia-700 dark:text-fuchsia-300 font-bold text-xs flex items-center justify-center">3</span>
+                    <span>အပေါ်ညာဘက် <b>Add</b> ကို နှိပ်လိုက်ပါ — ပြီးပါပြီ။</span>
+                </li>
+            </ol>
+            <button onclick="closeIosInstallModal()" class="w-full py-2.5 rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold text-sm transition">နားလည်ပါပြီ</button>
+        </div>
+    </div>
 
     <script src="accessibility.js"></script>
 
