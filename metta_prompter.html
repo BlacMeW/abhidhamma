@@ -165,7 +165,7 @@
                 </h1>
                 <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">မေတ္တာပို့ကျင့်စဉ်၊ ကရဏီယမေတ္တာသုတ် နှင့် မေတ္တာပို့ ရွတ်စဉ် ရွတ်ဖတ်ပွားများရန် လမ်းညွှန် Timer</p>
             </div>
-            <a href="citta_cetasikas_visual_guide.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-slate-600 dark:text-slate-400 transition cursor-pointer shrink-0" title="ပင်မစာမျက်နှာသို့">
+            <a href="index.html" class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-slate-800/50 hover:bg-slate-300/50 dark:hover:bg-slate-700/50 flex items-center justify-center text-amber-700 dark:text-amber-400 transition cursor-pointer shrink-0" title="ပင်မ Dashboard သို့" aria-label="ပင်မ Dashboard သို့">
                 <i class="fa-solid fa-house"></i>
             </a>
         </div>
@@ -268,7 +268,7 @@
                         <i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i>
                         <p id="guide-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
                     </div>
-                    <div class="bg-rose-50/70 dark:bg-rose-950/30 p-3 rounded-xl border border-rose-200/50 dark:border-rose-900/30 text-xs text-rose-800 dark:text-rose-300 leading-relaxed">
+                    <div class="bg-rose-50/70 dark:bg-rose-950 p-3 rounded-xl border border-rose-200/50 dark:border-rose-900/30 text-xs text-rose-800 dark:text-rose-300 leading-relaxed">
                         <i class="fa-solid fa-lightbulb text-amber-600 dark:text-amber-500 mr-1.5"></i> <span id="extra-guide-text"></span>
                     </div>
                 </div>
@@ -279,7 +279,7 @@
                         <i class="fa-solid fa-triangle-exclamation text-amber-600 dark:text-amber-500 mt-1 shrink-0"></i>
                         <p id="caution-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
                     </div>
-                    <div class="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-xl border border-amber-200/50 dark:border-amber-900/30">
+                    <div class="p-3 bg-amber-50 dark:bg-amber-950 rounded-xl border border-amber-200/50 dark:border-amber-900/30">
                         <div class="text-xs font-bold text-amber-800 dark:text-amber-300 mb-1">
                             <i class="fa-solid fa-shield-heart mr-1"></i> မေတ္တာ၏ နယ်နိမိတ်နှင့် ရန်သူ
                         </div>
@@ -330,7 +330,7 @@
                     <button onclick="setTimePerStep(20)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700">20 Min</button>
                     <button onclick="setTimePerStep(30)" class="time-btn py-2.5 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 col-span-2 sm:col-span-1">30 Min</button>
                 </div>
-                <div class="mt-3 p-2.5 bg-rose-50/60 dark:bg-rose-950/30 rounded-xl text-center text-xs text-rose-800 dark:text-rose-300 font-medium border border-rose-200/50 dark:border-rose-900/30">
+                <div class="mt-3 p-2.5 bg-rose-50/60 dark:bg-rose-950 rounded-xl text-center text-xs text-rose-800 dark:text-rose-300 font-medium border border-rose-200/50 dark:border-rose-900/30">
                     <i class="fa-solid fa-hourglass-half mr-1"></i> အဆင့် (၄) ဆင့်လုံးအတွက် စုစုပေါင်း <strong id="total-time-display" class="font-bold underline text-sm">12</strong> မိနစ် ကြာမြင့်ပါမည်။
                 </div>
             </div>
@@ -341,7 +341,7 @@
                     <i class="fa-solid fa-bell text-amber-600 dark:text-amber-500 mr-1.5"></i> အဆင့်တွင်း သတိပေး ခေါင်းလောင်းသံ (Interval Bell)
                 </label>
                 <div class="grid grid-cols-4 gap-2">
-                    <button onclick="setIntervalTime(0)" class="interval-btn py-2 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-bold shadow-sm">မလိုပါ</button>
+                    <button onclick="setIntervalTime(0)" class="interval-btn py-2 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold shadow-sm">မလိုပါ</button>
                     <button onclick="setIntervalTime(1)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700">1 Min</button>
                     <button onclick="setIntervalTime(2)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700">2 Min</button>
                     <button onclick="setIntervalTime(5)" class="interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
@@ -410,7 +410,7 @@
                     "သဗ္ဗေ သတ္တာ အဝေရာ ဟောန္တု၊ အဗျာပဇ္ဇာ ဟောန္တု၊ အနီဃာ ဟောန္တု၊ သုခီ အတ္တာနံ ပရိဟရန္တု"
                 </p>
             </div>
-            <button onclick="closeModal()" class="w-full py-3.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-bold text-base shadow-lg shadow-rose-500/30 transition">
+            <button onclick="closeModal()" aria-label="ပိတ်ရန် (Close modal)" class="w-full py-3.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-bold text-base shadow-lg shadow-rose-500/30 transition">
                 <i class="fa-solid fa-check mr-2"></i> ကောင်းပါပြီ / နိဂုံးချုပ်မည်
             </button>
         </div>
@@ -937,7 +937,7 @@
             document.querySelectorAll('.interval-btn').forEach(btn => {
                 const text = mins === 0 ? "မလိုပါ" : `${mins} Min`;
                 if (btn.textContent.trim() === text) {
-                    btn.className = "interval-btn py-2 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-bold shadow-sm";
+                    btn.className = "interval-btn py-2 rounded-xl border-2 border-amber-500 bg-amber-50 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold shadow-sm";
                 } else {
                     btn.className = "interval-btn py-2 rounded-xl border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs hover:bg-slate-200 dark:hover:bg-slate-700";
                 }

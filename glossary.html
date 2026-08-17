@@ -246,7 +246,7 @@
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-700 dark:text-emerald-400 text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-950 border border-emerald-500/50 flex items-center justify-center text-emerald-700 dark:text-emerald-400 text-xl flex-shrink-0">
                     <i class="fa-solid fa-spell-check"></i>
                 </div>
                 <div>
@@ -274,7 +274,7 @@
                         <i class="fa-solid fa-magnifying-glass text-slate-500"></i>
                     </div>
                     <input type="text" id="searchInput" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full py-3 pl-11 pr-4 text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition shadow-inner" placeholder="ဝေါဟာရ (သို့) အဓိပ္ပာယ်ကို ရှာဖွေပါ">
-                    <button id="clearSearch" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:text-slate-300 hidden">
+                    <button id="clearSearch" aria-label="ရှာဖွေမှု ရှင်းလင်းရန်" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:text-slate-300 hidden">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -294,14 +294,19 @@
                     <button class="filter-btn" data-cat="misc">အခြား (Misc)</button>
                 </div>
                 
-                <!-- View Toggles -->
-                <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-700 pt-4">
-                    <div id="resultCount" class="text-sm font-medium text-slate-500 dark:text-slate-400"></div>
+                <!-- View Toggles & Actions -->
+                <div class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 dark:border-slate-700 pt-4">
+                    <div class="flex items-center gap-3">
+                        <div id="resultCount" class="text-sm font-medium text-slate-500 dark:text-slate-400"></div>
+                        <button onclick="exportBookmarks()" class="text-xs px-3 py-1.5 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800 hover:bg-amber-200 dark:hover:bg-amber-900 flex items-center gap-1.5 transition font-semibold" title="မှတ်ထားသော ဝေါဟာရများ သိမ်းဆည်းရန်" aria-label="Bookmarks ထုတ်ယူရန်">
+                            <i class="fa-solid fa-file-arrow-down"></i> <span>Bookmarks Export</span>
+                        </button>
+                    </div>
                     
                     <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
-                        <button class="view-btn active" data-view="list" title="List View"><i class="fa-solid fa-list"></i></button>
-                        <button class="view-btn" data-view="grid" title="Grid View"><i class="fa-solid fa-border-all"></i></button>
-                        <button class="view-btn text-indigo-500" data-view="flashcard" title="Flashcard Mode"><i class="fa-solid fa-clone"></i></button>
+                        <button class="view-btn active" data-view="list" title="List View" aria-label="စာရင်းပုံစံကြည့်ရန် (List View)"><i class="fa-solid fa-list"></i></button>
+                        <button class="view-btn" data-view="grid" title="Grid View" aria-label="ကွက်လပ်ပုံစံကြည့်ရန် (Grid View)"><i class="fa-solid fa-border-all"></i></button>
+                        <button class="view-btn text-indigo-500" data-view="flashcard" title="Flashcard Mode" aria-label="Flashcard ပုံစံလေ့ကျင့်ရန်"><i class="fa-solid fa-clone"></i></button>
                     </div>
                 </div>
             </div>
@@ -592,7 +597,7 @@
             let linksHtml = '';
             if (t.links && t.links.length > 0) {
                 linksHtml = '<div class="mt-3 flex flex-wrap gap-2">' + t.links.map(l => 
-                    `<a href="${l.url}" class="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 hover:bg-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-300 dark:hover:bg-emerald-500/20 transition-colors border border-emerald-200/50 dark:border-emerald-500/20"><i class="fa-solid fa-link text-[9px] opacity-70"></i> ${l.name}</a>`
+                    `<a href="${l.url}" class="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 hover:bg-emerald-100 dark:bg-emerald-950 dark:text-emerald-300 dark:hover:bg-emerald-500/20 transition-colors border border-emerald-200/50 dark:border-emerald-500/20"><i class="fa-solid fa-link text-[9px] opacity-70"></i> ${l.name}</a>`
                 ).join('') + '</div>';
             }
             
@@ -608,7 +613,7 @@
             
             return `
                 <div class="glass-card animate-stagger p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col md:flex-row md:items-start gap-2 md:gap-4 relative group" style="animation-delay: ${Math.min(index * 0.05, 0.5)}s">
-                    <button onclick="toggleBookmark('${t.id}', event)" class="bookmark-btn absolute top-4 right-4 text-lg ${bkmIcon} hover:text-amber-600 dark:text-amber-500 z-10" title="Bookmark">
+                    <button onclick="toggleBookmark(\'${t.id}\', event)" class="bookmark-btn absolute top-4 right-4 text-lg ${bkmIcon} hover:text-amber-600 dark:text-amber-500 z-10" title="Bookmark" aria-label="အကြိုက်ဆုံးအဖြစ် မှတ်သားရန်">
                         <i class="fa-star"></i>
                     </button>
                     <div class="md:w-1/3 pt-1 pr-6">
@@ -648,10 +653,10 @@
                         <div class="flashcard shadow-lg rounded-2xl">
                             <!-- Front -->
                             <div class="flashcard-face">
-                                <button onclick="toggleBookmark('${t.id}', event)" class="bookmark-btn absolute top-6 right-6 text-2xl ${bkmIcon} hover:text-amber-600 dark:text-amber-500 z-10" title="Bookmark">
+                                <button onclick="toggleBookmark(\'${t.id}\', event)" class="bookmark-btn absolute top-6 right-6 text-2xl ${bkmIcon} hover:text-amber-600 dark:text-amber-500 z-10" title="Bookmark" aria-label="အကြိုက်ဆုံးအဖြစ် မှတ်သားရန်">
                                     <i class="fa-star"></i>
                                 </button>
-                                <span class="absolute top-6 left-6 text-xs uppercase tracking-widest font-bold text-emerald-600/50 dark:text-emerald-400/50 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1 rounded-full">${t.category}</span>
+                                <span class="absolute top-6 left-6 text-xs uppercase tracking-widest font-bold text-emerald-600/50 dark:text-emerald-400/50 bg-emerald-50 dark:bg-emerald-950 px-3 py-1 rounded-full">${t.category}</span>
                                 
                                 <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 dark:text-emerald-300 leading-tight">${t.term}</h2>
                                 <p class="text-sm text-slate-400 mt-6"><i class="fa-solid fa-hand-pointer animate-pulse"></i> Click to flip</p>
@@ -676,13 +681,13 @@
                     </div>
                     
                     <div class="flex items-center gap-4 mt-6">
-                        <button onclick="flashcardIndex--; renderCore();" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                        <button onclick="flashcardIndex--; renderCore();" aria-label="ယခင်ကတ်သို့" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition">
                             <i class="fa-solid fa-arrow-left"></i>
                         </button>
-                        <button onclick="flashcardIndex = Math.floor(Math.random() * filteredTerms.length); renderCore();" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center hover:text-emerald-500 transition" title="Random Card">
+                        <button onclick="flashcardIndex = Math.floor(Math.random() * filteredTerms.length); renderCore();" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow flex items-center justify-center hover:text-emerald-500 transition" title="Random Card" aria-label="ကျပန်းကတ်ပြောင်းရန်">
                             <i class="fa-solid fa-shuffle"></i>
                         </button>
-                        <button onclick="flashcardIndex++; renderCore();" class="w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-md flex items-center justify-center transition">
+                        <button onclick="flashcardIndex++; renderCore();" aria-label="နောက်ကတ်သို့" class="w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-md flex items-center justify-center transition">
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
@@ -697,12 +702,46 @@
                 if (currentCategory === 'favorites' && !bookmarks.includes(t.id)) return false;
                 if (currentCategory !== 'all' && currentCategory !== 'favorites' && t.category !== currentCategory) return false;
                 
-                // Search Filter
+                // Search Filter (Search across Pali term, Myanmar term, English transliteration, Meaning, and Nissaya)
                 if (searchQuery) {
-                    return fuzzyMatch(t.term, searchQuery) || fuzzyMatch(t.meaning, searchQuery);
+                    return fuzzyMatch(t.term, searchQuery) || 
+                           fuzzyMatch(t.term_my || '', searchQuery) ||
+                           fuzzyMatch(t.pali_eng || '', searchQuery) ||
+                           fuzzyMatch(t.meaning, searchQuery) ||
+                           fuzzyMatch(t.nissaya || '', searchQuery);
                 }
                 return true;
             });
+        }
+
+        function exportBookmarks() {
+            if (!bookmarks || bookmarks.length === 0) {
+                alert('ကြယ်ပွင့်ပြထားသော မှတ်သားထားသည့် ဝေါဟာရ မရှိသေးပါ။ ဦးစွာ ဝေါဟာရများတွင် ကြယ်ပွင့် (Bookmark) နှိပ်ပါ။');
+                return;
+            }
+            const bkmTerms = terms.filter(t => bookmarks.includes(t.id));
+            const textData = 'အဘိဓမ္မာ အဘိဓာန် - မှတ်သားထားသော ဝေါဟာရများ (Bookmarks)\n\n' + 
+                bkmTerms.map((t, idx) => `${idx + 1}. ${t.term_my || t.term} (${t.pali_eng || ''})\nအဓိပ္ပာယ်: ${t.meaning}\n${t.nissaya ? 'နိဿယ: ' + t.nissaya + '\n' : ''}`).join('\n----------------------------------------\n\n');
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textData).then(() => {
+                    alert(`မှတ်သားထားသော ဝေါဟာရ (${bkmTerms.length}) ခုကို Clipboard သို့ အောင်မြင်စွာ ကူးယူပြီးပါပြီ။`);
+                }).catch(() => {
+                    downloadBookmarksFile(textData);
+                });
+            } else {
+                downloadBookmarksFile(textData);
+            }
+        }
+
+        function downloadBookmarksFile(textData) {
+            const blob = new Blob([textData], { type: 'text/plain;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Abhidhamma_Glossary_Bookmarks.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
 
         function renderCore() {
@@ -859,7 +898,7 @@
     </script>
     <script src="accessibility.js"></script>
 
-    <button id="backToTopBtn" class="fixed bottom-6 right-6 w-12 h-12 bg-emerald-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-emerald-700 hover:scale-110 z-50">
+    <button id="backToTopBtn" aria-label="ထိပ်ဆုံးသို့ ပြန်သွားရန်" class="fixed bottom-6 right-6 w-12 h-12 bg-emerald-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-emerald-700 hover:scale-110 z-50">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 

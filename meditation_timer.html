@@ -186,7 +186,7 @@
                     <i class="fa-regular fa-hourglass-half"></i> တရားထိုင်မည့် အချိန် (Duration)
                 </label>
                 <div class="flex justify-center gap-2 flex-wrap">
-                    <button onclick="setDuration(15)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">15 Min</button>
+                    <button onclick="setDuration(15)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-300 font-bold">15 Min</button>
                     <button onclick="setDuration(30)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">30 Min</button>
                     <button onclick="setDuration(45)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">45 Min</button>
                     <button onclick="setDuration(60)" class="duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">60 Min</button>
@@ -203,25 +203,39 @@
                 <div class="flex justify-center gap-2 flex-wrap">
                     <button onclick="setIntervalTime(0)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">မလိုပါ</button>
                     <button onclick="setIntervalTime(5)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">5 Min</button>
-                    <button onclick="setIntervalTime(10)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold">10 Min</button>
+                    <button onclick="setIntervalTime(10)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-300 font-bold">10 Min</button>
                     <button onclick="setIntervalTime(15)" class="interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">15 Min</button>
                 </div>
                 <p class="text-[11px] text-center text-slate-500 mt-2">သတ်မှတ်ထားသော အချိန်အပိုင်းအခြားရောက်တိုင်း ခေါင်းလောင်းသံ မြည်ပေးပါမည်။</p>
+            </div>
+
+            <hr class="border-slate-200 dark:border-slate-700">
+
+            <!-- Sound Tone Setting -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3 text-center">
+                    <i class="fa-solid fa-music"></i> ခေါင်းလောင်း အသံလှိုင်း (Chime Tone)
+                </label>
+                <div class="flex justify-center gap-2 flex-wrap">
+                    <button onclick="setBellTone('singing-bowl')" id="tone-singing-bowl" class="tone-btn px-3.5 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-300 font-bold text-xs">Singing Bowl (432Hz)</button>
+                    <button onclick="setBellTone('temple-gong')" id="tone-temple-gong" class="tone-btn px-3.5 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs">Temple Gong (216Hz)</button>
+                    <button onclick="setBellTone('high-chime')" id="tone-high-chime" class="tone-btn px-3.5 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs">Clear Chime (528Hz)</button>
+                </div>
             </div>
 
         </div>
 
         <!-- Action Buttons -->
         <div class="flex justify-center gap-4 w-full">
-            <button id="btn-start" onclick="startTimer()" class="w-16 h-16 rounded-full bg-sky-500 hover:bg-sky-600 text-white shadow-lg shadow-sky-500/30 flex items-center justify-center text-xl transition-transform hover:scale-105">
+            <button id="btn-start" onclick="startTimer()" aria-label="တရားထိုင်ချိန် စတင်ရန် (Start timer)" class="w-16 h-16 rounded-full bg-sky-500 hover:bg-sky-600 text-white shadow-lg shadow-sky-500/30 flex items-center justify-center text-xl transition-transform hover:scale-105">
                 <i class="fa-solid fa-play ml-1"></i>
             </button>
             
-            <button id="btn-pause" onclick="pauseTimer()" class="hidden w-16 h-16 rounded-full bg-amber-500 hover:bg-amber-600 text-white shadow-lg shadow-amber-500/30 flex items-center justify-center text-xl transition-transform hover:scale-105">
+            <button id="btn-pause" onclick="pauseTimer()" aria-label="ခေတ္တရပ်နားရန် (Pause timer)" class="hidden w-16 h-16 rounded-full bg-amber-500 hover:bg-amber-600 text-white shadow-lg shadow-amber-500/30 flex items-center justify-center text-xl transition-transform hover:scale-105">
                 <i class="fa-solid fa-pause"></i>
             </button>
             
-            <button id="btn-stop" onclick="stopTimer()" class="hidden w-16 h-16 rounded-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xl transition-transform hover:scale-105">
+            <button id="btn-stop" onclick="stopTimer()" aria-label="ရပ်တန့်ရန် (Stop timer)" class="hidden w-16 h-16 rounded-full bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xl transition-transform hover:scale-105">
                 <i class="fa-solid fa-stop"></i>
             </button>
         </div>
@@ -232,6 +246,7 @@
         // State
         let durationMinutes = 15;
         let intervalMinutes = 10;
+        let currentBellTone = 'singing-bowl';
         
         let timeLeft = durationMinutes * 60; // in seconds
         let timePassedSinceLastBell = 0;
@@ -290,14 +305,25 @@
                 masterGain.gain.linearRampToValueAtTime(isEnd ? 1 : 0.8, ctx.currentTime + 0.05); // Attack
                 masterGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + decayTime); // Decay
                 
-                // Main tone (432Hz - perceived as healing/calm)
+                // Tone configuration based on user selection
+                let freq = 432;
+                let subFreq = 216;
+                if (currentBellTone === 'temple-gong') {
+                    freq = 216;
+                    subFreq = 108;
+                } else if (currentBellTone === 'high-chime') {
+                    freq = 528;
+                    subFreq = 264;
+                }
+
+                // Main tone
                 mainOsc.type = 'sine';
-                mainOsc.frequency.setValueAtTime(432, ctx.currentTime); 
+                mainOsc.frequency.setValueAtTime(freq, ctx.currentTime); 
                 mainGain.gain.value = 1;
                 
-                // Sub tone for resonance (216Hz - one octave down)
+                // Sub tone for resonance
                 subOsc.type = 'sine';
-                subOsc.frequency.setValueAtTime(216, ctx.currentTime);
+                subOsc.frequency.setValueAtTime(subFreq, ctx.currentTime);
                 subGain.gain.value = 0.5;
 
                 // Routing
@@ -319,7 +345,7 @@
                         const osc2 = ctx.createOscillator();
                         const gain2 = ctx.createGain();
                         osc2.type = 'sine';
-                        osc2.frequency.setValueAtTime(432, ctx.currentTime);
+                        osc2.frequency.setValueAtTime(freq, ctx.currentTime);
                         gain2.gain.setValueAtTime(0, ctx.currentTime);
                         gain2.gain.linearRampToValueAtTime(0.6, ctx.currentTime + 0.05);
                         gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 6);
@@ -332,6 +358,18 @@
             } catch (e) {
                 console.log("Audio API not supported or user hasn't interacted yet.");
             }
+        }
+
+        function setBellTone(tone) {
+            currentBellTone = tone;
+            document.querySelectorAll('.tone-btn').forEach(btn => {
+                if (btn.id === `tone-${tone}`) {
+                    btn.className = "tone-btn px-3.5 py-2 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-300 font-bold text-xs";
+                } else {
+                    btn.className = "tone-btn px-3.5 py-2 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs";
+                }
+            });
+            testBell();
         }
 
         // Test Bell (must be triggered by user click to unlock AudioContext)
@@ -358,7 +396,7 @@
             // Update UI buttons
             document.querySelectorAll('.duration-btn').forEach(btn => {
                 if (btn.textContent.includes(mins)) {
-                    btn.className = "duration-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
+                    btn.className = "duration-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-300 font-bold";
                 } else {
                     btn.className = "duration-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
                 }
@@ -372,7 +410,7 @@
             // Update UI buttons
             document.querySelectorAll('.interval-btn').forEach(btn => {
                 if (btn.textContent.includes(mins) || (mins === 0 && btn.textContent === "မလိုပါ")) {
-                    btn.className = "interval-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-bold";
+                    btn.className = "interval-btn px-4 py-2.5 rounded-full border-2 border-sky-500 bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-300 font-bold";
                 } else {
                     btn.className = "interval-btn px-4 py-2.5 rounded-full border-2 border-transparent bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
                 }

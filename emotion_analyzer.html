@@ -192,7 +192,7 @@
                 </div>
 
                 <!-- Remedy Section -->
-                <div id="remedy-section" class="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-5 border border-indigo-200 dark:border-indigo-800 shadow-sm relative overflow-hidden">
+                <div id="remedy-section" class="bg-indigo-50 dark:bg-indigo-950 rounded-xl p-5 border border-indigo-200 dark:border-indigo-800 shadow-sm relative overflow-hidden">
                     <div class="absolute -right-4 -top-4 text-indigo-500/10 dark:text-indigo-400/10 text-5xl sm:text-6xl pointer-events-none">
                         <i class="fa-solid fa-lightbulb"></i>
                     </div>
@@ -927,10 +927,10 @@
             const badge = document.getElementById('citta-type-badge');
             if (data.type === 'akusala') {
                 badge.textContent = 'အကုသိုလ် (Akusala)';
-                badge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 border border-red-200 dark:border-red-800';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-rose-950 dark:text-red-400 border border-red-200 dark:border-red-800';
             } else {
                 badge.textContent = 'ကုသိုလ် (Kusala)';
-                badge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800';
             }
 
             // Populate Cetasikas
@@ -960,9 +960,9 @@
 
                 group.items.forEach(cet => {
                     const badgeColor = data.type === 'akusala' && group.groupName.includes("အကုသိုလ်")
-                        ? 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/20 dark:text-rose-300 dark:border-rose-800' 
+                        ? 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950 dark:text-rose-300 dark:border-rose-800' 
                         : (data.type === 'kusala' && group.groupName.includes("သောဘဏ")
-                            ? 'bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-900/20 dark:text-teal-300 dark:border-teal-800'
+                            ? 'bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-950 dark:text-teal-300 dark:border-teal-800'
                             : 'bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-800/80 dark:text-slate-300 dark:border-slate-700');
                     
                     const cBadge = document.createElement('div');

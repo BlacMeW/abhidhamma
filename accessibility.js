@@ -19,7 +19,14 @@
                     <button id="a11y-close" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><i class="fa-solid fa-xmark"></i></button>
                 </h3>
                 
-                <div class="space-y-4">
+                    <!-- Quick Global Search -->
+                    <div>
+                        <button id="a11y-global-search-btn" class="w-full py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-between bg-sky-50 dark:bg-slate-700 text-sky-700 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-slate-600 transition border border-sky-200 dark:border-slate-600 shadow-sm" aria-label="တစ်ဆိုက်လုံး ရှာဖွေရန် (Global Search)">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass text-sky-500"></i> ရှာဖွေရန် (Search)</span>
+                            <kbd class="text-[10px] px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 text-slate-500 font-mono shadow-xs">Ctrl+K</kbd>
+                        </button>
+                    </div>
+
                     <!-- Theme Toggle -->
                     <div>
                         <span class="text-xs text-slate-500 dark:text-slate-400 block mb-2 font-semibold uppercase tracking-wider">အလင်း/အမှောင် (Theme)</span>
@@ -520,13 +527,164 @@
     // Apply initial state
     applyLyricsVisibility();
 
-    // Exposed so other page scripts (e.g. metta_prompter.html's own guided timer) can
-    // pause this background player instead of overlapping it with their own audio.
+    // ==========================================
+    // Universal Global Search System
+    // ==========================================
+    const universalSearchDb = [
+        { name: 'စိတ် (၈၉ / ၁၂၁)', category: 'ပရိစ္ဆေဒ ၁ - စိတ္တသင်္ဂဟ', link: 'citta_cetasikas_visual_guide.html#citta89', icon: 'fa-brain' },
+        { name: 'စေတသိက် (၅၂)', category: 'ပရိစ္ဆေဒ ၂ - စေတသိကသင်္ဂဟ', link: 'citta_cetasikas_visual_guide.html#cetasika', icon: 'fa-heart' },
+        { name: 'ပကိဏ္ဏကသင်္ဂဟ (ဝေဒနာ၊ ဟိတ်၊ ကိစ္စ၊ ဒွါရ၊ အာရုံ၊ ဝတ္ထု)', category: 'ပရိစ္ဆေဒ ၃ - ပကိဏ္ဏကသင်္ဂဟ', link: 'pakinnaka_sangaha.html', icon: 'fa-layer-group' },
+        { name: 'ဝီထိစိတ်ဖြစ်စဉ် (Citta Vithi)', category: 'ပရိစ္ဆေဒ ၄ - ဝီထိသင်္ဂဟ', link: 'vithi_sangaha.html', icon: 'fa-diagram-project' },
+        { name: 'ဘုံ (၃၁) ပါး၊ ပဋိသန္ဓေ၊ ကံ ၄၊ မရဏုပ္ပတ္တိ', category: 'ပရိစ္ဆေဒ ၅ - ဝီထိမုတ္တသင်္ဂဟ', link: 'vithimutta_sangaha.html', icon: 'fa-arrows-split-up-and-left' },
+        { name: 'ရုပ် (၂၈) ပါး နှင့် နိဗ္ဗာန်', category: 'ပရိစ္ဆေဒ ၆ - ရူပသင်္ဂဟ', link: 'rupa_sangaha.html', icon: 'fa-cube' },
+        { name: 'သမုစ္စယသင်္ဂဟ (ကိလေသာ ၄၃ ပါး)', category: 'ပရိစ္ဆေဒ ၇ - သမုစ္စယသင်္ဂဟ', link: 'kilesa_sangaha.html', icon: 'fa-link-slash' },
+        { name: 'မိဿကသင်္ဂဟ (ရောပြွမ်း ၇ အုပ်စု)', category: 'ပရိစ္ဆေဒ ၇ - သမုစ္စယသင်္ဂဟ', link: 'missaka_sangaha.html', icon: 'fa-shuffle' },
+        { name: 'ဗောဓိပက္ခိယဓမ္မာ (၃၇ ပါး)', category: 'ပရိစ္ဆေဒ ၇ - သမုစ္စယသင်္ဂဟ', link: 'bodhipakkhiya_dhamma.html', icon: 'fa-seedling' },
+        { name: 'သဗ္ဗသင်္ဂဟ (ခန္ဓာ၊ အာယတန၊ ဓာတ်၊ သစ္စာ)', category: 'ပရိစ္ဆေဒ ၇ - သမုစ္စယသင်္ဂဟ', link: 'sabba_sangaha.html', icon: 'fa-atom' },
+        { name: 'ပစ္စယသင်္ဂဟ (ပဋ္ဌာန်း ၂၄ ပစ္စည်း)', category: 'ပရိစ္ဆေဒ ၈ - ပစ္စယသင်္ဂဟ', link: 'paccaya_sangaha.html', icon: 'fa-link' },
+        { name: 'ပဋိစ္စသမုပ္ပါဒ် (၁၂ အင်္ဂါ၊ ဝဋ် ၃ ပါး)', category: 'ပရိစ္ဆေဒ ၈ - ပစ္စယသင်္ဂဟ', link: 'paticcasamuppada.html', icon: 'fa-circle-notch' },
+        { name: 'ပညတ် (Paññatti)', category: 'ပရိစ္ဆေဒ ၈ - ပစ္စယသင်္ဂဟ', link: 'pannatti.html', icon: 'fa-font' },
+        { name: 'ကမ္မဋ္ဌာနသင်္ဂဟ (သမထ ၄၀၊ ဝိသုဒ္ဓိ ၇၊ ဉာဏ်စဉ် ၁၆)', category: 'ပရိစ္ဆေဒ ၉ - ကမ္မဋ္ဌာနသင်္ဂဟ', link: 'kammatthana_sangaha.html', icon: 'fa-spa' },
+        { name: 'အဘိဓမ္မာ အဘိဓာန် (Abhidhamma Glossary)', category: 'အဘိဓာန်နှင့် ဝေါဟာရ', link: 'glossary.html', icon: 'fa-spell-check' },
+        { name: 'အဘိဓမ္မာ သဘောတရား ဆက်စပ်မှုပြ Concept Map', category: 'သဘောတရားမြေပုံ', link: 'concept_map.html', icon: 'fa-project-diagram' },
+        { name: 'စိတ်သရုပ်ခွဲစက် (Emotion Analyzer)', category: 'လက်တွေ့လေ့လာရေး Tool', link: 'emotion_analyzer.html', icon: 'fa-microscope' },
+        { name: 'တရားထိုင် အချိန်မှတ်စနစ် (Meditation Timer)', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'meditation_timer.html', icon: 'fa-bell' },
+        { name: 'အာနာပါန Visualizer', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'anapana_visualizer.html', icon: 'fa-wind' },
+        { name: 'အာနာပါန ရေတွက်ကိရိယာ (Breath Counter)', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'anapana_counter.html', icon: 'fa-hashtag' },
+        { name: 'ကသိုဏ်းဝန်း Simulator (၁၀ ပါး)', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'kasina_simulator.html', icon: 'fa-circle-dot' },
+        { name: 'ကသိုဏ်း (၁၀) ပါး လမ်းညွှန်', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'kasina_guide.html', icon: 'fa-book-open' },
+        { name: 'မေတ္တာပို့ Prompter', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'metta_prompter.html', icon: 'fa-heart' },
+        { name: 'မေတ္တာဘာဝနာ လမ်းညွှန် (၅၂၈ မေတ္တာ)', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'metta_bhavana_guide.html', icon: 'fa-hands-holding-heart' },
+        { name: 'သတိပဋ္ဌာန် Prompter', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'satipatthana_prompter.html', icon: 'fa-person-walking' },
+        { name: 'သတိပဋ္ဌာန် လမ်းညွှန် (ကာယ၊ ဝေဒနာ၊ စိတ္တ၊ ဓမ္မ)', category: 'တရားလက်တွေ့ကျင့်စဉ်', link: 'satipatthana_guide.html', icon: 'fa-mountain-sun' },
+        { name: 'ကျမ်းကိုးစာအုပ်များ (Reference Library)', category: 'စာကြည့်တိုက်', link: 'library.html', icon: 'fa-book' }
+    ];
+
+    function openUniversalSearch() {
+        if (typeof window.openGlobalSearch === 'function' && document.getElementById('search-modal')) {
+            window.openGlobalSearch();
+            return;
+        }
+
+        let modal = document.getElementById('a11y-universal-search-modal');
+        if (!modal) {
+            const modalHTML = `
+                <div id="a11y-universal-search-modal" class="fixed inset-0 z-[100] flex items-start justify-center pt-16 sm:pt-24 px-4 bg-slate-900/60 backdrop-blur-sm transition-opacity" role="dialog" aria-modal="true" aria-label="Global Search">
+                    <div class="w-full max-w-xl bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col max-h-[80vh]">
+                        <div class="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+                            <i class="fa-solid fa-magnifying-glass text-sky-500 text-lg"></i>
+                            <input type="text" id="a11y-universal-search-input" placeholder="တရားအမည် သို့မဟုတ် ပရိစ္ဆေဒ ရှာရန်..." class="w-full bg-transparent text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none text-base" aria-label="ရှာဖွေရန် စာသား">
+                            <button id="a11y-universal-search-close" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg p-1" aria-label="ပိတ်ရန်">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div id="a11y-universal-search-results" class="p-3 overflow-y-auto space-y-2 flex-1">
+                            <!-- Results will be dynamically populated -->
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center text-[11px] text-slate-500 dark:text-slate-400">
+                            <span><kbd class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 font-mono">ESC</kbd> ဖြင့် ပိတ်ပါ</span>
+                            <span>ပရိစ္ဆေဒ (၉) ခန်းလုံးနှင့် Tools များ စုံလင်စွာ ရှာဖွေနိုင်ပါသည်</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            modal = document.getElementById('a11y-universal-search-modal');
+
+            const searchInput = document.getElementById('a11y-universal-search-input');
+            const searchResults = document.getElementById('a11y-universal-search-results');
+            const closeBtn = document.getElementById('a11y-universal-search-close');
+
+            function renderResults(q) {
+                const query = q.trim().toLowerCase();
+                const filtered = query ? universalSearchDb.filter(item => 
+                    item.name.toLowerCase().includes(query) || 
+                    item.category.toLowerCase().includes(query)
+                ) : universalSearchDb.slice(0, 10);
+
+                if (filtered.length === 0) {
+                    searchResults.innerHTML = '<p class="text-center text-slate-400 dark:text-slate-500 py-6 text-sm">ရှာဖွေမှု မတွေ့ရှိပါ။ အခြားစာလုံးဖြင့် ထပ်မံ ရှာဖွေပါ</p>';
+                    return;
+                }
+
+                searchResults.innerHTML = filtered.map(item => `
+                    <a href="${item.link}" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-sky-50 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/80 transition flex items-center justify-between group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-sm shrink-0">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-800 dark:text-slate-200 text-sm group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">${item.name}</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">${item.category}</div>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-sky-500 transform group-hover:translate-x-1 transition"></i>
+                    </a>
+                `).join('');
+            }
+
+            searchInput.addEventListener('input', (e) => renderResults(e.target.value));
+            closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.add('hidden');
+            });
+
+            renderResults('');
+        }
+
+        modal.classList.remove('hidden');
+        const input = document.getElementById('a11y-universal-search-input');
+        if (input) {
+            input.value = '';
+            input.focus();
+            const results = document.getElementById('a11y-universal-search-results');
+            if (results) {
+                results.innerHTML = universalSearchDb.slice(0, 10).map(item => `
+                    <a href="${item.link}" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-sky-50 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/80 transition flex items-center justify-between group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-sm shrink-0">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-800 dark:text-slate-200 text-sm group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">${item.name}</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">${item.category}</div>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-sky-500 transform group-hover:translate-x-1 transition"></i>
+                    </a>
+                `).join('');
+            }
+        }
+    }
+
+    const a11yGlobalSearchBtn = document.getElementById('a11y-global-search-btn');
+    if (a11yGlobalSearchBtn) {
+        a11yGlobalSearchBtn.addEventListener('click', () => {
+            closePanel();
+            openUniversalSearch();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            openUniversalSearch();
+        } else if (e.key === 'Escape') {
+            const modal = document.getElementById('a11y-universal-search-modal');
+            if (modal && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+            }
+        }
+    });
+
+    // Exposed so other scripts can access
     window.abhidhammaMettaAudio = {
         play: playMettaAudio,
         pause: pauseMettaAudio,
         stop: stopMettaAudio,
         isPlaying: () => !mettaAudio.paused
     };
+    window.openUniversalSearch = openUniversalSearch;
 })();
+
 

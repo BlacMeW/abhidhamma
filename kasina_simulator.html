@@ -249,11 +249,16 @@
 
     <!-- Top Navigation Bar -->
     <div id="top-bar">
-        <a href="kasina_guide.html" class="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition cursor-pointer border border-slate-700 shadow-md" title="ကသိုဏ်း (၁၀) ပါး လမ်းညွှန်သို့ ပြန်သွားရန်">
-            <i class="fa-solid fa-arrow-left"></i>
-        </a>
         <div class="flex items-center gap-2">
-            <button onclick="toggleFullScreen()" class="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition cursor-pointer border border-slate-700 shadow-md" title="ဖန်သားပြင် အပြည့်ကြည့်ရန် (Fullscreen)">
+            <a href="kasina_guide.html" class="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition cursor-pointer border border-slate-700 shadow-md" title="ကသိုဏ်း (၁၀) ပါး လမ်းညွှန်သို့ ပြန်သွားရန်" aria-label="ကသိုဏ်း လမ်းညွှန်သို့ ပြန်သွားရန်">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <a href="index.html" class="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-amber-400 transition cursor-pointer border border-slate-700 shadow-md" title="ပင်မ Dashboard သို့" aria-label="ပင်မ Dashboard သို့">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="toggleFullScreen()" class="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition cursor-pointer border border-slate-700 shadow-md" title="ဖန်သားပြင် အပြည့်ကြည့်ရန် (Fullscreen)" aria-label="ဖန်သားပြင် အပြည့်ကြည့်ရန်">
                 <i class="fa-solid fa-expand" id="fullscreen-icon"></i>
             </button>
         </div>
@@ -401,7 +406,7 @@
                     <span id="modal-duration">15 မိနစ်</span>
                 </div>
             </div>
-            <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm">
+            <button onclick="closeModal()" aria-label="ပိတ်ရန် (Close modal)" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm">
                 ကောင်းပါပြီ / ဆက်လက်လေ့ကျင့်မည်
             </button>
         </div>
