@@ -110,7 +110,7 @@
 }
     </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200">
 
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
@@ -204,7 +204,7 @@
     <!-- Modal -->
     <div id="modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
-            <button onclick="closeModal()" aria-label="ပိတ်ရန် (Close modal)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition z-10">
+            <button onclick="closeModal()" aria-label="ပိတ်ရန် (Close modal)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-100 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content" class="p-6 space-y-4"></div>
@@ -518,7 +518,7 @@
                 
                 category.items.forEach(item => {
                     html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">`;
-                    html += `<td class="p-3 font-medium text-slate-800 dark:text-slate-200 sticky left-0 bg-white dark:bg-slate-900 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] dark:shadow-[2px_0_5px_-2px_rgba(0,0,0,0.3)] z-10">${item.name}</td>`;
+                    html += `<td class="p-3 font-medium text-slate-800 dark:text-slate-100 sticky left-0 bg-white dark:bg-slate-900 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] dark:shadow-[2px_0_5px_-2px_rgba(0,0,0,0.3)] z-10">${item.name}</td>`;
                     
                     groups.forEach(g => {
                         if (item.map[g]) {

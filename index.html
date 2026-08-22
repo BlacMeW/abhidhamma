@@ -98,7 +98,7 @@
 }
     </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200">
 
     <!-- Sticky Navigation Header -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
@@ -275,7 +275,7 @@
                 <i class="fa-solid fa-mobile-screen"></i>
                 <i class="fa-solid fa-wifi"></i>
             </div>
-            <h4 class="text-base font-bold text-slate-800 dark:text-slate-200">ခေတ်မီဆန်းသစ်သော Visual Guide & Offline Support</h4>
+            <h4 class="text-base font-bold text-slate-800 dark:text-slate-100">ခေတ်မီဆန်းသစ်သော Visual Guide & Offline Support</h4>
             <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
                 ဖောင့်စနစ်များအား မြန်မာစာလုံးသန့်သန့် Padauk / Pyidaungsu ဖောင့်များဖြင့် ပြင်ဆင်ထားပြီး၊ Service Worker ဖြင့် အင်တာနက် မလိုဘဲ Offline သုံးစွဲနိုင်သော PWA Support ပါဝင်ပါသည်။
             </p>
@@ -284,14 +284,14 @@
     </main>
 
     <!-- Global Search Modal -->
-    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm p-4 flex items-start justify-center pt-16">
+    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm p-4 flex items-start justify-center pt-16" role="dialog" aria-modal="true" aria-labelledby="search-modal-title">
         <div class="glass-card w-full max-w-2xl rounded-2xl border border-slate-200 dark:border-slate-700 p-5 space-y-4 shadow-2xl">
             <div class="flex items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
                 <div class="flex items-center gap-2 text-sky-700 dark:text-sky-400">
                     <i class="fa-solid fa-magnifying-glass text-lg"></i>
-                    <h3 class="font-bold text-base text-slate-800 dark:text-slate-200">အဘိဓမ္မာ ဓမ္မတရားများ ရှာဖွေရန်</h3>
+                    <h3 id="search-modal-title" class="font-bold text-base text-slate-800 dark:text-slate-100">အဘိဓမ္မာ ဓမ္မတရားများ ရှာဖွေရန်</h3>
                 </div>
-                <button onclick="closeGlobalSearch()" class="text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 text-sm px-3 py-2 rounded-lg bg-slate-800 min-h-[40px]">Esc</button>
+                <button onclick="closeGlobalSearch()" class="text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-100 text-sm px-3 py-2 rounded-lg bg-slate-800 min-h-[40px]">Esc</button>
             </div>
             <input type="text" id="search-input" oninput="handleSearch()" placeholder="ဥပမာ- လောဘ၊ စိတ်၊ စေတသိက်၊ ရုပ်၊ ပဋ္ဌာန်း၊ ဘုံ" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-400">
             <div id="search-results" class="max-h-80 overflow-y-auto space-y-2 text-xs"></div>
@@ -304,14 +304,14 @@
     </footer>
 
     <!-- About Modal -->
-    <div id="about-modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4" onclick="if(event.target===this) closeAboutModal()">
+    <div id="about-modal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4" onclick="if(event.target===this) closeAboutModal()" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
         <div class="glass-card bg-white dark:bg-slate-900 border border-amber-400 dark:border-amber-500/30 rounded-2xl max-w-lg w-full max-h-[85vh] relative animate-fade-in shadow-2xl overflow-hidden flex flex-col">
             <div class="flex items-start justify-between gap-3 p-6 pb-4 border-b border-slate-200 dark:border-slate-800 flex-shrink-0">
                 <div>
                     <div class="text-[11px] font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-400">About this app</div>
-                    <div class="text-lg font-bold text-slate-900 dark:text-slate-100">အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide System</div>
+                    <div id="about-modal-title" class="text-lg font-bold text-slate-900 dark:text-slate-100">အဘိဓမ္မတ္ထသင်္ဂဟ Visual Guide System</div>
                 </div>
-                <button onclick="closeAboutModal()" aria-label="အကြောင်းအရာ ပိတ်ရန် (Close about)" class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200 flex items-center justify-center transition flex-shrink-0">
+                <button onclick="closeAboutModal()" aria-label="အကြောင်းအရာ ပိတ်ရန် (Close about)" class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-100 flex items-center justify-center transition flex-shrink-0">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -321,7 +321,7 @@
                     <img class="w-full h-60 object-cover" src="assets/images/about/about-dedication.jpg" alt="Dedication image" loading="lazy">
                 </div>
 
-                <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-relaxed">
+                <p class="text-sm font-semibold text-slate-800 dark:text-slate-100 leading-relaxed">
                     အဘိဓမ္မတ္ထသင်္ဂဟကျမ်း
                 </p>
 
@@ -383,11 +383,11 @@
                 <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                     <div>
                         <div class="text-[10px] uppercase tracking-wide text-slate-500">App</div>
-                        <div class="text-xs font-semibold text-slate-800 dark:text-slate-200">Abhidhamma Visual Guide System</div>
+                        <div class="text-xs font-semibold text-slate-800 dark:text-slate-100">Abhidhamma Visual Guide System</div>
                     </div>
                     <!-- <div>
                         <div class="text-[10px] uppercase tracking-wide text-slate-500">Source</div>
-                        <div class="text-xs font-semibold text-slate-800 dark:text-slate-200">monledhamma.org</div>
+                        <div class="text-xs font-semibold text-slate-800 dark:text-slate-100">monledhamma.org</div>
                     </div> -->
                 </div>
             </div>
@@ -485,12 +485,29 @@
         }
 
         function openGlobalSearch() {
+            lastFocusedElement = document.activeElement;
             document.getElementById('search-modal').classList.remove('hidden');
             document.getElementById('search-input').focus();
         }
 
         function closeGlobalSearch() {
             document.getElementById('search-modal').classList.add('hidden');
+            if (lastFocusedElement) lastFocusedElement.focus();
+        }
+
+        function trapFocusInSearchModal(e) {
+            const modal = document.getElementById('search-modal');
+            if (modal.classList.contains('hidden')) return;
+            if (e.key !== 'Tab') return;
+            const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
         }
 
         function handleSearch() {
@@ -521,8 +538,13 @@
                 e.preventDefault();
                 openGlobalSearch();
             } else if (e.key === 'Escape') {
-                closeGlobalSearch();
+                if (!document.getElementById('search-modal').classList.contains('hidden')) {
+                    closeGlobalSearch();
+                } else if (!document.getElementById('about-modal').classList.contains('hidden')) {
+                    closeAboutModal();
+                }
             }
+            trapFocusInSearchModal(e);
         });
 
         // About Modal Handler
@@ -533,6 +555,8 @@
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
+            const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable.length) focusable[0].focus();
         }
         function closeAboutModal() {
             const modal = document.getElementById('about-modal');
@@ -541,10 +565,25 @@
             document.body.style.overflow = '';
             if (lastFocusedAboutElement) lastFocusedAboutElement.focus();
         }
+        function trapFocusInModal(e) {
+            const modal = document.getElementById('about-modal');
+            if (modal.classList.contains('hidden')) return;
+            if (e.key !== 'Tab') return;
+            const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+        }
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !document.getElementById('about-modal').classList.contains('hidden')) {
                 closeAboutModal();
             }
+            trapFocusInModal(e);
         });
 
         function renderDashboard() {
@@ -586,6 +625,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderDashboard();
         });
+    </script>
+    <script>
+        // Back to top button visibility
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100');
+                }
+            });
+        }
     </script>
     <script>
         // PWA Install Prompt Logic
@@ -712,6 +766,10 @@
         </div>
     </footer>
 
-<script type="module" src="firebase_tracker.js"></script>
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-amber-600 hover:bg-amber-700 text-white shadow-lg flex items-center justify-center transition opacity-0 pointer-events-none" aria-label="Top of page">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script type="module" src="firebase_tracker.js"></script>
 </body>
 </html>

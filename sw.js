@@ -1,20 +1,42 @@
-const CACHE_NAME = 'abhidhamma-guide-v4';
+const CACHE_NAME = 'abhidhamma-guide-v5';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './citta_cetasikas_visual_guide.html',
-  './rupa_sangaha.html',
+  './concept_map.html',
+  './vithi_sangaha.html',
   './vithimutta_sangaha.html',
+  './rupa_sangaha.html',
   './kilesa_sangaha.html',
   './bodhipakkhiya_dhamma.html',
   './sabba_sangaha.html',
   './paccaya_sangaha.html',
   './paticcasamuppada.html',
   './kammatthana_sangaha.html',
+  './missaka_sangaha.html',
+  './pakinnaka_sangaha.html',
+  './pannatti.html',
+  './glossary.html',
+  './library.html',
+  './emotion_analyzer.html',
+  './meditation_timer.html',
+  './anapana_counter.html',
+  './anapana_visualizer.html',
+  './kasina_guide.html',
+  './kasina_simulator.html',
+  './metta_bhavana_guide.html',
+  './metta_prompter.html',
+  './satipatthana_guide.html',
+  './satipatthana_prompter.html',
+  './404.html',
+  './output.css',
+  './accessibility.js',
+  './firebase_tracker.js',
   './manifest.json',
   './assets/images/icon-192.png',
   './assets/images/icon-512.png',
-  './assets/images/apple-touch-icon.png'
+  './assets/images/apple-touch-icon.png',
+  './assets/mp3/Metta.mp3'
 ];
 
 self.addEventListener('install', (event) => {

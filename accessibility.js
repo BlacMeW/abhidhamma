@@ -222,7 +222,7 @@
         }
     });
 
-    // Theme Management
+    // Theme Management — unified localStorage key 'abhidhamma_theme' across all pages
     const htmlEl = document.documentElement;
     const btnLight = document.getElementById('theme-light');
     const btnDark = document.getElementById('theme-dark');
@@ -230,22 +230,23 @@
     function setTheme(theme) {
         if (theme === 'dark') {
             htmlEl.classList.add('dark');
+            htmlEl.classList.remove('light');
             document.body.style.removeProperty('background-color');
             btnDark.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-slate-900', 'dark:text-white');
             btnDark.classList.remove('text-slate-600', 'dark:text-slate-400');
-            
             btnLight.classList.remove('bg-white', 'shadow-sm', 'text-slate-900');
             btnLight.classList.add('text-slate-600', 'dark:text-slate-400');
         } else {
             htmlEl.classList.remove('dark');
-            document.body.style.setProperty('background-color', '#f8fafc', 'important');
+            htmlEl.classList.add('light');
+            document.body.style.removeProperty('background-color');
             btnLight.classList.add('bg-white', 'shadow-sm', 'text-slate-900');
             btnLight.classList.remove('text-slate-600', 'dark:text-slate-400');
-            
             btnDark.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-slate-900', 'dark:text-white');
             btnDark.classList.add('text-slate-600', 'dark:text-slate-400');
         }
         localStorage.setItem('abhidhamma_theme', theme);
+        window.dispatchEvent(new CustomEvent('abhidhamma-theme-change', { detail: { theme } }));
     }
 
     const savedTheme = localStorage.getItem('abhidhamma_theme') || 'dark';

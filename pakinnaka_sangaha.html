@@ -107,7 +107,7 @@
 }
     </script>
 </head>
-<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-200">
+<body class="min-h-screen flex flex-col pb-16 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200">
 
     <!-- Header -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md">
@@ -730,18 +730,18 @@
                     <span class="text-base font-bold text-amber-600 dark:text-amber-400">${item.count}</span>
                 </div>
                 <div class="space-y-2">
-                    <h5 class="font-bold text-slate-800 dark:text-slate-200">သဘောတရား ရှင်းလင်းချက်:</h5>
+                    <h5 class="font-bold text-slate-800 dark:text-slate-100">သဘောတရား ရှင်းလင်းချက်:</h5>
                     <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${item.desc}</p>
                 </div>
                 ${item.cittas ? `
                 <div class="space-y-2">
-                    <h5 class="font-bold text-slate-800 dark:text-slate-200">ပါဝင်သော စိတ်များ:</h5>
+                    <h5 class="font-bold text-slate-800 dark:text-slate-100">ပါဝင်သော စိတ်များ:</h5>
                     <p class="text-slate-600 dark:text-slate-300 leading-relaxed bg-amber-500/5 p-3 rounded-xl border border-amber-500/20">${item.cittas}</p>
                 </div>
                 ` : ''}
                 ${item.detail ? `
                 <div class="space-y-2">
-                    <h5 class="font-bold text-slate-800 dark:text-slate-200">အဘိဓမ္မာ အသေးစိတ် သုံးသပ်ချက်:</h5>
+                    <h5 class="font-bold text-slate-800 dark:text-slate-100">အဘိဓမ္မာ အသေးစိတ် သုံးသပ်ချက်:</h5>
                     <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-xs opacity-90">${item.detail}</p>
                 </div>
                 ` : ''}
@@ -817,7 +817,7 @@
                     
                     g.items.forEach(item => {
                         html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">`;
-                        html += `<td class="p-3 font-medium text-slate-800 dark:text-slate-200 sticky left-0 bg-white dark:bg-slate-900 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] dark:shadow-[2px_0_5px_-2px_rgba(0,0,0,0.3)] border-r border-slate-100 dark:border-slate-800 z-10">${item.name}</td>`;
+                        html += `<td class="p-3 font-medium text-slate-800 dark:text-slate-100 sticky left-0 bg-white dark:bg-slate-900 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)] dark:shadow-[2px_0_5px_-2px_rgba(0,0,0,0.3)] border-r border-slate-100 dark:border-slate-800 z-10">${item.name}</td>`;
                         
                         cols.forEach(c => {
                             if (item.kiccas.includes(c)) {

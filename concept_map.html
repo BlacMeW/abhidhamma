@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="my" class="scroll-smooth dark">
+<html lang="my" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="color-scheme" content="light dark">
@@ -11,12 +11,12 @@
     <script>
         (function () {
             try {
-                var t = localStorage.getItem('theme');
+                var t = localStorage.getItem('abhidhamma_theme');
                 var dark = t ? (t === 'dark') : window.matchMedia('(prefers-color-scheme: dark)').matches;
                 var el = document.documentElement;
                 el.classList.toggle('dark', dark);
                 el.classList.toggle('light', !dark);
-            } catch (e) { /* keep the default dark class from <html> */ }
+            } catch (e) { /* no saved theme — default to system preference */ }
         })();
     </script>
     <!-- Tailwind (precompiled, same build as the rest of the site) -->
@@ -158,8 +158,8 @@
             z-index: 10;
         }
         .map-btn {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(4px);
@@ -276,7 +276,7 @@
 }
     </script>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300 overflow-hidden" style="display: flex; flex-direction: column; width: 100vw; height: 100vh; margin: 0; padding: 0; position: fixed; inset: 0;">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 overflow-hidden" style="display: flex; flex-direction: column; width: 100vw; height: 100vh; margin: 0; padding: 0; position: fixed; inset: 0;">
 
     <!-- Navigation -->
     <nav id="site-nav" class="glass-nav relative z-50 transition-colors duration-300" style="flex: 0 0 auto;">
@@ -369,11 +369,11 @@
 
         themeToggleBtn.addEventListener('click', () => {
             const isDark = htmlElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
             htmlElement.classList.toggle('dark', !isDark);
             htmlElement.classList.toggle('light', isDark);
-            localStorage.setItem('theme', !isDark ? 'dark' : 'light');
-            // Re-render the map with the new palette instead of reloading the whole page
-            // (keeps the user's current expand/collapse and zoom-ish state).
+            localStorage.setItem('abhidhamma_theme', newTheme);
+            window.dispatchEvent(new CustomEvent('abhidhamma-theme-change', { detail: { theme: newTheme } }));
             if (typeof renderMap === 'function' && window.markmap && mapRoot) renderMap();
         });
 
@@ -2136,14 +2136,21 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('map-loader');
-                const errorBox = document.getElementById('map-error');
+            const loader = document.getElementById('map-loader');
+            const errorBox = document.getElementById('map-error');
+            const loadTimeout = setTimeout(() => {
+                if (loader && loader.style.display !== 'none') {
+                    loader.style.display = 'none';
+                    if (errorBox) errorBox.style.display = 'flex';
+                }
+            }, 15000);
 
+            setTimeout(() => {
                 // Guard: the map libraries load from a CDN and may fail (offline / SRI mismatch / blocked).
                 if (!window.d3 || !window.markmap || !window.markmap.Transformer || !window.markmap.Markmap) {
-                    if (loader) loader.style.display = 'none';
-                    if (errorBox) errorBox.style.display = 'flex';
+                    loader.style.display = 'none';
+                    errorBox.style.display = 'flex';
+                    clearTimeout(loadTimeout);
                     return;
                 }
 
@@ -2163,12 +2170,14 @@
                     resizeObserver.observe(document.getElementById('markmap-container'));
                 } catch (err) {
                     console.error('Concept map render failed:', err);
-                    if (loader) loader.style.display = 'none';
-                    if (errorBox) errorBox.style.display = 'flex';
+                    loader.style.display = 'none';
+                    errorBox.style.display = 'flex';
+                    clearTimeout(loadTimeout);
                     return;
                 }
 
-                if (loader) loader.style.display = 'none';
+                loader.style.display = 'none';
+                clearTimeout(loadTimeout);
 
                 // Search Functionality
                 const searchInput = document.getElementById('search-input');
@@ -2348,5 +2357,9 @@
     </script>
     <script src="accessibility.js"></script>
     <script type="module" src="firebase_tracker.js"></script>
+
+    <footer class="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/80 dark:bg-slate-900/80 backdrop-blur-sm text-center py-1.5 text-[10px] text-slate-400 border-t border-slate-700/50 pointer-events-none">
+        Abhidhamma Visual Guide System — Citta, Cetasika, Rūpa & Nibbāna
+    </footer>
 </body>
 </html>
